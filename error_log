@@ -1,0 +1,1167 @@
+[15-Aug-2014 14:52:03 America/Chicago] PHP Parse error:  syntax error, unexpected T_SL in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 82
+[15-Aug-2014 14:52:14 America/Chicago] PHP Parse error:  syntax error, unexpected T_SL in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 82
+[15-Aug-2014 14:55:51 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[15-Aug-2014 14:55:52 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[15-Aug-2014 14:56:53 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[22-Aug-2014 11:22:53 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[12-Sep-2014 13:45:47 America/Chicago] PHP Warning:  Unexpected character in input:  '' (ASCII=28) state=0 in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 957
+[12-Sep-2014 13:47:11 America/Chicago] PHP Warning:  Unexpected character in input:  '' (ASCII=28) state=0 in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 957
+[12-Sep-2014 14:08:06 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 957
+[12-Sep-2014 14:08:09 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 957
+[12-Sep-2014 14:10:11 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 956
+[12-Sep-2014 14:12:21 America/Chicago] PHP Parse error:  syntax error, unexpected ']' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 961
+[12-Sep-2014 14:12:24 America/Chicago] PHP Parse error:  syntax error, unexpected ']' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 961
+[12-Sep-2014 14:12:34 America/Chicago] PHP Parse error:  syntax error, unexpected ']' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 961
+[12-Sep-2014 14:12:57 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 956
+[12-Sep-2014 14:13:04 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 956
+[19-Sep-2014 15:50:21 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/views/showroom.php on line 1375
+[19-Sep-2014 16:00:01 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/controllers/showroom.php on line 702
+[23-Sep-2014 13:44:09 America/Chicago] PHP Parse error:  syntax error, unexpected T_PUBLIC in /home/wrevelco/public_html/alpha/application/controllers/showroom.php on line 749
+[23-Sep-2014 14:19:00 America/Chicago] PHP Fatal error:  Call to undefined method CI_Session::unset() in /home/wrevelco/public_html/alpha/application/controllers/showroom.php on line 384
+[23-Sep-2014 14:31:19 America/Chicago] PHP Fatal error:  Call to a member function all_userdata() on a non-object in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 1224
+[23-Sep-2014 15:15:03 America/Chicago] PHP Fatal error:  Call to undefined method CI_Session::user_data() in /home/wrevelco/public_html/alpha/application/controllers/chat.php on line 104
+[03-Oct-2014 12:59:39 America/Chicago] PHP Parse error:  syntax error, unexpected T_IF, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/controllers/chat.php on line 303
+[03-Oct-2014 14:54:51 America/Chicago] PHP Parse error:  syntax error, unexpected '-', expecting '(' in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 4
+[03-Oct-2014 14:59:02 America/Chicago] PHP Parse error:  syntax error, unexpected '-', expecting '(' in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 4
+[03-Oct-2014 15:03:27 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/aboutus.php on line 27
+[03-Oct-2014 15:04:39 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/aboutus.php on line 27
+[06-Oct-2014 16:43:39 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/wrevelco/public_html/alpha/application/models/model_users.php on line 405
+[06-Oct-2014 16:43:45 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/wrevelco/public_html/alpha/application/models/model_users.php on line 405
+[06-Oct-2014 16:45:20 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/wrevelco/public_html/alpha/application/models/model_users.php on line 405
+[06-Oct-2014 16:45:51 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING in /home/wrevelco/public_html/alpha/application/models/model_users.php on line 408
+[06-Oct-2014 16:46:59 America/Chicago] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/wrevelco/public_html/alpha/application/models/model_users.php on line 408
+[06-Oct-2014 16:47:36 America/Chicago] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/wrevelco/public_html/alpha/application/models/model_users.php on line 408
+[06-Oct-2014 16:47:59 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/wrevelco/public_html/alpha/application/models/model_users.php on line 413
+[06-Oct-2014 20:16:03 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/latestwrevs.php on line 242
+[06-Oct-2014 21:46:15 America/Chicago] PHP Fatal error:  Cannot use object of type CI_DB_mysql_result as array in /home/wrevelco/public_html/alpha/application/models/model_users.php on line 420
+[07-Oct-2014 10:41:38 America/Chicago] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/wrevelco/public_html/alpha/application/controllers/event.php on line 238
+[07-Oct-2014 12:12:59 America/Chicago] PHP Fatal error:  Call to a member function library() on a non-object in /home/wrevelco/public_html/alpha/application/controllers/admin.php on line 6
+[07-Oct-2014 12:14:39 America/Chicago] PHP Fatal error:  Call to a member function library() on a non-object in /home/wrevelco/public_html/alpha/application/controllers/admin.php on line 6
+[07-Oct-2014 12:40:22 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING in /home/wrevelco/public_html/alpha/application/controllers/event.php on line 38
+[07-Oct-2014 16:02:00 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 55
+[08-Oct-2014 13:14:47 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/wrevelco/public_html/alpha/application/models/model_events.php on line 410
+[09-Oct-2014 13:40:33 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[10-Oct-2014 13:05:18 America/Chicago] PHP Parse error:  syntax error, unexpected '?' in /home/wrevelco/public_html/alpha/application/views/event_fullview.php on line 642
+[10-Oct-2014 13:34:42 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/event_template.php on line 251
+[10-Oct-2014 13:35:09 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/event_template.php on line 254
+[12-Oct-2014 22:53:14 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING in /home/wrevelco/public_html/alpha/application/views/partners.php on line 153
+[12-Oct-2014 22:53:24 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING in /home/wrevelco/public_html/alpha/application/views/partners.php on line 153
+[12-Oct-2014 22:53:48 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING in /home/wrevelco/public_html/alpha/application/views/partners.php on line 153
+[13-Oct-2014 15:01:14 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/controllers/showroom.php on line 592
+[13-Oct-2014 15:25:00 America/Chicago] PHP Parse error:  syntax error, unexpected '.' in /home/wrevelco/public_html/alpha/application/controllers/showroom.php on line 620
+[13-Oct-2014 16:02:21 America/Chicago] PHP Fatal error:  Call to undefined method CI_Loader::libary() in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 468
+[13-Oct-2014 16:06:23 America/Chicago] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 480
+[13-Oct-2014 16:33:01 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING, expecting T_FUNCTION in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 488
+[13-Oct-2014 16:45:23 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 482
+[13-Oct-2014 19:14:54 America/Chicago] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/controllers/showroom.php on line 499
+[13-Oct-2014 19:48:09 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 490
+[13-Oct-2014 19:51:15 America/Chicago] PHP Parse error:  syntax error, unexpected T_ELSE in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 487
+[13-Oct-2014 20:03:31 America/Chicago] PHP Fatal error:  Call to a member function find_event() on a non-object in /home/wrevelco/public_html/alpha/application/controllers/event.php on line 424
+[13-Oct-2014 20:04:37 America/Chicago] PHP Fatal error:  Call to a member function get_file() on a non-object in /home/wrevelco/public_html/alpha/application/controllers/event.php on line 428
+[13-Oct-2014 20:07:56 America/Chicago] PHP Fatal error:  Call to a member function get_file() on a non-object in /home/wrevelco/public_html/alpha/application/controllers/event.php on line 473
+[13-Oct-2014 21:16:19 America/Chicago] PHP Fatal error:  Call to a member function get_file() on a non-object in /home/wrevelco/public_html/alpha/application/controllers/chat.php on line 423
+[13-Oct-2014 21:16:50 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING in /home/wrevelco/public_html/alpha/application/controllers/chat.php on line 299
+[13-Oct-2014 21:26:18 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 493
+[14-Oct-2014 12:34:06 America/Chicago] PHP Parse error:  syntax error, unexpected '.' in /home/wrevelco/public_html/alpha/application/controllers/showroom.php on line 448
+[14-Oct-2014 12:34:06 America/Chicago] PHP Parse error:  syntax error, unexpected '.' in /home/wrevelco/public_html/alpha/application/controllers/showroom.php on line 448
+[14-Oct-2014 12:36:05 America/Chicago] PHP Parse error:  syntax error, unexpected '.' in /home/wrevelco/public_html/alpha/application/controllers/showroom.php on line 494
+[14-Oct-2014 12:41:15 America/Chicago] PHP Fatal error:  Call to undefined function impode() in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 589
+[14-Oct-2014 13:21:42 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 601
+[14-Oct-2014 14:19:20 America/Chicago] PHP Fatal error:  Call to undefined method Model_friend_request::get_friend_lists() in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 512
+[15-Oct-2014 11:19:16 America/Chicago] PHP Fatal error:  Cannot redeclare info::press() in /home/wrevelco/public_html/alpha/application/controllers/info.php on line 138
+[15-Oct-2014 11:19:44 America/Chicago] PHP Fatal error:  Cannot redeclare info::press() in /home/wrevelco/public_html/alpha/application/controllers/info.php on line 138
+[15-Oct-2014 11:19:58 America/Chicago] PHP Fatal error:  Cannot redeclare info::press() in /home/wrevelco/public_html/alpha/application/controllers/info.php on line 138
+[15-Oct-2014 11:20:03 America/Chicago] PHP Fatal error:  Cannot redeclare info::press() in /home/wrevelco/public_html/alpha/application/controllers/info.php on line 138
+[15-Oct-2014 11:20:19 America/Chicago] PHP Fatal error:  Cannot redeclare info::press() in /home/wrevelco/public_html/alpha/application/controllers/info.php on line 138
+[15-Oct-2014 11:20:27 America/Chicago] PHP Fatal error:  Cannot redeclare info::press() in /home/wrevelco/public_html/alpha/application/controllers/info.php on line 138
+[15-Oct-2014 11:20:34 America/Chicago] PHP Fatal error:  Cannot redeclare info::press() in /home/wrevelco/public_html/alpha/application/controllers/info.php on line 138
+[15-Oct-2014 11:21:41 America/Chicago] PHP Fatal error:  Cannot redeclare info::press() in /home/wrevelco/public_html/alpha/application/controllers/info.php on line 138
+[15-Oct-2014 11:24:26 America/Chicago] PHP Fatal error:  Cannot redeclare info::press() in /home/wrevelco/public_html/alpha/application/controllers/info.php on line 139
+[15-Oct-2014 14:24:39 America/Chicago] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/latestwrevs.php on line 223
+[15-Oct-2014 14:24:50 America/Chicago] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/latestwrevs.php on line 223
+[15-Oct-2014 14:24:59 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/home.php on line 154
+[15-Oct-2014 14:25:06 America/Chicago] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/latestwrevs.php on line 226
+[16-Oct-2014 10:31:22 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 1193
+[16-Oct-2014 11:26:33 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 654
+[16-Oct-2014 11:26:33 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 654
+[16-Oct-2014 11:26:39 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 654
+[16-Oct-2014 11:26:43 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 654
+[16-Oct-2014 11:26:54 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 654
+[16-Oct-2014 11:27:56 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 654
+[16-Oct-2014 11:27:59 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 654
+[16-Oct-2014 11:28:31 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 654
+[16-Oct-2014 11:29:00 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 653
+[16-Oct-2014 11:29:07 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 653
+[16-Oct-2014 11:29:43 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 653
+[16-Oct-2014 11:29:44 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 653
+[16-Oct-2014 12:23:12 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 755
+[16-Oct-2014 12:23:17 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 755
+[16-Oct-2014 12:23:34 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 755
+[16-Oct-2014 12:23:52 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 755
+[16-Oct-2014 14:44:41 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/event_template.php on line 293
+[16-Oct-2014 15:52:13 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/views/event_fullview.php on line 433
+[17-Oct-2014 11:38:49 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting T_VARIABLE or '$' in /home/wrevelco/public_html/alpha/application/views/inbox4.php on line 283
+[17-Oct-2014 11:39:11 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting T_VARIABLE or '$' in /home/wrevelco/public_html/alpha/application/views/inbox4.php on line 283
+[17-Oct-2014 11:40:01 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting T_VARIABLE or '$' in /home/wrevelco/public_html/alpha/application/views/inbox4.php on line 283
+[17-Oct-2014 11:40:03 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting T_VARIABLE or '$' in /home/wrevelco/public_html/alpha/application/views/inbox4.php on line 283
+[17-Oct-2014 11:40:03 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting T_VARIABLE or '$' in /home/wrevelco/public_html/alpha/application/views/inbox4.php on line 283
+[17-Oct-2014 11:49:03 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/inbox4.php on line 281
+[17-Oct-2014 12:16:43 America/Chicago] PHP Parse error:  syntax error, unexpected $end in /home/wrevelco/public_html/alpha/application/views/showroom.php on line 931
+[17-Oct-2014 12:17:02 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/wrevelco/public_html/alpha/application/views/showroom.php on line 393
+[17-Oct-2014 12:17:04 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/wrevelco/public_html/alpha/application/views/showroom.php on line 393
+[17-Oct-2014 12:17:16 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/wrevelco/public_html/alpha/application/views/showroom.php on line 393
+[17-Oct-2014 12:17:18 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/wrevelco/public_html/alpha/application/views/showroom.php on line 393
+[17-Oct-2014 12:17:24 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/wrevelco/public_html/alpha/application/views/showroom.php on line 393
+[17-Oct-2014 12:17:58 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/wrevelco/public_html/alpha/application/views/showroom.php on line 394
+[17-Oct-2014 12:17:59 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/wrevelco/public_html/alpha/application/views/showroom.php on line 394
+[17-Oct-2014 12:19:09 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/wrevelco/public_html/alpha/application/views/showroom.php on line 398
+[17-Oct-2014 12:19:10 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/wrevelco/public_html/alpha/application/views/showroom.php on line 398
+[17-Oct-2014 12:19:31 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/wrevelco/public_html/alpha/application/views/showroom.php on line 398
+[17-Oct-2014 12:22:46 America/Chicago] PHP Parse error:  syntax error, unexpected T_ECHO in /home/wrevelco/public_html/alpha/application/views/event_template.php on line 293
+[17-Oct-2014 12:22:57 America/Chicago] PHP Parse error:  syntax error, unexpected T_ECHO in /home/wrevelco/public_html/alpha/application/views/event_template.php on line 293
+[17-Oct-2014 12:27:28 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/wrevelco/public_html/alpha/application/views/showroom.php on line 395
+[17-Oct-2014 12:28:00 America/Chicago] PHP Parse error:  syntax error, unexpected $end in /home/wrevelco/public_html/alpha/application/views/showroom.php on line 933
+[17-Oct-2014 12:57:18 America/Chicago] PHP Parse error:  syntax error, unexpected T_DOUBLE_ARROW in /home/wrevelco/public_html/alpha/application/views/showroom.php on line 875
+[17-Oct-2014 13:10:21 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/showroom.php on line 390
+[17-Oct-2014 13:43:18 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/models/model_events.php on line 134
+[17-Oct-2014 13:43:47 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/models/model_events.php on line 134
+[17-Oct-2014 13:46:42 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/wrevelco/public_html/alpha/application/models/model_events.php on line 95
+[17-Oct-2014 14:14:32 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting ']' in /home/wrevelco/public_html/alpha/application/models/model_events.php on line 96
+[17-Oct-2014 14:26:14 America/Chicago] PHP Fatal error:  Call to undefined function timestamp() in /home/wrevelco/public_html/alpha/application/models/model_events.php on line 464
+[17-Oct-2014 15:14:03 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/wrevelco/public_html/alpha/application/models/model_events.php on line 320
+[21-Oct-2014 12:22:00 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING in /home/wrevelco/public_html/alpha/application/config/config.php on line 364
+[21-Oct-2014 12:22:05 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING in /home/wrevelco/public_html/alpha/application/config/config.php on line 364
+[21-Oct-2014 12:22:20 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING in /home/wrevelco/public_html/alpha/application/config/config.php on line 364
+[21-Oct-2014 12:22:28 America/Chicago] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook.php on line 89
+[21-Oct-2014 12:22:29 America/Chicago] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook.php on line 89
+[21-Oct-2014 12:24:03 America/Chicago] PHP Fatal error:  Call to undefined function session_status() in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook.php on line 3
+[21-Oct-2014 12:24:22 America/Chicago] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'config.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook.php on line 6
+[21-Oct-2014 12:25:25 America/Chicago] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook/FacebookRedirectLoginHelper.php on line 168
+[21-Oct-2014 12:26:54 America/Chicago] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook/FacebookRedirectLoginHelper.php on line 168
+[21-Oct-2014 13:11:31 America/Chicago] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook.php on line 88
+[21-Oct-2014 13:11:32 America/Chicago] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook.php on line 88
+[21-Oct-2014 13:12:20 America/Chicago] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook.php on line 88
+[21-Oct-2014 13:12:23 America/Chicago] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook.php on line 88
+[21-Oct-2014 13:16:47 America/Chicago] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook.php on line 88
+[21-Oct-2014 13:18:19 America/Chicago] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook.php on line 88
+[21-Oct-2014 13:26:12 America/Chicago] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook.php on line 88
+[21-Oct-2014 13:39:28 America/Chicago] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook/FacebookResponse.php on line 137
+[21-Oct-2014 13:42:19 America/Chicago] PHP Parse error:  syntax error, unexpected T_RETURN in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook/FacebookResponse.php on line 138
+[21-Oct-2014 13:44:18 America/Chicago] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook/GraphObject.php on line 111
+[21-Oct-2014 13:45:50 America/Chicago] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook/GraphObject.php on line 147
+[21-Oct-2014 13:45:52 America/Chicago] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook/GraphObject.php on line 147
+[21-Oct-2014 13:46:03 America/Chicago] PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook/GraphSessionInfo.php on line 64
+[21-Oct-2014 14:59:13 America/Chicago] PHP Fatal error:  Call to undefined function session_status() in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook.php on line 3
+[21-Oct-2014 15:18:45 America/Chicago] PHP Fatal error:  Uncaught exception 'Facebook\FacebookAuthorizationException' with message 'An active access token must be used to query information about the current user.' in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook/FacebookRequestException.php:134
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook/FacebookRequest.php(268): Facebook\FacebookRequestException::create('{"error":{"mess...', Object(stdClass), 400)
+#1 /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook.php(59): Facebook\FacebookRequest->execute()
+#2 /home/wrevelco/public_html/alpha/system/core/Loader.php(1099): Facebook->__construct()
+#3 /home/wrevelco/public_html/alpha/system/core/Loader.php(975): CI_Loader->_ci_init_class('Facebook', '', NULL, NULL)
+#4 /home/wrevelco/public_html/alpha/system/core/Loader.php(984): CI_Loader->_ci_load_class('facebook/facebo...', NULL)
+#5 /home/wrevelco/public_html/alpha/system/core/Loader.php(216): CI_Loader->_ci_load_class('facebook', NULL in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook/FacebookRequestException.php on line 134
+[21-Oct-2014 15:42:40 America/Chicago] PHP Fatal error:  Maximum execution time of 300 seconds exceeded in /home/wrevelco/public_html/alpha/system/core/Exceptions.php on line 182
+[21-Oct-2014 15:58:55 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/models/model_users.php on line 459
+[22-Oct-2014 11:06:52 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting '&' or T_VARIABLE in /home/wrevelco/public_html/alpha/application/controllers/welcome.php on line 78
+[22-Oct-2014 11:07:06 America/Chicago] PHP Parse error:  syntax error, unexpected $end, expecting T_FUNCTION in /home/wrevelco/public_html/alpha/application/libraries/facebook/Facebook.php on line 85
+[22-Oct-2014 11:39:09 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/views/showroom.php on line 963
+[24-Oct-2014 11:05:35 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 11:13:44 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 11:14:57 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 11:20:50 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 11:22:34 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 11:23:17 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 11:24:32 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 11:24:37 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 11:26:26 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 11:27:03 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 11:27:09 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 11:29:56 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 11:30:19 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 11:31:34 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 11:33:26 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 11:33:49 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 11:34:31 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 11:44:21 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 11:44:36 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 11:47:34 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 12:09:36 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 12:12:32 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 160
+[24-Oct-2014 12:13:58 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 160
+[24-Oct-2014 12:15:20 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 160
+[24-Oct-2014 12:15:23 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 160
+[24-Oct-2014 12:17:05 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 162
+[24-Oct-2014 12:17:36 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 219
+[24-Oct-2014 12:18:35 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 220
+[24-Oct-2014 12:19:22 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 220
+[24-Oct-2014 12:19:34 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 220
+[24-Oct-2014 12:19:45 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 162
+[24-Oct-2014 12:23:57 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 162
+[24-Oct-2014 12:32:23 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 117
+[24-Oct-2014 12:32:39 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 117
+[24-Oct-2014 12:33:11 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 117
+[24-Oct-2014 12:33:31 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 162
+[24-Oct-2014 12:38:39 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 162
+[24-Oct-2014 12:38:41 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 162
+[24-Oct-2014 13:17:45 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 162
+[24-Oct-2014 13:23:02 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 220
+[24-Oct-2014 13:23:37 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 220
+[24-Oct-2014 13:24:11 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 267
+[24-Oct-2014 13:24:31 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 268
+[24-Oct-2014 13:25:00 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 290
+[24-Oct-2014 13:25:14 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 30
+[24-Oct-2014 13:57:02 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 30
+[24-Oct-2014 14:06:15 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 30
+[24-Oct-2014 14:06:51 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/showroom.php on line 86
+[24-Oct-2014 14:30:03 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 162
+[24-Oct-2014 14:30:25 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/public_profile.php on line 291
+[24-Oct-2014 14:30:39 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/public_profile.php on line 291
+[24-Oct-2014 14:30:42 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/public_profile.php on line 291
+[24-Oct-2014 14:30:44 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/public_profile.php on line 291
+[24-Oct-2014 14:31:28 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 162
+[24-Oct-2014 14:36:33 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 162
+[24-Oct-2014 14:37:23 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 162
+[24-Oct-2014 14:39:15 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 160
+[24-Oct-2014 14:39:19 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 160
+[24-Oct-2014 14:40:27 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 161
+[24-Oct-2014 14:42:41 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 218
+[24-Oct-2014 14:43:05 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 265
+[24-Oct-2014 14:45:22 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 269
+[24-Oct-2014 14:46:16 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 292
+[24-Oct-2014 14:47:08 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 295
+[24-Oct-2014 14:47:43 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 30
+[24-Oct-2014 14:49:11 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 33
+[24-Oct-2014 14:49:53 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 33
+[24-Oct-2014 14:49:56 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 33
+[24-Oct-2014 14:50:41 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 32
+[24-Oct-2014 14:51:28 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 41
+[24-Oct-2014 14:52:04 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 44
+[24-Oct-2014 14:52:32 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 44
+[24-Oct-2014 14:52:57 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 49
+[24-Oct-2014 14:53:44 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 49
+[24-Oct-2014 14:54:29 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 52
+[24-Oct-2014 14:55:44 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 79
+[24-Oct-2014 14:56:28 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 121
+[24-Oct-2014 14:57:14 America/Chicago] PHP Fatal error:  Cannot use string offset as an array in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 41
+[24-Oct-2014 14:58:36 America/Chicago] PHP Fatal error:  Cannot redeclare class Stripe_controller in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 427
+[24-Oct-2014 14:59:18 America/Chicago] PHP Fatal error:  Cannot redeclare class Stripe_controller in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 427
+[24-Oct-2014 15:00:14 America/Chicago] PHP Fatal error:  Cannot redeclare class Stripe_controller in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 427
+[24-Oct-2014 15:00:29 America/Chicago] PHP Fatal error:  Cannot redeclare class Stripe_controller in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 416
+[24-Oct-2014 15:01:05 America/Chicago] PHP Fatal error:  Cannot redeclare class Stripe_controller in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 427
+[24-Oct-2014 15:02:27 America/Chicago] PHP Fatal error:  Cannot use string offset as an array in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 41
+[24-Oct-2014 15:02:48 America/Chicago] PHP Fatal error:  Cannot use string offset as an array in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 41
+[24-Oct-2014 15:04:48 America/Chicago] PHP Fatal error:  Cannot use string offset as an array in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 41
+[24-Oct-2014 15:05:38 America/Chicago] PHP Fatal error:  Cannot use string offset as an array in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 41
+[24-Oct-2014 15:27:57 America/Chicago] PHP Fatal error:  Cannot use string offset as an array in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 41
+[24-Oct-2014 15:31:00 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 79
+[24-Oct-2014 15:33:03 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 79
+[24-Oct-2014 15:33:23 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 79
+[24-Oct-2014 15:34:09 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 79
+[24-Oct-2014 15:35:23 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 79
+[24-Oct-2014 15:36:26 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 79
+[24-Oct-2014 15:37:39 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 79
+[24-Oct-2014 15:38:21 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 91
+[24-Oct-2014 15:38:58 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 91
+[24-Oct-2014 15:39:11 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 91
+[24-Oct-2014 15:39:27 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 91
+[24-Oct-2014 15:40:16 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 122
+[24-Oct-2014 16:03:40 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'Cannot charge a customer that has no active card' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(196): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('217')
+#6 /home/wrevelco/public_html/alpha in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[24-Oct-2014 16:04:12 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'Cannot charge a customer that has no active card' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(196): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('273')
+#6 /home/wrevelco/public_html/alpha in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[24-Oct-2014 16:19:51 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'Cannot charge a customer that has no active card' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(196): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('273')
+#6 /home/wrevelco/public_html/alpha in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[28-Oct-2014 10:22:09 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'Cannot charge a customer that has no active card' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(196): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('274')
+#6 /home/wrevelco/public_html/alpha in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[28-Oct-2014 10:30:44 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'Cannot charge a customer that has no active card' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(196): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('274')
+#6 /home/wrevelco/public_html/alpha in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[28-Oct-2014 10:41:29 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'Cannot charge a customer that has no active card' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(196): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('274')
+#6 /home/wrevelco/public_html/alpha in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[28-Oct-2014 10:51:38 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'Cannot charge a customer that has no active card' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(195): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('273')
+#6 /home/wrevelco/public_html/alpha in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[28-Oct-2014 10:54:20 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'Cannot charge a customer that has no active card' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(195): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('274')
+#6 /home/wrevelco/public_html/alpha in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[28-Oct-2014 10:59:46 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'Cannot charge a customer that has no active card' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(195): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('274')
+#6 /home/wrevelco/public_html/alpha in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[28-Oct-2014 11:04:52 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'You must supply either a card or a customer id' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(195): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('274')
+#6 /home/wrevelco/public_ht in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[28-Oct-2014 11:20:17 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'You must supply either a card or a customer id' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(198): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('274')
+#6 /home/wrevelco/public_ht in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[28-Oct-2014 11:21:24 America/Chicago] PHP Fatal error:  Unsupported operand types in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 173
+[28-Oct-2014 11:22:11 America/Chicago] PHP Fatal error:  Unsupported operand types in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 174
+[28-Oct-2014 11:22:54 America/Chicago] PHP Fatal error:  Unsupported operand types in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 176
+[28-Oct-2014 11:23:11 America/Chicago] PHP Fatal error:  Unsupported operand types in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 176
+[28-Oct-2014 11:23:16 America/Chicago] PHP Fatal error:  Unsupported operand types in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 176
+[28-Oct-2014 11:24:03 America/Chicago] PHP Fatal error:  Unsupported operand types in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 176
+[28-Oct-2014 11:25:05 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Routing number must have 9 digits' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/tokens', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Token.php(26): Stripe_ApiResource::_scopedCreate('Stripe_Token', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(351): Stripe_Token::create(Array)
+#5 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(201): Stripe_contro in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[28-Oct-2014 11:26:51 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Routing number must have 9 digits' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/tokens', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Token.php(26): Stripe_ApiResource::_scopedCreate('Stripe_Token', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(351): Stripe_Token::create(Array)
+#5 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(201): Stripe_contro in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[28-Oct-2014 11:29:37 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Routing number must have 9 digits' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/tokens', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Token.php(26): Stripe_ApiResource::_scopedCreate('Stripe_Token', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(351): Stripe_Token::create(Array)
+#5 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(201): Stripe_contro in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[28-Oct-2014 11:45:12 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/Ticket_view.php on line 30
+[28-Oct-2014 11:46:44 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/Ticket_view.php on line 39
+[28-Oct-2014 11:57:57 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'Cannot charge a customer that has no active card' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(199): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('274')
+#6 /home/wrevelco/public_html/alpha in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[28-Oct-2014 14:26:41 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'No such recipient: acct_103jpR2ts370bKIr' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 404, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 404)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(24): Stripe_ApiRequestor->request('get', '/v1/recipients/...', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(8): Stripe_ApiResource->refresh()
+#4 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(14): Stripe_ApiResource::_scopedRetrieve('Stripe_Recipien...', 'acct_103jpR2ts3...', NULL)
+#5 /home/wrevelco/public_html/alpha/application/controllers/ in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[28-Oct-2014 14:29:23 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Invalid positive integer' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/transfers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Transfer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Transfer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(390): Stripe_Transfer::create(Array)
+#5 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(201): Stripe_con in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[28-Oct-2014 15:30:07 America/Chicago] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'You cannot set 'id'to an empty string. We interpret empty strings as NULL in requests. You may set obj->id = NULL to delete the property' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/Object.php:54
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Object.php(46): Stripe_Object->__set('id', '')
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(7): Stripe_Object->__construct('', NULL)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(14): Stripe_ApiResource::_scopedRetrieve('Stripe_Recipien...', '', NULL)
+#3 /home/wrevelco/public_html/alpha/application/controllers/account.php(250): Stripe_Recipient::retrieve('')
+#4 /home/wrevelco/public_html/alpha/application/controllers/account.php(82): account->get_account_info()
+#5 [internal function]: account->myaccount_accountinfo()
+#6 /home/wrevelco/public_html/alpha/system/core/CodeIgniter.php(359): in /home/wrevelco/public_html/alpha/application/controllers/Stripe/Object.php on line 54
+[28-Oct-2014 15:39:53 America/Chicago] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'You cannot set 'id'to an empty string. We interpret empty strings as NULL in requests. You may set obj->id = NULL to delete the property' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/Object.php:54
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Object.php(46): Stripe_Object->__set('id', '')
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(7): Stripe_Object->__construct('', NULL)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(14): Stripe_ApiResource::_scopedRetrieve('Stripe_Recipien...', '', NULL)
+#3 /home/wrevelco/public_html/alpha/application/controllers/account.php(250): Stripe_Recipient::retrieve('')
+#4 /home/wrevelco/public_html/alpha/application/controllers/account.php(82): account->get_account_info()
+#5 [internal function]: account->myaccount_accountinfo()
+#6 /home/wrevelco/public_html/alpha/system/core/CodeIgniter.php(359): in /home/wrevelco/public_html/alpha/application/controllers/Stripe/Object.php on line 54
+[28-Oct-2014 15:49:25 America/Chicago] Stripe Notice: Undefined property of Stripe_Recipient instance: bank_account
+[28-Oct-2014 15:49:25 America/Chicago] Stripe Notice: Undefined property of Stripe_Recipient instance: bank_account
+[28-Oct-2014 15:49:25 America/Chicago] Stripe Notice: Undefined property of Stripe_Recipient instance: bank_account
+[28-Oct-2014 15:53:36 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Invalid string: ' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(125): Stripe_ApiRequestor->request('post', '/v1/recipients/...', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(47): Stripe_ApiResource->_scopedSave('Stripe_Recipien...')
+#4 /home/wrevelco/public_html/alpha/application/controllers/account.php(268): Stripe_Recipient->save()
+#5 [internal function]: account->update_account()
+#6 /home/wrevelco/public_html/alpha/system/core/CodeIgniter.php(359): call_use in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[28-Oct-2014 15:53:55 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Invalid string: ' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(125): Stripe_ApiRequestor->request('post', '/v1/recipients/...', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(47): Stripe_ApiResource->_scopedSave('Stripe_Recipien...')
+#4 /home/wrevelco/public_html/alpha/application/controllers/account.php(268): Stripe_Recipient->save()
+#5 [internal function]: account->update_account()
+#6 /home/wrevelco/public_html/alpha/system/core/CodeIgniter.php(359): call_use in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[28-Oct-2014 15:54:52 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Invalid string: ' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(125): Stripe_ApiRequestor->request('post', '/v1/recipients/...', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(47): Stripe_ApiResource->_scopedSave('Stripe_Recipien...')
+#4 /home/wrevelco/public_html/alpha/application/controllers/account.php(268): Stripe_Recipient->save()
+#5 [internal function]: account->update_account()
+#6 /home/wrevelco/public_html/alpha/system/core/CodeIgniter.php(359): call_use in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[28-Oct-2014 15:55:28 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Invalid string: ' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(125): Stripe_ApiRequestor->request('post', '/v1/recipients/...', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(47): Stripe_ApiResource->_scopedSave('Stripe_Recipien...')
+#4 /home/wrevelco/public_html/alpha/application/controllers/account.php(268): Stripe_Recipient->save()
+#5 [internal function]: account->update_account()
+#6 /home/wrevelco/public_html/alpha/system/core/CodeIgniter.php(359): call_use in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[28-Oct-2014 15:55:46 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Invalid string: ' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(125): Stripe_ApiRequestor->request('post', '/v1/recipients/...', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(47): Stripe_ApiResource->_scopedSave('Stripe_Recipien...')
+#4 /home/wrevelco/public_html/alpha/application/controllers/account.php(268): Stripe_Recipient->save()
+#5 [internal function]: account->update_account()
+#6 /home/wrevelco/public_html/alpha/system/core/CodeIgniter.php(359): call_use in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[28-Oct-2014 15:58:08 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Invalid string: ' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(125): Stripe_ApiRequestor->request('post', '/v1/recipients/...', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(47): Stripe_ApiResource->_scopedSave('Stripe_Recipien...')
+#4 /home/wrevelco/public_html/alpha/application/controllers/account.php(268): Stripe_Recipient->save()
+#5 [internal function]: account->update_account()
+#6 /home/wrevelco/public_html/alpha/system/core/CodeIgniter.php(359): call_use in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[28-Oct-2014 15:58:31 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Invalid string: ' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(125): Stripe_ApiRequestor->request('post', '/v1/recipients/...', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(47): Stripe_ApiResource->_scopedSave('Stripe_Recipien...')
+#4 /home/wrevelco/public_html/alpha/application/controllers/account.php(268): Stripe_Recipient->save()
+#5 [internal function]: account->update_account()
+#6 /home/wrevelco/public_html/alpha/system/core/CodeIgniter.php(359): call_use in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[28-Oct-2014 15:58:58 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Invalid string: ' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(125): Stripe_ApiRequestor->request('post', '/v1/recipients/...', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(47): Stripe_ApiResource->_scopedSave('Stripe_Recipien...')
+#4 /home/wrevelco/public_html/alpha/application/controllers/account.php(268): Stripe_Recipient->save()
+#5 [internal function]: account->update_account()
+#6 /home/wrevelco/public_html/alpha/system/core/CodeIgniter.php(359): call_use in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[28-Oct-2014 16:00:09 America/Chicago] PHP Parse error:  syntax error, unexpected T_DOUBLE_ARROW in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 266
+[28-Oct-2014 16:00:30 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Routing number must have 9 digits' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(125): Stripe_ApiRequestor->request('post', '/v1/recipients/...', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(47): Stripe_ApiResource->_scopedSave('Stripe_Recipien...')
+#4 /home/wrevelco/public_html/alpha/application/controllers/account.php(269): Stripe_Recipient->save()
+#5 [internal function]: account->update_account()
+#6 /home/wrevelco/public_html/alpha/system/core/CodeIgniter.p in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[28-Oct-2014 16:00:41 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Routing number must have 9 digits' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(125): Stripe_ApiRequestor->request('post', '/v1/recipients/...', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(47): Stripe_ApiResource->_scopedSave('Stripe_Recipien...')
+#4 /home/wrevelco/public_html/alpha/application/controllers/account.php(269): Stripe_Recipient->save()
+#5 [internal function]: account->update_account()
+#6 /home/wrevelco/public_html/alpha/system/core/CodeIgniter.p in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[28-Oct-2014 16:00:50 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Routing number must have 9 digits' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(125): Stripe_ApiRequestor->request('post', '/v1/recipients/...', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(47): Stripe_ApiResource->_scopedSave('Stripe_Recipien...')
+#4 /home/wrevelco/public_html/alpha/application/controllers/account.php(269): Stripe_Recipient->save()
+#5 [internal function]: account->update_account()
+#6 /home/wrevelco/public_html/alpha/system/core/CodeIgniter.p in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[28-Oct-2014 16:01:28 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Must only use a test bank account number when making transfers in test mode' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(125): Stripe_ApiRequestor->request('post', '/v1/recipients/...', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(47): Stripe_ApiResource->_scopedSave('Stripe_Recipien...')
+#4 /home/wrevelco/public_html/alpha/application/controllers/account.php(269): Stripe_Recipient->save()
+#5 [internal function]: account->update_account()
+#6 /home/wrevelco/p in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[28-Oct-2014 16:03:44 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING, expecting T_VARIABLE in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 274
+[28-Oct-2014 16:03:58 America/Chicago] PHP Parse error:  syntax error, unexpected '{', expecting '(' in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 274
+[28-Oct-2014 16:04:14 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING, expecting T_VARIABLE in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 274
+[28-Oct-2014 16:04:25 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting T_STRING or T_NAMESPACE or T_NS_SEPARATOR in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 274
+[28-Oct-2014 16:04:33 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting T_VARIABLE in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 274
+[28-Oct-2014 16:14:00 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_accountinfo.php on line 393
+[28-Oct-2014 22:36:55 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/press.php on line 134
+[28-Oct-2014 22:36:58 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/press.php on line 134
+[29-Oct-2014 10:56:15 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'No such recipient: rp_14sdRa2ts370bKIrGeGy4TBB' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 404, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 404)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(24): Stripe_ApiRequestor->request('get', '/v1/recipients/...', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(8): Stripe_ApiResource->refresh()
+#4 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(14): Stripe_ApiResource::_scopedRetrieve('Stripe_Recipien...', 'rp_14sdRa2ts370...', NULL)
+#5 /home/wrevelco/public_html/alpha/application/contro in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[29-Oct-2014 11:18:27 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING, expecting ']' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 74
+[29-Oct-2014 11:19:12 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/press.php on line 134
+[29-Oct-2014 11:19:27 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/press.php on line 134
+[29-Oct-2014 11:20:10 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING, expecting ']' in /home/wrevelco/public_html/alpha/application/views/Ticket_Confirm.php on line 75
+[29-Oct-2014 11:31:03 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/Ticket_view.php on line 68
+[29-Oct-2014 12:40:10 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'This card number looks invalid' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/customers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Customer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Customer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(199): Stripe_Customer::create(Array)
+#5 [internal function]: Stripe_controller->charge('129')
+#6 /home/wrevelco/public_html/alpha/system/co in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[29-Oct-2014 12:49:55 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'This card number looks invalid' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/customers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Customer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Customer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(199): Stripe_Customer::create(Array)
+#5 [internal function]: Stripe_controller->charge('129')
+#6 /home/wrevelco/public_html/alpha/system/co in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[29-Oct-2014 12:50:59 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'This card number looks invalid' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/customers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Customer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Customer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(199): Stripe_Customer::create(Array)
+#5 [internal function]: Stripe_controller->charge('129')
+#6 /home/wrevelco/public_html/alpha/system/co in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[29-Oct-2014 12:52:42 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'No such recipient: rp_14sdRa2ts370bKIrGeGy4TBB' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 404, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 404)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(24): Stripe_ApiRequestor->request('get', '/v1/recipients/...', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(8): Stripe_ApiResource->refresh()
+#4 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(14): Stripe_ApiResource::_scopedRetrieve('Stripe_Recipien...', 'rp_14sdRa2ts370...', NULL)
+#5 /home/wrevelco/public_html/alpha/application/contro in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[29-Oct-2014 12:54:53 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Invalid positive integer' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/transfers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Transfer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Transfer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(390): Stripe_Transfer::create(Array)
+#5 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(207): Stripe_con in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[29-Oct-2014 12:54:59 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Invalid positive integer' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/transfers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Transfer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Transfer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(390): Stripe_Transfer::create(Array)
+#5 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(207): Stripe_con in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[29-Oct-2014 13:21:59 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting T_VARIABLE or '$' in /home/wrevelco/public_html/alpha/application/views/Processed_ticket.php on line 32
+[29-Oct-2014 13:22:12 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting T_VARIABLE or '$' in /home/wrevelco/public_html/alpha/application/views/Processed_ticket.php on line 32
+[29-Oct-2014 13:26:55 America/Chicago] PHP Parse error:  syntax error, unexpected '[', expecting T_VARIABLE or '$' in /home/wrevelco/public_html/alpha/application/views/Processed_ticket.php on line 32
+[29-Oct-2014 13:28:59 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'Cannot charge a customer that has no active card' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(205): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('275')
+#6 /home/wrevelco/public_html/alpha in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[29-Oct-2014 15:09:50 America/Chicago] PHP Fatal error:  Cannot use string offset as an array in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 226
+[29-Oct-2014 15:13:59 America/Chicago] PHP Fatal error:  Cannot use string offset as an array in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 226
+[29-Oct-2014 15:16:44 America/Chicago] PHP Fatal error:  Cannot use string offset as an array in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 226
+[29-Oct-2014 15:48:52 America/Chicago] PHP Parse error:  syntax error, unexpected '>' in /home/wrevelco/public_html/alpha/application/views/Ticket_view.php on line 67
+[30-Oct-2014 10:22:40 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Invalid positive integer' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/transfers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Transfer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Transfer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(391): Stripe_Transfer::create(Array)
+#5 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(208): Stripe_con in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[30-Oct-2014 10:52:25 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/showroom.php on line 116
+[30-Oct-2014 11:08:56 America/Chicago] PHP Fatal error:  Call to undefined method Model_events::get_tickets_for_event() in /home/wrevelco/public_html/alpha/application/controllers/event.php on line 52
+[30-Oct-2014 11:09:27 America/Chicago] PHP Fatal error:  Call to a member function array() on a non-object in /home/wrevelco/public_html/alpha/application/models/model_events.php on line 33
+[30-Oct-2014 11:57:33 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/event_fullview.php on line 489
+[30-Oct-2014 11:57:57 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/event_fullview.php on line 489
+[30-Oct-2014 11:58:11 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/event_fullview.php on line 489
+[30-Oct-2014 12:14:09 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/press.php on line 134
+[30-Oct-2014 13:36:26 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/press.php on line 134
+[30-Oct-2014 14:19:50 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 310
+[30-Oct-2014 14:49:55 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'Cannot charge a customer that has no active card' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(210): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('279')
+#6 /home/wrevelco/public_html/alpha in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[30-Oct-2014 14:51:04 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'Cannot charge a customer that has no active card' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(210): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('279')
+#6 /home/wrevelco/public_html/alpha in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[30-Oct-2014 14:55:11 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'Cannot charge a customer that has no active card' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(210): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('279')
+#6 /home/wrevelco/public_html/alpha in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[30-Oct-2014 14:55:43 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'Cannot charge a customer that has no active card' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(210): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('279')
+#6 /home/wrevelco/public_html/alpha in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[30-Oct-2014 14:56:39 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'Cannot charge a customer that has no active card' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(210): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('279')
+#6 /home/wrevelco/public_html/alpha in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[30-Oct-2014 15:05:08 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'Cannot charge a customer that has no active card' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(210): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('279')
+#6 /home/wrevelco/public_html/alpha in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[30-Oct-2014 15:20:25 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Invalid positive integer' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/transfers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Transfer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Transfer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(405): Stripe_Transfer::create(Array)
+#5 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(212): Stripe_con in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[31-Oct-2014 10:22:10 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'Your card's expiration year is invalid.' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/customers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Customer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Customer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(204): Stripe_Customer::create(Array)
+#5 [internal function]: Stripe_controller->charge('275')
+#6 /home/wrevelco/public_html/alpha/ in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[31-Oct-2014 10:22:28 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Invalid positive integer' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/transfers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Transfer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Transfer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(405): Stripe_Transfer::create(Array)
+#5 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(212): Stripe_con in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[31-Oct-2014 10:44:11 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 311
+[31-Oct-2014 12:34:46 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Invalid positive integer' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/transfers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Transfer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Transfer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(405): Stripe_Transfer::create(Array)
+#5 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(212): Stripe_con in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[31-Oct-2014 12:37:28 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/models/model_events.php on line 176
+[31-Oct-2014 14:07:53 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'This card number looks invalid' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/customers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Customer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Customer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(204): Stripe_Customer::create(Array)
+#5 [internal function]: Stripe_controller->charge('289')
+#6 /home/wrevelco/public_html/alpha/system/co in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[31-Oct-2014 14:08:17 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Invalid positive integer' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/transfers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Transfer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Transfer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(405): Stripe_Transfer::create(Array)
+#5 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(212): Stripe_con in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[31-Oct-2014 14:41:10 America/Chicago] PHP Fatal error:  Call to undefined method Model_events::show_address() in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 310
+[31-Oct-2014 14:42:44 America/Chicago] PHP Fatal error:  Call to undefined method Model_events::show_address() in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 310
+[31-Oct-2014 14:42:46 America/Chicago] PHP Fatal error:  Call to undefined method Model_events::show_address() in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 310
+[31-Oct-2014 14:42:49 America/Chicago] PHP Fatal error:  Call to undefined method Model_events::show_address() in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 310
+[31-Oct-2014 15:26:32 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Invalid positive integer' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/transfers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Transfer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Transfer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(420): Stripe_Transfer::create(Array)
+#5 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(215): Stripe_con in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[31-Oct-2014 15:27:11 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Invalid positive integer' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/transfers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Transfer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Transfer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(420): Stripe_Transfer::create(Array)
+#5 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(215): Stripe_con in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[31-Oct-2014 15:27:34 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Invalid positive integer' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/transfers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Transfer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Transfer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(420): Stripe_Transfer::create(Array)
+#5 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(215): Stripe_con in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[01-Nov-2014 02:48:29 America/Chicago] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 338
+[01-Nov-2014 02:48:39 America/Chicago] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 338
+[01-Nov-2014 13:57:20 America/Chicago] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 338
+[01-Nov-2014 21:22:04 America/Chicago] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 338
+[01-Nov-2014 22:47:07 America/Chicago] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 338
+[01-Nov-2014 23:11:22 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 66
+[03-Nov-2014 01:29:47 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 66
+[03-Nov-2014 01:29:50 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 66
+[03-Nov-2014 13:33:05 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/press.php on line 134
+[03-Nov-2014 13:33:58 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/pricing.php on line 154
+[03-Nov-2014 18:31:15 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 66
+[03-Nov-2014 18:33:01 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/pricing.php on line 154
+[04-Nov-2014 10:26:17 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 66
+[04-Nov-2014 10:26:30 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 66
+[04-Nov-2014 10:30:20 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 66
+[04-Nov-2014 10:30:40 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 66
+[04-Nov-2014 10:30:42 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 66
+[04-Nov-2014 10:30:42 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 66
+[04-Nov-2014 10:30:43 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 66
+[04-Nov-2014 10:30:43 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 66
+[04-Nov-2014 10:30:44 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 66
+[04-Nov-2014 10:31:15 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 77
+[04-Nov-2014 10:31:16 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 77
+[04-Nov-2014 10:31:16 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 77
+[04-Nov-2014 10:31:17 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 77
+[04-Nov-2014 10:31:17 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 77
+[04-Nov-2014 10:31:37 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 66
+[04-Nov-2014 10:32:22 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 66
+[04-Nov-2014 10:32:22 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 66
+[04-Nov-2014 10:32:24 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 66
+[04-Nov-2014 10:32:41 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 66
+[04-Nov-2014 10:32:42 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 66
+[04-Nov-2014 10:32:42 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 66
+[04-Nov-2014 10:33:31 America/Chicago] PHP Parse error:  syntax error, unexpected T_IF in /home/wrevelco/public_html/alpha/application/models/model_tickets.php on line 22
+[04-Nov-2014 10:33:42 America/Chicago] PHP Parse error:  syntax error, unexpected T_IF in /home/wrevelco/public_html/alpha/application/models/model_tickets.php on line 22
+[04-Nov-2014 10:49:01 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Amount must be at least 50 cents' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(213): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('293')
+#6 /home/wrevelco/public_html/alpha/syste in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[04-Nov-2014 11:27:55 America/Chicago] PHP Fatal error:  Call to undefined method Model_tickets::get_ticket_owner() in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 155
+[04-Nov-2014 11:40:56 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/wrevelco/public_html/alpha/application/views/myaccount_ticketmanagement.php on line 90
+[04-Nov-2014 12:06:45 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Amount must be at least 50 cents' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(213): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('289')
+#6 /home/wrevelco/public_html/alpha/syste in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[04-Nov-2014 12:10:27 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Amount must be at least 50 cents' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(213): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('289')
+#6 /home/wrevelco/public_html/alpha/syste in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[04-Nov-2014 12:19:13 America/Chicago] PHP Fatal error:  Call to undefined function attend_event() in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 229
+[04-Nov-2014 12:21:43 America/Chicago] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'APPPAThcontrollers/event.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 15
+[04-Nov-2014 12:22:06 America/Chicago] PHP Fatal error:  Call to undefined function attend_event() in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 229
+[04-Nov-2014 12:32:46 America/Chicago] PHP Fatal error:  Call to undefined function attend_event() in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 230
+[04-Nov-2014 13:52:20 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/controllers/event.php on line 39
+[04-Nov-2014 13:52:25 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/controllers/event.php on line 39
+[04-Nov-2014 13:52:27 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/controllers/event.php on line 39
+[04-Nov-2014 15:02:36 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/press.php on line 134
+[04-Nov-2014 15:02:52 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/press.php on line 134
+[04-Nov-2014 15:12:06 America/Chicago] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'You cannot set 'id'to an empty string. We interpret empty strings as NULL in requests. You may set obj->id = NULL to delete the property' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/Object.php:54
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Object.php(46): Stripe_Object->__set('id', '')
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(7): Stripe_Object->__construct('', NULL)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(14): Stripe_ApiResource::_scopedRetrieve('Stripe_Recipien...', '', NULL)
+#3 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(389): Stripe_Recipient::retrieve('')
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(216): Stripe_controller->transfer(0, 'cjbackintime@gm...')
+#5 [internal function]: Stripe_controller->charge('293')
+#6 /home/wrevelco/publi in /home/wrevelco/public_html/alpha/application/controllers/Stripe/Object.php on line 54
+[04-Nov-2014 15:12:44 America/Chicago] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'You cannot set 'id'to an empty string. We interpret empty strings as NULL in requests. You may set obj->id = NULL to delete the property' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/Object.php:54
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Object.php(46): Stripe_Object->__set('id', '')
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(7): Stripe_Object->__construct('', NULL)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(14): Stripe_ApiResource::_scopedRetrieve('Stripe_Recipien...', '', NULL)
+#3 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(389): Stripe_Recipient::retrieve('')
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(216): Stripe_controller->transfer(0, 'cjbackintime@gm...')
+#5 [internal function]: Stripe_controller->charge('293')
+#6 /home/wrevelco/publi in /home/wrevelco/public_html/alpha/application/controllers/Stripe/Object.php on line 54
+[04-Nov-2014 15:47:07 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/pricing.php on line 154
+[04-Nov-2014 15:47:11 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/pricing.php on line 154
+[04-Nov-2014 15:47:12 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/pricing.php on line 154
+[04-Nov-2014 16:03:53 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/pricing.php on line 154
+[04-Nov-2014 16:04:19 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/pricing.php on line 154
+[04-Nov-2014 16:04:52 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/pricing.php on line 154
+[05-Nov-2014 11:59:47 America/Chicago] PHP Fatal error:  Call to undefined function get_navi_data() in /home/wrevelco/public_html/alpha/application/views/header.php on line 85
+[05-Nov-2014 12:00:10 America/Chicago] PHP Fatal error:  Call to undefined function get_navi_data() in /home/wrevelco/public_html/alpha/application/views/header.php on line 85
+[05-Nov-2014 12:03:59 America/Chicago] PHP Fatal error:  Call to undefined method Model_friend_request::get_file() in /home/wrevelco/public_html/alpha/application/controllers/showroom.php on line 53
+[05-Nov-2014 12:53:08 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 328
+[05-Nov-2014 12:54:40 America/Chicago] PHP Fatal error:  Call to undefined method Model_friend_request::get_file() in /home/wrevelco/public_html/alpha/application/controllers/chat.php on line 426
+[05-Nov-2014 12:54:59 America/Chicago] PHP Fatal error:  Call to undefined method Model_friend_request::get_file() in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 525
+[05-Nov-2014 12:57:27 America/Chicago] PHP Fatal error:  Call to undefined method Model_friend_request::get_file() in /home/wrevelco/public_html/alpha/application/controllers/chat.php on line 426
+[05-Nov-2014 13:05:37 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 328
+[05-Nov-2014 13:13:22 America/Chicago] PHP Fatal error:  Call to undefined method Model_friend_request::get_file() in /home/wrevelco/public_html/alpha/application/controllers/chat.php on line 426
+[05-Nov-2014 14:16:23 America/Chicago] PHP Fatal error:  Call to undefined method Model_friend_request::get_file() in /home/wrevelco/public_html/alpha/application/controllers/chat.php on line 426
+[05-Nov-2014 14:51:18 America/Chicago] PHP Fatal error:  Call to a member function from() on a non-object in /home/wrevelco/public_html/alpha/application/views/contactus.php on line 34
+[05-Nov-2014 14:52:00 America/Chicago] PHP Fatal error:  Call to undefined function mdate() in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 185
+[05-Nov-2014 15:17:15 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/latestwrevs.php on line 127
+[06-Nov-2014 10:57:18 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/views/contactus.php on line 38
+[06-Nov-2014 11:17:30 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 30
+[06-Nov-2014 11:17:54 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 30
+[06-Nov-2014 11:18:16 America/Chicago] PHP Parse error:  syntax error, unexpected T_ELSE in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 61
+[06-Nov-2014 11:19:31 America/Chicago] PHP Parse error:  syntax error, unexpected T_ELSE in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 61
+[06-Nov-2014 11:19:40 America/Chicago] PHP Parse error:  syntax error, unexpected T_ELSE in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 61
+[06-Nov-2014 11:19:45 America/Chicago] PHP Parse error:  syntax error, unexpected T_ELSE in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 61
+[06-Nov-2014 11:19:55 America/Chicago] PHP Parse error:  syntax error, unexpected T_ELSE in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 61
+[06-Nov-2014 11:20:06 America/Chicago] PHP Parse error:  syntax error, unexpected T_ELSE in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 61
+[06-Nov-2014 11:20:16 America/Chicago] PHP Parse error:  syntax error, unexpected T_ELSE in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 61
+[06-Nov-2014 11:20:18 America/Chicago] PHP Parse error:  syntax error, unexpected T_ELSE in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 61
+[06-Nov-2014 11:31:15 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 55
+[06-Nov-2014 11:31:23 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 55
+[06-Nov-2014 11:31:31 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 55
+[06-Nov-2014 11:31:37 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::sql() in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 55
+[06-Nov-2014 11:33:02 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::sql() in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 55
+[06-Nov-2014 11:33:06 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::sql() in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 55
+[06-Nov-2014 11:35:58 America/Chicago] PHP Parse error:  syntax error, unexpected ')' in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 54
+[06-Nov-2014 11:36:18 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::sql() in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 55
+[06-Nov-2014 11:37:02 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::sql() in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 55
+[06-Nov-2014 11:37:03 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::sql() in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 55
+[06-Nov-2014 11:37:03 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::sql() in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 55
+[06-Nov-2014 11:38:29 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::sql() in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 55
+[06-Nov-2014 11:39:26 America/Chicago] PHP Parse error:  syntax error, unexpected '"' in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 54
+[06-Nov-2014 11:39:28 America/Chicago] PHP Parse error:  syntax error, unexpected '"' in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 54
+[06-Nov-2014 11:39:45 America/Chicago] PHP Parse error:  syntax error, unexpected '"' in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 54
+[06-Nov-2014 14:27:30 America/Chicago] PHP Fatal error:  Can't use method return value in write context in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 1
+[06-Nov-2014 14:29:56 America/Chicago] PHP Fatal error:  Can't use method return value in write context in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 1
+[06-Nov-2014 14:30:22 America/Chicago] PHP Fatal error:  Can't use method return value in write context in /home/wrevelco/public_html/alpha/application/views/myaccount_eventattending.php on line 1
+[07-Nov-2014 14:17:00 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 381
+[07-Nov-2014 14:17:25 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 386
+[07-Nov-2014 14:17:27 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 386
+[07-Nov-2014 14:18:12 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 387
+[07-Nov-2014 14:18:22 America/Chicago] PHP Parse error:  syntax error, unexpected '}', expecting T_CATCH in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 390
+[07-Nov-2014 14:18:51 America/Chicago] PHP Fatal error:  Cannot redeclare account::update_account() in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 394
+[07-Nov-2014 14:19:23 America/Chicago] PHP Fatal error:  Cannot redeclare account::update_account() in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 394
+[07-Nov-2014 15:25:37 America/Chicago] PHP Parse error:  syntax error, unexpected $end in /home/wrevelco/public_html/alpha/application/views/event_fullview.php on line 885
+[07-Nov-2014 15:26:21 America/Chicago] PHP Parse error:  syntax error, unexpected $end in /home/wrevelco/public_html/alpha/application/views/event_fullview.php on line 883
+[07-Nov-2014 15:26:22 America/Chicago] PHP Parse error:  syntax error, unexpected $end in /home/wrevelco/public_html/alpha/application/views/event_fullview.php on line 883
+[07-Nov-2014 15:49:03 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'This card number looks invalid' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/customers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Customer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Customer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(209): Stripe_Customer::create(Array)
+#5 [internal function]: Stripe_controller->charge('289')
+#6 /home/wrevelco/public_html/alpha/system/co in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[07-Nov-2014 15:52:32 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'This card number looks invalid' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/customers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Customer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Customer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(209): Stripe_Customer::create(Array)
+#5 [internal function]: Stripe_controller->charge('289')
+#6 /home/wrevelco/public_html/alpha/system/co in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[07-Nov-2014 15:53:50 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'This card number looks invalid' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/customers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Customer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Customer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(209): Stripe_Customer::create(Array)
+#5 [internal function]: Stripe_controller->charge('289')
+#6 /home/wrevelco/public_html/alpha/system/co in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[07-Nov-2014 15:57:07 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'This card number looks invalid' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/customers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Customer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Customer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(209): Stripe_Customer::create(Array)
+#5 [internal function]: Stripe_controller->charge('289')
+#6 /home/wrevelco/public_html/alpha/system/co in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[11-Nov-2014 10:38:37 America/Chicago] PHP Parse error:  syntax error, unexpected T_DOUBLE_ARROW in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 406
+[11-Nov-2014 11:10:11 America/Chicago] PHP Fatal error:  Call to undefined method CI_Session::set_user_data() in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 424
+[11-Nov-2014 11:11:29 America/Chicago] PHP Fatal error:  Call to undefined method CI_Session::set_user_data() in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 424
+[11-Nov-2014 11:12:28 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'No such recipient: rp_14sypE2ts370bKIrXbaPcoxQ; a similar object exists in test mode, but a live mode key was used to make this request.' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 404, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 404)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(24): Stripe_ApiRequestor->request('get', '/v1/recipients/...', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(8): Stripe_ApiResource->refresh()
+#4 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(14): Stripe_ApiResource::_scopedRetrieve('Stripe_Recipi in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[11-Nov-2014 11:30:03 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'No such customer: cus_56WrbgDFYkC3N7; a similar object exists in test mode, but a live mode key was used to make this request.' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 404, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 404)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(24): Stripe_ApiRequestor->request('get', '/v1/customers/c...', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(8): Stripe_ApiResource->refresh()
+#4 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Customer.php(14): Stripe_ApiResource::_scopedRetrieve('Stripe_Customer', 'cus_5 in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[11-Nov-2014 11:36:58 America/Chicago] PHP Parse error:  syntax error, unexpected T_GLOBAL, expecting '(' in /home/wrevelco/public_html/alpha/application/views/contactus.php on line 47
+[11-Nov-2014 12:21:24 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/alpha/application/views/latestwrevs.php on line 187
+[11-Nov-2014 12:37:07 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/wrevelco/public_html/alpha/application/views/event_fullview.php on line 819
+[11-Nov-2014 12:37:34 America/Chicago] PHP Parse error:  syntax error, unexpected '?' in /home/wrevelco/public_html/alpha/application/views/event_fullview.php on line 819
+[11-Nov-2014 13:14:58 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'This card number looks invalid' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/customers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Customer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Customer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(209): Stripe_Customer::create(Array)
+#5 [internal function]: Stripe_controller->charge('289')
+#6 /home/wrevelco/public_html/alpha/system/co in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[11-Nov-2014 14:41:37 America/Chicago] PHP Parse error:  syntax error, unexpected T_IF in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 454
+[11-Nov-2014 14:41:48 America/Chicago] PHP Parse error:  syntax error, unexpected T_IF in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 454
+[11-Nov-2014 15:00:16 America/Chicago] PHP Parse error:  syntax error, unexpected T_IF in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 454
+[11-Nov-2014 15:00:57 America/Chicago] PHP Parse error:  syntax error, unexpected $end in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 503
+[11-Nov-2014 15:01:18 America/Chicago] PHP Parse error:  syntax error, unexpected $end, expecting T_FUNCTION in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 500
+[11-Nov-2014 15:33:00 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 306
+[11-Nov-2014 15:43:41 America/Chicago] PHP Parse error:  syntax error, unexpected $end in /home/wrevelco/public_html/alpha/application/views/admin_account.php on line 502
+[11-Nov-2014 15:48:18 America/Chicago] PHP Parse error:  syntax error, unexpected $end in /home/wrevelco/public_html/alpha/application/views/myaccount_ticketmanagement.php on line 477
+[11-Nov-2014 15:59:09 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 135
+[11-Nov-2014 16:02:19 America/Chicago] PHP Fatal error:  Call to a member function find_event() on a non-object in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 454
+[12-Nov-2014 10:42:52 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/wrevelco/public_html/alpha/application/views/myaccount_ticketmanagement.php on line 153
+[12-Nov-2014 10:43:14 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/alpha/application/views/myaccount_ticketmanagement.php on line 449
+[12-Nov-2014 11:10:13 America/Chicago] PHP Parse error:  syntax error, unexpected T_ELSE, expecting ',' or ';' in /home/wrevelco/public_html/alpha/application/views/showroom.php on line 84
+[12-Nov-2014 11:47:30 America/Chicago] PHP Parse error:  syntax error, unexpected T_FOR in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 52
+[12-Nov-2014 11:47:48 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/wrevelco/public_html/alpha/application/models/model_friend_request.php on line 72
+[12-Nov-2014 12:01:42 America/Chicago] PHP Fatal error:  Call to a member function set_flashdata() on a non-object in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 601
+[12-Nov-2014 12:02:15 America/Chicago] PHP Fatal error:  Call to undefined function reidrect() in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 603
+[12-Nov-2014 12:02:37 America/Chicago] PHP Fatal error:  Call to undefined function reidrect() in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 603
+[12-Nov-2014 12:08:10 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/wrevelco/public_html/alpha/application/views/contactus.php on line 22
+[12-Nov-2014 13:39:00 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php on line 306
+[12-Nov-2014 14:07:19 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'Your card was declined.' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/customers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Customer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Customer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(209): Stripe_Customer::create(Array)
+#5 [internal function]: Stripe_controller->charge('331')
+#6 /home/wrevelco/public_html/alpha/system/core/Code in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[12-Nov-2014 14:08:29 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'Your card was declined.' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/customers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Customer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Customer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(209): Stripe_Customer::create(Array)
+#5 [internal function]: Stripe_controller->charge('331')
+#6 /home/wrevelco/public_html/alpha/system/core/Code in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 158
+[12-Nov-2014 14:13:35 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'No such recipient: rp_14y6rw2ts370bKIrxeGRj2HC; a similar object exists in live mode, but a test mode key was used to make this request.' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 404, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 404)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(24): Stripe_ApiRequestor->request('get', '/v1/recipients/...', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(8): Stripe_ApiResource->refresh()
+#4 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(14): Stripe_ApiResource::_scopedRetrieve('Stripe_Recipi in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[12-Nov-2014 14:31:29 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Cannot create live transfers; please activate the transfers API by going to https://dashboard.stripe.com/account/transfers.' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/transfers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Transfer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Transfer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(472): Stripe_Transfer::create(Array) in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[12-Nov-2014 15:30:04 America/Chicago] PHP Parse error:  syntax error, unexpected T_DOUBLE_ARROW in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 316
+[12-Nov-2014 15:31:03 America/Chicago] PHP Parse error:  syntax error, unexpected T_DOUBLE_ARROW in /home/wrevelco/public_html/alpha/application/controllers/account.php on line 316
+[12-Nov-2014 15:34:17 America/Chicago] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'You cannot set 'id'to an empty string. We interpret empty strings as NULL in requests. You may set obj->id = NULL to delete the property' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/Object.php:54
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Object.php(46): Stripe_Object->__set('id', '')
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(7): Stripe_Object->__construct('', NULL)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Recipient.php(14): Stripe_ApiResource::_scopedRetrieve('Stripe_Recipien...', '', NULL)
+#3 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(426): Stripe_Recipient::retrieve('')
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(221): Stripe_controller->transfer(2000, 'kelui92@gmail.c...')
+#5 [internal function]: Stripe_controller->charge('289')
+#6 /home/wrevelco/pu in /home/wrevelco/public_html/alpha/application/controllers/Stripe/Object.php on line 54
+[12-Nov-2014 15:36:54 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Cannot create live transfers; please activate the transfers API by going to https://dashboard.stripe.com/account/transfers.' in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/transfers', Array)
+#3 /home/wrevelco/public_html/alpha/application/controllers/Stripe/Transfer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Transfer', Array, NULL)
+#4 /home/wrevelco/public_html/alpha/application/controllers/stripe_controller.php(472): Stripe_Transfer::create(Array) in /home/wrevelco/public_html/alpha/application/controllers/Stripe/ApiRequestor.php on line 152
+[12-Nov-2014 16:02:52 America/Chicago] PHP Fatal error:  Class 'Model_transfer_data' not found in /home/wrevelco/public_html/alpha/system/core/Loader.php on line 303
+[12-Nov-2014 16:03:28 America/Chicago] PHP Fatal error:  Call to a member function get() on a non-object in /home/wrevelco/public_html/alpha/application/models/model_transfer_data.php on line 12
+[12-Nov-2014 16:03:48 America/Chicago] PHP Fatal error:  Call to a member function get() on a non-object in /home/wrevelco/public_html/alpha/application/models/model_transfer_data.php on line 12
+[12-Nov-2014 16:04:44 America/Chicago] PHP Fatal error:  Call to a member function get() on a non-object in /home/wrevelco/public_html/alpha/application/models/model_transfer_data.php on line 12
+[12-Nov-2014 16:04:45 America/Chicago] PHP Fatal error:  Call to a member function get() on a non-object in /home/wrevelco/public_html/alpha/application/models/model_transfer_data.php on line 12
+[12-Nov-2014 16:05:00 America/Chicago] PHP Fatal error:  Call to a member function get() on a non-object in /home/wrevelco/public_html/alpha/application/models/model_transfer_data.php on line 12
+[12-Nov-2014 16:05:31 America/Chicago] PHP Fatal error:  Call to a member function get() on a non-object in /home/wrevelco/public_html/alpha/application/models/model_transfer_data.php on line 12
+[12-Nov-2014 16:05:32 America/Chicago] PHP Fatal error:  Call to a member function get() on a non-object in /home/wrevelco/public_html/alpha/application/models/model_transfer_data.php on line 12
+[12-Nov-2014 16:05:51 America/Chicago] PHP Fatal error:  Call to a member function get() on a non-object in /home/wrevelco/public_html/alpha/application/models/model_transfer_data.php on line 14
+[12-Nov-2014 16:09:00 America/Chicago] PHP Fatal error:  Call to undefined method Model_transfer_data::secondcheck() in /home/wrevelco/public_html/alpha/application/controllers/main.php on line 470
+[12-Nov-2014 16:09:12 America/Chicago] PHP Parse error:  syntax error, unexpected '@', expecting ')' in /home/wrevelco/public_html/alpha/application/models/model_transfer_data.php on line 21
+[12-Nov-2014 16:34:18 America/Chicago] PHP Fatal error:  Call to a member function get() on a non-object in /home/wrevelco/public_html/alpha/application/models/model_transfer_data.php on line 20
+[12-Nov-2014 16:47:26 America/Chicago] PHP Parse error:  syntax error, unexpected T_INC, expecting ')' in /home/wrevelco/public_html/alpha/application/models/model_transfer_data.php on line 28
+[12-Nov-2014 16:48:20 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting ')' in /home/wrevelco/public_html/alpha/application/models/model_transfer_data.php on line 31
+[12-Nov-2014 17:28:45 America/Chicago] PHP Fatal error:  Call to undefined function password_hash() in /home/wrevelco/public_html/alpha/application/models/model_users.php on line 23
+[12-Nov-2014 18:15:27 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING in /home/wrevelco/public_html/application/config/config.php on line 24
+[12-Nov-2014 18:15:27 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING in /home/wrevelco/public_html/application/config/config.php on line 24
+[12-Nov-2014 18:15:33 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING in /home/wrevelco/public_html/application/config/config.php on line 24
+[12-Nov-2014 18:15:36 America/Chicago] PHP Parse error:  syntax error, unexpected T_STRING in /home/wrevelco/public_html/application/config/config.php on line 24
+[13-Nov-2014 20:12:31 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/wrevelco/public_html/application/models/model_users.php on line 26
+[13-Nov-2014 20:17:50 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/application/controllers/main.php on line 942
+[13-Nov-2014 20:18:41 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/application/controllers/main.php on line 942
+[13-Nov-2014 20:19:16 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/wrevelco/public_html/application/models/model_users.php on line 26
+[13-Nov-2014 20:20:19 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/application/models/model_users.php on line 30
+[13-Nov-2014 21:20:49 America/Chicago] PHP Fatal error:  Call to a member function update() on a non-object in /home/wrevelco/public_html/application/models/model_transfer_data.php on line 53
+[13-Nov-2014 21:24:03 America/Chicago] PHP Fatal error:  Call to undefined method Model_transfer_data::lastcheck() in /home/wrevelco/public_html/application/controllers/main.php on line 470
+[13-Nov-2014 21:39:39 America/Chicago] PHP Parse error:  syntax error, unexpected '(', expecting T_STRING or T_VARIABLE or '{' or '$' in /home/wrevelco/public_html/application/controllers/main.php on line 613
+[13-Nov-2014 21:40:12 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/wrevelco/public_html/application/controllers/main.php on line 614
+[14-Nov-2014 10:42:54 America/Chicago] PHP Parse error:  syntax error, unexpected $end in /home/wrevelco/public_html/application/views/event_fullview.php on line 1195
+[14-Nov-2014 10:48:16 America/Chicago] PHP Parse error:  syntax error, unexpected $end in /home/wrevelco/public_html/application/views/event_fullview.php on line 1200
+[14-Nov-2014 11:02:01 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'This card number looks invalid' in /home/wrevelco/public_html/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/customers', Array)
+#3 /home/wrevelco/public_html/application/controllers/Stripe/Customer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Customer', Array, NULL)
+#4 /home/wrevelco/public_html/application/controllers/stripe_controller.php(209): Stripe_Customer::create(Array)
+#5 [internal function]: Stripe_controller->charge('327')
+#6 /home/wrevelco/public_html/system/core/CodeIgniter.php(359): call_user_func_ar in /home/wrevelco/public_html/application/controllers/Stripe/ApiRequestor.php on line 158
+[14-Nov-2014 11:05:29 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_CardError' with message 'This card number looks invalid' in /home/wrevelco/public_html/application/controllers/Stripe/ApiRequestor.php:158
+Stack trace:
+#0 /home/wrevelco/public_html/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 402, Array)
+#1 /home/wrevelco/public_html/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 402)
+#2 /home/wrevelco/public_html/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/customers', Array)
+#3 /home/wrevelco/public_html/application/controllers/Stripe/Customer.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Customer', Array, NULL)
+#4 /home/wrevelco/public_html/application/controllers/stripe_controller.php(209): Stripe_Customer::create(Array)
+#5 [internal function]: Stripe_controller->charge('327')
+#6 /home/wrevelco/public_html/system/core/CodeIgniter.php(359): call_user_func_ar in /home/wrevelco/public_html/application/controllers/Stripe/ApiRequestor.php on line 158
+[14-Nov-2014 11:34:12 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting T_VARIABLE or '$' in /home/wrevelco/public_html/application/views/event_fullview.php on line 935
+[14-Nov-2014 12:24:36 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/wrevelco/public_html/application/views/latestwrevs.php on line 127
+[14-Nov-2014 12:32:45 America/Chicago] PHP Parse error:  syntax error, unexpected $end in /home/wrevelco/public_html/application/views/latestwrevs.php on line 280
+[14-Nov-2014 12:36:25 America/Chicago] PHP Fatal error:  Allowed memory size of 536870912 bytes exhausted (tried to allocate 530585601 bytes) in /home/wrevelco/public_html/application/views/latestwrevs.php on line 198
+[14-Nov-2014 12:36:30 America/Chicago] PHP Fatal error:  Allowed memory size of 536870912 bytes exhausted (tried to allocate 530585601 bytes) in /home/wrevelco/public_html/application/views/latestwrevs.php on line 198
+[14-Nov-2014 12:37:28 America/Chicago] PHP Fatal error:  Allowed memory size of 536870912 bytes exhausted (tried to allocate 530585601 bytes) in /home/wrevelco/public_html/application/views/latestwrevs.php on line 166
+[14-Nov-2014 12:37:40 America/Chicago] PHP Fatal error:  Allowed memory size of 536870912 bytes exhausted (tried to allocate 530585601 bytes) in /home/wrevelco/public_html/application/views/latestwrevs.php on line 198
+[14-Nov-2014 12:39:35 America/Chicago] PHP Fatal error:  Maximum execution time of 300 seconds exceeded in /home/wrevelco/public_html/application/views/latestwrevs.php on line 150
+[14-Nov-2014 12:40:00 America/Chicago] PHP Fatal error:  Allowed memory size of 536870912 bytes exhausted (tried to allocate 530585601 bytes) in /home/wrevelco/public_html/application/views/latestwrevs.php on line 189
+[14-Nov-2014 13:47:19 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/application/views/latestwrevs.php on line 214
+[14-Nov-2014 13:48:42 America/Chicago] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home/wrevelco/public_html/application/views/latestwrevs.php on line 214
+[14-Nov-2014 14:42:36 America/Chicago] PHP Fatal error:  Call to a member function userdata() on a non-object in /home/wrevelco/public_html/application/views/header.php on line 31
+[14-Nov-2014 14:42:41 America/Chicago] PHP Fatal error:  Call to a member function userdata() on a non-object in /home/wrevelco/public_html/application/views/header.php on line 31
+[14-Nov-2014 14:43:10 America/Chicago] PHP Fatal error:  Call to a member function userdata() on a non-object in /home/wrevelco/public_html/application/views/header.php on line 31
+[14-Nov-2014 14:43:29 America/Chicago] PHP Fatal error:  Call to a member function userdata() on a non-object in /home/wrevelco/public_html/application/views/header.php on line 31
+[14-Nov-2014 14:43:33 America/Chicago] PHP Fatal error:  Call to a member function userdata() on a non-object in /home/wrevelco/public_html/application/views/header.php on line 31
+[14-Nov-2014 14:44:11 America/Chicago] PHP Fatal error:  Call to a member function userdata() on a non-object in /home/wrevelco/public_html/application/views/header.php on line 31
+[14-Nov-2014 15:10:39 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Received unknown parameter: desciption' in /home/wrevelco/public_html/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/application/controllers/stripe_controller.php(220): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('389')
+#6 /home/wrevelco/public_html/system/core/CodeIgniter.php(359): call_us in /home/wrevelco/public_html/application/controllers/Stripe/ApiRequestor.php on line 152
+[14-Nov-2014 15:27:03 America/Chicago] PHP Fatal error:  Uncaught exception 'Stripe_InvalidRequestError' with message 'Invalid string id: ' in /home/wrevelco/public_html/application/controllers/Stripe/ApiRequestor.php:152
+Stack trace:
+#0 /home/wrevelco/public_html/application/controllers/Stripe/ApiRequestor.php(212): Stripe_ApiRequestor->handleApiError('{?  "error": {?...', 400, Array)
+#1 /home/wrevelco/public_html/application/controllers/Stripe/ApiRequestor.php(114): Stripe_ApiRequestor->_interpretResponse('{?  "error": {?...', 400)
+#2 /home/wrevelco/public_html/application/controllers/Stripe/ApiResource.php(113): Stripe_ApiRequestor->request('post', '/v1/charges', Array)
+#3 /home/wrevelco/public_html/application/controllers/Stripe/Charge.php(38): Stripe_ApiResource::_scopedCreate('Stripe_Charge', Array, NULL)
+#4 /home/wrevelco/public_html/application/controllers/stripe_controller.php(221): Stripe_Charge::create(Array)
+#5 [internal function]: Stripe_controller->charge('389')
+#6 /home/wrevelco/public_html/system/core/CodeIgniter.php(359): call_user_func_array(Array in /home/wrevelco/public_html/application/controllers/Stripe/ApiRequestor.php on line 152
+[14-Nov-2014 16:21:11 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/application/views/mywrevs.php on line 68
+[14-Nov-2014 16:21:13 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/application/views/mywrevs.php on line 68
+[14-Nov-2014 16:21:18 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/wrevelco/public_html/application/views/mywrevs.php on line 68
+[14-Nov-2014 17:12:46 America/Chicago] PHP Fatal error:  Call to a member function userdata() on a non-object in /home/wrevelco/public_html/application/views/header.php on line 31
+[14-Nov-2014 17:13:22 America/Chicago] PHP Fatal error:  Call to a member function userdata() on a non-object in /home/wrevelco/public_html/application/views/header.php on line 31
+[17-Nov-2014 18:11:47 America/Chicago] PHP Fatal error:  Call to a member function userdata() on a non-object in /home/wrevelco/public_html/application/views/header.php on line 31
+[18-Nov-2014 14:16:46 America/Chicago] PHP Parse error:  syntax error, unexpected ')' in /home/wrevelco/public_html/application/models/model_events.php on line 229

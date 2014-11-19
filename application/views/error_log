@@ -1,0 +1,3 @@
+[03-Oct-2014 14:44:34 America/Chicago] PHP Fatal error:  Call to undefined function base_url() in /home/wrevelco/public_html/alpha/application/views/myaccount-accountinfo.php on line 34
+[03-Oct-2014 14:44:45 America/Chicago] PHP Fatal error:  Call to undefined function base_url() in /home/wrevelco/public_html/alpha/application/views/aboutus.php on line 23
+[03-Oct-2014 14:46:23 America/Chicago] PHP Fatal error:  Call to undefined function base_url() in /home/wrevelco/public_html/alpha/application/views/myaccount-accountinfo.php on line 34

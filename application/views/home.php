@@ -1,0 +1,320 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Wrevel</title>
+<meta name="description" content="Wrevel’s is a social networking platform that provides it’s users with the power to easily connect with people by creating, sharing, hosting, and finding parties and events online.">
+<meta name="keywords" content="event finder, ticketing platform, tickets, parties, event space, discover, socialize, experience, hotspots, icebreakers, culture, love and romance">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap.min.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body style="background-image:url('<?php echo $PATH_IMG?>welcome_background.png');background-size: 100% ; ">
+
+<?php $this->load->view('header');?>
+
+<!--content
+==============================================-->
+<div class="container">
+<div class="row" style="margin-top:-20px;">
+<div class="col-md-12" style ="width:100%; color:white;text-align:center;">
+	<p style="margin-top:50px;"><img src="<?php echo $PATH_IMG?>large_w_logo.png"  style="width:25%;"/></p>
+	<p style="font-size:52px; text-align:center;font-family:'Lobster';"><span style="font-size:36px;">Welcome to</span> Wrevel</p>
+		<div style="text-align:center;">
+		<a href="#" style="padding-left:15px;" data-toggle="modal" data-target="#sign-in"><img src="<?php echo $PATH_IMG?>sign_in_button.png" style="width:128px;"/></a> 
+			<div class="modal fade" id="sign-in" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true" style="height:auto;">
+				<div class="modal-dialog" style="height:auto;">
+					<div class="modal-content" style="height:auto;">
+      
+						
+    
+							<div class="modal-header" style="background-color: #628DA3; height: 80px;">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<p style="font-size: 215%; color: white;text-align: center;padding:10px;">
+							Welcome to
+							
+        
+							<img src="<?php echo $PATH_IMG?>wrevel_logo.png" style="width:150px;z-index:1;margin-top:-10px;"/></p>
+							</div>
+      
+							<div class="modal-body" style="text-align:left;background:#C2D2DC;">
+								<form id="signin" action="<?php echo base_url()."main/login_validation"?>" method="POST">
+								<div class="form-group">
+                                                                    <input type="text" class="form-control" name="email" placeholder="Email address" required="" autofocus="">
+                                                                <div class="pull-left">
+                                                                    <font color="red"><?php echo form_error('email'); ?></font>
+                                                                </div>
+                                                                </div>
+        
+								<div class="form-group">
+								<input type="password" class="form-control" name="password" placeholder="Password" required="" style="margin-top: 2%;">
+                                                                <div class='pull-left'>
+                                                                    <font color="red"><?php echo form_error('password'); ?></font>
+                                                                </div>
+                                                                </div>
+								<br>
+     
+								<p>
+								<a href="javascript:void(0)" style="float: left; margin-top: -15px;" onclick="show_forgot_password()">
+								Forgot password?
+								</a>
+                
+								<label class="checkbox" style="float:right; margin-top: -15px;">
+								<input type="checkbox" value="remember-me"> Remember me
+								</label>
+                
+								</p>
+            
+
+								<a href="<?php echo $login_url;?>">
+									<img src="<?php echo $PATH_IMG?>fbconnect_button.png" style="z-index: 1;width: 145px;margin-left: 300px;margin-top:5px;">
+								</a>
+        
+								<!--<p style="margin-top: -40px; margin-left: 400px;font-size:25px;">
+									or
+								</p>-->
+        
+								<a href="#">
+									<button type="submit" class="btn btn-lg pull-right" style="background:#00aade; color:white; font-size:18px; margin-top:5px; margin-left: 20px;position:absolute">Sign in</button>
+								</a>
+          
+								<!--<hr style="margin-top: 15px;">-->
+                
+								<!--<p style="float: left; margin-top: 5px; margin-left: 100px; font-size:25px;">
+								New to Wrevel?
+								</p>
+
+								<a href="#">
+								<button type="button" class="btn btn-lg pull-right" style="background:#0074b9; color:white; font-size:15px; margin-left: -50px;">Join Now</button>
+								</a>-->
+								</form>
+								<div id="forgot_password_div" hidden style="height:auto; padding-top:15px;">
+									<p style="font-size: 20px; color: #628DA3;text-align: center;">Forgot Password?</p>
+									<form id="forgot_password" action="<?php echo base_url()."main/forgot_password"?>" method="POST">
+									<div class="form-group">
+									<div class="col-sm-9">
+	                                                                    <input type="text" class="form-control" name="email_reset" placeholder="Email address" required="" autofocus="">
+	                                                                <div class="pull-left">
+	                                                                    <font color="red"><?php echo form_error('email'); ?></font>
+	                                                                </div>
+	                                                                </div>
+	                                                                </div>
+	                                                                <div class="row">
+	                                                                <button type="submit" class="btn btn-lg pull-left" style="background:#00aade; color:white; font-size:15px;margin-left: 20px;padding:7px 10px;">Send Reset</button>
+	                                                                </div>
+	                                                                </form>
+                                                                </div>
+							</div>
+						</div>
+ 
+ 
+					
+				</div>
+			</div>
+	
+	    <a href="#" style="padding:15px;" data-toggle="modal" data-target="#sign-up"><img src="<?php echo $PATH_IMG?>signup_button.png" style="width:130px;"/></a>
+			<div class="modal fade" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content" style="background:#C2D2DC;">
+						
+    
+							<div class="modal-header" style="background-color: #628DA3; height: 80px;">
+								<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+								<p style="font-size: 215%; color: white;text-align:center;padding:10px;">
+								Sign Up for
+								
+        
+								<img src="<?php echo $PATH_IMG?>wrevel_logo.png" style="width:150px;z-index:1;"/></p>
+							</div>
+                
+							<div class="modal-body" style="text-align:center; font-size:20px;color:black;background:#C2D2DC;">
+								<p>Join through <a href="<?php echo $login_url;?>">
+									<img src="<?php echo $PATH_IMG?>fbconnect_button.png" style="z-index: 1;width: 145px;">
+								</a></p>
+								<hr>
+								 <?php echo form_open(base_url().'main/registration_validation');?>
+                   <!-- <form> -->
+       			
+         			<!--</form> -->
+                    <input name= 'username-signup' type="text" class="form-control" placeholder="Username" required style="margin-top: 2%;">
+                    <font color="red"><?php echo form_error('username-signup'); ?></font>
+                    <!--<input name= 'full_name-signup' type="text" class="form-control" placeholder="First and Last Name"  required style="margin-top: 2%;">-->
+                    <input name= 'first_name-signup' type="text" class="form-control" placeholder="First Name"  required style="margin-top: 2%;width:49%;float:left;">
+                    <input name= 'last_name-signup' type="text" class="form-control" placeholder="Last Name"  required style="margin-top: 2%;width:49%;float:right;">
+                    <input name = 'email-signup' type="text" class="form-control" placeholder="Email" required style="margin-top: 10%;">
+                    <font color="red"><?php echo form_error('email-signup'); ?></font>
+                    <input name = 'password-signup' type="password" class="form-control" placeholder="Password" required style="margin-top: 2%;">
+                    <font color="red"><?php echo form_error('password-signup'); ?></font>
+                    <input name = 'cpassword-signup' type="password" class="form-control" placeholder="Re-enter Password" required style="margin-top: 2%;">
+                    <font color="red"><?php echo form_error('cpassword-signup'); ?></font>
+                    </br>
+
+                    <label>
+      					<input name = "agreement-signup" type="checkbox" required> <span style="font-size:15px;">I agree with the <a href="<?php echo base_url().'info/terms'?>">terms of use</a></span>
+      					<font color="red"><?php echo form_error('agreement-signup'); ?></font>
+    				</label>
+
+                    </br>
+                    <button type="submit" class="btn btn-lg" style="background:#1C75BC; color:white;">Join now </button>
+                    <?php echo form_close();?>
+                    
+							</div>
+						</div>
+            
+            
+					</div>
+				</div>
+			</div> 
+		
+		</div>
+		
+<p style="text-align:center;font-size:32px; padding:8px;"><a href="#" data-toggle="modal" data-target="#video" style="color:white;"><img src="<?php echo $PATH_IMG?>play_button.png" style="padding:0 10px; margin-top:10px;"/> <strong>play video</strong></a></p> 
+	<div class="modal fade" id="video" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+                <a href="javascript:;" onClick="toggleVideo('hide');" style="float: right;"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></a>
+				</div>
+			<div class="modal-body">	
+				<iframe width="560" height="315" src="http://www.youtube.com/embed/4gtJtSUksR0?enablejsapi=1" frameborder="0" allowfullscreen="" style="z-index:3;"></iframe>
+			</div>
+      
+			</div>
+		</div>
+        </div> 
+        </div>
+
+	
+<div style="margin:0 20px;">
+	<div class="col-md-4 col-sm-4 col-xs-4">
+		<a href="<?php echo base_url()."main/get_related_events/culture"?>"><div class="panel featured_category" style="background-image:url(<?php echo $PATH_IMG?>culture1.png);-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;  color:white; text-align:center; border:2px solid #3F4553; padding:20px 50px;border-radius:15px;">
+			<div class="panel-body">
+				<p style="font-size:45px;"><b>Discover.</b><p>
+				<p style="margin-top:50px;"><img src="<?php echo $PATH_IMG?>culture_button_discover.png"/></p>
+				<p style="font-size:32px; margin-top:40px;">[kuhl-cher]</p>
+				<p style="font-size:24px;"> <i>verb</i> &nbsp; Getting out of your comfort zone to try something new. </p>
+			</div>
+		</div></a>
+	</div>
+	<div class="col-md-4 col-sm-4 col-xs-4">
+		<a href="<?php echo base_url()."main/get_related_events/icebreakers"?>"><div class="panel featured_category" style="background-image:url(<?php echo $PATH_IMG?>icebreakers1.png);-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;color:white; text-align:center;  border:2px solid #3F4553;padding:20px 50px;border-radius:15px;">
+			<div class="panel-body">
+				<p style="font-size:45px;"><b>Socialize.</b></p>
+				<p style="margin-top:50px;"><img src="<?php echo $PATH_IMG?>icebreakers_button_socialize.png"/></p>
+				<p style="font-size:32px; margin-top:40px;">[ahys-brey-kers]</p>
+				<p style="font-size:24px; "> <i>noun</i> &nbsp; A way to meet people with similar interests. </p>
+			</div>
+		</div></a>
+	</div>
+	<div class="col-md-4 col-sm-4 col-xs-4">
+		<a href="<?php echo base_url()."main/get_related_events/hotspots"?>"><div class="panel featured_category" style="background-image:url(<?php echo $PATH_IMG?>hotspots1.png);-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;color:white; text-align:center; padding:20px 50px;border-radius:15px; border:2px solid #3F4553;">
+			<div class="panel-body">
+				<p style="font-size:45px;"><b>Experience.</b></p>
+				<p style="margin-top:50px;"><img src="<?php echo $PATH_IMG?>hotspots_button_experience.png"/></p>
+				<p style="font-size:32px; margin-top:40px;">[hat-spats]</p>
+				<p style="font-size:24px;"> <i>noun</i> &nbsp; A place to showcase your talents. </p>
+			</div>
+		</div></a>
+	</div>
+	
+</div>
+
+
+    
+    <div class="row">
+     	<p style="color: white; text-align: center; font-size: 52px; font-family:'Lobster';text-decoration:underline;">How It Works</p>
+		<div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-4 col-xs-offset-1">
+			<p style="font-size: 45px; color: white; margin-top:45px;"><strong>Find an event</strong></p>
+			<p style="font-size: 25px; color: white;">Find events with much more ease.
+	    Everything is simply categorized for
+	    all types of events; whether you&rsquo;re
+	    looking for house parties or clubs
+	    we have it all.</p>
+		</div>
+		<div class="col-md-6 col-sm-6 col-xs-6">
+			<img src="<?php echo $PATH_IMG?>macbook_events.png" style="width: 100%; "/>
+		</div>
+    </div>
+
+    <div class="row">
+		<div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-4 col-xs-offset-1">
+			<img src="<?php echo $PATH_IMG?>samantha.png" style="width:100%;"/>
+		</div>
+		<div class="col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-5 col-xs-offset-1">
+			<p style="font-size: 45px; color: white; padding-top: 100px;font-center;"><strong>Create an event</strong></p>
+			<p style="font-size: 25px; color: white; padding-bottom: 50px;">If you cannot find the event of your
+	    choice, <b>create it</b>! Have fun experimenting
+	    and make it public for others to attend.
+	    You can even <b>customize your own tickets</b>
+	    for the events you make.</p>
+		</div>
+    </div>
+      
+    <div class="row" style="background:#A5B9CB; padding:25px 0;">
+    	    <p style="font-size:52px; font-family:'Lobster';text-align:center;color:white;text-decoration:underline;">Pricing</p>	
+	    <div class="col-md-6 col-sm-6 col-xs-6">
+		<p style="text-align: center; color: white; font-size: 33px;font-family:GillSans;"><img src="<?php echo $PATH_IMG?>no_fee_icon.png" style="margin-top:-7px;"/> Most Affordable</p>
+	        <p style="text-align: center;color: white; font-size: 24px;"><strong>Lowest prices </strong>in the ticketing industry!</p></br>
+	    
+		<p style="text-align: center; color: white; font-size: 33px;font-family:GillSans;"><img src="<?php echo $PATH_IMG?>wrevel_fee_icon.png" /> Wrevel Fee</p>
+	    <p style="text-align: center;color: white; font-size: 24px;">1.5% + .50&#162; per ticket</p></br>
+	    
+	    <p style="text-align: center; color: white; font-size: 33px;font-family:GillSans;"><img src="<?php echo $PATH_IMG?>cc_fee_icon.png" style="margin-top:-7px;"/> Credit Card Fee</p>
+	    <p style="text-align: center;color: white; font-size: 24px;">Credit CardProcessing Fee</p>
+	    <p style="text-align: center;color: white; font-size: 19px;">(VAT where applicable)</p>
+	    
+	   
+		</div>
+		<div class="col-md-6 col-sm-6 col-xs-6" style="line-height:175%;">
+	    <p style="text-align: center; color: white; font-size: 30px;font-family:GillSans;"><img src="<?php echo $PATH_IMG?>payment_icon.png" style="margin-top:-7px;"/> Simple Payment System</p>
+	    <p style="text-align: center;color: white; font-size: 25px;"><b>No start-up fees</b> or extra charges.</p>
+	    <p style="text-align: center;color: white; font-size: 25px; ">We accept <b>all credit cards.</b></p></br>
+	    
+	    <p style="text-align: center;"><img src="<?php echo $PATH_IMG?>mastercard_icon.png"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $PATH_IMG?>visa_icon.png"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $PATH_IMG?>amex_icon.png"/>&nbsp;&nbsp;&nbsp;&nbsp;
+	    <img src="<?php echo $PATH_IMG?>dinersclub_icon.png"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $PATH_IMG?>discover_icon.png"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $PATH_IMG?>jcb_icon.png"/></p></br></br>
+	    
+	    <p style="line-height: 20px;text-align: center;color: white; font-size: 30px; font-family:GillSans;"><img src="<?php echo $PATH_IMG?>thumbsup_icon.png" style="margin-top:-7px;"/> Free Events</p>
+	    <p style="text-align: center;color: white; font-size: 25px;">You can still use our beautiful tickets</p>
+	    <p style="text-align: center;color: white; font-size: 25px;">system for <b>absolutely free.</b> We make</p>
+	    <p style="text-align: center;color: white; font-size: 25px;">money only when you make money.</p>
+	    
+		</div>
+    </div>
+    <div class="row">
+    <div class="col-md-12" style="background:#58595B;padding:30px 30px 50px;">
+    	<p style="font-size:52px; font-family:'Lobster';text-align:center;color:white;text-decoration:underline;">Press</p>	
+    	<div class="row">	
+    	   <div class="col-md-3 col-sm-3 col-xs-3"><a href="http://www.brooklynpaper.com/stories/37/44/cl-wrevel-greenpoint-facebook-2014-10-31-bk_37_44.html" target="_blank"><img src="<?php echo $PATH_IMG?>bkpaper.png" style="margin-top:40px; width:100%;margin-left:auto;margin-right:auto;"/></a></div>
+      	   <div class="col-md-3 col-sm-3 col-xs-3"><a href="http://www.dnainfo.com/new-york/20130826/greenpoint/new-party-finding-app-helps-eager-revelers-find-their-match" target="_blank"><img src="<?php echo $PATH_IMG?>dnainfo_logo.png" style="margin-top:35px; width:50%;margin-left:70px;"/></a></div>
+    	   <div class="col-md-3 col-sm-3 col-xs-3"><a href="http://www.greenpointnews.com/entertainment/6332/wrevel-to-relauch-with-exhaustive-partying-options" target="_blank"><img src="<?php echo $PATH_IMG?>greenpointgazette_logo.png" style="margin-top:27px;width:70%;margin-left:auto;margin-right:auto;"/></a></div>
+       	   <div class="col-md-3 col-sm-3 col-xs-3"><a href="http://technical.ly/brooklyn/2014/04/28/8-brooklyn-ventures-saw-pier-92-new-york-tech-day-2014" target="_blank"><img src="<?php echo $PATH_IMG?>technically_logo.png" style="width:70%; margin-left:auto;margin-right:auto;"/></a></div>
+    	 </div> 
+    	</div>
+    </div>
+</div>
+
+<?php $this->load->view('footer');?>
+
+  
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  
+    <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.min.js"></script>
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/popupvideo.js"></script>
+	<script>
+		function show_forgot_password() {
+			$('#forgot_password_div').show();
+		}
+	</script>
+	
+
+
+</body>
+</html> 
