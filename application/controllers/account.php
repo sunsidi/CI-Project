@@ -369,7 +369,8 @@ class account extends CI_Controller{
         	$email_to = array();
         	for($i = 0; $i < count($all_attendees); $i++) {
         		$this->model_friend_request->notify_other($user_data['user_id'], $all_attendees[$i]['user_id'], $message);
-        		$email_to[] = $all_attendees[$i]['email'];
+                        $temp_info = $this->model_users->get_email($all_attendees[$i]['user_id']);
+        		$email_to[] = $temp_info[0]['email'];
         	}
         	$this->load->library('email',array('mailtype'=>'html'));
 		$this->email->from('donotreply@wrevel.com', "Wrevel, Inc.");

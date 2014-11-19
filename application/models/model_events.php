@@ -588,7 +588,15 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
     
     // show the event_address for the event.
     public function show_address($event_id) {
-    	$this->db->update('events', array('e_is_address_hide' => 0), array('event_id' => $event_id));
+    	$this->db->update('events', array('e_is_address_hide' => 0, 'finalized' => 1), array('event_id' => $event_id));
+    }
+    
+    //Remove user from a specific event.
+    public function remove_user($user_id, $event_id) {
+        $this->db->delete('users_attending', array('user_id' => $user_id));
+        $this->db->set('e_attending','e_attending - 1', FALSE);
+        $this->db->where('event_id', $event_id);
+        $this->db->update('events');
     }
 }
 ?>
