@@ -41,6 +41,7 @@ class Event extends CI_Controller {
                 	$user_data = $this->model_users->get_info($email);
 			$user_id = $user_data['user_id'];
 			$my_friends_list = $this->model_friend_request->get_friendlists($user_id);
+                        $data['my_user_id'] = $user_id;
 			$data['card_data'] = $user_data['cust_id'];
 		}
                 $eventMap = $this->hashmap_cata->get_EventMap();
@@ -101,7 +102,7 @@ class Event extends CI_Controller {
                 $result = array_merge($data,$path,$nav_data);
 
 		
-                //echo "<pre> ",print_r($data,true) ,"</pre>";
+                //echo "<pre> ",print_r($result,true) ,"</pre>";
                 $this->load->view('Create_Wrevel_View',$result);
                 $this->load->view('event_fullview',$result);
                 
@@ -524,6 +525,18 @@ class Event extends CI_Controller {
             }
         }
 
+        //Remove a user from an event.
+        public function remove_from_event($user_id, $event_id) {
+            $this->load->library('session');
+            $this->load->model('model_events');
+            $this->load->model('model_users');
+            $this->model_events->remove_user($user_id, $event_id);
+            $this->session->set_flashdata('message','Successfully removed user from event.');
+            $previous_page = $this->session->userdata('refresh_page');
+            $previous_page = $previous_page . $event_id;
+            redirect($previous_page);
+        }
+        
 	//Invite any friends you want.
 	public function invite_friends($event_id) {
 		$this->load->library('session');

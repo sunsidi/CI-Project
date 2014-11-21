@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+
 <head>
 <meta charset="utf-8">
 <title><?php echo $event[0]['e_name']?></title>
@@ -45,7 +45,7 @@ jQuery(document).ready(function () {
 <script type="text/javascript">stLight.options({publisher: "98b7df42-3881-4ba4-adc3-bcb7a479d75e", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
 
-<body>
+
 <?php $this->load->view('header');?>
 
 <!--content
@@ -56,7 +56,11 @@ jQuery(document).ready(function () {
 			<div class="col-md-1">
             
             	<!--Image changes based on what type of event-->
+                <?php if($category != 'latest') {?>
             	<a href="<?php echo base_url().'main/get_related_events/'.$category?>"><img class="event-type-image" src="<?php echo $path['PATH_IMG'].$category;?>_fullbutton.png" style="position:absolute; z-index:1;  display:block;"/></a>
+                <?php } else {?>
+                <a href="<?php echo base_url().'main/get_latest_events'?>"><img class="event-type-image" src="<?php echo $path['PATH_IMG'].$category;?>_fullbutton.png" style="position:absolute; z-index:1;  display:block;"/></a>
+                <?php }?>
             </div>
 		<div class="col-md-10 event-stuff" style="color:white;padding:0 26px;">
         	
@@ -64,10 +68,12 @@ jQuery(document).ready(function () {
 			<div class="col-md-6 event-title" style="background:<?php echo $style[$category]['theme-color-1']?>; padding:17px; text-align:center;">
                             <!--name of event-->
                             <strong><?php echo $event[0]['e_name']?></strong>
-                        
-                        <a id="check_user" class="pull-right" href="#" data-toggle="modal" data-target="#editEventModal" hidden>
+                        <?php if(isset($email)) {
+                            if($email == $user_email_temp[0]['email']) {?>
+                        <a id="check_user" class="pull-right" href="#" data-toggle="modal" data-target="#editEventModal">
 					    <button type="button" class="btn" style="z-index:2; background:white">Edit Event Listing</button>
                         </a>
+                        <?php }}?>
                         <div class="modal fade" id="editEventModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content" style="background:#c2d2dc;border:none;">
@@ -606,9 +612,15 @@ jQuery(document).ready(function () {
                 </div><!--end of popup-->
             </div>
             <div class="col-md-4 col-sm-6 status-bar" style="background:#33a4a7; padding:14px; text-align:center;">
-            	<a href="<?php echo base_url()."event/attend_event/".$event_id."/5"?>" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;">I&rsquo;m going</a>
-                <a href="<?php echo base_url()."event/attend_event/".$event_id."/5"?>" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;">Maybe</a>
-                <a href="#" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;">No</a>
+            	<?php if(!$event[0]['finalized']){?>
+                    <a href="<?php echo base_url()."event/attend_event/".$event_id."/5"?>" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;">I&rsquo;m going</a>
+                    <a href="<?php echo base_url()."event/attend_event/".$event_id."/5"?>" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;">Maybe</a>
+                    <a href="#" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;">No</a>
+                <?php } else {?>
+                    <a href="javascript:void(0);" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;"><strike>I&rsquo;m going</strike></a>
+                    <a href="javascript:void(0);" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;"><strike>Maybe</strike></a>
+                    <a href="javascript:void(0);" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;"><strike>No</strike></a>
+                <?php }?>
             </div>
         </div>    
 	</div>
@@ -929,9 +941,20 @@ jQuery(document).ready(function () {
 			                                    
 			                                         <div style="text-align:left; height:360px; overflow-y:auto; display:inline-block; padding-top:10px;">   
 									<?php 
+                                                                        $show_address = false;
 									if(isset($attendees)){
-                                                			for ($i = 0; $i < count($attendees); $i++){?>
+                                                			for ($i = 0; $i < count($attendees); $i++){
+                                                                            if(isset($my_user_id)) {
+                                                                                if($my_user_id == $attendees[$i]['user_id']){
+                                                                                    $show_address = true;
+                                                                                }
+                                                                            }?>
 									<div style="float-left; width:130px;display:inline-block;">
+                                                                            <?php if(isset($email)) {
+                                                                            if($email == $user_email_temp[0]['email']) {
+                                                                                if(!($my_user_id == $attendees[$i]['user_id'])) {?>                                                                            
+                                                                                <a class="allow_delete pull-right" href="<?php echo base_url().'event/remove_from_event/'.$attendees[$i]['user_id'].'/'.$event_id?>">X</a>
+                                                                            <?php }}}?>
 										<a href="<?php echo base_url().'public_profile/user/'.$attendees[$i]['user_id']?>">
 				      						<img src="<?php echo base_url(). 'uploads/'.$attendees[$i]['image_key'];?>" style="border-radius:150%; width:100px; height:100px;"/>
 				                                                <div class="caption" style="text-align:center;">
@@ -951,6 +974,12 @@ jQuery(document).ready(function () {
 			                           </div>
 			                       </div>
 			                </div><!--end of popup-->
+                                        <?php if(isset($email)) {
+                                            if($email == $user_email_temp[0]['email'] && !$event[0]['finalized'] && $event[0]['e_is_address_hide']) {?>
+                                        <div>
+                                            <a id="finalize_button" href="<?php echo base_url().'account/unhide_event/'.$event_id?>" class="btn viewmorewrevs" style="font-size:20px;border-radius:8px;color:white;">Finalize Event</a>
+                                        </div>
+                                            <?php }}?>
                                 </div>
                             </div>
 				</div>
@@ -969,7 +998,9 @@ jQuery(document).ready(function () {
                             <p>
                             <?php if($event[0]['e_is_address_hide']) {?>
                             	<span style="color:red">Event's Address is hidden. Please wait for event creator's notification.</span>
-                            <?php }else { echo $event[0]['e_address']; ?>
+                            <?php }else if($event[0]['finalized'] && $show_address == false) {?>
+                                <span style="color:red">Event's Address is hidden. </span>
+                            <?php }else {echo $event[0]['e_address']; ?>
                             
 			    </p>
                             <!-- City , State , Zip Code-->
@@ -1158,15 +1189,6 @@ jQuery(document).ready(function () {
     }
     </script>
     <script>
-        $(document).ready(function(){
-            <?php
-                if($email == $user_email_temp[0]['email']) {
-                    echo '$("#check_user").show();';
-                }
-            ?>
-        })
-    </script>
-    <script>
     	var max_tickets = 0;
     	function change_qty_price() {
     		if($('#ticket_type').val() == "") {
@@ -1233,5 +1255,4 @@ jQuery(document).ready(function () {
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  -->
     <!--<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.min.js"></script>
 	<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.js"></script> -->
-</body>
-</html>
+
