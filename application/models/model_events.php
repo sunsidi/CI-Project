@@ -11,10 +11,16 @@ class Model_events extends CI_Model{
     }
     
     public function admin_get_events() {
+        $this->db->order_by('create_stamp', 'desc');
     	$query = $this->db->get('events');
     	return $query->result_array();
     }
     
+    public function admin_delete_events() {
+              $data = $this->input->post('events_checkbox');
+              $this->db->where_in('event_id', $data);
+              $this->db->delete('events');
+          }
       public function find_event($e_id)
       {
 	    //$e_name = 'Boris pimp party';

@@ -56,7 +56,11 @@ jQuery(document).ready(function () {
 			<div class="col-md-1">
             
             	<!--Image changes based on what type of event-->
+                <?php if($category != 'latest') {?>
             	<a href="<?php echo base_url().'main/get_related_events/'.$category?>"><img class="event-type-image" src="<?php echo $path['PATH_IMG'].$category;?>_fullbutton.png" style="position:absolute; z-index:1;  display:block;"/></a>
+                <?php } else {?>
+                <a href="<?php echo base_url().'main/get_latest_events'?>"><img class="event-type-image" src="<?php echo $path['PATH_IMG'].$category;?>_fullbutton.png" style="position:absolute; z-index:1;  display:block;"/></a>
+                <?php }?>
             </div>
 		<div class="col-md-10 event-stuff" style="color:white;padding:0 26px;">
         	
