@@ -25,7 +25,7 @@
     <!--Gazette-->   
         <div class="panel" style="margin-top: 80px;background-color: #d7e0e9; border:none ; border-radius: 10px; -moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .2);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .2);box-shadow:2px 2px 2px rgba(0, 0, 0, .2);">
 	    
-	    <div class="panel-heading" style="background-image: url(<?php echo $PATH_IMG?>faq_header.png); height: 80px;background-size:825px 80px;border-top-left-radius: 10px; border-top-right-radius: 10px;">
+	    <div class="panel-heading" style="background-image: url(<?php echo $PATH_IMG?>faq_header.png); height: 80px;background-size:100% 80px;border-top-left-radius: 10px; border-top-right-radius: 10px;">
                 <p style="color: white; font-size: 30px; text-align: center;margin-top: 10px;">F.A.Q.</p>
             </div>
 	   
