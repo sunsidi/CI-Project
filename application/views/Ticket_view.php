@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>sample</title>
+<title><?php $ticket = $this->session->userdata('ticket'); echo $ticket['cost_per_ticket'][0]['e_name']?></title>
 
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap.min.css" rel="stylesheet">

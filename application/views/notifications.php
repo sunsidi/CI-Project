@@ -40,7 +40,7 @@ jQuery(document).ready(function () {
 <!-- Extra? <div class="container" style="padding-bottom:50px;">-->
   <div class="container">
   <div class="row" style="margin-top:5%;">
-    <div class="col-md-6 col-md-offset-3 notification">
+    <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3 notification">
           
         
           <div class="panel" style="background:#d9e3ea;border:none;border-radius:10px;">

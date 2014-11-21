@@ -67,7 +67,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-5" style="border-radius:10px;padding:0;">
+		<div class="col-md-5 aboutus-info" style="border-radius:10px;padding:0;">
 			<div class="panel" style="border:none; border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">
 				<div class="panel-header" style="background:#63A1D4;border-top-left-radius:10px;border-top-right-radius:10px;">
 					<h3 class="panel-title" style="text-align:center; font-size:25px;color:white;padding:20px;"><i class="fa fa-users"></i> About Us</h3>

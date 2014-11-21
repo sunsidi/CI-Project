@@ -58,7 +58,7 @@ position:absolute;
         
         
         <div id="navbarCollapse" class="collapse navbar-collapse"  style="float: right;">
-        	<div class="pull-left" style="margin-top:8px;">
+        	<div class="pull-left notlogged" style="margin-top:8px;">
         	<a href="http://wrevel.com/welcome/home" class="btn header-button">Sign Up</a> &nbsp;
         	<a href="http://wrevel.com/welcome/home" class="btn header-button">Log In</a>
         	</div>
@@ -86,9 +86,9 @@ position:absolute;
           <img src="<?php echo $PATH_IMG?>menu_button.png" style="margin-left:15px;"> </button>
             <ul class="dropdown-menu" role="menu">
               <li><a href="<? echo base_url()?>showroom/profile"><?php echo $nav_data['fullname']?></a></li>
-          <li class="header-link"><a href="<?php echo base_url()."chat/MessageView"?>">Inbox <span class="badge" style="background:#BE1E2D;">#</span></a></li>
+          <li class="header-link"><a href="<?php echo base_url()."chat/MessageView"?>">Inbox</a></li>
           <li class="header-link"><a href="<?php echo base_url().'showroom/notify2'?>">Notifications <span class="badge" style="background:#BE1E2D;"><?php echo $nav_data['counter'] ?></span></a></li>
-          <li class="header-link"><a href="#">Search</a></li>
+          <!--<li class="header-link"><a href="#">Search</a></li>-->
           <li><a href="<? echo base_url()?>account/myaccount_accountinfo">My Account</a></li>
           <li class="divider"></li>
           <li><a href="<?php echo base_url()."main/loginout" ?>">Logout</a></li>
@@ -98,7 +98,7 @@ position:absolute;
           <!--profile image-->
           <a class="navbar-brand collapse navbar-collapse" href="<? echo base_url()?>showroom/profile"><img class="fb_pic" src="<?php echo base_url()."uploads/".$nav_data['image_key']?>" 
                                                 style="width:55px; height:55px; border-radius: 150px;
-                                                margin-left:10px; border:2px solid #662E91;"/></a>
+                                                margin-left:10px; border:2px solid #7874A2;"/></a>
           
             <a href="<? echo base_url()?>showroom/profile" class="navbar-brand collapse navbar-collapse">
             <p style="color: white; font-size: 20px; margin-left:10px;margin-top:18px;"><?php echo $nav_data['fullname']?> </p></a>

@@ -67,11 +67,11 @@ jQuery(document).ready(function () {
             
 			<div class="col-md-6 event-title" style="background:<?php echo $style[$category]['theme-color-1']?>; padding:17px; text-align:center;">
                             <!--name of event-->
-                            <strong><?php echo $event[0]['e_name']?></strong>
+                    <strong><small><?php echo $event[0]['e_name']?></small></strong>
                         <?php if(isset($email)) {
                             if($email == $user_email_temp[0]['email']) {?>
-                        <a id="check_user" class="pull-right" href="#" data-toggle="modal" data-target="#editEventModal">
-					    <button type="button" class="btn" style="z-index:2; background:white">Edit Event Listing</button>
+                        <a id="check_user" class="pull-right" href="#" data-toggle="modal" data-target="#editEventModal" hidden>
+                            <button type="button" class="btn evtlistingbtn" style="z-index:2;">Edit Event Listing</button>
                         </a>
                         <?php }}?>
                         <div class="modal fade" id="editEventModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -99,12 +99,12 @@ jQuery(document).ready(function () {
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-sm-2 control-label">Date</label>
-                                                            <div class="col-sm-4">
+                                                            <div class="col-sm-3">
                                                                 <input id="e_date" name="e_date" type="date" class="form-control" placeholder="<?php echo $event[0]['e_date']?>">
                                                             </div>
-                                                            <label class="col-sm-2 control-label" style="margin-left:10px;">Start Time</label>
-                                                                <div class="col-sm-3">
-                                                                    <select id="e_start_time" name="e_start_time" type="time" class="form-control">
+                                                            <label class="col-sm-1 control-label">Start Time</label>
+                                                                <div class="col-sm-2">
+                                                                    <select id="e_start_time" name="e_start_time" type="time" class="form-control" style="padding:0;">
                                                                         <option value="" selected="selected"></option> 
 					              			<option value="00:00">12:00am</option>
 					              			<option value="00:30">12:30am</option>
@@ -156,9 +156,9 @@ jQuery(document).ready(function () {
 					              			<option value="23:30">11:30pm</option>
                                                                     </select>
                                                                 </div>
-                                                                <label class="col-sm-2 control-label" style="margin-left:10px;">End Time</label>
-                                                                <div class="col-sm-3">
-                                                                    <select id="e_end_time" name="e_start_time" type="time" class="form-control">
+                                                                <label class="col-sm-1 control-label">End Time</label>
+                                                                <div class="col-sm-2">
+                                                                    <select id="e_end_time" name="e_start_time" type="time" class="form-control" style="padding:0;">
                                                                         <option value="" selected="selected"></option> 
                                                                         					              			<option value="00:00">12:00am</option>
 					              			<option value="00:30">12:30am</option>
@@ -503,7 +503,7 @@ jQuery(document).ready(function () {
                                                                 <div class="col-sm-3">
                                                                     <input type="text" class="form-control" placeholder="<?php echo $event[0]['e_phone']?>">
                                                                 </div>
-                                                                <label class="col-sm-1 control-label">Email</label>
+                                                                <label class="col-sm-2 control-label">Email</label>
                                                                     <div class="col-sm-5">
                                                                         <input name="e_email" type="email" class="form-control" placeholder="<?php echo $event[0]['e_email']?>">
                                                                     </div>
@@ -543,7 +543,7 @@ jQuery(document).ready(function () {
                             </div>
                         </div>
                         </div>
-            <div class="col-md-2 col-sm-6" style="background:#566699; padding:17px; text-align:center;">
+            <div class="col-md-2 col-sm-6 likeshareinvite" style="background:#566699; padding:17px;">
             	<!--number of likes-->
             	<!--<?php echo $event[0]['e_likes']?> <i class="fa fa-heart-o"></i>-->
             	<!--Click to Like-->
@@ -635,7 +635,7 @@ jQuery(document).ready(function () {
                                     
                                     <!-- Date of event happening -->
                                     <p style="font-size:20px;"><?php echo $event[0]['e_date']?></p>
-                                    <img src="<?php echo $PATH_IMG?>/dot.png" class="line" style="width:1px; height: 70px; margin-top:-130px;; margin-left:120%;">
+                                    <img src="<?php echo $PATH_IMG?>/dot.png" class="line" style="width:1px; height: 70px; margin-top:-130px; margin-left:120%;">
                                 
                         </div>
                         
@@ -664,7 +664,7 @@ jQuery(document).ready(function () {
 					?>
 					
 				    </p>
-				    <img src="<?php echo $PATH_IMG?>/dot.png" class="line" style="width:1px; height: 70px; margin-top:-130px;; margin-left:110%;">
+				    <img src="<?php echo $PATH_IMG?>/dot.png" class="line hide-line" style="width:1px; height: 70px; margin-left:110%;">
                                 
                         </div>
                         
@@ -675,7 +675,7 @@ jQuery(document).ready(function () {
                                     <!--how much event cost-->
                                     <p style="font-size:20px;"><?php echo $event[0]['e_pricetemp']?></p>
                                     
-                               <img src="<?php echo $PATH_IMG?>/dot.png" class="line" style="width:1px; height: 70px; margin-top:-130px;; margin-left:110%;">
+                               <img src="<?php echo $PATH_IMG?>/dot.png" class="line" style="width:1px; height: 70px; margin-top:-130px;margin-left:110%;">
                         </div>
                         
                         <div class="col-md-3 col-sm-3 col-xs-4">
@@ -684,7 +684,7 @@ jQuery(document).ready(function () {
                                     
                                     <!--how many people are attending-->
                                     <p style="font-size:20px;"><?php echo $event[0]['e_attending']?></p>
-                                    <img src="<?php echo $PATH_IMG?>/dot.png" class="line" style="width:1px; height: 70px; margin-top:-130px;; margin-left:110%;">
+                                    <img src="<?php echo $PATH_IMG?>/dot.png" class="line attending-line" style="width:1px; height: 70px; margin-left:110%;">
                                
                         </div>
                          <div class="col-md-2 col-sm-2 col-xs-4">
@@ -700,10 +700,10 @@ jQuery(document).ready(function () {
                     <!--<hr style="border-color:#C7D1DA;">-->
                     <div class="row">
                     	<div class="col-md-6">
-                        	<div class="row">
+                        	<div class="row" style="text-align:center;">
                             	<!--image of event-->
-                            	<!--<img src="<?php echo $path['PATH_IMG']?>party.jpg" style="max-width:100%; min-width:100%; "/>-->
-                            	 <img src="<?php echo base_url()."uploads/".$event[0]['e_image']?>"style="max-width:100%; min-width:100%; height:350px;padding:2%;"/>
+                            	<!--<img src="<?php echo $path['PATH_IMG']?>party.jpg" style="max-width:0%; min-width:100%; "/>-->
+                            	 <img src="<?php echo base_url()."uploads/".$event[0]['e_image']?>"style="max-width:90%; min-width:90%; padding:2%;"/>
 
                             </div>
                             <div class="row" style="padding:0 10px 0;">
@@ -1045,7 +1045,7 @@ jQuery(document).ready(function () {
                         </div>
        
                         <?php }else {?>
-                        <div>
+                        <div class="vault">
                         	<img src="<?php echo base_url().'src/data/img/vault_closed_fix.png'?>" onmouseover="this.src='<?php echo $PATH_IMG?>/vault_openwidth1.png'" onmouseout="this.src='<?php echo $PATH_IMG?>/vault_closed_fix.png'" style="max-width:100%;min-width:100%;height:400px;">
                         </div>
                         <?php }?>

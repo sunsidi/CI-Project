@@ -36,7 +36,7 @@ jQuery(document).ready(function () {
 	
 	<div class="row" style="">
 	    <div style="background-image: url(<?php echo $PATH_IMG?>contact_us_box.png); background-size: 500px 450px;width: 500px; height: 450px;margin-left:auto; margin-right:auto;">
-		        <p style="padding-top: 5px;margin-left: 30%;font-size: 40px; color: white;">
+		        <p style="padding-top: 5px;text-align:center;font-size: 40px; color: white;">
                         Contact Us
                         </p>
 			
