@@ -28,6 +28,7 @@ class Event extends CI_Controller {
        public function event_info($category,$event_id){ //messageView (chat.php)
                 //testing purposes
                 //$event_id = '-1';
+               
                 $this->load->model('model_friend_request');
                 $this->load->model('model_events');
                 $this->load->model('model_users');
@@ -35,6 +36,7 @@ class Event extends CI_Controller {
                 $this->load->library('googlemaps');
                 $this->load->library('hashmap_cata');
                 $this->load->library('session');
+                $this->session->unset_userdata('session_expired');
                 $this->session->set_userdata('refresh_page', 'event/event_info/'.$category.'/');
                 if($this->session->userdata('is_logged_in')) {
                 	$email = $this->session->userdata('email');

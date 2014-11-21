@@ -149,17 +149,23 @@ class Stripe_controller extends CI_Controller{
 	        }
 		if($this->input->post('approve')=="true")
 		{
-		
+                        
+                    if($this->session->userdata('session_expired') || !$this->session->userdata('ticket')) {
+                        $this->session->unset_userdata('session_expired');
+                        $prev_page = $this->session->userdata('refresh_page');
+                        $this->session->set_flashdata('message', 'Your session has expired please reenter the required information.');
+                        redirect($prev_page.$event_id);
+                    }
 			$data['event'] = $this->model_events->find_event($event_id);
 			$c_email = $this->model_users->get_email($data['event'][0]['e_creatorID']);
 			//echo '<pre>', print_r($data, true), '</pre>';
 			$c_recip = $c_email[0]['recip_id'];
 			$c_email = $c_email[0]['email'];
-		
+                        
 			//set payment info
 			$ticket = $this->session->userdata('ticket');
-			$deduction_success = $this->model_events->deduct_tickets($event_id, $ticket['type'],$ticket['quantity']);
-			if($deduction_success) {
+			$deduction_possible = $this->model_events->check_tickets($event_id, $ticket['type'],$ticket['quantity']);
+			if($deduction_possible) {
 				$billing = array(
 					'cost_per_ticket' => $ticket['cost_per_ticket'],
 					'type'		  => $ticket['type'],
@@ -180,6 +186,7 @@ class Stripe_controller extends CI_Controller{
 					'total_price'	  => $ticket['total_price'],
 					'cust_id'	  => $ticket['cust_id']
 					);
+                                
 				//echo '<pre>Stuff', print_r($billing, true), '</pre><br>';
 				
 				/*$amount_seller = $billing['quantity']*$billing['e_price']*100;
@@ -214,13 +221,19 @@ class Stripe_controller extends CI_Controller{
 					}
 					else {*/
 					$customer_id = $billing['cust_id'];
-					
-					$charge = Stripe_Charge::create(array(
-						'description' => 'Money will be transferred manually to: EMAIL = '. $c_email .' OR RECIP_ID = '.$c_recip.' AMOUNT TO TRANSFER = '.$billing['ticket_price'],
-						'customer' => $customer_id,
-						'amount'   => (int)($total),
-						'currency' => 'usd'
-					));
+					try {
+                                            $charge = Stripe_Charge::create(array(
+                                                    'description' => 'Money will be transferred manually to: EMAIL = '. $c_email .' OR RECIP_ID = '.$c_recip.' AMOUNT TO TRANSFER = '.$billing['ticket_price'],
+                                                    'customer' => $customer_id,
+                                                    'amount'   => (int)($total),
+                                                    'currency' => 'usd'
+                                            ));
+                                        }
+                                        catch(Exception $e) {
+                                            $prev_page = $this->session->userdata('refresh_page');
+                                            $this->session->set_flashdata('message', 'Your card was declined or you may have entered an invalid card or you may have insufficient funds. Please try again.');
+                                            redirect($prev_page.$billing['cost_per_ticket'][0]['event_id']);
+                                        }
 					//make payment THIS IS COMMENTTED OUT BECAUSE IT DOESN'T WORK FOR SOME REASON. WILL HAVE TO MANUALLY TRANSFER ALL MONEY.
 					//$this->transfer($billing['ticket_price']*100, $c_email);
 				
@@ -230,7 +243,7 @@ class Stripe_controller extends CI_Controller{
 				
 					//$total =  $amount_stripe+$amount_wrevel+$amount_seller;
 				}
-						
+				$this->model_events->deduct_tickets($event_id, $ticket['type'],$ticket['quantity']);		
 				//echo "The Total Charge is ".$total."<br/>";
 				
 				//
@@ -315,7 +328,6 @@ class Stripe_controller extends CI_Controller{
 			$email_message = "<p>You have just purchased a ticket on Wrevel.com! You can click on the link below to view your order and print your tickets.  Make sure you save this e-mail as you would need it to access your tickets in the future. You can also sign up for free at www.wrevel.com to save all of your future purchases on your Wrevel account.</p>";
 		}
 		$data = array(
-			'ticket_id' => md5(uniqid()),
 			'event_id'  => $ticket['cost_per_ticket'][0]['event_id'],
 			'user_id'   => $info['user_id'],
 			'fullname'  => $info['fullname'],
@@ -324,11 +336,11 @@ class Stripe_controller extends CI_Controller{
 			'ticket_price' => $ticket['ticket_price'],
 			'fees' => $ticket['fees'],
 			'total_price' => $ticket['total_price'],
-			'Purchase_Time'  => Time()
 			
 		);
 		$this->load->model('model_tickets');
-		$ticket_id = $this->model_tickets->add_ticket($data);
+		$data['ticket_id'] = $this->model_tickets->add_ticket($data, $ticket['quantity']);
+                $this->session->set_userdata(array('ticket_id' => $data['ticket_id'],'event_id' => $data['event_id']));
 		$this->load->library('email',array('mailtype'=>'html'));
 		$this->email->from('donotreply@wrevel.com', "Wrevel, Inc.");
 		$this->email->to($email);
@@ -391,7 +403,12 @@ class Stripe_controller extends CI_Controller{
 				"cvc" => $this->input->post('cvc')            
 				)
 		);
-		if($data['ticket']['cust_id'] == "false" && $data['ticket']['card']['number'] == "") {
+                if($this->session->userdata('session_expired')) {
+                    $prev_page = $this->session->userdata('refresh_page');
+                    $this->session->set_flashdata('message', 'Your session has expired please reenter your information.');
+                    redirect($prev_page.$data['ticket']['cost_per_ticket'][0]['event_id']);
+                }
+		if($data['ticket']['cust_id'] == "false" && $data['ticket']['card']['number'] == "" && $data['ticket']['e_price'] != 0) {
 			
 			redirect('stripe_controller/load_stripe/'.$data['ticket']['cost_per_ticket'][0]['event_id']);
 		}
@@ -431,7 +448,7 @@ class Stripe_controller extends CI_Controller{
 		}
 		$data['ticket']['card'] = "";
 		$this->session->set_userdata($data);
-		//echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
+		echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
 		$this->load->view('Ticket_Confirm',$data);
 	}
 	
@@ -507,24 +524,20 @@ class Stripe_controller extends CI_Controller{
 		$data['path'] = $this->path->getpath();
 		$data['PATH_IMG'] = $path['PATH_IMG'];
                 $data['PATH_BOOTSTRAP'] = $path['PATH_BOOTSTRAP'];
-		//$this->session->unset_userdata('ticket');
-		
+		$this->session->unset_userdata('ticket');
+		$this->session->set_userdata(array('session_expired' => 1));
 		//echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
 		$this->load->library('session');
-		//echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
+		echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
 		$this->load->view('Processed_ticket',$data);
 	}
 
 	public function print_ticket()
 	{
-		$path = $this->path->getPath();
-		$data['path'] = $this->path->getpath();
-		$data['PATH_IMG'] = $path['PATH_IMG'];
-                $data['PATH_BOOTSTRAP'] = $path['PATH_BOOTSTRAP'];
-		
-		//echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
-		$this->load->view('Ticket_view',$data);
-		$this->session->unset_userdata('ticket');
+            $this->load->library('session');
+            
+            //echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
+            redirect('account/view_ticket/'.$this->session->userdata('event_id').'/'.$this->session->userdata('ticket_id'));
 		//$this->session->unset_userdata('ticket');
 	}
 
