@@ -28,7 +28,7 @@ font-family:GillSans;
   <div class="container" style="padding-bottom:50px;">
 	<div class="row" >
 		<div class="col-md-8 col-md-offset-2" style="padding:20px 50px;font-size:15px;">
-			<h1 style="text-align:center;font-size:40px;font-family:GillSans;color:white;"><img src="<?php echo $PATH_IMG?>w1.png"/>Privacy Policy</h1>
+			<h1 class="title" style="text-align:center;font-family:GillSans;color:white;"><img class="w_logo" src="<?php echo $PATH_IMG?>w1.png"/>Privacy Policy</h1>
 			<h3>About Wrevel:</h3>
 			<p>Welcome to Wrevel. Wrevel, Inc. ("Wrevel", "we", "us" and/or "our") enables people all over the world to plan, promote, and sell tickets to any event. Wrevel also enables people to socialize and attend different types of themed events.  And we make it easy for everyone to discover events, and to share the events they are attending with the people they know. We do this through our websites and domains, the services available on or through our websites and domains or otherwise provided by us, and the software available on or through our websites and domains or otherwise provided by us.</p>
 			

@@ -271,11 +271,11 @@
                     <div class="form-group row">
               <label class="col-sm-2 control-label">location:</label>
               <div class="col-sm-5">
-                  <input id="location1" type="text" name = "e_address" class="location form-control" placeholder="where is it?">
+                  <input id="location1" type="text" name = "e_address" class="form-control" placeholder="where is it?">
               </div>
                  <label class="col-sm-1 control-label" >city:</label>
                             <div class="col-sm-4" >
-                              <input type="text" class="location form-control" name = "e_city">
+                              <input id="location2" type="text" class="form-control" name = "e_city">
                             </div>
             </div>
                     
@@ -283,7 +283,7 @@
                       <div class="form-group row">
                           <label class="col-sm-1 control-label">state:</label>
                             <div class="col-sm-2">
-                              <select name="e_state" type="text" class="location form-control" style="padding:0;">
+                              <select id="location3" name="e_state" type="text" class="form-control" style="padding:0;">
               			<option value="" selected="selected"></option> 
               			<option value="AK">AK</option>
               			<option value="AL">AL</option>
@@ -342,12 +342,12 @@
                             
                             <label class="col-sm-1 control-label">zip:</label>
               		    <div class="col-sm-2">
-                  		<input type="text" name = "e_zipcode" class="location form-control" style="padding:5px;" >
+                  		<input id="location4" type="text" name = "e_zipcode" class="form-control" style="padding:5px;" >
               		    </div>
                             
                             <label class="col-sm-1 control-label" >cnt:</label>
                             <div class="col-sm-5">
-                              <select name="e_country" type="text" class="location form-control" style="padding:0;font-size:12px;">
+                              <select id="location5" name="e_country" type="text" class="form-control" style="padding:0;font-size:12px;">
               			<option value="" selected="selected"></option>            			
 				<option value="Afghanistan">Afghanistan</option> 
 				<option value="Albania">Albania</option>
@@ -558,7 +558,7 @@
                  <!--   <div class="form-group row">
               <label class="col-sm-3 control-label">zip:</label>
               <div class="col-sm-3">
-                  <input type="text" name = "e_zipcode" class="form-control" >
+                  <input id="location6" type="text" name = "e_zipcode" class="form-control" >
               </div>
               <label class="col-sm-2 control-label"  style="margin-left:10px;">country:</label>
                             <div class="col-sm-3">
@@ -1100,10 +1100,18 @@
     	function change_to_online() {
     		if($('#e_is_online').prop('checked')) {
     		console.log('hello');
-    			$('.location').attr('disabled', true);
+    			$('#location1').attr('disabled', true);
+    			$('#location2').attr('disabled', true);
+    			$('#location3').attr('disabled', true);
+    			$('#location4').attr('disabled', true);
+    			$('#location5').attr('disabled', true);
     		}
     		else {
-    			$('.location').attr('disabled', false);
+    			$('#location1').attr('disabled', false);
+    			$('#location2').attr('disabled', false);
+    			$('#location3').attr('disabled', false);
+    			$('#location4').attr('disabled', false);
+    			$('#location5').attr('disabled', false);
     		}
 	}
     </script>

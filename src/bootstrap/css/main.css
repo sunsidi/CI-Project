@@ -896,6 +896,39 @@ border-right-style: solid;
 border-right-color: gray;
 border-right-width: thin;
 }
+
+.hide-line{
+margin-top:-130px;
+}
+
+.attending-line{
+margin-top:-130px;
+}
+
+button.evtlistingbtn{
+background:white;
+position:relative;
+}
+
+button.evtlistingbtn:hover{
+background:#428BCA;
+color:white;
+}
+
+.likeshareinvite{
+text-align:center;
+}
+
+.terms{
+font-size:40px;
+}
+
+.pricing-points{
+margin-left: 20%;
+list-style-type: none;
+ padding: 0;
+}
+
 @media (max-width:990px){
 	.footer-link{
 	display:initial;
@@ -950,7 +983,30 @@ border-right-width: thin;
 	.status-bar{
 	border-top-right-radius:0;
 	}
-
+	.hide-line{
+	margin-top:-190px;
+	}
+	.comment_section{
+	width:75%;
+	}
+	.vault{
+	display:none;
+	}
+	.w_logo{
+	width:70px;
+	}
+	.title{
+	font-size:35px;
+	}
+	.pricing-points{
+	margin-left: 5%;
+	}
+	.notlogged{
+	display:none;
+	}
+	.aboutus-info{
+	margin-top:15px;
+	}
 }
 
 
@@ -969,6 +1025,18 @@ border-right-width: thin;
 	}
 	.event-title{
 	font-size:22px;
+	}
+	.hide-line{
+	visibility:hidden;
+	}
+	.pricing-points{
+	margin-left: 25%;
+	}
+}
+
+@media (max-width:533px){
+	.attending-line{
+	margin-top:-190px;
 	}
 }
 
@@ -1031,14 +1099,35 @@ border-right-width: thin;
 	}
 	.featured_category{
 	height:550px;
+	}
+	.line {
+	display: none;
+	}
+	button.evtlistingbtn{
+	background:white;
+	position:absolute;
+	//margin-top:65px;
+	margin-left:-105px;
+	margin-top:-60px;
+	}
+	
+	.title{
+	font-size:30px;
+	}
+	.w_logo{
+	width:58px;
+	}
+	.pricing-points{
+	margin-left: 10%;	
+	}
 }
+@media (width:375px){
+	.event-type-image{
+	margin-left:30%;
+	width:118px;
+	margin-top:-30px;
+	}
 }
-//@media (width:375px){
-//	.cwrev_category{
-//	width:63px;
-//	height:63px;
-//	}
-//}
 
 /* For iPhones and Android*/
 @media (max-width: 360px) {
@@ -1096,10 +1185,32 @@ border-right-width: thin;
 	font-size:22px;
 	}
 	.event-type-image{
-	margin-left:30%;
-	width:120px;
+	margin-left:32%;
+	width:105px;
 	margin-top:-30px;
 	}
+	button.evtlistingbtn{
+	background:white;
+	position:absolute;
+	//margin-top:65px;
+	//margin-left:-120px;
+	margin-left:-105px;
+	margin-top:-60px;
+	}
+	.w_logo{
+	width:58px;
+	}
+	.title{
+	font-size:28px;
+	}
+	.pricing-points{
+	margin-left: 10%;
+	}
+	
+	//.likeshareinvite{
+	//text-align:left;
+	//padding-left:50px;
+	//}
 }
 
 /* For iPhones and Android*/
@@ -1132,7 +1243,7 @@ border-right-width: thin;
 	font-size:18px;
 	}
 	.event-type-image{
-	margin-left:28%;
+	margin-left:30%;
 	}
 	.buy-ticket{
 	margin-top:5px;

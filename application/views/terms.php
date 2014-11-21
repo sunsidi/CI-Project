@@ -22,7 +22,7 @@
   <div class="container" style="padding-bottom:50px;">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2" style="padding:20px 50px;font-size:15px;">
-			<h1 style="text-align:center;font-size:40px;font-family:GillSans;color:white;"><img src="<?php echo $PATH_IMG?>w1.png"/>Terms</h1>
+			<h1 class="title" style="text-align:center;font-family:GillSans;color:white;"><img class="w_logo" src="<?php echo $PATH_IMG?>w1.png"/>Terms</h1>
 			
 			<p><strong>Welcome to Wrevel.com.</strong> If you continue to browse and use this website, you are agreeing to comply with and be bound by the following terms and conditions of use, which together with our privacy policy govern our relationship with you in relation to this website. If you disagree with any part of these terms and conditions, please do not use our website.</p>
 			
