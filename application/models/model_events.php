@@ -43,6 +43,7 @@ class Model_events extends CI_Model{
 	    return $query->result_array();
       }
       
+      //Deduct the tickets.
       public function deduct_tickets($e_id, $type, $quantity_to_deduct)
       {
       	    $query = $this->db->query('SELECT * FROM event_ticket_types WHERE event_id = '.$e_id.' AND type = "'.$type.'"');
@@ -54,6 +55,20 @@ class Model_events extends CI_Model{
       	    else {
       	    	$this->db->update('event_ticket_types', array('quantity' => $new_quantity), array('event_id' => $e_id, 'type' => $type));
       	    	return true;
+      	    }
+      }
+      
+      //Need to check first and charge before we deduct the tickets or we'll lose some. So check first.
+      public function check_tickets($e_id, $type, $quantity_to_deduct)
+      {
+      	    $query = $this->db->query('SELECT * FROM event_ticket_types WHERE event_id = '.$e_id.' AND type = "'.$type.'"');
+      	    $ticket_temp = $query->row_array(0);
+      	    $new_quantity = $ticket_temp['quantity'] - $quantity_to_deduct;
+      	    if($new_quantity < 0) {
+      	    	return false;
+      	    }
+      	    else {
+                return true;
       	    }
       }
       

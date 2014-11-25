@@ -463,20 +463,23 @@ class account extends CI_Controller{
         	$event_data = $this->model_events->find_event($event_id);
         	$data = $this->model_tickets->get_ticket_with_id($event_id, $ticket_id);
         	if($data) {
-        		$remapped_data = array('e_name' => $event_data[0]['e_name'],
-        				       'fullname' => $data[0]['fullname'],
-        				       'ticket_type' => $data[0]['ticket_type'],
-        				       'ticket_price' => sprintf("%01.2f",$data[0]['ticket_price']),
-        				       'fees' => sprintf("%01.2f",$data[0]['fees']),
-        				       'total_price' => sprintf("%01.2f",$data[0]['total_price']),
-        				       'e_description' => $event_data[0]['e_description'],
-        				       'e_date' => $event_data[0]['e_date'],
-        				       'e_start_time' => $event_data[0]['e_start_time'],
-        				       'e_address' => $event_data[0]['e_address'],
-        				       'e_city' => $event_data[0]['e_city'],
-        				       'e_state' => $event_data[0]['e_state'],
-        				       'e_zipcode' => $event_data[0]['e_zipcode']
+                    for($i = 0; $i < count($data); $i++) {
+        		$remapped_data['ticket'][$i]= array('e_name' => $event_data[0]['e_name'],
+                                                            'id' => sprintf("%08d",$data[$i]['id']),
+                                                            'fullname' => $data[$i]['fullname'],
+                                                            'ticket_type' => $data[$i]['ticket_type'],
+                                                            'ticket_price' => sprintf("%01.2f",$data[$i]['ticket_price']),
+                                                            'fees' => sprintf("%01.2f",$data[$i]['fees']),
+                                                            'total_price' => sprintf("%01.2f",$data[$i]['total_price']),
+                                                            'e_description' => $event_data[0]['e_description'],
+                                                            'e_date' => $event_data[0]['e_date'],
+                                                            'e_start_time' => $event_data[0]['e_start_time'],
+                                                            'e_address' => $event_data[0]['e_address'],
+                                                            'e_city' => $event_data[0]['e_city'],
+                                                            'e_state' => $event_data[0]['e_state'],
+                                                            'e_zipcode' => $event_data[0]['e_zipcode']
         				       );
+                    }
       			$result = array_merge($remapped_data, $path);
         		$this->load->view('view_order', $result);
         	}

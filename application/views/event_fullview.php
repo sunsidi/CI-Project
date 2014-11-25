@@ -1216,13 +1216,14 @@ jQuery(document).ready(function () {
 		    		max_tickets = temp[1];
 		    		
 		    		var content = '<select id="quantity_type" class="form-control" placeholder="0" name = "quantity">';
-		    		//Commented out until we can handle multiple ticket requests.
-		    		/*for(var i = 0; i <= max_tickets; i++) {
+		    		
+		    		for(var i = 0; i <= max_tickets; i++) {
 		    			content += '<option value="'+i+'">'+i+'</option>';
-		    		}*/
-		    		content += '<option value="0">0</option>';
+		    		}
+                                //Commented out until we can handle multiple ticket requests. FINISHED
+		    		/*content += '<option value="0">0</option>';
 		    		if(Number(temp[1])) 
-		    			content += '<option value="1">1</option>';
+		    			content += '<option value="1">1</option>';*/
 		    		content += '</select>';
 		    		if(price_number == 0) {
 		    			$('#billing_info').hide();
