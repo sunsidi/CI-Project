@@ -328,14 +328,14 @@ class Stripe_controller extends CI_Controller{
 			$email_message = "<p>You have just purchased a ticket on Wrevel.com! You can click on the link below to view your order and print your tickets.  Make sure you save this e-mail as you would need it to access your tickets in the future. You can also sign up for free at www.wrevel.com to save all of your future purchases on your Wrevel account.</p>";
 		}
 		$data = array(
-			'event_id'  => $ticket['cost_per_ticket'][0]['event_id'],
-			'user_id'   => $info['user_id'],
-			'fullname'  => $info['fullname'],
-			'delivery'  => $ticket['mail'],
-			'ticket_type' => $ticket['type'],
-			'ticket_price' => $ticket['ticket_price'],
-			'fees' => $ticket['fees'],
-			'total_price' => $ticket['total_price'],
+			'event_id'      => $ticket['cost_per_ticket'][0]['event_id'],
+			'user_id'       => $info['user_id'],
+			'fullname'      => $info['fullname'],
+			'delivery'      => $ticket['mail'],
+			'ticket_type'   => $ticket['type'],
+			'ticket_price'  => $ticket['ticket_price'],
+			'fees'          => $ticket['fees'],
+			'total_price'   => $ticket['total_price'],
 			
 		);
 		$this->load->model('model_tickets');
