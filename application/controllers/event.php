@@ -481,7 +481,7 @@ class Event extends CI_Controller {
 	                    $previous_page = $this->session->userdata('refresh_page');
 	                    $previous_page = $previous_page . $event_id;
 	                    redirect($previous_page);
-	                }
+	                } 
 		}
         	
         
