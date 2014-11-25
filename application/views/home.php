@@ -181,7 +181,7 @@
                 <a href="javascript:;" onClick="toggleVideo('hide');" style="float: right;"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></a>
 				</div>
 			<div class="modal-body">	
-				<iframe width="560" height="315" src="http://www.youtube.com/embed/4gtJtSUksR0?enablejsapi=1" frameborder="0" allowfullscreen="" style="z-index:3;"></iframe>
+				<iframe width="560" height="315" src="//www.youtube.com/embed/ekb_yJ874kA" frameborder="0" allowfullscreen style="z-index:3;"></iframe>
 			</div>
       
 			</div>

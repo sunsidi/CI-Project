@@ -628,6 +628,7 @@ table {
 	//color:#6BA5D3;
 	background:#6BA5D3;
 	color:white;
+	margin-top:15px;
 }
 
 .about-btn:hover, .about-btn:active{
@@ -941,6 +942,10 @@ list-style-type: none;
  padding: 0;
 }
 
+.about-tabs{
+margin-left:13%;
+}
+
 @media (max-width:990px){
 	.footer-link{
 	display:initial;
@@ -1018,6 +1023,9 @@ list-style-type: none;
 	}
 	.aboutus-info{
 	margin-top:15px;
+	}
+	.about-tabs{
+	margin-left:1%;
 	}
 }
 

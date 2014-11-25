@@ -19,47 +19,45 @@
 <!--content
 ==============================================-->
   <div class="container" style="padding-bottom:100px; width:85%;">
-	<div class="row" style="margin-top:50px;">
-		<div class="col-md-4 col-md-offset-1" style="padding:0;margin-left:13%;">
+	<div class="row" style="margin-top:5%;">
+		<div class="col-md-4 col-md-offset-1 about-tabs" style="padding:0;">
 			<div class="row">
-				<div class="col-md-5 col-sm-5 col-xs-5" style="text-align:center;">
+				<div class="col-md-5 col-sm-4 col-xs-4" style="text-align:center;">
 					<a href="#executives" data-toggle="tab" ><button class="btn about-btn" type="button" >
 					<p style="font-size:40px;"><span class="glyphicon glyphicon-user"></span></p>
 					<p>Executives</p></button></a>
 				</div>
-				<div class="col-md-5 col-sm-5 col-xs-5" style="text-align:center;">
+				<div class="col-md-5 col-sm-4 col-xs-4" style="text-align:center;">
 					<a href="#web" data-toggle="tab"><button class="btn about-btn" type="button" style="line-height:100%;">
 					<p style="font-size:40px;"><i class="fa fa-globe"></i></p>
 					<p>Web</p>
 					<p>Development</p>
 					</button></a>
 				</div>
-			</div>	
-			<div class="row" style="margin-top:15px;">
-				<div class="col-md-5 col-sm-5 col-xs-5" style="text-align:center;">
+			
+				<div class="col-md-5 col-sm-4 col-xs-4" style="text-align:center;">
 					<a href="#app" data-toggle="tab"><button class="btn about-btn" type="button" style="line-height:100%;">
 					<p style="font-size:40px;"><i class="fa fa-mobile"></i></p>
 					<p>App</p>
 					<p>Development</p>
 					</button></a>
 				</div>
-				<div class="col-md-5 col-sm-5 col-xs-5" style="text-align:center;">
+				<div class="col-md-5 col-sm-4 col-xs-4" style="text-align:center;">
 					<a href="#graphics" data-toggle="tab"><button class="btn about-btn" type="button" style="line-height:100%;">
 					<p style="font-size:40px;"><span class="glyphicon glyphicon-camera"></span></p>
 					<p>Graphics/</p>
 					<p>Media</p>
 					</button></a>
 				</div>
-			</div>
-			<div class="row" style="margin-top:15px;">
-				<div class="col-md-5 col-sm-5 col-xs-5" style="text-align:center;">
+			
+				<div class="col-md-5 col-sm-4 col-xs-4" style="text-align:center;">
 					<a href="#pr" data-toggle="tab"><button class="btn about-btn" type="button" style="line-height:100%;">
 					<p style="font-size:40px;"><i class="fa fa-bullhorn"></i></p>
 					<p>PR/</p>
 					<p>Marketing</p>
 					</button></a>
 				</div>
-				<div class="col-md-5 col-sm-5 col-xs-5" style="text-align:center;">
+				<div class="col-md-5 col-sm-4 col-xs-4" style="text-align:center;">
 					<a href="#alumni" data-toggle="tab"><button class="btn about-btn" type="button">
 					<p style="font-size:40px;"><i class="fa fa-graduation-cap"></i></p>
 					<p>Alumni</p>
