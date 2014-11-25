@@ -28,16 +28,15 @@
         <div class="panel" style="background-color: #d7e0e9; border:none ; border-radius: 10px;">
 	    
 	    <div class="panel-body" style="background-color: #d7e0e9; border-radius: 10px;">
-		<!--<p style="text-align: center; color: #787e84; font-size: 30px;">Simple Pricing</p>
-		<hr width="100%"/>-->
 		
-		<div class="col-md-6 col-sm-6" style="background: #4a97c9; border-radius: 10px; margin-top: 30px;">
-		<p style="text-align: center;color: white; font-size: 27px; padding-top: 70px;"><img src="<?php echo $PATH_IMG?>pig.png"/>  <b>Simple payment system</b></p><br/>
+		
+		<div class="col-md-6 col-sm-6" style="background: #4a97c9; border-radius: 10px; margin-top:4%;">
+		<p class="pricing-header" style="text-align: center;color: white; padding-top: 18%;"><img src="<?php echo $PATH_IMG?>pig.png" class="pricing-icon"/>  <b>Simple payment system</b></p><br/>
 		    <ul class="pricing-points">
 			<li> <p style="color: white; font-size: 18px;"><span style="color:#7ACF08;font-size: 20px;">&#x2713; </span> No start-up fees or extra<br/>charges</p></li>
 			<li> <p style="color: white; font-size: 18px;"><span style="color:#7ACF08;font-size: 20px;">&#x2713; </span> Accept all credit cards<br/></p></li>
 		    </ul>
-		<p style="text-align: left;margin-left:15%;color: white; font-size: 27px; padding-top: 50px;"><img src="<?php echo $PATH_IMG?>dollar.png"/> <b>No website fee</b></p><br/>
+		<p class="pricing-header" style="text-align: left;margin-left:15%;color: white;padding-top: 15%;"><img src="<?php echo $PATH_IMG?>dollar.png" class="pricing-icon"/> <b>No website fee</b></p><br/>
 		    <ul class="pricing-points">
 			<li> <p style="color: white; font-size: 18px;"><span style="color:#7ACF08;font-size: 20px;">&#x2713; </span> We charge $0 to use our <br/>services</p></li>
 			<li> <p style="color: white; font-size: 18px; padding-bottom: 70px;"><span style="color:#7ACF08;font-size: 20px;">&#x2713; </span> No monthly fees</p></li>
@@ -46,16 +45,16 @@
 		
 		<div class="col-md-6 col-sm-6">
 		    <p style="line-height: 0px;text-align: center;color: #0076be; font-size: 20px; padding-top: 70px;"><img src="<?php echo $PATH_IMG?>w.png"/>  Wrevel fee</p><br/>
-		    <p style="line-height: 0px;text-align: center;color: #0076be; font-size: 35px; padding-top: 10px;"><b>1.5% + .50&#162</b></p><br/>
+		    <p class="fees" style="line-height: 0px;text-align: center;color: #0076be; padding-top: 10px;"><b>1.5% + .50&#162</b></p><br/>
 		    <p style="line-height: 0px;text-align: center;color: #0076be; font-size: 15px;"><b>per successful charge</b></p><br/>
 
 		    <p style="line-height: 0px;text-align: center;color: #0076be; font-size: 20px; padding-top: 25px;"><img src="<?php echo $PATH_IMG?>card.png"/> Credit Card fee</p><br/>
-		    <p style="line-height: 0px;text-align: center;color: #0076be; font-size: 35px; padding-top: 10px;"><b>2.9% + .30&#162 </b><font size="2">Vat</font></p><br/>
+		    <p class="fees" style="line-height: 0px;text-align: center;color: #0076be; padding-top: 10px;"><b>2.9% + .30&#162 </b><font size="2">Vat</font></p><br/>
 		    <p style="line-height: 0px;text-align: center;color: #0076be; font-size: 15px;"><b>per successful charge</b></p><br/>
 		    <hr width="80%" color="#c4cfda"/>
 		    <div class="col-md-5 col-sm-6 col-xs-6">
 			<p style="color: #0076be; font-size: 25px;"><b>Example:</b></p>
-			<p style="color: #0076be; font-family:GillSans; font-size: 70px;">$20</p>
+			<p class="ticket-pricing" style="color: #0076be; font-family:GillSans;">$20</p>
 			<p style="line-height: 0px;text-align: center;color: #0076be; font-size: 17px;">ticket price</p>
 		    </div>
 		    <div class="col-md-7 col-sm-6 col-xs-6">
@@ -73,8 +72,8 @@
 	<!--What to do-->
         <div class="panel" style="border: none; border-radius: 10px;background: #4a97c9;">
            <div class="panel-body" style="border-radius: 10px;">
-		<p style="text-align:center;font-size:28px;"><font color="white"><img src="<?php echo $PATH_IMG?>thumbsup.png" style="width:30px;"/> Free Events</font></p><br/>
-		<p style="text-align:center;font-size:22px;margin-top:-15px;"><font color="white">You can still use our beautiful ticket system for absolutely<br/>
+		<p class="free-events" style="text-align:center;"><font color="white"><img src="<?php echo $PATH_IMG?>thumbsup.png" style="width:30px;"/> Free Events</font></p>
+		<p class="free-events-descript" style="text-align:center;"><font color="white">You can still use our beautiful ticket system for absolutely
 		free. We make money only when you make money.</font></p>
             </div>
         </div>

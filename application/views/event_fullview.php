@@ -895,7 +895,7 @@ jQuery(document).ready(function () {
 			   
 			   <div class="row" style="margin-top:15px;font-size:23px;">
 								<h3 style="color:black;"><em>Posted By</em></h3>
-								<a href="<?php echo base_url().'public_profile/user/'. $posterID?>"><img src="<?php echo base_url().'uploads/'. $poster_image_key?>" style="width:100px; height:100px;border-radius: 150px;border:2px solid #7874a2;z-index:5;position:relative;"><span style="color:white;background:#7874a2; padding:5px 25px 5px 40px; border-radius:5px;margin-left:-20px;z-index:3;"><?php echo $posted_fullname?></span></a>  
+								<a href="<?php echo base_url().'public_profile/user/'. $posterID?>"><img src="<?php echo base_url().'uploads/'. $poster_image_key?>" class="user-posted" style="border-radius: 150px;border:2px solid #7874a2;z-index:5;position:relative;"><span class="username-posted" style="color:white;background:#7874a2; padding:5px 25px 5px 40px; border-radius:5px;margin-left:-20px;z-index:3;"><?php echo $posted_fullname?></span></a>  
 			 </div>
 			   
 			   <div style="margin-top:50px;">
@@ -1121,10 +1121,10 @@ jQuery(document).ready(function () {
           </script>    
          
                    <?php echo form_open('event/event_comment/'.$category."/".$event[0]['event_id']); ?>
-                   <div style="margin-left:20%;margin-top:20px;">
+                   <div class="event-comment-section">
                     <div class="left-inner-addon pull-left">
                     <span class="glyphicon glyphicon-comment fa-flip-horizontal"></span>
-                         <input type="text" class="form-control" id="comment" name= "comment" style="font-size:20px; width:100%;" placeholder="send a message!">                       
+                         <input type="text" class="form-control event-post-textarea" id="comment" name= "comment" placeholder="send a message!">                       
                           
                  </div>       
                         <!--Submit comment-->
