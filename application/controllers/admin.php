@@ -3,7 +3,7 @@
 class admin extends CI_Controller{
 	public function admin_account(){
             $this->load->library('session');
-            $allowed_access = array('kelui92@gmail.com','abirashukur@gmail.com','cjbackintime@gmail.com');
+            $allowed_access = array('kelui92@gmail.com','abirashukur@gmail.com','cjbackintime@gmail.com','tshum741@gmail.com');
             $keep_going = false;
             for($i = 0; $i < 3; $i++) {
                 if($this->session->userdata('email') == $allowed_access[$i]) {
