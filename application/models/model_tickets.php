@@ -24,7 +24,10 @@ class Model_tickets extends CI_Model{
             $data['ticket_id'] = md5(uniqid());
         }
         for($i = 0; $i < $quantity; $i++) {
-            if($this->db->insert('tickets',$data)){}
+            if($this->db->insert('tickets',$data)){
+                $barcode = $this->db->insert_id();
+                $this->db->update('tickets',array('barcode' => $barcode), array('id' => $barcode));
+            }
             else
                 return false;
         }

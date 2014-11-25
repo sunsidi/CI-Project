@@ -459,6 +459,9 @@ class account extends CI_Controller{
         	$this->load->library('path');
         	$this->load->model('model_events');
         	$this->load->model('model_tickets');
+                //$this->load->library('barcode');
+                //$remapped_data['barcode'] = $this->barcode->Barcode39("123456789", 320, 200, 100, "PNG", 1);
+                //echo $data;
         	$path = $this->path->getPath();
         	$event_data = $this->model_events->find_event($event_id);
         	$data = $this->model_tickets->get_ticket_with_id($event_id, $ticket_id);
@@ -477,7 +480,8 @@ class account extends CI_Controller{
                                                             'e_address' => $event_data[0]['e_address'],
                                                             'e_city' => $event_data[0]['e_city'],
                                                             'e_state' => $event_data[0]['e_state'],
-                                                            'e_zipcode' => $event_data[0]['e_zipcode']
+                                                            'e_zipcode' => $event_data[0]['e_zipcode'],
+                                                            'barcode' => $data[$i]['barcode']
         				       );
                     }
       			$result = array_merge($remapped_data, $path);
@@ -572,4 +576,9 @@ class account extends CI_Controller{
 		$this->session->set_flashdata('message', "Ticket refund request received. We will review it and get back to you soon.");
 		redirect('account/myaccount_ticketmanagement');
 	}
+        public function barcode_test() {
+            $this->load->library('barcode');
+            $data = $this->barcode->Barcode39("123456789", 320, 200, 100, "PNG", 1);
+            echo $data;
+        }
 }

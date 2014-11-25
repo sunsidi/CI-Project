@@ -90,7 +90,7 @@
 			</div>
 			
 			<div class="col-md-4 col-sm-4 col-xs-4">
-			    <img src="<?php echo $PATH_IMG?>2d.png"style="width:200px;z-index:1; "/>
+                            <img src="<?php echo base_url().'application/controllers/barcode.php?barcode='.$ticket[$i]['barcode'].'&width=205&height=120'?>">
 			    <p style="font-size:9px;  margin-left: 5px;">
 				<b>Disclaimer</b><br>
 				Please bring a valid photo ID to the event with this ticket.
