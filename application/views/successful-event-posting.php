@@ -14,14 +14,16 @@
 
 <body>
 <?php $this->load->view('header');?>
+<div class="container">
+<div class="row">
 	<div class="col-md-6 col-md-offset-3">
 		<div class="panel" style="background:none; border:none; box-shadow:none; color:white;">
     		<div class="panel-body">
 				<div class="row">
-        			<div class="col-md-6" style="background:#79749E; height:75px; text-align:center; padding-top:15px; border-top-left-radius:10px;">
+        			<div class="col-md-6 col-sm-6" style="background:#79749E; height:75px; text-align:center; padding-top:15px; border-top-left-radius:10px;">
             			<img src="<?php echo $PATH_IMG?>wrevel_logo.png"style="width:180px;z-index:1;"/>
         			</div>
-         			<div class="col-md-6" style="background:#6CA5CC; height:75px; text-align:center; font-size:35px; padding:15px 10px 10px 0;  border-top-right-radius:10px;">
+         			<div class="col-md-6 col-sm-6" style="background:#6CA5CC; height:75px; text-align:center; font-size:35px; padding:15px 10px 10px 0;  border-top-right-radius:10px;">
             			<p>Wrev Status</p>
         			</div>
      			</div>
@@ -34,6 +36,8 @@
      		</div>
          </div>
      </div>
+</div>
+</div>	 
 <?php $this->load->view('footer');?>
 <!-- Bootstrap core JavaScript
     ================================================== -->
