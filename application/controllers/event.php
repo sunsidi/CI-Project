@@ -36,6 +36,7 @@ class Event extends CI_Controller {
                 $this->load->library('googlemaps');
                 $this->load->library('hashmap_cata');
                 $this->load->library('session');
+                $this->session->unset_userdata('refresh_page');
                 $this->session->unset_userdata('session_expired');
                 $this->session->set_userdata('refresh_page', 'event/event_info/'.$category.'/');
                 if($this->session->userdata('is_logged_in')) {
@@ -459,7 +460,6 @@ class Event extends CI_Controller {
 	        	
 	                $user_id = $this->model_users->get_userID($email);
 	                
-	        	$this->model_users->add_reputation($email, $amount);
 	        	$already_attending = $this->model_events->update_attending($user_id, $event_id);
 	                if($already_attending){
 	                    $this->session->set_flashdata('message','You are already attending this wrev!' );
@@ -469,7 +469,7 @@ class Event extends CI_Controller {
 	                }
 	                else {
 	                    $this->session->set_flashdata('message','You just earned 5 reputation points for going(maybe) to wrev!' );
-	                    
+	                    $this->model_users->add_reputation($email, $amount);
 	                    //Notify the owner of the event that you are going.
 	                    $event_data = $this->model_events->find_event($event_id);
 	                    $event_creator = $event_data[0]['e_creatorID'];
