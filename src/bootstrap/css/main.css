@@ -10,6 +10,7 @@
     margin-right:-4px;
 }
 
+
 date#footer {
   position: absolute;
   bottom: 0;
@@ -946,6 +947,55 @@ list-style-type: none;
 margin-left:13%;
 }
 
+.post-comment-btn{
+font-size:20px;
+margin-top:5px;
+margin-left:20px;
+}
+
+.post-input{
+margin-left:20px;
+}
+
+.post-textarea{
+width:200px;
+}
+
+.user-posted{
+width:100px; 
+height:100px;
+}
+
+.event-comment-section{
+margin-left:20%;
+margin-top:20px;
+}
+
+.event-post-textarea{
+font-size:20px; 
+width:100%;
+}
+
+.free-events{
+font-size:28px;
+}
+
+.free-events-descript{
+font-size:22px;
+padding:0 16%;
+}
+
+.pricing-header{
+font-size: 27px;
+}
+
+.fees{
+font-size: 35px;
+}
+.ticket-pricing{
+font-size: 70px;
+}
+
 @media (max-width:990px){
 	.footer-link{
 	display:initial;
@@ -966,7 +1016,7 @@ margin-left:13%;
 	display:initial;
 	}	
 	.profile-image{
-	 margin-left:0;
+	 margin-left:-15px;
 	 margin-top:15px;
 	 width:130px;
 	 height:130px;
@@ -1058,6 +1108,10 @@ margin-left:13%;
 	.attending-line{
 	margin-top:-190px;
 	}
+	.event-comment-section{
+	margin-left:10%;
+	}
+
 }
 
 /*Iphone 6 + Iphone plus*/
@@ -1140,12 +1194,64 @@ margin-left:13%;
 	.pricing-points{
 	margin-left: 10%;	
 	}
+	.wrev-tabs{
+	font-size:15px;
+	}
+	.post-comment-btn{
+	font-size:15px;
+	margin-top:10px;
+	}
+	.user-posted{
+	width:80px; 
+	height:80px;
+	}
+	.username-posted{
+	font-size:20px;
+	}
+	.event-post-textarea{
+	font-size:18px; 
+	width:90%;
+	}
+	.pricing-icon{
+	width:40px;
+	}
+	.free-events{
+	font-size:25px;
+	}
+
+	.free-events-descript{
+	font-size:19px;
+	padding:0;
+	}
+	
+	.pricing-header{
+	font-size: 24px;
+	}
+	.fees{
+	font-size: 28px;
+	}
+	.ticket-pricing{
+	font-size: 60px;
+	}
 }
 @media (width:375px){
 	.event-type-image{
 	margin-left:30%;
 	width:118px;
 	margin-top:-30px;
+	}
+	.wrev-tabs{
+	font-size:13px;
+	}
+	.post-input{
+	margin-left:0px;
+	}
+	.post-textarea{
+	width:180px;
+	}
+	.cwrev_category{
+	width:78px;
+	height:78px;	
 	}
 }
 
@@ -1226,11 +1332,47 @@ margin-left:13%;
 	.pricing-points{
 	margin-left: 10%;
 	}
-	
-	//.likeshareinvite{
-	//text-align:left;
-	//padding-left:50px;
-	//}
+	.wrev-tabs{
+	font-size:12.4px;
+	}
+	.post-comment-btn{
+	font-size:15px;
+	margin-top:10px;
+	margin-left:0px;
+	}
+	.post-input{
+	margin-left:0px;
+	}
+	.post-textarea{
+	width:90%;
+	}
+	.user-posted{
+	width:80px; 
+	height:80px;
+	}
+	.username-posted{
+	font-size:20px;
+	}
+	.pricing-icon{
+	width:40px;
+	}
+	.free-events{
+	font-size:25px;
+	}
+
+	.free-events-descript{
+	font-size:19px;
+	padding:0;
+	}
+	.pricing-header{
+	font-size: 24px;
+	}
+	.fees{
+	font-size: 28px;
+	}
+	.ticket-pricing{
+	font-size: 60px;
+	}
 }
 
 /* For iPhones and Android*/
@@ -1268,4 +1410,15 @@ margin-left:13%;
 	.buy-ticket{
 	margin-top:5px;
 	}
+	.wrev-tabs{
+	font-size:9.48px;
+	}
+	.user-posted{
+	width:75px; 
+	height:75px;
+	}
+	.username-posted{
+	font-size:18px;
+	}
+	
 }

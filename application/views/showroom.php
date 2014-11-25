@@ -144,22 +144,26 @@ position:absolute;
                         echo form_open_multipart(base_url().'main/update_profile', $requiredthings);
                     ?>
                       
-                       <div class="info-hidden" style="text-align:center;">
-                    <label>Status</label>
-                    <input type="radio" style="margin-left:40px;" name="relationship" value="S"> Single
+                       <div class="info-hidden row" style="text-align:center;">
+                    <label class="col-sm-2 control-label">Status</label>
+					<div class="col-sm-10">
+                    <input type="radio" name="relationship" value="S"> Single
                     <input type="radio" name="relationship" value="M"> Married
                     <!--<input type="radio" name="relationship" value="W"> Widowed-->
                     <input type="radio" name="relationship" value="D"> Divorced
                     <input type="radio" name="relationship" value="C"> In a Relationship
-
+					</div>
                     </div>
-		    <div style="text-align:left;">
-                    <label style="margin-left:15px;">Gender</label>
-                    <input type="radio" style="margin-left:40px;" name="gender" value="M"> Male
+					
+					<div class="row">
+                    <label class="col-sm-2 control-label">Gender</label>
+					<div class="col-sm-4">
+                    <input type="radio" name="gender" value="M"> Male
                     <input type="radio" name="gender" value="F"> Female
-
+					</div>
 
                     </div>
+					
                         <form class="form-horizontal" role="form">
                         <div class="info-hidden">
                          <label class="col-sm-2 control-label">Birthday</label>
@@ -586,15 +590,15 @@ position:absolute;
                         <?php echo form_open('showroom/chatbox_comment/'.$username); ?>
                        
                                     </div>
-                                    <div class="row left-inner-addon" style="padding-top:10px;float:left;margin-left:20px;">
+                                    <div class="row left-inner-addon post-input" style="padding-top:10px;float:left;">
                                         <!--<span class="glyphicon glyphicon-comment"></span>-->
                                         <!--<input type="text" class="form-control" placeholder="write something">-->
                                          <span class="glyphicon glyphicon-comment fa-flip-horizontal" style="margin-top:10px;" ></span>
-                                        <input type="text" name="comment" class="form-control" rows="1" placeholder="write something" style="resize:none;width:200px;"></textarea>
+                                        <input type="text" name="comment" class="form-control post-textarea" rows="1" placeholder="write something" style="resize:none;"></textarea>
                                     </div>
                                     
                                         <!--<a href="#" class="blue-button post">Post Comment</a> <a href="#" class="blue-button upload"><span class="glyphicon glyphicon-camera"></span></a>-->
-                                        <a href="#"><button type="submit" class="btn btn-lg" style="background:#478EBF; color:white; font-size:20px;padding:5px; border-radius:10px;margin-left:20px;margin-top:5px;">Post Comment</button></a>
+                                        <a href="#"><button type="submit" class="btn btn-lg post-comment-btn" style="background:#478EBF; color:white; padding:5px; border-radius:10px;">Post Comment</button></a>
                                         <?php echo form_close() ?>
                                        <!-- <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;"><span class="glyphicon glyphicon-camera"></span></button></a>-->
                                     

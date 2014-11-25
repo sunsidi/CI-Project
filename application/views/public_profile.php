@@ -157,15 +157,15 @@ position:absolute;
                         <?php echo form_open('public_profile/chatbox_comment/'.$other_id); ?>
                        
                                     </div>
-                                    <div class="row left-inner-addon" style="padding-top:10px;float:left;margin-left:20px;">
+                                    <div class="row left-inner-addon post-input" style="padding-top:10px;float:left;">
                                         <!--<span class="glyphicon glyphicon-comment"></span>-->
                                         <!--<input type="text" class="form-control" placeholder="write something">-->
                                         <span class="glyphicon glyphicon-comment fa-flip-horizontal" style="margin-top:10px;" ></span>
-                                        <input type="text" name="comment" class="form-control" rows="1" placeholder="write something" style="resize:none;width:200px;"></textarea>
+                                        <input type="text" name="comment" class="form-control post-textarea" rows="1" placeholder="write something" style="resize:none;"></textarea>
                                     </div>
                                    
                                         <!--<a href="#" class="blue-button post">Post Comment</a> <a href="#" class="blue-button upload"><span class="glyphicon glyphicon-camera"></span></a>-->
-                                        <a href="#"><button type="submit" class="btn btn-lg" style="background:#478EBF; color:white; font-size:20px;padding:5px; border-radius:10px;margin-left:20px;margin-top:5px;">Post Comment</button></a>
+                                        <a href="#"><button type="submit" class="btn btn-lg post-comment-btn" style="background:#478EBF; color:white; padding:5px; border-radius:10px;">Post Comment</button></a>
                                         <?php echo form_close() ?>
                                        <!-- <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;"><span class="glyphicon glyphicon-camera"></span></button></a>-->
                                     

@@ -32,7 +32,7 @@ jQuery(document).ready(function () {
 <div id='alertMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:20px;width: 40%; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>
 
 
-<div class="container" style="padding:4%;">
+<div class="container contact-container" style="padding:4%;">
 	
 	<div class="row row-centered">
 		<div class="col-md-5 col-xs-11 col-sm-9 col-centered">
