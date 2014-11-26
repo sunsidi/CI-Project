@@ -997,12 +997,12 @@ font-size: 70px;
 }
 @media (max-width: 1025px){
   .eventlist{
-    margin-left: -85px;
+    margin-left: -57px;
   }
   .col-hide{
     display: none;
   }
-  .word-size{
+
 @media (max-width:990px){
 	.footer-link{
 	display:initial;
@@ -1254,6 +1254,8 @@ font-size: 70px;
 	  margin-left: -20px;
 	  margin-top: -50px;
 	}
+	
+  }
 }
 @media (width:375px){
 	.event-type-image{
