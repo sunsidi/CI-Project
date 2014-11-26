@@ -60,6 +60,7 @@
     </form>
     </div>  
     </div>-->
+    <div class="eventlist">
                 <div style="margin-left:auto;margin-right:auto;">
                 	<div style="margin-left:25%;margin-right:auto;margin-top:25px;">
 <!--                <form class="form-inline" role="form"> -->
@@ -83,7 +84,7 @@
                             <div class="left-inner-addon" style="font-size:20px;float:left;">
                                 <i class="fa fa-map=marker"></i>
                                 <label class="sr-only" for="exampleInputPassword2">Places</label>
-                                <select id="cookie_state" name="state" type="text" style="float:left;border-radius:5px;padding:4px;">
+                                <select id="cookie_state" name="state" type="text" style="height:34px;float:left;border-radius:5px;padding:4px;">
               <option value="" selected="selected">Select a State</option> 
               <option value="AK">AK</option>
               <option value="AL">AL</option>
@@ -145,6 +146,7 @@
         <input type="submit" class="btn" style="background:#1C74BB; color:white;font-size:20px; padding:1px 10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);"value="go">
             <?php echo form_close() ?>
             </div>
+		</div>
            
 <!--<div class="text-center" style=";margin-right:8%;margin-left:8%;">
     <ul class="pagination">
@@ -159,6 +161,7 @@
 </div>-->
 
     <div class="container" style=" margin-top:30px;">
+      <div class="eventlist">
       <div class="row">
         <!--modify -->
         <?php if($size <= 1) {
@@ -168,7 +171,8 @@
                 echo '<span style="color:black;margin-left:43%; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">results found!</span></span>';
             }?>
             </div>
-            <div>
+      </div>
+      <div>
       <?php  
       $i = 0;
       $group_page = 1;
