@@ -1093,6 +1093,10 @@ padding:4%;
 	.post-comment-btn{
 	font-size:18px;
 	}
+
+	.inbox-btn{
+	display:none;
+	}
 }
 
 

@@ -569,7 +569,7 @@ position:absolute;
                       <div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
                                 <div class="panel-body">
                                     <!--Check Inbox-->
-                                    <div class="row" style="padding-top:10px;">                                     
+                                    <div class="row inbox-btn" style="padding-top:10px;">                                     
                                         <a href="<?php echo base_url()."chat/MessageView"?>" class="btn btn-lg btn-block blue-button" style="border-radius:10px;border:2px solid #478EBF;"><span class="glyphicon glyphicon-user"></span> Check Inbox</a>
                                     </div>
                                     <!--Chatbox-->
