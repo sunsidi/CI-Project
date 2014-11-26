@@ -23,7 +23,7 @@
 <div class="row" style="padding-bottom:50px;">
    
        
-         <p class="word-size" style="color: white; margin-top:2%; text-align:center;font-family:GillSans;">discover your world.</p>
+         <p style=" font-size: 40px; color: white; margin-top:2%; text-align:center;font-family:GillSans;">discover your world.</p>
           
        
     	<div style="margin-top:70px;">

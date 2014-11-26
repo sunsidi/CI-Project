@@ -995,6 +995,7 @@ font-size: 35px;
 .ticket-pricing{
 font-size: 70px;
 }
+/*<<<<<<< HEAD
 
 .example-text{
 font-size: 20px;
@@ -1007,6 +1008,15 @@ font-size: 35px;
 .contact-container{
 padding:4%;
 }
+=======*/
+@media (max-width: 1025px){
+  .eventlist{
+    margin-left: -57px;
+  }
+  .col-hide{
+    display: none;
+  }
+/*>>>>>>> tony_dev*/
 
 @media (max-width:990px){
 	.footer-link{
@@ -1265,6 +1275,7 @@ padding:4%;
 	.example-text{
 	font-size: 21px;
 	}
+/*<<<<<<< HEAD
 	.example-number{
 	font-size: 23px;
 	}
@@ -1272,6 +1283,10 @@ padding:4%;
 	font-size:15px;
 	}
 
+=======*/
+	
+  }
+/*>>>>>>> tony_dev*/
 }
 @media (width:375px){
 	.event-type-image{
