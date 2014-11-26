@@ -701,9 +701,7 @@ background:white !important;
 .header-link{
 	display:none;
 }
-.footer-link{
-	display:none;
-	}
+
 
 
 .admin-header{
@@ -727,7 +725,7 @@ background:white !important;
 
 .comment_section{
 	overflow:auto; 
-	background:#8AA8C0; 
+	background:#02a89e; 
 	color:white; 
 	border-radius:10px; 
 	width: 60%;
@@ -867,10 +865,6 @@ margin-top:-67px;
 display:none;
 }
 
-.featured_category{
-height:587px;
-}
-
 .event-full-view-container{
 width:88%;
 }
@@ -880,27 +874,6 @@ width:88%;
  margin-top:-30px;
 }
 
-
-a.header-button{
-color:white;
-border:1px solid white;
-}
-
-a.header-button:hover{
-color:#6A8BA8;
-background:white;
-}
-
-.middle-line{
-border-right-style: solid;	
-border-right-color: gray;
-border-right-width: thin;
-}
-@media (max-width:990px){
-	.footer-link{
-	display:initial;
-	}
-}
 /* For tablet*/
 @media (max-width:800px){
 	.create-form-border{
@@ -947,13 +920,7 @@ border-right-width: thin;
 	.event-stuff{
 	margin-top:25px;
 	}
-	.status-bar{
-	border-top-right-radius:0;
-	}
-
 }
-
-
 
 @media (max-width: 603px){
 	.star1{
@@ -962,14 +929,7 @@ border-right-width: thin;
 	.star2{
 	display:initial;
 	}
-	.middle-line{
-	border-right-style: none;	
-	border-right-color: none;
-	border-right-width: none;
-	}
-	.event-title{
-	font-size:22px;
-	}
+	
 }
 
 /*Iphone 6 + Iphone plus*/
@@ -986,7 +946,6 @@ border-right-width: thin;
 	}
 	.comment_section{
 	height:300px;
-	width:90%;
 	}
 	
 	.small{
@@ -1021,17 +980,7 @@ border-right-width: thin;
 	.profile-fullname, .reputation{
 	font-size:25px;
 	}
-	.event-stuff{
-		margin-top:90px;
-	}
-	.event-type-image{
-	margin-left:33%;
-	width:120px;
-	margin-top:-30px;
-	}
-	.featured_category{
-	height:550px;
-}
+	
 }
 //@media (width:375px){
 //	.cwrev_category{
@@ -1052,11 +1001,10 @@ border-right-width: thin;
 	margin-left:-63px;
 	}
 	.event-stuff{
-	margin-top:90px;
+	margin-top:100px;
 	}
 	.comment_section{
 	height:300px;
-	width:90%;
 	}
 	
 	.small{
@@ -1095,11 +1043,6 @@ border-right-width: thin;
 	.profile-fullname, .reputation{
 	font-size:22px;
 	}
-	.event-type-image{
-	margin-left:30%;
-	width:120px;
-	margin-top:-30px;
-	}
 }
 
 /* For iPhones and Android*/
@@ -1131,10 +1074,5 @@ border-right-width: thin;
 	.blue-button{
 	font-size:18px;
 	}
-	.event-type-image{
-	margin-left:28%;
-	}
-	.buy-ticket{
-	margin-top:5px;
-	}
 }
+

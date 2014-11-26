@@ -83,7 +83,7 @@
                             <div class="left-inner-addon" style="font-size:20px;float:left;">
                                 <i class="fa fa-map=marker"></i>
                                 <label class="sr-only" for="exampleInputPassword2">Places</label>
-                                <select id="cookie_state" name="state" type="text" style="float:left;border-radius:5px;padding:4px;">
+                                <select id="cookie_state" name="state" type="text" style="height:34px;float:left;border-radius:5px;padding:4px;">
               <option value="" selected="selected">Select a State</option> 
               <option value="AK">AK</option>
               <option value="AL">AL</option>
