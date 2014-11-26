@@ -995,9 +995,6 @@ font-size: 35px;
 .ticket-pricing{
 font-size: 70px;
 }
-.word-size{
-font-size: 40px;
-}
 @media (max-width: 1025px){
   .eventlist{
     margin-left: -85px;
@@ -1006,9 +1003,6 @@ font-size: 40px;
     display: none;
   }
   .word-size{
-font-size: 200%;
-}
-}
 @media (max-width:990px){
 	.footer-link{
 	display:initial;
@@ -1255,17 +1249,10 @@ font-size: 200%;
 	.ticket-pricing{
 	font-size: 60px;
 	}
-	.eventlist{
-	  margin-left: -30px;
-	}
 	
 	.mywrev-icon{
 	  margin-left: -20px;
 	  margin-top: -50px;
-	}
-	
-	.mywrev-righticon{
-	  margin-left:40px;
 	}
 }
 @media (width:375px){
@@ -1287,7 +1274,6 @@ font-size: 200%;
 	width:78px;
 	height:78px;	
 	}
-	
 }
 
 /* For iPhones and Android*/
@@ -1413,9 +1399,7 @@ font-size: 200%;
 	.ticket-pricing{
 	font-size: 60px;
 	}
-	
-	.eventlist{
-	  margin-left: -57px;
+
 	}
 }
 
