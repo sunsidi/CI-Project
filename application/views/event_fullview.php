@@ -711,7 +711,7 @@ jQuery(document).ready(function () {
                                     <h3><i class="fa fa-exclamation-circle"></i> What is this?</h3>
                                     
                                     <!--Description-->
-                                    <p style="padding:10px 20px;word-break:break-all;"><?php echo $event[0]['e_description']?></p>
+                                    <p style="padding:10px 20px;"><?php echo $event[0]['e_description']?></p>
                             </div>
                         </div>
                         <div class="col-md-6" style="text-align:center;margin-top:10px;">              	
@@ -976,9 +976,10 @@ jQuery(document).ready(function () {
 			                </div><!--end of popup-->
                                         <?php if(isset($email)) {
                                             if($email == $user_email_temp[0]['email'] && !$event[0]['finalized'] && $event[0]['e_is_address_hide']) {?>
-                                        <div>
+                                       
                                             <a id="finalize_button" href="<?php echo base_url().'account/unhide_event/'.$event_id?>" class="btn viewmorewrevs" style="font-size:20px;border-radius:8px;color:white;">Finalize Event</a>
-                                        </div>
+                                        
+                                       
                                             <?php }}?>
                                 </div>
                             </div>
