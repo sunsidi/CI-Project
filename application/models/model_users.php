@@ -2,17 +2,24 @@
 
 class Model_users extends CI_Model{
     
-         function __construct()
-         {
-                  parent::__construct();
-                  $this->load->database();
-                  
-          }
-          
-          public function admin_get_users() {
-          	$query = $this->db->get('users');
-          	return $query->result_array();
-          }
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->database();
+
+    }
+
+    public function admin_get_users() {
+        $this->db->order_by('join_stamp', 'desc');
+        $query = $this->db->get('users');
+        return $query->result_array();
+    }
+
+    public function admin_delete_users() {
+        $data = $this->input->post('users_checkbox');
+        $this->db->where_in('user_id', $data);
+        $this->db->delete('users');
+    }
     public function can_log_in()
     {
     	$fbcheck = $this->db->get_where('users', array('email' => $this->input->post('email'), 'f_b' => 1));

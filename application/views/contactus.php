@@ -29,59 +29,57 @@ jQuery(document).ready(function () {
 ==============================================-->
 
 
-<div id='alertMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left: 32%; margin-top:20px;width: 500px; background-color: green; color: white;  border: 1px solid white;text-align:center;">'.$this->session->flashdata('message').'</p>';?></div>
+<div id='alertMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:20px;width: 40%; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>
 
 
-<div class="container" style="padding:50px; ">
+<div class="container contact-container" style="padding:4%;">
 	
-	<div class="row" style="">
-	    <div style="background-image: url(<?php echo $PATH_IMG?>contact_us_box.png); background-size: 500px 450px;width: 500px; height: 450px;margin-left:auto; margin-right:auto;">
-		        <p style="padding-top: 5px;margin-left: 30%;font-size: 40px; color: white;">
-                        Contact Us
-                        </p>
-			
-			<div class="panel" style="padding-left: 30px;background: transparent; height: 450px;">
-			    <div class="panel-body" style="color: white;text-align:center; font-size:15px; background: transparent;">
-			    <div class="container">
-			    <div class="row">
+	<div class="row row-centered">
+		<div class="col-md-5 col-xs-11 col-sm-9 col-centered">
+			<div class="panel" style="border:none; border-radius:10px;">
+				<div class="panel-heading" style="background-image: url(<?php echo $PATH_IMG?>contact_us_header.png); height: 60px;background-size:100% 60px;border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                <p style="color: white; font-size: 30px; text-align: center;">Contact Us</p>
+				</div>
+				<div class="panel-body" style="background:#74A1C5; color:white;text-align:center;font-size:15px;border-bottom-left-radius:10px;border-bottom-right-radius:10px;">
+				
 			    
 				<form class="form-horizontal" action="<?php echo base_url().'info/contactWrevel' ?>" method="post">
 				<fieldset>
     
-            <!-- To input-->
-            <div class="form-group">
-              <div class="col-md-2 col-sm-2 col-xs-2" for="name" style="">To</div>
-              <div class="col-md-9 col-sm-9 col-xs-9">
+             <!--To input-->
+            <div class="form-group row">
+              <div class="col-md-2 col-sm-2" for="name" style="">To</div>
+              <div class="col-md-9 col-sm-9">
                 Wrevel
               </div>
             </div>
     
-            <!--Email input-->
-            <div class="form-group">
-              <div class="col-md-2 col-sm-2 col-xs-2" for="email" style="">Email</div>
-              <div class="col-md-9 col-sm-9 col-xs-9">
-                <input id="name" name="email" type="email" class="form-control" style="width: 350px;" required>
+           <!--Email input-->
+            <div class="form-group row">
+              <div class="col-md-2 col-sm-2" for="email" style="">Email</div>
+              <div class="col-md-9 col-sm-9">
+                <input id="name" name="email" type="email" class="form-control"  required>
               </div>
             </div>
 
-            <!-- Subject input-->	    
-	    <div class="form-group">
-              <div class="col-md-2 col-sm-2 col-xs-2" for="email" style="">Subject</div>
-              <div class="col-md-9 col-sm-9 col-xs-9">
-                <input id="name" name="subject" type="text" class="form-control" style="width: 350px;" required>
+             <!--Subject input-->    
+	    <div class="form-group row">
+              <div class="col-md-2 col-sm-2" for="email" style="">Subject</div>
+              <div class="col-md-9 col-sm-9">
+                <input id="name" name="subject" type="text" class="form-control" required>
               </div>
             </div>
 	    
 	    <!--Message input-->
-            <div class="form-group">
-              <div class="col-md-2 col-sm-2 col-xs-2" for="message" style="">Message</div>
-              <div class="col-md-9 col-sm-9 col-xs-9">
-                <textarea class="form-control" id="message" name="message" rows="5" style="width: 350px;"></textarea>
+            <div class="form-group row">
+              <div class="col-md-2 col-sm-2" for="message" style="">Message</div>
+              <div class="col-md-9 col-sm-9">
+                <textarea class="form-control" id="message" name="message" rows="5"></textarea>
               </div>
             </div>
     
-            <!-- Form actions -->
-            <div class="form-group">
+            <!--Form actions -->
+            <div class="form-group row">
               <div class="col-md-offset-7 col-sm-offset-7 col-xs-offset-7" style="">
                 <button type="submit" name="submit" class="btn btn-primary btn-lg">Send</button>
               </div>
@@ -90,10 +88,11 @@ jQuery(document).ready(function () {
 				</fieldset>
 				</form>
 			    </div>
-			    </div>
-			    </div>
+			    
 			</div>
-	    </div>
+		</div>
+	
+	    
 	</div>
 </div>
 <!--end of content-->

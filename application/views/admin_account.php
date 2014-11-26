@@ -35,6 +35,7 @@
 	.tab-pane{
 	border-radius:15px;
 	}
+	
 
 </style>
 </head>
@@ -49,20 +50,20 @@
 		<div class="col-md-3 col-md-offset-1"> <!-- required for floating -->
 			<!-- Nav tabs -->
 			<div class="panel panel-default" style="border:none;-moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.5);-webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.5); box-shadow: 0px 0px 5px rgba(0,0,0,0.5);border-radius:15px;">
-				<div class="panel-heading" style="background:#5DBAE5;color:white;border-top-left-radius:15px;border-top-right-radius:15px;">
+				<div class="panel-heading" style="background:#628DA3;color:white;border-top-left-radius:15px;border-top-right-radius:15px;">
     					<h3 class="panel-title text-center" style="font-size:28px;">Admin System</h3>
   				</div>
   				<div class="panel-body" style="background:#D9E2EB;border-bottom-left-radius:15px;border-bottom-right-radius:15px;">
 					<ul class="nav nav-tabs tabs-left" style="text-align:center;border:none;">
-						<li class="active"><a href="#home" data-toggle="tab">Summary</a></li>
-						<li><a href="#users" data-toggle="tab">Users</a></li>
-						<li><a href="#listings" data-toggle="tab">Listings</a></li>
-						<li><a href="#transactions" data-toggle="tab">Transactions</a></li>
-						<li><a href="#blog" data-toggle="tab">Blog</a></li>
-						<li><a href="#user_stats" data-toggle="tab">User Stats</a></li>
-						<li><a href="#listing_stats" data-toggle="tab">Listing Stats</a></li>
-						<li><a href="#site_stats" data-toggle="tab">Site Stats</a></li>
-						<li><a href="#multiple_listings" data-toggle="tab">Multiple Listings</a></li>
+						<li class="active" style="float: none;"><a href="#home" data-toggle="tab">Summary</a></li>
+						<li style="float: none;"><a href="#users" data-toggle="tab">Users</a></li>
+						<li style="float: none;"><a href="#listings" data-toggle="tab">Listings</a></li>
+						<li style="float: none;"><a href="#transactions" data-toggle="tab">Transactions</a></li>
+						<li style="float: none;"><a href="#blog" data-toggle="tab">Blog</a></li>
+						<!--<li style="float: none;"><a href="#user_stats" data-toggle="tab">User Stats</a></li>
+						<li style="float: none;"><a href="#listing_stats" data-toggle="tab">Listing Stats</a></li>-->
+						<li style="float: none;"><a href="#site_stats" data-toggle="tab">Site Stats</a></li>
+						<li style="float: none;"><a href="#multiple_listings" data-toggle="tab">Multiple Listings</a></li>
 					</ul>
 				</div>
 			</div>
@@ -82,7 +83,7 @@
 					
 					<div class="col-md-6">
 					<img src="<?php echo $PATH_IMG?>listing_icon.png" style="width:80%;"/>
-					<h1 style="margin-top:40px;"><strong><?php echo count($all_events)?></strong> Lisings</h1>
+					<h1 style="margin-top:40px;"><strong><?php echo count($all_events)?></strong> Listings</h1>
 					</div>
 					
 					
@@ -96,83 +97,97 @@
 				<div class="tab-pane" id="users" style="background:rgba(255,255,255,0.5);padding:10%;text-align:center;font-size:18px;">
 					<img src="<?php echo $PATH_IMG?>users_icon.png" style="width:40%;"/>
 					<h1 style="margin-top:20px;"><strong><?php echo count($all_users)?></strong> Users</h1>
-					<button type="button" class="btn admin_tabs">All</button>
-					<button type="button" class="btn admin_tabs">New</button>
-					<button type="button" class="btn admin_tabs">Current</button>
+					<button type="button" class="btn admin_tabs" onclick="show_all_users()">All</button>
+					<button type="button" class="btn admin_tabs" onclick="show_new_users()">New</button>
+					<button type="button" class="btn admin_tabs" onclick="show_current_users()">Current</button>
+                                        <form id="delete_users" action="<?php echo base_url()."admin/delete_users"?>" method="POST">
 					<div class="form-group" style="margin-top:10px;width:60%;margin-left:auto;margin-right:auto;">
-              					<div class="left-inner-addon" style="text-align:left;">
-                					<span class="glyphicon glyphicon-search"></span>
-          						<label class="sr-only">Search</label>
-          						<input type="Search" class="form-control" style="border-radius:10px;font-size:20px;" placeholder="Search">						
-          					</div>
+                                            <div class="left-inner-addon" style="text-align:left;">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                                <label class="sr-only">Search</label>
+                                                <input id="search_users" type="Search" class="form-control" style="border-radius:10px;font-size:20px;" placeholder="Search" onkeyup="show_users(event)">						
+                                            </div>
        					</div>
        					<div style="height:500px;overflow-y:auto;">
        					<table style="width:100%;text-align:left;">
        						<thead style="color:#5697CA;">
        							<tr>
-							<th style="width:25%;">Username</td>							
-							<th style="width:25%;">Email</td>							
-							<th style="width:25%;">Full Name</td>							
-							<th style="width:25%;">Date Created</td>
+                                                            <td style="width:25%;">Box</td>
+                                                            <td style="width:25%;">Username</td>							
+                                                            <td style="width:25%;">Email</td>							
+                                                            <td style="width:25%;">Full Name</td>							
+                                                            <td style="width:25%;">Date Created</td>
+                                                            <td style="width:25%;">Joined</td>
 							</tr>
 						</thead>
 						<tbody>
 						<?php if(isset($all_users)) {
 							for($i = 0; $i < count($all_users); $i++) {?>
 							<tr>
-							<td><?php echo $all_users[$i]['username']?></td>
-							<td><?php echo $all_users[$i]['email']?></td>
-							<td><?php echo $all_users[$i]['fullname']?></td>
-							<td><?php echo $all_users[$i]['birthday']?></td>
+                                                            <td><input type="checkbox" name="users_checkbox[]" value="<?php echo $all_users[$i]['user_id'];?>"></td>
+                                                            <td style="word-break:break-all;"><?php echo $all_users[$i]['username']?></td>
+                                                            <td style="word-break:break-all;" class="users_group"><?php echo $all_users[$i]['email']?></td>
+                                                            <td style="word-break:break-all;"><?php echo $all_users[$i]['fullname']?></td>
+                                                            <td style="word-break:break-all;" class="users_group_date"><?php echo $all_users[$i]['join_stamp']?></td>
+                                                            <td style="word-break:break-all;" class="users_group_joined"><?php echo $all_users[$i]['diff']?></td>
 							</tr>
 						<?php }}?>
 						</tbody>
        					</table>
        					</div>
-       					<button type="button" class="btn admin_button" style="background:#C25B5C;">Block</button>
-       					<button type="button" class="btn admin_button" style="background:#8D6893;">Delete</button>
-					
+                                        <button type="button" class="btn admin_button" style="background:#C25B5C;">Block</button>
+                                        <button type="submit" class="btn admin_button" style="background:#8D6893;">Delete</button>
+                                        </form>
 				</div>
       
 				<!--Listings-->
 				<div class="tab-pane" id="listings" style="background:rgba(255,255,255,0.5);padding:10%;text-align:center;font-size:18px;">
 					<img src="<?php echo $PATH_IMG?>listing_icon.png" style="width:40%;"/>
 					<h1 style="margin-top:20px;"><strong><?php echo count($all_events)?></strong> Listings</h1>
-					<button type="button" class="btn admin_tabs">All</button>
-					<button type="button" class="btn admin_tabs">New</button>
-					<button type="button" class="btn admin_tabs">Current</button>
+					<button type="button" class="btn admin_tabs" onclick="show_all_events()">All</button>
+					<button type="button" class="btn admin_tabs" onclick="show_new_events()">New</button>
+					<button type="button" class="btn admin_tabs" onclick="show_current_events()">Current</button>
+                                        <form id="delete_users" action="<?php echo base_url()."admin/delete_events"?>" method="POST">
 					<div class="form-group" style="margin-top:10px;width:60%;margin-left:auto;margin-right:auto;">
               					<div class="left-inner-addon" style="text-align:left;">
                 					<span class="glyphicon glyphicon-search"></span>
           						<label class="sr-only">Search</label>
-          						<input type="Search" class="form-control" style="border-radius:10px;font-size:20px;" placeholder="Search">						
+          						<input id="search_events" type="Search" class="form-control" style="border-radius:10px;font-size:20px;" placeholder="Search" onkeyup="show_events(event)">						
           					</div>
        					</div>
        					<div style="height:500px;overflow-y:auto;">
        					<table style="width:100%;text-align:left;">
        						<thead style="color:#5697CA;">
        							<tr>
-							<th style="width:25%;">Title</td>							
-							<th style="width:25%;">Category</td>							
-							<th style="width:25%;">Username</td>							
-							<th style="width:25%;">Date Created</td>
+                                                            <td style="width:25%;">Box</td>	
+                                                            <td style="width:25%;">Title</td>							
+                                                            <td style="width:25%;">Category</td>							
+                                                            <td style="width:25%;">Creator ID</td>
+                                                            <td style="width:25%;">Event Date</td>
+                                                            <td style="width:25%;">Date and Time Created</td>
+                                                            <td style="width:25%;">Difference</td>
 							</tr>
 						</thead>
 						<tbody>
 						<?php if(isset($all_events)) {
 							for($i = 0; $i < count($all_events); $i++) {?>
 							<tr>
-							<td><?php echo $all_events[$i]['e_name']?></td>
-							<td><?php echo $all_events[$i]['e_category']?></td>
-							<td><?php echo $all_events[$i]['e_creatorID']?></td>
-							<td><?php echo $all_events[$i]['e_date']?></td>
+                                                            <td><input type="checkbox" name="events_checkbox[]" value="<?php echo $all_events[$i]['event_id'];?>"></td>
+                                                            <td class="events_group"><?php echo $all_events[$i]['e_name']?></td>
+                                                            <td><?php echo $all_events[$i]['e_category']?></td>
+                                                            <td><?php echo $all_events[$i]['e_creatorID']?></td>
+                                                            <td class="events_group_date"><?php echo $all_events[$i]['e_date']?></td>
+                                                            <td class="events_group_created"><?php echo $all_events[$i]['create_stamp']?></td>
+                                                            <td class="events_group_difference"><?php echo $all_events[$i]['diff']?></td>
 							</tr>
 						<?php }}?>
 						</tbody>
        					</table>
        					</div>
        					<button type="button" class="btn admin_button" style="background:#C25B5C;">Block</button>
-       					<button type="button" class="btn admin_button" style="background:#8D6893;">Delete</button>
+                                        <button type="submit" class="btn admin_button" style="background:#8D6893;">Delete</button>
+                                        </form>
+                                        
 				</div>
       
 				<!--Transactions-->
@@ -191,7 +206,45 @@
        					</div>
        					<div style="height:500px;overflow-y:auto;">
        					<table style="width:100%;text-align:left;">
-       						
+							<thead style="color:#5697CA;">
+       						<tr>
+							<th>Buyer</th>							
+							<th>Seller</th>							
+							<th>Event ID</th>							
+							<th>Event Name</th>
+							<th>Delivery</th>
+							<th>Ticket Type</th>
+							<th>Price</th>
+							<th>Our Fees</th>
+							<th>Status</th>
+							<th></th>
+							</tr>
+							
+							<tbody>
+							<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>
+								<div class="btn-group">
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								Action <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#">Issue Refund</a></li>
+									<li><a href="#">Cancel Request</a></li>
+									<li><a href="#">Cancel Order</a></li>
+								</ul>
+								</div>
+							</td>
+							</tr>
+							</tbody>
        					</table>
        					</div>
        					<button type="button" class="btn admin_button" style="background:#4B90C9;">Open</button>
@@ -217,9 +270,9 @@
        					<table style="width:100%;text-align:left;">
        						<thead style="color:#5697CA;">
        							<tr>
-							<th style="width:33.3%;">Title</td>							
-							<th style="width:33.3%;">Username</td>							
-							<th style="width:33.3%;">Date Created</td>							
+							<th style="width:33.3%;">Title</th>							
+							<th style="width:33.3%;">Username</th>							
+							<th style="width:33.3%;">Date Created</th>							
 							</tr>
 						</thead>
 						<tbody>
@@ -265,8 +318,8 @@
 					
 				</div>
 	  	
-				<!--User Stats-->
-				<div class="tab-pane" id="user_stats" style="background:rgba(255,255,255,0.5);padding:10%;text-align:center;font-size:18px;">
+				<!--User Stats DELETED* SAME AS USERS-->
+				<!--<div class="tab-pane" id="user_stats" style="background:rgba(255,255,255,0.5);padding:10%;text-align:center;font-size:18px;">
 					<img src="<?php echo $PATH_IMG?>users_icon.png" style="width:40%;"/>
 					<h1 style="margin-top:20px;"><strong>2.5K</strong> Users</h1>
 					<button type="button" class="btn admin_tabs">All</button>
@@ -283,16 +336,14 @@
        					<table style="width:100%;text-align:left;">
        						<thead style="color:#5697CA;">
        							<tr>
-							<th style="width:25%;">Joined Today</td>							
-							<th style="width:25%;">7 days ago</td>							
-							<th style="width:25%;">30 days ago</td>							
-							<th style="width:25%;">via Facebook</td>
+							<td style="width:25%;">Email</td>							
+							<td style="width:25%;">Join Date</td>						
+							<td style="width:25%;">via Facebook</td>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 							<td>sdasd</td>
-							<td>rtrt</td>
 							<td>rtrt</td>
 							<td>rte</td>
 							</tr>
@@ -302,30 +353,30 @@
        					<button type="button" class="btn admin_button" style="background:#C25B5C;">Block</button>
        					<button type="button" class="btn admin_button" style="background:#8D6893;">Delete</button>
 					
-				</div>
+				</div>-->
 	  
-				<!--Listing Stats-->
-				<div class="tab-pane" id="listing_stats" style="background:rgba(255,255,255,0.5);padding:10%;text-align:center;font-size:18px;">
+				<!--Listing Stats DELETED* SAME AS LISTINGS-->
+				<!--<div class="tab-pane" id="listing_stats" style="background:rgba(255,255,255,0.5);padding:10%;text-align:center;font-size:18px;">
 					<img src="<?php echo $PATH_IMG?>listing_icon.png" style="width:40%;"/>
 					<h1 style="margin-top:20px;"><strong>2.5K</strong> Listings</h1>
 					<button type="button" class="btn admin_tabs">All</button>
 					<button type="button" class="btn admin_tabs">New</button>
 					<button type="button" class="btn admin_tabs">Current</button>
-					<div class="form-group" style="margin-top:10px;width:60%;margin-left:auto;margin-right:auto;">
-              					<div class="left-inner-addon" style="text-align:left;">
-                					<span class="glyphicon glyphicon-search"></span>
-          						<label class="sr-only">Search</label>
-          						<input type="Search" class="form-control" style="border-radius:10px;font-size:20px;" placeholder="Search">						
-          					</div>
-       					</div>
+                                        <div class="form-group" style="margin-top:10px;width:60%;margin-left:auto;margin-right:auto;">
+                                            <div class="left-inner-addon" style="text-align:left;">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                                <label class="sr-only">Search</label>
+                                                <input type="Search" class="form-control" style="border-radius:10px;font-size:20px;" placeholder="Search">						
+                                            </div>
+                                        </div>
        					<div style="height:500px;overflow-y:auto;">
        					<table style="width:100%;text-align:left;">
        						<thead style="color:#5697CA;">
        							<tr>
-							<th style="width:25%;">Created Today</td>							
-							<th style="width:25%;">7 days ago</td>							
-							<th style="width:25%;">30 days ago</td>							
-							<th style="width:25%;">Users w/o listings</td>
+							<th style="width:25%;">Created Today</th>							
+							<th style="width:25%;">7 days ago</th>							
+							<th style="width:25%;">30 days ago</th>							
+							<th style="width:25%;">Users w/o listings</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -339,7 +390,7 @@
        					</table>
        					</div>
        					
-				</div>
+				</div>-->
 				
 				<!--Site Stats-->
 				<div class="tab-pane" id="site_stats" style="background:rgba(255,255,255,0.5);padding:2% 8%; font-size:25px;">
@@ -501,6 +552,117 @@
  
     });
     </script>
-
+    <script>
+        function show_users(e) {
+            //var regex = new RegExp("^[a-zA-Z0-9_]*$");
+            if (e.keyCode) key = e.keyCode;
+            //else if(e.which) key = e.which;
+            if(/[a-zA-Z0-9 ]/.test(String.fromCharCode(key)) || key == 8) {
+                var search_value = $('#search_users').val();
+                //First set the search_value checker .
+                (function(search_value) {
+                    //Amount of time to wait before actually doing the search.
+                    setTimeout(function () {
+                        $('.users_group').each(function() { 
+                            //If value isn't finished typing then skip this function and go to the next.
+                            if(search_value != $('#search_users').val()) {
+                                return false;
+                            }
+                            //Check if an alphanumeric is typed in.
+                            else {
+                                if(($(this).html()).indexOf($('#search_users').val()) > -1 && $('#search_users').val().length >= 0) {
+                                    $(this).parent().show();
+                                }
+                                else
+                                    $(this).parent().hide();
+                            }
+                        })
+                    },1000);
+                }(search_value));
+            }
+        }
+    </script>
+    <script>
+        function show_events(e) {
+            //var regex = new RegExp("^[a-zA-Z0-9_]*$");
+            if (e.keyCode) key = e.keyCode;
+            //else if(e.which) key = e.which;
+            if(/[a-zA-Z0-9 ]/.test(String.fromCharCode(key)) || key == 8) {
+                var search_value = $('#search_events').val();
+                //First set the search_value checker .
+                (function(search_value) {
+                    //Amount of time to wait before actually doing the search.
+                    setTimeout(function () {
+                        $('.events_group').each(function() { 
+                            //If value isn't finished typing then skip this function and go to the next.
+                            if(search_value != $('#search_events').val()) {
+                                return false;
+                            }
+                            //Check if an alphanumeric is typed in.
+                            else {
+                                if(($(this).html()).indexOf($('#search_events').val()) > -1 && $('#search_events').val().length >= 0) {
+                                    $(this).parent().show();
+                                }
+                                else
+                                    $(this).parent().hide();
+                            }
+                        })
+                    },1000);
+                }(search_value));
+            }
+        }
+    </script>
+    <script>
+        function show_all_users() {
+            $('.users_group').parent().show();
+            $('#search_users').val('');
+        }
+        function show_new_users() {
+            $('.users_group_date').each(function() {
+                if(parseInt($(this).next().html()) < 7) {
+                    $(this).parent().show();
+                }
+                else {
+                    $(this).parent().hide();
+                }
+            });
+        }
+        function show_current_users() {     
+            $('.users_group_date').each(function() {
+                if(parseInt($(this).next().html()) < 1) {
+                    $(this).parent().show();
+                }
+                else {
+                    $(this).parent().hide();
+                }
+            }); 
+        }
+    </script>
+    <script>
+        function show_all_events() {
+            $('.events_group').parent().show();
+            $('#search_events').val('');
+        }
+        function show_new_events() {
+            $('.events_group_created').each(function() {
+                if(parseInt($(this).next().html()) < 7) {
+                    $(this).parent().show();
+                }
+                else {
+                    $(this).parent().hide();
+                }
+            });
+        }
+        function show_current_events() {     
+            $('.events_group_created').each(function() {
+                if(parseInt($(this).next().html()) < 1) {
+                    $(this).parent().show();
+                }
+                else {
+                    $(this).parent().hide();
+                }
+            }); 
+        }
+    </script>
 </body>
 </html> 

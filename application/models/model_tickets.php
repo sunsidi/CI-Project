@@ -13,12 +13,25 @@ class Model_tickets extends CI_Model{
     	return $query->result_array();
     }
     
-    public function add_ticket($data)
+    public function add_ticket($data, $quantity)
     {
-	 if($this->db->insert('tickets',$data))
-	       return $this->db->insert_id();
-	 else
-	       return false;
+        $check_purchase = $this->db->get_where('tickets',array('user_id' => $data['user_id'], 'event_id' => $data['event_id']));
+        if($check_purchase->num_rows() != 0) {
+            $temp_data = $check_purchase->row_array(0);
+            $data['ticket_id'] = $temp_data['ticket_id'];
+        }
+        else {
+            $data['ticket_id'] = md5(uniqid());
+        }
+        for($i = 0; $i < $quantity; $i++) {
+            if($this->db->insert('tickets',$data)){
+                $barcode = $this->db->insert_id();
+                $this->db->update('tickets',array('barcode' => $barcode), array('id' => $barcode));
+            }
+            else
+                return false;
+        }
+        return $data['ticket_id'];
     }
     
     public function get_ticket($event_id, $user_id) {

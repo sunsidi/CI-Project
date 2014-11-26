@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -23,10 +23,11 @@
 <div class="row" style="padding-bottom:50px;">
    
        
-         <p style="color: white; margin-top:2%; text-align:center; font-size: 40px; font-family:GillSans;">discover your world.</p>
+         <p style="color: white; margin-top:2%; text-align:center; font-size: 300%; font-family:GillSans;">discover your world.</p>
           
        
     	<div style="margin-top:70px;">
+	 <div class="mywrev-icon">
         <div class="col-md-6 col-xs-10">
         	<div class="col-hide"><div style="background:rgba(237,28,36,0.7); width:90px; height:30px; margin-left: 55%; border-radius:10px; padding-left:7px;margin-top:0px;">
         		<p style="color: white;font-size:23px;">discover</p>
@@ -44,6 +45,7 @@
             <img src="<?php echo $PATH_IMG?>/horizontal.png" class="line" style="width:65%; height: 2px; margin-top: -70%; margin-left: 30%;">
             <div class="col-hide"><img src="<?php echo $PATH_IMG?>/horizontal.png" class="line" style="z-index:1;width:2px; height: 550px; margin-top: -75%; margin-left: 105%;"></div>
         </div>
+	 </div>
     
         
         <div class="col-md-5 col-xs-10" style="">

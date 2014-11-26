@@ -11,10 +11,16 @@ class Model_events extends CI_Model{
     }
     
     public function admin_get_events() {
+        $this->db->order_by('create_stamp', 'desc');
     	$query = $this->db->get('events');
     	return $query->result_array();
     }
     
+    public function admin_delete_events() {
+              $data = $this->input->post('events_checkbox');
+              $this->db->where_in('event_id', $data);
+              $this->db->delete('events');
+          }
       public function find_event($e_id)
       {
 	    //$e_name = 'Boris pimp party';
@@ -37,6 +43,7 @@ class Model_events extends CI_Model{
 	    return $query->result_array();
       }
       
+      //Deduct the tickets.
       public function deduct_tickets($e_id, $type, $quantity_to_deduct)
       {
       	    $query = $this->db->query('SELECT * FROM event_ticket_types WHERE event_id = '.$e_id.' AND type = "'.$type.'"');
@@ -48,6 +55,20 @@ class Model_events extends CI_Model{
       	    else {
       	    	$this->db->update('event_ticket_types', array('quantity' => $new_quantity), array('event_id' => $e_id, 'type' => $type));
       	    	return true;
+      	    }
+      }
+      
+      //Need to check first and charge before we deduct the tickets or we'll lose some. So check first.
+      public function check_tickets($e_id, $type, $quantity_to_deduct)
+      {
+      	    $query = $this->db->query('SELECT * FROM event_ticket_types WHERE event_id = '.$e_id.' AND type = "'.$type.'"');
+      	    $ticket_temp = $query->row_array(0);
+      	    $new_quantity = $ticket_temp['quantity'] - $quantity_to_deduct;
+      	    if($new_quantity < 0) {
+      	    	return false;
+      	    }
+      	    else {
+                return true;
       	    }
       }
       
@@ -588,7 +609,15 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
     
     // show the event_address for the event.
     public function show_address($event_id) {
-    	$this->db->update('events', array('e_is_address_hide' => 0), array('event_id' => $event_id));
+    	$this->db->update('events', array('e_is_address_hide' => 0, 'finalized' => 1), array('event_id' => $event_id));
+    }
+    
+    //Remove user from a specific event.
+    public function remove_user($user_id, $event_id) {
+        $this->db->delete('users_attending', array('user_id' => $user_id));
+        $this->db->set('e_attending','e_attending - 1', FALSE);
+        $this->db->where('event_id', $event_id);
+        $this->db->update('events');
     }
 }
 ?>

@@ -369,7 +369,8 @@ class account extends CI_Controller{
         	$email_to = array();
         	for($i = 0; $i < count($all_attendees); $i++) {
         		$this->model_friend_request->notify_other($user_data['user_id'], $all_attendees[$i]['user_id'], $message);
-        		$email_to[] = $all_attendees[$i]['email'];
+                        $temp_info = $this->model_users->get_email($all_attendees[$i]['user_id']);
+        		$email_to[] = $temp_info[0]['email'];
         	}
         	$this->load->library('email',array('mailtype'=>'html'));
 		$this->email->from('donotreply@wrevel.com', "Wrevel, Inc.");
@@ -458,24 +459,31 @@ class account extends CI_Controller{
         	$this->load->library('path');
         	$this->load->model('model_events');
         	$this->load->model('model_tickets');
+                //$this->load->library('barcode');
+                //$remapped_data['barcode'] = $this->barcode->Barcode39("123456789", 320, 200, 100, "PNG", 1);
+                //echo $data;
         	$path = $this->path->getPath();
         	$event_data = $this->model_events->find_event($event_id);
         	$data = $this->model_tickets->get_ticket_with_id($event_id, $ticket_id);
         	if($data) {
-        		$remapped_data = array('e_name' => $event_data[0]['e_name'],
-        				       'fullname' => $data[0]['fullname'],
-        				       'ticket_type' => $data[0]['ticket_type'],
-        				       'ticket_price' => sprintf("%01.2f",$data[0]['ticket_price']),
-        				       'fees' => sprintf("%01.2f",$data[0]['fees']),
-        				       'total_price' => sprintf("%01.2f",$data[0]['total_price']),
-        				       'e_description' => $event_data[0]['e_description'],
-        				       'e_date' => $event_data[0]['e_date'],
-        				       'e_start_time' => $event_data[0]['e_start_time'],
-        				       'e_address' => $event_data[0]['e_address'],
-        				       'e_city' => $event_data[0]['e_city'],
-        				       'e_state' => $event_data[0]['e_state'],
-        				       'e_zipcode' => $event_data[0]['e_zipcode']
+                    for($i = 0; $i < count($data); $i++) {
+        		$remapped_data['ticket'][$i]= array('e_name' => $event_data[0]['e_name'],
+                                                            'id' => sprintf("%08d",$data[$i]['id']),
+                                                            'fullname' => $data[$i]['fullname'],
+                                                            'ticket_type' => $data[$i]['ticket_type'],
+                                                            'ticket_price' => sprintf("%01.2f",$data[$i]['ticket_price']),
+                                                            'fees' => sprintf("%01.2f",$data[$i]['fees']),
+                                                            'total_price' => sprintf("%01.2f",$data[$i]['total_price']),
+                                                            'e_description' => $event_data[0]['e_description'],
+                                                            'e_date' => $event_data[0]['e_date'],
+                                                            'e_start_time' => $event_data[0]['e_start_time'],
+                                                            'e_address' => $event_data[0]['e_address'],
+                                                            'e_city' => $event_data[0]['e_city'],
+                                                            'e_state' => $event_data[0]['e_state'],
+                                                            'e_zipcode' => $event_data[0]['e_zipcode'],
+                                                            'barcode' => $data[$i]['barcode']
         				       );
+                    }
       			$result = array_merge($remapped_data, $path);
         		$this->load->view('view_order', $result);
         	}
@@ -568,4 +576,9 @@ class account extends CI_Controller{
 		$this->session->set_flashdata('message', "Ticket refund request received. We will review it and get back to you soon.");
 		redirect('account/myaccount_ticketmanagement');
 	}
+        public function barcode_test() {
+            $this->load->library('barcode');
+            $data = $this->barcode->Barcode39("123456789", 320, 200, 100, "PNG", 1);
+            echo $data;
+        }
 }

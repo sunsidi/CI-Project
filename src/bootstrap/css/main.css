@@ -1,3 +1,16 @@
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
+
 date#footer {
   position: absolute;
   bottom: 0;
@@ -616,6 +629,7 @@ table {
 	//color:#6BA5D3;
 	background:#6BA5D3;
 	color:white;
+	margin-top:15px;
 }
 
 .about-btn:hover, .about-btn:active{
@@ -701,7 +715,9 @@ background:white !important;
 .header-link{
 	display:none;
 }
-
+.footer-link{
+	display:none;
+	}
 
 
 .admin-header{
@@ -725,7 +741,7 @@ background:white !important;
 
 .comment_section{
 	overflow:auto; 
-	background:#02a89e; 
+	background:#8AA8C0; 
 	color:white; 
 	border-radius:10px; 
 	width: 60%;
@@ -865,6 +881,10 @@ margin-top:-67px;
 display:none;
 }
 
+.featured_category{
+height:587px;
+}
+
 .event-full-view-container{
 width:88%;
 }
@@ -874,6 +894,126 @@ width:88%;
  margin-top:-30px;
 }
 
+
+a.header-button{
+color:white;
+border:1px solid white;
+}
+
+a.header-button:hover{
+color:#6A8BA8;
+background:white;
+}
+
+.middle-line{
+border-right-style: solid;	
+border-right-color: gray;
+border-right-width: thin;
+}
+
+.hide-line{
+margin-top:-130px;
+}
+
+.attending-line{
+margin-top:-130px;
+}
+
+button.evtlistingbtn{
+background:white;
+position:relative;
+}
+
+button.evtlistingbtn:hover{
+background:#428BCA;
+color:white;
+}
+
+.likeshareinvite{
+text-align:center;
+}
+
+.terms{
+font-size:40px;
+}
+
+.pricing-points{
+margin-left: 20%;
+list-style-type: none;
+ padding: 0;
+}
+
+.about-tabs{
+margin-left:13%;
+}
+
+.post-comment-btn{
+font-size:20px;
+margin-top:5px;
+margin-left:20px;
+}
+
+.post-input{
+margin-left:20px;
+}
+
+.post-textarea{
+width:200px;
+}
+
+.user-posted{
+width:100px; 
+height:100px;
+}
+
+.event-comment-section{
+margin-left:20%;
+margin-top:20px;
+}
+
+.event-post-textarea{
+font-size:20px; 
+width:100%;
+}
+
+.free-events{
+font-size:28px;
+}
+
+.free-events-descript{
+font-size:22px;
+padding:0 16%;
+}
+
+.pricing-header{
+font-size: 27px;
+}
+
+.fees{
+font-size: 35px;
+}
+.ticket-pricing{
+font-size: 70px;
+}
+
+.example-text{
+font-size: 20px;
+}
+
+.example-number{
+font-size: 35px;
+}
+
+.contact-container{
+padding:4%;
+}
+
+
+@media (max-width:990px){
+	.footer-link{
+	display:initial;
+	}
+}
 /* For tablet*/
 @media (max-width:800px){
 	.create-form-border{
@@ -889,7 +1029,7 @@ width:88%;
 	display:initial;
 	}	
 	.profile-image{
-	 margin-left:0;
+	 margin-left:-15px;
 	 margin-top:15px;
 	 width:130px;
 	 height:130px;
@@ -920,7 +1060,42 @@ width:88%;
 	.event-stuff{
 	margin-top:25px;
 	}
+	.status-bar{
+	border-top-right-radius:0;
+	}
+	.hide-line{
+	margin-top:-190px;
+	}
+	.comment_section{
+	width:75%;
+	}
+	.vault{
+	display:none;
+	}
+	.w_logo{
+	width:70px;
+	}
+	.title{
+	font-size:35px;
+	}
+	.pricing-points{
+	margin-left: 5%;
+	}
+	.notlogged{
+	display:none;
+	}
+	.aboutus-info{
+	margin-top:15px;
+	}
+	.about-tabs{
+	margin-left:1%;
+	}
+	.post-comment-btn{
+	font-size:18px;
+	}
 }
+
+
 
 @media (max-width: 603px){
 	.star1{
@@ -929,7 +1104,30 @@ width:88%;
 	.star2{
 	display:initial;
 	}
-	
+	.middle-line{
+	border-right-style: none;	
+	border-right-color: none;
+	border-right-width: none;
+	}
+	.event-title{
+	font-size:22px;
+	}
+	.hide-line{
+	visibility:hidden;
+	}
+	.pricing-points{
+	margin-left: 25%;
+	}
+}
+
+@media (max-width:533px){
+	.attending-line{
+	margin-top:-190px;
+	}
+	.event-comment-section{
+	margin-left:10%;
+	}
+
 }
 
 /*Iphone 6 + Iphone plus*/
@@ -946,6 +1144,7 @@ width:88%;
 	}
 	.comment_section{
 	height:300px;
+	width:90%;
 	}
 	
 	.small{
@@ -980,14 +1179,113 @@ width:88%;
 	.profile-fullname, .reputation{
 	font-size:25px;
 	}
+	.event-stuff{
+		margin-top:90px;
+	}
+	.event-type-image{
+	margin-left:33%;
+	width:120px;
+	margin-top:-30px;
+	}
+	.featured_category{
+	height:550px;
+	}
+	.line {
+	display: none;
+	}
+	button.evtlistingbtn{
+	background:white;
+	position:absolute;
+	//margin-top:65px;
+	margin-left:-105px;
+	margin-top:-60px;
+	}
+	
+	.title{
+	font-size:30px;
+	}
+	.w_logo{
+	width:58px;
+	}
+	.pricing-points{
+	margin-left: 10%;	
+	}
+	.wrev-tabs{
+	font-size:15px;
+	}
+	.post-comment-btn{
+	font-size:15px;
+	margin-top:10px;
+	}
+	.user-posted{
+	width:80px; 
+	height:80px;
+	}
+	.username-posted{
+	font-size:20px;
+	}
+	.event-post-textarea{
+	font-size:15px; 
+	width:90%;
+	}
+	.pricing-icon{
+	width:40px;
+	}
+	.free-events{
+	font-size:25px;
+	}
+
+	.free-events-descript{
+	font-size:19px;
+	padding:0;
+	}
+	
+	.pricing-header{
+	font-size: 24px;
+	}
+	.fees{
+	font-size: 28px;
+	}
+	.ticket-pricing{
+	font-size: 60px;
+	}
+	.example-text{
+	font-size: 21px;
+	}
+	.example-number{
+	font-size: 23px;
+	}
+	.event-post-btn{
+	font-size:15px;
+	}
 	
 }
-//@media (width:375px){
-//	.cwrev_category{
-//	width:63px;
-//	height:63px;
-//	}
-//}
+@media (width:375px){
+	.event-type-image{
+	margin-left:30%;
+	width:118px;
+	margin-top:-30px;
+	}
+	.wrev-tabs{
+	font-size:13px;
+	}
+	.post-input{
+	margin-left:0px;
+	}
+	.post-textarea{
+	width:180px;
+	}
+	.cwrev_category{
+	width:78px;
+	height:78px;	
+	}
+	.event-comment-input{
+	width:55%;
+	}
+	.eventlist{
+	margin-left: -70px;
+	}
+}
 
 /* For iPhones and Android*/
 @media (max-width: 360px) {
@@ -1001,10 +1299,11 @@ width:88%;
 	margin-left:-63px;
 	}
 	.event-stuff{
-	margin-top:100px;
+	margin-top:90px;
 	}
 	.comment_section{
 	height:300px;
+	width:90%;
 	}
 	
 	.small{
@@ -1043,6 +1342,89 @@ width:88%;
 	.profile-fullname, .reputation{
 	font-size:22px;
 	}
+	.event-type-image{
+	margin-left:32%;
+	width:105px;
+	margin-top:-30px;
+	}
+	button.evtlistingbtn{
+	background:white;
+	position:absolute;
+	//margin-top:65px;
+	//margin-left:-120px;
+	margin-left:-105px;
+	margin-top:-60px;
+	}
+	.w_logo{
+	width:58px;
+	}
+	.title{
+	font-size:28px;
+	}
+	.pricing-points{
+	margin-left: 10%;
+	}
+	.wrev-tabs{
+	font-size:12.4px;
+	}
+	.post-comment-btn{
+	font-size:15px;
+	margin-top:10px;
+	margin-left:0px;
+	}
+	.post-input{
+	margin-left:0px;
+	}
+	.post-textarea{
+	width:90%;
+	}
+	.user-posted{
+	width:80px; 
+	height:80px;
+	}
+	.username-posted{
+	font-size:20px;
+	}
+	.pricing-icon{
+	width:40px;
+	}
+	.free-events{
+	font-size:25px;
+	}
+
+	.free-events-descript{
+	font-size:19px;
+	padding:0;
+	}
+	.pricing-header{
+	font-size: 24px;
+	}
+	.fees{
+	font-size: 28px;
+	}
+	.ticket-pricing{
+	font-size: 60px;
+	}
+	.example-text{
+	font-size: 21px;
+	}
+	.example-number{
+	font-size: 23px;
+	}
+	.event-comment-input{
+	width:53%;
+	}
+	.event-post-textarea{
+	font-size:15px; 
+	width:90%;
+	}
+	.event-post-btn{
+	font-size:15px;
+	}
+	
+	.eventlist{
+	margin-left: -57px;
+	}
 }
 
 /* For iPhones and Android*/
@@ -1074,5 +1456,62 @@ width:88%;
 	.blue-button{
 	font-size:18px;
 	}
+	.event-type-image{
+	margin-left:30%;
+	}
+	.buy-ticket{
+	margin-top:5px;
+	}
+	.wrev-tabs{
+	font-size:9.48px;
+	}
+	.user-posted{
+	width:75px; 
+	height:75px;
+	}
+	.username-posted{
+	font-size:18px;
+	}
+	.example-text{
+	font-size: 18px;
+	}
+	.example-number{
+	font-size: 23px;
+	}
+	.event-comment-input{
+	width:auto;
+	}
+	.event-post-textarea{
+	width:auto;
+	}
 }
 
+@media (width:800px){
+	.contact-container
+	{
+		padding:31% 4%;
+	}
+
+}
+@media (width:768px){
+	.contact-container
+	{
+		padding:16% 4%;
+	}
+
+}
+
+@media (width:603px){
+	.contact-container
+	{
+		padding:8% 4%;
+	}
+
+}
+@media (width:600px){
+	.contact-container
+	{
+		padding:13% 4%;
+	}
+
+}
