@@ -58,10 +58,10 @@
 			<p style="line-height: 0px;text-align: center;color: #0076be; font-size: 17px;">ticket price</p>
 		    </div>
 		    <div class="col-md-7 col-sm-6 col-xs-6">
-			<p style="line-height: 20px;color: #0076be; font-size: 20px; padding-top: 30px;">The event goer Pays</p>
-			<p style="line-height: 20px;color: #0076be; font-size: 35px;"><b>$21.72</b></p>
-		    	<p style="line-height: 20px;color: #0076be; font-size: 20px;">and you get</p>
-			<p style="line-height: 20px;color: #0076be; font-size: 35px;"><b>$20</b></p>
+			<p class="example-text" style="line-height: 20px;color: #0076be; padding-top: 30px;">The event goer pays</p>
+			<p class="example-number" style="line-height: 20px;color: #0076be;"><b>$21.72</b></p>
+		    	<p class="example-text" style="line-height: 20px;color: #0076be;">and you get</p>
+			<p class="example-number" style="line-height: 20px;color: #0076be;"><b>$20</b></p>
 			<br/><br/><br/>
 		    </div>
 			<p style="text-align: center; line-height: 20px;color: #0076be; font-size: 17px; padding-bottom: 80px;">Wrevel&rsquo;s fee of .80&#162 and a credit card fee of .72&#162</p>

@@ -1122,14 +1122,14 @@ jQuery(document).ready(function () {
          
                    <?php echo form_open('event/event_comment/'.$category."/".$event[0]['event_id']); ?>
                    <div class="event-comment-section">
-                    <div class="left-inner-addon pull-left">
+                    <div class="left-inner-addon pull-left event-comment-input">
                     <span class="glyphicon glyphicon-comment fa-flip-horizontal"></span>
                          <input type="text" class="form-control event-post-textarea" id="comment" name= "comment" placeholder="send a message!">                       
                           
                  </div>       
                         <!--Submit comment-->
                        <!-- <button type="button" class="btn btn-lg" style="background:#1C74BB;color:white; padding:5px 10px;">Post Comment</button>-->
-                        <button type="submit" class="btn btn-lg" style="background:#1C74BB;color:white; padding:5px 10px;margin-left:10px;border-radius:8px;">Post Comment</button>
+                        <button type="submit" class="btn btn-lg event-post-btn" style="background:#1C74BB;color:white; padding:5px 10px;margin-left:10px;border-radius:8px;">Post Comment</button>
                         <?php echo form_close() ?>
 
                         <!--Upload Photo to comment box-->
