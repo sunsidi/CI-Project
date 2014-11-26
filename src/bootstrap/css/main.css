@@ -995,14 +995,19 @@ font-size: 35px;
 .ticket-pricing{
 font-size: 70px;
 }
-@media (max-width: 1025px){
-  .eventlist{
-    margin-left: -85px;
-  }
-  .col-hide{
-    display: none;
-  }
-  .word-size{
+
+.example-text{
+font-size: 20px;
+}
+
+.example-number{
+font-size: 35px;
+}
+
+.contact-container{
+padding:4%;
+}
+
 @media (max-width:990px){
 	.footer-link{
 	display:initial;
@@ -1083,6 +1088,13 @@ font-size: 70px;
 	}
 	.about-tabs{
 	margin-left:1%;
+	}
+	.post-comment-btn{
+	font-size:18px;
+	}
+
+	.inbox-btn{
+	display:none;
 	}
 }
 
@@ -1225,7 +1237,7 @@ font-size: 70px;
 	font-size:20px;
 	}
 	.event-post-textarea{
-	font-size:18px; 
+	font-size:15px; 
 	width:90%;
 	}
 	.pricing-icon{
@@ -1249,11 +1261,17 @@ font-size: 70px;
 	.ticket-pricing{
 	font-size: 60px;
 	}
-	
-	.mywrev-icon{
-	  margin-left: -20px;
-	  margin-top: -50px;
+
+	.example-text{
+	font-size: 21px;
 	}
+	.example-number{
+	font-size: 23px;
+	}
+	.event-post-btn{
+	font-size:15px;
+	}
+
 }
 @media (width:375px){
 	.event-type-image{
@@ -1273,6 +1291,9 @@ font-size: 70px;
 	.cwrev_category{
 	width:78px;
 	height:78px;	
+	}
+	.event-comment-input{
+	width:55%;
 	}
 }
 
@@ -1400,6 +1421,21 @@ font-size: 70px;
 	font-size: 60px;
 	}
 
+	.example-text{
+	font-size: 21px;
+	}
+	.example-number{
+	font-size: 23px;
+	}
+	.event-comment-input{
+	width:53%;
+	}
+	.event-post-textarea{
+	font-size:15px; 
+	width:90%;
+	}
+	.event-post-btn{
+	font-size:15px;
 	}
 }
 
@@ -1448,5 +1484,46 @@ font-size: 70px;
 	.username-posted{
 	font-size:18px;
 	}
-	
+	.example-text{
+	font-size: 18px;
+	}
+	.example-number{
+	font-size: 23px;
+	}
+	.event-comment-input{
+	width:auto;
+	}
+	.event-post-textarea{
+	width:auto;
+	}
+}
+
+@media (width:800px){
+	.contact-container
+	{
+		padding:31% 4%;
+	}
+
+}
+@media (width:768px){
+	.contact-container
+	{
+		padding:16% 4%;
+	}
+
+}
+
+@media (width:603px){
+	.contact-container
+	{
+		padding:8% 4%;
+	}
+
+}
+@media (width:600px){
+	.contact-container
+	{
+		padding:13% 4%;
+	}
+
 }

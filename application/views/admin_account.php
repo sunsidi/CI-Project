@@ -173,7 +173,7 @@
 							for($i = 0; $i < count($all_events); $i++) {?>
 							<tr>
                                                             <td><input type="checkbox" name="events_checkbox[]" value="<?php echo $all_events[$i]['event_id'];?>"></td>
-                                                            <td class="events_group"><?php echo $all_events[$i]['e_name']?></td>
+                                                            <td class="events_group" style="word-break:break-all;"><?php echo $all_events[$i]['e_name']?></td>
                                                             <td><?php echo $all_events[$i]['e_category']?></td>
                                                             <td><?php echo $all_events[$i]['e_creatorID']?></td>
                                                             <td class="events_group_date"><?php echo $all_events[$i]['e_date']?></td>
