@@ -86,7 +86,7 @@ position:absolute;
           <img src="<?php echo $PATH_IMG?>menu_button.png" style="margin-left:15px;"> </button>
             <ul class="dropdown-menu" role="menu">
               <li><a href="<? echo base_url()?>showroom/profile"><?php echo $nav_data['fullname']?></a></li>
-          <li class="header-link"><a href="<?php echo base_url()."chat/MessageView"?>">Inbox</a></li>
+          <!--<li class="header-link"><a href="<?php echo base_url()."chat/MessageView"?>">Inbox</a></li>-->
           <li class="header-link"><a href="<?php echo base_url().'showroom/notify2'?>">Notifications <span class="badge" style="background:#BE1E2D;"><?php echo $nav_data['counter'] ?></span></a></li>
           <!--<li class="header-link"><a href="#">Search</a></li>-->
           <li><a href="<? echo base_url()?>account/myaccount_accountinfo">My Account</a></li>
