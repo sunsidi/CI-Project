@@ -62,8 +62,7 @@ class Public_profile extends CI_Controller {
 	                                   'other_school'           => $other_data['school'],
 	                                   'other_user_reference'   => $other_data['user_reference'],
 	                                   'other_image_key'        => $other_data['image_key'],
-	                                   'other_chatbox_file'     => $other_data['chatbox_file'],
-	                                   'other_friends_list'     => $other_data['friends_list']);
+	                                   'other_chatbox_file'     => $other_data['chatbox_file']);
 	                                   
 	            //boolean statement----> determine whether or not to put a notification
 	            $nav_data = $this->session->all_userdata();
