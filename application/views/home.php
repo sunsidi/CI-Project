@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Wrevel</title>
+<meta name="google-site-verification" content="kAxBt1NwfJYcyPHrv4UMLNOWcRRunDS1iariPYvdRsE" />
 <meta name="description" content="Wrevel’s is a social networking platform that provides it’s users with the power to easily connect with people by creating, sharing, hosting, and finding parties and events online.">
 <meta name="keywords" content="event finder, ticketing platform, tickets, parties, event space, discover, socialize, experience, hotspots, icebreakers, culture, love and romance">
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
