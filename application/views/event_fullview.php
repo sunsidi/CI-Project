@@ -766,11 +766,17 @@ jQuery(document).ready(function () {
 														<select id="ticket_type" name="ticket_type" type="text" class="form-control" onchange="change_qty_price()" required>
 															<option value="" selected="selected">Select a ticket type</option>
 														<?php for($i = 0; $i < count($event_ticket_types); $i++) {?>
-															<option value="<?php echo $event_ticket_types[$i]['type'].'|'.$event_ticket_types[$i]['quantity'].'|'.$event_ticket_types[$i]['price'].'|'.$event_ticket_types[$i]['info'].'|'.$event_ticket_types[$i]['date']?>"><?php echo $event_ticket_types[$i]['type']?></option>
+															<option value="<?php echo $event_ticket_types[$i]['type'].'|'.$event_ticket_types[$i]['quantity'].'|'.$event_ticket_types[$i]['price'].'|'.$event_ticket_types[$i]['info'].'|'.$event_ticket_types[$i]['date'] ." ". $event_ticket_types[$i]['time'].'|'.$event_ticket_types[$i]['expired']?>"><?php echo $event_ticket_types[$i]['type']?></option>
 														<?php }?>
 														</select></div>
 													</div>
 												<?php }?>
+                                                                                                <div id="expired_base" class="form-group row" hidden>
+                                                                                                    <label class="col-sm-3 control-label">Info</label>
+														<div id="expired_info" class="col-sm-9" style="text-align:left; padding-top:7px;">
+                                                                                                                    <span style="color:red">This ticket type has expired. Please choose another ticket type.</span>
+														</div>
+												</div>
 												<div id="info_base" class="form-group row" hidden>
 														<label class="col-sm-3 control-label">Info</label>
 														<div id="ticket_info" class="col-sm-9" style="text-align:left; padding-top:7px;">
@@ -1213,38 +1219,46 @@ jQuery(document).ready(function () {
 	    			$('#deadline_base').show();
 		    		$('#quantity_base').children().remove();
 		    		var temp = ($('#ticket_type').val()).split('|');
-		    		var price_number = Number(temp[2]).toFixed(2);
-		    		$('#ticket_price').attr('value', price_number);
-		    		$('#ticket_price2').html('$'+price_number);
-		    		
-		    		$('#quantity_left').html(temp[1] + ' left.');
-		    		$('#ticket_info').html(temp[3]);
-		    		$('#ticket_deadline').html(temp[4]);
-		    		max_tickets = temp[1];
-		    		
-		    		var content = '<select id="quantity_type" class="form-control" placeholder="0" name = "quantity">';
-		    		
-		    		for(var i = 0; i <= max_tickets; i++) {
+                                var price_number = Number(temp[2]).toFixed(2);
+                                if(temp[5] == 0) {
+                                    $('#ticket_price').attr('value', price_number);
+                                    $('#ticket_price2').html('$'+price_number);
+                                    $('#quantity_left').html(temp[1] + ' left.');
+                                    $('#ticket_info').html(temp[3]);
+                                    $('#ticket_deadline').html(temp[4]);
+                                    max_tickets = temp[1];
+                                    var content = '<select id="quantity_type" class="form-control" placeholder="0" name = "quantity">';
+                                    for(var i = 0; i <= max_tickets; i++) {
 		    			content += '<option value="'+i+'">'+i+'</option>';
-		    		}
-                                //Commented out until we can handle multiple ticket requests. FINISHED
-		    		/*content += '<option value="0">0</option>';
-		    		if(Number(temp[1])) 
-		    			content += '<option value="1">1</option>';*/
-		    		content += '</select>';
-		    		if(price_number == 0) {
+                                    }
+                                    //Commented out until we can handle multiple ticket requests. FINISHED
+                                    /*content += '<option value="0">0</option>';
+                                    if(Number(temp[1])) 
+                                    	content += '<option value="1">1</option>';*/
+                                    content += '</select>';
+                                    $('#quantity_base').append(content);
+                                    if(price_number == 0) {
 		    			$('#billing_info').hide();
-		    		}
-		    		else {
-		    			<?php if($posted_recip_id != "") {?>
-		    				$('#billing_info').show();
-		    			<?php } else {?>
-		    				$('#not_set_up').show();
-		    				$('#payment_submit').attr('disabled','disabled');
-		    			<?php }?>
-		    		}
-		    		$('#quantity_base').append(content);
-		    	
+                                    }
+                                    else {
+                                            <?php if($posted_recip_id != "") {?>
+                                                    $('#billing_info').show();
+                                            <?php } else {?>
+                                                    $('#not_set_up').show();
+                                                    $('#payment_submit').attr('disabled','disabled');
+                                            <?php }?>
+                                    }
+                                }
+                                else {
+                                    $('#pricing_base').hide();
+                                    $('#info_base').hide();
+                                    $('#deadline_base').hide();
+                                    $('#billing_info').hide();
+                                    $('#not_set_up').hide();
+                                    $('#expired_base').show();
+                                    $('#payment_submit').attr('disabled','disabled');
+                                }
+                                
 	    	}
     	}
     </script>

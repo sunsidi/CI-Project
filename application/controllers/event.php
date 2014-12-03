@@ -28,7 +28,7 @@ class Event extends CI_Controller {
        public function event_info($category,$event_id){ //messageView (chat.php)
                 //testing purposes
                 //$event_id = '-1';
-               
+                $this->load->helper('date');
                 $this->load->model('model_friend_request');
                 $this->load->model('model_events');
                 $this->load->model('model_users');
@@ -54,6 +54,49 @@ class Event extends CI_Controller {
                 $data['event_id'] = $event_id;
                 $data['event'] = $this->model_events->find_event($event_id);
                 $data['event_ticket_types'] = $this->model_events->get_tickets_for_event($event_id);
+                $datestring = "%Y-%m-%d";
+                $datestring2 = "%H:%i";
+                $time = time();
+            	$today = mdate($datestring, $time);
+                $hour = mdate($datestring2, $time);
+                $date1 = date_create($today);
+                for($i = 0; $i < count($data['event_ticket_types']); $i++) {
+                    $date2 = date_create($data['event_ticket_types'][$i]['date']);
+                    $diff = date_diff($date1, $date2);
+                    $difference = $diff->format('%R%a');
+                    if($difference <= 0) {
+                        $today_hour = $this->model_events->timestamp($hour);
+                        if($today_hour > $data['event_ticket_types'][$i]['time']) {
+                            $data['event_ticket_types'][$i]['expired'] = 1;
+                        }
+                        else {
+                            $data['event_ticket_types'][$i]['expired'] = 0;
+                        }
+                    }
+                    else {
+                        $data['event_ticket_types'][$i]['expired'] = 0;
+                    }
+                    $time_end = $data['event_ticket_types'][$i]['time'];
+                    if($time_end >= 780) {
+                        $temp_time[0] = sprintf("%02d", floor(($time_end/60) - 12));	
+                        $temp_time[1] = sprintf("%02d", $time_end % 60);
+                        if($temp_time[0] == '00')
+                                $temp_time[0] = '12';
+                        $final_time = implode(':', $temp_time);
+                        $final_time .='pm';
+                        $final_time = trim($final_time);
+                    }
+                    else {
+                        $temp_time[0] = sprintf("%02d", floor($time_end/60));
+                        $temp_time[1] = sprintf("%02d", $time_end % 60);
+                        if($temp_time[0] == '00')
+                                $temp_time[0] = '12';
+                        $final_time = implode(':', $temp_time);
+                        $final_time .='am';
+                        $final_time = trim($final_time);
+                    }
+                    $data['event_ticket_types'][$i]['time'] = $final_time;
+                }
                 $attendees_temp = $this->model_events->get_attendees($event_id);
                 
                 //Get the names and pictures of all the attendees.
