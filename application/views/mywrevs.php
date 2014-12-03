@@ -23,33 +23,35 @@
 <div class="row" style="padding-bottom:50px;">
    
        
-         <p style="color: white; margin-top:2%; text-align:center; font-size: 40px; font-family:GillSans;">discover your world.</p>
+         <p style=" font-size: 40px; color: white; margin-top:2%; text-align:center;font-family:GillSans;">discover your world.</p>
           
        
     	<div style="margin-top:70px;">
+	 <div class="mywrev-icon">
         <div class="col-md-6 col-xs-10">
-        	<div style="background:rgba(237,28,36,0.7); width:90px; height:30px; margin-left: 55%; border-radius:10px; padding-left:7px;margin-top:0px;">
+        	<div class="col-hide"><div style="background:rgba(237,28,36,0.7); width:90px; height:30px; margin-left: 55%; border-radius:10px; padding-left:7px;margin-top:0px;">
         		<p style="color: white;font-size:23px;">discover</p>
-        	</div>
+        	</div></div>
             <a href="<?php echo base_url()."main/get_related_events/"?>hotspots"><img src="<?php echo $PATH_IMG?>/hotspots_button.png" onmouseover="this.src='<?php echo $PATH_IMG?>/hotspots_altbutton1.png'" onmouseout="this.src='<?php echo $PATH_IMG?>/hotspots_button.png'" style="width:20%;margin-left: 28%;margin-top:2%;"></a>
             <a href="<?php echo base_url()."main/get_related_events/"?>icebreakers"><img src="<?php echo $PATH_IMG?>/icebreakers_button.png" onmouseover="this.src='<?php echo $PATH_IMG?>/icebreakers_altbutton1.png'" onmouseout="this.src='<?php echo $PATH_IMG?>/icebreakers_button.png'" style="width:20%;margin-left: 3%;margin-top:2%;"></a>
             <a href="<?php echo base_url()."main/get_related_events/"?>culture"><img src="<?php echo $PATH_IMG?>/culture_button.png" onmouseover="this.src='<?php echo $PATH_IMG?>/culture_altbutton1.png'" onmouseout="this.src='<?php echo $PATH_IMG?>/culture_button.png'" style="width:20%;margin-left: 3%;margin-top:2%;"></a>
-                <div style="position:absolute; background:rgba(237,28,36,0.7); width:115px; height:30px;margin-left: 52%;margin-top:12%;border-radius:10px; padding-left:7px;">
+                <div class="col-hide"><div style="position:absolute; background:rgba(237,28,36,0.7); width:115px; height:30px;margin-left: 52%;margin-top:12%;border-radius:10px; padding-left:7px;">
         		<p style="color: white;font-size:23px; ">experience</p>
-        	</div>
+        	</div></div>
             <a href="<?php echo base_url()."main/get_related_events/"?>meetups"><img src="<?php echo $PATH_IMG?>/meetups_button.png" onmouseover="this.src='<?php echo $PATH_IMG?>/meetups_altbutton.png'" onmouseout="this.src='<?php echo $PATH_IMG?>/meetups_button.png'" style="width:20%; margin-top:20%; margin-left: 28%;"></a>
             <a href="<?php echo base_url()."main/get_related_events/"?>explore"><img src="<?php echo $PATH_IMG?>/exploringyourcity_button.png"onmouseover="this.src='<?php echo $PATH_IMG?>/exploringyourcity_altbutton.png'" onmouseout="this.src='<?php echo $PATH_IMG?>/exploringyourcity_button.png'" style="width:20%; margin-top:20%; margin-left: 4%;"></a>
             <a href="<?php echo base_url()."main/get_related_events/"?>romance"><img src="<?php echo $PATH_IMG?>/loveandromance_button.png" onmouseover="this.src='<?php echo $PATH_IMG?>/loveandromance_altbutton.png'" onmouseout="this.src='<?php echo $PATH_IMG?>/loveandromance_button.png'" style="width:20%; margin-top:20%; margin-left: 3%;"></a>
             <a href="<?php echo base_url()."main/get_latest_events/"?>"><img src="<?php echo $PATH_IMG?>/clickhereforlatestwrevs_button.png" onmouseover="this.src='<?php echo $PATH_IMG?>/latestwrevs_altbutton1.png'" onmouseout="this.src='<?php echo $PATH_IMG?>/clickhereforlatestwrevs_button.png'" style="margin-left:93%;width:24%; margin-top:-64%;z-index: 2;position:relative;"></a>
             <img src="<?php echo $PATH_IMG?>/horizontal.png" class="line" style="width:65%; height: 2px; margin-top: -70%; margin-left: 30%;">
-            <img src="<?php echo $PATH_IMG?>/horizontal.png" class="line" style="z-index:1;width:2px; height: 550px; margin-top: -75%; margin-left: 105%;">
+            <div class="col-hide"><img src="<?php echo $PATH_IMG?>/horizontal.png" class="line" style="z-index:1;width:2px; height: 550px; margin-top: -75%; margin-left: 105%;"></div>
         </div>
+	 </div>
     
-        
-        <div class="col-md-5 col-xs-10" style="height:550px;">
-                	<div style="background:rgba(237,28,36,0.7); width:97px; height:32px; margin-left:43%; margin-top:-3%;border-radius:10px; padding-left:7px;">
+      <div class="mywrev-righticon">
+        <div class="col-md-5 col-xs-10" style="">
+                	<div class="col-hide"><div style="background:rgba(237,28,36,0.7); width:97px; height:32px; margin-left:43%; margin-top:-3%;border-radius:10px; padding-left:7px;">
         		<p style="color: white;font-size:25px;">socialize</p>
-        	</div>
+        	</div></div>
         	
             <a href="<?php echo base_url()."main/get_related_events/"?>parties"><img src="<?php echo $PATH_IMG?>/parties1_button.png" onmouseover="this.src='<?php echo $PATH_IMG?>/parties_altbutton1.png'" onmouseout="this.src='<?php echo $PATH_IMG?>/parties1_button.png'" style="margin-left:24%;width:25%; margin-top:2%;"></a>
             <a href="<?php echo base_url()."main/get_related_events/"?>clubs"><img src="<?php echo $PATH_IMG?>/clubs_button1.png" onmouseover="this.src='<?php echo $PATH_IMG?>/clubs_altbutton.png'" onmouseout="this.src='<?php echo $PATH_IMG?>/clubs_button1.png'" style="width:25%; margin-top:2%; margin-left:6%;"></a>
@@ -60,16 +62,17 @@
             
         </div>
         </div>
+	</div>
     </div>
 </div>
 
 <div class="container" style="padding-bottom:5%;">
-    		<div class="col-md-offset-3 col-md-3" style="background:rgba(255,255,255,0.7); border-radius:10px;  color:#414042;">
+    		<div class="col-md-offset-3 col-md-3" style="margin-top: 5%;background:rgba(255,255,255,0.7); border-radius:10px;  color:#414042;">
     			 
     			 <div style="padding-bottom: 30px; padding-left: 12%;padding-top:30px;">
                 <p style="font-family:GillSans;font-size:25px;"><i class="fa fa-info-circle" style="font-size:30px;"></i>
 what is mywrevs?</p>
-                <p class="text" style=" font-size: 18px; width:250px;"><b>mywrevs</b> allows you to create/host your own parties and events, which also include a unique ticket system.</p>
+                <p class="text" style=" font-size: 18px; width:88%;"><b>mywrevs</b> allows you to create/host your own parties and events, which also include a unique ticket system.</p>
             
             <?php if($this->session->userdata('is_logged_in')) {?>
             <a href="#" data-toggle="modal" data-target="#create" class="btn btn-lg create-btn" style=" font-size:25px; padding:5px 10px;border-radius:5px;border:2px solid #414042; margin-left:15%; ">create a wrev</a>
@@ -77,10 +80,10 @@ what is mywrevs?</p>
             </div>
             
     		</div>
-    		<div class="col-md-3"  style="background-color: #81a4b5;border-radius:10px;margin-left:40px;">
+    		<div class="col-md-offset-1 col-md-3"  style="margin-top: 5%;background-color: #81a4b5;border-radius:10px;">
     		<div style="padding-bottom: 30px; padding-left: 12%;padding-top:30px;">
                 <p style="color: white;font-family:GillSans;font-size:25px;"><span class="glyphicon glyphicon-globe" style="font-size:27px;"></span> wrevenues.</p>
-                <p class="text" style="color: white; font-size: 18px; width:260px;">Looking for the coolest locations to visit or host your next party? Check out <b>Wrevenues</b> where you can find the best venues near you!</p>
+                <p class="text" style="color: white; font-size: 18px; width:85%;">Looking for the coolest locations to visit or host your next party? Check out <b>Wrevenues</b> where you can find the best venues near you!</p>
             
             <?php if($this->session->userdata('is_logged_in')) {?>
             <a href="http://wrevenues.wrevel.com" class="btn btn-lg wrevenues-btn" style="font-size:25px; padding:5px 10px;border-radius:5px;border:2px solid rgba(255,255,255,0.7); margin-left:15%;">go to wrevenues</a>

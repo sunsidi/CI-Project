@@ -25,7 +25,7 @@
 <div class="row" style="margin:30px;">
   <p class="event"><img src="<?php echo $PATH_IMG?>latest_wrevs_icon.png" class="wrev-image" style="width:50px;"/> <strong>Wrev</strong> <span class="pronounce">[rev]</span></p>
   <p class="definition"><i>noun</i>&nbsp;&nbsp; an event on Wrevel.com</p> 
-          
+          <div class="eventlist">
      <div style="margin-left:auto;margin-right:auto;">
                 	<div style="margin-left:25%;margin-right:auto;margin-top:25px;">     
       <!--<form class="form-inline" role="form">-->
@@ -47,6 +47,7 @@
         </ul>
       -->
         </div>
+			
         
               <div class="left-inner-addon" style="font-size:20px;">
                 
@@ -117,7 +118,8 @@
     <!--</form>-->
           <?php echo form_close()?>
 
-    </div> 
+    </div>
+</div>
     <!--<div class="text-center">
     <ul class="pagination">
     	<li><a href="javascript:void(0)" onclick="show_page(1)"><<</a></li>
@@ -131,6 +133,7 @@
 </div>-->
 
         <div class="container" style="margin-top:30px;">
+	  <div class="eventlist">
       <div class="row">
         <!--modify -->
         <?php if($size > 1) {
@@ -140,6 +143,7 @@
              	echo '<span style="color:black;margin-left:43%; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">result found!</span></span>';
                 
             }?>
+      </div>
     	</div>
     	<div>
       <?php
