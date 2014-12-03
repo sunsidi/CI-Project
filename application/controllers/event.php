@@ -520,7 +520,22 @@ class Event extends CI_Controller {
       	public function edit_event($event_id) {
             $this->load->library('session');
             $this->load->model('model_events');
-            if($this->model_events->edit_event_info($event_id)){
+            $config['upload_path']='./uploads/';
+            $config['allowed_types']= 'gif|jpg|png|jpeg';
+            $config['max_size']	= '10000';
+            $config['file_name'] = md5(uniqid());
+            //echo $image_name;
+            $this->load->library('upload',$config);
+            if (!$this->upload->do_upload("eventfile")){
+                $e_image = 0;
+            }
+            else{
+		$upload_data = $this->upload->data();
+                $data = array('upload_data' => $this->upload->data());
+		$image_name = $upload_data['file_name'];
+                $e_image = $image_name;
+            }
+            if($this->model_events->edit_event_info($event_id, $e_image)){
                 $this->session->set_flashdata('message','Your event info has been updated.' );
                 redirect('event/event_info/latest/'.$event_id);
             }

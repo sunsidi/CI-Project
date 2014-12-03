@@ -621,7 +621,7 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
   }
   
   //edit the info of your event.
-  public function edit_event_info($event_id) //CHANGED!!!!
+  public function edit_event_info($event_id, $e_image) //CHANGED!!!!
     {
         $data = $this->input->post();
 
@@ -635,6 +635,7 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
             	$info_updating[$i] = $value;
           }
         }
+        $info_updating['e_image'] = $e_image;
         if(isset($info_updating)){        
             $query = $this->db->update('events', $info_updating, array('event_id'=> $event_id));
             if($query)

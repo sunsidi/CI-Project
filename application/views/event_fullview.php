@@ -521,18 +521,24 @@ jQuery(document).ready(function () {
                                                                 <input name="e_pricetemp" type="text" class="form-control" placeholder="<?php echo $event[0]['e_pricetemp']?>" >
                                                             </div>
                                                     </div>-->
-                                                    	<input type="radio" name="status" value="public"> public
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-2">Event Image</label>
+                                                        <div class="col-sm-4">
+                                                            <div class="image-upload">
+                                                                <label for="file-input-event">
+                                                                    <img src="<?php echo base_url()."uploads/".$event[0]['e_image']?>"style="max-width:90%; min-width:90%; padding:2%;"/>
+                                                                </label>
+                                                                <label for ="file-upload" ></label>
+                                                                <input id="file-input-event" name = "eventfile" type = "file" style="overflow:hidden;"/>
+                                                                <input id="file-upload" type = "submit" >
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-2">Event Type</label>
+                                                        <input type="radio" name="status" value="public"> public
                                                         <input type="radio" name="status" value="private"> private
-                                                                   
-
-                            <!--<div style="width:200px; height:200px; margin:25px auto;">
-                                  <img src="images/camera_icon.png" style="min-width:100%; max-width:100%;">
-                            </div>
-
-
-                            <button type="button" class="btn btn-lg" style="background:#47AFEA; color:white;">Upload Image</button>
-
-                            <br>-->
+                                                    </div>
                                                     <div class="row" style="text-align:center;">
                                                         <input type="submit" name="submit" value="Submit" class="btn btn-lg" style="background:#1C75BC;margin-top:20px; color:white;">
                                                     </div> 
