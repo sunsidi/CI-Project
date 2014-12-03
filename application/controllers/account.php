@@ -272,7 +272,7 @@ class account extends CI_Controller{
             
             if($this->model_events->remove_event($event_id)) {
                 $this->session->set_flashdata('message','You have successfully removed the event.' );
-                redirect('account/myaccount_ticketmanagement');
+                redirect('account/myaccount_eventlisting');
             }
             else {
                 echo 'something is wrong';

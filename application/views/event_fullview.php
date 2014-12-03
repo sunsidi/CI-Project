@@ -70,7 +70,7 @@ jQuery(document).ready(function () {
                     <strong><small><?php echo $event[0]['e_name']?></small></strong>
                         <?php if(isset($email)) {
                             if($email == $user_email_temp[0]['email']) {?>
-                        <a id="check_user" class="pull-right" href="#" data-toggle="modal" data-target="#editEventModal" hidden>
+                        <a id="check_user" class="pull-right" href="#" data-toggle="modal" data-target="#editEventModal">
                             <button type="button" class="btn evtlistingbtn" style="z-index:2;">Edit Event Listing</button>
                         </a>
                         <?php }}?>

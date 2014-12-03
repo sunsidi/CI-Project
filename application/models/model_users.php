@@ -188,6 +188,7 @@ class Model_users extends CI_Model{
                     'fullname' => $row->fullname,
                     'gender' => $row->gender,
                     'username' => $row->username,
+                    'reputation' => 0,
                     'link_to_file' => $real_link,
                     'friends_list' => $real_link2,
                     'image_key'=> 'default_profile.jpg'

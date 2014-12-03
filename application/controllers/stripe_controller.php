@@ -448,7 +448,7 @@ class Stripe_controller extends CI_Controller{
 		}
 		$data['ticket']['card'] = "";
 		$this->session->set_userdata($data);
-		echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
+		//echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
 		$this->load->view('Ticket_Confirm',$data);
 	}
 	
@@ -528,7 +528,7 @@ class Stripe_controller extends CI_Controller{
 		$this->session->set_userdata(array('session_expired' => 1));
 		//echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
 		$this->load->library('session');
-		echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
+		//echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
 		$this->load->view('Processed_ticket',$data);
 	}
 

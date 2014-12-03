@@ -233,6 +233,18 @@
             		      </select> 
                             </div>
               	 </div>
+              	 <label class="col-sm-1 control-label" style="padding-top:10px;">period:</label>
+                            <div class="col-sm-2">
+                              <select id="period" name="period" type="number" class="form-control" style="padding:0;font-size:10px;">
+              			<option value="" selected="selected"></option> 
+              			<option value="1">Every day</option>
+              			<option value="7">7 days </option>
+                                <option value="30">1 month</option>
+                                <option value="365">1 year</option>
+                                <option value="-1">Every week day</option>
+                                <option value="-7">Every weekend</option>
+            		      </select> 
+                            </div>
                     
                       
            	  

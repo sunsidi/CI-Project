@@ -133,7 +133,7 @@ class Public_profile extends CI_Controller {
             else{
                 //create a file name for the chat
                 $randomName = md5(uniqid()) . ".html";    
-                $filename =  "/home/wrevelco/public_html/alpha/application/views/chatbox/".$randomName;
+                $filename =  "/home/wrevelco/public_html/application/views/chatbox/".$randomName;
                 //try to create file
                 if ($handle=fopen($filename,'w+')){
                         //trying to insert info into db
@@ -187,7 +187,7 @@ class Public_profile extends CI_Controller {
             $comment = $this->input->post('comment');
             /* check comment if its blank then do not write file_chat */
 
-            $filename =  "/home/wrevelco/public_html/alpha/application/views/chatbox/".$data['chatbox_file'];
+            $filename =  "/home/wrevelco/public_html/application/views/chatbox/".$data['chatbox_file'];
           //$handle = fopen($filename,'w+');
             $today = date("F j, Y, g:i a"); 
             //add commentors name instead of "Comment:"

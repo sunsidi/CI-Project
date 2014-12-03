@@ -10,6 +10,30 @@ class Model_events extends CI_Model{
             
     }
     
+    public function cron_update_event_period() {
+    	$this->load->helper('date');
+    	$query = $this->db->get_where('events', array('period >' => 0));
+    	$datestring = "%Y-%m-%d";
+	$time = time();
+	$today = mdate($datestring, $time);
+	$date1 = date_create($today);
+	//echo $today . '<br>';
+    	for($i = 0; $i < $query->num_rows(); $i++) {
+    		$temp = $query->row_array($i);
+    		$date2 = date_create($temp['e_date']);
+    		$interval = date_diff($date1, $date2);
+    		$differenceFormat = '%R%a';
+    		$difference = $interval->format($differenceFormat);
+    		//echo $difference;
+    		if($difference < 0) {
+    			$period = $temp['period'];
+    			//echo 'hello <br>';
+    			$sql = 'UPDATE events SET e_date = e_date + INTERVAL ? DAY WHERE event_id = ?';
+    			$this->db->query($sql, array($temp['period'], $temp['event_id']));
+    		}
+    	}
+    }
+    
     public function admin_get_events() {
         $this->db->order_by('create_stamp', 'desc');
     	$query = $this->db->get('events');
@@ -28,6 +52,9 @@ class Model_events extends CI_Model{
 	    //$data = $this->db->where('e_name',$e_name);
 	    //$data = $query->row_array(0);
 	    $event_temp[0] = $query->row_array(0);
+	    if($event_temp[0]['e_date'] == '9999-12-31') {
+	    	$event_temp[0]['e_date'] = $event_temp[0]['period_text'];
+	    }
 	    $event_temp[0]['e_start_time'] = $this->convert_time($event_temp[0]['e_start_time']);
 	    $event_temp[0]['e_end_time'] = $this->convert_time($event_temp[0]['e_end_time']);
 	    return $event_temp;
@@ -108,6 +135,9 @@ class Model_events extends CI_Model{
    $related_events['size']= sizeof($related_events);
    for($i = 0; $i < $related_events['size']; $i++) {
     	$related_events[$i]['e_start_time'] = $this->convert_time($related_events[$i]['e_start_time']);
+    	if($related_events[$i]['e_date'] == '9999-12-31') {
+	    	$related_events[$i]['e_date'] = $related_events[$i]['period_text'];
+	    }
     }
    //echo "related_events type in model_events: ".gettype($related_events);
     //return all events that is in our event
@@ -155,12 +185,23 @@ class Model_events extends CI_Model{
 		//echo $this->input->post('e_start_time');
 		$data['e_start_time'] = $this->timestamp($this->input->post('e_start_time'));
 		//echo $data['e_end_time'];
+		
 	        
 		$temp_date = $this->input->post('e_date');
                 $split_date = explode('/',$temp_date);
                 $real_date = $split_date[2] . '-' . $split_date[0] . '-' . $split_date[1];
 		$data['e_date'] = $real_date;
 		//echo $data['e_date'];
+		if($this->input->post('period') > 0)
+	        	$data['period'] = $this->input->post('period');
+	        else if($this->input->post('period') == -1) {
+	        	$data['period_text'] = 'Every Weekday';
+	        	$data['e_date'] = '9999-12-31';
+	        }
+	        else if($this->input->post('period') == -7) {
+	       		$data['period_text'] = 'Every Weekend';
+	       		$data['e_date'] = '9999-12-31';
+	        }
 
 		//$data['e_category']= $this->input->post('e_category');
 	        $data['e_category']= $this->input->post('hotspots') + $this->input->post('icebreakers') + $this->input->post('culture')+
@@ -299,6 +340,9 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
    $related_events['size']= sizeof($related_events);
    for($i = 0; $i < $related_events['size']; $i++) {
     	$related_events[$i]['e_start_time'] = $this->convert_time($related_events[$i]['e_start_time']);
+    	if($related_events[$i]['e_date'] == '9999-12-31') {
+	    	$related_events[$i]['e_date'] = $related_events[$i]['period_text'];
+	    }
     }
    //print_r($related_events);
    return $related_events;      
@@ -414,6 +458,9 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
     //echo "<pre> ",print_r($related_events,true) ,"</pre>";
     for($i = 0; $i < $related_events['size']; $i++) {
     	$related_events[$i]['e_start_time'] = $this->convert_time($related_events[$i]['e_start_time']);
+    	if($related_events[$i]['e_date'] == '9999-12-31') {
+	    	$related_events[$i]['e_date'] = $related_events[$i]['period_text'];
+	    }
     }
     return $related_events;
   }
