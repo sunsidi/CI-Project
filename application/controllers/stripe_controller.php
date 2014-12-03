@@ -295,15 +295,6 @@ class Stripe_controller extends CI_Controller{
 		
 		//echo "The Total Charge is ".$total."<br/>";
 			//transfer notification
-			if($amount_seller>0) {
-
-				$host = $this->model_events->get_host($id);
-				$host_file = $this->model_friend_request->get_file($host);
-				$buyer = $this->session->userdata('email');
-				$write_file= fopen("$host_file/file.txt", "a+");
-				$txt = "Money is being transfered to your account because of ticket buyer . $email";
-				fwrite($write_file, $txt . "\n");
-			}
 		redirect('stripe_controller/confirm');
 	}
 	
