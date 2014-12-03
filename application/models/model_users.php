@@ -510,6 +510,9 @@ class Model_users extends CI_Model{
     public function add_card_info($user_id, $cust_id) {
     	$this->db->update('users', array('cust_id' => $cust_id), array('user_id' => $user_id));
     }
+    public function delete_card_info($email) {
+        $this->db->update('users', array('cust_id' => ''), array('email' => $email));
+    }
     public function add_bank_info($user_id, $recip_id) {
     	$this->db->update('users', array('recip_id' => $recip_id), array('user_id' => $user_id));
     }
