@@ -197,7 +197,7 @@ class Chat extends CI_Controller {
             else{
                 //create a file name for the chat
                 $randomName = md5(uniqid()) . ".html";    
-                $filename =  "/home/wrevelco/public_html/alpha/application/views/chats/".$randomName;
+                $filename =  "/home/wrevelco/public_html/application/views/chats/".$randomName;
                 //try to create file
                 if ($handle=fopen($filename,'w+')){
                         //trying to insert info into db
@@ -251,7 +251,7 @@ class Chat extends CI_Controller {
             $comment = $this->input->post('comment');
             /* check comment if its blank then do not write file_chat */
 
-            $filename =  "/home/wrevelco/public_html/alpha/application/views/chats/".$data[0]['chat_file'];
+            $filename =  "/home/wrevelco/public_html/application/views/chats/".$data[0]['chat_file'];
             $today = date("F j, Y, g:i a"); 
             //add commentors name instead of "Comment:"
             if($comment){
@@ -341,7 +341,7 @@ class Chat extends CI_Controller {
             else{
                 //create a file name for the chat
                 $randomName = md5(uniqid()) . ".html";    
-                $filename =  "/home/wrevelco/public_html/alpha/application/views/chats/".$randomName;
+                $filename =  "/home/wrevelco/public_html/application/views/chats/".$randomName;
                 //try to create file
                 if ($handle=fopen($filename,'w+')){
                         //trying to insert info into db
@@ -390,7 +390,7 @@ class Chat extends CI_Controller {
             $comment = $this->input->post('message');
             /* check comment if its blank then do not write file_chat */
 
-            $filename =  "/home/wrevelco/public_html/alpha/application/views/chats/".$data[0]['chat_file'];
+            $filename =  "/home/wrevelco/public_html/application/views/chats/".$data[0]['chat_file'];
             $today = date("F j, Y, g:i a"); 
             //add commentors name instead of "Comment:"
             $file_chat = "<p class='$currentUser'style='clear:both'>$currentUser: $comment <br>--$today </p><br>"; 
@@ -475,7 +475,7 @@ class Chat extends CI_Controller {
             else{
                 //create a file name for the chat
                 $randomName = md5(uniqid()) . ".html";    
-                $filename =  "/home/wrevelco/public_html/alpha/application/views/chats/".$randomName;
+                $filename =  "/home/wrevelco/public_html/application/views/chats/".$randomName;
                 //try to create file
                 if ($handle=fopen($filename,'w+')){
                         //trying to insert info into db
@@ -529,7 +529,7 @@ class Chat extends CI_Controller {
             $comment = $this->input->post('comment');
             /* check comment if its blank then do not write file_chat */
 
-            $filename =  "/home/wrevelco/public_html/alpha/application/views/chats/".$data[0]['chat_file'];
+            $filename =  "/home/wrevelco/public_html/application/views/chats/".$data[0]['chat_file'];
             $today = date("F j, Y, g:i a"); 
             //add commentors name instead of "Comment:"
             if($comment){
