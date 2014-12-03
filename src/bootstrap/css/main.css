@@ -995,7 +995,6 @@ font-size: 35px;
 .ticket-pricing{
 font-size: 70px;
 }
-/*<<<<<<< HEAD
 
 .example-text{
 font-size: 20px;
@@ -1006,12 +1005,26 @@ font-size: 35px;
 }
 
 .contact-container{
-padding:4%;
+padding:5%;
 }
-=======*/
+
+a.btn-wrevenues{
+border:2px solid #404142;
+color:#404142;
+font-family:GillSans;
+font-size:20px;
+}
+a.btn-wrevenues:hover{
+background:#404142;
+color:white;
+}
+a.wrevenues-venue{
+background:
+}
+
 @media (max-width: 1025px){
   .eventlist{
-    margin-left: -57px;
+    margin-left: -30px;
   }
   .col-hide{
     display: none;
@@ -1275,7 +1288,7 @@ padding:4%;
 	.example-text{
 	font-size: 21px;
 	}
-/*<<<<<<< HEAD
+
 	.example-number{
 	font-size: 23px;
 	}
@@ -1283,7 +1296,7 @@ padding:4%;
 	font-size:15px;
 	}
 
-=======*/
+
 	
   }
 /*>>>>>>> tony_dev*/
@@ -1314,6 +1327,9 @@ padding:4%;
 
 /* For iPhones and Android*/
 @media (max-width: 360px) {
+.eventlist{
+    margin-left: -57px;
+  }
 	.header-link{
 	display:initial;
 	}

@@ -19,6 +19,7 @@
 	margin-top:10px;
 	border-radius:10px;
 	border-color:#C8CBD2;
+	float:none;
 	}
 	li>a{
 	color:white;
@@ -55,15 +56,15 @@
   				</div>
   				<div class="panel-body" style="background:#D9E2EB;border-bottom-left-radius:15px;border-bottom-right-radius:15px;">
 					<ul class="nav nav-tabs tabs-left" style="text-align:center;border:none;">
-						<li class="active" style="float: none;"><a href="#home" data-toggle="tab">Summary</a></li>
-						<li style="float: none;"><a href="#users" data-toggle="tab">Users</a></li>
-						<li style="float: none;"><a href="#listings" data-toggle="tab">Listings</a></li>
-						<li style="float: none;"><a href="#transactions" data-toggle="tab">Transactions</a></li>
-						<li style="float: none;"><a href="#blog" data-toggle="tab">Blog</a></li>
+						<li class="active"><a href="#home" data-toggle="tab">Summary</a></li>
+						<li><a href="#users" data-toggle="tab">Users</a></li>
+						<li><a href="#listings" data-toggle="tab">Listings</a></li>
+						<li><a href="#transactions" data-toggle="tab">Transactions</a></li>
+						<li><a href="#blog" data-toggle="tab">Blog</a></li>
 						<!--<li style="float: none;"><a href="#user_stats" data-toggle="tab">User Stats</a></li>
 						<li style="float: none;"><a href="#listing_stats" data-toggle="tab">Listing Stats</a></li>-->
-						<li style="float: none;"><a href="#site_stats" data-toggle="tab">Site Stats</a></li>
-						<li style="float: none;"><a href="#multiple_listings" data-toggle="tab">Multiple Listings</a></li>
+						<li><a href="#site_stats" data-toggle="tab">Site Stats</a></li>
+						<li><a href="#multiple_listings" data-toggle="tab">Multiple Listings</a></li>
 					</ul>
 				</div>
 			</div>
@@ -76,12 +77,12 @@
 				<!--Summary-->
 				<div class="tab-pane active default-tabs" id="home" style="background:rgba(255,255,255,0.5);color:#404041; padding:10%;text-align:center;">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-6 col-sm-6 col-xs-6">
 					<img src="<?php echo $PATH_IMG?>users_icon.png" style="width:80%;"/>
 					<h1 style="margin-top:40px;"><strong><?php echo count($all_users)?></strong> Users</h1>
 					</div>
 					
-					<div class="col-md-6">
+					<div class="col-md-6 col-sm-6 col-xs-6">
 					<img src="<?php echo $PATH_IMG?>listing_icon.png" style="width:80%;"/>
 					<h1 style="margin-top:40px;"><strong><?php echo count($all_events)?></strong> Listings</h1>
 					</div>
