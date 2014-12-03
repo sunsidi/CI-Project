@@ -92,7 +92,6 @@ class Event extends CI_Controller {
                // echo $complete_address;
                 $marker['position'] = $complete_address;//$complete_address;//'67 West, Brooklyn';
                 $this->googlemaps->add_marker($marker);
-
                 $data['map'] = $this->googlemaps->create_map();
                 $data['category'] = $category;
                 $data['style'] = $eventMap;
@@ -105,7 +104,7 @@ class Event extends CI_Controller {
                 $result = array_merge($data,$path,$nav_data);
 
 		
-                //echo "<pre> ",print_r($result,true) ,"</pre>";
+                //echo "<pre> ",print_r($data,true) ,"</pre>";
                 $this->load->view('Create_Wrevel_View',$result);
                 $this->load->view('event_fullview',$result);
                 
@@ -354,7 +353,7 @@ class Event extends CI_Controller {
             else{
                 //create a file name for the chat
                 $randomName = md5(uniqid()) . ".html";    
-                $filename =  "/home/wrevelco/public_html/alpha/application/views/events_comments/".$randomName;
+                $filename =  "/home/wrevelco/public_html/application/views/events_comments/".$randomName;
                 //try to create file
                 if ($handle=fopen($filename,'w+')){
                         //trying to insert info into db
@@ -408,7 +407,7 @@ class Event extends CI_Controller {
             $comment = $this->input->post('comment');
             /* check comment if its blank then do not write file_chat */
 
-            $filename =  "/home/wrevelco/public_html/alpha/application/views/events_comments/".$data['comment_file'];
+            $filename =  "/home/wrevelco/public_html/application/views/events_comments/".$data['comment_file'];
           //$handle = fopen($filename,'w+');
             $today = date("F j, Y, g:i a"); 
             //add commentors name instead of "Comment:"

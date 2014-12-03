@@ -23,7 +23,7 @@
 <div class="row" style="padding-bottom:50px;">
    
        
-         <p style=" font-size: 40px; color: white; margin-top:2%; text-align:center;font-family:GillSans;">discover your world.</p>
+         <p style="font-size:40px;color: white; margin-top:2%; text-align:center;font-family:GillSans;">discover your world.</p>
           
        
     	<div style="margin-top:70px;">
@@ -72,7 +72,7 @@
     			 <div style="padding-bottom: 30px; padding-left: 12%;padding-top:30px;">
                 <p style="font-family:GillSans;font-size:25px;"><i class="fa fa-info-circle" style="font-size:30px;"></i>
 what is mywrevs?</p>
-                <p class="text" style=" font-size: 18px; width:88%;"><b>mywrevs</b> allows you to create/host your own parties and events, which also include a unique ticket system.</p>
+                <p class="text" style=" font-size: 18px; width:80%;"><b>mywrevs</b> allows you to create/host your own parties and events, which also include a unique ticket system.</p>
             
             <?php if($this->session->userdata('is_logged_in')) {?>
             <a href="#" data-toggle="modal" data-target="#create" class="btn btn-lg create-btn" style=" font-size:25px; padding:5px 10px;border-radius:5px;border:2px solid #414042; margin-left:15%; ">create a wrev</a>

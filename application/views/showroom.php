@@ -284,7 +284,7 @@ position:absolute;
                                                         	$event_name_temp = substr($attending_events[$i]['e_name'], 0, 10);
                                                         	echo $event_name_temp?></p>
                                                     </div></a></td>
-                                                    <td id="<?php echo 'wrev'.$i?>"><?php $wrev[$i] = $attending_events[$i]['e_date']; echo date("m-d-Y", strtotime($wrev[$i]));?></td>
+                                                    <td id="<?php echo 'wrev'.$i?>"><?php $wrev[$i] = $attending_events[$i]['e_date']; if(strpos($wrev[$i], 'Every') == 0) echo $wrev[$i]; else echo date("m-d-Y", strtotime($wrev[$i]));?></td>
                                                     <td><?php 
 				    				echo $attending_events[$i]['e_start_time'];?></td>
                                                     <td><?php 
