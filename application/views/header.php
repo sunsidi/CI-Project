@@ -110,7 +110,9 @@ position:absolute;
         <div class="navbar-brand dropdown collapse navbar-collapse" style="margin-top:5px;">
         <button class="btn" type="button" onclick = "myFunction()" id="dropdownMenu1" data-toggle="dropdown" style="background:none;">
             <i id = "herdzz" class="fa fa-user" style="color:white; font-size:30px;">
+                <?php if($nav_data['counter'] != 0) {?>
                 <span class="badge" id = "here" style="background:#BE1E2D;display:block;margin-top:-15px;left:20px;"><?php echo $nav_data['counter'] ?> </span>
+                <?php }?>
             </i>
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" style="text-align:center; background:#d9e3ea; padding:0; padding-bottom:10px;border:none;border-radius:8px;width:500px;">
