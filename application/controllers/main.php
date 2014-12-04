@@ -135,6 +135,44 @@ public function index()
                 redirect('main/email_reset');
 	}
 	
+        //Job applications.
+        public function job_application() {
+            $this->load->library('email',array('mailtype'=>'html'));
+            $this->email->from($this->input->post('job_email'));
+            $this->email->to('jobs@wrevel.com');
+            $this->email->subject("Job Application");
+            //message to user confirms see load library email, 2nd argument is setting to html not default text
+            $message ="<p>Job Category: ".$this->input->post('category')."</p>";
+            $message .= "<p>Name: ".$this->input->post('f_name')." ". $this->input->post('l_name')."</p>";
+            $message .= "<p>Phone: ".$this->input->post('phone_number')."</p>";
+            $message .= "<p>Email: ".$this->input->post('job_email')."</p>";
+            $message .= "<p>Description: ".$this->input->post('description')."</p>";
+            $message .= "<p>Website: ".$this->input->post('website')."</p>";
+            
+            $this->email->message($message);
+            $config['upload_path']='./uploads/';
+            $config['allowed_types']= 'doc|docx|rtf|txt|pdf|tif';
+            $config['max_size']	= '10000';
+            $config['file_name'] = md5(uniqid());
+            //echo $image_name;
+            $this->load->library('upload',$config);
+            if ($this->upload->do_upload('cover_letter')) {
+                $cover_letter = $this->upload->data();
+                echo print_r($cover_letter, TRUE);
+                $cover_letter_path = $cover_letter['full_path'];
+            }
+            else echo $this->upload->display_errors('<p>', '</p>');
+            if($this->upload->do_upload('resume')) {
+                $resume = $this->upload->data();
+                echo print_r($resume, TRUE);
+                $resume_path = $resume['full_path'];
+            }
+            else echo $this->upload->display_errors('<p>', '</p>');
+            $this->email->attach($cover_letter_path);
+            $this->email->attach($resume_path);
+            $this->email->send();
+        }
+        
     public function login_validation()
     {
 	
