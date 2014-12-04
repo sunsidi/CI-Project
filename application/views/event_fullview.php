@@ -621,7 +621,7 @@ jQuery(document).ready(function () {
             	<?php if(!$event[0]['finalized']){?>
                     <a href="<?php echo base_url()."event/attend_event/".$event_id."/5"?>" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;">I&rsquo;m going</a>
                     <a href="<?php echo base_url()."event/attend_event/".$event_id."/5"?>" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;">Maybe</a>
-                    <a href="#" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;">No</a>
+                    <a href="<?php echo base_url()."event/remove_event/".$event_id."/5"?>" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;">No</a>
                 <?php } else {?>
                     <a href="javascript:void(0);" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;"><strike>I&rsquo;m going</strike></a>
                     <a href="javascript:void(0);" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;"><strike>Maybe</strike></a>

@@ -580,6 +580,37 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
             return false;
         }
   }
+  
+  //Remove the user from attending.
+  public function remove_attending($user_id, $event_id) {
+        //add the user and event to user_attending database.
+        $new_attendee = array('user_id' => $user_id, 'event_id' => $event_id);
+        $query_check = $this->db->get_where('users_attending', $new_attendee);
+        //If user is found in the database and is not attending then.
+        if($query_check->num_rows() == 1){
+            $check_attend = $query_check->row_array(0);
+            if($check_attend['attending'] == 0) {
+                return true;
+            }
+            else {
+                $new_attend_data = array('attending' => false);
+                $this->db->update('users_attending', $new_attend_data, $new_attendee);
+                //delete one to attending.
+                $query = $this->db->get_where('events', array('event_id' => $event_id));
+                $data = $query->result_array();
+                $attending = $data[0]['e_attending'];
+                $attending -= 1;
+                $new_attending = array('e_attending' => $attending);
+                $this->db->update('events', $new_attending, array('event_id' => $event_id));
+                return false;
+            }
+        }
+        //Else just say you are not attending.
+        else{
+            return true;
+        }
+  }
+  
   //Updates the number of people liking the event.
   public function update_likes($user_id, $event_id) {
         $new_liker = array('user_id' => $user_id, 'event_id' => $event_id);
@@ -615,7 +646,7 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
   }
   //Gets all users attending a specific event.
   public function get_attendees($event_id) {
-      $query = $this->db->get_where('users_attending', array('event_id' => $event_id));
+      $query = $this->db->get_where('users_attending', array('event_id' => $event_id, 'attending' => 1));
       $data = $query->result_array();
       return $data;
   }

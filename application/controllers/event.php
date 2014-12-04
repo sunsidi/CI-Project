@@ -525,8 +525,50 @@ class Event extends CI_Controller {
 	                    redirect($previous_page);
 	                } 
 		}
-        	
+        }
         
+        public function remove_event($event_id, $amount) {
+        	$this->load->library('session');
+        	$logged_in = $this->session->userdata('is_logged_in');
+        	if(!$logged_in){
+                	$prompt = array('prompt_log_in' => 1);
+                	$this->session->set_userdata($prompt);
+                	redirect('welcome/home'); 
+            	}
+        	//Else continue to load profile.
+        	else {
+	        	$this->load->model('model_users');
+	        	$this->load->model('model_events');
+	        	$this->load->model('model_friend_request');
+	        	
+	        	$email = $this->session->userdata('email');
+	        	
+	                $user_id = $this->model_users->get_userID($email);
+	                
+	        	$not_attending = $this->model_events->remove_attending($user_id, $event_id);
+	                if($not_attending){
+	                    $this->session->set_flashdata('message','You are not attending this event yet!' );
+	                    $previous_page = $this->session->userdata('refresh_page');
+	                    $previous_page = $previous_page . $event_id;
+	                    redirect($previous_page);
+	                }
+	                else {
+	                    $this->session->set_flashdata('message','You just lost 5 reputation points for leaving the event!' );
+	                    $amount = -5;
+                            $this->model_users->add_reputation($email, $amount);
+	                    //Notify the owner of the event that you are going.
+	                    $event_data = $this->model_events->find_event($event_id);
+	                    $event_creator = $event_data[0]['e_creatorID'];
+	                    $event_name = $event_data[0]['e_name'];
+	                    $creator_email = $this->model_users->get_email($event_creator);
+			    $creator_email = $creator_email[0]['email'];
+	                    $message = 'has attended your event, '.$event_name;
+			    $this->model_friend_request->notify_other($user_id, $event_creator, $message);
+	                    $previous_page = $this->session->userdata('refresh_page');
+	                    $previous_page = $previous_page . $event_id;
+	                    redirect($previous_page);
+	                } 
+		}
         }
         
         public function like_event($event_id) {
