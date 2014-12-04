@@ -29,12 +29,12 @@
      			</div>
      			<div class="row" style="background:#E2E9EE; height:335px; text-align:center; padding:20px; font-size:20px;border-bottom-left-radius:10px;border-bottom-right-radius:10px;color:black;">
      				
-                    		<p style="margin-top:25px;">You&rsquo;re going to <?php $ticket = $this->session->userdata('ticket'); echo $ticket['cost_per_ticket'][0]['e_name']?>.</p>
+                    		<p style="margin-top:25px;">You&rsquo;re going to <?php echo $this->session->userdata('e_name')?>.</p>
                     		
                     		<p>Your order has been saved to <a style="color:black; text-decoration:underline;" href="<? echo base_url().'account/myaccount_ticketmanagement'?>" style="color:white;text-decoration:underline;">MyAccount - Events I&rsquo;m Attending.</a></p>
                     		
-                    		<p><span style="color:#7ACF08;">&#x2713;</span> Order #'event id number'  'quantity' ticket</p>
-                    		<p><span style="color:#7ACF08;">&#x2713;</span> Your ticket has been sent to 'user email'</p>
+                    		<p><span style="color:#7ACF08;">&#x2713;</span> <?php echo 'Order #'.$this->session->userdata('ticket_id')?></p>
+                    		<p><span style="color:#7ACF08;">&#x2713;</span> Your ticket has been sent to <?php echo $this->session->userdata('send_email')?></p>
                     		
                    <p style="color:white;"><a style="color:black; text-decoration:underline;" href="<?php echo base_url()."stripe_controller/print_ticket"?>"> Click here to email tickets</a></p>
                    

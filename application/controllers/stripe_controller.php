@@ -326,12 +326,12 @@ class Stripe_controller extends CI_Controller{
 			'ticket_type'   => $ticket['type'],
 			'ticket_price'  => $ticket['ticket_price'],
 			'fees'          => $ticket['fees'],
-			'total_price'   => $ticket['total_price'],
+			'total_price'   => $ticket['total_price']
 			
 		);
 		$this->load->model('model_tickets');
 		$data['ticket_id'] = $this->model_tickets->add_ticket($data, $ticket['quantity']);
-                $this->session->set_userdata(array('ticket_id' => $data['ticket_id'],'event_id' => $data['event_id']));
+                $this->session->set_userdata(array('e_name' => $ticket['cost_per_ticket'][0]['e_name'], 'ticket_id' => $data['ticket_id'],'event_id' => $data['event_id'], 'send_email' => $email));
 		$this->load->library('email',array('mailtype'=>'html'));
 		$this->email->from('donotreply@wrevel.com', "Wrevel, Inc.");
 		$this->email->to($email);
@@ -516,16 +516,18 @@ class Stripe_controller extends CI_Controller{
 
 	public function Processed_ticket()
 	{
-		$path = $this->path->getPath();
-		$data['path'] = $this->path->getpath();
-		$data['PATH_IMG'] = $path['PATH_IMG'];
-                $data['PATH_BOOTSTRAP'] = $path['PATH_BOOTSTRAP'];
-		$this->session->unset_userdata('ticket');
-		$this->session->set_userdata(array('session_expired' => 1));
-		//echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
-		$this->load->library('session');
-		//echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
-		$this->load->view('Processed_ticket',$data);
+            $this->load->library('session');
+            $path = $this->path->getPath();
+            $data['path'] = $this->path->getpath();
+            $data['PATH_IMG'] = $path['PATH_IMG'];
+            $data['PATH_BOOTSTRAP'] = $path['PATH_BOOTSTRAP'];
+            $data['email'] = $this->session->userdata('email');
+            $this->session->set_userdata(array('session_expired' => 1));
+            //echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
+
+            //echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
+            $this->load->view('Processed_ticket',$data);
+            $this->session->unset_userdata('ticket');
 	}
 
 	public function print_ticket()

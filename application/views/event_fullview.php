@@ -1009,11 +1009,13 @@ jQuery(document).ready(function () {
                             <div style="padding:10px 20px 0; line-height:18px; text-align:left;">
                             <!--Address line-->
                             <p>
-                            <?php if($event[0]['e_is_address_hide']) {?>
+                            <?php if($event[0]['e_is_online'] == 0) {
+                                if($event[0]['e_is_address_hide']) {?>
                             	<span style="color:red">Event's Address is hidden. Please wait for event creator's notification.</span>
                             <?php }else if($event[0]['finalized'] && $show_address == false) {?>
                                 <span style="color:red">Event's Address is hidden. </span>
-                            <?php }else {echo $event[0]['e_address']; ?>
+                            <?php }else {echo $event[0]['e_address']; 
+                            ?>
                             
 			    </p>
                             <!-- City , State , Zip Code-->
@@ -1041,6 +1043,8 @@ jQuery(document).ready(function () {
 
 			    <?php if(!$event[0]['e_is_address_hide']) {?>
                             <a target="_blank" href="https://www.google.com/maps/dir//<?php echo $event[0]['e_address']."+".$event[0]['e_city']."+".$event[0]['e_state']."+".$event[0]['e_zipcode'];?>"class="btn viewmorewrevs" style="font-size:23px;color:white; border-radius:8px;">Get directions</a>
+                            <?php }}else {?>
+                            <span style="color:green">Online event!</span>
                             <?php }?>
                             </div>
 
@@ -1048,7 +1052,7 @@ jQuery(document).ready(function () {
                         
                         <div class="col-md-8">
                           
-                        <?php if(!$event[0]['e_is_address_hide']) {?>
+                        <?php if(!$event[0]['e_is_address_hide'] && !$event[0]['e_is_online']) {?>
                         <div id="pano" style="max-width:100%;min-width:100%; height: 200px;"></div>
                         <div id="map_canvas" style="max-width:100%;min-width:100%; height: 200px;"></div> 
                        
@@ -1057,6 +1061,8 @@ jQuery(document).ready(function () {
                             
                         </div>
        
+                        <?php }else if($event[0]['e_is_online']) {?>
+                         <!--INSERT FRONT END FOR ONLINE EVENT HERE.-->
                         <?php }else {?>
                         <div class="vault">
                         	<img src="<?php echo base_url().'src/data/img/vault_closed_fix.png'?>" onmouseover="this.src='<?php echo $PATH_IMG?>/vault_openwidth1.png'" onmouseout="this.src='<?php echo $PATH_IMG?>/vault_closed_fix.png'" style="max-width:100%;min-width:100%;height:400px;">
