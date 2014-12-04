@@ -374,24 +374,24 @@ class Stripe_controller extends CI_Controller{
 
 		$data['ticket'] = array(
 			'cost_per_ticket' => $event, //need to be changed later
-			'e_price'	  => $this->input->post('ticket_price'),
-			'type'		  => $ticket_type_temp[0],
-			'quantity'        => $this->input->post('quantity'),
-			'print'		  => $this->input->post('print'),
-			'mail'            => $this->input->post('mail'),
-			'f_name'          => $this->input->post('f_name'),
-			'l_name'	  => $this->input->post('l_name'),
-			'email'		  => $this->input->post('email'),
-			'address'	  => $this->input->post('address'),
-			'city'		  => $this->input->post('city'),
-			'state'		  => $this->input->post('state'),
-			'zipcode'	  => $this->input->post('zip'),
-			'cust_id'	  => $this->input->post('saved_card'),
+			'e_price'	  => strip_tags($this->input->post('ticket_price')),
+			'type'		  => strip_tags($ticket_type_temp[0]),
+			'quantity'        => strip_tags($this->input->post('quantity')),
+			'print'		  => strip_tags($this->input->post('print')),
+			'mail'            => strip_tags($this->input->post('mail')),
+			'f_name'          => strip_tags($this->input->post('f_name')),
+			'l_name'	  => strip_tags($this->input->post('l_name')),
+			'email'		  => strip_tags($this->input->post('email')),
+			'address'	  => strip_tags($this->input->post('address')),
+			'city'		  => strip_tags($this->input->post('city')),
+			'state'		  => strip_tags($this->input->post('state')),
+			'zipcode'	  => strip_tags($this->input->post('zip')),
+			'cust_id'	  => strip_tags($this->input->post('saved_card')),
 			'card'  => array(
-				"number" => $this->input->post('card'),
-				"exp_month" => (int)$this->input->post('exp_month'),
-				"exp_year" => (int)$this->input->post('exp_year'),
-				"cvc" => $this->input->post('cvc')            
+				"number" => strip_tags($this->input->post('card')),
+				"exp_month" => (int)strip_tags($this->input->post('exp_month')),
+				"exp_year" => (int)strip_tags($this->input->post('exp_year')),
+				"cvc" => strip_tags($this->input->post('cvc'))           
 				)
 		);
                 if($this->session->userdata('session_expired')) {

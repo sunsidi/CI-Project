@@ -248,7 +248,12 @@ class Chat extends CI_Controller {
             /* get chat between currentUser and the other user */
             $data = array_merge($data,$this->model_chats->get_chats($currentUser,$username));
 
-            $comment = $this->input->post('comment');
+            $temp_comment = $this->input->post('comment');
+            $comment = strip_tags($temp_comment);
+            while($comment != $temp_comment) {
+                $temp_comment = $comment;
+                $comment = strip_tags($temp_comment);
+            }
             /* check comment if its blank then do not write file_chat */
 
             $filename =  "/home/wrevelco/public_html/application/views/chats/".$data[0]['chat_file'];
@@ -386,8 +391,13 @@ class Chat extends CI_Controller {
             }
             /* get chat between currentUser and the other user */
             $data = array_merge($data,$this->model_chats->get_chats($currentUser,$To));
-
-            $comment = $this->input->post('message');
+                
+            $temp_comment = $this->input->post('comment');
+            $comment = strip_tags($temp_comment);
+            while($comment != $temp_comment) {
+                $temp_comment = $comment;
+                $comment = strip_tags($temp_comment);
+            }
             /* check comment if its blank then do not write file_chat */
 
             $filename =  "/home/wrevelco/public_html/application/views/chats/".$data[0]['chat_file'];

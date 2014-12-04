@@ -199,7 +199,7 @@ class Model_users extends CI_Model{
         foreach ($data as $i => $value){
           //if user inputted a value then update it
           if($value and $value != 'Change'){
-            $info_updating[$i] = $value;
+            $info_updating[$i] = strip_tags($value);
           }
         }
         if(isset($info_updating)){        

@@ -183,7 +183,12 @@ class Public_profile extends CI_Controller {
            //$data['comment_file'] = $this->model_events->get_chatbox($id);
 
 
-            $comment = $this->input->post('comment');
+            $temp_comment = $this->input->post('comment');
+            $comment = strip_tags($temp_comment);
+            while($comment != $temp_comment) {
+                $temp_comment = $comment;
+                $comment = strip_tags($temp_comment);
+            }
             /* check comment if its blank then do not write file_chat */
 
             $filename =  "/home/wrevelco/public_html/application/views/chatbox/".$data['chatbox_file'];

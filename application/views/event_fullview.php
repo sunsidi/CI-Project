@@ -1052,17 +1052,18 @@ jQuery(document).ready(function () {
                         
                         <div class="col-md-8">
                           
-                        <?php if(!$event[0]['e_is_address_hide'] && !$event[0]['e_is_online']) {?>
+                        <?php if(!$event[0]['e_is_address_hide']) {?>
                         <div id="pano" style="max-width:100%;min-width:100%; height: 200px;"></div>
+                        <?php if(!$event[0]['e_is_online']) {?>
                         <div id="map_canvas" style="max-width:100%;min-width:100%; height: 200px;"></div> 
                        
                         	<!--   Google Map Goes Here, different depending on where location is-->
 
                             
                         </div>
-       
-                        <?php }else if($event[0]['e_is_online']) {?>
-                         <!--INSERT FRONT END FOR ONLINE EVENT HERE.-->
+                        <?php } else {?>
+                        <div id="map_canvas_empty" style="max-width:100%;min-width:100%; height: 200px;"></div>
+                        <?php }?>
                         <?php }else {?>
                         <div class="vault">
                         	<img src="<?php echo base_url().'src/data/img/vault_closed_fix.png'?>" onmouseover="this.src='<?php echo $PATH_IMG?>/vault_openwidth1.png'" onmouseout="this.src='<?php echo $PATH_IMG?>/vault_closed_fix.png'" style="max-width:100%;min-width:100%;height:400px;">
@@ -1100,7 +1101,7 @@ jQuery(document).ready(function () {
                         <!--Links-->
                         	<ul style="list-style-type: none; margin-left:10px; word-break: break-all;">
 
-                                <a target= "_blank" href="<?php echo 'http://'.$event[0]['e_website']?>"><?php echo $event[0]['e_website']?></a>
+                                <a target= "_blank" href="<?php if(strpos($event[0]['e_website'], 'http://') === false) echo 'http://'.$event[0]['e_website']; else echo $event[0]['e_website']?>"><?php echo $event[0]['e_website']?></a>
                               <!--<?php echo $event[0]['e_website']?>-->
                             </ul>
                         </div>    
