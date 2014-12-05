@@ -295,15 +295,6 @@ class Stripe_controller extends CI_Controller{
 		
 		//echo "The Total Charge is ".$total."<br/>";
 			//transfer notification
-			if($amount_seller>0) {
-
-				$host = $this->model_events->get_host($id);
-				$host_file = $this->model_friend_request->get_file($host);
-				$buyer = $this->session->userdata('email');
-				$write_file= fopen("$host_file/file.txt", "a+");
-				$txt = "Money is being transfered to your account because of ticket buyer . $email";
-				fwrite($write_file, $txt . "\n");
-			}
 		redirect('stripe_controller/confirm');
 	}
 	
@@ -335,12 +326,12 @@ class Stripe_controller extends CI_Controller{
 			'ticket_type'   => $ticket['type'],
 			'ticket_price'  => $ticket['ticket_price'],
 			'fees'          => $ticket['fees'],
-			'total_price'   => $ticket['total_price'],
+			'total_price'   => $ticket['total_price']
 			
 		);
 		$this->load->model('model_tickets');
 		$data['ticket_id'] = $this->model_tickets->add_ticket($data, $ticket['quantity']);
-                $this->session->set_userdata(array('ticket_id' => $data['ticket_id'],'event_id' => $data['event_id']));
+                $this->session->set_userdata(array('e_name' => $ticket['cost_per_ticket'][0]['e_name'], 'ticket_id' => $data['ticket_id'],'event_id' => $data['event_id'], 'send_email' => $email));
 		$this->load->library('email',array('mailtype'=>'html'));
 		$this->email->from('donotreply@wrevel.com', "Wrevel, Inc.");
 		$this->email->to($email);
@@ -383,29 +374,34 @@ class Stripe_controller extends CI_Controller{
 
 		$data['ticket'] = array(
 			'cost_per_ticket' => $event, //need to be changed later
-			'e_price'	  => $this->input->post('ticket_price'),
-			'type'		  => $ticket_type_temp[0],
-			'quantity'        => $this->input->post('quantity'),
-			'print'		  => $this->input->post('print'),
-			'mail'            => $this->input->post('mail'),
-			'f_name'          => $this->input->post('f_name'),
-			'l_name'	  => $this->input->post('l_name'),
-			'email'		  => $this->input->post('email'),
-			'address'	  => $this->input->post('address'),
-			'city'		  => $this->input->post('city'),
-			'state'		  => $this->input->post('state'),
-			'zipcode'	  => $this->input->post('zip'),
-			'cust_id'	  => $this->input->post('saved_card'),
+			'e_price'	  => strip_tags($this->input->post('ticket_price')),
+			'type'		  => strip_tags($ticket_type_temp[0]),
+			'quantity'        => strip_tags($this->input->post('quantity')),
+			'print'		  => strip_tags($this->input->post('print')),
+			'mail'            => strip_tags($this->input->post('mail')),
+			'f_name'          => strip_tags($this->input->post('f_name')),
+			'l_name'	  => strip_tags($this->input->post('l_name')),
+			'email'		  => strip_tags($this->input->post('email')),
+			'address'	  => strip_tags($this->input->post('address')),
+			'city'		  => strip_tags($this->input->post('city')),
+			'state'		  => strip_tags($this->input->post('state')),
+			'zipcode'	  => strip_tags($this->input->post('zip')),
+			'cust_id'	  => strip_tags($this->input->post('saved_card')),
 			'card'  => array(
-				"number" => $this->input->post('card'),
-				"exp_month" => (int)$this->input->post('exp_month'),
-				"exp_year" => (int)$this->input->post('exp_year'),
-				"cvc" => $this->input->post('cvc')            
+				"number" => strip_tags($this->input->post('card')),
+				"exp_month" => (int)strip_tags($this->input->post('exp_month')),
+				"exp_year" => (int)strip_tags($this->input->post('exp_year')),
+				"cvc" => strip_tags($this->input->post('cvc'))           
 				)
 		);
                 if($this->session->userdata('session_expired')) {
                     $prev_page = $this->session->userdata('refresh_page');
                     $this->session->set_flashdata('message', 'Your session has expired please reenter your information.');
+                    redirect($prev_page.$data['ticket']['cost_per_ticket'][0]['event_id']);
+                }
+                if($ticket_type_temp[5] == 1) {
+                    $prev_page = $this->session->userdata('refresh_page');
+                    $this->session->set_flashdata('message', 'This ticket type is already expired. Please choose another type.');
                     redirect($prev_page.$data['ticket']['cost_per_ticket'][0]['event_id']);
                 }
 		if($data['ticket']['cust_id'] == "false" && $data['ticket']['card']['number'] == "" && $data['ticket']['e_price'] != 0) {
@@ -520,16 +516,18 @@ class Stripe_controller extends CI_Controller{
 
 	public function Processed_ticket()
 	{
-		$path = $this->path->getPath();
-		$data['path'] = $this->path->getpath();
-		$data['PATH_IMG'] = $path['PATH_IMG'];
-                $data['PATH_BOOTSTRAP'] = $path['PATH_BOOTSTRAP'];
-		$this->session->unset_userdata('ticket');
-		$this->session->set_userdata(array('session_expired' => 1));
-		//echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
-		$this->load->library('session');
-		//echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
-		$this->load->view('Processed_ticket',$data);
+            $this->load->library('session');
+            $path = $this->path->getPath();
+            $data['path'] = $this->path->getpath();
+            $data['PATH_IMG'] = $path['PATH_IMG'];
+            $data['PATH_BOOTSTRAP'] = $path['PATH_BOOTSTRAP'];
+            $data['email'] = $this->session->userdata('email');
+            $this->session->set_userdata(array('session_expired' => 1));
+            //echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
+
+            //echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
+            $this->load->view('Processed_ticket',$data);
+            $this->session->unset_userdata('ticket');
 	}
 
 	public function print_ticket()

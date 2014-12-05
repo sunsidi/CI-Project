@@ -521,18 +521,24 @@ jQuery(document).ready(function () {
                                                                 <input name="e_pricetemp" type="text" class="form-control" placeholder="<?php echo $event[0]['e_pricetemp']?>" >
                                                             </div>
                                                     </div>-->
-                                                    	<input type="radio" name="status" value="public"> public
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-2">Event Image</label>
+                                                        <div class="col-sm-4">
+                                                            <div class="image-upload">
+                                                                <label for="file-input-event">
+                                                                    <img src="<?php echo base_url()."uploads/".$event[0]['e_image']?>"style="max-width:90%; min-width:90%; padding:2%;"/>
+                                                                </label>
+                                                                <label for ="file-upload" ></label>
+                                                                <input id="file-input-event" name = "eventfile" type = "file" style="overflow:hidden;"/>
+                                                                <input id="file-upload" type = "submit" >
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-2">Event Type</label>
+                                                        <input type="radio" name="status" value="public"> public
                                                         <input type="radio" name="status" value="private"> private
-                                                                   
-
-                            <!--<div style="width:200px; height:200px; margin:25px auto;">
-                                  <img src="images/camera_icon.png" style="min-width:100%; max-width:100%;">
-                            </div>
-
-
-                            <button type="button" class="btn btn-lg" style="background:#47AFEA; color:white;">Upload Image</button>
-
-                            <br>-->
+                                                    </div>
                                                     <div class="row" style="text-align:center;">
                                                         <input type="submit" name="submit" value="Submit" class="btn btn-lg" style="background:#1C75BC;margin-top:20px; color:white;">
                                                     </div> 
@@ -615,7 +621,7 @@ jQuery(document).ready(function () {
             	<?php if(!$event[0]['finalized']){?>
                     <a href="<?php echo base_url()."event/attend_event/".$event_id."/5"?>" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;">I&rsquo;m going</a>
                     <a href="<?php echo base_url()."event/attend_event/".$event_id."/5"?>" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;">Maybe</a>
-                    <a href="#" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;">No</a>
+                    <a href="<?php echo base_url()."event/remove_event/".$event_id."/5"?>" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;">No</a>
                 <?php } else {?>
                     <a href="javascript:void(0);" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;"><strike>I&rsquo;m going</strike></a>
                     <a href="javascript:void(0);" class="btn status" style="border:1px solid white; font-size:20px;border-radius:10px;"><strike>Maybe</strike></a>
@@ -760,11 +766,17 @@ jQuery(document).ready(function () {
 														<select id="ticket_type" name="ticket_type" type="text" class="form-control" onchange="change_qty_price()" required>
 															<option value="" selected="selected">Select a ticket type</option>
 														<?php for($i = 0; $i < count($event_ticket_types); $i++) {?>
-															<option value="<?php echo $event_ticket_types[$i]['type'].'|'.$event_ticket_types[$i]['quantity'].'|'.$event_ticket_types[$i]['price'].'|'.$event_ticket_types[$i]['info'].'|'.$event_ticket_types[$i]['date']?>"><?php echo $event_ticket_types[$i]['type']?></option>
+															<option value="<?php echo $event_ticket_types[$i]['type'].'|'.$event_ticket_types[$i]['quantity'].'|'.$event_ticket_types[$i]['price'].'|'.$event_ticket_types[$i]['info'].'|'.$event_ticket_types[$i]['date'] ." ". $event_ticket_types[$i]['time'].'|'.$event_ticket_types[$i]['expired']?>"><?php echo $event_ticket_types[$i]['type']?></option>
 														<?php }?>
 														</select></div>
 													</div>
 												<?php }?>
+                                                                                                <div id="expired_base" class="form-group row" hidden>
+                                                                                                    <label class="col-sm-3 control-label">Info</label>
+														<div id="expired_info" class="col-sm-9" style="text-align:left; padding-top:7px;">
+                                                                                                                    <span style="color:red">This ticket type has expired. Please choose another ticket type.</span>
+														</div>
+												</div>
 												<div id="info_base" class="form-group row" hidden>
 														<label class="col-sm-3 control-label">Info</label>
 														<div id="ticket_info" class="col-sm-9" style="text-align:left; padding-top:7px;">
@@ -997,11 +1009,13 @@ jQuery(document).ready(function () {
                             <div style="padding:10px 20px 0; line-height:18px; text-align:left;">
                             <!--Address line-->
                             <p>
-                            <?php if($event[0]['e_is_address_hide']) {?>
+                            <?php if($event[0]['e_is_online'] == 0) {
+                                if($event[0]['e_is_address_hide']) {?>
                             	<span style="color:red">Event's Address is hidden. Please wait for event creator's notification.</span>
                             <?php }else if($event[0]['finalized'] && $show_address == false) {?>
                                 <span style="color:red">Event's Address is hidden. </span>
-                            <?php }else {echo $event[0]['e_address']; ?>
+                            <?php }else {echo $event[0]['e_address']; 
+                            ?>
                             
 			    </p>
                             <!-- City , State , Zip Code-->
@@ -1029,6 +1043,8 @@ jQuery(document).ready(function () {
 
 			    <?php if(!$event[0]['e_is_address_hide']) {?>
                             <a target="_blank" href="https://www.google.com/maps/dir//<?php echo $event[0]['e_address']."+".$event[0]['e_city']."+".$event[0]['e_state']."+".$event[0]['e_zipcode'];?>"class="btn viewmorewrevs" style="font-size:23px;color:white; border-radius:8px;">Get directions</a>
+                            <?php }}else {?>
+                            <span style="color:green">Online event!</span>
                             <?php }?>
                             </div>
 
@@ -1038,13 +1054,16 @@ jQuery(document).ready(function () {
                           
                         <?php if(!$event[0]['e_is_address_hide']) {?>
                         <div id="pano" style="max-width:100%;min-width:100%; height: 200px;"></div>
+                        <?php if(!$event[0]['e_is_online']) {?>
                         <div id="map_canvas" style="max-width:100%;min-width:100%; height: 200px;"></div> 
                        
                         	<!--   Google Map Goes Here, different depending on where location is-->
 
                             
                         </div>
-       
+                        <?php } else {?>
+                        <div id="map_canvas_empty" style="max-width:100%;min-width:100%; height: 200px;"></div>
+                        <?php }?>
                         <?php }else {?>
                         <div class="vault">
                         	<img src="<?php echo base_url().'src/data/img/vault_closed_fix.png'?>" onmouseover="this.src='<?php echo $PATH_IMG?>/vault_openwidth1.png'" onmouseout="this.src='<?php echo $PATH_IMG?>/vault_closed_fix.png'" style="max-width:100%;min-width:100%;height:400px;">
@@ -1082,7 +1101,7 @@ jQuery(document).ready(function () {
                         <!--Links-->
                         	<ul style="list-style-type: none; margin-left:10px; word-break: break-all;">
 
-                                <a target= "_blank" href="<?php echo 'http://'.$event[0]['e_website']?>"><?php echo $event[0]['e_website']?></a>
+                                <a target= "_blank" href="<?php if(strpos($event[0]['e_website'], 'http://') === false) echo 'http://'.$event[0]['e_website']; else echo $event[0]['e_website']?>"><?php echo $event[0]['e_website']?></a>
                               <!--<?php echo $event[0]['e_website']?>-->
                             </ul>
                         </div>    
@@ -1207,38 +1226,46 @@ jQuery(document).ready(function () {
 	    			$('#deadline_base').show();
 		    		$('#quantity_base').children().remove();
 		    		var temp = ($('#ticket_type').val()).split('|');
-		    		var price_number = Number(temp[2]).toFixed(2);
-		    		$('#ticket_price').attr('value', price_number);
-		    		$('#ticket_price2').html('$'+price_number);
-		    		
-		    		$('#quantity_left').html(temp[1] + ' left.');
-		    		$('#ticket_info').html(temp[3]);
-		    		$('#ticket_deadline').html(temp[4]);
-		    		max_tickets = temp[1];
-		    		
-		    		var content = '<select id="quantity_type" class="form-control" placeholder="0" name = "quantity">';
-		    		
-		    		for(var i = 0; i <= max_tickets; i++) {
+                                var price_number = Number(temp[2]).toFixed(2);
+                                if(temp[5] == 0) {
+                                    $('#ticket_price').attr('value', price_number);
+                                    $('#ticket_price2').html('$'+price_number);
+                                    $('#quantity_left').html(temp[1] + ' left.');
+                                    $('#ticket_info').html(temp[3]);
+                                    $('#ticket_deadline').html(temp[4]);
+                                    max_tickets = temp[1];
+                                    var content = '<select id="quantity_type" class="form-control" placeholder="0" name = "quantity">';
+                                    for(var i = 0; i <= max_tickets; i++) {
 		    			content += '<option value="'+i+'">'+i+'</option>';
-		    		}
-                                //Commented out until we can handle multiple ticket requests. FINISHED
-		    		/*content += '<option value="0">0</option>';
-		    		if(Number(temp[1])) 
-		    			content += '<option value="1">1</option>';*/
-		    		content += '</select>';
-		    		if(price_number == 0) {
+                                    }
+                                    //Commented out until we can handle multiple ticket requests. FINISHED
+                                    /*content += '<option value="0">0</option>';
+                                    if(Number(temp[1])) 
+                                    	content += '<option value="1">1</option>';*/
+                                    content += '</select>';
+                                    $('#quantity_base').append(content);
+                                    if(price_number == 0) {
 		    			$('#billing_info').hide();
-		    		}
-		    		else {
-		    			<?php if($posted_recip_id != "") {?>
-		    				$('#billing_info').show();
-		    			<?php } else {?>
-		    				$('#not_set_up').show();
-		    				$('#payment_submit').attr('disabled','disabled');
-		    			<?php }?>
-		    		}
-		    		$('#quantity_base').append(content);
-		    	
+                                    }
+                                    else {
+                                            <?php if($posted_recip_id != "") {?>
+                                                    $('#billing_info').show();
+                                            <?php } else {?>
+                                                    $('#not_set_up').show();
+                                                    $('#payment_submit').attr('disabled','disabled');
+                                            <?php }?>
+                                    }
+                                }
+                                else {
+                                    $('#pricing_base').hide();
+                                    $('#info_base').hide();
+                                    $('#deadline_base').hide();
+                                    $('#billing_info').hide();
+                                    $('#not_set_up').hide();
+                                    $('#expired_base').show();
+                                    $('#payment_submit').attr('disabled','disabled');
+                                }
+                                
 	    	}
     	}
     </script>

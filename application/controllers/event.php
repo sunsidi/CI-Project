@@ -28,7 +28,7 @@ class Event extends CI_Controller {
        public function event_info($category,$event_id){ //messageView (chat.php)
                 //testing purposes
                 //$event_id = '-1';
-               
+                $this->load->helper('date');
                 $this->load->model('model_friend_request');
                 $this->load->model('model_events');
                 $this->load->model('model_users');
@@ -54,6 +54,49 @@ class Event extends CI_Controller {
                 $data['event_id'] = $event_id;
                 $data['event'] = $this->model_events->find_event($event_id);
                 $data['event_ticket_types'] = $this->model_events->get_tickets_for_event($event_id);
+                $datestring = "%Y-%m-%d";
+                $datestring2 = "%H:%i";
+                $time = time();
+            	$today = mdate($datestring, $time);
+                $hour = mdate($datestring2, $time);
+                $date1 = date_create($today);
+                for($i = 0; $i < count($data['event_ticket_types']); $i++) {
+                    $date2 = date_create($data['event_ticket_types'][$i]['date']);
+                    $diff = date_diff($date1, $date2);
+                    $difference = $diff->format('%R%a');
+                    if($difference <= 0) {
+                        $today_hour = $this->model_events->timestamp($hour);
+                        if($today_hour > $data['event_ticket_types'][$i]['time']) {
+                            $data['event_ticket_types'][$i]['expired'] = 1;
+                        }
+                        else {
+                            $data['event_ticket_types'][$i]['expired'] = 0;
+                        }
+                    }
+                    else {
+                        $data['event_ticket_types'][$i]['expired'] = 0;
+                    }
+                    $time_end = $data['event_ticket_types'][$i]['time'];
+                    if($time_end >= 780) {
+                        $temp_time[0] = sprintf("%02d", floor(($time_end/60) - 12));	
+                        $temp_time[1] = sprintf("%02d", $time_end % 60);
+                        if($temp_time[0] == '00')
+                                $temp_time[0] = '12';
+                        $final_time = implode(':', $temp_time);
+                        $final_time .='pm';
+                        $final_time = trim($final_time);
+                    }
+                    else {
+                        $temp_time[0] = sprintf("%02d", floor($time_end/60));
+                        $temp_time[1] = sprintf("%02d", $time_end % 60);
+                        if($temp_time[0] == '00')
+                                $temp_time[0] = '12';
+                        $final_time = implode(':', $temp_time);
+                        $final_time .='am';
+                        $final_time = trim($final_time);
+                    }
+                    $data['event_ticket_types'][$i]['time'] = $final_time;
+                }
                 $attendees_temp = $this->model_events->get_attendees($event_id);
                 
                 //Get the names and pictures of all the attendees.
@@ -404,7 +447,12 @@ class Event extends CI_Controller {
            //$data['comment_file'] = $this->model_events->get_comments($id);
 
 
-            $comment = $this->input->post('comment');
+            $temp_comment = $this->input->post('comment');
+            $comment = strip_tags($temp_comment);
+            while($comment != $temp_comment) {
+                $temp_comment = $comment;
+                $comment = strip_tags($temp_comment);
+            }
             /* check comment if its blank then do not write file_chat */
 
             $filename =  "/home/wrevelco/public_html/application/views/events_comments/".$data['comment_file'];
@@ -482,8 +530,50 @@ class Event extends CI_Controller {
 	                    redirect($previous_page);
 	                } 
 		}
-        	
+        }
         
+        public function remove_event($event_id, $amount) {
+        	$this->load->library('session');
+        	$logged_in = $this->session->userdata('is_logged_in');
+        	if(!$logged_in){
+                	$prompt = array('prompt_log_in' => 1);
+                	$this->session->set_userdata($prompt);
+                	redirect('welcome/home'); 
+            	}
+        	//Else continue to load profile.
+        	else {
+	        	$this->load->model('model_users');
+	        	$this->load->model('model_events');
+	        	$this->load->model('model_friend_request');
+	        	
+	        	$email = $this->session->userdata('email');
+	        	
+	                $user_id = $this->model_users->get_userID($email);
+	                
+	        	$not_attending = $this->model_events->remove_attending($user_id, $event_id);
+	                if($not_attending){
+	                    $this->session->set_flashdata('message','You are not attending this event yet!' );
+	                    $previous_page = $this->session->userdata('refresh_page');
+	                    $previous_page = $previous_page . $event_id;
+	                    redirect($previous_page);
+	                }
+	                else {
+	                    $this->session->set_flashdata('message','You just lost 5 reputation points for leaving the event!' );
+	                    $amount = -5;
+                            $this->model_users->add_reputation($email, $amount);
+	                    //Notify the owner of the event that you are going.
+	                    $event_data = $this->model_events->find_event($event_id);
+	                    $event_creator = $event_data[0]['e_creatorID'];
+	                    $event_name = $event_data[0]['e_name'];
+	                    $creator_email = $this->model_users->get_email($event_creator);
+			    $creator_email = $creator_email[0]['email'];
+	                    $message = 'has attended your event, '.$event_name;
+			    $this->model_friend_request->notify_other($user_id, $event_creator, $message);
+	                    $previous_page = $this->session->userdata('refresh_page');
+	                    $previous_page = $previous_page . $event_id;
+	                    redirect($previous_page);
+	                } 
+		}
         }
         
         public function like_event($event_id) {
@@ -520,7 +610,22 @@ class Event extends CI_Controller {
       	public function edit_event($event_id) {
             $this->load->library('session');
             $this->load->model('model_events');
-            if($this->model_events->edit_event_info($event_id)){
+            $config['upload_path']='./uploads/';
+            $config['allowed_types']= 'gif|jpg|png|jpeg';
+            $config['max_size']	= '10000';
+            $config['file_name'] = md5(uniqid());
+            //echo $image_name;
+            $this->load->library('upload',$config);
+            if (!$this->upload->do_upload("eventfile")){
+                $e_image = 0;
+            }
+            else{
+		$upload_data = $this->upload->data();
+                $data = array('upload_data' => $this->upload->data());
+		$image_name = $upload_data['file_name'];
+                $e_image = $image_name;
+            }
+            if($this->model_events->edit_event_info($event_id, $e_image)){
                 $this->session->set_flashdata('message','Your event info has been updated.' );
                 redirect('event/event_info/latest/'.$event_id);
             }

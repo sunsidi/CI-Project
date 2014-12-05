@@ -9,468 +9,21 @@ public function index()
 		$this->load->library('path');
 		$data = $this->path->getPath();
 		$session_counter = $this->session->userdata('is_logged_in');
-
 		if ($session_counter > 0){
-	
-
-		$data['test_html'] =
-		'
-    	  <div class="modal-dialog">
-
-        '
-      	.
-      	'
-      	 <form action="http://localhost/WP_intern/event/create_event" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-<input type="hidden" name="icebreakers" value="0" />
-<input type="hidden" name="meetups" value="0" />
-<input type="hidden" name="parties" value="0" />
-<input type="hidden" name="clubs" value="0" />
-<input type="hidden" name="concerts" value="0" />
-<input type="hidden" name="festivals" value="0" />
-<input type="hidden" name="explore" value="0" />
-<input type="hidden" name="romance" value="0" />
-<input type="hidden" name="lounges" value="0" />
-<input type="hidden" name="bars" value="0" />
-<input type="hidden" name="hotspots" value="0" />
-<input type="hidden" name="culture" value="0" />
-
-      	'
-
-      	.
-
-      	'
-
-        <div class="modal-content" style="color:white; background:#216EAD; width:800px;">
-        <div class="panel" style="border:none; ">
-        <div class="panel-body" style="background:#216EAD;">
-        <h1 style="text-align:center;">create a wrev</h1>
-          
-          <div class="col-md-4" style="padding:10px; ">
-              <p style="text-align:center;">select one or more</p>
-  
-    
-    
-    <div class="apare" id="exhgt">
-      
-    '
-    .
-
-    '
-     <img src=
-     '
-     .
-     "http://localhost/WP_intern/src/data/img/hotspots_button.png" 
-     .
-     '
-     id= 0 name = "is_hotspot" value = "1" width="100" height="100" alt="Robot" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;" /> &nbsp; &nbsp;
-    '
-    .
-
-     '
-     <img src=
-     '
-     .
-     "http://localhost/WP_intern/src/data/img/icebreakers_button.png" 
-     .
-     '
-     id= 1 name = "is_icebreakers" value = "1" width="100" height="100" alt="Robot" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;" /> &nbsp; &nbsp;
-    '
-    .
-
-     '
-     <img src=
-     '
-     .
-     "http://localhost/WP_intern/src/data/img/culture_button.png" 
-     .
-     '
-     id= 2 name = "is_culture" value = "1" width="100" height="100" alt="Robot" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;" /> &nbsp; &nbsp;
-    '
-    .
-
-     '
-     <img src=
-     '
-     .
-     "http://localhost/WP_intern/src/data/img/meetups_button.png" 
-     .
-     '
-     id= 3 name = "is_meetups" value = "1" width="100" height="100" alt="Robot" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;" /> &nbsp; &nbsp;
-    '
-    .
-
-     '
-     <img src=
-     '
-     .
-     "http://localhost/WP_intern/src/data/img/exploringyourcity_button.png" 
-     .
-     '
-     id= 4 name = "is_exploringyourcity" value = "1" width="100" height="100" alt="Robot" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;" /> &nbsp; &nbsp;
-    '
-    .
-
-     '
-     <img src=
-     '
-     .
-     "http://localhost/WP_intern/src/data/img/loveandromance_button.png" 
-     .
-     '
-     id= 5 name = "is_l&r" value = "1" width="100" height="100" alt="Robot" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;" /> &nbsp; &nbsp;
-    '
-    .
-
-     '
-     <img src=
-     '
-     .
-     "http://localhost/WP_intern/src/data/img/parties_button.png" 
-     .
-     '
-     id= 6 name = "is_parties" value = "1" width="100" height="100" alt="Robot" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;" /> &nbsp; &nbsp;
-    '
-    .
-
-     '
-     <img src=
-     '
-     .
-     "http://localhost/WP_intern/src/data/img/clubs_button.png" 
-     .
-     '
-     id= 7 name = "is_clubs" value = "1" width="100" height="100" alt="Robot" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;" /> &nbsp; &nbsp;
-    '
-    .
-
-     '
-     <img src=
-     '
-     .
-     "http://localhost/WP_intern/src/data/img/concerts_button.png" 
-     .
-     '
-     id= 8 name = "is_concerts" value = "1" width="100" height="100" alt="Robot" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;" /> &nbsp; &nbsp;
-    '
-    .
-
-     '
-     <img src=
-     '
-     .
-     "http://localhost/WP_intern/src/data/img/festivals_button.png" 
-     .
-     '
-     id= 9 name = "is_festivals" value = "1" width="100" height="100" alt="Robot" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;" /> &nbsp; &nbsp;
-    '
-    .
-
-     '
-     <img src=
-     '
-     .
-     "http://localhost/WP_intern/src/data/img/lounges_button.png" 
-     .
-     '
-     id= 10 name = "is_lounges" value = "1" width="100" height="100" alt="Robot" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;" /> &nbsp; &nbsp;
-    '
-    .
-
-     '
-     <img src=
-     '
-     .
-     "http://localhost/WP_intern/src/data/img/bars_button.png" 
-     .
-     '
-     id= 11 name = "is_bars" value = "1" width="100" height="100" alt="Robot" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;" /> &nbsp; &nbsp;
-    '
-    .
-
-    '
-
-         <input type="checkbox" id="i0" name="hotspots" value="1024"  />
-        <input type="checkbox" id="i1" name="icebreakers" value="1"  />
-        <input type="checkbox" id="i2" name="culture" value="2048"  />
-        <input type="checkbox" id="i3" name="meetups" value="2"  />
-        <input type="checkbox" id="i4" name="explore" value="64"  />
-        <input type="checkbox" id="i5" name="romance" value="128"  />
-        <input type="checkbox" id="i6" name="parties" value="4"  />
-        <input type="checkbox" id="i7" name="clubs" value="8"  />
-        <input type="checkbox" id="i8" name="concerts" value="16"  />
-        <input type="checkbox" id="i9" name="festivals" value="32"  />
-        <input type="checkbox" id="i10" name="lounges" value="256"  />
-        <input type="checkbox" id="i11" name="bars" value="512" style="visibility:hidden" />
-
-    </div>
-    
-            </div>
-            <div class="col-md-8" style="border-left:1px solid white;">
-              <div class="row" >
-                  <div class="col-md-8">
-      
-                <form class="form-horizontal" role="form">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">title:</label>
-              <div class="col-sm-10">
-                  <input type="text" class="form-control" name = "e_name" value = "Test" placeholder="type in something witty">
-              </div>
-            </div>
-                    
-                    <div class="form-group">
-              <label class="col-sm-2 control-label">info:</label>
-              <div class="col-sm-10">
-                  <textarea class="form-control" rows="3" name = "e_description" placeholder="type in something attention grabbing"></textarea>
-              </div>
-            </div>
-                    <div class="form-group">
-                      <div class="form-group row">
-                          <label class="col-sm-2 control-label" name = "e_date" style="margin-left:10px;">date:</label>
-                            <div class="col-sm-4">
-                              <input type="date" name = "e_date" class="form-control" value = "2000-01-01">
-                            </div>
-                            <label class="col-sm-2 control-label">time start:</label>
-                            <div class="col-sm-3">
-                              <input type="time" class="form-control" name = "e_start_time" placeholder="hours?" value = "00:00">
-                            </div>
-                         </div>
-      <label class="col-sm-2 control-label">time end:</label>
-                            <div class="col-sm-3">
-                              <input type="time" class="form-control" name = "e_end_time" placeholder="hours?" value = "00:00">
-                            </div>
-                    </div>
-                    <br/>
-        <br/>
-        <br/>
-        <br/>
-                
-                    <label class="col-sm-2 control-label">Capacity</label>
-                            <div class="col-sm-3">
-                              <input type="text" class="form-control" name = "e_capacity" placeholder="hours?">
-                            </div>
-                    <div class="form-group">
-              <label class="col-sm-2 control-label">location:</label>
-              <div class="col-sm-10">
-                  <input type="text" name = "e_address" class="form-control" placeholder="where is it?">
-              </div>
-            </div>
-                    
-                    <div class="form-group">
-                      <div class="form-group row">
-                          <label class="col-sm-2 control-label"  style="margin-left:15px;">state:</label>
-                            <div class="col-sm-3" >
-                              <input type="text" name = "e_state" class="form-control" >
-                            </div>
-                            <label class="col-sm-1 control-label" >city:</label>
-                            <div class="col-sm-5" >
-                              <input type="text" class="form-control" name = "e_city">
-                            </div>
-                            
-                         </div>   
-                    </div>
-                    <div class="form-group">
-              <label class="col-sm-2 control-label">zip:</label>
-              <div class="col-sm-3">
-                  <input type="text" name = "e_zipcode" class="form-control" >
-              </div>
-            </div>
-                    
-                    <div class="form-group">
-                      <div class="form-group row">
-                          <label class="col-sm-2 control-label"  style="margin-left:10px;">country:</label>
-                            <div class="col-sm-3">
-                              <input type="text" name = "e_country" class="form-control">
-                            </div>
-                            <label class="col-sm-2 control-label"  style="margin:0;">phone:</label>
-                            <div class="col-sm-4">
-                              <input type="tel" class="form-control" name = "e_phone">
-                            </div>
-                         </div>                               
-                    </div>
-                    
-                    <div class="form-group">
-              <label class="col-sm-2 control-label">email:</label>
-              <div class="col-sm-10">
-                  <input type="text" class="form-control" name = "e_email">
-              </div>
-            </div>
-                    
-                    <div class="form-group">
-              <label class="col-sm-3 control-label">website(s):</label>
-              <div class="col-sm-9">
-                  <input type="text" name = "e_website" class="form-control" >
-              </div>
-            </div>
-  
-            <div class="form-group">
-                      <label class="col-sm-2 control-label">free?</label>
-              <div class="col-sm-10">
-                       <input type="checkbox" name="e_is_free" value= 1> yes
-               <input type="checkbox" name="e_is_free" value= 0> no
-                               
-              </div>
-                     </div>  
-                     <div class="form-group">
-              <label class="col-sm-2 control-label">price($):</label>
-              <div class="col-sm-10">
-                  <input type="text" name = "e_price" class="form-control">
-              </div>
-            </div>  
-                     <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                  
-                  <form>
-                        ticketed <input type="radio" name="e_is_ticket" value = "Tickited"> 
-                nonticketed <input type="radio" name="e_is_ticket" value = "unTickited"> 
-                  </form>
-                  
-              </div>
-                     </div> 
-                     
-                    
-                    <div class="form-group">
-                      <label class="col-sm-5">event type</label>
-                        <div class="col-sm-7">
-                          <input type="checkbox" name = "e_type" value="public"> public 
-                            <input type="checkbox" name = "e_type" value="private"> private
-                        </div>
-                    </div>
-                      
-        </form>
-                  </div>
-                    <div class="col-md-4" style="text-align:center;">
-                
-
-
-
-                    <div class="image-upload">
-                   
-                        <label for="file-input">
-                     '
-                     .
-                     '   
-                        
-                    <i class="fa fa-camera fa-flip-horizontal fa-5x"></i>
-                      '
-                      .
-                      '  
-                        </label>
-                            <label for ="file-upload">
-                         
-                            </label>
-
-
-                        
-                        <input id="file-input" name = "userfile" type = "file"/>
-                        </form>
-                
-                    </div>
-                
-                    <style>
-
-                    .image-upload > input
-                    {
-                        display: none;
-                    }
-                   </style>
-
-                  
-
-                    <div style="margin-top:25px;">
-                      hide event address <input type="radio" name = "e_is_hide" value = "Yes">
-                    </div>
-                
-                    <i class="fa fa-ticket fa-flip-horizontal fa-5x" style="margin-top:25px;"></i>
-                    <a data-toggle="modal" href="#myModal2" class="btn" type="button" style="background:#47AFEA; color:white;">set up tickets</a>
-                
-                </div>
-                </div>
-                <hr width="90%">
-               <div class="row">
-                  <div class="row">
-                      <div class="col-md-3" style="text-align:center;">
-                      <span class="glyphicon glyphicon-user fa-5x"></span>
-                        
-                        <button type="button" class="btn" style="background:#47AFEA; color:white;">invite friends</button>
-                        </div>
-                        
-                        <div class="col-md-8">
-                        <p>share this wrev on your facebook, twitter, or other media sites</p>
-                        <p style="text-align:center;">
-                          <span class="fa-stack fa-lg" style="padding:10px 25px;">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-facebook fa-stack-1x fa-inverse" style="color:#216EAD;"></i>
-              </span>
-                          <span class="fa-stack fa-lg" style="padding:10px 25px;">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-twitter fa-stack-1x fa-inverse" style="color:#216EAD;"></i>
-              </span>
-                          <span class="fa-stack fa-lg" style="padding:10px 25px;">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-instagram fa-stack-1x fa-inverse" style="color:#216EAD;"></i>
-              </span>
-                          <span class="fa-stack fa-lg" style="padding:10px 25px;">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-tumblr fa-stack-1x fa-inverse" style="color:#216EAD;"></i>
-              </span>
-                          <span class="fa-stack fa-lg" style="padding:10px 25px;">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-youtube fa-stack-1x fa-inverse" style="color:#216EAD;"></i>
-              </span>
-                        </p>
-                        
-                        </div>
-
-                     </div>
-                     <div class="row" style="margin-top:35px;">
-                      <div class="col-md-3" style="text-align:center;">
-                      <i class="fa fa-tag fa-5x"></i>
-                        <button type="button" class="btn" style="background:#47AFEA; color:white;">create tags</button>
-                        </div>
-                        
-                        <div class="col-md-8">
-                        <textarea class="form-control" rows="3"></textarea>
-                        
-                        <button type="button" style="color:#216EAD;">add</button>
-                        <button type="button" style="color:#216EAD;">delete</button>
-                        
-                        </div>
-                     </div>
-               </div>
-            </div>
-            <div class="pull-right" style="display:inline;">
-            
-             
-             <input type="submit" name = "submit" value = "Submit" class="btn btn-lg" style="color:#216EAD;"></input>
-             </div>
-      <?php echo form_close();?>
-        </div>
-        </div>
-        </div>
-      </div>
-		';
-
-		$this->load->view('view_login',$data);
-		$this->load->library('session');
-
-		}else{
-			echo "you need to log in";
+                    redirect('showroom/profile');
 		}
-
-		
-
-
-	
+                else{
+                    redirect('welcome/home');
+		}	
 	}
-	
-	//Delete your friend off your friends list.
-	
+        //Transfer database commented out for until we need to transfer again. Type in the url to start the transfer.
 	/*public function this_is_not_a_test() {
 		$this->load->model('model_transfer_data');
 		$number = $this->model_transfer_data->lastcheck();
 		echo $number;
 	}*/
-	
+        
+	//Delete your friend off your friends list.
 	public function delete_friend($friend_user_id) {
 		$this->load->library('session');
 		$this->load->model('model_users');
@@ -522,57 +75,6 @@ public function index()
             }
                 
             redirect('public_profile/user/'.$friend_user_id);
-	}
-	
-	//notification
-	public function like_event(){
-		$this->load->library('session');
-		$this->load->model('model_events');
-		$this->load->model('model_friend_request');
-		$email = $this->session->userdata('email');
-
-		$id = $this->session->userdata('eventID'); 
-		$host = $this->model_events->get_host($id);
-		$host_file = $this->model_friend_request->get_file($host);
-		$event_name = $this->model_events->get_event_name($id);
-		$write_file= fopen("$host_file/file.txt", "a+");
-		$txt = "Liked your event-$event_name: $email";
-				fwrite($write_file,"\n". $txt );
-				echo "sent a notification to $host with the notification of $txt";
-
-
-	}
-
-
-	//notification
-	public function imGoing(){
-		/*
-		pscode: 
-		user clicks the event button
-		sends a notification to the host that he is going
-		get the host by going to the event database and seeing who is the host by using the ID 
-
-		send the host a notification
-
-		*/
-		$this->load->library('session');
-		$this->load->model('model_events');
-		$this->load->model('model_friend_request');
-		$email = $this->session->userdata('email');
-
-		$id = $this->session->userdata('eventID'); 
-		$host = $this->model_events->get_host($id);
-		$host_file = $this->model_friend_request->get_file($host);
-
-		echo "the host file is $host_file";
-		$write_file= fopen("$host_file/file.txt", "a+");
-		$txt = "Attending your event $email";
-				fwrite($write_file, $txt . "\n");
-
-
-
-
-
 	}
 	
 	public function accept_decline($sender_temp, $sender_email, $note_id){
@@ -633,6 +135,56 @@ public function index()
                 redirect('main/email_reset');
 	}
 	
+        //Job applications.
+        public function job_application() {
+            $this->load->library('session');
+            $this->load->library('email',array('mailtype'=>'html'));
+            $this->email->from($this->input->post('job_email'));
+            $this->email->to('jobs@wrevel.com');
+            $this->email->subject("Job Application");
+            //message to user confirms see load library email, 2nd argument is setting to html not default text
+            $message ="<p>Job Category: ".$this->input->post('category')."</p>";
+            $message .= "<p>Name: ".$this->input->post('f_name')." ". $this->input->post('l_name')."</p>";
+            $message .= "<p>Phone: ".$this->input->post('phone_number')."</p>";
+            $message .= "<p>Email: ".$this->input->post('job_email')."</p>";
+            $message .= "<p>Description: ".$this->input->post('description')."</p>";
+            $message .= "<p>Website: ".$this->input->post('website')."</p>";
+            
+            $this->email->message($message);
+            $uniqid = md5(uniqid());
+            mkdir('./uploads/'.$uniqid,'0777',true);
+            $config['upload_path']='./uploads/'.$uniqid;
+            $config['allowed_types']= 'doc|docx|rtf|txt|pdf|tif';
+            $config['max_size']	= '10000';
+            //$config['file_name'] = md5(uniqid());
+            //echo $image_name;
+            $this->load->library('upload',$config);
+            
+            if ($this->upload->do_upload('cover_letter')) {
+                $cover_letter = $this->upload->data();
+                echo print_r($cover_letter, TRUE);
+                $cover_letter_path = $cover_letter['full_path'];
+            }
+            else {
+                $this->session->set_flashdata('message', 'Please make sure you entered all the required fields and attached a cover letter in the form of .doc, .docx, .txt, .pdf');
+                redirect('info/careers_apply');
+            }
+            if($this->upload->do_upload('resume')) {
+                $resume = $this->upload->data();
+                echo print_r($resume, TRUE);
+                $resume_path = $resume['full_path'];
+            }
+            else {
+                $this->session->set_flashdata('message', 'Please make sure you entered all the required fields and attached a resume in the form of .doc, .docx, .txt, .pdf');
+                redirect('info/careers_apply');
+            }
+            $this->email->attach($cover_letter_path);
+            $this->email->attach($resume_path);
+            $this->email->send();
+            $this->session->set_flashdata('message', 'We have received your email and you will hear from us shortly. Thanks for your interest in Wrevel!');
+            redirect('info/careers_apply');
+        }
+        
     public function login_validation()
     {
 	
@@ -671,7 +223,7 @@ public function index()
 	 
     }
     
-    
+    //MARKED FOR DELETION.
 	public function myusers()
 	{
 		$this->load->model('model_friend_request');
@@ -742,172 +294,6 @@ public function index()
 					}else{
 					 return false;}
 		}
-
-	public function updateFriend(){
-		
-
-		$this->load->model('model_users');
-		$this->load->model('model_friend_request');
-		$this->load->library('session');
-		$this->load->library('path');
-		$path = $this->path->getPath();
-		$email = $this->session->userdata('email');
-		//fid is t
-		$FID   = $this->session->userdata('user123');
-
-		/*
-		Pseudocode:
-		Check either the FID or emails friend's list file in the database, if FID does not contain $email in the text file execute
-		the code else, alert a message and say you are already friends
-		*/
-			//$file_for_user1 = $this->model_friend_request->get_friendlists($email);
-
-			/*
-				Parse the file, if we find user2 in user1's file, return true
-			*/	
-				
-					$location1 = getcwd();
-     			   $location1 .= "/friend_request_testing/users/$FID";
-					$location2 = getcwd();
-        			$location2 .= "/friend_request_testing/users/$email";
-
-        			//get rid of mkdir exists error
-					if ((!file_exists($location1)) && (!file_exists($location2))){
-						$file_for_user1 = mkdir("friend_request_testing/users/$FID",0777,true);
-						$file_for_user2 = mkdir("friend_request_testing/users/$email", 0777, true);
-						$file_for_user1  = fopen("friend_request_testing/users/$FID/file.txt", "a+");
-
-
-        			//$text_for_sender = "$email"." sent a friend request to "."$FID";
-        			
-        			$name_sender = $this->model_users->get_name($email);
-
-        			$text_for_receiver = "You received a friend request from "."$name_sender". "\n";
-        			
- /*
-Pseudocode for tomorrow:
-
-How to get the timestamp add a new line below the text when the directory was created 
-
-How to get number of notifications:
-Use PHP_EOL, every time we write to a file the EOL will add a new line, then we can 
-count the number of notifications
-
-Accept/Decline:
-	How to get it there is the question....
-	Parse the line if it has recieved friend request in it
-	if it does -> load a form
-
-    The person with a line should have accept/decline below it
-    If accept, check the database where the image key is equal to this and send the person a notify
-    if decline, send nothing
-
-*/
-
-        			//
-        			fwrite($file_for_user1 ,$text_for_receiver);
-
-        			//fwrite($file_for_user2,$text_for_sender);
-        			
-					} else{ //they do exist, same as above just no mkdir
-						$file_for_searched = fopen("friend_request_testing/users/$FID/file.txt", "a+");
-
-						$name_sender = $this->model_users->get_name($email);
-
-        				$text_for_receiver = "You received a friend request from "."$name_sender". "\n";
-        				        			fwrite($file_for_searched ,$text_for_receiver);
-
-        			
-
-					}
-
-			
-
-
-        			//chdir("friend_request_testing/users/$FID");
-        			
-        			
-
-        			
-        			
-     
-					//not using but keep for now
-					$data1 = array(
-                       'location1'=> $location1,
-                       'location2'=> $location2
-               	     );	
-					 $this->session->set_userdata($data1);
-		 	
-
-
-					 $FID   = $this->session->userdata('user123');
-
-
-        		
-        			//$find_sent = 'sent a friend request to';
-        					//Substr_count will count how many times a friend request was sent or received in the file
-        					//-Put in database
-        						//$count_user1_sent = substr_count($text_for_sender,$find_sent);
-        						//$count_user1_rec = substr_count($text_for_sender,$find_received);
-        						
-        						//uncomment below because we dont need that as notification
-        						//$count_user2_sent = substr_count($text_for_receiver,$find_sent);
-        						//asd for fr database
-        						/*
-        						$asd2 = array (
-        								'email' => $FID,
-        								'send' => $count_user2_sent,
-        								'receive' => $count_user2_rec 
-
-
-        							);
-
-        						$asd = array (
-        								'email' => $email,
-        								'send' => $count_user1_sent,
-        								'receive' => $count_user1_rec 
-
-
-        							);
-        						//notification view array
-        						$notify = array(
-        								'email' => $email,
-        								'sent' => $text_for_sender,
-        								'rec' => $text_for_receiver
-
-        							);
-        						*/
-        						//sender
-        						$link = array(
-        							'link_to_file' => $location2,
-        							//'email' => $email
-        							);
-        						$link_rec = array(
-        							'link_to_file' => $location1
-        							);
-
-        						//if (($this->model_friend_request->add_friend_request($asd)) &&($this->model_friend_request->add_friend_request($asd2))) {
-        						
-        							echo 'file for user1 is ' . $location1;
-									echo 'file for user2 is ' . $location2;
-
-								if ( ($this->model_friend_request->edit_info($email,$link)) &&
-								($this->model_friend_request->edit_info($FID,$link_rec)) ) {
-									echo "directory has been added to the database";
-
-        							echo "We have sent a friend request to: " .$FID. "\n";
-        							echo "The friend request is by: " . $email;
-        						} else {  echo 'could not update the db due to either invalid path or already existsand therefore could not update the users';  
-        					    }
-
-
-
-
-
-
-	
-
-}
         
 	public function PWcheck()
 	{
@@ -999,6 +385,7 @@ Accept/Decline:
                     );	
      $this->load->view('test',$data);
     }
+    //MARKED FOR DELETION.
      public function test_search()
     {
 	//$this->load->library('session');
@@ -1220,7 +607,7 @@ Accept/Decline:
     $this->load->view('mywrevs',$result);
     
 	}
-
+//MARKED FOR DELETION.
 	public function myusers2()
 	{
 		$this->load->model('model_users');

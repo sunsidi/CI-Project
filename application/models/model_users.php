@@ -158,29 +158,6 @@ class Model_users extends CI_Model{
             if($user)
             {
                 $row = $user->row();
-                //make new files for the new users for friends list and friend requests
-                
-                //first make the new friend requests directory
-                $link_to_file = "./friend_request_testing/users/" . $row->email;
-                mkdir($link_to_file, 0777, true);
-                //create the new file.txt for that directory
-                $new_file_temp = $link_to_file . "/file.txt";
-                $newfile = fopen($new_file_temp, 'w');
-                chmod($new_file_temp, 0777);
-                fclose($newfile);
-                
-                //then make the friends list directory
-                $link_to_file2 = "./friends_list/users/" . $row->email;
-                mkdir($link_to_file2, 0777, true); 
-                //create the file.txt for that directory
-                $new_file_temp2 = $link_to_file2 . "/file.txt";
-                $newfile2 = fopen($new_file_temp2, 'w');
-                chmod($new_file_temp2, 0777);
-                fclose($newfile2);
-                
-                //use the base_url link to get to those directories
-                $real_link = base_url()."friend_request_testing/users/" . $row->email;
-                $real_link2 = base_url(). "friends_list/users/" . $row->email;
                 $data = array
                 (
                     'email'  => $row->email,
@@ -189,8 +166,7 @@ class Model_users extends CI_Model{
                     'gender' => $row->gender,
                     'username' => $row->username,
                     'reputation' => 0,
-                    'link_to_file' => $real_link,
-                    'friends_list' => $real_link2,
+                    'f_b' => 0,
                     'image_key'=> 'default_profile.jpg'
                 );
                 
@@ -223,7 +199,7 @@ class Model_users extends CI_Model{
         foreach ($data as $i => $value){
           //if user inputted a value then update it
           if($value and $value != 'Change'){
-            $info_updating[$i] = $value;
+            $info_updating[$i] = strip_tags($value);
           }
         }
         if(isset($info_updating)){        
@@ -393,30 +369,6 @@ class Model_users extends CI_Model{
       return $query->result_array();
 
     }
-    public function friend_request($sender,$receiver)
-    {
-     
-
-    }
-
-
-    public function update_account($data)
-    {
-         $this->load->library('session');
-         
-         
-         $sql = "update users Set accountingNumber = \"".$data['AccountingNumber']."\",rountingNumber = \"".$data['RountingNumber']."\",A_Name = \"".$data['A_Name']."\" Where email = \"".$data['email']."\";";
-         
-         $query = $this->db->query($sql);
-         
-         if($query)
-         {
-                  redirect(base_url()."showroom/load_account");
-             
-         }
-    }
-
-
         public function get_user($username){
 
        $sql = "SELECT * FROM users WHERE username = ?;";
@@ -542,37 +494,13 @@ class Model_users extends CI_Model{
     		}
     		else
     			$gender = 'F';
-    		//make new files for the new users for friends list and friend requests
-                
-                //first make the new friend requests directory
-                $link_to_file = "./friend_request_testing/users/" . $user_data['email'];
-                mkdir($link_to_file, 0777, true);
-                //create the new file.txt for that directory
-                $new_file_temp = $link_to_file . "/file.txt";
-                $newfile = fopen($new_file_temp, 'w');
-                chmod($new_file_temp, 0777);
-                fclose($newfile);
-                
-                //then make the friends list directory
-                $link_to_file2 = "./friends_list/users/" . $user_data['email'];
-                mkdir($link_to_file2, 0777, true); 
-                //create the file.txt for that directory
-                $new_file_temp2 = $link_to_file2 . "/file.txt";
-                $newfile2 = fopen($new_file_temp2, 'w');
-                chmod($new_file_temp2, 0777);
-                fclose($newfile2);
-                
-                //use the base_url link to get to those directories
-                $real_link = base_url()."friend_request_testing/users/" . $user_data['email'];
-                $real_link2 = base_url(). "friends_list/users/" . $user_data['email'];
 	    	$data = array( 'fullname' => $user_data['name'],
 	    		       'email' => $user_data['email'],
 	    		       'username' => $user_data['email'],
 	    		       'birthday' => $user_data['birthday'],
 	    		       'image_key' => $user_data['profile_pic'],
 	    		       'gender' => $gender,
-	    		       'link_to_file' => $real_link,
-	                       'friends_list' => $real_link2,
+	    		       'reputation' => 0,
 	                       'f_b' => 1
 	    		       );
 	    	$this->db->insert('users', $data);
@@ -581,6 +509,9 @@ class Model_users extends CI_Model{
     
     public function add_card_info($user_id, $cust_id) {
     	$this->db->update('users', array('cust_id' => $cust_id), array('user_id' => $user_id));
+    }
+    public function delete_card_info($email) {
+        $this->db->update('users', array('cust_id' => ''), array('email' => $email));
     }
     public function add_bank_info($user_id, $recip_id) {
     	$this->db->update('users', array('recip_id' => $recip_id), array('user_id' => $user_id));

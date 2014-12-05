@@ -62,8 +62,7 @@ class Public_profile extends CI_Controller {
 	                                   'other_school'           => $other_data['school'],
 	                                   'other_user_reference'   => $other_data['user_reference'],
 	                                   'other_image_key'        => $other_data['image_key'],
-	                                   'other_chatbox_file'     => $other_data['chatbox_file'],
-	                                   'other_friends_list'     => $other_data['friends_list']);
+	                                   'other_chatbox_file'     => $other_data['chatbox_file']);
 	                                   
 	            //boolean statement----> determine whether or not to put a notification
 	            $nav_data = $this->session->all_userdata();
@@ -184,7 +183,12 @@ class Public_profile extends CI_Controller {
            //$data['comment_file'] = $this->model_events->get_chatbox($id);
 
 
-            $comment = $this->input->post('comment');
+            $temp_comment = $this->input->post('comment');
+            $comment = strip_tags($temp_comment);
+            while($comment != $temp_comment) {
+                $temp_comment = $comment;
+                $comment = strip_tags($temp_comment);
+            }
             /* check comment if its blank then do not write file_chat */
 
             $filename =  "/home/wrevelco/public_html/application/views/chatbox/".$data['chatbox_file'];

@@ -455,6 +455,16 @@ class account extends CI_Controller{
 		}
         	redirect('account/myaccount_accountinfo');
         }
+        
+        public function remove_card() {
+            $this->load->library('session');
+            $this->load->model('model_users');
+            $email = $this->session->userdata('email');
+            $this->model_users->delete_card_info($email);
+            $this->session->set_flashdata('message','Your card information has been removed.' );
+            redirect('account/myaccount_accountinfo');
+        }
+        
         public function view_ticket($event_id, $ticket_id) {
         	$this->load->library('path');
         	$this->load->model('model_events');

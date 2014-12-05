@@ -59,8 +59,8 @@ position:absolute;
         
         <div id="navbarCollapse" class="collapse navbar-collapse"  style="float: right;">
         	<div class="pull-left notlogged" style="margin-top:8px;">
-        	<a href="http://wrevel.com/welcome/home" class="btn header-button">Sign Up</a> &nbsp;
-        	<a href="http://wrevel.com/welcome/home" class="btn header-button">Log In</a>
+        	<a href="<?php echo base_url().'welcome/home'?>" class="btn header-button">Sign Up</a> &nbsp;
+        	<a href="<?php echo base_url().'welcome/home'?>" class="btn header-button">Log In</a>
         	</div>
         <div role="search" class="navbar-form navbar-left">
           <?php echo form_open(base_url().'main/get_latest_events/')?>
@@ -89,6 +89,13 @@ position:absolute;
           <!--<li class="header-link"><a href="<?php echo base_url()."chat/MessageView"?>">Inbox</a></li>-->
           <li class="header-link"><a href="<?php echo base_url().'showroom/notify2'?>">Notifications <span class="badge" style="background:#BE1E2D;"><?php echo $nav_data['counter'] ?></span></a></li>
           <!--<li class="header-link"><a href="#">Search</a></li>-->
+          <?php $this->load->library('session');
+            $allowed_access = array('kelui92@gmail.com','abirashukur@gmail.com','cjbackintime@gmail.com','tshum741@gmail.com','sajidzaman39@hotmail.com');
+            $keep_going = false;
+            for($i = 0; $i < 5; $i++) {
+                if($this->session->userdata('email') == $allowed_access[$i]) {?>
+            <li><a href="<? echo base_url()?>admin/admin_account">Admin Console</a></li>
+            <?php break;}}?>
           <li><a href="<? echo base_url()?>account/myaccount_accountinfo">My Account</a></li>
           <li class="divider"></li>
           <li><a href="<?php echo base_url()."main/loginout" ?>">Logout</a></li>
@@ -110,7 +117,9 @@ position:absolute;
         <div class="navbar-brand dropdown collapse navbar-collapse" style="margin-top:5px;">
         <button class="btn" type="button" onclick = "myFunction()" id="dropdownMenu1" data-toggle="dropdown" style="background:none;">
             <i id = "herdzz" class="fa fa-user" style="color:white; font-size:30px;">
+                <?php if($nav_data['counter'] != 0) {?>
                 <span class="badge" id = "here" style="background:#BE1E2D;display:block;margin-top:-15px;left:20px;"><?php echo $nav_data['counter'] ?> </span>
+                <?php }?>
             </i>
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" style="text-align:center; background:#d9e3ea; padding:0; padding-bottom:10px;border:none;border-radius:8px;width:500px;">
@@ -191,7 +200,7 @@ position:absolute;
     <script src="https://code.jquery.com/jquery.js"></script>
     <!--<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.min.js"></script>-->
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.js"></script>
-    <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.min.js"></script>  
+    <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.min.js"></script>
     <script src="<?php echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
 <script>
     	$(document).ready(function(){

@@ -150,44 +150,38 @@ class Model_events extends CI_Model{
 	        $this->load->helper('date');
 		
 		$data['e_image'] = $e_image;
-		$data['e_name'] =  $this->input->post('e_name');
-                $data['e_description'] = $this->input->post('e_description');
-                $data['e_state'] = $this->input->post('e_state');
-		$data['e_city'] = $this->input->post('e_city');
-                $data['e_zipcode'] = $this->input->post('e_zipcode');
-	        $data['e_country'] = $this->input->post('e_country');
-	        $data['e_phone'] = $this->input->post('e_phone');
-	        $data['e_email'] = $this->input->post('e_email');
-		$data['e_website'] = $this->input->post('e_website');
-	        $data['e_capacity'] = $this->input->post('e_capacity');
-		$data['e_address'] = $this->input->post('e_address');
+		$data['e_name'] =  strip_tags($this->input->post('e_name'));
+                $data['e_description'] = strip_tags($this->input->post('e_description'));
+                $data['e_state'] = strip_tags($this->input->post('e_state'));
+		$data['e_city'] = strip_tags($this->input->post('e_city'));
+                $data['e_zipcode'] = strip_tags($this->input->post('e_zipcode'));
+	        $data['e_country'] = strip_tags($this->input->post('e_country'));
+	        $data['e_phone'] = strip_tags($this->input->post('e_phone'));
+	        $data['e_email'] = strip_tags($this->input->post('e_email'));
+		$data['e_website'] = strip_tags($this->input->post('e_website'),'<a>');
+	        $data['e_capacity'] = strip_tags($this->input->post('e_capacity'));
+		$data['e_address'] = strip_tags($this->input->post('e_address'));
 		$data['e_is_address_hide'] = $this->input->post('e_is_hide');
 		$data['e_is_online'] = $this->input->post('e_is_online');
 		$data['e_is_ticketed'] = $this->input->post('e_is_ticketed');
 		if($this->input->post('e_type') == 'private') {
 			$data['e_private'] = 1;
 		}
-		
-		
-		
-		
-		
-		
-		
+                
 		//$data['e_end_time'] = $this->input->post('e_date').' '.$this->input->post('e_end_time');
 		if($this->input->post('e_end_time') == NULL)
-			$data['e_end_time'] = $this->input->post('e_end_time');
+			$data['e_end_time'] = strip_tags($this->input->post('e_end_time'));
 		else
-			$data['e_end_time'] = $this->timestamp($this->input->post('e_end_time'));
+			$data['e_end_time'] = $this->timestamp(strip_tags($this->input->post('e_end_time')));
 		//echo $data['e_end_time'];
 	        
 		//$data['e_start_time'] = $this->input->post('e_date').' '.$this->input->post('e_start_time');
 		//echo $this->input->post('e_start_time');
-		$data['e_start_time'] = $this->timestamp($this->input->post('e_start_time'));
+		$data['e_start_time'] = $this->timestamp(strip_tags($this->input->post('e_start_time')));
 		//echo $data['e_end_time'];
 		
 	        
-		$temp_date = $this->input->post('e_date');
+		$temp_date = strip_tags($this->input->post('e_date'));
                 $split_date = explode('/',$temp_date);
                 $real_date = $split_date[2] . '-' . $split_date[0] . '-' . $split_date[1];
 		$data['e_date'] = $real_date;
@@ -232,12 +226,12 @@ class Model_events extends CI_Model{
                 
                	for($i = 0; $i < count($ticket_type); $i++) {
                		$ticket_data = array('event_id' => $query_id,
-               				     'type'	=> $ticket_type[$i],
-               				     'info'	=> $ticket_info[$i],
-               				     'quantity' => $ticket_quantity[$i],
-               				     'price'	=> $ticket_price[$i],
-               				     'date'	=> $ticket_date[$i],
-               				     'time'	=> $this->timestamp($ticket_time[$i]));
+               				     'type'	=> strip_tags($ticket_type[$i]),
+               				     'info'	=> strip_tags($ticket_info[$i]),
+               				     'quantity' => strip_tags($ticket_quantity[$i]),
+               				     'price'	=> strip_tags($ticket_price[$i]),
+               				     'date'	=> strip_tags($ticket_date[$i]),
+               				     'time'	=> $this->timestamp(strip_tags($ticket_time[$i])));
                		if($lowest_price != 0 || $lowest_price > $ticket_price[$i])
 	                	$lowest_price = $ticket_price[$i];
                		$this->db->insert('event_ticket_types', $ticket_data);
@@ -580,6 +574,37 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
             return false;
         }
   }
+  
+  //Remove the user from attending.
+  public function remove_attending($user_id, $event_id) {
+        //add the user and event to user_attending database.
+        $new_attendee = array('user_id' => $user_id, 'event_id' => $event_id);
+        $query_check = $this->db->get_where('users_attending', $new_attendee);
+        //If user is found in the database and is not attending then.
+        if($query_check->num_rows() == 1){
+            $check_attend = $query_check->row_array(0);
+            if($check_attend['attending'] == 0) {
+                return true;
+            }
+            else {
+                $new_attend_data = array('attending' => false);
+                $this->db->update('users_attending', $new_attend_data, $new_attendee);
+                //delete one to attending.
+                $query = $this->db->get_where('events', array('event_id' => $event_id));
+                $data = $query->result_array();
+                $attending = $data[0]['e_attending'];
+                $attending -= 1;
+                $new_attending = array('e_attending' => $attending);
+                $this->db->update('events', $new_attending, array('event_id' => $event_id));
+                return false;
+            }
+        }
+        //Else just say you are not attending.
+        else{
+            return true;
+        }
+  }
+  
   //Updates the number of people liking the event.
   public function update_likes($user_id, $event_id) {
         $new_liker = array('user_id' => $user_id, 'event_id' => $event_id);
@@ -615,13 +640,13 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
   }
   //Gets all users attending a specific event.
   public function get_attendees($event_id) {
-      $query = $this->db->get_where('users_attending', array('event_id' => $event_id));
+      $query = $this->db->get_where('users_attending', array('event_id' => $event_id, 'attending' => 1));
       $data = $query->result_array();
       return $data;
   }
   
   //edit the info of your event.
-  public function edit_event_info($event_id) //CHANGED!!!!
+  public function edit_event_info($event_id, $e_image) //CHANGED!!!!
     {
         $data = $this->input->post();
 
@@ -632,9 +657,10 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
             	$info_updating[$i] = $this->timestamp($value);
             }
             else 
-            	$info_updating[$i] = $value;
+            	$info_updating[$i] = strip_tags($value);
           }
         }
+        $info_updating['e_image'] = $e_image;
         if(isset($info_updating)){        
             $query = $this->db->update('events', $info_updating, array('event_id'=> $event_id));
             if($query)

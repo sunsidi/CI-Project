@@ -490,30 +490,6 @@ public function load_account()
             $this->load->view("myaccount-accountinfo",$data);
         }
     }
-    
-    public function update_Account($id)
-    {
-        $this->load->library('session');
-        $this->load->model('model_users');
-        $email = $this->model_users->get_email($id);
-        $AccountingNumber = $this->input->post('accountingNumber');
-        $RountingNumber = $this->input->post('rountingNumber');
-        
-        //echo $AccountingNumber;
-        //echo $RountingNumber;
-        //echo '<pre>', print_r($email, true), '</pre>';
-        
-        $data = array(
-            'email' => $email[0]['email'],
-            'AccountingNumber' => $AccountingNumber,
-            'RountingNumber' =>$RountingNumber,
-            'A_Name' => $this->input->post('A_Name')
-        );
-        
-        
-        $this->load->model("model_users");
-        $this->model_users->update_account($data);
-    }
 
     public function other($username)
         {
@@ -650,7 +626,12 @@ public function load_account()
            //$data['comment_file'] = $this->model_events->get_chatbox($id);
 
 
-            $comment = $this->input->post('comment');
+            $temp_comment = $this->input->post('comment');
+            $comment = strip_tags($temp_comment);
+            while($comment != $temp_comment) {
+                $temp_comment = $comment;
+                $comment = strip_tags($temp_comment);
+            }
             /* check comment if its blank then do not write file_chat */
 
             $filename =  "/home/wrevelco/public_html/application/views/chatbox/".$data['chatbox_file'];

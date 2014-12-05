@@ -283,9 +283,9 @@ jQuery(document).ready(function () {
 											</div>
 										</div>
 									</div>-->
-									
-                                            	<td><a href="#" onclick="removeCard()">[Remove]</a></td>
-                                       
+                                                <?php if(isset($card_data)) {?>
+                                                    <td><a href="<?php echo base_url().'account/remove_card'?>" onclick="return removeCard()">[Remove]</a></td>
+                                                <?php }?>
                                         	</tr>
                                     	</tbody>
                                 	</table>
@@ -359,6 +359,7 @@ jQuery(document).ready(function () {
 												<td style="background:white; text-align:center; padding:5px;"><?php if(isset($bank_data)) echo $bank_data['bank_name']?></td>
 												<td style="background:white; text-align:center; padding:5px;"><?php if(isset($bank_data)) echo "*********" . $bank_data['last4']?></td>
 												<td style="background:white; text-align:center;"><?php if(isset($bank_data)) echo "*********"?></td>
+                                                                                                
 												<td><a href="#" data-toggle="modal" data-target="#editAcct">[Edit]</a></td>
 												
 												<div class="modal fade" id="editAcct" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -449,7 +450,8 @@ jQuery(document).ready(function () {
 			confirm("Are you sure you want to delete your account?");
 		}
 		function removeCard(){
-			confirm("Are you sure?");
+			if(confirm("Are you sure?")) return true;
+                        else return false;
 		}
 	</script>
 	<script>
