@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Event Posted Success</title>
+<title>Wrevenue Posted Success</title>
 
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap.min.css" rel="stylesheet">
@@ -24,14 +24,14 @@
             			<img src="<?php echo $PATH_IMG?>wrevel_logo.png"style="width:180px;z-index:1;"/>
         			</div>
          			<div class="col-md-6 col-sm-6" style="background:#6CA5CC; height:75px; text-align:center; font-size:35px; padding:15px 10px 10px 0;  border-top-right-radius:10px;">
-            			<p>Wrev Status</p>
+            			<p>Wrevenue Status</p>
         			</div>
      			</div>
      			<div class="row" style="background:#E2E9EE;text-align:center; padding:50px 20px; font-size:20px; color:black; border-bottom-left-radius:10px; border-bottom-right-radius:10px;">
      				<p>Congratulations!</p>
-                    <p>Your event has been posted successfully and you have just earned 10 Reputation points!</p>
-                  	<p><a href="#" data-toggle="modal" data-target="#create"><button class="btn" type="button" style="background:#79749E; font-size:20px; color:white;">Create another Wrev</button></a></p>
-                    <p><a href="<?php echo base_url()."main/mywrevs"?>"><button class="btn" type="button" style="background:#6CA5CC; font-size:20px; color:white;">My Wrevs</button></a></p>  
+                    <p>Your Wrevenue has been posted successfully!</p>
+                  	<p><a href="#"><button class="btn" type="button" style="background:#79749E; font-size:20px; color:white;">Create another Wrevenue</button></a></p>
+                    <p><a href="#"><button class="btn" type="button" style="background:#6CA5CC; font-size:20px; color:white;">Wrevenues</button></a></p>  
     			</div>
      		</div>
          </div>

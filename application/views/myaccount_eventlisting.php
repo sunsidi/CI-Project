@@ -60,6 +60,8 @@ jQuery(document).ready(function () {
 									<th>Price Per Ticket</th>
 									<!--<th>Sales End</th>-->
 									<!--<th>Status</th>-->
+									<th></th>
+									<th id="address" data-content="Show address reveals the secret location of your event to all of your event attendees. They will get notified once you reveal the address." data-trigger="hover">Show Address</th>
 								</thead>
 								<tbody>
 									<?php
@@ -76,7 +78,7 @@ jQuery(document).ready(function () {
                                                                                     </td>
                                                                                     <?php if($attending_events[$i]['e_is_address_hide']) {?>
                                                                                     	<td>
-                                                                                    		<a href="<?php echo base_url().'account/unhide_event/'.$attending_events[$i]['event_id'];?>" onclick="return removal()" id="address" data-content="Show address reveals the secret location of your event to all of your event attendees. They will get notified once you reveal the address." data-trigger="hover">[Show Address]</a>
+                                                                                    		<a href="<?php echo base_url().'account/unhide_event/'.$attending_events[$i]['event_id'];?>" onclick="return removal()" >[Show Address]</a>
                                                                                     	</td>
                                                                                     <?php }?>
                                                                                 </tr>
