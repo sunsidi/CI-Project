@@ -451,13 +451,13 @@
                         
                         <div class="col-md-3">
                             <div class="left-inner-addon-ml">
-                              	<input type="text" name="" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Title">
+                              	<input type="text" name="e_name" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Title">
   			    </div>
                         </div>
                         
   			<div class="col-md-3">
                             <div class="left-inner-addon-ml">
-                              	<input type="text" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Date">
+                              	<input type="text" name=""class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Date">
   			    </div>
                         </div>
                         
