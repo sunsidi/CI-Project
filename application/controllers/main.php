@@ -137,6 +137,7 @@ public function index()
 	
         //Job applications.
         public function job_application() {
+            $this->load->library('session');
             $this->load->library('email',array('mailtype'=>'html'));
             $this->email->from($this->input->post('job_email'));
             $this->email->to('jobs@wrevel.com');
@@ -150,27 +151,38 @@ public function index()
             $message .= "<p>Website: ".$this->input->post('website')."</p>";
             
             $this->email->message($message);
-            $config['upload_path']='./uploads/';
+            $uniqid = md5(uniqid());
+            mkdir('./uploads/'.$uniqid,'0777',true);
+            $config['upload_path']='./uploads/'.$uniqid;
             $config['allowed_types']= 'doc|docx|rtf|txt|pdf|tif';
             $config['max_size']	= '10000';
-            $config['file_name'] = md5(uniqid());
+            //$config['file_name'] = md5(uniqid());
             //echo $image_name;
             $this->load->library('upload',$config);
+            
             if ($this->upload->do_upload('cover_letter')) {
                 $cover_letter = $this->upload->data();
                 echo print_r($cover_letter, TRUE);
                 $cover_letter_path = $cover_letter['full_path'];
             }
-            else echo $this->upload->display_errors('<p>', '</p>');
+            else {
+                $this->session->set_flashdata('message', 'Please make sure you entered all the required fields and attached a cover letter in the form of .doc, .docx, .txt, .pdf');
+                redirect('info/careers_apply');
+            }
             if($this->upload->do_upload('resume')) {
                 $resume = $this->upload->data();
                 echo print_r($resume, TRUE);
                 $resume_path = $resume['full_path'];
             }
-            else echo $this->upload->display_errors('<p>', '</p>');
+            else {
+                $this->session->set_flashdata('message', 'Please make sure you entered all the required fields and attached a resume in the form of .doc, .docx, .txt, .pdf');
+                redirect('info/careers_apply');
+            }
             $this->email->attach($cover_letter_path);
             $this->email->attach($resume_path);
             $this->email->send();
+            $this->session->set_flashdata('message', 'We have received your email and you will hear from us shortly. Thanks for your interest in Wrevel!');
+            redirect('info/careers_apply');
         }
         
     public function login_validation()
