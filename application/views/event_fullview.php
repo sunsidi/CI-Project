@@ -67,7 +67,7 @@ jQuery(document).ready(function () {
             
 			<div class="col-md-6 event-title" style="background:<?php echo $style[$category]['theme-color-1']?>; padding:17px; text-align:center;">
                             <!--name of event-->
-                    <strong><small><?php echo $event[0]['e_name']?></small></strong>
+                    <strong><small><?php $event_name_temp = substr($event[0]['e_name'],0,14); echo $event_name_temp?></small></strong>
                         <?php if(isset($email)) {
                             if($email == $user_email_temp[0]['email']) {?>
                         <a id="check_user" class="pull-right" href="#" data-toggle="modal" data-target="#editEventModal">
