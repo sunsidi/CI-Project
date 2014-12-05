@@ -2,6 +2,7 @@
 <html>
 <head>
  <meta charset="utf-8">
+
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap.min.css" rel="stylesheet">
@@ -233,18 +234,7 @@
             		      </select> 
                             </div>
               	 </div>
-              	 <label class="col-sm-1 control-label" style="padding-top:10px;">period:</label>
-                            <div class="col-sm-2">
-                              <select id="period" name="period" type="number" class="form-control" style="padding:0;font-size:10px;">
-              			<option value="" selected="selected"></option> 
-              			<option value="1">Every day</option>
-              			<option value="7">7 days </option>
-                                <option value="30">1 month</option>
-                                <option value="365">1 year</option>
-                                <option value="-1">Every week day</option>
-                                <option value="-7">Every weekend</option>
-            		      </select> 
-                            </div>
+              	 
                     
                       
            	  
@@ -281,12 +271,24 @@
                 </div>  -->         
                 
                     <div class="form-group row">
-              <label class="col-sm-2 control-label">location:</label>
-              <div class="col-sm-5">
+					<label class="col-sm-1 control-label" style="padding-top:10px;">period:</label>
+                            <div class="col-sm-2">
+                              <select id="period" name="period" type="number" class="form-control" style="padding:0;font-size:10px;">
+              			<option value="" selected="selected"></option> 
+              			<option value="1">Every day</option>
+              			<option value="7">7 days </option>
+                                <option value="30">1 month</option>
+                                <option value="365">1 year</option>
+                                <option value="-1">Every week day</option>
+                                <option value="-7">Every weekend</option>
+            		      </select> 
+                            </div>
+              <label class="col-sm-1 control-label">street:</label>
+              <div class="col-sm-4">
                   <input id="location1" type="text" name = "e_address" class="form-control" placeholder="where is it?">
               </div>
                  <label class="col-sm-1 control-label" >city:</label>
-                            <div class="col-sm-4" >
+                            <div class="col-sm-3" >
                               <input id="location2" type="text" class="form-control" name = "e_city">
                             </div>
             </div>

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Nation</title>
+<title>Wrevel Nation</title>
 <meta name="description" content="Wrevel Brand Ambassadors are the face of Wrevel on college campuses. Join our ambassador program!!">
 <meta name="keywords" content="nation, brand ambassador, ambassador program, wrevel’s nation program, parties, new york city life, tickets, wrevel, online tickets, tech company, buy tickets">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap.css" rel="stylesheet">

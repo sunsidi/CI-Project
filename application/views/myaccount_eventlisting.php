@@ -26,6 +26,7 @@ jQuery(document).ready(function () {
 <!--content
 ==============================================-->
 <div id='sentMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:20px;width: 40%; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>  <div class="container" style="padding-bottom:50px;">
+	<div class="container" style="padding-bottom:50px;">
 	<div class="row" style="margin-top:50px;">
     
 		<div class="col-md-3 col-md-offset-1">
@@ -59,6 +60,8 @@ jQuery(document).ready(function () {
 									<th>Price Per Ticket</th>
 									<!--<th>Sales End</th>-->
 									<!--<th>Status</th>-->
+									<th></th>
+									<th id="address" data-content="Show address reveals the secret location of your event to all of your event attendees. They will get notified once you reveal the address." data-trigger="hover">Show Address</th>
 								</thead>
 								<tbody>
 									<?php
@@ -75,7 +78,7 @@ jQuery(document).ready(function () {
                                                                                     </td>
                                                                                     <?php if($attending_events[$i]['e_is_address_hide']) {?>
                                                                                     	<td>
-                                                                                    		<a href="<?php echo base_url().'account/unhide_event/'.$attending_events[$i]['event_id'];?>" onclick="return removal()" id="address" data-content="Show address reveals the secret location of your event to all of your event attendees. They will get notified once you reveal the address." data-trigger="hover">[Show Address]</a>
+                                                                                    		<a href="<?php echo base_url().'account/unhide_event/'.$attending_events[$i]['event_id'];?>" onclick="return removal()" >[Show Address]</a>
                                                                                     	</td>
                                                                                     <?php }?>
                                                                                 </tr>
@@ -371,14 +374,16 @@ jQuery(document).ready(function () {
 									</tr>
 									
 								</tbody>
-							</table>
+							</table>-->
+							</div>
 						</div>
   					</div>
                 </div>    
 			</div> 
         </div>
        
-	</div>-->
+	</div>
+	</div>
 </div>
 <!--end of content-->
 

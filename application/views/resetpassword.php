@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Wrevel</title>
+<title>Wrevel - Reset Password</title>
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap.min.css" rel="stylesheet">
