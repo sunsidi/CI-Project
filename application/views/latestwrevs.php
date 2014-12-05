@@ -177,9 +177,8 @@
                         <p class="location location-romance"><i class="fa fa-map-marker"></i><?php echo $event_info[$i]['e_state'] ?> </p>
                         
                         <!--Description -->
-                        <p class="description">
-                          Description here: <br>
-                        <?php echo $event_info[$i]['e_description'] ?>                       
+                        <p class="description" style="height: 40px;text-overflow:ellipsis;">
+                        <?php $event_description_temp = substr($event_info[$i]['e_description'], 0, 150); echo $event_description_temp; ?>......                       
                         </p>
                         
                         <!--Click to lead to individual listing page-->

@@ -205,7 +205,7 @@
                         
                         <!--Description -->
                         <p class="description">                       
-                        <?php echo $event_info[$i]['e_description'] ?>                       
+                        <?php $event_description_temp = substr($event_info[$i]['e_description'], 0, 150); echo $event_description_temp; ?>......                       
                         </p>
                         
                         <!--Click to lead to individual listing page-->
