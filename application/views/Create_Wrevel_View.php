@@ -968,6 +968,44 @@
                 alert("Please make sure your event has a Date.");
                 return false;
             }
+            var good_deadline = true;
+            $('.d_date').each(function() { 
+	            if($(this).val()){
+	                var date_check = ($(this).val()).split("/");
+	                //Check for 3 values.
+	                if(date_check.length === 3) {
+	                    //Check the month.
+	                    if(date_check[0].length === 2 && parseInt(date_check[0]) <= parseInt('12') && parseInt(date_check[0]) > parseInt('0')) {
+	                        //Check the day.
+	                        if(date_check[1].length === 2 && parseInt(date_check[1]) <= parseInt('31') && parseInt(date_check[1]) > parseInt('0')) {
+	                            //Check the year.
+	                            if(date_check[2].length === 4 && parseInt(date_check[2]) <= parseInt('9999') && parseInt(date_check[2]) > parseInt('0')) {}
+	                            else{
+	                                good_deadline = false;
+	                                return false;
+	                            }
+	                        }
+	                        else {
+	                            good_deadline = false;
+	                            return false;
+	                        }
+	                    }
+	                    else {
+	                        good_deadline = false;
+	                        return false;
+	                    }
+	                }
+	                else {
+	                    good_deadline = false;
+	                    return false;
+	                }
+	            }
+	    });
+	    if(good_deadline) {}
+	    else {
+	    	alert("Your deadline date is invalid. Please try again and make sure you follow the format.");
+	    	return false;
+	    }
             if($('#e_start_time').val()){}
             else{
                 alert("Please make sure your event has a start time.");
@@ -994,7 +1032,7 @@
 				  +"<div>"
 				  +"Type"
 				  
-				      +"<select name='type[]' type='text' class='select_type form-control' style='padding:0;'>"
+				      +"<select name='type[]' type='text' class='select_type form-control' style='padding:0;' required>"
 				          +"<option value='' selected='selected'></option>"
 				          +"<option value='free'>Free</option>"
 				          +"<option value='regular'>Regular</option>"
@@ -1011,7 +1049,7 @@
 				  +"<div class='col-sm-2'>Qty."
 				      +"<input type='number' max='500' min='1' name='e_quantity[]' class='form-control'>"
 				      +"Deadline"
-				      +"<input type='date' name='max_date[]' class='form-control'>"
+				      +"<input type='text' name='max_date[]' class='d_date form-control' placeholder='mm/dd/yyyy'>"
 				  +"</div>"
 				  
 				  

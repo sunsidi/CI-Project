@@ -6,7 +6,15 @@ class account extends CI_Controller{
                 parent::__construct();
 		$this->load->library('session');
 		$sessionData = $this->session->all_userdata();
-		
+		$logged_in = $this->session->userdata('is_logged_in');
+		//If the user is not logged in, prompt them to log in or sign up.
+		if(!$logged_in){
+		    $prompt = array('prompt_log_in' => 1);
+		    $this->session->set_userdata($prompt);
+		    redirect('welcome/home'); 
+		}
+		    //Else continue to load profile.
+		else{
 		require_once(dirname(__FILE__) . '/config.php');
 		
 		
@@ -67,7 +75,7 @@ class account extends CI_Controller{
 		require(dirname(__FILE__) . '/Stripe/ApplicationFee.php');
 		
 		$this->load->library('path');
-		
+		}
 		
 		
         }
