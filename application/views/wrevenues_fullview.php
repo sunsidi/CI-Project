@@ -35,9 +35,9 @@
 							<!--<p><i class="fa fa-clock-o" style="width:50px;"></i> Open Mon, Tues, Wed, Thurs, Fri, Sat, and Sun</p>-->
 						</div>
 						<div class="col-sm-4" style="padding-top:3%;">
-							<a class="btn wrevenues-name">Balthazar Restaurant</a>
+							<a class="btn wrevenues-name"><?php echo $wrevenues['place'];?></a>
 							
-							<h4 style="font-size:19px;" id="pricingInfo" data-html="true" data-content="$ - Free to $10 </br> $$ - $11 to 25 </br> $$$ - $26 to 49 </br> $$$$ - $50 to higher" data-trigger="hover" data-placement="bottom"><img src="<?php echo $PATH_IMG?>dollarbills_icon.png"/> $$$$ </h4>
+							<h4 style="font-size:19px;" id="pricingInfo" data-html="true" data-content="$ - Free to $10 </br> $$ - $11 to 25 </br> $$$ - $26 to 49 </br> $$$$ - $50 to higher" data-trigger="hover" data-placement="bottom"><img src="<?php echo $PATH_IMG?>dollarbills_icon.png"/><?php echo $wrevenues['price'];?></h4>
 						</div>
 						<div class="col-sm-4">
 							<div>
@@ -181,7 +181,7 @@
 							<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>shoutout_icon.png"/> &nbsp; Shoutout:</h4>
 							<div class="row" style="padding:3% 20% 0%; font-size:15px;text-align:center;">
 								<img src="<?php echo $PATH_IMG?>/balt.jpg" class="shoutout-image"/>
-								<p>Name</p>
+								<p><?php echo $wrevenues['name'];?></p>
 								<div style="background:#F0F3F6;border-radius:8px;padding:10px;">Shoutout here</div>
 								
 							</div>
@@ -191,8 +191,7 @@
 							<div class="margin-top:40px;">
 							<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>details_icon.png"/> &nbsp; Wrevenue Details:</h4>
 							<div class="row" style="padding:3% 20% 0%; font-size:15px;">
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-								
+								<?php echo $wrevenues['description'];?>
 							</div>
 							</div>
 							
@@ -219,20 +218,20 @@
 							<!--Contact Info-->
 							<div style="margin-top:40px;">
 							<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>primary_contact_icon.png"/> &nbsp; Contact</h4>
-								<div style="padding:3% 17%">
-									<p class="info"><span style="padding-right:30px;"><img src="<?php echo $PATH_IMG?>globe_icon2.png"/></span> website link here</p>
-									<p class="info"><i class="fa fa-facebook" style="width:47px;margin-left:6px;"></i> facebook link here</p>
-									<p class="info"><i class="fa fa-twitter" style="width:47px;margin-left:6px;"></i> twitter link here</p>
-									<p class="info"><span style="padding-right:33px;"><img src="<?php echo $PATH_IMG?>phone_icon2.png"/></span> phone number</p>
-									<p class="info"><span style="padding-right:28px;"><img src="<?php echo $PATH_IMG?>email_icon2.png"/></span> email address</p>
-								</div>
+                                                            <div style="padding:3% 17%">
+                                                                <p><a href="<?php if(strpos($wrevenues['website'], 'http://') === false && strpos($wrevenues['website'], 'https://') === false) echo 'http://'.$wrevenues['webiste']; else echo $wrevenues['website'];?>" class="info"><span style="padding-right:30px;"><img src="<?php echo $PATH_IMG?>globe_icon2.png"/></span> <?php echo $wrevenues['website'];?> </a></p>
+                                                                <p class="info"><i class="fa fa-facebook" style="width:47px;margin-left:6px;"></i> facebook link here</p>
+								<p class="info"><i class="fa fa-twitter" style="width:47px;margin-left:6px;"></i> twitter link here</p>
+								<p class="info"><span style="padding-right:33px;"><img src="<?php echo $PATH_IMG?>phone_icon2.png"/></span> <?php echo $wrevenues['telephone'];?></p>
+								<p class="info"><span style="padding-right:28px;"><img src="<?php echo $PATH_IMG?>email_icon2.png"/></span> <?php echo $wrevenues['email'];?></p>
+                                                            </div>
 							</div>
 							
 						</div>
 						<div class="col-md-6">
 							<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>map_icon.png"/> &nbsp; Where is it?</h4>
 							<div style="text-align:center;font-size:18px;padding:20px;line-height:60%;">
-								<p>67 West St, Brooklyn, NY 10019</p>
+								<p><?php echo $wrevenues['address'].', '.$wrevenues['city']. ', '.$wrevenues['state']. ' '.$wrevenues['zipcode'];?></p>
 								<p style="font-family:GillSans">Neighborhood, </p>
 							</div>
 							
@@ -243,8 +242,8 @@
 							<div style="margin-top:40px;">
 							<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>clock_icon.png"/> &nbsp; Hours</h4>
 								<div style="padding:0% 17%;font-size:18px;line-height:70%;">
-									<p><em>Thursday</em> &nbsp;&nbsp 10:00PM to 3:00PM</p>
-									<p><em>Friday</em> &nbsp;&nbsp 10:00PM to 3:00PM</p>
+									<p><em>Thursday</em> &nbsp;&nbsp <?php echo $wrevenues['start_time'].' to '.$wrevenues['end_time'];?></p>
+									<p><em>Friday</em> &nbsp;&nbsp <?php echo $wrevenues['start_time'].' to '.$wrevenues['end_time'];?></p>
 								</div>
 							</div>
 							<div style="margin-top:40px;text-align:center;">

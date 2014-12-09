@@ -104,13 +104,15 @@
 				
 				<div class="row">
 					<!--one wrevenue-->
+                                        <?php if(isset($wrevenues)) {
+                                            for($i = 0; $i < count($wrevenues); $i++) {?> <!--THIS WILL CREATE AS MANY WREVENUES THAT EXISTS-->
 					<div class="col-md-4">
 						<div class="panel" style="padding:8%;padding-bottom:9%;border-radius:10px;background:linear-gradient(rgba(70, 107, 121, 0.45), rgba(70, 107, 121, 0.45)),url(<?php echo $PATH_IMG?>balt.jpg); background-size:100%;text-align:center;font-family:GillSans;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);height:379px;">
 							<div class="panel-body" style="padding:0;text-shadow: 2px 2px 4px #000000;">
 								<div class="row">
 									<div class="col-sm-12">
 								
-										<a class="btn wrevenues-venue">Balthazar Restaurant</a>
+										<a href="<?php echo base_url().'wrevenues/wrevenues_fullview/'.$wrevenues[$i]['id']?>" class="btn wrevenues-venue"><?php echo $wrevenues[$i]['place'];?></a>
 										<!--<p><i class="fa fa-money"></i> </p>-->
 								
 										<h2>54 <i class="fa fa-heart-o"></i></h2>
@@ -122,14 +124,14 @@
 								<div class="row" style="font-size:18px;margin-top:8px;">
 									<div class="col-sm-12" style="font-size:20px;">
 										<!--need to check old wrevenues code, dollar signs is stored in database and is being called-->
-										<p><img src="<?php echo $PATH_IMG?>dollarbills_icon.png"/> $$$$</p>
+										<p><img src="<?php echo $PATH_IMG?>dollarbills_icon.png"/><?php echo $wrevenues[$i]['price'];?></p>
 									</div>
 									<div class="col-sm-12">
 										<p style="padding:0 50px;"><i class="fa fa-clock-o"></i> Open Mon, Tues, Wed, Thurs, Fri, Sat, and Sun</p>
 									</div>
 							
 									<div class="col-sm-12">
-										<p><i class="fa fa-map-marker"></i> Hell's Kitchen, Midtown West</p>
+										<p><i class="fa fa-map-marker"></i> <?php echo $wrevenues[$i]['city']. ', '.$wrevenues[$i]['state'];?></p>
 									</div>
 								</div>
 								<div class="row">
@@ -146,176 +148,7 @@
 							</div>
 						</div>
 					</div><!--end of wrevenue-->
-					<!--one wrevenue-->
-					<div class="col-md-4">
-						<div class="panel" style="padding:8%;padding-bottom:9%;border-radius:10px;background:linear-gradient(rgba(70, 107, 121, 0.45), rgba(70, 107, 121, 0.45)),url(<?php echo $PATH_IMG?>balt.jpg); background-size:100%;text-align:center;font-family:GillSans;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);height:379px;">
-							<div class="panel-body" style="padding:0;text-shadow: 2px 2px 4px #000000;">
-								<div class="row">
-									<div class="col-sm-12">
-								
-										<a class="btn wrevenues-venue">Balthazar Restaurant</a>
-										<!--<p><i class="fa fa-money"></i> </p>-->
-								
-										<h2>54 <i class="fa fa-heart-o"></i></h2>
-										<a class="btn wrevenues-palette"><span class="glyphicon glyphicon-list-alt"></span></a>
-										<a class="btn wrevenues-share"><i class="fa fa-share-square-o"></i></a>
-										<!--<p><i class="fa fa-clock-o" style="width:50px;"></i> Open Mon, Tues, Wed, Thurs, Fri, Sat, and Sun</p>-->
-									</div>
-								</div>
-								<div class="row" style="font-size:18px;margin-top:8px;">
-									<div class="col-sm-12" style="font-size:20px;">
-										<!--need to check old wrevenues code, dollar signs is stored in database and is being called-->
-										<p><img src="<?php echo $PATH_IMG?>dollarbills_icon.png"/> $$$$</p>
-									</div>
-									<div class="col-sm-12">
-										<p style="padding:0 50px;"><i class="fa fa-clock-o"></i> Open Mon, Tues, Wed, Thurs, Fri, Sat, and Sun</p>
-									</div>
-							
-									<div class="col-sm-12">
-										<p><i class="fa fa-map-marker"></i> Hell's Kitchen, Midtown West</p>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-sm-12" style="text-shadow: 2px 2px 4px #000000;">
-								
-										<i class="fa fa-star fa-2x"></i>
-										<i class="fa fa-star fa-2x"></i>
-										<i class="fa fa-star fa-2x"></i>
-										<i class="fa fa-star fa-2x"></i>
-										<i class="fa fa-star fa-2x"></i>
-										(#)
-									</div>
-								</div>
-							</div>
-						</div>
-					</div><!--end of wrevenue--><!--one wrevenue-->
-					<div class="col-md-4">
-						<div class="panel" style="padding:8%;padding-bottom:9%;border-radius:10px;background:linear-gradient(rgba(70, 107, 121, 0.45), rgba(70, 107, 121, 0.45)),url(<?php echo $PATH_IMG?>balt.jpg); background-size:100%;text-align:center;font-family:GillSans;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);height:379px;">
-							<div class="panel-body" style="padding:0;text-shadow: 2px 2px 4px #000000;">
-								<div class="row">
-									<div class="col-sm-12">
-								
-										<a class="btn wrevenues-venue">Balthazar Restaurant</a>
-										<!--<p><i class="fa fa-money"></i> </p>-->
-								
-										<h2>54 <i class="fa fa-heart-o"></i></h2>
-										<a class="btn wrevenues-palette"><span class="glyphicon glyphicon-list-alt"></span></a>
-										<a class="btn wrevenues-share"><i class="fa fa-share-square-o"></i></a>
-										<!--<p><i class="fa fa-clock-o" style="width:50px;"></i> Open Mon, Tues, Wed, Thurs, Fri, Sat, and Sun</p>-->
-									</div>
-								</div>
-								<div class="row" style="font-size:18px;margin-top:8px;">
-									<div class="col-sm-12" style="font-size:20px;">
-										<!--need to check old wrevenues code, dollar signs is stored in database and is being called-->
-										<p><img src="<?php echo $PATH_IMG?>dollarbills_icon.png"/> $$$$</p>
-									</div>
-									<div class="col-sm-12">
-										<p style="padding:0 50px;"><i class="fa fa-clock-o"></i> Open Mon, Tues, Wed, Thurs, Fri, Sat, and Sun</p>
-									</div>
-							
-									<div class="col-sm-12">
-										<p><i class="fa fa-map-marker"></i> Hell's Kitchen, Midtown West</p>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-sm-12" style="text-shadow: 2px 2px 4px #000000;">
-								
-										<i class="fa fa-star fa-2x"></i>
-										<i class="fa fa-star fa-2x"></i>
-										<i class="fa fa-star fa-2x"></i>
-										<i class="fa fa-star fa-2x"></i>
-										<i class="fa fa-star fa-2x"></i>
-										(#)
-									</div>
-								</div>
-							</div>
-						</div>
-					</div><!--end of wrevenue--><!--one wrevenue-->
-					<div class="col-md-4">
-						<div class="panel" style="padding:8%;padding-bottom:9%;border-radius:10px;background:linear-gradient(rgba(70, 107, 121, 0.45), rgba(70, 107, 121, 0.45)),url(<?php echo $PATH_IMG?>balt.jpg); background-size:100%;text-align:center;font-family:GillSans;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);height:379px;">
-							<div class="panel-body" style="padding:0;text-shadow: 2px 2px 4px #000000;">
-								<div class="row">
-									<div class="col-sm-12">
-								
-										<a class="btn wrevenues-venue">Balthazar Restaurant</a>
-										<!--<p><i class="fa fa-money"></i> </p>-->
-								
-										<h2>54 <i class="fa fa-heart-o"></i></h2>
-										<a class="btn wrevenues-palette"><span class="glyphicon glyphicon-list-alt"></span></a>
-										<a class="btn wrevenues-share"><i class="fa fa-share-square-o"></i></a>
-										<!--<p><i class="fa fa-clock-o" style="width:50px;"></i> Open Mon, Tues, Wed, Thurs, Fri, Sat, and Sun</p>-->
-									</div>
-								</div>
-								<div class="row" style="font-size:18px;margin-top:8px;">
-									<div class="col-sm-12" style="font-size:20px;">
-										<!--need to check old wrevenues code, dollar signs is stored in database and is being called-->
-										<p><img src="<?php echo $PATH_IMG?>dollarbills_icon.png"/> $$$$</p>
-									</div>
-									<div class="col-sm-12">
-										<p style="padding:0 50px;"><i class="fa fa-clock-o"></i> Open Mon, Tues, Wed, Thurs, Fri, Sat, and Sun</p>
-									</div>
-							
-									<div class="col-sm-12">
-										<p><i class="fa fa-map-marker"></i> Hell's Kitchen, Midtown West</p>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-sm-12" style="text-shadow: 2px 2px 4px #000000;">
-								
-										<i class="fa fa-star fa-2x"></i>
-										<i class="fa fa-star fa-2x"></i>
-										<i class="fa fa-star fa-2x"></i>
-										<i class="fa fa-star fa-2x"></i>
-										<i class="fa fa-star fa-2x"></i>
-										(#)
-									</div>
-								</div>
-							</div>
-						</div>
-					</div><!--end of wrevenue--><!--one wrevenue-->
-					<div class="col-md-4">
-						<div class="panel" style="padding:8%;padding-bottom:9%;border-radius:10px;background:linear-gradient(rgba(70, 107, 121, 0.45), rgba(70, 107, 121, 0.45)),url(<?php echo $PATH_IMG?>balt.jpg); background-size:100%;text-align:center;font-family:GillSans;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);height:379px;">
-							<div class="panel-body" style="padding:0;text-shadow: 2px 2px 4px #000000;">
-								<div class="row">
-									<div class="col-sm-12">
-								
-										<a class="btn wrevenues-venue">Balthazar Restaurant</a>
-										<!--<p><i class="fa fa-money"></i> </p>-->
-								
-										<h2>54 <i class="fa fa-heart-o"></i></h2>
-										<a class="btn wrevenues-palette"><span class="glyphicon glyphicon-list-alt"></span></a>
-										<a class="btn wrevenues-share"><i class="fa fa-share-square-o"></i></a>
-										<!--<p><i class="fa fa-clock-o" style="width:50px;"></i> Open Mon, Tues, Wed, Thurs, Fri, Sat, and Sun</p>-->
-									</div>
-								</div>
-								<div class="row" style="font-size:18px;margin-top:8px;">
-									<div class="col-sm-12" style="font-size:20px;">
-										<!--need to check old wrevenues code, dollar signs is stored in database and is being called-->
-										<p><img src="<?php echo $PATH_IMG?>dollarbills_icon.png"/> $$$$</p>
-									</div>
-									<div class="col-sm-12">
-										<p style="padding:0 50px;"><i class="fa fa-clock-o"></i> Open Mon, Tues, Wed, Thurs, Fri, Sat, and Sun</p>
-									</div>
-							
-									<div class="col-sm-12">
-										<p><i class="fa fa-map-marker"></i> Hell's Kitchen, Midtown West</p>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-sm-12" style="text-shadow: 2px 2px 4px #000000;">
-								
-										<i class="fa fa-star fa-2x"></i>
-										<i class="fa fa-star fa-2x"></i>
-										<i class="fa fa-star fa-2x"></i>
-										<i class="fa fa-star fa-2x"></i>
-										<i class="fa fa-star fa-2x"></i>
-										(#)
-									</div>
-								</div>
-							</div>
-						</div>
-					</div><!--end of wrevenue-->
-					
+                                            <?php }}?>
 				</div>
 				
 				<div class="row">

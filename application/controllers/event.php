@@ -2,14 +2,14 @@
 
 class Event extends CI_Controller {
     
-        function __construct()
-        {
-                parent::__construct();
-                $this->load->model('model_events');
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('model_events');
         $this->load->library('path');
         $this->load->library('session');
-                
-        }
+
+    }
 
 
     public function find_event($id)
