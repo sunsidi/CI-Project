@@ -1,7 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class wrevenues extends CI_Controller{
-    public function wrevenues_main(){
+    
+    public function wrevenues_main() {
         $this->load->library('path');
         $this->load->model('model_wrevenues');
         $path = $this->path->getPath();
@@ -12,7 +13,7 @@ class wrevenues extends CI_Controller{
         $this->load->view('wrevenues_main',$result);     
     }
 
-    public function wrevenues_fullview($id){
+    public function wrevenues_fullview($id) {
         $this->load->library('path');
         $this->load->model('model_wrevenues');
         $path = $this->path->getPath();
@@ -27,5 +28,13 @@ class wrevenues extends CI_Controller{
             redirect('wrevenues/wrevenues_main');
         }
     }
-	
+    
+    public function create_wrevenue() {
+        $this->load->library('path');
+        $this->load->model('model_wrevenues');
+        $path = $this->path->getPath();
+        $this->load->library('session');
+        $this->load->view('Create_Wrevel_View', $path);
+        $this->load->view('wrevenues_posting_successful', $path);
+    }
 } 
