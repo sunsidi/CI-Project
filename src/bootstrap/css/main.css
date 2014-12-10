@@ -10,7 +10,12 @@
     margin-right:-4px;
 }
 
-
+.groupname{
+	background:rgba(121,116,158,0.5);
+	width:130px;
+	text-align:center;
+	border-radius:5px;
+}
 date#footer {
   position: absolute;
   bottom: 0;
