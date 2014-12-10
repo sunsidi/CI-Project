@@ -662,8 +662,8 @@
                             <input type="radio" name = "e_type" value="private"> private
                         </div>
                         </div>
-                        <div>
-                        	<label class="col-sm-2">online event</label>
+                        <div class="row">
+                        	<label class="col-sm-6">online event <i class="fa fa-question-circle" id="online-info" data-content="This event will have a virtual location." data-trigger="hover" data-placement="top"></i></label>
                         	<div class="col-sm-3">
                           		<input id="e_is_online" name = "e_is_online" value="1" type="checkbox" onchange="change_to_online()">  
                            	</div>
@@ -1106,6 +1106,7 @@
     </script>
     <script>
 	$('#info').popover();
+	$('#online-info').popover();
 	</script>
 	<script>
 	$('#drag').popover();
