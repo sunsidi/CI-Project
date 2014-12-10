@@ -163,7 +163,7 @@
                                                 <h4 style="font-family:GillSans; font-size:27px;">add a wrevenue</h4>
                                             </div>
                                             <div class="modal-body" style="padding:2% 4%;text-align:left;">
-                                                <form class="form-horizontal" action="<?php echo base_url().'wrevenues/create_wrevenue';?>" role="form">
+                                                <form method="post" class="form-horizontal" action="<?php echo base_url().'wrevenues/create_wrevenue';?>" role="form">
                                                 <div class="row">
                                                     <div class="col-md-6  create-form-border-left" style="padding:0 5%;">
                                                         <div class="form-group row">
@@ -173,13 +173,13 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-sm-2">name:</label>
+                                                            <label class="col-sm-2">Name:</label>
                                                             <div class="col-sm-10">
-                                                                <input type="text" class="form-control" placeholder="name of venue">
+                                                                <input name="place" type="text" class="form-control" placeholder="name of venue">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-sm-2">day:</label>
+                                                            <!--<label class="col-sm-2">day:</label>
                                                             <div class="col-sm-3">
                                                                 <select class="form-control" style="padding:0;">
                                                                     <option value="" selected="selected"></option>
@@ -191,67 +191,67 @@
                                                                     <option value="Sat">Sat</option>
                                                                     <option value="Sun">Sun</option>
                                                                 </select>	
-                                                            </div>
-                                                            <label class="col-sm-2">start hour:</label>
+                                                            </div>-->
+                                                            <label class="col-sm-2">Start Hour:</label>
                                                             <div class="col-sm-4">
-                                                                <select class="form-control" style="padding:0;">
+                                                                <select name="start_time" class="form-control" style="padding:0;">
                                                                     <option value="" selected="selected"></option>
-                                                                    <option value="1:00AM">1:00AM</option>
-                                                                    <option value="2:00AM">2:00AM</option>
-                                                                    <option value="3:00AM">3:00AM</option>
-                                                                    <option value="4:00AM">4:00AM</option>
-                                                                    <option value="5:00AM">5:00AM</option>
-                                                                    <option value="6:00AM">6:00AM</option>
-                                                                    <option value="7:00AM">7:00AM</option>
-                                                                    <option value="8:00AM">8:00AM</option>
-                                                                    <option value="9:00AM">9:00AM</option>
-                                                                    <option value="10:00AM">10:00AM</option>
-                                                                    <option value="11:00AM">11:00AM</option>
-                                                                    <option value="12:00PM">12:00PM</option> 
-                                                                    <option value="1:00PM">1:00PM</option>
-                                                                    <option value="2:00PM">2:00PM</option>
-                                                                    <option value="3:00PM">3:00PM</option>
-                                                                    <option value="4:00PM">4:00PM</option>
-                                                                    <option value="5:00PM">5:00PM</option>
-                                                                    <option value="6:00PM">6:00PM</option>
-                                                                    <option value="7:00PM">7:00PM</option>
-                                                                    <option value="8:00PM">8:00PM</option>
-                                                                    <option value="9:00PM">9:00PM</option>
-                                                                    <option value="10:00PM">10:00PM</option>
-                                                                    <option value="11:00PM">11:00PM</option>
-                                                                    <option value="12:00AM">12:00AM</option> 
+                                                                    <option value="01:00">1:00AM</option>
+                                                                    <option value="02:00">2:00AM</option>
+                                                                    <option value="03:00">3:00AM</option>
+                                                                    <option value="04:00">4:00AM</option>
+                                                                    <option value="05:00">5:00AM</option>
+                                                                    <option value="06:00">6:00AM</option>
+                                                                    <option value="07:00">7:00AM</option>
+                                                                    <option value="08:00">8:00AM</option>
+                                                                    <option value="09:00">9:00AM</option>
+                                                                    <option value="10:00">10:00AM</option>
+                                                                    <option value="11:00">11:00AM</option>
+                                                                    <option value="12:00">12:00PM</option> 
+                                                                    <option value="13:00">1:00PM</option>
+                                                                    <option value="14:00">2:00PM</option>
+                                                                    <option value="15:00">3:00PM</option>
+                                                                    <option value="16:00">4:00PM</option>
+                                                                    <option value="17:00">5:00PM</option>
+                                                                    <option value="18:00">6:00PM</option>
+                                                                    <option value="19:00">7:00PM</option>
+                                                                    <option value="20:00">8:00PM</option>
+                                                                    <option value="21:00">9:00PM</option>
+                                                                    <option value="22:00">10:00PM</option>
+                                                                    <option value="23:00">11:00PM</option>
+                                                                    <option value="24:00">12:00AM</option> 
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-sm-2">end hour:</label>
+                                                            <label class="col-sm-2">End Hour:</label>
                                                             <div class="col-sm-4">
-                                                                <select class="form-control" style="padding:0;">
+                                                                <select name="end_time" class="form-control" style="padding:0;">
                                                                     <option value="" selected="selected"></option>
-                                                                    <option value="1:00AM">1:00AM</option>
-                                                                    <option value="2:00AM">2:00AM</option>
-                                                                    <option value="3:00AM">3:00AM</option>
-                                                                    <option value="4:00AM">4:00AM</option>
-                                                                    <option value="5:00AM">5:00AM</option>
-                                                                    <option value="6:00AM">6:00AM</option>
-                                                                    <option value="7:00AM">7:00AM</option>
-                                                                    <option value="8:00AM">8:00AM</option>
-                                                                    <option value="9:00AM">9:00AM</option>
-                                                                    <option value="10:00AM">10:00AM</option>
-                                                                    <option value="11:00AM">11:00AM</option>
-                                                                    <option value="12:00PM">12:00PM</option> 
-                                                                    <option value="1:00PM">1:00PM</option>
-                                                                    <option value="2:00PM">2:00PM</option>
-                                                                    <option value="3:00PM">3:00PM</option>
-                                                                    <option value="4:00PM">4:00PM</option>
-                                                                    <option value="5:00PM">5:00PM</option>
-                                                                    <option value="6:00PM">6:00PM</option>
-                                                                    <option value="7:00PM">7:00PM</option>
-                                                                    <option value="8:00PM">8:00PM</option>
-                                                                    <option value="9:00PM">9:00PM</option>
-                                                                    <option value="10:00PM">10:00PM</option>
-                                                                    <option value="11:00PM">11:00PM</option>
-                                                                    <option value="12:00AM">12:00AM</option> 
+                                                                    <option value="01:00">1:00AM</option>
+                                                                    <option value="02:00">2:00AM</option>
+                                                                    <option value="03:00">3:00AM</option>
+                                                                    <option value="04:00">4:00AM</option>
+                                                                    <option value="05:00">5:00AM</option>
+                                                                    <option value="06:00">6:00AM</option>
+                                                                    <option value="07:00">7:00AM</option>
+                                                                    <option value="08:00">8:00AM</option>
+                                                                    <option value="09:00">9:00AM</option>
+                                                                    <option value="10:00">10:00AM</option>
+                                                                    <option value="11:00">11:00AM</option>
+                                                                    <option value="12:00">12:00PM</option> 
+                                                                    <option value="13:00">1:00PM</option>
+                                                                    <option value="14:00">2:00PM</option>
+                                                                    <option value="15:00">3:00PM</option>
+                                                                    <option value="16:00">4:00PM</option>
+                                                                    <option value="17:00">5:00PM</option>
+                                                                    <option value="18:00">6:00PM</option>
+                                                                    <option value="19:00">7:00PM</option>
+                                                                    <option value="20:00">8:00PM</option>
+                                                                    <option value="21:00">9:00PM</option>
+                                                                    <option value="22:00">10:00PM</option>
+                                                                    <option value="23:00">11:00PM</option>
+                                                                    <option value="24:00">12:00AM</option> 
                                                                 </select>
                                                             </div>
                                                             <div class="col-sm-1">
@@ -259,21 +259,25 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-sm-3">location:</label>
+                                                            <label class="col-sm-2">Street Address:</label>
                                                             <div class="col-sm-9">
-                                                                <input type="text" class="form-control" placeholder="where is it?">
+                                                                <input name="address" type="text" class="form-control" placeholder="where is it?">
                                                             </div>
                                                         </div>
-                                                        <div class="form-group row">
+                                                        <!--<div class="form-group row">
                                                             <label class="col-sm-4">neighborhood:</label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" class="form-control" placeholder="Greenpoint">
+                                                                <input name="" type="text" class="form-control" placeholder="Greenpoint">
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                         <div class="form-group row">
-                                                            <label class="col-sm-2">state:</label>											
+                                                            <label class="col-sm-2">City:</label>
+                                                            <div class="col-sm-4">
+                                                                <input name="city" type="text" class="form-control">
+                                                            </div>
+                                                            <label class="col-sm-2">State:</label>											
                                                             <div class="col-sm-3">
-                                                                <select class="form-control" style="padding:0;">
+                                                                <select name="state" class="form-control" style="padding:0;">
                                                                     <option value="" selected="selected"></option> 
                                                                     <option value="AK">AK</option>
                                                                     <option value="AL">AL</option>
@@ -328,18 +332,14 @@
                                                                     <option value="WY">WY</option>
                                                                 </select> 
                                                             </div>
-                                                            <label class="col-sm-1">city:</label>
-                                                            <div class="col-sm-4">
-                                                                <input type="text" class="form-control">
-                                                            </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-sm-1">zip:</label>
+                                                            <label class="col-sm-2">Zip:</label>
                                                             <div class="col-sm-3">
-                                                                    <input type="text" pattern=".{5,5}" maxlength="5" class="form-control">
+                                                                    <input name="zipcode" type="text" pattern=".{5,5}" maxlength="5" class="form-control">
                                                             </div>
-                                                            <label class="col-sm-2">country:</label>
-                                                            <div class="col-sm-6">
+                                                            <label class="col-sm-2">Country:</label>
+                                                            <div class="col-sm-4">
                                                                 <select type="text" class="form-control" style="padding:0;font-size:10px;">
                                                                     <option value="" selected="selected"></option>            			
                                                                     <option value="Afghanistan">Afghanistan</option> 
@@ -545,24 +545,24 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-sm-2">phone:</label>
+                                                            <label class="col-sm-2">Phone:</label>
                                                             <div class="col-sm-5">
-                                                                <input type="text" class="form-control">
+                                                                <input name="telephone" type="text" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-sm-4">email address:</label>
+                                                            <label class="col-sm-2">Email:</label>
                                                             <div class="col-sm-6">
-                                                                <input type="text" class="form-control">
+                                                                <input name="email" type="text" class="form-control">
                                                             </div>
                                                             <div class="col-sm-1">
                                                                 <a class="btn btn-default"><i class="fa fa-plus"></i></a>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-sm-2">link(s):</label>
+                                                            <label class="col-sm-2">Link(s):</label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" class="form-control">
+                                                                <input name="website" type="text" class="form-control">
                                                             </div>
                                                             <div class="col-sm-1">
                                                                 <a class="btn btn-default"><i class="fa fa-plus"></i></a>
@@ -571,17 +571,17 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-2" style="text-align:right;"><i class="fa fa-facebook"></i></label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" class="form-control">
+                                                                <input name="facebook" type="text" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-2" style="text-align:right;"><i class="fa fa-twitter"></i></label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" class="form-control">
+                                                                <input name="twitter" type="text" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-sm-5">latest wrevs <i class="fa fa-question-circle" id="latestwrevInfo" data-content="Add your latest event here" data-trigger="hover" data-placement="bottom"></i></label>
+                                                            <label class="col-sm-2">Latest Wrevs <i class="fa fa-question-circle" id="latestwrevInfo" data-content="Add your latest event here" data-trigger="hover" data-placement="bottom"></i></label>
                                                             <div class="col-sm-5">
                                                                 <input type="text" class="form-control">
                                                             </div>
@@ -590,9 +590,9 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-sm-3">price <i class="fa fa-question-circle" id="pricingInfo" data-html="true" data-content="$ - Free to $10  $$ - $11 to 25  $$$ - $26 to 49  $$$$ - $50 to higher" data-trigger="hover" data-placement="top"></i></label>
+                                                            <label class="col-sm-2">Price <i class="fa fa-question-circle" id="pricingInfo" data-html="true" data-content="$ - Free to $10  $$ - $11 to 25  $$$ - $26 to 49  $$$$ - $50 to higher" data-trigger="hover" data-placement="top"></i></label>
                                                             <div class="col-sm-4">
-                                                                <select class="form-control">
+                                                                <select name="price" class="form-control">
                                                                     <option value="" selected="selected"></option>
                                                                     <option value="$">$</option>
                                                                     <option value="$$">$$</option>
@@ -604,12 +604,12 @@
                                                     </div>
                                                     <div class="col-md-6" style="padding:0 5%;">
                                                         <div class="form-group">
-                                                            <label>wrevenues details</label>
-                                                            <textarea class="form-control" rows="4" placeholder="type something attention grabbing"></textarea>
+                                                            <label>Wrevenues Details</label>
+                                                            <textarea name="description" class="form-control" rows="4" placeholder="type something attention grabbing"></textarea>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label>shoutout <i class="fa fa-question-circle" id="shoutoutInfo" data-content="Use shoutout as a way to announce your latest updates" data-trigger="hover" data-placement="bottom"></i></label>
-                                                            <input type="text" class="form-control" placeholder="type something attention grabbing">
+                                                            <label>Shoutout <i class="fa fa-question-circle" id="shoutoutInfo" data-content="Use shoutout as a way to announce your latest updates" data-trigger="hover" data-placement="bottom"></i></label>
+                                                            <input name="shoutout" type="text" class="form-control" placeholder="type something attention grabbing">
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-5">Who's shouting?</label>
