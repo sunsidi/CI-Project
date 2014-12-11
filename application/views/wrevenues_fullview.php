@@ -336,9 +336,9 @@
                                     <?php if(!empty($wrevenues['website'])) {?>
                                     <p><a href="<?php if(strpos($wrevenues['website'], 'http://') === false && strpos($wrevenues['website'], 'https://') === false) echo 'http://'.$wrevenues['website']; else echo $wrevenues['website'];?>" class="info"><span style="padding-right:30px;"><img src="<?php echo $PATH_IMG?>globe_icon2.png"/></span> <?php echo $wrevenues['website'];?> </a></p>
                                     <?php } if(!empty($wrevenues['facebook'])) {?>
-                                    <p class="info"><i class="fa fa-facebook" style="width:47px;margin-left:6px;"></i> facebook link here</p>
+                                    <p><i class="fa fa-facebook" style="width:47px;margin-left:6px;"></i><a href="<?php if(strpos($wrevenues['facebook'], 'http://') === false && strpos($wrevenues['facebook'], 'https://') === false) echo 'http://'.$wrevenues['facebook']; else echo $wrevenues['facebook'];?>" class="info"> <?php echo $wrevenues['facebook'];?> </a></p>
                                     <?php } if(!empty($wrevenues['twitter'])) {?>
-                                    <p class="info"><i class="fa fa-twitter" style="width:47px;margin-left:6px;"></i> twitter link here</p>
+                                    <p><i class="fa fa-twitter" style="width:47px;margin-left:6px;"></i><a href="<?php if(strpos($wrevenues['twitter'], 'http://') === false && strpos($wrevenues['twitter'], 'https://') === false) echo 'http://'.$wrevenues['twitter']; else echo $wrevenues['twitter'];?>" class="info"> <?php echo $wrevenues['facebook'];?> </a></p>
                                     <?php } if(!empty($wrevenues['telephone'])) {?>
                                     <p class="info"><span style="padding-right:33px;"><img src="<?php echo $PATH_IMG?>phone_icon2.png"/></span> <?php echo $wrevenues['telephone'];?></p>
                                     <?php } if(!empty($wrevenues['email'])) {?>
