@@ -366,7 +366,10 @@
                             <div style="margin-top:40px;">
                                 <h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>clock_icon.png"/> &nbsp; Hours</h4>
                                 <div style="padding:0% 17%;font-size:18px;line-height:70%;">
-                                    <p>&nbsp;&nbsp <?php echo $wrevenues['start_time'].' to '.$wrevenues['end_time'];?></p>
+                                    <?php for($i = 0; $i < 7; $i++) {
+                                            if($wrevenues['day'][$i] != false) {?>
+                                                <p><?php echo strtoupper($wrevenues['day'][$i]['day']);?> &nbsp;&nbsp <?php echo $wrevenues['day'][$i]['start_time'].' to '.$wrevenues['day'][$i]['end_time'];?></p>
+                                    <?php }}?>
                                 </div>
                             </div><!-- END OF HOURS -->
                             

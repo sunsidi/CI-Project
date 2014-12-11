@@ -17,8 +17,18 @@ class Model_wrevenues extends CI_Model{
         $query = $this->db->get_where('wrevenues', array('id' => $id));
         if($query->num_rows() != 0) {
             $data = $query->row_array(0);
-            $data['start_time'] = $this->convert_time($data['start_time']);
-            $data['end_time'] = $this->convert_time($data['end_time']);
+            $day_array = array('mon', 'tues', 'wed', 'thurs', 'fri', 'sat', 'sun');
+            for($i = 0; $i < 7; $i++) {
+                if(!empty($data[$day_array[$i]])) {
+                    $temp_hours = explode('|', $data[$day_array[$i]]);
+                    $data['day'][$i]['day'] = $day_array[$i];
+                    $data['day'][$i]['start_time'] = $this->convert_time($temp_hours[0]);
+                    $data['day'][$i]['end_time'] = $this->convert_time($temp_hours[1]);
+                }
+                else {
+                    $data['day'][$i] = false;
+                }
+            }
             return $data;
         }
         else {
@@ -29,14 +39,15 @@ class Model_wrevenues extends CI_Model{
     public function create_wrevenue($user_id) {
         $data = $this->input->post();
         foreach($data as $i => $value) {
-            if($value) {
-                if($i == 'start_time') {
-                    $new_value = $this->timestamp($value, false);
-                    $new_data[$i] = $new_value;
-                }
-                else if ($i == 'end_time') {
-                    $new_value = $this->timestamp($value, false);
-                    $new_data[$i] = $new_value;
+            if($value && $i != 'start_time' && $i != 'end_time') {
+                if($i == 'day') {
+                    for($j = 0; $j < count($value); $j++) {
+                        $temp_start = $data['start_time'][$j];
+                        $start_time = $this->timestamp($temp_start, false);
+                        $temp_end = $data['end_time'][$j];
+                        $end_time = $this->timestamp($temp_end, true);
+                        $new_data[$value[$j]] = $start_time.'|'.$end_time;
+                    }
                 }
                 else {
                     $new_data[$i] = $value;

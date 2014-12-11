@@ -178,86 +178,91 @@
                                                                 <input name="place" type="text" class="form-control" placeholder="name of venue">
                                                             </div>
                                                         </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-sm-2">Day:</label>
-                                                            <div class="col-sm-3">
-                                                                <select name="day[]" class="form-control" style="padding:0;">
-                                                                    <option value="" selected="selected"></option>
-                                                                    <option value="Mon">Mon</option>
-                                                                    <option value="Tues">Tues</option>
-                                                                    <option value="Wed">Wed</option>
-                                                                    <option value="Thurs">Thurs</option>
-                                                                    <option value="Fri">Fri</option>
-                                                                    <option value="Sat">Sat</option>
-                                                                    <option value="Sun">Sun</option>
-                                                                </select>	
+                                                        <div id="days_base">
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2">Day:</label>
+                                                                <div class="col-sm-3">
+                                                                    <select name="day[]" class="form-control" style="padding:0;">
+                                                                        <option value="" selected="selected"></option>
+                                                                        <option value="Mon">Mon</option>
+                                                                        <option value="Tues">Tues</option>
+                                                                        <option value="Wed">Wed</option>
+                                                                        <option value="Thurs">Thurs</option>
+                                                                        <option value="Fri">Fri</option>
+                                                                        <option value="Sat">Sat</option>
+                                                                        <option value="Sun">Sun</option>
+                                                                    </select>	
+                                                                </div>
                                                             </div>
-                                                        
-                                                            <label class="col-sm-2">Start Hour:</label>
-                                                            <div class="col-sm-4">
-                                                                <select name="start_time[]" class="form-control" style="padding:0;">
-                                                                    <option value="" selected="selected"></option>
-                                                                    <option value="01:00">1:00AM</option>
-                                                                    <option value="02:00">2:00AM</option>
-                                                                    <option value="03:00">3:00AM</option>
-                                                                    <option value="04:00">4:00AM</option>
-                                                                    <option value="05:00">5:00AM</option>
-                                                                    <option value="06:00">6:00AM</option>
-                                                                    <option value="07:00">7:00AM</option>
-                                                                    <option value="08:00">8:00AM</option>
-                                                                    <option value="09:00">9:00AM</option>
-                                                                    <option value="10:00">10:00AM</option>
-                                                                    <option value="11:00">11:00AM</option>
-                                                                    <option value="12:00">12:00PM</option> 
-                                                                    <option value="13:00">1:00PM</option>
-                                                                    <option value="14:00">2:00PM</option>
-                                                                    <option value="15:00">3:00PM</option>
-                                                                    <option value="16:00">4:00PM</option>
-                                                                    <option value="17:00">5:00PM</option>
-                                                                    <option value="18:00">6:00PM</option>
-                                                                    <option value="19:00">7:00PM</option>
-                                                                    <option value="20:00">8:00PM</option>
-                                                                    <option value="21:00">9:00PM</option>
-                                                                    <option value="22:00">10:00PM</option>
-                                                                    <option value="23:00">11:00PM</option>
-                                                                    <option value="24:00">12:00AM</option> 
-                                                                </select>
-                                                            </div>
-                                                            <label class="col-sm-2">End Hour:</label>
-                                                            <div class="col-sm-4">
-                                                                <select name="end_time[]" class="form-control" style="padding:0;">
-                                                                    <option value="" selected="selected"></option>
-                                                                    <option value="01:00">1:00AM</option>
-                                                                    <option value="02:00">2:00AM</option>
-                                                                    <option value="03:00">3:00AM</option>
-                                                                    <option value="04:00">4:00AM</option>
-                                                                    <option value="05:00">5:00AM</option>
-                                                                    <option value="06:00">6:00AM</option>
-                                                                    <option value="07:00">7:00AM</option>
-                                                                    <option value="08:00">8:00AM</option>
-                                                                    <option value="09:00">9:00AM</option>
-                                                                    <option value="10:00">10:00AM</option>
-                                                                    <option value="11:00">11:00AM</option>
-                                                                    <option value="12:00">12:00PM</option> 
-                                                                    <option value="13:00">1:00PM</option>
-                                                                    <option value="14:00">2:00PM</option>
-                                                                    <option value="15:00">3:00PM</option>
-                                                                    <option value="16:00">4:00PM</option>
-                                                                    <option value="17:00">5:00PM</option>
-                                                                    <option value="18:00">6:00PM</option>
-                                                                    <option value="19:00">7:00PM</option>
-                                                                    <option value="20:00">8:00PM</option>
-                                                                    <option value="21:00">9:00PM</option>
-                                                                    <option value="22:00">10:00PM</option>
-                                                                    <option value="23:00">11:00PM</option>
-                                                                    <option value="24:00">12:00AM</option> 
-                                                                </select>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2">Start Hour:</label>
+                                                                <div class="col-sm-3">
+                                                                    <select name="start_time[]" class="form-control" style="padding:0;">
+                                                                        <option value="" selected="selected"></option>
+                                                                        <option value="01:00">1:00AM</option>
+                                                                        <option value="02:00">2:00AM</option>
+                                                                        <option value="03:00">3:00AM</option>
+                                                                        <option value="04:00">4:00AM</option>
+                                                                        <option value="05:00">5:00AM</option>
+                                                                        <option value="06:00">6:00AM</option>
+                                                                        <option value="07:00">7:00AM</option>
+                                                                        <option value="08:00">8:00AM</option>
+                                                                        <option value="09:00">9:00AM</option>
+                                                                        <option value="10:00">10:00AM</option>
+                                                                        <option value="11:00">11:00AM</option>
+                                                                        <option value="12:00">12:00PM</option> 
+                                                                        <option value="13:00">1:00PM</option>
+                                                                        <option value="14:00">2:00PM</option>
+                                                                        <option value="15:00">3:00PM</option>
+                                                                        <option value="16:00">4:00PM</option>
+                                                                        <option value="17:00">5:00PM</option>
+                                                                        <option value="18:00">6:00PM</option>
+                                                                        <option value="19:00">7:00PM</option>
+                                                                        <option value="20:00">8:00PM</option>
+                                                                        <option value="21:00">9:00PM</option>
+                                                                        <option value="22:00">10:00PM</option>
+                                                                        <option value="23:00">11:00PM</option>
+                                                                        <option value="24:00">12:00AM</option> 
+                                                                    </select>
+                                                                </div>
+                                                                <label class="col-sm-2">End Hour:</label>
+                                                                <div class="col-sm-3">
+                                                                    <select name="end_time[]" class="form-control" style="padding:0;">
+                                                                        <option value="" selected="selected"></option>
+                                                                        <option value="01:00">1:00AM</option>
+                                                                        <option value="02:00">2:00AM</option>
+                                                                        <option value="03:00">3:00AM</option>
+                                                                        <option value="04:00">4:00AM</option>
+                                                                        <option value="05:00">5:00AM</option>
+                                                                        <option value="06:00">6:00AM</option>
+                                                                        <option value="07:00">7:00AM</option>
+                                                                        <option value="08:00">8:00AM</option>
+                                                                        <option value="09:00">9:00AM</option>
+                                                                        <option value="10:00">10:00AM</option>
+                                                                        <option value="11:00">11:00AM</option>
+                                                                        <option value="12:00">12:00PM</option> 
+                                                                        <option value="13:00">1:00PM</option>
+                                                                        <option value="14:00">2:00PM</option>
+                                                                        <option value="15:00">3:00PM</option>
+                                                                        <option value="16:00">4:00PM</option>
+                                                                        <option value="17:00">5:00PM</option>
+                                                                        <option value="18:00">6:00PM</option>
+                                                                        <option value="19:00">7:00PM</option>
+                                                                        <option value="20:00">8:00PM</option>
+                                                                        <option value="21:00">9:00PM</option>
+                                                                        <option value="22:00">10:00PM</option>
+                                                                        <option value="23:00">11:00PM</option>
+                                                                        <option value="24:00">12:00AM</option> 
+                                                                    </select>
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                        <div class="col-sm-1">
+                                                            <a class="btn btn-default" onclick="add_more_days()"><i class="fa fa-plus"></i></a>
+                                                        </div>
+                                                        
                                                         <div class="form-group row">
-                                                            <div class="col-sm-1">
-                                                                    <a class="btn btn-default"><i class="fa fa-plus"></i></a>
-                                                            </div>
+                                                            
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-2">Street Address:</label>
@@ -615,7 +620,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-5">Who's shouting?</label>
                                                             <div class="col-sm-5">
-                                                                <input type="text" class="form-control">
+                                                                <input name="name" type="text" class="form-control">
                                                             </div>
                                                             <div class="col-sm-1">
                                                                 <button class="btn" style="background:#27AAE0;"><i class="fa fa-camera"></i></button>
@@ -685,12 +690,94 @@
 <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->	
-	<script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
+    <script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
-	<script>
+    <script>
 	$('#pricingInfo').popover();
 	$('#shoutoutInfo').popover();
 	$('#latestwrevInfo').popover();
-	</script>
+    </script>
+    <script>
+        function add_more_days() {
+            var content =    '<div class="form-group row">'
+                        +'<label class="col-sm-2">Day:</label>'
+                        +'<div class="col-sm-3">'
+                            +'<select name="day[]" class="form-control" style="padding:0;">'
+                                +'<option value="" selected="selected"></option>'
+                                +'<option value="Mon">Mon</option>'
+                                +'<option value="Tues">Tues</option>'
+                                +'<option value="Wed">Wed</option>'
+                                +'<option value="Thurs">Thurs</option>'
+                                +'<option value="Fri">Fri</option>'
+                                +'<option value="Sat">Sat</option>'
+                                +'<option value="Sun">Sun</option>'
+                            +'</select>'	
+                        +'</div>'
+                    +'</div>'
+                    +'<div class="form-group row">'
+                        +'<label class="col-sm-2">Start Hour:</label>'
+                        +'<div class="col-sm-3">'
+                            +'<select name="start_time[]" class="form-control" style="padding:0;">'
+                                +'<option value="" selected="selected"></option>'
+                                +'<option value="01:00">1:00AM</option>'
+                                +'<option value="02:00">2:00AM</option>'
+                                +'<option value="03:00">3:00AM</option>'
+                                +'<option value="04:00">4:00AM</option>'
+                                +'<option value="05:00">5:00AM</option>'
+                                +'<option value="06:00">6:00AM</option>'
+                                +'<option value="07:00">7:00AM</option>'
+                                +'<option value="08:00">8:00AM</option>'
+                                +'<option value="09:00">9:00AM</option>'
+                                +'<option value="10:00">10:00AM</option>'
+                                +'<option value="11:00">11:00AM</option>'
+                                +'<option value="12:00">12:00PM</option>' 
+                                +'<option value="13:00">1:00PM</option>'
+                                +'<option value="14:00">2:00PM</option>'
+                                +'<option value="15:00">3:00PM</option>'
+                                +'<option value="16:00">4:00PM</option>'
+                                +'<option value="17:00">5:00PM</option>'
+                                +'<option value="18:00">6:00PM</option>'
+                                +'<option value="19:00">7:00PM</option>'
+                                +'<option value="20:00">8:00PM</option>'
+                                +'<option value="21:00">9:00PM</option>'
+                                +'<option value="22:00">10:00PM</option>'
+                                +'<option value="23:00">11:00PM</option>'
+                                +'<option value="24:00">12:00AM</option>'
+                            +'</select>'
+                        +'</div>'
+                        +'<label class="col-sm-2">End Hour:</label>'
+                        +'<div class="col-sm-3">'
+                            +'<select name="end_time[]" class="form-control" style="padding:0;">'
+                                +'<option value="" selected="selected"></option>'
+                                +'<option value="01:00">1:00AM</option>'
+                                +'<option value="02:00">2:00AM</option>'
+                                +'<option value="03:00">3:00AM</option>'
+                                +'<option value="04:00">4:00AM</option>'
+                                +'<option value="05:00">5:00AM</option>'
+                                +'<option value="06:00">6:00AM</option>'
+                                +'<option value="07:00">7:00AM</option>'
+                                +'<option value="08:00">8:00AM</option>'
+                                +'<option value="09:00">9:00AM</option>'
+                                +'<option value="10:00">10:00AM</option>'
+                                +'<option value="11:00">11:00AM</option>'
+                                +'<option value="12:00">12:00PM</option>' 
+                                +'<option value="13:00">1:00PM</option>'
+                                +'<option value="14:00">2:00PM</option>'
+                                +'<option value="15:00">3:00PM</option>'
+                                +'<option value="16:00">4:00PM</option>'
+                                +'<option value="17:00">5:00PM</option>'
+                                +'<option value="18:00">6:00PM</option>'
+                                +'<option value="19:00">7:00PM</option>'
+                                +'<option value="20:00">8:00PM</option>'
+                                +'<option value="21:00">9:00PM</option>'
+                                +'<option value="22:00">10:00PM</option>'
+                                +'<option value="23:00">11:00PM</option>'
+                                +'<option value="24:00">12:00AM</option>' 
+                            +'</select>'
+                        +'</div>'
+                    +'</div>';
+            $('#days_base').append(content);
+        }
+    </script>
 </body>
 </html> 
