@@ -147,7 +147,7 @@ class Chat extends CI_Controller {
                 }
                 
         }
-        public function message($username) {
+        public function message() {
             /* username is the user currentUser is talking to */
             $this->load->library('path');
             $path = $this->path->getPath();
@@ -161,6 +161,7 @@ class Chat extends CI_Controller {
             //get the chat information;
             $currentUser = $data['username'];
             $fullName = $data['fullname'];
+            $username = $this->input->post('other_user');
 
             //this is where you should check whether a chat between two users already exists
             if ($this->model_chats->get_chats($currentUser,$username)){

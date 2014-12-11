@@ -151,7 +151,7 @@ jQuery(document).ready(function () {
 							
 							
 								<div class="containe">
-									<div class="heade" style="background:#a4bbcc;" onclick="somefunction(<?php echo $i?>)">
+									<div class="heade" style="background:#a4bbcc;" onclick="change_chat('<?php echo $chats_info[$i]['chatLocation'];?>','<?php echo $chats_info[$i]['otherUser'];?>');">
 										<table class="table">
 											<thead>
 												<tr>
@@ -175,20 +175,8 @@ jQuery(document).ready(function () {
                                                                             <div id="temp_array1"><p><?php echo $chats_info[$i]['chatLocation']; ?></p></div>
                                                                             
 
-										<?php echo form_close() ?>
-										<div class="arrow-up"></div>     
 										
-										<div class="form-group">
-											<div class="left-inner-addon">
-												<span class="glyphicon glyphicon-comment fa-flip-horizontal" style="margin-left:150px; margin-top:1px;"></span>
-												<label class="sr-only">Names</label>
-												<?php echo form_open('chat/message/'.$chats_info[$i]['otherUser']); ?>
-                                     
-												<input type="text" class="form-control" id="comment" name= "comment" style="margin-top:10px;margin-left:150px;;font-size:20px; width: 300px;" placeholder=" send a message!">
-											</div>
-											<a href="#"><button type="submit" class="btn btn-lg" style="position:relative;background:#1A75BF; color:white; font-size:20px; height:30px; padding-top:0px; margin-top:-55px; margin-left:75%;">Reply</button></a>
-                           
-										</div>                                   
+										<div class="arrow-up"></div>                                    
                                          
 										<!--
 										<div class="btn-group">
@@ -211,30 +199,36 @@ jQuery(document).ready(function () {
 	
 	</div>
 	<div class="col-md-5">
-		<div class="panel" style="background:#D9E0E6;">
-			<div class="panel-body">
-				
-					<div class="content" style="background:#d2dee7;">
-
-						
-						<div class="arrow-up"></div>     
-						<div id = "comment-block" style="overflow:auto; background:#e5ecf1; color:#414042; border-radius:10px; width: 60%; margin-left: 150px; padding: 10px; height: 500px;">
+            <div class="panel" style="background:#D9E0E6;">
+                <div class="panel-body">
+                    <!-- THIS IS WHERE YOU INSERT THE CHAT!!!!!!!-->
+                    <div class="content" style="background:#d2dee7;">
+                        <div class="arrow-up"></div>     
+                        <div id = "comment-block" style="overflow:auto; background:#e5ecf1; color:#414042; border-radius:10px; width: 60%; margin-left: 150px; padding: 10px; height: 500px;">
 
 							 
-							</div>
-							                                  
-                                         
-							<!--
-							<div class="btn-group">
-							<a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;"><span class="glyphicon glyphicon-camera"></span></button></a>
-							</div>
-							-->
-						</div>
-					</div>
-					
-			</div>
-		</div>
-	</div>	
+                        </div>
+                        <div class="form-group">
+                            <div class="left-inner-addon">
+                                <span class="glyphicon glyphicon-comment fa-flip-horizontal" style="margin-left:150px; margin-top:1px;"></span>
+                                <label class="sr-only">Names</label>
+                                <?php echo form_open('chat/message/'); ?>
+                                <input type="text" class="form-control" id="other_user" name="other_user" hidden style="display: none;">
+                                <input type="text" class="form-control" id="comment" name= "comment" style="margin-top:10px;margin-left:150px;;font-size:20px; width: 300px;" placeholder=" send a message!">
+                            </div>
+                            <a href="#"><button type="submit" class="btn btn-lg" style="position:relative;background:#1A75BF; color:white; font-size:20px; height:30px; padding-top:0px; margin-top:-55px; margin-left:75%;">Reply</button></a>
+                            <?php echo form_close();?>
+                        </div>
+                        <!--
+                        <div class="btn-group">
+                        <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;"><span class="glyphicon glyphicon-camera"></span></button></a>
+                        </div>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>	
 </div>
 </div>
 
@@ -245,10 +239,10 @@ jQuery(document).ready(function () {
     });
 </script>
 <script>
-    function somefunction(i) {
-    
-    alert(temp_array[i]);
-    $( "#comment-block").load(temp_array[i],"limit=20");
+    function change_chat(i, j) {
+        $("#comment-block").empty();
+        $("#comment-block").load(i.toString(),"limit=20");
+        $('#other_user').attr('value', j);
 }
 										 //"http://localhost/WP_intern-messaging/application/views/chats/text.html");
                                                                                  
