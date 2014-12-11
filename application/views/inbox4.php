@@ -140,17 +140,18 @@ jQuery(document).ready(function () {
 							<!--beginning of the persons chat -->
 							<!--FIGURE OUT HOW TO ADD THE CHATS INTO HERE-->
 							<div class="panel-body table-responsive">
+                                                            
 							<?php 
 							for($i =0; $i<$num_chats;$i++){?>
 							
 							<!--used to differentiate the users apart in convo-->
 							<?php  echo "<style>
-							p.".$chats_info[$i]["currentUser"]."{float:right; color:blue}
+							p.".$chats_info[$i]["currentUser"]."{float:right; }
 							</style>"; ?>
 							
 							
 								<div class="containe">
-									<div class="heade" style="background:#a4bbcc;">
+									<div class="heade" onclick="change_chat('<?php echo $chats_info[$i]['chatLocation'];?>','<?php echo $chats_info[$i]['otherUser'];?>');highlightLink(this);">
 										<table class="table">
 											<thead>
 												<tr>
@@ -170,29 +171,19 @@ jQuery(document).ready(function () {
 										</table>
 									</div>
 									<!-- THIS IS WHERE YOU INSERT THE CHAT!!!!!!!-->
-									<div class="content" style="background:#d2dee7;">
+									<!--<div class="content" style="background:#d2dee7;">
+                                                                            <div id="temp_array1"><p><?php echo $chats_info[$i]['chatLocation']; ?></p></div>
+                                                                            
 
-										<?php echo form_close() ?>
-										<div class="arrow-up"></div>     
 										
-										<div class="form-group">
-											<div class="left-inner-addon">
-												<span class="glyphicon glyphicon-comment fa-flip-horizontal" style="margin-left:150px; margin-top:1px;"></span>
-												<label class="sr-only">Names</label>
-												<?php echo form_open('chat/message/'.$chats_info[$i]['otherUser']); ?>
-                                     
-												<input type="text" class="form-control" id="comment" name= "comment" style="margin-top:10px;margin-left:150px;;font-size:20px; width: 300px;" placeholder=" send a message!">
-											</div>
-											<a href="#"><button type="submit" class="btn btn-lg" style="position:relative;background:#1A75BF; color:white; font-size:20px; height:30px; padding-top:0px; margin-top:-55px; margin-left:75%;">Reply</button></a>
-                           
-										</div>                                   
+										<div class="arrow-up"></div>                                    
                                          
-										<!--
+										
 										<div class="btn-group">
 											<a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;"><span class="glyphicon glyphicon-camera"></span></button></a>
 										</div>
-										-->
-									</div>
+										
+									</div>-->
 								</div>
 							
 							<?}?>
@@ -208,62 +199,69 @@ jQuery(document).ready(function () {
 	
 	</div>
 	<div class="col-md-5">
-		<div class="panel" style="background:#D9E0E6;">
-			<div class="panel-body">
-				
-					<div class="content" style="background:#d2dee7;">
+            <div class="panel" style="background:#D9E0E6;">
+                <div class="panel-body">
+                    <!-- THIS IS WHERE YOU INSERT THE CHAT!!!!!!!-->
+                    <div class="content">
+                        <!--<div class="arrow-up"></div>     -->
+                        <div id = "comment-block" style="overflow:auto; color:#414042; padding: 10px; height: 500px;">
 
-						<?php echo form_close() ?>
-						<div class="arrow-up"></div>     
-						<div id = "comment-block<?php echo $i?>" style="overflow:auto; background:#e5ecf1; color:#414042; border-radius:10px; width: 60%; margin-left: 150px; padding: 10px; height: 500px;">
-
-							<script>
-								//$( "#comment-block"+<?php echo $i ?> ).load( "<?php echo $chats_info[$i]['chatLocation']; ?>");
-								$(document).ready(
-										function() {
-											setInterval(function() {
-												//var randomnumber = Math.floor(Math.random() * 100);
-												$( "#comment-block"+<?php echo $i ?> ).load( "<?php echo $chats_info[$i]['chatLocation']; ?>","limit=20");
-												/*if (<?php echo $username != $chats_info[$i]['latest_replier']?>){
-												document.getElementById("circlee"+<?php echo $i?>).style.background = "red";
-												}
-												else{ 
-													document.getElementById("circlee"+<?php echo $i?>).style.background= "green";
-													}*/
-												}, 1000);
-											});
-										 //"http://localhost/WP_intern-messaging/application/views/chats/text.html");
-
-							</script> 
-							</div>
-							<div class="form-group">
-								<div class="left-inner-addon">
-									<span class="glyphicon glyphicon-comment fa-flip-horizontal" style="margin-left:150px; margin-top:1px;"></span>
-									<label class="sr-only">Names</label>
-									<?php echo form_open('chat/message/'.$chats_info[$i]['otherUser']); ?>
-                                     
-									<input type="text" class="form-control" id="comment" name= "comment" style="margin-top:10px;margin-left:150px;;font-size:20px; width: 300px;" placeholder=" send a message!">
-								</div>
-								<a href="#"><button type="submit" class="btn btn-lg" style="position:relative;background:#1A75BF; color:white; font-size:20px; height:30px; padding-top:0px; margin-top:-55px; margin-left:75%;">Reply</button></a>
-                           
-							</div>                                   
-                                         
-							<!--
-							<div class="btn-group">
-							<a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;"><span class="glyphicon glyphicon-camera"></span></button></a>
-							</div>
-							-->
-						</div>
-					</div>
-					
-			</div>
-		</div>
-	</div>	
+							 
+                        </div>
+                        <div class="form-group">
+                            <div class="left-inner-addon">
+                                <span class="glyphicon glyphicon-comment fa-flip-horizontal" style=" margin-top:1px;"></span>
+                                <label class="sr-only">Names</label>
+                                <?php echo form_open('chat/message/'); ?>
+                                <input type="text" class="form-control" id="other_user" name="other_user" hidden style="display: none;">
+                                <input type="text" class="form-control" id="comment" name= "comment" style="margin-top:10px;font-size:20px; width:70%;" placeholder=" send a message!">
+                            </div>
+                            <a href="#"><button type="submit" class="btn btn-lg" style="position:relative;background:#1A75BF; color:white; font-size:20px; height:30px; padding-top:0px; margin-top:-55px; margin-left:73%;">Reply</button></a>
+                            <?php echo form_close();?>
+                        </div>
+                        <!--
+                        <div class="btn-group">
+                        <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;"><span class="glyphicon glyphicon-camera"></span></button></a>
+                        </div>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>	
 </div>
 </div>
 
 <?php $this->load->view('footer');?>
-
+<script>
+    $(document).ready(function() {
+        var temp_array = ['test'];
+    });
+</script>
+<script>
+    function change_chat(i, j) {
+        $("#comment-block").empty();
+        $("#comment-block").load(i.toString(),"limit=20");
+        $('#other_user').attr('value', j);
+}
+										 //"http://localhost/WP_intern-messaging/application/views/chats/text.html");
+                                                                                 
+</script>
+<script>
+var highlightLink = function () {
+        var active = null, colour = '#D5D8DA';
+        if (this.attachEvent) this.attachEvent('onunload', function () {
+            active = null;
+        });
+        return function (element) {
+            if ((active != element) && element.style) {
+                if (active) active.style.backgroundColor = '';
+                element.style.backgroundColor = colour;
+                active = element;
+            }
+        };
+    }();
+</script>	
  <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

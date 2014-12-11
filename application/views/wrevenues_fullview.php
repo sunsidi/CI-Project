@@ -219,7 +219,7 @@
 							<!--Contact Info-->
 							<div style="margin-top:40px;">
 							<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>primary_contact_icon.png"/> &nbsp; Contact</h4>
-								<div style="padding:3% 17%">
+								<div style="padding:3% 17%;">
 									<p class="info"><span style="padding-right:30px;"><img src="<?php echo $PATH_IMG?>globe_icon2.png"/></span> website link here</p>
 									<p class="info"><i class="fa fa-facebook" style="width:47px;margin-left:6px;"></i> facebook link here</p>
 									<p class="info"><i class="fa fa-twitter" style="width:47px;margin-left:6px;"></i> twitter link here</p>

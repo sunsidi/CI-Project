@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Business Profile</title>
+<title>Business Public Profile</title>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript"
@@ -117,152 +117,18 @@ position:absolute;
 									
 									<div class="margin-top:40px;">
 										<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>details_icon.png"/> &nbsp; Details:</h4>
-										<div class="row" style="padding:0 20% 40px; font-size:16px;">
+										<div class="row" style="padding:0 20%; font-size:16px;">
 										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
 								
 										</div>
 									</div>
-                                        <!--Edit profile button-->
+                                       
 
                                   
                                     
-  <div style="text-align:center;">
-          <a href="#" data-toggle="modal" data-target="#basicModal" class="btn btn-lg edit" style="color:white;border-radius:10px;">Edit Profile
-          </a>
-          <a href="<? echo base_url()?>account/myaccount_accountinfo" class="btn btn-lg edit" style="color:white;border-radius:10px;">My Account
-          </a>
-      </div>
-
-
-
- <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-      
-
-    
-    
-      <div class="modal-header" style="background-color: #628DA3; height: 80px;padding:20px;">
-      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <p style="font-size: 215%; color: white;text-align:center;">
-          <i class="fa fa-pencil-square-o" style="font-size:30px;"></i> Edit Profile</p>
-        
-      </div>
-      
-    <div class="modal-body" style="font-size:20px;background:#c2d2dc;">
-                    <?php 
-                        $requiredthings = array('onsubmit' => 'return check_image()');
-                        echo form_open_multipart(base_url().'main/update_profile', $requiredthings);
-                    ?>
-                      
-                    
-					
-                        <form class="form-horizontal" role="form">
-						<div class="form-group row">
-                        <label class="col-sm-2 control-label">Details</label>
-                         <div class="col-sm-10">
-                           <textarea class="form-control" rows="3"></textarea>
-                         </div>
-                        </div>
-						
-						<div class="form-group row">
-                         <label class="col-sm-2 control-label">Location</label>
-                         <div class="col-sm-10">
-                           <input name = 'location' type="text" class="form-control" placeholder="">
-                         </div>
-						</div>
-						
-						<div class="form-group row">
-                        <label class="col-sm-2 control-label">Phone</label>
-                        <div class="col-sm-10"> 
-                         <input name = 'phone' type="text" class="form-control" placeholder="">
-                         </div>
-						</div>
-						
-						<div class="form-group row">	
-                        <label class="col-sm-2 control-label">Links</label>
-                        <div class="col-sm-10">
-                        <input name = 'user_reference' type="text" class="form-control" placeholder="" >
-                        </div>
-						</div>
-						
-						<div class="form-group row">
-						<label class="col-sm-2 control-label">Facebook</label>
-                        <div class="col-sm-10">
-                        <input name = 'user_reference' type="text" class="form-control" placeholder="" >
-                        </div>
-						</div>
-						
-						<div class="form-group row">
-                        <label class="col-sm-2 control-label">Name</label>
-                        <div class="col-sm-10">
-                        <input name = 'fullname' type="text" class="form-control" placeholder="">
-                        </div>
-						</div>
-						
-						<div class="form-group row">
-                        <label class="col-sm-2 control-label">Quote</label>
-                        <div class="col-sm-10">
-                        <input name = 'tagline' type="text" class="form-control" placeholder=" (character limit 85)">
-                        </div>
-						</div>
-						
-						<div class="form-group row">
-						<label class="col-sm-2 control-label">Price</label>
-                        <div class="col-sm-3">
-							<select class="form-control">
-								<option value="" selected="selected"></option>
-								<option value="$">$</option>
-								<option value="$$">$$</option>
-								<option value="$$$">$$$</option>
-								<option value="$$$$">$$$$</option>
-							</select>
-                        </div>
-						</div>
-                      
-      
-                    <div class="image-upload" style="text-align:center;">
-                   
-                        <label for="file-input-profile">
-                        
-                            <img src="<?php echo $PATH_IMG?>camera_icon.png"  style="min-width:100%; max-width:100%; margin-top:20px;">
-                        	
-                        </label>
-                            <label for ="file-upload">
-                         
-
-                            </label>
-
-
-                        
-                        <input id="file-input-profile" name = "userprofile" type = "file"/>
-                        <input id="file-upload" type = "submit" >
-                        <button type="submit" class="btn btn-lg" style="background:#478EBF; color:white; margin-top:20px;margin-left:10px;">Submit Changes</button>
-                        </form>
-                
-                    </div>
-                
-                    <style>
-
-                    .image-upload > input
-                    {
-                        display: none;
-                    }
-                   </style>
-                
-                                        
-                    
-    </div>
-    
- 
- 
-        </div>
-      </div>
-    </div>
-
                                 </div>
-                     	</div><!--END OF PROFILE-->
-                     </div>
+							</div><!--END OF PROFILE-->
+						</div>
                      
                      <div class="row">
                      <!--WREVS-->
@@ -522,11 +388,84 @@ position:absolute;
                       <div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
                                 <div class="panel-body">
                                     <!--Check Inbox-->
-                                    <div class="row inbox-btn" style="padding-top:10px;">                                     
-                                        <a href="" class="btn btn-lg btn-block blue-button" style="border-radius:10px;border:2px solid #478EBF;"><span class="glyphicon glyphicon-user"></span> Check Inbox</a>
+                                   <div class="row">
+                                        <a href="#" data-toggle="modal" data-target="#basicModal"  class="btn btn-lg btn-block blue-button" style="border-radius:10px;"><i class="fa fa-envelope"></i> Message them</a>
+                                    </div>
+									<div class="row" style="padding-top:10px;">
+                                        <a href="#" class="btn btn-lg btn-block blue-button" style="border-radius:10px;"><span class="glyphicon glyphicon-user"></span> Click to Follow</a>
                                     </div>
 
-                                
+									<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog ">
+      <div class="modal-content">
+          
+    
+            <div class="modal-header" style="background-color: #628DA3;padding:5px;padding-top:8px;">
+<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <p style="font-size: 215%; color: white; text-align: center;">
+                  <i class="fa fa-envelope"></i> Message
+              </p>
+            </div>
+                
+                <div class="modal-body" style="text-align:center; font-size:20px;background:#c2d2dc;">
+                  <div class="container">
+      <div class="row">
+          <!-- START of COMPOSE MESSAGE FORM -->
+    
+            <!-- From input-->
+            <?php 
+            	$change_value = array('onsubmit' => 'return change_value()');
+            	echo form_open('chat/composeMessage', $change_value); 
+            ?>
+                                     
+                           
+                           
+    
+            <!-- To input-->
+            <div class="form-group">
+              <div class="col-md-2 col-sm-2" for="email" style="margin-left: 10px;">To:</div>
+              <div class="col-md-9 col-sm-9">
+                <input id="to" name="to" type="text" placeholder="To" class="form-control" value=""  readonly>
+              </div>
+            </div>
+      
+      <!-- Title input
+            <div class="form-group">
+              <div class="col-md-2 col-sm-2 col-xs-2" for="name" style="margin-left:10px;">Title:</div>
+              <div class="col-md-9 col-sm-9 col-xs-9">
+                <input id="name" name="name" type="text" placeholder="Title" class="form-control" style="width: 400px;">
+              </div>
+            </div>
+            -->
+    
+            <!-- Message body -->
+            <div class="form-group">
+              <div class="col-md-2 col-sm-2" for="message" style="margin-left: 8px;">Your message:</div>
+              <div class="col-md-9 col-sm-9">
+                <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5" style="margin-top:10px;height:170px;"></textarea>
+              </div>
+            </div>
+    
+            <!-- Form actions -->
+            <div class="form-group">
+              <div class="col-md-12 col-sm-12 col-xs-12" style="margin-left: 5px; margin-top:10px;">
+                <button type="submit" class="btn btn-primary btn-lg">Send</button>
+              </div>
+            </div>
+            <?php echo form_close();?>
+      
+        <!--END OF COMPOSE MESSAGE FORM -->
+      </div>
+      
+    </div>
+    </div>
+            
+            
+      </div>
+        </div>
+    </div> <!-- END OF MESSAGE MODAL -->
+	
+                                    
                                     
                                 </div>
                             </div><!--END OF MESSAGING-->
@@ -578,8 +517,8 @@ position:absolute;
 							</div>
 					 </div>
 					 
-					     <!--Chatbox-->
-                         <div class="row" style="padding-top:15px;">
+					 <!--Chatbox-->
+                                    <div class="row" style="padding-top:15px;">
                                         <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;">#</span> Comments</h3>
                                         
                                         <div id = "comment-block" style="overflow:auto; background:#8aa8c0; color:white; border-radius:10px;  width:95%; margin-left: 15px;height: 300px; padding: 10px;">
@@ -607,14 +546,13 @@ position:absolute;
                                         <a href="#"><button type="submit" class="btn btn-lg post-comment-btn" style="background:#478EBF; color:white; padding:5px; border-radius:10px;">Post Comment</button></a>
                                         <?php echo form_close() ?>
                                        <!-- <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;"><span class="glyphicon glyphicon-camera"></span></button></a>-->
-						
+					 
 						<!--Tags-->
 						<div class="row" style="padding:20px;">
 							<h4><i class="fa fa-tag"></i> &nbsp; Tags</h4>
 							
 						</div><!--end of tags-->
-					 
-					 </div> <!--end of column-->
+                     </div> <!--end of column-->
                      
                      
                    
@@ -623,6 +561,8 @@ position:absolute;
         </div>
     </div>
 </div>
+
+
 
 <!--end of content-->
 
