@@ -174,27 +174,7 @@ jQuery(document).ready(function () {
 
 										<?php echo form_close() ?>
 										<div class="arrow-up"></div>     
-										<div id = "comment-block<?php echo $i?>" style="overflow:auto; background:#e5ecf1; color:#414042; border-radius:10px; width: 60%; margin-left: 150px; padding: 10px; height: 500px;">
-
-										<script>
-										  //$( "#comment-block"+<?php echo $i ?> ).load( "<?php echo $chats_info[$i]['chatLocation']; ?>");
-											$(document).ready(
-													function() {
-														   setInterval(function() {
-																//var randomnumber = Math.floor(Math.random() * 100);
-																$( "#comment-block"+<?php echo $i ?> ).load( "<?php echo $chats_info[$i]['chatLocation']; ?>","limit=20");
-																/*if (<?php echo $username != $chats_info[$i]['latest_replier']?>){
-																	document.getElementById("circlee"+<?php echo $i?>).style.background = "red";
-															}
-															else{ 
-																document.getElementById("circlee"+<?php echo $i?>).style.background= "green";
-															}*/
-														   }, 1000);
-													});
-										  //"http://localhost/WP_intern-messaging/application/views/chats/text.html");
-
-										</script> 
-										</div>
+										
 										<div class="form-group">
 											<div class="left-inner-addon">
 												<span class="glyphicon glyphicon-comment fa-flip-horizontal" style="margin-left:150px; margin-top:1px;"></span>
@@ -230,13 +210,7 @@ jQuery(document).ready(function () {
 	<div class="col-md-5">
 		<div class="panel" style="background:#D9E0E6;">
 			<div class="panel-body">
-				<?php 
-							for($i =0; $i<$num_chats;$i++){?>
-							
-							<!--used to differentiate the users apart in convo-->
-							<?php  echo "<style>
-							p.".$chats_info[$i]["currentUser"]."{float:right; color:blue}
-							</style>"; ?>
+				
 					<div class="content" style="background:#d2dee7;">
 
 						<?php echo form_close() ?>
@@ -281,7 +255,7 @@ jQuery(document).ready(function () {
 							-->
 						</div>
 					</div>
-				<?}?>	
+					
 			</div>
 		</div>
 	</div>	

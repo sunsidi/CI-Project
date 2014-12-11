@@ -271,18 +271,35 @@
                 
             </div>
       
-            <div class="panel-body">
-            	<div style="padding: 0 15px;">
-            		<p style="text-align:center;">2014-11-14 2:15PM</p>
-           		<img src="<?php echo $PATH_IMG?>latest_fullbutton.png" style="width:70px; height:70px;border-radius: 150px;z-index:5;position:relative;"><span style="color:white;background:#7874a2; padding:5px 25px 5px 40px; border-radius:5px;margin-left:-20px;z-index:3;">The Wrevel Team</span>
-           		<div class="arrow-left" style="position:absolute;width: 0; height: 0; border-top: 0px solid transparent;border-right: 35px solid #4991c9;
+            <div class="panel-body" style="height:650px;overflow-y:auto;">
+			
+			<div class="row">	
+            	<div style="padding: 0 15px;position:relative;">
+            		<p style="text-align:center;">2014-12-20 4:00PM</p>
+					<img src="<?php echo $PATH_IMG?>latest_fullbutton.png" style="width:70px; height:70px;border-radius: 150px;z-index:5;position:relative;"><span style="color:white;background:#7874a2; padding:5px 25px 5px 40px; border-radius:5px;margin-left:-20px;z-index:3;">The Wrevel Team</span>
+					<div class="arrow-left" style="position:absolute;width: 0; height: 0; border-top: 0px solid transparent;border-right: 35px solid #4991c9;
 border-bottom: 20px solid transparent;margin-left:14%;float:left;"></div>
-           		<div style="padding:15px 5%;background:#4991C9;width:80%;float:right;color:white;border-radius:10px;">
-            			<p style="text-align:left; font-size:16px;">Welcome to the new Wrevel! We are delighted to have you on board and can’t wait for you to check out all the new features we have for you. You can start by clicking on the <a style="color:white;text-decoration:underline;" href="<?php echo base_url()."main/mywrevs"?>"> MYWREVS</a> tab above and browse through the 12 new categories. Happy Wrevel-ing! :D</p>
+					<div style="padding:15px 5%;background:#4991C9;width:80%;float:right;color:white;border-radius:10px;">
+							<p style="text-align:left; font-size:16px;">One of our summer interns, Varagon (Jenny) wrote this awesome blog on what project phoenix (Wrevel 2.0) is all about. <a style="color:white;text-decoration:underline;" href="<?php echo base_url()."info/blog1"?>">Click here</a> to learn more about it! </p>
+            			<a href="<?php echo base_url()."info/blog1"?>"><img class="img-responsive" src="<?php echo $PATH_IMG?>blogscreenshot.png"></a>     	
+            		</div>
+            
+				</div>
+			</div>			
+			<hr>	
+			<div class="row" style="margin-top:20px;padding-bottom:25px;">	
+            	<div style="padding: 0 15px;position:relative;">
+            		<p style="text-align:center;">2014-11-14 2:15PM</p>
+					<img src="<?php echo $PATH_IMG?>latest_fullbutton.png" style="width:70px; height:70px;border-radius: 150px;z-index:5;position:relative;"><span style="color:white;background:#7874a2; padding:5px 25px 5px 40px; border-radius:5px;margin-left:-20px;z-index:3;">The Wrevel Team</span>
+					<div class="arrow-left" style="position:absolute;width: 0; height: 0; border-top: 0px solid transparent;border-right: 35px solid #4991c9;
+border-bottom: 20px solid transparent;margin-left:14%;float:left;"></div>
+					<div style="padding:15px 5%;background:#4991C9;width:80%;float:right;color:white;border-radius:10px;">
+							<p style="text-align:left; font-size:16px;">Welcome to the new Wrevel! We are delighted to have you on board and can’t wait for you to check out all the new features we have for you. You can start by clicking on the <a style="color:white;text-decoration:underline;" href="<?php echo base_url()."main/mywrevs"?>"> MYWREVS</a> tab above and browse through the 12 new categories. Happy Wrevel-ing! :D</p>
             			<img class="img-responsive" src="<?php echo $PATH_IMG?>projectphoenix_image.jpg">       	
             		</div>
             
-	    	</div>
+				</div>
+			</div>	
                  <!--<form class="form-inline" role="form" style="margin-left:10%;" >
             <div class="form-group">
                         <!--<div class="left-inner-addon">
