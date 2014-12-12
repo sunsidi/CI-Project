@@ -21,9 +21,10 @@
 
 	
 <div class="container">
-<div class="col-md-offset-2 col-md-8"> 
+<div class="col-md-offset-2 col-md-8">
+<!--grouppage-->
         <div class="panel" style="margin-top: 80px;background-color: #d7e0e9; border:none ; border-radius: 10px; -moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .2);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .2);box-shadow:2px 2px 2px rgba(0, 0, 0, .2);">
-	    
+<!--group heading-->	    
 	    <div class="panel-heading" style="background-image: url(<?php echo $PATH_IMG?>partners_header.png); height: 100px;background-size:100% 100px;border-top-left-radius: 10px; border-top-right-radius: 10px;">
 		<div style="padding-left: 15%;">
 		<button type="button" class="btn" style="margin-top: 15px;float: left;background: rgba(22,144,127,0.6);color: white;font-size:25px;">
@@ -45,6 +46,7 @@
 	-o-linear-gradient(#d7e0e9, #f1f5f6);
 	-moz-linear-gradient(#d7e0e9, #f1f5f6);
 	linear-gradient(#d7e0e9, #f1f5f6); border-radius: 10px;">
+<!--quotation-->
 		<div class="row">
 		<img src="http://wrevel.com/uploads/b1fcecf9a55b8d304788212d517c41b5.jpg" style="float: left;margin-left: 10%;border-radius:150%; width:100px; height:100px;">
 		<div class="arrow-left" style="margin-left:220px; margin-top:30px;float: left;"></div>
@@ -53,6 +55,7 @@
 		       a little as if you have lost a friend. -Paul Sweeney </p>
 		</div>
 		<div style="margin-top: 30px;">
+<!--groupmember-->
 			<div class="panel" style="background:transparent;box-shadow: none;">
                             	<div class="panel-heading">
 					<center><span class="badge" style="color:white; background:#6ca5cc;font-size:20px;vertical-align:middle; border-radius:50%; padding:10px 0px; width:40px;height:40px; text-align:center;">190</span>
@@ -148,6 +151,7 @@
                                 </div>
                         </div>
 		</div>
+<!--what is the group-->
 	    		<div style="margin-top: 10px;">
 			<div class="panel" style="background:transparent;box-shadow: none;">
                             	<div class="panel-heading">
@@ -170,21 +174,21 @@
                                 </div>
                         </div>
 		</div>
-
+<!--Comments links to the eventpage need to change-->
 	    <div class="row" style="padding:1% 2% 2%; margin-top:15px;">
                     	<h4 style="margin-left: 12%;"><i class="fa fa-comments"></i> Chatbox</h4>
                    
 		       <form action="http://wrevel.com/event/event_comment/parties/2551" method="post" accept-charset="utf-8">                   <div class="event-comment-section">
-                    <div class="left-inner-addon pull-left event-comment-input">
+                    <div class="left-inner-addon pull-left event-comment-input" style="margin-left: 5%;">
                     <span class="glyphicon glyphicon-comment fa-flip-horizontal"></span>
                          <input type="text" class="form-control event-post-textarea" id="comment" name="comment" placeholder="send a message!">                       
                           
                  </div>       
-                        <button type="submit" class="btn btn-lg event-post-btn" style="background:#1C74BB;color:white; padding:5px 10px;margin-left:10px;border-radius:8px;">Post Comment</button>
+                        <button type="submit" class="btn btn-lg event-post-btn" style="background:#6997a9;color:white; padding:5px 10px;margin-left:10px;border-radius:8px;">Post Comment</button>
                 
                             
                             </div></form>
-                         <div id="comment-block" class="comment_section">
+                         <div id="comment-block" class="comment_section" style="margin-top: 20px;">
                         </div>
                        <script>
     $(document).ready(
@@ -194,14 +198,14 @@
                    
                     $( "#comment-block" ).load( "<div style="border:1px solid #990000;padding-left:20px;margin:0 0 10px 0;">
 
-<h4>A PHP Error was encountered</h4>
+			<h4>A PHP Error was encountered</h4>
 
-<p>Severity: Notice</p>
-<p>Message:  Undefined variable: commentLocation</p>
-<p>Filename: views/event_fullview.php</p>
-<p>Line Number: 1136</p>
+			<p>Severity: Notice</p>
+			<p>Message:  Undefined variable: commentLocation</p>
+			<p>Filename: views/event_fullview.php</p>
+			<p>Line Number: 1136</p>
 
-</div>","limit=20");
+			</div>","limit=20");
 
                 }, 1000);
             });
@@ -209,7 +213,21 @@
           </script>    
          
                    
-                        </div>
+        </div>
+<!--photos and videos-->
+
+<!--contacts-->
+	<div style="margin-top: 10px;">
+		<h4 style="margin-left: 12%;"><i class="fa fa-comment-o"></i> Contact</h4>
+		<center><span style="font-size: 18px;"><i class="fa fa-phone"></i>&nbsp;&nbsp;(212) 201- 3019
+		&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-envelope-o"></i>&nbsp;&nbsp;hotrabbit@jackrabbit.com</span></center>
+	</div>
+<!--links-->
+	<div style="margin-top: 10px;">
+		<h4 style="margin-left: 12%;"><span class="glyphicon glyphicon-link"></span> Links</h4>
+		<center><span style="font-size: 18px;">http://www.manhattan-monster.com/</center>
+	</div>
+<!--tags-->
 	    </div>
 	
 
