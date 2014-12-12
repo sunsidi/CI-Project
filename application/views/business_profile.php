@@ -535,10 +535,10 @@ position:absolute;
                      
                      
                      <div class="row">
-                     <!--PHOTOS AND VIDEOS
+                     <!--PHOTOS AND VIDEOS-->
                      	<div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
                                 <div class="panel-body">
-                                    <ul class="nav nav-pills nav-justified wrev-tabs" style="font-size:24px;">
+                                    <ul class="nav nav-pills nav-justified wrev-tabs" style="font-size:20px;">
                                         <li class="active"><a href="#">Photos</a></li>
                                         <li><a href="#">Videos</a></li>
                                     </ul>
@@ -549,7 +549,7 @@ position:absolute;
                                         <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);padding:8.5px;"><span class="glyphicon glyphicon-camera"></span></button></a>
                                     </div>
                                 </div>
-                            </div>END OF PHOTOS AND VIDEOS-->
+                            </div><!--END OF PHOTOS AND VIDEOS-->
                      </div>
 					 
 					 <div class="row">

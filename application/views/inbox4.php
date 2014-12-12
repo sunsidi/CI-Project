@@ -160,7 +160,7 @@ jQuery(document).ready(function () {
 													else{echo '<td><div id="circlee'.$i. '" style="background: green; width:20px; height:20px; border-radius:25px"></div></td>';} ?>-->
 													<!--<td><div id="circlee" style="background: red;"></div></td>-->
 													<!--$chats_info[$i]['image']-->
-													<td style="width:60%;"><img src="<?php echo $chats_info[$i]['image']?>" style=" margin-top:-20px; width:80px; height:80px;border-radius: 150px;border:2px solid #7874A2;z-index:5;position:relative;"><span style="color:white;background:#7874A2; padding:5px 12px 5px 30px; border-radius:5px;margin-left:-20px;z-index:3;margin-top:-25px;"><?php echo $chats_info[$i]['otherUserFullname'] ?></span></td>
+													<td style="width:60%;"><img src="<?php echo $chats_info[$i]['image']?>" style=" margin-top:-20px; width:80px; height:80px;border-radius: 150px;border:2px solid #7874A2;z-index:5;position:relative;"><div style="color:white;background:#7874A2; padding:5px 12px 5px 30px; border-radius:5px;margin-left:60px;z-index:3;margin-top:-50px;width:60%;"><?php echo $chats_info[$i]['otherUserFullname'] ?></div></td>
 													<!--<td id="message_status"><?php echo $chats_info[$i]['status'] ?></td>-->
 													<td><p id="reply_time" ><?php echo $chats_info[$i]['reply_time'] ?></p></td>
 													<!-- <td><p><a href=""><img src="<?php echo $PATH_BOOTSTRAP?>images/mark_as_unread_button.png" style="width: 30px; margin-top:-50px;"></a></p>
