@@ -152,7 +152,7 @@ public function index()
             
             $this->email->message($message);
             $uniqid = md5(uniqid());
-            mkdir('./uploads/'.$uniqid,'0777',true);
+            mkdir('./uploads/'.$uniqid, 0777, true);
             chmod('./uploads/'.$uniqid, 0777);
             $config['upload_path']='./uploads/'.$uniqid;
             $config['allowed_types']= 'doc|docx|rtf|txt|pdf|tif';

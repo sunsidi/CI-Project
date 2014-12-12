@@ -40,6 +40,9 @@ class Model_wrevenues extends CI_Model{
         $data = $this->input->post();
         foreach($data as $i => $value) {
             if($value && $i != 'start_time' && $i != 'end_time') {
+                if($i == 'wrevenue_file') {
+                    continue;
+                }
                 if($i == 'day') {
                     for($j = 0; $j < count($value); $j++) {
                         $temp_start = $data['start_time'][$j];
@@ -58,12 +61,16 @@ class Model_wrevenues extends CI_Model{
             $new_data['creator_id'] = $user_id;
             $query = $this->db->insert('wrevenues', $new_data);
             if($query) {
-                return true;
+                return $this->db->insert_id();
             }
             else return false;
         }
         else
-            return true;
+            return false;
+    }
+    //Updates a wrevenues' image.
+    public function update_wrevenue_image($insert_id, $wrevenue_image) {
+        $this->db->update('wrevenues', array('image_key' => $wrevenue_image), array('id' => $insert_id));
     }
     //Edits a wrevenue.
     public function edit_wrevenue($id) {

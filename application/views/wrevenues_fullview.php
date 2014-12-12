@@ -250,7 +250,7 @@
             <div class="panel" style="border:none;border-radius:15px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">
                 
                 <!-- EVENT HEADER -->
-                <div class="panel-header" style="font-family:GillSans;text-align:center;color:white;background:linear-gradient(rgba(70, 107, 121, 0.45), rgba(70, 107, 121, 0.45)),url(<?php echo $PATH_IMG?>balt.jpg); background-size:100%;border-top-left-radius:10px;border-top-right-radius:10px;">
+                <div class="panel-header" style="font-family:GillSans;text-align:center;color:white;background:linear-gradient(rgba(70, 107, 121, 0.45), rgba(70, 107, 121, 0.45)),url(<?php echo base_url().'uploads/'.$wrevenues['image_key']?>); background-size:100%;border-top-left-radius:10px;border-top-right-radius:10px;">
                     <div class="row" style="padding:2%;">
                         
                         <!-- LIKES -->
@@ -293,7 +293,7 @@
                             <!-- SHOUTOUT -->
                             <h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>shoutout_icon.png"/> &nbsp; Shoutout:</h4>
                             <div class="row" style="padding:3% 20% 0%; font-size:15px;text-align:center;">
-                                <img src="<?php echo $PATH_IMG?>/balt.jpg" class="shoutout-image"/>
+                                <img src="<?php echo base_url().'uploads/'.$wrevenues['image_key']?>" class="shoutout-image"/>
                                 <p><?php echo $wrevenues['name'];?></p>
                                 <?php if(!empty($wrevenues['shoutout'])) {?>
                                 <div style="background:#F0F3F6;border-radius:8px;padding:10px;"><?php echo $wrevenues['shoutout']?></div>
@@ -314,7 +314,7 @@
                             <div style="margin-top:40px;">
                                 <h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>w_icon2.png"/> &nbsp; Upcoming Wrevs</h4>
                                 <div class="row" style="padding:3% 10% 0%;">
-                                    <div class="col-md-12" style="position:relative;background-image:url(<?php echo $PATH_IMG?>balt.jpg); background-size:100%;padding:10px 0px 0px; color:white;">
+                                    <div class="col-md-12" style="position:relative;background-image:url(<?php echo base_url().'uploads/'.$wrevenues['image_key']?>); background-size:100%;padding:10px 0px 0px; color:white;">
                                         <div style="padding:0 10px 30px;">
                                             <p style="text-align:right;"><span class="wrevenue-attending">182</span><span class="wrevenue-attending-text">Attending</span></p>
                                             <div style="margin-left:auto;margin-right:auto;text-align:center;">

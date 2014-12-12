@@ -163,13 +163,18 @@
                                                 <h4 style="font-family:GillSans; font-size:27px;">add a wrevenue</h4>
                                             </div>
                                             <div class="modal-body" style="padding:2% 4%;text-align:left;">
-                                                <form method="post" class="form-horizontal" action="<?php echo base_url().'wrevenues/create_wrevenue';?>" role="form">
+                                                <?php echo form_open_multipart('wrevenues/create_wrevenue');?>
                                                 <div class="row">
                                                     <div class="col-md-6  create-form-border-left" style="padding:0 5%;">
                                                         <div class="form-group row">
-                                                            <label>header photo</label>
+                                                            <label>Header Photo</label>
                                                             <div class="col-sm-12" style="border:1px solid white;text-align:center;padding:8%;">
-                                                                <i class="fa fa-camera fa-4x"></i>
+                                                                <div class="col-sm-5">
+                                                                    <div class="image-upload">
+                                                                        <label>Choose an Image:</label>
+                                                                        <input id="file-input" name = "wrevenue_file" type = "file" style="overflow:hidden;"/>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
