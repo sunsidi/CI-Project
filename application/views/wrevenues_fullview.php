@@ -373,6 +373,16 @@
                                 </div>
                             </div><!-- END OF HOURS -->
                             
+                            <!-- PHOTOS -->
+                            <div style="margin-top:40px;">
+                                <h4 style="padding-left:30px;">Photos:</h4>
+                                <div style="padding:0% 17%;font-size:18px;line-height:70%;">
+                                    <?php foreach($wrevenues['photos'] as $picture){?>
+                                        <img src="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" class="shoutout-image"/>
+                                    <?php }?>
+                                </div>
+                            </div><!-- END OF PHOTOS -->
+                            
                             <!-- REVIEWS BLOCK -->
                             <div style="margin-top:40px;text-align:center;">
                                 <h4><img src="<?php echo $PATH_IMG?>reviews_icon.png"/> &nbsp; Reviews</h4>

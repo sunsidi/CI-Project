@@ -20,7 +20,9 @@ class wrevenues extends CI_Controller{
         $this->load->library('session');
         $data['wrevenues'] = $this->model_wrevenues->find_wrevenue($id);
         if($data['wrevenues'] !== 0) {
+            $data['wrevenues']['photos'] = array_diff(scandir('./uploads/wrevenues/'.$data['wrevenues']['id'].'/photos/'), array('..', '.'));
             $result = array_merge($path,$data);
+            //echo '<pre>', print_r($result, true), '</pre>';
             $this->load->view('Create_Wrevel_View',$result);
             $this->load->view('wrevenues_fullview',$result);     
         }
@@ -39,7 +41,7 @@ class wrevenues extends CI_Controller{
         $user_id = $this->model_users->get_userID($email);
         $insert_id = $this->model_wrevenues->create_wrevenue($user_id);
         if($insert_id) {
-            $test = $this->input->post('wrevenue_file');
+            //FIRST THE WREVENUE MAIN IMAGE.
             if(!mkdir('./uploads/wrevenues/'.$insert_id, '0777', true)) {
                 $this->session->set_flashdata('message', 'There was an error making the directory. Please try again.');
                 redirect('wrevenues/wrevenues_main');
@@ -54,7 +56,6 @@ class wrevenues extends CI_Controller{
             $this->load->library('upload',$config);
             if (!$this->upload->do_upload('wrevenue_file'))
             {
-                $some_variable = $this->upload->display_errors('<p>', '</p>');
                 $wrevenue_image = 'default_wrevenue_image.jpg';
             }
             else{
@@ -64,6 +65,25 @@ class wrevenues extends CI_Controller{
                 $wrevenue_image = 'wrevenues/'.$insert_id.'/'.$image_name;
             }
             $this->model_wrevenues->update_wrevenue_image($insert_id, $wrevenue_image);
+            
+            //AFTER GET THE MULTIPLE PHOTOS THAT YOU WANT.
+            if(!mkdir('./uploads/wrevenues/'.$insert_id.'/photos/', '0777', true)) {
+                $this->session->set_flashdata('message', 'There was an error making the directory. Please try again.');
+                redirect('wrevenues/wrevenues_main');
+            }
+            else {
+                chmod('./uploads/wrevenues/'.$insert_id.'/photos/', 0777);
+            }
+            $config2['upload_path'] ='./uploads/wrevenues/'.$insert_id.'/photos/';
+            $config2['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config2['max_size'] = '10000';
+            //echo $image_name;
+            $this->load->library('upload', $config2);
+            $this->upload->initialize($config2);
+            if (!$this->upload->do_multi_upload('wrevenue_file_array'))
+            {
+                $this->session->set_flashdata('message', 'There was an error uploading one or more files. Check if your files are all there.');
+            }
             $this->load->view('Create_Wrevel_View', $path);
             $this->load->view('wrevenues_posting_successful', $path);
             
@@ -72,7 +92,6 @@ class wrevenues extends CI_Controller{
             $this->session->set_flashdata('message', 'There was an error creating your wrevenue. Please try again');
             redirect('wrevenues/wrevenues_main');
         }
-        
     }
     
     public function edit_wrevenue($id) {
