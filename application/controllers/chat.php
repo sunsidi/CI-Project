@@ -147,7 +147,7 @@ class Chat extends CI_Controller {
                 }
                 
         }
-        public function message($username) {
+        public function message() {
             /* username is the user currentUser is talking to */
             $this->load->library('path');
             $path = $this->path->getPath();
@@ -161,6 +161,10 @@ class Chat extends CI_Controller {
             //get the chat information;
             $currentUser = $data['username'];
             $fullName = $data['fullname'];
+            $my_image = base_url() .'uploads/'. $data['image_key'];
+            $username = $this->input->post('other_user');
+            $other_data = $this->model_users->get_user($username);
+            $other_image = $other_data['image_key'];
 
             //this is where you should check whether a chat between two users already exists
             if ($this->model_chats->get_chats($currentUser,$username)){
@@ -256,7 +260,7 @@ class Chat extends CI_Controller {
             }
             /* check comment if its blank then do not write file_chat */
 
-            $filename =  "/home/wrevelco/public_html/application/views/chats/".$data[0]['chat_file'];
+            $filename =  "./application/views/chats/".$data[0]['chat_file'];
             $today = date("F j, Y, g:i a"); 
             //add commentors name instead of "Comment:"
             if($comment){

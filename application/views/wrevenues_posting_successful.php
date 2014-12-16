@@ -31,7 +31,7 @@
      				<p>Congratulations!</p>
                     <p>Your Wrevenue has been posted successfully!</p>
                   	<p><a href="#"><button class="btn" type="button" style="background:#79749E; font-size:20px; color:white;">Create another Wrevenue</button></a></p>
-                    <p><a href="#"><button class="btn" type="button" style="background:#6CA5CC; font-size:20px; color:white;">Wrevenues</button></a></p>  
+                    <p><a href="<?php echo base_url().'wrevenues/wrevenues_main';?>"><button class="btn" type="button" style="background:#6CA5CC; font-size:20px; color:white;">Wrevenues</button></a></p>  
     			</div>
      		</div>
          </div>

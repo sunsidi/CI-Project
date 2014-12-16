@@ -4,7 +4,7 @@ $('body').on('click', '.btn-group button', function (e) {
     
     //do any other button related things
 });
-$(".heade").click(function () {
+/*$(".heade").click(function () {
 
     $heade = $(this);
     //getting the next element
@@ -15,4 +15,4 @@ $(".heade").click(function () {
         //change text of header based on visibility of content div
     });
 
-});
+});*/

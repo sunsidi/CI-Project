@@ -152,7 +152,8 @@ public function index()
             
             $this->email->message($message);
             $uniqid = md5(uniqid());
-            mkdir('./uploads/'.$uniqid,'0777',true);
+            mkdir('./uploads/'.$uniqid, 0777, true);
+            chmod('./uploads/'.$uniqid, 0777);
             $config['upload_path']='./uploads/'.$uniqid;
             $config['allowed_types']= 'doc|docx|rtf|txt|pdf|tif';
             $config['max_size']	= '10000';
@@ -162,7 +163,7 @@ public function index()
             
             if ($this->upload->do_upload('cover_letter')) {
                 $cover_letter = $this->upload->data();
-                echo print_r($cover_letter, TRUE);
+                //echo print_r($cover_letter, TRUE);
                 $cover_letter_path = $cover_letter['full_path'];
             }
             else {
@@ -171,7 +172,7 @@ public function index()
             }
             if($this->upload->do_upload('resume')) {
                 $resume = $this->upload->data();
-                echo print_r($resume, TRUE);
+                //echo print_r($resume, TRUE);
                 $resume_path = $resume['full_path'];
             }
             else {
