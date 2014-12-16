@@ -14,6 +14,10 @@
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "98b7df42-3881-4ba4-adc3-bcb7a479d75e", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
 
 <body>
@@ -338,10 +342,31 @@
                         <!-- LIKES -->
                         <div class="col-sm-4">
                             <h2><?php echo $wrevenues['total_likes'];?> <i class="fa fa-heart-o"></i></h2>
-                            <a class="btn wrevenues-palette"><span class="glyphicon glyphicon-list-alt"></span></a>
-                            <a class="btn wrevenues-share"><i class="fa fa-share-square-o"></i></a>
+                            <!-- what does this do? <a class="btn wrevenues-palette"><span class="glyphicon glyphicon-list-alt"></span></a>-->
+                            <a class="btn wrevenues-share" href="#" data-toggle="modal" data-target="#shareModal"><i class="fa fa-share-square-o"></i></a>
                             <!--<p><i class="fa fa-clock-o" style="width:50px;"></i> Open Mon, Tues, Wed, Thurs, Fri, Sat, and Sun</p>-->
                         </div><!-- END OF LIKES -->
+                        
+                        <!--Popup for share this-->
+                        <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+                            <div class="modal-dialog">
+                                 <div class="modal-content" style="background:#c2d2dc;">
+                                      <div class="modal-header" style="background:#628da3; color:white;text-align:center;">
+                                      <button type="button" class="close" data-dismiss="modal" style="color:white;"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                      <i class="fa fa-share-square-o"></i> Share on Social Media
+                                      </div>
+                                      <div class="modal-body">
+
+                                            <span class='st_sharethis_large' displayText='ShareThis'></span>
+                                            <span class='st_facebook_large' displayText='Facebook'></span>
+                                            <span class='st_twitter_large' displayText='Tweet'></span>
+                                            <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                                            <span class='st_pinterest_large' displayText='Pinterest'></span>
+                                            <span class='st_email_large' displayText='Email'></span>
+                                       </div>
+                                 </div>
+                            </div>
+                         </div>
                         
                         <!-- EVENT NAME -->
                         <div class="col-sm-4" style="padding-top:3%;">
@@ -354,7 +379,7 @@
                             <div>
                                 <a href="#" data-toggle="modal" data-target="#editwrevenue" class="btn edit-wrevenue">Edit Wrevenue</a>
                             </div>
-                            <div style="margin-top:7px;">
+                            <!-- COMMENTED OUT <div style="margin-top:7px;">
                                 <i class="fa fa-star fa-2x"></i>
                                 <i class="fa fa-star fa-2x"></i>
                                 <i class="fa fa-star fa-2x"></i>
@@ -362,7 +387,7 @@
                                 <i class="fa fa-star fa-2x"></i>
                                 <span style="font-size:20px;">(#)</span>
                             </div>
-                            <a href="#" data-toggle="modal" data-target="#review" class="btn review-btn">Write a Review</a>
+                            <a href="#" data-toggle="modal" data-target="#review" class="btn review-btn">Write a Review</a>-->
 			</div><!-- END OF EDIT AND RATINGS MODAL -->
                     </div>
                 </div><!-- END OF EVENT HEADER -->
@@ -395,6 +420,7 @@
                             <!-- UPCOMING WREVS -->
                             <div style="margin-top:40px;">
                                 <h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>w_icon2.png"/> &nbsp; Upcoming Wrevs</h4>
+                                <?php if(isset($latest_event)) {?>
                                 <div class="row" style="padding:3% 10% 0%;">
                                     <div class="col-md-12" style="position:relative;background-image:url(<?php echo base_url().'uploads/'.$latest_event['e_image'];?>); background-size:100%;padding:10px 0px 0px; color:white;">
                                         <div style="padding:0 10px 30px;">
@@ -409,6 +435,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <?php }?>
                             </div><!-- END OF UPCOMING WREVS -->
 							
                             <!-- CONTACT INFO -->

@@ -5,9 +5,28 @@ class wrevenues extends CI_Controller{
     public function wrevenues_main() {
         $this->load->library('path');
         $this->load->model('model_wrevenues');
+        $this->load->model('model_users');
+        $this->load->model('model_events');
         $path = $this->path->getPath();
         $this->load->library('session');
         $data['wrevenues'] = $this->model_wrevenues->get_wrevenues();
+        for($i = 0; $i < count($data['wrevenues']); $i++) {
+            $data['events'] = $this->model_users->get_my_events_by_date($data['wrevenues'][$i]['creator_id']);
+            $data['wrevenues'][$i]['total_likes'] = 0;
+            for($j = 0; $j < count($data['events']); $j++) {
+                $data['wrevenues'][$i]['total_likes'] += $data['events'][$j]['e_likes'];
+            }
+            $day_array = array('mon', 'tues', 'wed', 'thurs', 'fri', 'sat', 'sun');
+            for($j = 0; $j < 7; $j++) {
+                if(!empty($data['wrevenues'][$i][$day_array[$j]])) {
+                    $temp_hours = explode('|', $data['wrevenues'][$i][$day_array[$j]]);
+                    $data['wrevenues'][$i]['day'][$j] = $day_array[$j];
+                }
+                else {
+                    $data['wrevenues'][$i]['day'][$j] = false;
+                }
+            }
+        }
         $result = array_merge($path,$data);
         //$this->load->view('Create_Wrevel_View',$result);
         $this->load->view('wrevenues_main',$result);     

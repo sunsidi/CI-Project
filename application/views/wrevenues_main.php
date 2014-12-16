@@ -117,7 +117,7 @@
                                         </a>
                                         <!--<p><i class="fa fa-money"></i> </p>-->
 
-                                        <h2>54 <i class="fa fa-heart-o"></i></h2>
+                                        <h2><?php echo $wrevenues[$i]['total_likes'];?> <i class="fa fa-heart-o"></i></h2>
                                         <a class="btn wrevenues-palette"><span class="glyphicon glyphicon-list-alt"></span></a>
                                         <a class="btn wrevenues-share"><i class="fa fa-share-square-o"></i></a>
                                         <!--<p><i class="fa fa-clock-o" style="width:50px;"></i> Open Mon, Tues, Wed, Thurs, Fri, Sat, and Sun</p>-->
@@ -131,12 +131,19 @@
                                         </p>
                                     </div>
                                     <div class="col-sm-12">
-                                        <p style="padding:0 50px;"><i class="fa fa-clock-o"></i> Open Mon, Tues, Wed, Thurs, Fri, Sat, and Sun</p>
+                                        <?php $days_open = "";
+                                            for($j = 0; $j < 7; $j++) {
+                                                if($wrevenues[$i]['day'][$j] != false) {
+                                                    $days_open .= ucfirst($wrevenues[$i]['day'][$j]) . ', ';
+                                                }
+                                            }
+                                            $days_open = substr($days_open,0,strlen($days_open)-2);
+                                            echo '<p style="padding:0 50px;"><i class="fa fa-clock-o"></i> '.$days_open.'</p>';?>
                                     </div>
 
                                     <div class="col-sm-12">
                                         <p><i class="fa fa-map-marker"></i>
-                                            <?php echo $wrevenues[$i][ 'city']. ', '.$wrevenues[$i][ 'state'];?>
+                                            <?php echo $wrevenues[$i]['city']. ', '.$wrevenues[$i][ 'state'];?>
                                         </p>
                                     </div>
                                 </div>
