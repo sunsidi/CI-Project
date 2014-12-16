@@ -48,12 +48,12 @@ class Model_wrevenues extends CI_Model{
                         $temp_start = $data['start_time'][$j];
                         $start_time = $this->timestamp($temp_start, false);
                         $temp_end = $data['end_time'][$j];
-                        $end_time = $this->timestamp($temp_end, true);
+                        $end_time = $this->timestamp($temp_end, false);
                         $new_data[$value[$j]] = $start_time.'|'.$end_time;
                     }
                 }
                 else {
-                    $new_data[$i] = $value;
+                    $new_data[$i] = strip_tags($value);
                 }
             }
         }
@@ -73,32 +73,38 @@ class Model_wrevenues extends CI_Model{
         $this->db->update('wrevenues', array('image_key' => $wrevenue_image), array('id' => $insert_id));
     }
     //Edits a wrevenue.
-    public function edit_wrevenue($id) {
+    public function edit_wrevenue($id, $wrevenue_image) {
         $data = $this->input->post();
         foreach($data as $i => $value) {
-            if($value && strpos($i, 'am_pm') === false) {
-                if($i == 'start_time') {
-                    if($data['start_time_am_pm'] == 'AM') {
-                        $new_value = $this->timestamp($value, false);
-                    }
-                    else {
-                        $new_value = $this->timestamp($value, true);
-                    }
-                    $new_data[$i] = $new_value;
+            if($value && $i != 'start_time' && $i != 'end_time') {
+                if($i == 'wrevenue_file') {
+                    continue;
                 }
-                else if($i == 'end_time') {
-                    if($data['end_time_am_pm'] == 'AM') {
-                        $new_value = $this->timestamp($value, false);
+                if($i == 'day' && $value != "") {
+                    for($j = 0; $j < count($value); $j++) {
+                        if(empty($value[$j])) {
+                            break;
+                        }
+                        $temp_start = $data['start_time'][$j];
+                        $start_time = $this->timestamp($temp_start, false);
+                        $temp_end = $data['end_time'][$j];
+                        $end_time = $this->timestamp($temp_end, false);
+                        $new_data[$value[$j]] = $start_time.'|'.$end_time;
                     }
-                    else {
-                        $new_value = $this->timestamp($value, true);
-                    }
-                    $new_data[$i] = $new_value;
                 }
                 else {
                     $new_data[$i] = strip_tags($value);
                 }
             }
+        }
+        if($wrevenue_image != false) {
+            $query = $this->db->get_where('wrevenues', array('id' => $id));
+            $temp = $query->row_array(0);
+            if($temp['image_key'] != 'default_wrevenue_image.jpg') {
+                unlink('./uploads/'.$temp['image_key']);
+            }
+            $new_data['image_key'] = $wrevenue_image;
+            
         }
         if(isset($new_data)) {
             $query = $this->db->update('wrevenues', $new_data, array('id' => $id));

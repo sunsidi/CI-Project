@@ -30,7 +30,7 @@
                 <p style="font-size: 26px; color: white;text-align: center;"><i class="fa fa-pencil-square-o" style="font-size:30px;"></i> Edit Wrevenue</p>
             </div>
             <div class="modal-body">
-                <form method="post" class="form-horizontal" role="form" action="<?php echo base_url().'wrevenues/edit_wrevenue/'.$wrevenues['id'];?>">
+                <?php echo form_open_multipart('wrevenues/edit_wrevenue/'.$wrevenues['id']);?>
                     <div class="form-group row">
                         <label class="col-sm-3">Name:</label>
                             <div class="col-sm-8">
@@ -124,28 +124,87 @@
                             <input name="telephone" class="form-control">
                         </div>	
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3">Hours of Operation:</label>
-                        <div class="col-sm-2">
-                            <input name="start_time" class="form-control">
-                        </div>
-                        <div class="col-sm-2">
-                            <select name="start_time_am_pm" class="form-control">
-                                    <option value="AM" selected="selected">AM</option>
-                                    <option value="PM">PM</option>
-                            </select>
-                        </div>
-                        <label class="col-sm-1">TO</label>
-                        <div class="col-sm-2">
-                            <input name="end_time" class="form-control">
-                        </div>
-                        <div class="col-sm-2">
-                            <select name="end_time_am_pm" class="form-control">
-                                    <option value="AM" selected="selected">AM</option>
-                                    <option value="PM">PM</option>
-                            </select>
+                    <div>
+                        <label class="col-sm-20"><b><u>Hours:</u></b></label>
+                    </div>
+                    <div id="days_base">
+                        <div class="form-group row">
+                            <label class="col-sm-3">Day:</label>
+                            <div class="col-sm-2">
+                                <select name="day[]" class="form-control">
+                                    <option value="" selected="selected"></option>
+                                    <option value="Mon">Mon</option>
+                                    <option value="Tues">Tues</option>
+                                    <option value="Wed">Wed</option>
+                                    <option value="Thurs">Thurs</option>
+                                    <option value="Fri">Fri</option>
+                                    <option value="Sat">Sat</option>
+                                    <option value="Sun">Sun</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2">
+                                <select name="start_time[]" class="form-control">
+                                    <option value="" selected="selected"></option>
+                                    <option value="01:00">1:00AM</option>
+                                    <option value="02:00">2:00AM</option>
+                                    <option value="03:00">3:00AM</option>
+                                    <option value="04:00">4:00AM</option>
+                                    <option value="05:00">5:00AM</option>
+                                    <option value="06:00">6:00AM</option>
+                                    <option value="07:00">7:00AM</option>
+                                    <option value="08:00">8:00AM</option>
+                                    <option value="09:00">9:00AM</option>
+                                    <option value="10:00">10:00AM</option>
+                                    <option value="11:00">11:00AM</option>
+                                    <option value="12:00">12:00PM</option>
+                                    <option value="13:00">1:00PM</option>
+                                    <option value="14:00">2:00PM</option>
+                                    <option value="15:00">3:00PM</option>
+                                    <option value="16:00">4:00PM</option>
+                                    <option value="17:00">5:00PM</option>
+                                    <option value="18:00">6:00PM</option>
+                                    <option value="19:00">7:00PM</option>
+                                    <option value="20:00">8:00PM</option>
+                                    <option value="21:00">9:00PM</option>
+                                    <option value="22:00">10:00PM</option>
+                                    <option value="23:00">11:00PM</option>
+                                    <option value="24:00">12:00AM</option>
+                                </select>
+                            </div>
+                            <label class="col-sm-1">TO</label>
+                            <div class="col-sm-2">
+                                <select name="end_time[]" class="form-control">
+                                    <option value="" selected="selected"></option>
+                                    <option value="01:00">1:00AM</option>
+                                    <option value="02:00">2:00AM</option>
+                                    <option value="03:00">3:00AM</option>
+                                    <option value="04:00">4:00AM</option>
+                                    <option value="05:00">5:00AM</option>
+                                    <option value="06:00">6:00AM</option>
+                                    <option value="07:00">7:00AM</option>
+                                    <option value="08:00">8:00AM</option>
+                                    <option value="09:00">9:00AM</option>
+                                    <option value="10:00">10:00AM</option>
+                                    <option value="11:00">11:00AM</option>
+                                    <option value="12:00">12:00PM</option>
+                                    <option value="13:00">1:00PM</option>
+                                    <option value="14:00">2:00PM</option>
+                                    <option value="15:00">3:00PM</option>
+                                    <option value="16:00">4:00PM</option>
+                                    <option value="17:00">5:00PM</option>
+                                    <option value="18:00">6:00PM</option>
+                                    <option value="19:00">7:00PM</option>
+                                    <option value="20:00">8:00PM</option>
+                                    <option value="21:00">9:00PM</option>
+                                    <option value="22:00">10:00PM</option>
+                                    <option value="23:00">11:00PM</option>
+                                    <option value="24:00">12:00AM</option>
+                                </select>
+                            </div>
+                        <a class="btn btn-default" id="days_end"onclick="add_more_days()"><i class="fa fa-plus"></i></a>
                         </div>
                     </div>
+                    
                     <div class="form-group row">
                         <label class="col-sm-3">Email:</label>
                         <div class="col-sm-8">
@@ -180,6 +239,29 @@
                                 <option value="$$$">$$$</option>
                                 <option value="$$$$">$$$$</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3">Header Photo:</label>
+                        <div class="col-sm-8" style="border:1px solid white;text-align:center;padding:8%;">
+                            <div class="col-sm-7">
+                                <div class="image-upload">
+                                    <label>Choose a Header Image:</label>
+                                    <input id="file-input" name="wrevenue_file" type="file" style="overflow:hidden;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3">Add more Images:</label>
+                        <div id="photos_upload" class="col-sm-5">
+                            <div class="image-upload">
+                                <label>Choose an Image:</label>
+                                <input name="wrevenue_file_array[]" type="file" style="overflow:hidden;" />
+                            </div>
+                        </div>
+                        <div>
+                            <a class="btn btn-default" onclick="add_more_photos()"><i class="fa fa-plus"></i></a>
                         </div>
                     </div>
                     <div class="row" style="text-align:right;">
@@ -255,7 +337,7 @@
                         
                         <!-- LIKES -->
                         <div class="col-sm-4">
-                            <h2>54 <i class="fa fa-heart-o"></i></h2>
+                            <h2><?php echo $wrevenues['total_likes'];?> <i class="fa fa-heart-o"></i></h2>
                             <a class="btn wrevenues-palette"><span class="glyphicon glyphicon-list-alt"></span></a>
                             <a class="btn wrevenues-share"><i class="fa fa-share-square-o"></i></a>
                             <!--<p><i class="fa fa-clock-o" style="width:50px;"></i> Open Mon, Tues, Wed, Thurs, Fri, Sat, and Sun</p>-->
@@ -314,16 +396,16 @@
                             <div style="margin-top:40px;">
                                 <h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>w_icon2.png"/> &nbsp; Upcoming Wrevs</h4>
                                 <div class="row" style="padding:3% 10% 0%;">
-                                    <div class="col-md-12" style="position:relative;background-image:url(<?php echo base_url().'uploads/'.$wrevenues['image_key']?>); background-size:100%;padding:10px 0px 0px; color:white;">
+                                    <div class="col-md-12" style="position:relative;background-image:url(<?php echo base_url().'uploads/'.$latest_event['e_image'];?>); background-size:100%;padding:10px 0px 0px; color:white;">
                                         <div style="padding:0 10px 30px;">
-                                            <p style="text-align:right;"><span class="wrevenue-attending">182</span><span class="wrevenue-attending-text">Attending</span></p>
+                                            <p style="text-align:right;"><span class="wrevenue-attending"><?php echo $latest_event['e_attending'];?></span><span class="wrevenue-attending-text">Attending</span></p>
                                             <div style="margin-left:auto;margin-right:auto;text-align:center;">
-                                                <a class="btn wrevenue-wrev">Name of event</a>
-                                                <span class="pull-right" style="position:relative;"><i class="fa fa-clock-o"></i>10:00PM</span>
+                                                <a href="<?php echo base_url().'event/event_info/latest/'.$latest_event['event_id'];?>" class="btn wrevenue-wrev"><?php echo $latest_event['e_name'];?></a>
+                                                <span class="pull-right" style="position:relative;"><i class="fa fa-clock-o"></i><?php echo $latest_event['e_start_time'];?></span>
                                             </div>
                                         </div>		
                                         <div style="background:rgba(0,0,0,0.5);postion:absolute;bottom:0;left:0;padding:5px 10px;">
-                                            <i class="fa fa-calendar"></i> Fri Oct 2 <span class="pull-right">53 <i class="fa fa-heart-o"></i> | <a href="#"><span class="glyphicon glyphicon-list-alt"></span></a> | <a href="#"><i class="fa fa-share-square-o"></i></a></span>
+                                            <i class="fa fa-calendar"></i> <?php echo $latest_event['e_date'];?> <span class="pull-right"><?php echo $latest_event['e_likes'];?> <i class="fa fa-heart-o"></i> | <a href="#"><span class="glyphicon glyphicon-list-alt"></span></a> | <a href="#"><i class="fa fa-share-square-o"></i></a></span>
                                         </div>
                                     </div>
                                 </div>
@@ -383,7 +465,7 @@
                                 </div>
                             </div><!-- END OF PHOTOS -->
                             
-                            <!-- REVIEWS BLOCK -->
+                            <!-- REVIEWS BLOCK --> <!-- COMMENTED OUT UNTIL REVIEWS ARE DONE 
                             <div style="margin-top:40px;text-align:center;">
                                 <h4><img src="<?php echo $PATH_IMG?>reviews_icon.png"/> &nbsp; Reviews</h4>
                                 <div style="padding-left:20%;padding-right:20%;">
@@ -396,7 +478,7 @@
                                             <i class="fa fa-star" style="font-size:25px;"></i>
                                         </div>
                                         <div style="margin-top:20px;">
-                                            <!--Person's profile image of who posted here-->
+                                            <!--Person's profile image of who posted here 
                                             <img src="<?php echo $PATH_IMG?>/balt.jpg" class="shoutout-image"/>
                                             <p style="margin-top:10px;">Name</p>
                                             <p style="margin-top:20px;">"Review here"</p>
@@ -404,7 +486,7 @@
                                     </div>
                                 </div>
                                 <a href="#" data-toggle="modal" data-target="#allreviews" class="btn morereviews" style="margin-top:10px;">More Reviews</a>
-                            </div><!-- END OF REVIEWS BLOCK -->
+                            </div><!-- END OF REVIEWS BLOCK --> 
                             
 			</div>
                     </div>
@@ -426,5 +508,94 @@
 	<script>
 	$('#pricingInfo').popover();
 	</script>
+    <script>
+        function add_more_days() {
+            $('#days_end').remove();
+            var content = '<div class="form-group row">'
+                        +'<label class="col-sm-3">Day:</label>'
+                        +'<div class="col-sm-2">'
+                            +'<select name="day[]" class="form-control">'
+                                +'<option value="" selected="selected"></option>'
+                                +'<option value="Mon">Mon</option>'
+                                +'<option value="Tues">Tues</option>'
+                                +'<option value="Wed">Wed</option>'
+                                +'<option value="Thurs">Thurs</option>'
+                                +'<option value="Fri">Fri</option>'
+                                +'<option value="Sat">Sat</option>'
+                                +'<option value="Sun">Sun</option>'
+                            +'</select>'	
+                        +'</div>'
+                        +'<div class="col-sm-2">'
+                            +'<select name="start_time[]" class="form-control">'
+                                +'<option value="" selected="selected"></option>'
+                                +'<option value="01:00">1:00AM</option>'
+                                +'<option value="02:00">2:00AM</option>'
+                                +'<option value="03:00">3:00AM</option>'
+                                +'<option value="04:00">4:00AM</option>'
+                                +'<option value="05:00">5:00AM</option>'
+                                +'<option value="06:00">6:00AM</option>'
+                                +'<option value="07:00">7:00AM</option>'
+                                +'<option value="08:00">8:00AM</option>'
+                                +'<option value="09:00">9:00AM</option>'
+                                +'<option value="10:00">10:00AM</option>'
+                                +'<option value="11:00">11:00AM</option>'
+                                +'<option value="12:00">12:00PM</option>' 
+                                +'<option value="13:00">1:00PM</option>'
+                                +'<option value="14:00">2:00PM</option>'
+                                +'<option value="15:00">3:00PM</option>'
+                                +'<option value="16:00">4:00PM</option>'
+                                +'<option value="17:00">5:00PM</option>'
+                                +'<option value="18:00">6:00PM</option>'
+                                +'<option value="19:00">7:00PM</option>'
+                                +'<option value="20:00">8:00PM</option>'
+                                +'<option value="21:00">9:00PM</option>'
+                                +'<option value="22:00">10:00PM</option>'
+                                +'<option value="23:00">11:00PM</option>'
+                                +'<option value="24:00">12:00AM</option>'
+                            +'</select>'
+                        +'</div>'
+                        +'<label class="col-sm-1">TO</label>'
+                        +'<div class="col-sm-2">'
+                            +'<select name="end_time[]" class="form-control">'
+                                +'<option value="" selected="selected"></option>'
+                                +'<option value="01:00">1:00AM</option>'
+                                +'<option value="02:00">2:00AM</option>'
+                                +'<option value="03:00">3:00AM</option>'
+                                +'<option value="04:00">4:00AM</option>'
+                                +'<option value="05:00">5:00AM</option>'
+                                +'<option value="06:00">6:00AM</option>'
+                                +'<option value="07:00">7:00AM</option>'
+                                +'<option value="08:00">8:00AM</option>'
+                                +'<option value="09:00">9:00AM</option>'
+                                +'<option value="10:00">10:00AM</option>'
+                                +'<option value="11:00">11:00AM</option>'
+                                +'<option value="12:00">12:00PM</option>' 
+                                +'<option value="13:00">1:00PM</option>'
+                                +'<option value="14:00">2:00PM</option>'
+                                +'<option value="15:00">3:00PM</option>'
+                                +'<option value="16:00">4:00PM</option>'
+                                +'<option value="17:00">5:00PM</option>'
+                                +'<option value="18:00">6:00PM</option>'
+                                +'<option value="19:00">7:00PM</option>'
+                                +'<option value="20:00">8:00PM</option>'
+                                +'<option value="21:00">9:00PM</option>'
+                                +'<option value="22:00">10:00PM</option>'
+                                +'<option value="23:00">11:00PM</option>'
+                                +'<option value="24:00">12:00AM</option>' 
+                            +'</select>'
+                        +'</div>'
+                        +'<a class="btn btn-default" id="days_end"onclick="add_more_days()"><i class="fa fa-plus"></i></a>';
+            $('#days_base').append(content);
+        }
+    </script>
+    <script>
+        function add_more_photos() {
+            var content =   '<div class="image-upload">'
+                                +'<label>Choose an Image:</label>'
+                                +'<input name = "wrevenue_file_array[]" type = "file" style="overflow:hidden;"/>'
+                            +'</div>';
+            $('#photos_upload').append(content);
+        }
+    </script>
 </body>
 </html> 

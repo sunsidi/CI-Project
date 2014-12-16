@@ -570,21 +570,21 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-2">Email:</label>
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-8">
                                                     <input name="email" type="text" class="form-control">
                                                 </div>
-                                                <div class="col-sm-1">
+                                                <!--?<div class="col-sm-1">
                                                     <a class="btn btn-default"><i class="fa fa-plus"></i></a>
-                                                </div>
+                                                </div>-->
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-2">Link(s):</label>
                                                 <div class="col-sm-8">
                                                     <input name="website" type="text" class="form-control">
                                                 </div>
-                                                <div class="col-sm-1">
+                                                <!--?<div class="col-sm-1">
                                                     <a class="btn btn-default"><i class="fa fa-plus"></i></a>
-                                                </div>
+                                                </div>-->
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-2" style="text-align:right;"><i class="fa fa-facebook"></i>
@@ -600,6 +600,7 @@
                                                     <input name="twitter" type="text" class="form-control">
                                                 </div>
                                             </div>
+                                            <!-- DON'T NEED.
                                             <div class="form-group row">
                                                 <label class="col-sm-2">Latest Wrevs <i class="fa fa-question-circle" id="latestwrevInfo" data-content="Add your latest event here" data-trigger="hover" data-placement="bottom"></i>
                                                 </label>
@@ -609,7 +610,7 @@
                                                 <div class="col-sm-1">
                                                     <a class="btn btn-default"><i class="fa fa-plus"></i></a>
                                                 </div>
-                                            </div>
+                                            </div>-->
                                             <div class="form-group row">
                                                 <label class="col-sm-2">Price <i class="fa fa-question-circle" id="pricingInfo" data-html="true" data-content="$ - Free to $10  $$ - $11 to 25  $$$ - $26 to 49  $$$$ - $50 to higher" data-trigger="hover" data-placement="top"></i>
                                                 </label>
@@ -644,7 +645,7 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group row">
                                                 <div id="photos_upload" class="col-sm-5">
                                                     <div class="image-upload">
                                                         <label>Choose an Image:</label>
@@ -655,6 +656,7 @@
                                                     <a class="btn btn-default" onclick="add_more_photos()"><i class="fa fa-plus"></i></a>
                                                 </div>
                                             </div>
+                                            <!-- REMOVING UNTIL LATER 
                                             <div class="form-group">
                                                 <label>create tags</label>
                                                 <textarea class="form-control" rows="3"></textarea>
@@ -662,7 +664,7 @@
                                                     <button type="button" style="color:#216EAD;">add</button>
                                                     <button type="button" style="color:#216EAD;">delete</button>
                                                 </div>
-                                            </div>
+                                            </div>-->
                                             <div class="row" style="padding-right:3%;">
                                                 <button type="submit" class="btn pull-right" style="background:#6B94A8;font-size:20px;">submit</button>
                                             </div>

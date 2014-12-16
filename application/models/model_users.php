@@ -478,6 +478,14 @@ class Model_users extends CI_Model{
         $data = $query->result_array();
         return $data;
     }
+    //Get only events that you created. Ordered by date of event.
+    public function get_my_events_by_date($user_id) {
+        $this->db->order_by('e_date', 'asc');
+        $query = $this->db->get_where('events', array('e_creatorID' => $user_id));
+        $data = $query->result_array();
+        return $data;
+    }
+    
     //Facebook users handler
     public function add_facebook_user($user_data) {
     	$querycheck1 = $this->db->get_where('users', array('email' => $user_data['email'], 'f_b' => 1));
