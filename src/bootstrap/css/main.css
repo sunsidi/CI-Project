@@ -1006,7 +1006,6 @@ font-size: 35px;
 
 .contact-container{
 padding:5%;
-<<<<<<< HEAD
 }
 
 a.btn-wrevenues{
@@ -1142,22 +1141,6 @@ width:100px;
 height:100px;
 border-radius:150px;
 
-=======
-}
-
-a.btn-wrevenues{
-border:2px solid #404142;
-color:#404142;
-font-family:GillSans;
-font-size:20px;
-}
-a.btn-wrevenues:hover{
-background:#404142;
-color:white;
-}
-a.wrevenues-venue{
-background:
->>>>>>> 664eda27d366e3a45aad40722244d77e9eef48de
 }
 
 @media (max-width: 1025px){

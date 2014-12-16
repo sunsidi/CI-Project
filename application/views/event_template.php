@@ -219,14 +219,14 @@
         <div class="details">
                                     <p>
                                     <!--Name of event-->
-                                    <strong><?php
+                                    <strong style="text-shadow: 1px 1px 0.5px #000000;"><?php
                                     $event_name_temp = substr($event_info[$i]['e_name'], 0, 14);
                                     echo $event_name_temp; ?></strong> 
                                     <!--Date of event-->
                                     <span class="badge date <?php echo $category?>-date" ><?php echo $event_info[$i]['e_date']?></span></p>
                                     <!--Number of people attending-->
-                                    <p style="margin-top:-8px;font-size:17px;"><span class="badge attending"><?php echo $event_info[$i]['e_attending'] ?></span> Attending
-                                    <span class="pull-right"><i class="fa fa-clock-o"></i><?php echo $event_info[$i]['e_start_time']?></span>
+                                    <p style="margin-top:-8px;font-size:17px;"><span class="badge attending"><?php echo $event_info[$i]['e_attending'] ?></span> <span style="text-shadow: 1px 1px 0.5px #000000;">Attending</span>
+                                    <span class="pull-right"style="text-shadow: 1px 1px 0.5px #000000;"><i class="fa fa-clock-o"></i><?php echo $event_info[$i]['e_start_time']?></span>
                                     </p>
                                     
                                 </div>

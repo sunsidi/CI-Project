@@ -37,11 +37,17 @@ jQuery(document).ready(function () {
 <div class="container" style="padding-bottom:50px;">
 <div class="row" style="padding-top: 40px;">
 	<div class="col-md-offset-1 col-md-5">
+<<<<<<< HEAD
 		<div class="panel" style="border:none;">
     
             <div class="panel-heading" style="background-color:#81A3B5; height: 55px;">
+=======
+		<div class="panel" style="border:none;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">
+    
+            <div class="panel-heading" style="background-color:#81A3B5; height: 55px;border-top-left-radius:10px;border-top-right-radius:10px;">
+>>>>>>> tessa_dev
 
-                <p style="font-size: 40px; color: white; float: left; margin-top: -10px; margin-left:5%;">
+                <p style="font-size: 30px;font-family:GillSans; color: white; float: left; margin-top: -5px; margin-left:7%;">
                     Inbox
                 </p>
     
@@ -67,11 +73,11 @@ jQuery(document).ready(function () {
 										<?php echo form_open('chat/composeMessage'); ?>
                                      
 										<!-- To input-->
-										<div class="form-group">
-											<div class="col-md-2 col-sm-2 col-xs-2" for="email" style="margin-left: 10px;">To:</div>
-											<div class="col-md-9 col-sm-9 col-xs-9">
+										<div class="form-group row">
+											<div class="col-md-2 col-sm-2 " for="email" style="margin-left: 10px;">To:</div>
+											<div class="col-md-9 col-sm-9 ">
 												<!--<input id="to" name="to" type="text" placeholder="To" class="form-control" style="width: 400px;">-->
-												<select id="to" name="to" class="form-control" required style="width: 400px;">
+												<select id="to" name="to" class="form-control">
 													<option selected value="">Select a friend to message</option>
 													<!-- Iterate through all friends and set them as options -->
 													<?php for($i = 0; $i < count($friends_name); $i++){?>
@@ -91,10 +97,10 @@ jQuery(document).ready(function () {
 										-->
     
 										<!-- Message body -->
-										<div class="form-group">
-											<div class="col-md-2 col-sm-2 col-xs-2" for="message" style="margin-left: 8px; margin-top:10px;">Your message:</div>
-											<div class="col-md-9 col-sm-9 col-xs-9">
-												<textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5" style="width: 405px;margin-top:10px;height:170px;"></textarea>
+										<div class="form-group row">
+											<div class="col-md-2 col-sm-2" for="message" style="margin-left: 8px; margin-top:10px;">Your message:</div>
+											<div class="col-md-9 col-sm-9">
+												<textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5" style="margin-top:10px;height:170px;"></textarea>
 											</div>
 										</div>
     
@@ -116,7 +122,7 @@ jQuery(document).ready(function () {
             
 			</div><!--end of panel-heading-->
       
-            <div class="panel-body" style="background: #dce3e9;">
+            <div class="panel-body" style="background: #dce3e9;border-bottom-left-radius:10px;border-bottom-right-radius:10px;">
 				<!--<div class="well" style="background:#dce3e9;">-->
 					<div class="tab-content">
 						<!-- <div class="tab-pane fade in " id="apple">-->
@@ -139,19 +145,19 @@ jQuery(document).ready(function () {
 
 							<!--beginning of the persons chat -->
 							<!--FIGURE OUT HOW TO ADD THE CHATS INTO HERE-->
-							<div class="panel-body table-responsive">
+							<div class="panel-body table-responsive"  style="height:445px;overflow-y:auto;">
                                                             
 							<?php 
 							for($i =0; $i<$num_chats;$i++){?>
 							
 							<!--used to differentiate the users apart in convo-->
 							<?php  echo "<style>
-							p.".$chats_info[$i]["currentUser"]."{float:right; color:blue}
+							p.".$chats_info[$i]["currentUser"]."{margin-left:60%; }
 							</style>"; ?>
 							
 							
 								<div class="containe">
-									<div class="heade" style="background:#a4bbcc;" onclick="change_chat('<?php echo $chats_info[$i]['chatLocation'];?>','<?php echo $chats_info[$i]['otherUser'];?>');">
+									<div class="heade" onclick="change_chat('<?php echo $chats_info[$i]['chatLocation'];?>','<?php echo $chats_info[$i]['otherUser'];?>');highlightLink(this);">
 										<table class="table">
 											<thead>
 												<tr>
@@ -160,7 +166,7 @@ jQuery(document).ready(function () {
 													else{echo '<td><div id="circlee'.$i. '" style="background: green; width:20px; height:20px; border-radius:25px"></div></td>';} ?>-->
 													<!--<td><div id="circlee" style="background: red;"></div></td>-->
 													<!--$chats_info[$i]['image']-->
-													<td style="width:60%;"><img src="<?php echo $chats_info[$i]['image']?>" style=" margin-top:-20px; width:80px; height:80px;border-radius: 150px;border:2px solid #7874A2;z-index:5;position:relative;"><span style="color:white;background:#7874A2; padding:5px 12px 5px 30px; border-radius:5px;margin-left:-20px;z-index:3;margin-top:-25px;"><?php echo $chats_info[$i]['otherUserFullname'] ?></span></td>
+													<td style="width:60%;"><img src="<?php echo $chats_info[$i]['image']?>" style=" margin-top:-20px; width:65px; height:65px;border-radius: 150px;border:2px solid #7874A2;z-index:5;position:relative;"><div style="color:white;background:#7874A2; padding:5px 12px 5px 30px; border-radius:5px;margin-left:57px;z-index:3;margin-top:-50px;width:60%;"><?php echo $chats_info[$i]['otherUserFullname'] ?></div></td>
 													<!--<td id="message_status"><?php echo $chats_info[$i]['status'] ?></td>-->
 													<td><p id="reply_time" ><?php echo $chats_info[$i]['reply_time'] ?></p></td>
 													<!-- <td><p><a href=""><img src="<?php echo $PATH_BOOTSTRAP?>images/mark_as_unread_button.png" style="width: 30px; margin-top:-50px;"></a></p>
@@ -171,19 +177,19 @@ jQuery(document).ready(function () {
 										</table>
 									</div>
 									<!-- THIS IS WHERE YOU INSERT THE CHAT!!!!!!!-->
-									<div class="content" style="background:#d2dee7;">
+									<!--<div class="content" style="background:#d2dee7;">
                                                                             <div id="temp_array1"><p><?php echo $chats_info[$i]['chatLocation']; ?></p></div>
                                                                             
 
 										
 										<div class="arrow-up"></div>                                    
                                          
-										<!--
+										
 										<div class="btn-group">
 											<a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;"><span class="glyphicon glyphicon-camera"></span></button></a>
 										</div>
-										-->
-									</div>
+										
+									</div>-->
 								</div>
 							
 							<?}?>
@@ -199,24 +205,24 @@ jQuery(document).ready(function () {
 	
 	</div>
 	<div class="col-md-5">
-            <div class="panel" style="background:#D9E0E6;">
+            <div class="panel" style="background:#D9E0E6;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">
                 <div class="panel-body">
                     <!-- THIS IS WHERE YOU INSERT THE CHAT!!!!!!!-->
-                    <div class="content" style="background:#d2dee7;">
-                        <div class="arrow-up"></div>     
-                        <div id = "comment-block" style="overflow:auto; background:#e5ecf1; color:#414042; border-radius:10px; width: 60%; margin-left: 150px; padding: 10px; height: 500px;">
+                    <div class="content">
+                        <!--<div class="arrow-up"></div>     -->
+                        <div id = "comment-block" style="overflow:auto; color:#414042; padding: 10px; height: 500px;">
 
 							 
                         </div>
                         <div class="form-group">
                             <div class="left-inner-addon">
-                                <span class="glyphicon glyphicon-comment fa-flip-horizontal" style="margin-left:150px; margin-top:1px;"></span>
+                                <span class="glyphicon glyphicon-comment fa-flip-horizontal" style=" margin-top:1px;"></span>
                                 <label class="sr-only">Names</label>
                                 <?php echo form_open('chat/message/'); ?>
                                 <input type="text" class="form-control" id="other_user" name="other_user" hidden style="display: none;">
-                                <input type="text" class="form-control" id="comment" name= "comment" style="margin-top:10px;margin-left:150px;;font-size:20px; width: 300px;" placeholder=" send a message!">
+                                <input type="text" class="form-control" id="comment" name= "comment" style="margin-top:10px;font-size:20px; width:70%;" placeholder=" send a message!">
                             </div>
-                            <a href="#"><button type="submit" class="btn btn-lg" style="position:relative;background:#1A75BF; color:white; font-size:20px; height:30px; padding-top:0px; margin-top:-55px; margin-left:75%;">Reply</button></a>
+                            <a href="#"><button type="submit" class="btn btn-lg" style="position:relative;background:#1A75BF; color:white; font-size:20px; height:30px; padding-top:0px; margin-top:-55px; margin-left:73%;">Reply</button></a>
                             <?php echo form_close();?>
                         </div>
                         <!--
@@ -247,6 +253,22 @@ jQuery(document).ready(function () {
 										 //"http://localhost/WP_intern-messaging/application/views/chats/text.html");
                                                                                  
 </script>
+
+<script>
+var highlightLink = function () {
+        var active = null, colour = '#D5D8DA';
+        if (this.attachEvent) this.attachEvent('onunload', function () {
+            active = null;
+        });
+        return function (element) {
+            if ((active != element) && element.style) {
+                if (active) active.style.backgroundColor = '';
+                element.style.backgroundColor = colour;
+                active = element;
+            }
+        };
+    }();
+</script>	
  <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
