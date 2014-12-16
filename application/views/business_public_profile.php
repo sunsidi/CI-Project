@@ -474,21 +474,51 @@ position:absolute;
                      
                      
                      <div class="row">
-                     <!--PHOTOS AND VIDEOS
-                     	<div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
+                     <!--PHOTOS AND VIDEOS-->
+						<div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
                                 <div class="panel-body">
-                                    <ul class="nav nav-pills nav-justified wrev-tabs" style="font-size:24px;">
-                                        <li class="active"><a href="#">Photos</a></li>
-                                        <li><a href="#">Videos</a></li>
-                                    </ul>
-                                    
+                                    <!--<ul class="nav nav-pills nav-justified" style="font-size:20px;">
+                                        <li class="active"><a href="#photos" aria-controls="photos" role="tab" data-toggle="tab">Photos</a></li>
+                                        <li><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Videos</a></li>
+                                    </ul>-->
+									<h3 style="text-align:center;">Photos</h3>
+									<div class="tab-content">
+										<div role="tabpanel" class="tab-pane active" id="photos">
+											<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
+												<div class="carousel-inner" role="listbox">
+													<div class="item active">
+														<img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo $PATH_IMG?>outdoor_party.png" alt="...">
+										
+													</div>
+													<div class="item">
+														<img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo $PATH_IMG?>balt.jpg" alt="...">
+											
+													</div>
+    
+												</div>
+
+												<!-- Controls -->
+												<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+												<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+												<span class="sr-only">Previous</span>
+												</a>
+												<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+												<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+												<span class="sr-only">Next</span>
+												</a>
+											</div>
+										</div>
+										<!--<div role="tabpanel" class="tab-pane active" id="videos">
+											
+										</div>-->
+									</div>	
                                     <div class="row" style="padding-top:10px;text-align:center;">
                                        
                                         <a href="#"><button type="button" class="btn btn-lg" style="background:#1A75BF; color:white; font-size:20px;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);padding:5px;">Browse all</button></a>
                                         <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);padding:8.5px;"><span class="glyphicon glyphicon-camera"></span></button></a>
                                     </div>
                                 </div>
-                            </div>END OF PHOTOS AND VIDEOS-->
+                            </div><!--END OF PHOTOS AND VIDEOS-->
                      </div>
 					 
 					 <div class="row">
