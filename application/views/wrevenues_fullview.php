@@ -15,6 +15,9 @@
 <link href="<?php echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false"
+            type="text/javascript"></script> 
+
 <script type="text/javascript">var switchTo5x=true;</script>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher: "98b7df42-3881-4ba4-adc3-bcb7a479d75e", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
@@ -463,12 +466,13 @@
                             <h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>map_icon.png"/> &nbsp; Where is it?</h4>
                             <div style="text-align:center;font-size:18px;padding:20px;line-height:60%;">
                                 <p><?php echo $wrevenues['address'].', '.$wrevenues['city']. ', '.$wrevenues['state']. ' '.$wrevenues['zipcode'];?></p>
-                                <p style="font-family:GillSans">Neighborhood, </p>
                             </div><!-- END OF ADDRESS -->
                             
                             <!-- GOOGLE MAPS -->
-                            <div>
-                                Google map here
+                            <div class="col-md-13">
+                                <div id="pano" style="max-width:100%;min-width:100%; height: 200px;"></div>
+                                <div id="map_canvas" style="max-width:100%;min-width:100%; height: 200px;"></div> 
+                                <!--   Google Map Goes Here, different depending on where location is-->
                             </div><!-- END OF GOOGLE MAPS -->
                             
                             <!-- HOURS -->
@@ -486,8 +490,11 @@
                             <div style="margin-top:40px;">
                                 <h4 style="padding-left:30px;">Photos:</h4>
                                 <div style="padding:0% 17%;font-size:18px;line-height:70%;">
-                                    <?php foreach($wrevenues['photos'] as $picture){?>
-                                        <img src="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" class="shoutout-image"/>
+                                    <?php if(!empty($wrevenues['photos'])) {
+                                            foreach($wrevenues['photos'] as $picture){?>
+                                                <img src="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" class="shoutout-image"/>
+                                    <?php }} else {?>
+                                                <p> You have no photos here. :( </p>
                                     <?php }?>
                                 </div>
                             </div><!-- END OF PHOTOS -->
@@ -532,9 +539,37 @@
     <!-- Placed at the end of the document so the pages load faster -->	
 	<script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
-	<script>
+    <script type="text/javascript"> 
+
+    var userLocation =  <?php echo json_encode($wrevenues['address']. "," . $wrevenues['state'] . "," .$wrevenues['city']. "," . $wrevenues['zipcode']); ?>;
+
+    if (GBrowserIsCompatible()) {
+       var geocoder = new GClientGeocoder();
+       geocoder.getLocations(userLocation, function (locations) {         
+          if (locations.Placemark)
+          {
+             var north = locations.Placemark[0].ExtendedData.LatLonBox.north;
+             var south = locations.Placemark[0].ExtendedData.LatLonBox.south;
+             var east  = locations.Placemark[0].ExtendedData.LatLonBox.east;
+             var west  = locations.Placemark[0].ExtendedData.LatLonBox.west;
+
+             var bounds = new GLatLngBounds(new GLatLng(south, west), 
+                                            new GLatLng(north, east));
+
+             var map = new GMap2(document.getElementById("map_canvas"));
+
+             map.setCenter(bounds.getCenter(), map.getBoundsZoomLevel(bounds));
+             map.addOverlay(new GMarker(bounds.getCenter()));
+
+             new GStreetviewPanorama(document.getElementById("pano"),
+                                     { latlng: bounds.getCenter() })
+          }
+       });
+    }
+    </script>
+    <script>
 	$('#pricingInfo').popover();
-	</script>
+    </script>
     <script>
         function add_more_days() {
             $('#days_end').remove();

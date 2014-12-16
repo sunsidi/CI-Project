@@ -118,8 +118,8 @@
                                         <!--<p><i class="fa fa-money"></i> </p>-->
 
                                         <h2><?php echo $wrevenues[$i]['total_likes'];?> <i class="fa fa-heart-o"></i></h2>
-                                        <a class="btn wrevenues-palette"><span class="glyphicon glyphicon-list-alt"></span></a>
-                                        <a class="btn wrevenues-share"><i class="fa fa-share-square-o"></i></a>
+                                        <!-- REMOVED FOR NOW I THINK<a class="btn wrevenues-palette"><span class="glyphicon glyphicon-list-alt"></span></a>
+                                        <a class="btn wrevenues-share"><i class="fa fa-share-square-o"></i></a>-->
                                         <!--<p><i class="fa fa-clock-o" style="width:50px;"></i> Open Mon, Tues, Wed, Thurs, Fri, Sat, and Sun</p>-->
                                     </div>
                                 </div>
@@ -147,6 +147,7 @@
                                         </p>
                                     </div>
                                 </div>
+                                <!-- NOT DOING RATINGS RIGHT NOW
                                 <div class="row">
                                     <div class="col-sm-12" style="text-shadow: 2px 2px 4px #000000;">
 
@@ -156,7 +157,7 @@
                                         <i class="fa fa-star fa-2x"></i>
                                         <i class="fa fa-star fa-2x"></i> (#)
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
