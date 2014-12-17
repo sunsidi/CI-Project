@@ -193,8 +193,8 @@ function showLightbox(objLink)
 
 		// center lightbox and make sure that the top and left values are not negative
 		// and the image placed outside the viewport
-		var lightboxTop = arrayPageScroll[1] + ((arrayPageSize[3] - 35 - imgPreload.height) / 2);
-		var lightboxLeft = ((arrayPageSize[0] - 9 - imgPreload.width) / 2);
+		var lightboxTop = 0;
+		var lightboxLeft = 0;
 		
 		objLightbox.style.top = (lightboxTop < 0) ? "0px" : lightboxTop + "px";
 		objLightbox.style.left = (lightboxLeft < 0) ? "0px" : lightboxLeft + "px";
