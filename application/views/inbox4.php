@@ -37,15 +37,10 @@ jQuery(document).ready(function () {
 <div class="container" style="padding-bottom:50px;">
 <div class="row" style="padding-top: 40px;">
 	<div class="col-md-offset-1 col-md-5">
-<<<<<<< HEAD
-		<div class="panel" style="border:none;">
-    
-            <div class="panel-heading" style="background-color:#81A3B5; height: 55px;">
-=======
-		<div class="panel" style="border:none;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">
+            <div class="panel" style="border:none;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">
     
             <div class="panel-heading" style="background-color:#81A3B5; height: 55px;border-top-left-radius:10px;border-top-right-radius:10px;">
->>>>>>> tessa_dev
+
 
                 <p style="font-size: 30px;font-family:GillSans; color: white; float: left; margin-top: -5px; margin-left:7%;">
                     Inbox
