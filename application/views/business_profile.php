@@ -544,8 +544,8 @@ position:absolute;
                                     </ul>-->
 									<h3 style="text-align:center;">Photos</h3>
 									<div class="tab-content">
-										<div role="tabpanel" class="tab-pane active" id="photos">
 											<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
+										<div role="tabpanel" class="tab-pane active" id="photos">
 												<div class="carousel-inner" role="listbox">
 													<div class="item active">
 														<img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo $PATH_IMG?>outdoor_party.png" alt="...">
