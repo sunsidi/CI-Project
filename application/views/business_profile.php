@@ -92,7 +92,7 @@ position:absolute;
                         <?php if($tagline != "") 
                         	echo $tagline;
                               else 
-                              	echo "Welcome to my Showroom! Don¡¯t hesitate to shoot me a message or a friend request!";?>
+                              	echo "Welcome to my Showroom! Donï¿½ï¿½t hesitate to shoot me a message or a friend request!";?>
                         </p>
                      </div>-->
                      
@@ -308,7 +308,7 @@ position:absolute;
                                         <?php }}
                                             else {?>
                                                   <tr>
-                                              	     <td>You have no wrevs right now.</td>
+                                              	     <td>You have no wrevs right now. :(</td>
                                                   </tr>
                                         <?php }?>
                                                 </table>
@@ -446,7 +446,7 @@ position:absolute;
                                                 </div>
                                         <?php }}
                                             else {?>
-                                                <div style="padding-left:25px;"> You have no friends.</div>
+                                                <div style="padding-left:25px;"> You have no followers. :(</div>
                                         <?php }?>
                                     </div>
                                     <a href="#" data-toggle="modal" data-target="#showmore"><button type="button" class="btn btn-lg" style="background:#478EBF; color:white; font-size:20px; margin-left:auto; margin-right:auto; display:block; padding:5px; border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">View All</button></a>
@@ -488,7 +488,7 @@ position:absolute;
                 </div><!--end of popup-->
                      
 					 <div class="row" style="text-align:center;">
-                     <!--Reviews-->
+                    <!--Reviews COMMENTED OUT
                      	
                                 <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;">#</span> Reviews</h3>                        
 									<div style="padding-left:20%;padding-right:20%;">
@@ -501,7 +501,7 @@ position:absolute;
 										<i class="fa fa-star" style="font-size:25px;"></i>
 									</div>
 									<div style="margin-top:20px;">
-										<!--Person's profile image of who posted here-->
+										<!--Person's profile image of who posted here--><!-- COMMENTED OUT
 										<img src="<?php echo $PATH_IMG?>/balt.jpg" class="shoutout-image"/>
 										<p style="margin-top:10px;">Name</p>
 										
@@ -511,7 +511,7 @@ position:absolute;
 								</div>
                                     <a href="#" data-toggle="modal" data-target="" class="btn morereviews" style="font-size:20px;margin-top:10px;">More Reviews</a>
                             
-                        <!--END OF reviews--> 
+                    <!--END OF reviews--> 
                     </div>
 					 
                      </div> <!--end of column-->
@@ -638,7 +638,7 @@ position:absolute;
                                         <?php echo form_close() ?>
                                        <!-- <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;"><span class="glyphicon glyphicon-camera"></span></button></a>-->
 						
-						<!--Tags-->
+						<!--Tags NOT YET!
 						<div class="row" style="padding:20px;">
 							<h4><i class="fa fa-tag"></i> &nbsp; Tags</h4>
 							
