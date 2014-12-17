@@ -260,7 +260,31 @@ class Model_users extends CI_Model{
        }
        else return NULL;
     }
-
+    
+    //Get the extra business information.
+    public function get_business_info($id) {
+        $query = $this->db->get_where('users_business', array('user_id' => $id));
+        if($query->num_rows() != 0) {
+            $data = $query->row_array(0);
+            $day_array = array('mon', 'tues', 'wed', 'thurs', 'fri', 'sat', 'sun');
+            for($i = 0; $i < 7; $i++) {
+                if(!empty($data[$day_array[$i]])) {
+                    $temp_hours = explode('|', $data[$day_array[$i]]);
+                    $data['day'][$i]['day'] = $day_array[$i];
+                    $data['day'][$i]['start_time'] = $this->convert_time($temp_hours[0]);
+                    $data['day'][$i]['end_time'] = $this->convert_time($temp_hours[1]);
+                }
+                else {
+                    $data['day'][$i] = false;
+                }
+            }
+            return $data;
+        }
+        else {
+            return false;
+        }
+    }
+    
     public function get_name($email)
     {
 
@@ -524,7 +548,74 @@ class Model_users extends CI_Model{
     public function add_bank_info($user_id, $recip_id) {
     	$this->db->update('users', array('recip_id' => $recip_id), array('user_id' => $user_id));
     }
+    /*
+     * HELPER FUNCTIONS FOR THIS MODEL.
+     */
+    //Converts the time to AM and PM.
+    public function convert_time($temp_start_time) {
+  	if($temp_start_time >= 780) {
+        	$temp_time[0] = sprintf("%02d", floor(($temp_start_time/60) - 12));	
+        	$temp_time[1] = sprintf("%02d", $temp_start_time % 60);
+       		if($temp_time[0] == '00')
+                	$temp_time[0] = '12';
+                $final_time = implode(':', $temp_time);
+                $final_time .='pm';
+                $final_time = trim($final_time);
+        }
+        else {
+                $temp_time[0] = sprintf("%02d", floor($temp_start_time/60));
+                $temp_time[1] = sprintf("%02d", $temp_start_time % 60);
+                if($temp_time[0] == '00')
+                    	$temp_time[0] = '12';
+                $final_time = implode(':', $temp_time);
+                $final_time .='am';
+                $final_time = trim($final_time);
+        }
+        return $final_time;
+    }
+    //Converts the time to small int.(SAVED IN DATABASE)
+    public function timestamp($input, $format) { //CHANGED! SAVED AS SMALL INT
+        if(strpos($input, ':')) {
+            $input = explode(':', $input);
+            if($format) {
+                $input[0] += 12;
+            }
+            $sum = $input[0] * 60;
+            $sum += $input[1];
+        }
+        else
+            $sum = 0;
+        return $sum;
+    }
     
+    public function script_for_changing_links() {
+        $query = $this->db->get('users');
+        $data = $query->result_array();
+        for($i = 0; $i < count($data); $i++) {
+            if(strpos($data[$i]['image_key'], 'facebook') === false && $data[$i]['image_key'] != 'default_profile.jpg') {
+                mkdir('./uploads/profile/'.$data[$i]['user_id'], 0777, true);
+                chmod('./uploads/profile/'.$data[$i]['user_id'], 0777);
+                $temp_image_path = './uploads/profile/'.$data[$i]['user_id'];
+                rename('./uploads/'.$data[$i]['image_key'], $temp_image_path.'/'.$data[$i]['image_key']);
+                $temp_array = array('image_key' => 'profile/'.$data[$i]['user_id'].'/'.$data[$i]['image_key']);
+                $this->db->update('users', $temp_array, array('user_id' => $data[$i]['user_id']));
+                //echo move_uploaded_file('./uploads/'.$data[$i]['image_key'],'./uploads/profile/'.$data[$i]['user_id'].'/'.$data[$i]['image_key'] );
+            }
+        }
+    }
+    
+    public function script_revert() {
+        $query = $this->db->get('users');
+        $data = $query->result_array();
+        for($i = 0; $i < count($data); $i++) {
+            if(strpos($data[$i]['image_key'], 'facebook') === false && strpos($data[$i]['image_key'], 'profile') !== false && $data[$i]['image_key'] != 'default_profile.jpg') {
+                echo $data[$i]['image_key'].'<br>';
+                $temp_pos = explode('/', $data[$i]['image_key']);
+                $revert_data = array('image_key' => $temp_pos[2]);
+                $this->db->update('users', $revert_data, array('user_id' => $data[$i]['user_id']));
+            }
+        }
+    }
     #code
 }
 

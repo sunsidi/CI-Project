@@ -415,15 +415,13 @@ public function index()
 			$this->load->library('session');
 		//if($this->session->userdata('is_logged_in') == 1){
 				$email = $this->session->userdata('email');
-
+                                $user_data = $this->model_users->get_info($email);
 		
-		$config['upload_path']='./uploads/'; //change it to a user specific directory
+		$config['upload_path']='./uploads/profile/'.$user_data['user_id'].'/'; //change it to a user specific directory
 		//if user specific directory does not exist...then create one and then upload
 		$config['allowed_types']= 'gif|jpg|png|jpeg';
 
 		$config['max_size']	= '10000';
-
-		$config['file_name'] = md5(uniqid());
 		//echo $image_name;
 		$this->load->library('upload',$config);
 
@@ -450,7 +448,10 @@ public function index()
 			else{
 				$upload_data = $this->upload->data();
 				//$data = array('upload_data' => $this->upload->data());
-				$image_name = $upload_data['file_name'];
+                                if($user_data['image_key'] != 'default_profile.jpg' && strpos($user_data['image_key'], 'facebook') === false) {
+                                    unlink('./uploads/'.$user_data['image_key']);
+                                }
+				$image_name = 'profile/'.$user_data['user_id'].'/'.$upload_data['file_name'];
                                 $updateDB = $this->model_users->add_image($image_name);
                                 if($updateDB){
                                     redirect('showroom/profile');

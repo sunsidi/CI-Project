@@ -47,6 +47,8 @@ position:absolute;
 }
 
 </style>
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false"
+            type="text/javascript"></script> 
 </head>
 
 
@@ -62,12 +64,12 @@ position:absolute;
         <div class="col-md-9 col-md-offset-1">
 			<div style="color:white;">
             <div class="col-md-1">
-                <img class="profile-image" src="<?php echo $PATH_IMG?>outdoor_party.png" style="position:absolute; z-index:2;  border-radius:150px;  border:2px solid #7874a2;"/>
+                <img class="profile-image" src="<?php echo base_url().'uploads/'.$other_image_key?>" style="position:absolute; z-index:2;  border-radius:150px;  border:2px solid #7874a2;"/>
                </div>
             <div class="col-md-7 profile-name" style="background:#7874a2; height:65px;">
-            <h2 class="profile-fullname">Name here</h2>
+            <h2 class="profile-fullname"><?php echo $other_fullname;?></h2>
             </div>
-			<div class="col-md-1" style="background:#5F929C;height:65px;"><h3>$$$$</h3></div> 
+			<div class="col-md-1" style="background:#5F929C;height:65px;"><h3></h3></div> 
             <div class="col-md-3" style="height:65px;background:#6ca5cc; border-top-right-radius:5px;text-align:center;text-shadow: 1px 1px 0.5px #000000;">
 				<h3>
 					<i class="fa fa-star"></i>
@@ -92,7 +94,7 @@ position:absolute;
                         <?php if($tagline != "") 
                         	echo $tagline;
                               else 
-                              	echo "Welcome to my Showroom! Don¡¯t hesitate to shoot me a message or a friend request!";?>
+                              	echo "Welcome to my Showroom! Donï¿½ï¿½t hesitate to shoot me a message or a friend request!";?>
                         </p>
                      </div>-->
                      
@@ -100,7 +102,10 @@ position:absolute;
                             <div class="row" style="width:100%;">
 			<div class="arrow-left" style="margin-left:70px; margin-top:30px;"></div>
                         <p class="col-md-8 col-md-offset-2 quote-box" style="background:#00A79D; color:white; font-size:18px; border-radius:5px;padding:15px 20px;margin-left:100px; margin-top:20px;">
-                       
+                            <?php if($other_tagline != "") 
+                                    echo $other_tagline;
+                                  else 
+                                    echo "Welcome to my Showroom! Donï¿½ï¿½t hesitate to shoot me a message or a friend request!";?>
                         </p>
                      </div>
                      	<div class="row">
@@ -108,17 +113,23 @@ position:absolute;
                      	   <div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
                                 <div class="panel-body" >
 									<div style="padding:3% 17%;">
-										<p class="info"><span style="padding-right:30px;"><img src="<?php echo $PATH_IMG?>globe_icon2.png"/></span> website link here</p>
-										<p class="info"><i class="fa fa-facebook" style="width:47px;margin-left:6px;"></i> facebook link here</p>
-										<p class="info"><i class="fa fa-twitter" style="width:47px;margin-left:6px;"></i> twitter link here</p>
-										<p class="info"><span style="padding-right:33px;"><img src="<?php echo $PATH_IMG?>phone_icon2.png"/></span> phone number</p>
-										<p class="info"><span style="padding-right:28px;"><img src="<?php echo $PATH_IMG?>email_icon2.png"/></span> email address</p>
+										<?php if(!empty($other_profile['website'])) {?>
+                                                                                <p><a href="<?php if(strpos($other_profile['website'], 'http://') === false && strpos($other_profile['website'], 'https://') === false) echo 'http://'.$other_profile['website']; else echo $other_profile['website'];?>" class="info"><span style="padding-right:30px;"><img src="<?php echo $PATH_IMG?>globe_icon2.png"/></span> <?php echo $other_profile['website'];?> </a></p>
+                                                                                <?php } if(!empty($other_profile['facebook'])) {?>
+                                                                                <p><i class="fa fa-facebook" style="width:47px;margin-left:6px;"></i><a href="<?php if(strpos($other_profile['facebook'], 'http://') === false && strpos($other_profile['facebook'], 'https://') === false) echo 'http://'.$other_profile['facebook']; else echo $other_profile['facebook'];?>" class="info"> <?php echo $other_profile['facebook'];?> </a></p>
+                                                                                <?php } if(!empty($other_profile['twitter'])) {?>
+                                                                                <p><i class="fa fa-twitter" style="width:47px;margin-left:6px;"></i><a href="<?php if(strpos($other_profile['twitter'], 'http://') === false && strpos($other_profile['twitter'], 'https://') === false) echo 'http://'.$other_profile['twitter']; else echo $other_profile['twitter'];?>" class="info"> <?php echo $other_profile['facebook'];?> </a></p>
+                                                                                <?php } if(!empty($other_phone)) {?>
+                                                                                <p class="info"><span style="padding-right:33px;"><img src="<?php echo $PATH_IMG?>phone_icon2.png"/></span> <?php echo $other_phone;?></p>
+                                                                                <?php } if(!empty($other_email)) {?>
+                                                                                <p class="info"><span style="padding-right:28px;"><img src="<?php echo $PATH_IMG?>email_icon2.png"/></span> <?php echo $other_email;?></p>
+                                                                                <?php }?>
 									</div>
 									
 									<div class="margin-top:40px;">
 										<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>details_icon.png"/> &nbsp; Details:</h4>
 										<div class="row" style="padding:0 20%; font-size:16px;">
-										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                                                                    <?php echo $other_profile['description'];?>
 								
 										</div>
 									</div>
@@ -174,7 +185,7 @@ position:absolute;
                                         <?php }}
                                             else {?>
                                                   <tr>
-                                              	     <td>You have no wrevs right now.</td>
+                                              	     <td>You have no wrevs right now. :(</td>
                                                   </tr>
                                         <?php }?>
                                                 </table>
@@ -312,7 +323,7 @@ position:absolute;
                                                 </div>
                                         <?php }}
                                             else {?>
-                                                <div style="padding-left:25px;"> You have no friends.</div>
+                                                <div style="padding-left:25px;"> You have no followers. :(</div>
                                         <?php }?>
                                     </div>
                                     <a href="#" data-toggle="modal" data-target="#showmore"><button type="button" class="btn btn-lg" style="background:#478EBF; color:white; font-size:20px; margin-left:auto; margin-right:auto; display:block; padding:5px; border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">View All</button></a>
@@ -355,7 +366,7 @@ position:absolute;
                      
 					 <div class="row" style="text-align:center;">
                      <!--Reviews-->
-                     	
+                     	<!-- COMMENTED OUT WILL DO LATER 
                                 <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;">#</span> Reviews</h3>                        
 									<div style="padding-left:20%;padding-right:20%;">
 								<div style="padding:0% 17%;font-size:18px;line-height:70%;background:#F6F8F9;border-radius:10px;padding:10px;">
@@ -367,7 +378,7 @@ position:absolute;
 										<i class="fa fa-star" style="font-size:25px;"></i>
 									</div>
 									<div style="margin-top:20px;">
-										<!--Person's profile image of who posted here-->
+										<!--Person's profile image of who posted here--><!--
 										<img src="<?php echo $PATH_IMG?>/balt.jpg" class="shoutout-image"/>
 										<p style="margin-top:10px;">Name</p>
 										
@@ -525,8 +536,10 @@ position:absolute;
 							<div>
 							<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>clock_icon.png"/> &nbsp; Hours</h4>
 								<div style="padding:0% 17%;font-size:18px;line-height:70%;">
-									<p><em>Thursday</em> &nbsp;&nbsp 10:00PM to 3:00PM</p>
-									<p><em>Friday</em> &nbsp;&nbsp 10:00PM to 3:00PM</p>
+                                                                    <?php for($i = 0; $i < 7; $i++) {
+                                                                            if($other_profile['day'][$i] != false) {?>
+                                                                                <p><em><?php echo ucfirst($other_profile['day'][$i]['day']);?></em> &nbsp;&nbsp <?php echo $other_profile['day'][$i]['start_time'].' to '.$other_profile['day'][$i]['end_time'];?></p>
+                                                                    <?php }}?>
 								</div>
 							</div>
 					 </div>
@@ -534,13 +547,15 @@ position:absolute;
 					 <div class="row" style="margin-top:15px;">
 						<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>map_icon.png"/> &nbsp; Where is it?</h4>
 							<div style="text-align:center;font-size:18px;padding:20px;line-height:60%;">
-								<p>67 West St, Brooklyn, NY 10019</p>
-								<p style="font-family:GillSans">Neighborhood, </p>
+								<p><?php echo $other_profile['address'].', '.$other_profile['city']. ', '.$other_profile['state']. ' '.$other_profile['zipcode'];?></p>
 							</div>
 							
-							<div>
-								Google map here
-							</div>
+							<!-- GOOGLE MAPS -->
+                                                        <div class="col-md-12">
+                                                            <div id="pano" style="max-width:100%;min-width:100%; height: 200px;"></div>
+                                                            <div id="map_canvas" style="max-width:100%;min-width:100%; height: 200px;"></div> 
+                                                            <!--   Google Map Goes Here, different depending on where location is-->
+                                                        </div><!-- END OF GOOGLE MAPS -->
 							
 							<div style="text-align:center;">
 							<a href="" class="btn viewmorewrevs" style="font-size:18px;color:white; border-radius:8px;">Get directions</a>
@@ -562,7 +577,7 @@ position:absolute;
                                 }, 1000);
                             });
                     </script>     
-                        <?php echo form_open('showroom/chatbox_comment/'.$username); ?>
+                        <?php echo form_open('public_profile/chatbox_comment/'.$other_id); ?>
                        
                                     </div>
                                     <div class="row left-inner-addon post-input" style="padding-top:10px;float:left;">
@@ -577,7 +592,7 @@ position:absolute;
                                         <?php echo form_close() ?>
                                        <!-- <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;"><span class="glyphicon glyphicon-camera"></span></button></a>-->
 					 
-						<!--Tags-->
+						<!--Tags NOT YET!
 						<div class="row" style="padding:20px;">
 							<h4><i class="fa fa-tag"></i> &nbsp; Tags</h4>
 							
@@ -727,7 +742,7 @@ document.getElementById("herdzz").innerHTML = " ";
                     //echo 'alert("'.$email.'")';
                     if(isset($attending_events)) {
                     for($i = 0; $i < count($attending_events); $i++) {
-                        if($attending_events[$i]['creator_email'] == $email)
+                        if($attending_events[$i]['creator_email'] == $other_email)
                             echo '$("#fullwrev'.$i.'").show();';
                         else 
                             echo '$("#fullwrev'.$i.'").hide();';
@@ -760,6 +775,33 @@ document.getElementById("herdzz").innerHTML = " ";
     			return false; 
     	}
     </script>
+    <script type="text/javascript"> 
 
+    var userLocation =  <?php echo json_encode($other_profile['address']. "," . $other_profile['state'] . "," .$other_profile['city']. "," . $other_profile['zipcode']); ?>;
+
+    if (GBrowserIsCompatible()) {
+       var geocoder = new GClientGeocoder();
+       geocoder.getLocations(userLocation, function (locations) {         
+          if (locations.Placemark)
+          {
+             var north = locations.Placemark[0].ExtendedData.LatLonBox.north;
+             var south = locations.Placemark[0].ExtendedData.LatLonBox.south;
+             var east  = locations.Placemark[0].ExtendedData.LatLonBox.east;
+             var west  = locations.Placemark[0].ExtendedData.LatLonBox.west;
+
+             var bounds = new GLatLngBounds(new GLatLng(south, west), 
+                                            new GLatLng(north, east));
+
+             var map = new GMap2(document.getElementById("map_canvas"));
+
+             map.setCenter(bounds.getCenter(), map.getBoundsZoomLevel(bounds));
+             map.addOverlay(new GMarker(bounds.getCenter()));
+
+             new GStreetviewPanorama(document.getElementById("pano"),
+                                     { latlng: bounds.getCenter() })
+          }
+       });
+    }
+    </script>
 </body>
 </html> 

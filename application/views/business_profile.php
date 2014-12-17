@@ -47,6 +47,8 @@ position:absolute;
 }
 
 </style>
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false"
+            type="text/javascript"></script> 
 </head>
 
 
@@ -62,12 +64,12 @@ position:absolute;
         <div class="col-md-9 col-md-offset-1">
 			<div style="color:white;">
             <div class="col-md-1">
-                <img class="profile-image" src="<?php echo $PATH_IMG?>outdoor_party.png" style="position:absolute; z-index:2;  border-radius:150px;  border:2px solid #7874a2;"/>
+                <img class="profile-image" src="<?php echo base_url().'/uploads/'. $image_key?>" style="position:absolute; z-index:2;  border-radius:150px;  border:2px solid #7874a2;"/>
                </div>
             <div class="col-md-7 profile-name" style="background:#7874a2; height:65px;">
-            <h2 class="profile-fullname">Name here</h2>
+            <h2 class="profile-fullname"><?php echo $fullname;?></h2>
             </div>
-			<div class="col-md-1 col-sm-6" style="background:#5F929C;height:65px;"><h3 style="text-align:center;">$$$$</h3></div> 
+			<div class="col-md-1 col-sm-6" style="background:#5F929C;height:65px;"><h3 style="text-align:center;"></h3></div> 
             <div class="col-md-3 col-sm-6" style="height:65px;background:#6ca5cc; border-top-right-radius:5px;text-align:center;text-shadow: 1px 1px 0.5px #000000;">
 				<h3>
 					<i class="fa fa-star"></i>
@@ -92,7 +94,7 @@ position:absolute;
                         <?php if($tagline != "") 
                         	echo $tagline;
                               else 
-                              	echo "Welcome to my Showroom! Don��t hesitate to shoot me a message or a friend request!";?>
+                              	echo "Welcome to my Showroom! Don't hesitate to shoot me a message or a friend request!";?>
                         </p>
                      </div>-->
                      
@@ -100,7 +102,10 @@ position:absolute;
                             <div class="row" style="width:100%;">
 			<div class="arrow-left" style="margin-left:70px; margin-top:30px;"></div>
                         <p class="col-md-8 col-md-offset-2 quote-box" style="background:#00A79D; color:white; font-size:18px; border-radius:5px;padding:15px 20px;margin-left:100px; margin-top:20px;">
-                       
+                            <?php if($tagline != "") 
+                                    echo $tagline;
+                                  else 
+                                    echo "Welcome to my Showroom! Don't hesitate to shoot me a message or a friend request!";?>
                         </p>
                      </div>
                      	<div class="row">
@@ -108,17 +113,23 @@ position:absolute;
                      	   <div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
                                 <div class="panel-body" >
 									<div style="padding:3% 17%;">
-										<p class="info"><span style="padding-right:30px;"><img src="<?php echo $PATH_IMG?>globe_icon2.png"/></span> website link here</p>
-										<p class="info"><i class="fa fa-facebook" style="width:47px;margin-left:6px;"></i> facebook link here</p>
-										<p class="info"><i class="fa fa-twitter" style="width:47px;margin-left:6px;"></i> twitter link here</p>
-										<p class="info"><span style="padding-right:33px;"><img src="<?php echo $PATH_IMG?>phone_icon2.png"/></span> phone number</p>
-										<p class="info"><span style="padding-right:28px;"><img src="<?php echo $PATH_IMG?>email_icon2.png"/></span> email address</p>
+                                                                            <?php if(!empty($profile['website'])) {?>
+                                                                            <p><a href="<?php if(strpos($profile['website'], 'http://') === false && strpos($profile['website'], 'https://') === false) echo 'http://'.$profile['website']; else echo $profile['website'];?>" class="info"><span style="padding-right:30px;"><img src="<?php echo $PATH_IMG?>globe_icon2.png"/></span> <?php echo $profile['website'];?> </a></p>
+                                                                            <?php } if(!empty($profile['facebook'])) {?>
+                                                                            <p><i class="fa fa-facebook" style="width:47px;margin-left:6px;"></i><a href="<?php if(strpos($profile['facebook'], 'http://') === false && strpos($profile['facebook'], 'https://') === false) echo 'http://'.$profile['facebook']; else echo $profile['facebook'];?>" class="info"> <?php echo $profile['facebook'];?> </a></p>
+                                                                            <?php } if(!empty($profile['twitter'])) {?>
+                                                                            <p><i class="fa fa-twitter" style="width:47px;margin-left:6px;"></i><a href="<?php if(strpos($profile['twitter'], 'http://') === false && strpos($profile['twitter'], 'https://') === false) echo 'http://'.$profile['twitter']; else echo $profile['twitter'];?>" class="info"> <?php echo $profile['facebook'];?> </a></p>
+                                                                            <?php } if(!empty($phone)) {?>
+                                                                            <p class="info"><span style="padding-right:33px;"><img src="<?php echo $PATH_IMG?>phone_icon2.png"/></span> <?php echo $phone;?></p>
+                                                                            <?php } if(!empty($email)) {?>
+                                                                            <p class="info"><span style="padding-right:28px;"><img src="<?php echo $PATH_IMG?>email_icon2.png"/></span> <?php echo $email;?></p>
+                                                                            <?php }?>
 									</div>
 									
 									<div class="margin-top:40px;">
 										<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>details_icon.png"/> &nbsp; Details:</h4>
 										<div class="row" style="padding:0 20% 40px; font-size:16px;">
-										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+										<?php echo $profile['description'];?>
 								
 										</div>
 									</div>
@@ -542,37 +553,42 @@ position:absolute;
                                         <li class="active"><a href="#photos" aria-controls="photos" role="tab" data-toggle="tab">Photos</a></li>
                                         <li><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Videos</a></li>
                                     </ul>-->
-									<h3 style="text-align:center;">Photos</h3>
-									<div class="tab-content">
-											<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
-										<div role="tabpanel" class="tab-pane active" id="photos">
-												<div class="carousel-inner" role="listbox">
-													<div class="item active">
-														<img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo $PATH_IMG?>outdoor_party.png" alt="...">
-										
-													</div>
-													<div class="item">
-														<img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo $PATH_IMG?>balt.jpg" alt="...">
-											
-													</div>
-    
-												</div>
+                                    <h3 style="text-align:center;">Photos</h3>
+                                    <div class="tab-content">
+                                                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
+                                            <div role="tabpanel" class="tab-pane active" id="photos">
+                                                            <div class="carousel-inner" role="listbox">
+                                                                    <?php if(!empty($profile['photos'])) {
+                                                                            $first = true;
+                                                                            foreach($profile['photos'] as $picture){
+                                                                                if($first) {?>
+                                                                                    <div class="item active">
+                                                                                        <img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" alt="...">
+                                                                                    </div>
+                                                                                <?php $first = false;
+                                                                                } else {?>
+                                                                                <div class="item">
+                                                                                    <img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" alt="...">
+                                                                                </div>
+                                                                                
+                                                                    <?php }}}?>                                                                    
+                                                            </div>
 
-												<!-- Controls -->
-												<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-												<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-												<span class="sr-only">Previous</span>
-												</a>
-												<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-												<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-												<span class="sr-only">Next</span>
-												</a>
-											</div>
-										</div>
-										<!--<div role="tabpanel" class="tab-pane active" id="videos">
-											
-										</div>-->
-									</div>	
+                                                            <!-- Controls -->
+                                                            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                            <span class="sr-only">Previous</span>
+                                                            </a>
+                                                            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                            <span class="sr-only">Next</span>
+                                                            </a>
+                                                    </div>
+                                            </div>
+                                            <!--<div role="tabpanel" class="tab-pane active" id="videos">
+
+                                            </div>-->
+                                    </div>	
                                     <div class="row" style="padding-top:10px;text-align:center;">
                                        
                                         <a href="#"><button type="button" class="btn btn-lg" style="background:#1A75BF; color:white; font-size:20px;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);padding:5px;">Browse all</button></a>
@@ -586,8 +602,10 @@ position:absolute;
 							<div>
 							<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>clock_icon.png"/> &nbsp; Hours</h4>
 								<div style="padding:0% 17%;font-size:18px;line-height:70%;">
-									<p><em>Thursday</em> &nbsp;&nbsp 10:00PM to 3:00PM</p>
-									<p><em>Friday</em> &nbsp;&nbsp 10:00PM to 3:00PM</p>
+                                                                    <?php for($i = 0; $i < 7; $i++) {
+                                                                            if($profile['day'][$i] != false) {?>
+                                                                                <p><em><?php echo ucfirst($profile['day'][$i]['day']);?></em> &nbsp;&nbsp <?php echo $profile['day'][$i]['start_time'].' to '.$profile['day'][$i]['end_time'];?></p>
+                                                                    <?php }}?>
 								</div>
 							</div>
 					 </div>
@@ -595,13 +613,15 @@ position:absolute;
 					 <div class="row" style="margin-top:15px;">
 						<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>map_icon.png"/> &nbsp; Where is it?</h4>
 							<div style="text-align:center;font-size:18px;padding:20px;line-height:60%;">
-								<p>67 West St, Brooklyn, NY 10019</p>
-								<p style="font-family:GillSans">Neighborhood, </p>
+								<p><?php echo $profile['address'].', '.$profile['city']. ', '.$profile['state']. ' '.$profile['zipcode'];?></p>
 							</div>
 							
-							<div>
-								Google map here
-							</div>
+							<!-- GOOGLE MAPS -->
+                                                        <div class="col-md-12">
+                                                            <div id="pano" style="max-width:100%;min-width:100%; height: 200px;"></div>
+                                                            <div id="map_canvas" style="max-width:100%;min-width:100%; height: 200px;"></div> 
+                                                            <!--   Google Map Goes Here, different depending on where location is-->
+                                                        </div><!-- END OF GOOGLE MAPS -->
 							
 							<div style="text-align:center;">
 							<a href="" class="btn viewmorewrevs" style="font-size:18px;color:white; border-radius:8px;">Get directions</a>
@@ -820,6 +840,33 @@ document.getElementById("herdzz").innerHTML = " ";
     			return false; 
     	}
     </script>
+    <script type="text/javascript"> 
 
+    var userLocation =  <?php echo json_encode($profile['address']. "," . $profile['state'] . "," .$profile['city']. "," . $profile['zipcode']); ?>;
+
+    if (GBrowserIsCompatible()) {
+       var geocoder = new GClientGeocoder();
+       geocoder.getLocations(userLocation, function (locations) {         
+          if (locations.Placemark)
+          {
+             var north = locations.Placemark[0].ExtendedData.LatLonBox.north;
+             var south = locations.Placemark[0].ExtendedData.LatLonBox.south;
+             var east  = locations.Placemark[0].ExtendedData.LatLonBox.east;
+             var west  = locations.Placemark[0].ExtendedData.LatLonBox.west;
+
+             var bounds = new GLatLngBounds(new GLatLng(south, west), 
+                                            new GLatLng(north, east));
+
+             var map = new GMap2(document.getElementById("map_canvas"));
+
+             map.setCenter(bounds.getCenter(), map.getBoundsZoomLevel(bounds));
+             map.addOverlay(new GMarker(bounds.getCenter()));
+
+             new GStreetviewPanorama(document.getElementById("pano"),
+                                     { latlng: bounds.getCenter() })
+          }
+       });
+    }
+    </script>
 </body>
 </html> 
