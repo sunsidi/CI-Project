@@ -25,7 +25,7 @@
     <div class="row" style="margin-top:50px;">
         <h1 class="title" style="text-align:center;font-family:GillSans;color:white;"><img class="w_logo" src="<?php echo $PATH_IMG?>w1.png"/>Wrevenues</h1>
         <div class="form-group row" style="padding:20px;">
-            <div class="left-inner-addon  col-md-2 col-sm-3 col-xs-6 col-md-offset-3 col-sm-offset-1" style="padding:0;">
+            <div class="left-inner-addon  col-md-3 col-sm-3 col-xs-6 col-md-offset-3 col-sm-offset-1" style="padding:0;">
                 <span class="glyphicon glyphicon-search"></span>
                 <label class="sr-only">Names</label>
                 <input type="text" name="search" class="form-control" placeholder="search name of wrevenue">
@@ -88,9 +88,6 @@
             </div>
             <div class="col-md-1 col-sm-2" style="padding:0;">
                 <input class="form-control" placeholder="City">
-            </div>
-            <div class="col-md-1 col-sm-2" style="padding:0;">
-                <input class="form-control" placeholder="Neighborhood">
             </div>
             <div class="col-md-1 col-sm-1" style="padding:0;">
                 <input name="zipcode" type="text" pattern=".{5,5}" maxlength="5" class="form-control" placeholder="Zip" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>

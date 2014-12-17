@@ -354,7 +354,7 @@
                         <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
                             <div class="modal-dialog">
                                  <div class="modal-content" style="background:#c2d2dc;">
-                                      <div class="modal-header" style="background:#628da3; color:white;text-align:center;">
+                                      <div class="modal-header" style="background:#628da3; color:white;text-align:center;font-size:26px;font-family:GillSans Light;">
                                       <button type="button" class="close" data-dismiss="modal" style="color:white;"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                       <i class="fa fa-share-square-o"></i> Share on Social Media
                                       </div>
