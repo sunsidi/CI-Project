@@ -12,6 +12,30 @@
 <link href="<? echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/lightbox.css" rel="stylesheet" type="text/css">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<style type="text/css">
+.arrow-lefta {
+position:absolute;
+	width: 0; 
+	height: 0; 
+	border-top: 0px solid transparent;
+	border-right: 35px solid #d7e0e9;
+	
+	border-bottom: 20px solid transparent;
+}
+
+</style>
+	<style type="text/css">
+.arrow-leftb {
+position:absolute;
+	width: 0; 
+	height: 0; 
+	border-top: 0px solid transparent;
+	border-right: 37px solid #414042;
+	
+	border-bottom: 20px solid transparent;
+}
+
+</style>
 </head>
 
 <body>
@@ -53,10 +77,13 @@
 <!--quotation-->
 		<div class="row" style="margin-top: 10px;">
 		<img src="http://wrevel.com/uploads/b1fcecf9a55b8d304788212d517c41b5.jpg" style="float: left;margin-left: 10%;border-radius:150%; width:100px; height:100px;">
-		<div class="arrow-left" style="margin-left:220px; margin-top:40px;float: left;"></div>
-		<p class="col-md-7 col-md-offset-1 quote-box" style="margin-top: 20px;float: left;background:#00A79D; color:white; font-size:18px; border-radius:5px;padding:15px 20px;">
+		<div style="width: 450px; float: left">
+		<div class="arrow-leftb" style="margin-left:45px; margin-top:40px;z-index: 7;"></div>
+		<div class="arrow-lefta" style="margin-left:53px; margin-top:42px;z-index: 9;"></div>
+		<p class="col-md-12 col-sm-10 col-xs-7 quote-box" style="margin-left: 80px;margin-top: 20px;border: 2px solid #414042;background:#d7e0e9; color:black; font-size:18px; border-radius:5px;padding:15px 20px;">
                        You know you've read a good book when you turn the last page and feel
 		       a little as if you have lost a friend. -Paul Sweeney </p>
+		</div>
 		</div>
 		<div style="margin-top: 30px;">
 <!--groupmember-->
@@ -257,11 +284,11 @@
 				
 
 	<!-- Controls -->
-			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev" style="background: none;">
 			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 			<span class="sr-only">Previous</span>
 			</a>
-			<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+			<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next" style="background: none;">
 			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 			<span class="sr-only">Next</span>
 			</a>

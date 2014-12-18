@@ -15,7 +15,6 @@
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo $PATH_BOOTSTRAP?>css/groupmosaic.css" type="text/css" media="screen">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
-<link href="css/lightbox.css" rel="stylesheet" type="text/css">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 

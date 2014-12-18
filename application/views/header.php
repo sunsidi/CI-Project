@@ -12,20 +12,6 @@
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<style type="text/css">
-.arrow-left {
-position:absolute;
-	width: 0; 
-	height: 0; 
-	border-top: 0px solid transparent;
-	border-right: 35px solid #02a89e;
-	
-	border-bottom: 20px solid transparent;
-        margin-left:108px;
-        margin-top:10px;
-}
-
-</style>
 </head>
 <style>
 @media screen and (max-width:950px){
