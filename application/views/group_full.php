@@ -10,7 +10,32 @@
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
+<link href="<? echo $PATH_BOOTSTRAP?>css/lightbox.css" rel="stylesheet" type="text/css">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<style type="text/css">
+.arrow-lefta {
+position:absolute;
+	width: 0; 
+	height: 0; 
+	border-top: 0px solid transparent;
+	border-right: 35px solid #d7e0e9;
+	
+	border-bottom: 20px solid transparent;
+}
+
+</style>
+	<style type="text/css">
+.arrow-leftb {
+position:absolute;
+	width: 0; 
+	height: 0; 
+	border-top: 0px solid transparent;
+	border-right: 37px solid #414042;
+	
+	border-bottom: 20px solid transparent;
+}
+
+</style>
 </head>
 
 <body>
@@ -20,10 +45,13 @@
 ==============================================-->
 
 	
-<div class="container">
+<div class="container" style="padding-bottom: 80px;">
+	<div style="margin-top: 30px;">
+	<p class="event"><img src="<?php echo $PATH_IMG?>groups_icon.png"/> <strong>Groups </strong></p>
+	</div>
 <div class="col-md-offset-2 col-md-8">
 <!--grouppage-->
-        <div class="panel" style="margin-top: 80px;background-color: #d7e0e9; border:none ; border-radius: 10px; -moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .2);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .2);box-shadow:2px 2px 2px rgba(0, 0, 0, .2);">
+        <div class="panel" style="margin-top: 30px;background-color: #d7e0e9; border:none ; border-radius: 10px; -moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .2);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .2);box-shadow:2px 2px 2px rgba(0, 0, 0, .2);">
 <!--group heading-->	    
 	    <div class="panel-heading" style="background-image: url(<?php echo $PATH_IMG?>partners_header.png); height: 100px;background-size:100% 100px;border-top-left-radius: 10px; border-top-right-radius: 10px;">
 		<div style="padding-left: 15%;">
@@ -47,12 +75,15 @@
 	-moz-linear-gradient(#d7e0e9, #f1f5f6);
 	linear-gradient(#d7e0e9, #f1f5f6); border-radius: 10px;">
 <!--quotation-->
-		<div class="row">
+		<div class="row" style="margin-top: 10px;">
 		<img src="http://wrevel.com/uploads/b1fcecf9a55b8d304788212d517c41b5.jpg" style="float: left;margin-left: 10%;border-radius:150%; width:100px; height:100px;">
-		<div class="arrow-left" style="margin-left:220px; margin-top:30px;float: left;"></div>
-		<p class="col-md-7 col-md-offset-1 quote-box" style="float: left;background:#00A79D; color:white; font-size:18px; border-radius:5px;padding:15px 20px;">
+		<div style="width: 450px; float: left">
+		<div class="arrow-leftb" style="margin-left:45px; margin-top:40px;z-index: 7;"></div>
+		<div class="arrow-lefta" style="margin-left:53px; margin-top:42px;z-index: 9;"></div>
+		<p class="col-md-12 col-sm-10 col-xs-7 quote-box" style="margin-left: 80px;margin-top: 20px;border: 2px solid #414042;background:#d7e0e9; color:black; font-size:18px; border-radius:5px;padding:15px 20px;">
                        You know you've read a good book when you turn the last page and feel
 		       a little as if you have lost a friend. -Paul Sweeney </p>
+		</div>
 		</div>
 		<div style="margin-top: 30px;">
 <!--groupmember-->
@@ -158,7 +189,7 @@
 				<h4 style="margin-left: 12%;"><i class="fa fa-exclamation-circle"></i> What is the group about?</h4>
 				</div>
 				<div class="panel-body" style="margin-top: -20px;">
-							<p style="width:80%;margin-left: 12%;">A book discussion club is a group of
+							<p style="width:75%;margin-left: 15%;font-size: 17px;">A book discussion club is a group of
 							people who meet to discuss a book or books
 							that they have read and express their opinions, l
 							ikes, dislikes, etc. It is more often called simply a
@@ -179,7 +210,7 @@
                     	<h4 style="margin-left: 12%;"><i class="fa fa-comments"></i> Chatbox</h4>
                    
 		       <form action="http://wrevel.com/event/event_comment/parties/2551" method="post" accept-charset="utf-8">                   <div class="event-comment-section">
-                    <div class="left-inner-addon pull-left event-comment-input" style="margin-left: 5%;">
+                    <div class="left-inner-addon pull-left event-comment-input" style="margin-left: 10%;">
                     <span class="glyphicon glyphicon-comment fa-flip-horizontal"></span>
                          <input type="text" class="form-control event-post-textarea" id="comment" name="comment" placeholder="send a message!">                       
                           
@@ -215,9 +246,59 @@
                    
         </div>
 <!--photos and videos-->
-
-<!--contacts-->
 	<div style="margin-top: 10px;">
+	<h4 style="margin-left: 12%;"><i class="fa fa-picture-o"></i> Photos</h4>
+	<center>
+	<div class="tab-content" style="width: 600px;">
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
+			<div role="tabpanel" class="tab-pane active" id="photos">
+				<div class="carousel-inner" role="listbox">
+					<div class="item active">					
+      <div class="hpworkimg">
+	<td>
+	  <a href="http://pictsaw.com/wp-content/uploads/2014/06/jennifer-love-hewitt-wallpaper-hd-10.jpg" rel="lightbox">
+	    <img style="height:300px;max-height:300px;" src="http://pictsaw.com/wp-content/uploads/2014/06/jennifer-love-hewitt-wallpaper-hd-10.jpg"/>
+	  </a>
+	</td>
+      </div>
+					  </div>
+					<div class="item">					
+      <div class="hpworkimg">
+	<td>
+	  <a href="http://pictsaw.com/wp-content/uploads/2014/12/girls.jpeg" rel="lightbox">
+	    <img style="height:300px;max-height:300px;" src="http://pictsaw.com/wp-content/uploads/2014/12/girls.jpeg"/>
+	  </a>
+	</td>
+      </div>
+					  </div>
+										<div class="item">					
+      <div class="hpworkimg">
+	<td>
+	  <a href="http://hdwallpaperia.com/wp-content/uploads/2013/12/Beautiful-Girls-Wallpapers-Free.jpg" rel="lightbox">
+	    <img style="height:300px;max-height:300px;" src="http://hdwallpaperia.com/wp-content/uploads/2013/12/Beautiful-Girls-Wallpapers-Free.jpg"/>
+	  </a>
+	</td>
+      </div>
+					  </div>
+				</div>
+				
+
+	<!-- Controls -->
+			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev" style="background: none;">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next" style="background: none;">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+			</a>
+			</div>
+		</div>
+	</div>
+	</center>
+	</div>
+<!--contacts-->
+	<div style="margin-top: 30px;">
 		<h4 style="margin-left: 12%;"><i class="fa fa-comment-o"></i> Contact</h4>
 		<center><span style="font-size: 18px;"><i class="fa fa-phone"></i>&nbsp;&nbsp;(212) 201- 3019
 		&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-envelope-o"></i>&nbsp;&nbsp;hotrabbit@jackrabbit.com</span></center>
@@ -228,9 +309,18 @@
 		<center><span style="font-size: 18px;">http://www.manhattan-monster.com/</center>
 	</div>
 <!--tags-->
+	<div style="margin-top: 10px; padding-bottom: 50px;">
+		<h4 style="margin-left: 12%;"><span class="fa fa-tags"></span> Tags</h4>
+		<center><div style="margin-top: 30px;">
+		<span class="badge" style="color:white; background:#a6c1cb;font-size:19px;vertical-align:middle; padding:5px 5px; height:30px; text-align:center;">love story</span>
+		<span class="badge" style="color:white; background:#a6c1cb;font-size:19px;vertical-align:middle; padding:5px 5px; height:30px; text-align:center;">baby cry</span>
+		<span class="badge" style="color:white; background:#a6c1cb;font-size:19px;vertical-align:middle; padding:5px 5px; height:30px; text-align:center;">face check</span>
+		</div></center>
+	</div>
 	    </div>
 	
 
+</div>
 </div>
 </div>
 <!--end of content-->
@@ -246,5 +336,6 @@
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.js"></script>-->
     <script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
+      <script src="<?php echo $PATH_BOOTSTRAP?>js/lightbox.js" type="text/javascript"></script>
 </body>
 </html> 
