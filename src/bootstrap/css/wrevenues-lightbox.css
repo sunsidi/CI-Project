@@ -1,0 +1,21 @@
+#lightbox{
+	width: 50%;
+	background-color:transparent;
+	margin-left: 0;
+	margin-top: 0;
+	}
+	
+#lightboxDetails{
+	font-size: 0.8em;
+	padding-top: 0.4em;
+	}
+	
+#lightboxCaption{ float: left; }
+#keyboardMsg{ float: right; }
+
+	
+	
+#lightbox img{ max-width: 100%; max-height: 100%;} 
+#overlay img{ border: none; }
+
+#overlay{background-color: rgba(0,0,0,0.5);}

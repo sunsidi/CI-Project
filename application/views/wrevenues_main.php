@@ -109,7 +109,7 @@
                                 <div class="row">
                                     <div class="col-sm-12">
 
-                                        <a href="<?php echo base_url().'wrevenues/wrevenues_fullview/'.$wrevenues[$i]['id']?>" class="btn wrevenues-venue" >
+                                        <a href="<?php echo base_url().'wrevenues/wrevenues_fullview/'.$wrevenues[$i]['id']?>" class="btn wrevenues-venue" style="max-width:100%;overflow:hidden;text-overflow: ellipsis;">
                                             <?php echo $wrevenues[$i][ 'place'];?>
                                         </a>
                                         <!--<p><i class="fa fa-money"></i> </p>-->
@@ -181,10 +181,10 @@
                                             <div class="form-group row">
                                                 <label>Header Photo</label>
                                                 <div class="col-sm-12" style="border:1px solid white;text-align:center;padding:8%;">
-                                                    <div class="col-sm-5">
+                                                    <div class="col-sm-12">
                                                         <div class="image-upload">
                                                             <label>Choose an Image:</label>
-                                                            <input id="file-input" name="wrevenue_file" type="file" style="overflow:hidden;" />
+                                                            <input id="file-input" name="wrevenue_file" type="file" style="width:100%;overflow:hidden;text-overflow: ellipsis;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -659,7 +659,7 @@
                                                 <div id="photos_upload" class="col-sm-9">
                                                     <div class="image-upload">
                                                         <label>Choose an Image:</label>
-                                                        <input name="wrevenue_file_array[]" type="file" style="overflow:hidden;" />
+                                                        <input name="wrevenue_file_array[]" type="file" style="max-width:100%;overflow:hidden;text-overflow: ellipsis;" />
                                                     </div>
                                                 </div>
                                                 <div>

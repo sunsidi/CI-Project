@@ -13,6 +13,7 @@
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/wrevenues-lightbox.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false"
@@ -413,7 +414,7 @@
                             </div><!-- END OF SHOUTOUT -->
                             
                             <!-- DESCRIPTION -->		
-                            <div class="margin-top:40px;">
+                            <div style="margin-top:40px;">
                                 <h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>details_icon.png"/> &nbsp; Wrevenue Details:</h4>
                                 <div class="row" style="padding:3% 20% 0%; font-size:15px;">
                                     <?php echo $wrevenues['description'];?>
@@ -488,26 +489,28 @@
                             
                             <!-- PHOTOS -->
                             <div style="margin-top:40px;">
-                                <h4 style="padding-left:30px;">Photos:</h4>
-                                <div style="padding:0% 17%;font-size:18px;line-height:70%;">
+                                <h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>photo_icon.png"/> &nbsp; Photos:</h4>
+                                <div style="padding:0% 5%;font-size:18px;line-height:70%;">
                                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
 										<div class="carousel-inner" role="listbox">
 											<?php if(!empty($wrevenues['photos'])) {
-$first = true;
-foreach($wrevenues['photos'] as $picture){
-if($first) {?>
-<div class="item active">
-<img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" alt="...">
-</div>
-<?php $first = false;
-} else {?>
-<div class="item">
-<img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" alt="...">
-</div>
+											$first = true;
+											foreach($wrevenues['photos'] as $picture){
+												if($first) {?>
+												<div class="item active">
+													<a href="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" rel="lightbox">
+													<img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" alt="...">
+													</a>
+												</div>
+												<?php $first = false;
+												} else {?>
+												<div class="item">
+													<a href="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" rel="lightbox"> <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" alt="..."></a>
+												</div>
 
-<?php }}}?> 
+											<?php }}}?> 
 									
-									</div>
+										</div>
 											<a class="left carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="prev">
 												<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 												<span class="sr-only">Previous</span>
@@ -560,6 +563,7 @@ if($first) {?>
     <!-- Placed at the end of the document so the pages load faster -->	
 	<script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
+	<script src="<? echo $PATH_BOOTSTRAP?>js/lightbox.js"></script>
     <script type="text/javascript"> 
 
     var userLocation =  <?php echo json_encode($wrevenues['address']. "," . $wrevenues['state'] . "," .$wrevenues['city']. "," . $wrevenues['zipcode']); ?>;
