@@ -132,13 +132,13 @@
                         </div>	
                     </div>
                     <div>
-                        <label class="col-sm-20"><b><u>Hours:</u></b></label>
+                        <label class="col-sm-20"><b><u>Schedule:</u></b></label>
                     </div>
                     <div id="days_base">
                         <div class="form-group row">
                             <label class="col-sm-3">Day:</label>
                             <div class="col-sm-2">
-                                <select name="day[]" class="form-control">
+                                <select name="day[]" class="form-control" style="padding:0;">
                                     <option value="" selected="selected"></option>
                                     <option value="Mon">Mon</option>
                                     <option value="Tues">Tues</option>
@@ -150,7 +150,7 @@
                                 </select>
                             </div>
                             <div class="col-sm-2">
-                                <select name="start_time[]" class="form-control">
+                                <select name="start_time[]" class="form-control" style="padding:0;">
                                     <option value="" selected="selected"></option>
                                     <option value="01:00">1:00AM</option>
                                     <option value="02:00">2:00AM</option>
@@ -180,7 +180,7 @@
                             </div>
                             <label class="col-sm-1">TO</label>
                             <div class="col-sm-2">
-                                <select name="end_time[]" class="form-control">
+                                <select name="end_time[]" class="form-control" style="padding:0;">
                                     <option value="" selected="selected"></option>
                                     <option value="01:00">1:00AM</option>
                                     <option value="02:00">2:00AM</option>
@@ -261,7 +261,7 @@
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-3">Add more Images:</label>
-                        <div id="photos_upload" class="col-sm-5">
+                        <div id="photos_upload" class="col-sm-6">
                             <div class="image-upload">
                                 <label>Choose an Image:</label>
                                 <input name="wrevenue_file_array[]" type="file" style="overflow:hidden;" />
@@ -271,7 +271,7 @@
                             <a class="btn btn-default" onclick="add_more_photos()"><i class="fa fa-plus"></i></a>
                         </div>
                     </div>
-                    <div class="row" style="text-align:right;">
+                    <div class="row" style="text-align:right;padding-right:20px;">
                             <button class="btn" type="submit" style="background:#478ABC;color:white;">Submit</button>
                     </div>
                 </form>
@@ -373,7 +373,7 @@
                         
                         <!-- EVENT NAME -->
                         <div class="col-sm-4" style="padding-top:3%;">
-                            <a class="btn wrevenues-name"><?php echo $wrevenues['place'];?></a>
+                            <a class="btn wrevenues-name" style="cursor:default;"><?php echo $wrevenues['place'];?></a>
                             <h4 style="font-size:19px;" id="pricingInfo" data-html="true" data-content="$ - Free to $10 </br> $$ - $11 to 25 </br> $$$ - $26 to 49 </br> $$$$ - $50 to higher" data-trigger="hover" data-placement="bottom"><img src="<?php echo $PATH_IMG?>dollarbills_icon.png"/><?php echo $wrevenues['price'];?></h4>
                         </div><!-- END OF EVENT NAME -->
                         
@@ -397,7 +397,7 @@
                 
                 <!-- START OF INNER PANEL -->
 		<div class="panel-body background" style="border-bottom-left-radius:10px;border-bottom-right-radius:10px;">
-                    <div class="row">
+                    <div class="row" style="padding-bottom:20px;">
                         <div class="col-md-6">
                             
                             <!-- SHOUTOUT -->
@@ -490,12 +490,33 @@
                             <div style="margin-top:40px;">
                                 <h4 style="padding-left:30px;">Photos:</h4>
                                 <div style="padding:0% 17%;font-size:18px;line-height:70%;">
-                                    <?php if(!empty($wrevenues['photos'])) {
-                                            foreach($wrevenues['photos'] as $picture){?>
-                                                <img src="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" class="shoutout-image"/>
-                                    <?php }} else {?>
-                                                <p> You have no photos here. :( </p>
-                                    <?php }?>
+                                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
+										<div class="carousel-inner" role="listbox">
+											<?php if(!empty($wrevenues['photos'])) {
+$first = true;
+foreach($wrevenues['photos'] as $picture){
+if($first) {?>
+<div class="item active">
+<img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" alt="...">
+</div>
+<?php $first = false;
+} else {?>
+<div class="item">
+<img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" alt="...">
+</div>
+
+<?php }}}?> 
+									
+									</div>
+											<a class="left carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="prev">
+												<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+												<span class="sr-only">Previous</span>
+											</a>
+											<a class="right carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="next">
+												<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+												<span class="sr-only">Next</span>
+											</a>
+									</div>
                                 </div>
                             </div><!-- END OF PHOTOS -->
                             

@@ -273,7 +273,7 @@ class Chat extends CI_Controller {
     border-left   : 12px solid transparent;
     border-right  : 12px solid transparent;
     border-bottom : 12px solid #414042;margin-top:59px;margin-left:8px;'></div></div><p class='$currentUser'style='clear:both'> </br>&nbsp;&nbsp;&nbsp;&nbsp;<img src='$my_image' style='width:40px; height:40px;border-radius: 150px;'/>&nbsp;&nbsp;$fullName:
-	    <p style='border:1px solid #414042;border-radius:10px;padding:10px;'><span class='pull-right'>$today</span></br>$comment</p></p><br>"; 
+	    <p style='border:1px solid #414042;border-radius:10px;padding:10px 20px;'><span class='pull-right'>$today</span></br>$comment</p></p><br>"; 
             }
             else{$file_chat = "";}
             //echo "actual message view = ".$somecontent. "<br>";

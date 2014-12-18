@@ -96,20 +96,20 @@
             <input type="submit" class="btn" style="background:#1C74BB; color:white;font-size:20px; padding:1px 10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);" value="go">
         </div>
         <div class="row row-centered">
-            <div class="col-md-11 col-centered col-sm-11 col-xs-11" style="color:white;text-align:center;">
-                <h4 style="text-align:left;margin-left:10%;"><em>Newest Wrevenues</em></h4>
+            <div class="col-md-11 col-centered col-sm-11 col-xs-11" style="color:white;text-align:center;padding:10px 10%;">
+                <h4 style="text-align:left;margin-left:5%;"><em>Newest Wrevenues</em></h4>
 
                 <div class="row">
                     <!--one wrevenue-->
                     <?php if(isset($wrevenues)) { for($i=0 ; $i < count($wrevenues); $i++) {?>
                     <!--THIS WILL CREATE AS MANY WREVENUES THAT EXISTS-->
-                    <div class="col-md-4">
-                        <div class="panel" style="padding:8%;padding-bottom:9%;border-radius:10px;background:linear-gradient(rgba(70, 107, 121, 0.45), rgba(70, 107, 121, 0.45)),url(<?php echo base_url().'uploads/'.$wrevenues[$i]['image_key'];?>); background-size:100%;text-align:center;font-family:GillSans;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);height:379px;">
-                            <div class="panel-body" style="padding:0;text-shadow: 2px 2px 4px #000000;">
+                    <div class="col-md-3 col-sm-6" style="padding:0 9px;">
+                        <div class="panel" style="padding:6%;padding-bottom:9%;border-radius:10px;background:linear-gradient(rgba(70, 107, 121, 0.45), rgba(70, 107, 121, 0.45)),url(<?php echo base_url().'uploads/'.$wrevenues[$i]['image_key'];?>); background-size:100% 280px;text-align:center;font-family:GillSans;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);height:280px;">
+                            <div class="panel-body" style="padding:0;text-shadow: 1px 1px 3px #000000;">
                                 <div class="row">
                                     <div class="col-sm-12">
 
-                                        <a href="<?php echo base_url().'wrevenues/wrevenues_fullview/'.$wrevenues[$i]['id']?>" class="btn wrevenues-venue">
+                                        <a href="<?php echo base_url().'wrevenues/wrevenues_fullview/'.$wrevenues[$i]['id']?>" class="btn wrevenues-venue" >
                                             <?php echo $wrevenues[$i][ 'place'];?>
                                         </a>
                                         <!--<p><i class="fa fa-money"></i> </p>-->
@@ -135,7 +135,7 @@
                                                 }
                                             }
                                             $days_open = substr($days_open,0,strlen($days_open)-2);
-                                            echo '<p style="padding:0 50px;"><i class="fa fa-clock-o"></i> '.$days_open.'</p>';?>
+                                            echo '<p style="padding:0;"><i class="fa fa-clock-o"></i> '.$days_open.'</p>';?>
                                     </div>
 
                                     <div class="col-sm-12">
@@ -196,7 +196,9 @@
                                                 </div>
                                             </div>
                                             <div id="days_base">
-                                                <div class="form-group row">
+												<strong>Venue Schedule:</strong>
+                                                <div class="form-group row" style="margin-top:10px;">
+													
                                                     <label class="col-sm-2">Day:</label>
                                                     <div class="col-sm-3">
                                                         <select name="day[]" class="form-control" style="padding:0;">
@@ -295,7 +297,7 @@
                                                         </div>-->
                                             <div class="form-group row">
                                                 <label class="col-sm-2">City:</label>
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-5">
                                                     <input name="city" type="text" class="form-control">
                                                 </div>
                                                 <label class="col-sm-2">State:</label>
@@ -362,7 +364,7 @@
                                                     <input name="zipcode" type="text" pattern=".{5,5}" maxlength="5" class="form-control">
                                                 </div>
                                                 <label class="col-sm-2">Country:</label>
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-5">
                                                     <select name="country" type="text" class="form-control" style="padding:0;font-size:10px;">
                                                         <option value="" selected="selected"></option>
                                                         <option value="Afghanistan">Afghanistan</option>
@@ -567,7 +569,39 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            
+                                            <!-- DON'T NEED.
                                             <div class="form-group row">
+                                                <label class="col-sm-2">Latest Wrevs <i class="fa fa-question-circle" id="latestwrevInfo" data-content="Add your latest event here" data-trigger="hover" data-placement="bottom"></i>
+                                                </label>
+                                                <div class="col-sm-5">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                                <div class="col-sm-1">
+                                                    <a class="btn btn-default"><i class="fa fa-plus"></i></a>
+                                                </div>
+                                            </div>-->
+                                            <div class="form-group row">
+                                                <label class="col-sm-2">Price <i class="fa fa-question-circle" id="pricingInfo" data-html="true" data-content="$ - Free to $10  $$ - $11 to 25  $$$ - $26 to 49  $$$$ - $50 to higher" data-trigger="hover" data-placement="top"></i>
+                                                </label>
+                                                <div class="col-sm-4">
+                                                    <select name="price" class="form-control">
+                                                        <option value="" selected="selected"></option>
+                                                        <option value="$">$</option>
+                                                        <option value="$$">$$</option>
+                                                        <option value="$$$">$$$</option>
+                                                        <option value="$$$$">$$$$</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" style="padding:0 5%;">
+											<div class="form-group">
+                                                <label>Wrevenues Details</label>
+                                                <textarea name="description" class="form-control" rows="4" placeholder="type something attention grabbing"></textarea>
+                                            </div>
+											<strong>Contact Info:</strong>
+											<div class="form-group row" style="margin-top:10px;">
                                                 <label class="col-sm-2">Phone:</label>
                                                 <div class="col-sm-5">
                                                     <input name="telephone" type="text" class="form-control">
@@ -605,36 +639,7 @@
                                                     <input name="twitter" type="text" class="form-control">
                                                 </div>
                                             </div>
-                                            <!-- DON'T NEED.
-                                            <div class="form-group row">
-                                                <label class="col-sm-2">Latest Wrevs <i class="fa fa-question-circle" id="latestwrevInfo" data-content="Add your latest event here" data-trigger="hover" data-placement="bottom"></i>
-                                                </label>
-                                                <div class="col-sm-5">
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="col-sm-1">
-                                                    <a class="btn btn-default"><i class="fa fa-plus"></i></a>
-                                                </div>
-                                            </div>-->
-                                            <div class="form-group row">
-                                                <label class="col-sm-2">Price <i class="fa fa-question-circle" id="pricingInfo" data-html="true" data-content="$ - Free to $10  $$ - $11 to 25  $$$ - $26 to 49  $$$$ - $50 to higher" data-trigger="hover" data-placement="top"></i>
-                                                </label>
-                                                <div class="col-sm-4">
-                                                    <select name="price" class="form-control">
-                                                        <option value="" selected="selected"></option>
-                                                        <option value="$">$</option>
-                                                        <option value="$$">$$</option>
-                                                        <option value="$$$">$$$</option>
-                                                        <option value="$$$$">$$$$</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6" style="padding:0 5%;">
-                                            <div class="form-group">
-                                                <label>Wrevenues Details</label>
-                                                <textarea name="description" class="form-control" rows="4" placeholder="type something attention grabbing"></textarea>
-                                            </div>
+                                            
                                             <div class="form-group">
                                                 <label>Shoutout <i class="fa fa-question-circle" id="shoutoutInfo" data-content="Use shoutout as a way to announce your latest updates" data-trigger="hover" data-placement="bottom"></i>
                                                 </label>
@@ -645,13 +650,13 @@
                                                 <div class="col-sm-5">
                                                     <input name="name" type="text" class="form-control">
                                                 </div>
-                                                <div class="col-sm-1">
+                                                <!--<div class="col-sm-1">
                                                     <button class="btn" style="background:#27AAE0;"><i class="fa fa-camera"></i>
                                                     </button>
-                                                </div>
+                                                </div>-->
                                             </div>
                                             <div class="form-group row">
-                                                <div id="photos_upload" class="col-sm-5">
+                                                <div id="photos_upload" class="col-sm-9">
                                                     <div class="image-upload">
                                                         <label>Choose an Image:</label>
                                                         <input name="wrevenue_file_array[]" type="file" style="overflow:hidden;" />
