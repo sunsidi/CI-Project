@@ -167,22 +167,28 @@ class Model_users extends CI_Model{
                     'username' => $row->username,
                     'reputation' => 0,
                     'f_b' => 0,
+                    'business' => $row->business,
                     'image_key'=> 'default_profile.jpg'
                 );
                 
                 $user_added = $this->db->insert('users',$data);
+                $new_user_id = $this->db->insert_id();
+                if($row->business) {
+                    $this->db->insert('users_business', array('user_id' => $new_user_id));
+                }
             }
-           
            if($user_added)
            {
                 $this->db->where('key',$key);
                 $this->db->delete('temp_users');
+                mkdir('./uploads/profile/'.$new_user_id.'/photos/', 0777,true);
+                chmod('./uploads/profile/'.$new_user_id.'/photos/', 0777);
                 return $data['email'];
             }
             else return false;
     }
     
-    public function edit_info($email) //CHANGED!!!!
+    public function edit_info($user_id) //CHANGED!!!!
     {
         /*
         $data = array(
@@ -195,23 +201,68 @@ class Model_users extends CI_Model{
         */
        
         $data = $this->input->post();
-
+        echo '<pre>', print_r($data, true), '</pre>';
         foreach ($data as $i => $value){
           //if user inputted a value then update it
-          if($value and $value != 'Change'){
-            $info_updating[$i] = strip_tags($value);
-          }
+            if($i == 'account_change') {
+                $info_updating['business'] = $value;
+                if($value) {
+                    if(!file_exists('./uploads/profile/'.$user_id.'/photos/')) {
+                        mkdir('./uploads/profile/'.$user_id.'/photos/', 0777, true);
+                        chmod('./uploads/profile/'.$user_id.'/photos/', 0777, true);
+                    }
+                    $check_if_exists = $this->db->get_where('users_business', array('user_id' => $user_id));
+                    if($check_if_exists->num_rows() == 0) {
+                        $this->db->insert('users_business', array('user_id' => $user_id));
+                        $this->session->set_flashdata('message', 'Welcome to your new business profile!');
+                    }
+                    else {
+                        $this->session->set_flashdata('message', 'Welcome back! Your previous data has been restored and saved.');
+                    }
+                }
+            }
+            else if($value and $value != 'Change'){
+                if(strpos($i, 'business') === false) {
+                    $info_updating[$i] = strip_tags($value);
+                }
+                else {
+                    $business_data[$i] = $value;
+                }
+            }
+        }
+        if(isset($business_data)) {
+            echo '<pre>', print_r($business_data, true), '</pre>';
+            foreach($business_data as $i => $value) {
+                if($value && strpos($i, 'start_time') === false && strpos($i, 'end_time') === false) {
+                    if($i == 'wrevenue_file') {
+                        continue;
+                    }
+                    if(strpos($i, 'day') !== false && $value != "") {
+                        for($j = 0; $j < count($value); $j++) {
+                            if(empty($value[$j])) {
+                                break;
+                            }
+                            $temp_start = $business_data['business-start_time'][$j];
+                            $start_time = $this->timestamp($temp_start, false);
+                            $temp_end = $business_data['business-end_time'][$j];
+                            $end_time = $this->timestamp($temp_end, false);
+                            $business_info_updating[$value[$j]] = $start_time.'|'.$end_time;
+                        }
+                    }
+                    else {
+                        $business_info_updating[substr($i,strpos($i, '-') + 1, strlen($i))] = $value;
+                    }
+                }
+            }
         }
         if(isset($info_updating)){        
-            $query = $this->db->update('users', $info_updating, array('email'=>$email));
-            if($query)
-            {
-                return  true;
-            }
-            else return false;
+            $query = $this->db->update('users', $info_updating, array('user_id'=>$user_id));
         }
-        else
-            return true;
+        if(isset($business_info_updating)) {
+            echo '<pre>', print_r($business_info_updating, true), '</pre>';
+            $query2 = $this->db->update('users_business', $business_info_updating, array('user_id' => $user_id));
+        }
+        return true;
     }
 
     public function get_email($user_id)

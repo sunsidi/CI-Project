@@ -47,6 +47,12 @@ position:absolute;
 }
 
 </style>
+<script>
+jQuery(document).ready(function () {
+    //hide a div after 3 seconds
+    setTimeout(function(){ jQuery("#sentMessage").hide(); }, 5000);
+});
+</script>
 <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false"
             type="text/javascript"></script> 
 </head>
@@ -58,6 +64,7 @@ position:absolute;
 
 <!--content
 ==============================================-->
+<div id='sentMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:20px;width: 500px; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>
 <div class="container" style="padding-bottom:50px;">
     <div class="row" style="margin-top:50px;">
 
@@ -307,7 +314,7 @@ position:absolute;
                      <!--Followers-->
                      	<div class="panel panel-default" style="background:#E9EEF2;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);border-radius:10px;">
                             <div class="panel-body">
-                                <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;">#</span> Followers</h3>                        
+                                <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;">#</span> Friends</h3>                        
                                     <div class="row">
                                         <?php if(isset($all_friends)){
                                             for($i = 0; $i < $number_of_friends && $i < 6; $i++) {?>
@@ -323,7 +330,7 @@ position:absolute;
                                                 </div>
                                         <?php }}
                                             else {?>
-                                                <div style="padding-left:25px;"> You have no followers. :(</div>
+                                                <div style="padding-left:25px;"> You have no friends. :(</div>
                                         <?php }?>
                                     </div>
                                     <a href="#" data-toggle="modal" data-target="#showmore"><button type="button" class="btn btn-lg" style="background:#478EBF; color:white; font-size:20px; margin-left:auto; margin-right:auto; display:block; padding:5px; border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">View All</button></a>
@@ -337,7 +344,7 @@ position:absolute;
                          <div class="modal-content" style="background:#C2D2DC;">
                               <div class="modal-header" style="background:#628da3; color:white;">
                                    <button type="button" class="close" data-dismiss="modal" style="color:white;"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                    <p style="text-align:center;padding:0;font-size:25px;"><i class="fa fa-users"></i> Followers List</p>
+                                    <p style="text-align:center;padding:0;font-size:25px;"><i class="fa fa-users"></i> Friends List</p>
                                </div>
                                <div class="modal-body" style="color:black; font-size:18px;">  
                                          <div style="text-align:left; height:360px; overflow-y:auto; display:inline-block; padding-top:10px;">   
@@ -403,7 +410,7 @@ position:absolute;
                                         <a href="#" data-toggle="modal" data-target="#basicModal"  class="btn btn-lg btn-block blue-button" style="border-radius:10px;"><i class="fa fa-envelope"></i> Message them</a>
                                     </div>
 									<div class="row" style="padding-top:10px;">
-                                        <a href="#" class="btn btn-lg btn-block blue-button" style="border-radius:10px;"><span class="glyphicon glyphicon-user"></span> Click to Follow</a>
+                                        <a href="<?php echo base_url().'main/friend_request/'.$other_id;?>" class="btn btn-lg btn-block blue-button" style="border-radius:10px;"><span class="glyphicon glyphicon-user"></span> Add to Friends List</a>
                                     </div>
 
 									<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">

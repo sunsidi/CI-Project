@@ -47,6 +47,12 @@ position:absolute;
 }
 
 </style>
+<script>
+jQuery(document).ready(function () {
+    //hide a div after 3 seconds
+    setTimeout(function(){ jQuery("#sentMessage").hide(); }, 5000);
+});
+</script>
 <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false"
             type="text/javascript"></script> 
 </head>
@@ -58,6 +64,7 @@ position:absolute;
 
 <!--content
 ==============================================-->
+<div id='sentMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:20px;width: 500px; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>
 <div class="container" style="padding-bottom:50px;">
     <div class="row" style="margin-top:50px;">
 
@@ -146,130 +153,261 @@ position:absolute;
 
 
 
- <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-      
-
-    
-    
-      <div class="modal-header" style="background-color: #628DA3; height: 80px;padding:20px;">
-      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <p style="font-size: 215%; color: white;text-align:center;">
-          <i class="fa fa-pencil-square-o" style="font-size:30px;"></i> Edit Profile</p>
-        
-      </div>
-      
-    <div class="modal-body" style="font-size:20px;background:#c2d2dc;">
+    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #628DA3; height: 80px;padding:20px;">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <p style="font-size: 215%; color: white;text-align:center;">
+                            <i class="fa fa-pencil-square-o" style="font-size:30px;"></i> Edit Profile
+                        </p>
+                </div>
+                <div class="modal-body" style="font-size:20px;background:#c2d2dc;">
                     <?php 
                         $requiredthings = array('onsubmit' => 'return check_image()');
                         echo form_open_multipart(base_url().'main/update_profile', $requiredthings);
                     ?>
-                      
-                    
-					
-                        <form class="form-horizontal" role="form">
-						<div class="form-group row">
-                        <label class="col-sm-2 control-label">Details</label>
-                         <div class="col-sm-10">
-                           <textarea class="form-control" rows="3"></textarea>
-                         </div>
-                        </div>
-						
-						<div class="form-group row">
-                         <label class="col-sm-2 control-label">Location</label>
-                         <div class="col-sm-10">
-                           <input name = 'location' type="text" class="form-control" placeholder="">
-                         </div>
-						</div>
-						
-						<div class="form-group row">
-                        <label class="col-sm-2 control-label">Phone</label>
-                        <div class="col-sm-10"> 
-                         <input name = 'phone' type="text" class="form-control" placeholder="">
-                         </div>
-						</div>
-						
-						<div class="form-group row">	
-                        <label class="col-sm-2 control-label">Links</label>
-                        <div class="col-sm-10">
-                        <input name = 'user_reference' type="text" class="form-control" placeholder="" >
-                        </div>
-						</div>
-						
-						<div class="form-group row">
-						<label class="col-sm-2 control-label">Facebook</label>
-                        <div class="col-sm-10">
-                        <input name = 'user_reference' type="text" class="form-control" placeholder="" >
-                        </div>
-						</div>
-						
-						<div class="form-group row">
+                    <div class="form-group row">
+                        <p>Type of Account</p>
+                        <label class="radio-inline" id="regular" data-content="regular" data-trigger="hover" data-placement="bottom">
+                                <input type="radio" name="account_change" id="inlineRadio1" value="0"> Regular
+                                </br>
+                                <img src="<?php echo $PATH_IMG?>blogscreenshot.png" style="width:150px;"/>
+                        </label>
+                        <label class="radio-inline" id="business" data-content="business" data-trigger="hover" data-placement="bottom">
+                                <input type="radio" name="account_change" id="inlineRadio2" value="1" checked> Business
+                                </br>
+                                <img src="<?php echo $PATH_IMG?>blogscreenshot.png" style="width:150px;"/>
+                        </label>
+                    </div>
+                    <div class="form-group row">
                         <label class="col-sm-2 control-label">Name</label>
                         <div class="col-sm-10">
-                        <input name = 'fullname' type="text" class="form-control" placeholder="">
+                            <input name="fullname" type="text" class="form-control" placeholder="">
                         </div>
-						</div>
-						
-						<div class="form-group row">
+                    </div>
+                    <div class="form-group row">
                         <label class="col-sm-2 control-label">Quote</label>
                         <div class="col-sm-10">
-                        <input name = 'tagline' type="text" class="form-control" placeholder=" (character limit 85)">
+                            <input name="tagline" type="text" class="form-control" placeholder=" (character limit 85)">
                         </div>
-						</div>
-						
-						<div class="form-group row">
-						<label class="col-sm-2 control-label">Price</label>
-                        <div class="col-sm-3">
-							<select class="form-control">
-								<option value="" selected="selected"></option>
-								<option value="$">$</option>
-								<option value="$$">$$</option>
-								<option value="$$$">$$$</option>
-								<option value="$$$$">$$$$</option>
-							</select>
-                        </div>
-						</div>
-                      
-      
-                    <div class="image-upload" style="text-align:center;">
-                   
-                        <label for="file-input-profile">
-                        
-                            <img src="<?php echo $PATH_IMG?>camera_icon.png"  style="min-width:100%; max-width:100%; margin-top:20px;">
-                        	
-                        </label>
-                            <label for ="file-upload">
-                         
-
-                            </label>
-
-
-                        
-                        <input id="file-input-profile" name = "userprofile" type = "file"/>
-                        <input id="file-upload" type = "submit" >
-                        <button type="submit" class="btn btn-lg" style="background:#478EBF; color:white; margin-top:20px;margin-left:10px;">Submit Changes</button>
-                        </form>
-                
                     </div>
-                
-                    <style>
-
-                    .image-upload > input
-                    {
-                        display: none;
-                    }
-                   </style>
-                
-                                        
+                    <div class="form-group row">
+                        <label class="col-sm-2 control-label">Details</label>
+                        <div class="col-sm-10">
+                            <textarea name="business-description" class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2">Address:</label>
+                        <div class="col-sm-10">
+                            <input name="business-address" class="form-control"></textarea>
+                        </div>	
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2">City:</label>
+                        <div class="col-sm-10">
+                            <input name="business-city" class="form-control"></textarea>
+                        </div>	
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2">State:</label>
+                        <div class="col-sm-2">
+                            <select id="state" name="business-state" class="form-control" style="padding:0;">
+              			<option value="" selected="selected"></option> 
+              			<option value="AK">AK</option>
+              			<option value="AL">AL</option>
+              			<option value="AR">AR</option>
+              			<option value="AZ">AZ</option>
+              			<option value="CA">CA</option>
+              			<option value="CO">CO</option>
+              			<option value="CT">CT</option>
+              			<option value="DC">DC</option>
+              			<option value="DE">DE</option>
+              			<option value="FL">FL</option>
+              			<option value="GA">GA</option>
+              			<option value="HI">HI</option>
+              			<option value="IA">IA</option>
+              			<option value="ID">ID</option>
+              			<option value="IL">IL</option>
+              			<option value="IN">IN</option>
+              			<option value="KS">KS</option>
+              			<option value="KY">KY</option>
+              			<option value="LA">LA</option>
+              			<option value="MA">MA</option>
+              			<option value="MD">MD</option>
+              			<option value="ME">ME</option>
+              			<option value="MI">MI</option>
+              			<option value="MN">MN</option>
+              			<option value="MO">MO</option>
+              			<option value="MS">MS</option>
+              			<option value="MT">MT</option>
+              			<option value="NC">NC</option>
+              			<option value="ND">ND</option>
+              			<option value="NE">NE</option>
+              			<option value="NH">NH</option>
+              			<option value="NJ">NJ</option>
+              			<option value="NM">NM</option>
+              			<option value="NV">NV</option>
+              			<option value="NY">NY</option>
+              			<option value="OH">OH</option>
+              			<option value="OK">OK</option>
+              			<option value="OR">OR</option>
+              			<option value="PA">PA</option>
+              			<option value="RI">RI</option>
+              			<option value="SC">SC</option>
+              			<option value="SD">SD</option>
+              			<option value="TN">TN</option>
+              			<option value="TX">TX</option>
+              			<option value="UT">UT</option>
+              			<option value="VA">VA</option>
+              			<option value="VT">VT</option>
+              			<option value="WA">WA</option>
+              			<option value="WI">WI</option>
+              			<option value="WV">WV</option>
+              			<option value="WY">WY</option>
+            		      </select> 
+                        </div>
+                        <label class="col-sm-1">Zip:</label>
+                        <div class="col-sm-2">
+                            <input name="business-zipcode" class="form-control" type="text" value = "" pattern="\d{5,5}(-\d{4,4})?">
+                        </div>	
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 control-label">Phone</label>
+                        <div class="col-sm-10"> 
+                            <input name="phone" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2">Website:</label>
+                        <div class="col-sm-10">
+                            <input name="business-website" class="form-control">
+                        </div>	
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2">Facebook:</label>
+                        <div class="col-sm-10">
+                            <input name="business-facebook" class="form-control">
+                        </div>	
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2">Twitter:</label>
+                        <div class="col-sm-10">
+                            <input name="business-twitter" class="form-control">
+                        </div>	
+                    </div>
+                    <div>
+                        <label class="col-sm-20"><b><u>Hours:</u></b></label>
+                    </div>
+                    <div id="days_base">
+                        <div class="form-group row">
+                            <label class="col-sm-2">Day:</label>
+                            <div class="col-sm-2">
+                                <select name="business-day[]" class="form-control">
+                                    <option value="" selected="selected"></option>
+                                    <option value="Mon">Mon</option>
+                                    <option value="Tues">Tues</option>
+                                    <option value="Wed">Wed</option>
+                                    <option value="Thurs">Thurs</option>
+                                    <option value="Fri">Fri</option>
+                                    <option value="Sat">Sat</option>
+                                    <option value="Sun">Sun</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2">
+                                <select name="business-start_time[]" class="form-control">
+                                    <option value="" selected="selected"></option>
+                                    <option value="01:00">1:00AM</option>
+                                    <option value="02:00">2:00AM</option>
+                                    <option value="03:00">3:00AM</option>
+                                    <option value="04:00">4:00AM</option>
+                                    <option value="05:00">5:00AM</option>
+                                    <option value="06:00">6:00AM</option>
+                                    <option value="07:00">7:00AM</option>
+                                    <option value="08:00">8:00AM</option>
+                                    <option value="09:00">9:00AM</option>
+                                    <option value="10:00">10:00AM</option>
+                                    <option value="11:00">11:00AM</option>
+                                    <option value="12:00">12:00PM</option>
+                                    <option value="13:00">1:00PM</option>
+                                    <option value="14:00">2:00PM</option>
+                                    <option value="15:00">3:00PM</option>
+                                    <option value="16:00">4:00PM</option>
+                                    <option value="17:00">5:00PM</option>
+                                    <option value="18:00">6:00PM</option>
+                                    <option value="19:00">7:00PM</option>
+                                    <option value="20:00">8:00PM</option>
+                                    <option value="21:00">9:00PM</option>
+                                    <option value="22:00">10:00PM</option>
+                                    <option value="23:00">11:00PM</option>
+                                    <option value="24:00">12:00AM</option>
+                                </select>
+                            </div>
+                            <label class="col-sm-1">TO</label>
+                            <div class="col-sm-2">
+                                <select name="business-end_time[]" class="form-control">
+                                    <option value="" selected="selected"></option>
+                                    <option value="01:00">1:00AM</option>
+                                    <option value="02:00">2:00AM</option>
+                                    <option value="03:00">3:00AM</option>
+                                    <option value="04:00">4:00AM</option>
+                                    <option value="05:00">5:00AM</option>
+                                    <option value="06:00">6:00AM</option>
+                                    <option value="07:00">7:00AM</option>
+                                    <option value="08:00">8:00AM</option>
+                                    <option value="09:00">9:00AM</option>
+                                    <option value="10:00">10:00AM</option>
+                                    <option value="11:00">11:00AM</option>
+                                    <option value="12:00">12:00PM</option>
+                                    <option value="13:00">1:00PM</option>
+                                    <option value="14:00">2:00PM</option>
+                                    <option value="15:00">3:00PM</option>
+                                    <option value="16:00">4:00PM</option>
+                                    <option value="17:00">5:00PM</option>
+                                    <option value="18:00">6:00PM</option>
+                                    <option value="19:00">7:00PM</option>
+                                    <option value="20:00">8:00PM</option>
+                                    <option value="21:00">9:00PM</option>
+                                    <option value="22:00">10:00PM</option>
+                                    <option value="23:00">11:00PM</option>
+                                    <option value="24:00">12:00AM</option>
+                                </select>
+                            </div>
+                        <a class="btn btn-default" id="days_end"onclick="add_more_days()"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2">Edit Profile Image:</label>
+                        <div class="image-upload">
+                            <label for="file-input-profile">
+                                <img src="<?php echo $PATH_IMG?>camera_icon.png"  style="min-width:100%; max-width:100%; margin-top:20px;">
+                            </label>
+                            <label for ="file-upload" hidden>
+                            </label>
+                            <input id="file-input-profile" name = "userprofile" type = "file" style="display:none"/>
+                            <input id="file-upload" type = "submit" hidden>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2">Add Photos to your Profile:</label>
+                        <div id="photos_upload" class="col-sm-5">
+                            <div class="image-upload">
+                                <label>Choose an Image:</label>
+                                <input name="profile_file_array[]" type="file" style="overflow:hidden;" />
+                            </div>
+                        </div>
+                        <div>
+                            <a class="btn btn-default" onclick="add_more_photos()"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-lg" style="background:#478EBF; color:white; margin-top:20px;margin-left:10px;">Submit Changes</button>
+                    </form>
                     
-    </div>
-    
- 
- 
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+     </div>
 
                                 </div>
                      	</div><!--END OF PROFILE-->
@@ -441,7 +579,7 @@ position:absolute;
                      <!--Followers-->
                      	<div class="panel panel-default" style="background:#E9EEF2;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);border-radius:10px;">
                             <div class="panel-body">
-                                <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;">#</span> Followers</h3>                        
+                                <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;"><?php echo $number_of_friends;?></span> Friends</h3>                        
                                     <div class="row">
                                         <?php if(isset($all_friends)){
                                             for($i = 0; $i < $number_of_friends && $i < 6; $i++) {?>
@@ -457,7 +595,7 @@ position:absolute;
                                                 </div>
                                         <?php }}
                                             else {?>
-                                                <div style="padding-left:25px;"> You have no followers. :(</div>
+                                                <div style="padding-left:25px;"> You have no friends. :(</div>
                                         <?php }?>
                                     </div>
                                     <a href="#" data-toggle="modal" data-target="#showmore"><button type="button" class="btn btn-lg" style="background:#478EBF; color:white; font-size:20px; margin-left:auto; margin-right:auto; display:block; padding:5px; border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">View All</button></a>
@@ -867,6 +1005,99 @@ document.getElementById("herdzz").innerHTML = " ";
           }
        });
     }
+    </script>
+    <script>
+        function add_more_days() {
+            $('#days_end').remove();
+            var content = '<div class="form-group row">'
+                        +'<label class="col-sm-2">Day:</label>'
+                        +'<div class="col-sm-2">'
+                            +'<select name="business-day[]" class="form-control">'
+                                +'<option value="" selected="selected"></option>'
+                                +'<option value="Mon">Mon</option>'
+                                +'<option value="Tues">Tues</option>'
+                                +'<option value="Wed">Wed</option>'
+                                +'<option value="Thurs">Thurs</option>'
+                                +'<option value="Fri">Fri</option>'
+                                +'<option value="Sat">Sat</option>'
+                                +'<option value="Sun">Sun</option>'
+                            +'</select>'	
+                        +'</div>'
+                        +'<div class="col-sm-2">'
+                            +'<select name="business-start_time[]" class="form-control">'
+                                +'<option value="" selected="selected"></option>'
+                                +'<option value="01:00">1:00AM</option>'
+                                +'<option value="02:00">2:00AM</option>'
+                                +'<option value="03:00">3:00AM</option>'
+                                +'<option value="04:00">4:00AM</option>'
+                                +'<option value="05:00">5:00AM</option>'
+                                +'<option value="06:00">6:00AM</option>'
+                                +'<option value="07:00">7:00AM</option>'
+                                +'<option value="08:00">8:00AM</option>'
+                                +'<option value="09:00">9:00AM</option>'
+                                +'<option value="10:00">10:00AM</option>'
+                                +'<option value="11:00">11:00AM</option>'
+                                +'<option value="12:00">12:00PM</option>' 
+                                +'<option value="13:00">1:00PM</option>'
+                                +'<option value="14:00">2:00PM</option>'
+                                +'<option value="15:00">3:00PM</option>'
+                                +'<option value="16:00">4:00PM</option>'
+                                +'<option value="17:00">5:00PM</option>'
+                                +'<option value="18:00">6:00PM</option>'
+                                +'<option value="19:00">7:00PM</option>'
+                                +'<option value="20:00">8:00PM</option>'
+                                +'<option value="21:00">9:00PM</option>'
+                                +'<option value="22:00">10:00PM</option>'
+                                +'<option value="23:00">11:00PM</option>'
+                                +'<option value="24:00">12:00AM</option>'
+                            +'</select>'
+                        +'</div>'
+                        +'<label class="col-sm-1">TO</label>'
+                        +'<div class="col-sm-2">'
+                            +'<select name="business-end_time[]" class="form-control">'
+                                +'<option value="" selected="selected"></option>'
+                                +'<option value="01:00">1:00AM</option>'
+                                +'<option value="02:00">2:00AM</option>'
+                                +'<option value="03:00">3:00AM</option>'
+                                +'<option value="04:00">4:00AM</option>'
+                                +'<option value="05:00">5:00AM</option>'
+                                +'<option value="06:00">6:00AM</option>'
+                                +'<option value="07:00">7:00AM</option>'
+                                +'<option value="08:00">8:00AM</option>'
+                                +'<option value="09:00">9:00AM</option>'
+                                +'<option value="10:00">10:00AM</option>'
+                                +'<option value="11:00">11:00AM</option>'
+                                +'<option value="12:00">12:00PM</option>' 
+                                +'<option value="13:00">1:00PM</option>'
+                                +'<option value="14:00">2:00PM</option>'
+                                +'<option value="15:00">3:00PM</option>'
+                                +'<option value="16:00">4:00PM</option>'
+                                +'<option value="17:00">5:00PM</option>'
+                                +'<option value="18:00">6:00PM</option>'
+                                +'<option value="19:00">7:00PM</option>'
+                                +'<option value="20:00">8:00PM</option>'
+                                +'<option value="21:00">9:00PM</option>'
+                                +'<option value="22:00">10:00PM</option>'
+                                +'<option value="23:00">11:00PM</option>'
+                                +'<option value="24:00">12:00AM</option>' 
+                            +'</select>'
+                        +'</div>'
+                        +'<a class="btn btn-default" id="days_end"onclick="add_more_days()"><i class="fa fa-plus"></i></a>';
+            $('#days_base').append(content);
+        }
+    </script>
+    <script>
+        function add_more_photos() {
+            var content =   '<div class="image-upload">'
+                                +'<label>Choose an Image:</label>'
+                                +'<input name = "profile_file_array[]" type = "file" style="overflow:hidden;"/>'
+                            +'</div>';
+            $('#photos_upload').append(content);
+        }
+    </script>
+    <script>
+	$('#regular').popover();
+	$('#business').popover();
     </script>
 </body>
 </html> 

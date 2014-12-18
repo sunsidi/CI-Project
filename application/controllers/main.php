@@ -409,58 +409,58 @@ public function index()
 		
 	}
 
-	public function update_profile(){
-		{
-			$this->load->model('model_users');
-			$this->load->library('session');
-		//if($this->session->userdata('is_logged_in') == 1){
-				$email = $this->session->userdata('email');
-                                $user_data = $this->model_users->get_info($email);
-		
-		$config['upload_path']='./uploads/profile/'.$user_data['user_id'].'/'; //change it to a user specific directory
-		//if user specific directory does not exist...then create one and then upload
-		$config['allowed_types']= 'gif|jpg|png|jpeg';
+	public function update_profile()
+        {
+            $this->load->model('model_users');
+            $this->load->library('session');
+            //if($this->session->userdata('is_logged_in') == 1){
+            $email = $this->session->userdata('email');
+            $user_data = $this->model_users->get_info($email);
 
-		$config['max_size']	= '10000';
-		//echo $image_name;
-		$this->load->library('upload',$config);
+            $config['upload_path']='./uploads/profile/'.$user_data['user_id'].'/'; //change it to a user specific directory
+            //if user specific directory does not exist...then create one and then upload
+            $config['allowed_types']= 'gif|jpg|png|jpeg';
 
-		$data = array(
-                        'email'=> $this->session->userdata('email'),
-                        
-                        'is_logged_in'=>1                          
-                    );
-	
-		$this->session->set_userdata($data);
+            $config['max_size']	= '10000';
+            //echo $image_name;
+            $this->load->library('upload',$config);
+
+            $data = array(
+                'email'=> $this->session->userdata('email'),
+
+                'is_logged_in'=>1                          
+            );
+
+            $this->session->set_userdata($data);
+            $this->model_users->edit_info($user_data['user_id']);
+            if (!$this->upload->do_upload("userprofile"))
+            {
+                $error = array('error' => $this->upload->display_errors());
+                $this->load->view('upload_form', $error);
+                if($this->session->userdata('image_key') == 'default_profile.jpg'){
+                    $image_name = 'default_profile.jpg'; 
+                }
+            }
+            else{
+                $upload_data = $this->upload->data();
+                //$data = array('upload_data' => $this->upload->data());
+                if($user_data['image_key'] != 'default_profile.jpg' && strpos($user_data['image_key'], 'facebook') === false) {
+                    unlink('./uploads/'.$user_data['image_key']);
+                }
+                $image_name = 'profile/'.$user_data['user_id'].'/'.$upload_data['file_name'];
+                $updateDB = $this->model_users->add_image($image_name);
+            }
+            //AFTER GET THE MULTIPLE PHOTOS THAT YOU WANT.
+            $config2['upload_path'] ='./uploads/profile/'.$user_data['user_id'].'/photos/';
+            $config2['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config2['max_size'] = '10000';
+            //echo $image_name;
+            $this->load->library('upload', $config2);
+            $this->upload->initialize($config2);
+            if (!$this->upload->do_multi_upload('profile_file_array')) {
                 
-                        $this->model_users->edit_info($email);
-			if (!$this->upload->do_upload("userprofile"))
-                        {
-                        	$error = array('error' => $this->upload->display_errors());
-
-				$this->load->view('upload_form', $error);
-                            	if($this->session->userdata('image_key') == 'default_profile.jpg'){
-                                	$image_name = 'default_profile.jpg'; 
-                            	}
-                            	redirect('showroom/profile');
-                            
-                        }
-			else{
-				$upload_data = $this->upload->data();
-				//$data = array('upload_data' => $this->upload->data());
-                                if($user_data['image_key'] != 'default_profile.jpg' && strpos($user_data['image_key'], 'facebook') === false) {
-                                    unlink('./uploads/'.$user_data['image_key']);
-                                }
-				$image_name = 'profile/'.$user_data['user_id'].'/'.$upload_data['file_name'];
-                                $updateDB = $this->model_users->add_image($image_name);
-                                if($updateDB){
-                                    redirect('showroom/profile');
-                                }
-                                else{
-                                    echo "could not update database";
-                                }	
-                        }
-	}
+            }
+            redirect('showroom/profile');
         }
 
     public function registration_validation()
@@ -497,15 +497,14 @@ public function index()
 				$message .= "<div>E-mail: <a href='support@wrevel.com'>support@wrevel.com</a></div>";
 				$this->email->message($message);
 				$fullname = $this->input->post('first_name-signup').' '.$this->input->post('last_name-signup');
-				    $data = array(
+				$data = array(
     					'username'=> $this->input->post('username-signup'),
     					'gender'=> $this->input->post('gender-signup'),
-                        'email'=> $this->input->post('email-signup'),
-                        'fullname'=>$fullname,
-                        'password'=> md5($this->input->post('password-signup')),
-                        'key' => $key
-                        //'icon' => null;
-                    );
+                                        'email'=> $this->input->post('email-signup'),
+                                        'fullname'=>$fullname,
+                                        'password'=> md5($this->input->post('password-signup')),
+                                        'key' => $key,
+                                        'business' => $this->input->post('business'));
 
 				if($this->model_users->add_temp_users($data))
 				{
