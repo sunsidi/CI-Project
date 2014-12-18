@@ -67,8 +67,8 @@ position:absolute;
             <div class="col-md-7 profile-name" style="background:#7874a2; height:65px;">
             <h2 class="profile-fullname">Name here</h2>
             </div>
-			<div class="col-md-1 col-sm-6" style="background:#5F929C;height:65px;"><h3 style="text-align:center;">$$$$</h3></div> 
-            <div class="col-md-3 col-sm-6" style="height:65px;background:#6ca5cc; border-top-right-radius:5px;text-align:center;text-shadow: 1px 1px 0.5px #000000;">
+			
+            <div class="col-md-4" style="height:65px;background:#6ca5cc; border-top-right-radius:5px;text-align:center;text-shadow: 1px 1px 0.5px #000000;">
 				<h3>
 					<i class="fa fa-star"></i>
 					<i class="fa fa-star"></i>
@@ -548,22 +548,22 @@ position:absolute;
 										<div role="tabpanel" class="tab-pane active" id="photos">
 												<div class="carousel-inner" role="listbox">
 													<div class="item active">
-														<img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo $PATH_IMG?>outdoor_party.png" alt="...">
+														<img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo $PATH_IMG?>outdoor_party.png" alt="...">
 										
 													</div>
 													<div class="item">
-														<img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo $PATH_IMG?>balt.jpg" alt="...">
+														<img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo $PATH_IMG?>balt.jpg" alt="...">
 											
 													</div>
     
 												</div>
 
 												<!-- Controls -->
-												<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+												<a class="left carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="prev">
 												<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 												<span class="sr-only">Previous</span>
 												</a>
-												<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+												<a class="right carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="next">
 												<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 												<span class="sr-only">Next</span>
 												</a>
@@ -575,8 +575,8 @@ position:absolute;
 									</div>	
                                     <div class="row" style="padding-top:10px;text-align:center;">
                                        
-                                        <a href="#"><button type="button" class="btn btn-lg" style="background:#1A75BF; color:white; font-size:20px;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);padding:5px;">Browse all</button></a>
-                                        <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);padding:8.5px;"><span class="glyphicon glyphicon-camera"></span></button></a>
+                                        <a href="#" class="btn btn-lg photos-button" style="font-size:18px;border-radius:10px;padding:5px 20px;">Browse all</button></a>
+                                        <a href="#" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:18px;border-radius:10px;padding:5px 8px;"><span class="glyphicon glyphicon-camera"></span></button></a>
                                     </div>
                                 </div>
                             </div><!--END OF PHOTOS AND VIDEOS-->

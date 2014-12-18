@@ -801,7 +801,7 @@ a.createwrevb:hover{
 	background:#1F638B;
 }
 
-a.edit:hover{
+a.edit:hover, a.photos-button:hover{
 	background:#70a2b8;
 }
 
@@ -1147,6 +1147,16 @@ height:100px;
 border-radius:150px;
 
 }
+
+a.photos-button{
+background:#1A75BF;
+color:white;
+}
+
+//a.photos-button:hover{
+//background:white;
+//color:#1A75BF;
+//}
 
 @media (max-width: 1025px){
   .eventlist{
