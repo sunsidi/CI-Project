@@ -143,8 +143,20 @@ position:absolute;
                         $requiredthings = array('onsubmit' => 'return check_image()');
                         echo form_open_multipart(base_url().'main/update_profile', $requiredthings);
                     ?>
-                      
-                       <div class="info-hidden row" style="text-align:center;">
+                    <div class="form-group row">
+                        <p>Type of Account</p>
+                        <label class="radio-inline" id="regular" data-content="regular" data-trigger="hover" data-placement="bottom">
+                                <input type="radio" name="account_change" id="inlineRadio1" value="0" checked> Regular
+                                </br>
+                                <img src="<?php echo $PATH_IMG?>blogscreenshot.png" style="width:150px;"/>
+                        </label>
+                        <label class="radio-inline" id="business" data-content="business" data-trigger="hover" data-placement="bottom">
+                                <input type="radio" name="account_change" id="inlineRadio2" value="1"> Business
+                                </br>
+                                <img src="<?php echo $PATH_IMG?>blogscreenshot.png" style="width:150px;"/>
+                        </label>
+                    </div>  
+                    <div class="info-hidden row" style="text-align:center;">
                     <label class="col-sm-2 control-label">Status</label>
 					<div class="col-sm-10">
                     <input type="radio" name="relationship" value="S"> Single

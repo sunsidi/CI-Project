@@ -137,7 +137,7 @@
       </div> <!-- end of notifications-->
       
        
-          <a href="<?php echo base_url()."main/mywrevs"?>" class="brand" style="margin:0 auto; float:none; position:absolute; left:48%; margin-left:-50px; display:block; "><img src="<?php echo $PATH_IMG?>wrevel_logo.png"
+          <a href="<?php echo base_url();?>" class="brand" style="margin:0 auto; float:none; position:absolute; left:48%; margin-left:-50px; display:block; "><img src="<?php echo $PATH_IMG?>wrevel_logo.png"
                                                 style="width:150px; margin-top:10px;display:block;" /></a>
         
         

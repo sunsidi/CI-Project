@@ -149,12 +149,6 @@ jQuery(document).ready(function () {
 							<?php  echo "<style>
 							p.".$chats_info[$i]["currentUser"]."{margin-left:60%; }
 							</style>"; ?>
-<<<<<<< HEAD
-							<!-- bye bye-->
-=======
-							<!-- hello there-->
->>>>>>> tony_dev
-							
 								<div class="containe">
 									<div class="heade" onclick="change_chat('<?php echo $chats_info[$i]['chatLocation'];?>','<?php echo $chats_info[$i]['otherUser'];?>');highlightLink(this);">
 										<table class="table">

@@ -158,12 +158,12 @@
 					<div class="form-group row">
 					<p>Type of Account</p>
 					<label class="radio-inline" id="regular" data-content="regular" data-trigger="hover" data-placement="bottom">
-						<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Regular
+						<input type="radio" name="business" id="inlineRadio1" value="0" checked> Regular
 						</br>
 						<img src="<?php echo $PATH_IMG?>blogscreenshot.png" style="width:150px;"/>
 					</label>
 					<label class="radio-inline" id="business" data-content="business" data-trigger="hover" data-placement="bottom">
-						<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Business
+						<input type="radio" name="business" id="inlineRadio2" value="1"> Business
 						</br>
 						<img src="<?php echo $PATH_IMG?>blogscreenshot.png" style="width:150px;"/>
 					</label>
