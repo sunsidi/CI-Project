@@ -52,7 +52,7 @@ position:absolute;
 	width: 0; 
 	height: 0; 
 	border-top: 0px solid transparent;
-	border-right: 26px solid #D2D2DA;
+	border-right: 26px solid #e4e5e6;;
 	
 	border-bottom: 18px solid transparent;
         //margin-left:108px;
@@ -106,12 +106,12 @@ jQuery(document).ready(function () {
 			<div class="col-md-11" style="position:relative;height:125px;background-image:url(<?php echo $PATH_IMG?>balt.jpg);background-size:100%;">
 					
 					<h3 style="margin-top:80px;"><p style="margin-left:15%;font-family:GillSans;text-shadow:1px 1px 3px #000000;"><?php echo $fullname;?> <span class="pull-right" style="font-size:18px;">
+					<!--<i class="fa fa-star"></i>
 					<i class="fa fa-star"></i>
 					<i class="fa fa-star"></i>
 					<i class="fa fa-star"></i>
 					<i class="fa fa-star"></i>
-					<i class="fa fa-star"></i>
-					<span style="text-shadow:none;">(#)</span></span></p></h3>
+					<span style="text-shadow:none;">(#)</span>--></span></p></h3>
 					
 			</div>
 			</div>
@@ -119,8 +119,8 @@ jQuery(document).ready(function () {
     </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">       
-                <div class="panel-body" style="padding:0;background:#D2D2DA;">
+            <div class="panel panel-default" style="border:none;">       
+                <div class="panel-body" style="padding:0;background:#e4e5e6;">
                      
                      <div class="col-md-6">
                             <div class="row" style="width:100%;">
@@ -178,7 +178,7 @@ jQuery(document).ready(function () {
 
 
     <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog" style="width:45%;">
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #628DA3; height: 80px;padding:20px;">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -186,22 +186,22 @@ jQuery(document).ready(function () {
                             <i class="fa fa-pencil-square-o" style="font-size:30px;"></i> Edit Profile
                         </p>
                 </div>
-                <div class="modal-body" style="font-size:20px;background:#c2d2dc;">
+                <div class="modal-body" style="font-size:15px;background:#c2d2dc;">
                     <?php 
                         $requiredthings = array('onsubmit' => 'return check_image()');
                         echo form_open_multipart(base_url().'main/update_profile', $requiredthings);
                     ?>
                     <div class="form-group row" style="text-align:center;">
                         <p><strong>Type of Account</strong></p>
-                        <label class="radio-inline" id="regular" data-content="regular" data-trigger="hover" data-placement="bottom">
-                                <input type="radio" name="account_change" id="inlineRadio1" value="0"> Regular
+                        <label class="radio-inline" style="padding-right:15px;" id="regular" data-content="Recommended free account for users that want to attend events,connect with friends,and create events quickly without much setup. " data-trigger="hover" data-placement="bottom">
+                                <input type="radio" name="account_change" id="inlineRadio1" value="0"> Personal
                                 </br>
-                                <img src="<?php echo $PATH_IMG?>blogscreenshot.png" style="width:150px;"/>
+                                <img src="<?php echo $PATH_IMG?>personal_profile_icon.png" style="width:100px;margin-top:10px;"/>
                         </label>
-                        <label class="radio-inline" id="business" data-content="business" data-trigger="hover" data-placement="bottom">
-                                <input type="radio" name="account_change" id="inlineRadio2" value="1" checked> Business
+                        <label class="radio-inline" style="margin-left:10px;" id="business" data-content="Recommended free account, ideal for users, organizations and coordinators.  Build a professional portfolio and customize your profile to cater all of your event hosting needs." data-trigger="hover" data-placement="bottom">
+                                <input type="radio" name="account_change" id="inlineRadio2" value="1" checked> Professional
                                 </br>
-                                <img src="<?php echo $PATH_IMG?>blogscreenshot.png" style="width:150px;"/>
+                                <img src="<?php echo $PATH_IMG?>business_profile_icon.png" style="width:100px;margin-top:10px;"/>
                         </label>
                     </div>
                     <div class="form-group row">
@@ -217,7 +217,7 @@ jQuery(document).ready(function () {
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-2 control-label">Details</label>
+                        <label class="col-sm-2 control-label">About Us</label>
                         <div class="col-sm-10">
                             <textarea name="business-description" class="form-control" rows="3"></textarea>
                         </div>
@@ -230,12 +230,10 @@ jQuery(document).ready(function () {
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2">City:</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-3">
                             <input name="business-city" class="form-control"></textarea>
                         </div>	
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2">State:</label>
+						<label class="col-sm-2">State:</label>
                         <div class="col-sm-2">
                             <select id="state" name="business-state" class="form-control" style="padding:0;">
               			<option value="" selected="selected"></option> 
@@ -297,30 +295,29 @@ jQuery(document).ready(function () {
                             <input name="business-zipcode" class="form-control" type="text" value = "" pattern="\d{5,5}(-\d{4,4})?">
                         </div>	
                     </div>
+                    
                     <div class="form-group row">
                         <label class="col-sm-2 control-label">Phone</label>
-                        <div class="col-sm-10"> 
+                        <div class="col-sm-4"> 
                             <input name="phone" type="text" class="form-control" placeholder="">
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2">Website:</label>
-                        <div class="col-sm-10">
+						<label class="col-sm-2">Website:</label>
+                        <div class="col-sm-4">
                             <input name="business-website" class="form-control">
                         </div>	
                     </div>
+                    
                     <div class="form-group row">
                         <label class="col-sm-2">Facebook:</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-4">
                             <input name="business-facebook" class="form-control">
                         </div>	
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2">Twitter:</label>
-                        <div class="col-sm-10">
+						<label class="col-sm-2">Twitter:</label>
+                        <div class="col-sm-4">
                             <input name="business-twitter" class="form-control">
                         </div>	
                     </div>
+                  
                     <div>
                         <label class="col-sm-20"><b><u>Hours:</u></b></label>
                     </div>
@@ -402,7 +399,7 @@ jQuery(document).ready(function () {
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-2">Edit Profile Image:</label>
+                        <label class="col-sm-5">Edit Profile Image:</label>
                         <div class="image-upload">
                             <label for="file-input-profile">
                                 <img src="<?php echo $PATH_IMG?>camera_icon.png"  style="min-width:100%; max-width:100%; margin-top:20px;">
@@ -414,7 +411,7 @@ jQuery(document).ready(function () {
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-2">Add Photos to your Profile:</label>
+                        <label class="col-sm-5">Add Photos to your Profile:</label>
                         <div id="photos_upload" class="col-sm-5">
                             <div class="image-upload">
                                 <label>Choose an Image:</label>
@@ -425,7 +422,9 @@ jQuery(document).ready(function () {
                             <a class="btn btn-default" onclick="add_more_photos()"><i class="fa fa-plus"></i></a>
                         </div>
                     </div>
+					<div style="text-align:center;">
                     <button type="submit" class="btn btn-lg" style="background:#478EBF; color:white; margin-top:20px;margin-left:10px;">Submit Changes</button>
+					</div>
                     </form>
                     
                 </div>
@@ -693,14 +692,14 @@ jQuery(document).ready(function () {
 					 
                      </div> <!--end of column-->
                      
-                     <div class="col-md-6" style="background:#C8D8E5;">
+                     <div class="col-md-6" style="background:#d5dade;">
                      <div class="row">
                      <!--MESSAGING-->
                       <div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
                                 <div class="panel-body">
                                     <!--Check Inbox-->
                                     <div class="row inbox-btn" style="padding-top:10px;">                                     
-                                        <a href="" class="btn btn-lg btn-block blue-button" style="border-radius:10px;border:2px solid #478EBF;width:55%;"><span class="glyphicon glyphicon-user"></span> Check Inbox</a>
+                                        <a href="" class="btn btn-lg btn-block blue-button bp-button" style="border-radius:10px;width:55%;"><span class="glyphicon glyphicon-user"></span> Check Inbox</a>
                                     </div>
 
                                 
@@ -719,7 +718,7 @@ jQuery(document).ready(function () {
                                         <li class="active"><a href="#photos" aria-controls="photos" role="tab" data-toggle="tab">Photos</a></li>
                                         <li><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Videos</a></li>
                                     </ul>-->
-                                    <h3 style="text-align:center;">Photos</h3>
+                                    <h3 style="text-align:center;"> <img src="<?php echo $PATH_IMG?>photo_icon.png"/> &nbsp;Photos</h3>
                                     <div class="tab-content">
                                                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
                                             <div role="tabpanel" class="tab-pane active" id="photos">
@@ -758,7 +757,7 @@ jQuery(document).ready(function () {
                                     <div class="row" style="padding-top:10px;text-align:center;">
                                        
                                         <!--<a href="#" class="btn btn-lg photos-button" style="font-size:18px;border-radius:10px;padding:5px 20px;">Browse all</button></a>
-                                        <a href="#" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:18px;border-radius:10px;padding:5px 8px;"><span class="glyphicon glyphicon-camera"></span></button></a>
+                                        <a href="#" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:18px;border-radius:10px;padding:5px 8px;"><span class="glyphicon glyphicon-camera"></span></button></a>-->
                                     </div>
                                 </div>
                             </div><!--END OF PHOTOS AND VIDEOS-->
@@ -777,7 +776,9 @@ jQuery(document).ready(function () {
 							</div>
 					 </div>
 					 
-					 <div class="row" style="margin-top:15px;">
+					 <!--location-->
+					 <div class="row" style="margin-top:15px;padding-left:10%;padding-right:10%;">
+						<div style="background:rgba(255,255,255,0.3);padding:10px; border-radius:10px;">
 						<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>map_icon.png"/> &nbsp; Where is it?</h4>
 							<div style="text-align:center;font-size:18px;padding:20px;line-height:60%;">
 								<p><?php echo $profile['address'].', '.$profile['city']. ', '.$profile['state']. ' '.$profile['zipcode'];?></p>
@@ -791,15 +792,16 @@ jQuery(document).ready(function () {
                                                         </div><!-- END OF GOOGLE MAPS -->
 							
 							<div style="text-align:center;">
-							<a href="" class="btn viewmorewrevs" style="font-size:18px;color:white; border-radius:8px;">Get directions</a>
+							<a class="btn viewmorewrevs" style="font-size:18px;color:white; border-radius:8px;">Get directions</a>
 							</div>
+						</div>	
 					 </div>
 					 
 					     <!--Chatbox-->
                          <div class="row" style="padding-top:15px;">
-                                        <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;">#</span> Comments</h3>
+                                        <h3 style="text-align:center;"> Chatbox</h3>
                                         
-                                        <div id = "comment-block" style="overflow:auto; background:#8aa8c0; color:white; border-radius:10px;  width:95%; margin-left: 15px;height: 300px; padding: 10px;">
+                                        <div id = "comment-block" style="overflow:auto; background:rgba(255,255,255,0.3); color:#414042; border-radius:10px;  width:95%; margin-left: 15px;height: 300px; padding: 10px;">
                         </div>
                     <script>
                         $(document).ready(
@@ -813,6 +815,7 @@ jQuery(document).ready(function () {
                         <?php echo form_open('showroom/chatbox_comment/'.$username); ?>
                        
                                     </div>
+									<div style="padding-bottom:15px;">
                                     <div class="row left-inner-addon post-input" style="padding-top:10px;float:left;">
                                         <!--<span class="glyphicon glyphicon-comment"></span>-->
                                         <!--<input type="text" class="form-control" placeholder="write something">-->
@@ -824,7 +827,7 @@ jQuery(document).ready(function () {
                                         <a href="#"><button type="submit" class="btn btn-lg post-comment-btn" style="background:#478EBF; color:white; padding:5px; border-radius:10px;">Post Comment</button></a>
                                         <?php echo form_close() ?>
                                        <!-- <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;"><span class="glyphicon glyphicon-camera"></span></button></a>-->
-						
+									</div>
 						<!--Tags NOT YET!
 						<div class="row" style="padding:20px;">
 							<h4><i class="fa fa-tag"></i> &nbsp; Tags</h4>

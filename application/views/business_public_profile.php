@@ -52,7 +52,7 @@ position:absolute;
 	width: 0; 
 	height: 0; 
 	border-top: 0px solid transparent;
-	border-right: 26px solid #D2D2DA;
+	border-right: 26px solid #e4e5e6;;
 	
 	border-bottom: 18px solid transparent;
         //margin-left:108px;
@@ -104,12 +104,12 @@ jQuery(document).ready(function () {
 			<div class="col-md-11" style="position:relative;height:125px;background-image:url(<?php echo $PATH_IMG?>balt.jpg);background-size:100%;">
 					
 					<h3 style="margin-top:80px;"><p style="margin-left:15%;font-family:GillSans;text-shadow:1px 1px 3px #000000;"><?php echo $other_fullname;?> <span class="pull-right" style="font-size:18px;">
+					<!--<i class="fa fa-star"></i>
 					<i class="fa fa-star"></i>
 					<i class="fa fa-star"></i>
 					<i class="fa fa-star"></i>
 					<i class="fa fa-star"></i>
-					<i class="fa fa-star"></i>
-					<span style="text-shadow:none;">(#)</span></span></p></h3>
+					<span style="text-shadow:none;">(#)</span>--></span></p></h3>
 					
 			</div>
 			</div>
@@ -117,8 +117,8 @@ jQuery(document).ready(function () {
     </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">       
-                <div class="panel-body" style="padding:0;background:#D2D2DA;">
+            <div class="panel panel-default" style="border:none;">       
+                <div class="panel-body" style="padding:0;background:#e4e5e6;">
                      
                      <div class="col-md-6" >
                             <div class="row" style="width:100%;">
@@ -222,108 +222,8 @@ jQuery(document).ready(function () {
                                     <!--Shows all users attending -->
                                     <!--<button type="button" class="btn" style="background:#1C74BB; color:white; font-size:20px;border-radius:8px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">View More</button>-->
                                 </div>
-                                </div>
-                                <div class="row" style="text-align:center; padding:10px;">
-                                        <a href="#"  data-toggle="modal" data-target="#create" class="btn btn-lg createwrev" style=" font-size:20px; padding:5px;border-radius:10px;">Create a Wrev</a>
-                                        <br>
-  <div class="modal" id="myModal2" style="padding-right: 200px;">     
-  <div class="modal-dialog">
-      <div class="modal-content" style="width: 800px; height: 1000px; border-radius: 10px;">
-
-      
-    <div class="panel" style="width: 800px; height: 1000px; background-color: #C2D2DC; border-radius: 10px;">
+                                
     
-    <div class="panel-body">
-     <p style="font-size: 230%; color: white;text-align: center;">
-    <b>Set up tickets</b>
-      </p>
-     
-      <p style="font-size: 150%; color: white;text-align: justify;">
-     This is what your ticket will look like
-      </p>
-      
-      <div class="panel" style="width: 700px; border-color: #006eaa; border-radius: 10px; margin-left:40px;">
-    
-    <div class="panel-heading" style="background-color: #3b91c6; height: 70px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-        <p style="font-size: 50px;text-align: left; color: white; margin-top: -10px;">
-      Hot Rabbit
-        
-        <img src="<?php echo $PATH_IMG?>wrevel_logo.png"style="width:200px;z-index:1; float: right; margin-top: 10px;"/>
-        </p>
-    </div>
-    
-        <div class="panel-body">
-      <div class="col-md-8 col-sm-8 col-xs-8">
-     
-      <p style="font-size: 150%;text-align: justify;">
-     Name &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; name
-      </p>
-             <p style="font-size: 150%;text-align: justify;">
-     Ticket Type &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; type
-      </p>
-        <p style="font-size: 150%;text-align: justify;">
-     Wrevenue &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;  wrevenue
-      </p>
-         <p style="font-size: 150%;text-align: justify;">
-     Event Title &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; title
-      </p>
-          <p style="font-size: 150%;text-align: justify;">
-    Price &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;  price
-      </p>
-     <p style="font-size: 150%;text-align: justify;">
-     Description  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-     description1<br>
-     &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;2<br>
-     &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;3<br>
-     &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;4<br>
-     &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;5<br>
-     </p>
-     <p style="font-size: 150%;text-align: justify;">
-     Date &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; date
-      </p>
-     <p style="font-size: 150%;text-align: justify;">
-     Time &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; time
-      </p>
-     <p style="font-size: 150%;text-align: justify;">
-    Location  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; location
-      </p>
-     
-    <hr style="width:1px; height:480px; background-color: grey; margin-top: -480px; margin-left: 400px;"/>
-      </div>
-      
-      <div class="col-md-4 col-sm-4 col-xs-4">
-          <img src="<?php echo $PATH_IMG?>2d.png"style="width:200px;z-index:1; margin-top: 25px;"/>
-          <p style="font-size:7px; margin-top: 100px;">
-        <b>Disclaimer</b><br>
-        Please bring a valid photo ID to the event with this ticket.<br>
-        Your name on the ticket must match with your photo ID.<br>
-        To prevent confusion, we only allow one ticket per person<br>
-        and one ticket per group in case of group purchase.<br>
-        All sales are final. No refund or exchange can be issued.<br>
-        Valid only for the event specified on this ticket<br>
-        <br>
-        If you have any questions or concerns, feel free to email.<br>
-        customer support at admin@wrevel.com
-          </p>
-      </div>
-        
-    </div>
-      </div>
-
-                    <form style="text-align: center; font-size: 20px; color: white;">
-                <input type="radio" name="gender" value="male"> approve
-          <input type="radio" name="gender" value="female"> disapprove
-              </form>
-      
-      <button type="submit" class="btn btn-lg" style="color: #006eaa; background-color: white; float: right;">Submit</button>
-
-    </div>
-    </div>
- 
-
-      </div>
-    </div>
-</div>
   
                                     </div>
                                 </div>
@@ -334,12 +234,12 @@ jQuery(document).ready(function () {
                      <!--Followers-->
                      	<div class="panel panel-default" style="background:none;border:none;box-shadow:none;">
                             <div class="panel-body">
-                                <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;">#</span> Friends</h3>                        
+                                <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;"><?php echo $number_of_friends;?></span> Friends</h3>                        
                                     <div style="padding:0 15%;">
 									<div class="row" style="background:rgba(255,255,255,0.3);border-radius:10px;">
                                         <?php if(isset($all_friends)){
                                             for($i = 0; $i < $number_of_friends && $i < 6; $i++) {?>
-                                                <div class="col-md-4 col-sm-3 col-xs-6">
+                                                <div class="col-md-4 col-sm-3 col-xs-6" style="padding:15px;">
                                                     	<a href="<?php echo base_url().'public_profile/user/'.$all_friends[$i]['friend_user_id']?>">
                                                             <img src="<?php echo base_url().'uploads/'.$all_friends[$i]['friend_picture']?>" style="border-radius:150%; width:80px; height:80px;"/>
                                                                 <div class="caption" style="text-align:center;">
@@ -422,17 +322,17 @@ jQuery(document).ready(function () {
 					 
                      </div> <!--end of column-->
                      
-                     <div class="col-md-6" style="background:#C8D8E5;">
+                     <div class="col-md-6" style="background:#d5dade;">
                      <div class="row">
                      <!--MESSAGING-->
                       <div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
                                 <div class="panel-body">
                                     <!--Check Inbox-->
                                    <div class="row">
-                                        <a href="#" data-toggle="modal" data-target="#basicModal"  class="btn btn-lg btn-block blue-button" style="border-radius:10px;width:60%;"><i class="fa fa-envelope"></i> Message them</a>
+                                        <a href="#" data-toggle="modal" data-target="#basicModal"  class="btn btn-lg btn-block blue-button bp-button" style="border-radius:10px;width:60%;"><i class="fa fa-envelope"></i> Send Message</a>
                                     </div>
 									<div class="row" style="padding-top:10px;">
-                                        <a href="<?php echo base_url().'main/friend_request/'.$other_id;?>" class="btn btn-lg btn-block blue-button" style="border-radius:10px;width:60%;"><span class="glyphicon glyphicon-user"></span> Click to Follow</a>
+                                        <a href="<?php echo base_url().'main/friend_request/'.$other_id;?>" class="btn btn-lg btn-block blue-button bp-button" style="border-radius:10px;width:60%;"><span class="glyphicon glyphicon-user"></span> Click to Follow</a>
                                     </div>
 
 									<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -515,9 +415,9 @@ jQuery(document).ready(function () {
                      
                     <div class="row">
                      <!--PHOTOS AND VIDEOS-->
-                    <div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
-                        <div class="panel-body">
-                            <h3 style="text-align:center;">Photos</h3>
+                    <div class="panel panel-default" style="background:none; box-shadow:none; border:none;padding:0 7%;">
+                        <div class="panel-body" style="background:rgba(255,255,255,0.3);border-radius:10px;">
+                            <h3 style="text-align:center;"><img src="<?php echo $PATH_IMG?>photo_icon.png"/> &nbsp;Photos</h3>
                                 <div class="tab-content">
                                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
                                         <div role="tabpanel" class="tab-pane active" id="photos">
@@ -527,22 +427,22 @@ jQuery(document).ready(function () {
                                                         foreach($profile['photos'] as $picture){
                                                             if($first) {?>
                                                                 <div class="item active">
-                                                                    <img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" alt="...">
+                                                                    <a href="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" rel="lightbox"><img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" alt="..."></a>
                                                                 </div>
                                                             <?php $first = false;
                                                             } else {?>
                                                             <div class="item">
-                                                                <img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" alt="...">
+                                                                <a href="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" rel="lightbox"><img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" alt="..."></a>
                                                             </div>
 
                                                 <?php }}}?>                                                                    
                                             </div>
                                             <!-- Controls -->
-                                            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                            <a class="left carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="prev">
                                                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                                                 <span class="sr-only">Previous</span>
                                             </a>
-                                            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                            <a class="right carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="next">
                                                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                                                 <span class="sr-only">Next</span>
                                             </a>
@@ -550,15 +450,16 @@ jQuery(document).ready(function () {
                                     </div>
                                 </div>	
                                 <div class="row" style="padding-top:10px;text-align:center;">
-                                    <a href="#" class="btn btn-lg photos-button" style="font-size:20px;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);padding:5px 20px;">Browse all</button></a>
-                                    <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);padding:5px 8px;"><span class="glyphicon glyphicon-camera"></span></button></a>
+                                    <!--<a href="#" class="btn btn-lg photos-button" style="font-size:20px;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);padding:5px 20px;">Browse all</button></a>
+                                    <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);padding:5px 8px;"><span class="glyphicon glyphicon-camera"></span></button></a>-->
                                 </div>
                         </div>
                             </div><!--END OF PHOTOS AND VIDEOS-->
                      </div>
 					 
-					 <div class="row">
-							<div>
+					 <!--Hours-->
+					 <div class="row" style="padding:10px 15%;">
+							<div style="background:rgba(255,255,255,0.3);border-radius:10px;padding:13px 0;">
 							<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>clock_icon.png"/> &nbsp; Hours</h4>
 								<div style="padding:0% 17%;font-size:18px;line-height:70%;">
                                                                     <?php for($i = 0; $i < 7; $i++) {
@@ -569,7 +470,8 @@ jQuery(document).ready(function () {
 							</div>
 					 </div>
 					 
-					 <div class="row" style="margin-top:15px;">
+					 <div class="row" style="margin-top:15px;padding-left:10%;padding-right:10%;">
+					 <div style="background:rgba(255,255,255,0.3);padding:10px; border-radius:10px;">
 						<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>map_icon.png"/> &nbsp; Where is it?</h4>
 							<div style="text-align:center;font-size:18px;padding:20px;line-height:60%;">
 								<p><?php echo $other_profile['address'].', '.$other_profile['city']. ', '.$other_profile['state']. ' '.$other_profile['zipcode'];?></p>
@@ -585,13 +487,15 @@ jQuery(document).ready(function () {
 							<div style="text-align:center;">
 							<a href="" class="btn viewmorewrevs" style="font-size:18px;color:white; border-radius:8px;">Get directions</a>
 							</div>
+						</div>	
 					 </div>
 					 
 					 <!--Chatbox-->
+					 
                                     <div class="row" style="padding-top:15px;">
-                                        <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;">#</span> Comments</h3>
+                                        <h3 style="text-align:center;">Chatbox</h3>
                                         
-                                        <div id = "comment-block" style="overflow:auto; background:#8aa8c0; color:white; border-radius:10px;  width:95%; margin-left: 15px;height: 300px; padding: 10px;">
+                                        <div id = "comment-block" style="overflow:auto; background:rgba(255,255,255,0.3); color:#414042; border-radius:10px;  width:95%; margin-left: 15px;height: 300px; padding: 10px;">
                         </div>
                     <script>
                         $(document).ready(
@@ -648,6 +552,7 @@ jQuery(document).ready(function () {
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.js"></script>
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.min.js"></script>  
     <script src="<?php echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/lightbox.js"></script>
     <script>
 	$('#reputationInfo').popover();
 	</script>

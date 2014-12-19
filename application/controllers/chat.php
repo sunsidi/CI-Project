@@ -267,15 +267,7 @@ class Chat extends CI_Controller {
             $today = date("F j, Y, g:i a"); 
             //add commentors name instead of "Comment:"
             if($comment){
-            $file_chat = "<div style='position:relative'><div style='position:absolute;z-index:100;width: 0; height: 0; border-left: 10px solid transparent;border-right: 10px solid transparent;
-	border-bottom: 10px solid #D9E0E6; margin-top:61px;margin-left:10px;'></div><div style='    position : absolute;
-    width    : 0;
-    height   : 0;
-    z-index  : 99;
-    
-    border-left   : 12px solid transparent;
-    border-right  : 12px solid transparent;
-    border-bottom : 12px solid #414042;margin-top:59px;margin-left:8px;'></div></div><p class='$currentUser'style='clear:both'> </br>&nbsp;&nbsp;&nbsp;&nbsp;<img src='$my_image' style='width:40px; height:40px;border-radius: 150px;'/>&nbsp;&nbsp;$fullName:
+            $file_chat = "<p class='$currentUser' style='clear:both'> </br>&nbsp;&nbsp;&nbsp;&nbsp;<img src='$my_image' style='width:40px; height:40px;border-radius: 150px;'/>&nbsp;&nbsp;$fullName:
 	    <p style='border:1px solid #414042;border-radius:10px;padding:10px 20px;'><span class='pull-right'>$today</span></br>$comment</p></p><br>"; 
             }
             else{$file_chat = "";}
