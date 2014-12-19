@@ -9,6 +9,7 @@ class Model_wrevenues extends CI_Model{
     }
     //Gets all wrevenues in the database.
     public function get_wrevenues() {
+        $this->db->order_by('id', 'desc');
         $query = $this->db->get('wrevenues');
         return $query->result_array();
     }

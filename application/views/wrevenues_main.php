@@ -23,7 +23,7 @@
 ==============================================-->
 <div class="container" style="width:90%;padding-bottom:50px;">
     <div class="row" style="margin-top:50px;">
-        <h1 class="title" style="text-align:center;font-family:GillSans;color:white;"><img class="w_logo" src="<?php echo $PATH_IMG?>w1.png"/>Wrevenues</h1>
+        <h1 class="title" style="text-align:center;font-family:GillSans;color:white;"><a href="<?php echo base_url().'wrevenues/wrevenues_main';?>" style="color:white;"><img class="w_logo" src="<?php echo $PATH_IMG?>w1.png"/>Wrevenues</a></h1>
         <?php echo form_open('wrevenues/search_wrevenues');?>
         <div class="form-group row" style="padding:20px;">
             <div class="left-inner-addon  col-md-3 col-sm-3 col-xs-6 col-md-offset-3 col-sm-offset-1" style="padding:0;">
@@ -103,9 +103,22 @@
 
                 <div class="row">
                     <!--one wrevenue-->
-                    <?php if(isset($wrevenues)) { for($i=0 ; $i < count($wrevenues); $i++) {?>
+                    <?php
+                    $size = count($wrevenues);
+                    $i = 0;
+                    $group_page = 1;
+                    $size_left = $size;
+                    if (isset($size)){
+                      while($size_left > 0){
+                          for($j=0; $j < 12 && $size_left != 0; $j++) {
+                              $size_left--;
+                              if($group_page == 1) {
+                    ?>
                     <!--THIS WILL CREATE AS MANY WREVENUES THAT EXISTS-->
-                    <div class="col-md-3 col-sm-6" style="padding:0 9px;">
+                    <div class="<?php echo 'wrevenue_group'.$group_page?> col-md-3 col-sm-6" style="padding:0 9px;">
+                    <?php }else {?>
+                    <div class="<?php echo 'wrevenue_group'.$group_page?> col-md-3 col-sm-6" style="padding:0 9px;" hidden>
+                    <?php }?>
                         <div class="panel" style="padding:6%;padding-bottom:9%;border-radius:10px;background:linear-gradient(rgba(70, 107, 121, 0.45), rgba(70, 107, 121, 0.45)),url(<?php echo base_url().'uploads/'.$wrevenues[$i]['image_key'];?>); background-size:100% 280px;text-align:center;font-family:GillSans;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);height:280px;">
                             <div class="panel-body" style="padding:0;text-shadow: 1px 1px 3px #000000;">
                                 <div class="row">
@@ -131,9 +144,9 @@
                                     </div>
                                     <div class="col-sm-12">
                                         <?php $days_open = "";
-                                            for($j = 0; $j < 7; $j++) {
-                                                if($wrevenues[$i]['day'][$j] != false) {
-                                                    $days_open .= ucfirst($wrevenues[$i]['day'][$j]) . ', ';
+                                            for($k = 0; $k < 7; $k++) {
+                                                if($wrevenues[$i]['day'][$k] != false) {
+                                                    $days_open .= ucfirst($wrevenues[$i]['day'][$k]) . ', ';
                                                 }
                                             }
                                             $days_open = substr($days_open,0,strlen($days_open)-2);
@@ -161,11 +174,22 @@
                         </div>
                     </div>
                     <!--end of wrevenue-->
-                    <?php }}?>
+                              <?php $i++;}
+                              $group_page++;}}?>
                 </div>
-
+                <div class="text-center">
+                    <ul class="pagination">
+                        <li><a href="javascript:void(0)" onclick="show_page(1)"><<</a></li>
+                        <li><a href="javascript:void(0)"onclick="show_page(-1)"><</a></li>
+                        <?php for($i = 0; $i < $size / 12; $i++) {?>
+                                <li><a id="page_number<?php echo $i+1?>" class="page_number_class" href="javascript:void(0)" onclick="show_page(<?php echo $i+1?>)"><?php echo $i+1?></a></li> 
+                        <?php }?>
+                        <li><a href="javascript:void(0)" onclick="show_page(-2)">></a></li> 
+                        <li><a href="javascript:void(0)" onclick="show_page(<?php echo (int)($size/12)+1?>)"> >> </a></li> 
+                    </ul>
+                </div>
                 <div class="row">
-                    <a class="btn btn-lg btn-wrevenues">Click for more</a>
+                    <!--<a class="btn btn-lg btn-wrevenues">Click for more</a>-->
                     <a class="btn btn-lg btn-wrevenues" href="#" data-toggle="modal" data-target="#create_wrevenue">Create a Wrevenue</a>
 
                     <div class="modal fade" id="create_wrevenue" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -827,6 +851,29 @@
                             +'</div>';
             $('#photos_upload').append(content);
         }
+    </script>
+    <script>
+    	var current_page = 1; 
+    	var max_page = <?php echo $group_page?>;
+    	function show_page(number) {
+    		if(number == -1 && current_page > 1) {
+    			current_page--;
+    		}
+    		else if(number == -2 && current_page < max_page-1) {
+    			current_page++;
+    		}
+    		else {
+	    		if(number > 0) {
+	    			current_page = number;
+	    		}
+    		}
+    		var temp = '.wrevenue_group'+current_page;
+    		var temp2 = '.page_number'+current_page;
+    		$('[class*="wrevenue_group"]').hide();
+    		$('.page_number_class').removeClass('active');
+    		$(temp2).addClass('active');
+    		$(temp).show();
+    	}
     </script>
 </body>
 </html> 

@@ -416,7 +416,7 @@ public function index()
             //if($this->session->userdata('is_logged_in') == 1){
             $email = $this->session->userdata('email');
             $user_data = $this->model_users->get_info($email);
-
+            $user_business_data = $this->model_users->get_business_info($user_data['user_id']);
             $config['upload_path']='./uploads/profile/'.$user_data['user_id'].'/'; //change it to a user specific directory
             //if user specific directory does not exist...then create one and then upload
             $config['allowed_types']= 'gif|jpg|png|jpeg';
@@ -435,8 +435,6 @@ public function index()
             $this->model_users->edit_info($user_data['user_id']);
             if (!$this->upload->do_upload("userprofile"))
             {
-                $error = array('error' => $this->upload->display_errors());
-                $this->load->view('upload_form', $error);
                 if($this->session->userdata('image_key') == 'default_profile.jpg'){
                     $image_name = 'default_profile.jpg'; 
                 }
@@ -449,6 +447,18 @@ public function index()
                 }
                 $image_name = 'profile/'.$user_data['user_id'].'/'.$upload_data['file_name'];
                 $updateDB = $this->model_users->add_image($image_name);
+            }
+            if($user_data['business']) {
+                if (!$this->upload->do_upload("usercover")){}
+                else{
+                    $upload_data2 = $this->upload->data();
+                    //$data = array('upload_data' => $this->upload->data());
+                    if($user_business_data['cover_photo'] != 'default_cover.jpg' && !empty($user_business_data['cover_photo'])) {
+                        unlink('./uploads/'.$user_business_data['cover_photo']);
+                    }
+                    $cover_name = 'profile/'.$user_data['user_id'].'/'.$upload_data2['file_name'];
+                    $updateDB = $this->model_users->add_cover_image($cover_name, $user_data['user_id']);
+                }
             }
             //AFTER GET THE MULTIPLE PHOTOS THAT YOU WANT.
             $config2['upload_path'] ='./uploads/profile/'.$user_data['user_id'].'/photos/';

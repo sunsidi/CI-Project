@@ -174,7 +174,7 @@ class Model_users extends CI_Model{
                 $user_added = $this->db->insert('users',$data);
                 $new_user_id = $this->db->insert_id();
                 if($row->business) {
-                    $this->db->insert('users_business', array('user_id' => $new_user_id));
+                    $this->db->insert('users_business', array('user_id' => $new_user_id, 'cover_photo' => 'default_cover.jpg'));
                 }
             }
            if($user_added)
@@ -212,7 +212,7 @@ class Model_users extends CI_Model{
                     }
                     $check_if_exists = $this->db->get_where('users_business', array('user_id' => $user_id));
                     if($check_if_exists->num_rows() == 0) {
-                        $this->db->insert('users_business', array('user_id' => $user_id));
+                        $this->db->insert('users_business', array('user_id' => $user_id, 'cover_photo' => 'default_cover.jpg'));
                         $this->session->set_flashdata('message', 'Welcome to your new business profile!');
                     }
                 }
@@ -372,6 +372,14 @@ class Model_users extends CI_Model{
       //echo "This is a test".$email;
       $query = $this->db->update('users', array('image_key'=>$image_key), array('email'=>$email));
       return $query;
+    }
+    
+    public function add_cover_image($cover_name,$user_id) {
+        //echo $image_key;
+        //$email = "Wrevel@gmail.com";
+        //echo "This is a test".$email;
+        $query = $this->db->update('users_business', array('cover_photo'=>$cover_name), array('user_id'=>$user_id));
+        return $query;
     }
 
     public function is_user($userz)
