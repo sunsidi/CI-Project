@@ -157,12 +157,12 @@
 					
 					<div class="form-group row">
 					<p>Type of Account</p>
-					<label class="radio-inline" id="regular" data-content="regular" data-trigger="hover" data-placement="bottom">
+					<label class="radio-inline" id="regular" data-content="Recommended free account for users that want to attend events,connect with friends,and create events quickly without much setup. " data-trigger="hover" data-placement="bottom">
 						<input type="radio" name="business" id="inlineRadio1" value="0" checked> Regular
 						</br>
 						<img src="<?php echo $PATH_IMG?>blogscreenshot.png" style="width:150px;"/>
 					</label>
-					<label class="radio-inline" id="business" data-content="business" data-trigger="hover" data-placement="bottom">
+					<label class="radio-inline" id="business" data-content="Recommended free account, ideal for users, organizations and coordinators.  Build a professional portfolio and customize your profile to cater all of your event hosting needs." data-trigger="hover" data-placement="bottom">
 						<input type="radio" name="business" id="inlineRadio2" value="1"> Business
 						</br>
 						<img src="<?php echo $PATH_IMG?>blogscreenshot.png" style="width:150px;"/>
