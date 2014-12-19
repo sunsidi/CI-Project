@@ -435,7 +435,7 @@
                                             </div>
                                         </div>		
                                         <div style="background:rgba(0,0,0,0.5);postion:absolute;bottom:0;left:0;padding:5px 10px;">
-                                            <i class="fa fa-calendar"></i> <?php echo $latest_event['e_date'];?> <span class="pull-right"><?php echo $latest_event['e_likes'];?> <i class="fa fa-heart-o"></i> | <a href="#"><span class="glyphicon glyphicon-list-alt"></span></a> | <a href="#"><i class="fa fa-share-square-o"></i></a></span>
+                                            <i class="fa fa-calendar"></i> <?php echo $latest_event['e_date'];?> <span class="pull-right"><?php echo $latest_event['e_likes'];?> <i class="fa fa-heart-o"></i> | <a href="<?php echo base_url().'event/event_info/latest/'.$latest_event['event_id'];?>"><span class="glyphicon glyphicon-list-alt"></span></a> | <a href="<?php echo base_url().'event/event_info/latest/'.$latest_event['event_id'];?>"><i class="fa fa-share-square-o"></i></a></span>
                                         </div>
                                     </div>
                                 </div>

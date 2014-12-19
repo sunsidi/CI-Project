@@ -205,7 +205,7 @@
     </div>
               </div>
             
-            <?$i++;}
+            <?php $i++;}
             $group_page++;}}?>  
 </div>
 </div>
