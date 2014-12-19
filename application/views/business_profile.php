@@ -31,6 +31,7 @@
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/business-lightbox.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <style type="text/css">
 .arrow-left {
@@ -38,12 +39,26 @@ position:absolute;
 	width: 0; 
 	height: 0; 
 	border-top: 0px solid transparent;
-	border-right: 35px solid #02a89e;
+	border-right: 28px solid #414042;
 	
 	border-bottom: 20px solid transparent;
         //margin-left:108px;
         margin-left:50%;
         margin-top:10px;
+	z-index:99;	
+}
+.arrow-left2 {
+position:absolute;
+	width: 0; 
+	height: 0; 
+	border-top: 0px solid transparent;
+	border-right: 26px solid #D2D2DA;
+	
+	border-bottom: 18px solid transparent;
+        //margin-left:108px;
+        margin-left:50%;
+        margin-top:10px;
+		z-index:100;
 }
 
 </style>
@@ -73,7 +88,7 @@ jQuery(document).ready(function () {
             <div class="col-md-1">
                 <img class="profile-image" src="<?php echo base_url().'/uploads/'. $image_key?>" style="position:absolute; z-index:2;  border-radius:150px;  border:2px solid #7874a2;"/>
                </div>
-            <div class="col-md-7 profile-name" style="background:#7874a2; height:65px;">
+            <!--<div class="col-md-7 profile-name" style="background:#7874a2; height:65px;">
             <h2 class="profile-fullname"><?php echo $fullname;?></h2>
             </div>
 	
@@ -87,70 +102,78 @@ jQuery(document).ready(function () {
 					<i class="fa fa-star"></i>
 					<span style="text-shadow:none;">(#)</span>
 				</h3>
-            </div>
+            </div>-->
+			<div class="col-md-11" style="position:relative;height:125px;background-image:url(<?php echo $PATH_IMG?>balt.jpg);background-size:100%;">
+					
+					<h3 style="margin-top:80px;"><p style="margin-left:15%;font-family:GillSans;text-shadow:1px 1px 3px #000000;"><?php echo $fullname;?> <span class="pull-right" style="font-size:18px;">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<span style="text-shadow:none;">(#)</span></span></p></h3>
+					
+			</div>
 			</div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">       
-                <div class="panel-body background">
-                    <!--Quote
-                    <div class="row" style="width:100%;">
-			<div class="arrow-left" style="margin-top:20px;margin-left:70px;"></div>
-                        <p class="col-md-8 col-md-offset-2 quote-box" style="background:#00A79D; color:white; font-size:18px; border-radius:5px;padding:15px 20px;margin-left:100px;">
-                        <?php if($tagline != "") 
-                        	echo $tagline;
-                              else 
-                              	echo "Welcome to my Showroom! Don't hesitate to shoot me a message or a friend request!";?>
-                        </p>
-                     </div>-->
+                <div class="panel-body" style="padding:0;background:#D2D2DA;">
                      
                      <div class="col-md-6">
                             <div class="row" style="width:100%;">
-			<div class="arrow-left" style="margin-left:70px; margin-top:30px;"></div>
-                        <p class="col-md-8 col-md-offset-2 quote-box" style="background:#00A79D; color:white; font-size:18px; border-radius:5px;padding:15px 20px;margin-left:100px; margin-top:20px;">
+			<div class="arrow-left" style="margin-left:72px; margin-top:30px;"></div>
+			<div class="arrow-left2" style="margin-left:75px; margin-top:31px;"></div>
+                        <p class="col-md-8 col-md-offset-2 quote-box" style="background:none; color:#414042; border:1px solid #414042; font-size:18px; border-radius:10px;padding:15px 20px;margin-left:100px; margin-top:20px;">
                             <?php if($tagline != "") 
                                     echo $tagline;
                                   else 
                                     echo "Welcome to my Showroom! Don't hesitate to shoot me a message or a friend request!";?>
                         </p>
                      </div>
+
+					<div style="margin-top:40px;padding:0 25px;">	
+						<div style="background:rgba(255,255,255,0.30);padding:10px;border-radius:10px;">
+							<h4><img src="<?php echo $PATH_IMG?>details_icon.png"/> &nbsp;About Us</h4>
+							<div class="row" style="padding:0 15% 30px; font-size:16px;">
+							<?php echo $profile['description'];?>
+								
+							</div>
+						</div>
+					</div>
+					
+					<div style="text-align:center;margin-top:20px;">
+						<a href="#" data-toggle="modal" data-target="#basicModal" class="btn btn-lg edit" style="color:white;border-radius:10px;padding:5px 15px;">Edit Profile
+						</a>
+						<a href="<? echo base_url()?>account/myaccount_accountinfo" class="btn btn-lg edit" style="color:white;border-radius:10px;padding:5px 15px;">My Account
+						</a>
+					</div>
                      	<div class="row">
                      	<!--PROFILE-->
-                     	   <div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
+                     	   <div class="panel panel-default" style="background:none; box-shadow:none; border:none;padding:20px 15% 5px;">
                                 <div class="panel-body" >
-									<div style="padding:3% 17%;">
+									<div style="padding:7%;background:rgba(255,255,255,0.3);border-radius:10px;">
                                                                             <?php if(!empty($profile['website'])) {?>
-                                                                            <p><a href="<?php if(strpos($profile['website'], 'http://') === false && strpos($profile['website'], 'https://') === false) echo 'http://'.$profile['website']; else echo $profile['website'];?>" class="info"><span style="padding-right:30px;"><img src="<?php echo $PATH_IMG?>globe_icon2.png"/></span> <?php echo $profile['website'];?> </a></p>
+                                                                            <p style="word-break:break-all;"><a href="<?php if(strpos($profile['website'], 'http://') === false && strpos($profile['website'], 'https://') === false) echo 'http://'.$profile['website']; else echo $profile['website'];?>" class="info"><span style="padding-right:24px;"><img src="<?php echo $PATH_IMG?>globe_icon2.png"/></span> <?php echo $profile['website'];?> </a></p>
                                                                             <?php } if(!empty($profile['facebook'])) {?>
-                                                                            <p><i class="fa fa-facebook" style="width:47px;margin-left:6px;"></i><a href="<?php if(strpos($profile['facebook'], 'http://') === false && strpos($profile['facebook'], 'https://') === false) echo 'http://'.$profile['facebook']; else echo $profile['facebook'];?>" class="info"> <?php echo $profile['facebook'];?> </a></p>
+                                                                            <p style="word-break:break-all;"><i class="fa fa-facebook" style="width:41px;margin-left:6px;"></i><a href="<?php if(strpos($profile['facebook'], 'http://') === false && strpos($profile['facebook'], 'https://') === false) echo 'http://'.$profile['facebook']; else echo $profile['facebook'];?>" class="info"> <?php echo $profile['facebook'];?> </a></p>
                                                                             <?php } if(!empty($profile['twitter'])) {?>
-                                                                            <p><i class="fa fa-twitter" style="width:47px;margin-left:6px;"></i><a href="<?php if(strpos($profile['twitter'], 'http://') === false && strpos($profile['twitter'], 'https://') === false) echo 'http://'.$profile['twitter']; else echo $profile['twitter'];?>" class="info"> <?php echo $profile['facebook'];?> </a></p>
+                                                                            <p style="word-break:break-all;"><i class="fa fa-twitter" style="width:41px;margin-left:6px;"></i><a href="<?php if(strpos($profile['twitter'], 'http://') === false && strpos($profile['twitter'], 'https://') === false) echo 'http://'.$profile['twitter']; else echo $profile['twitter'];?>" class="info"> <?php echo $profile['facebook'];?> </a></p>
                                                                             <?php } if(!empty($phone)) {?>
-                                                                            <p class="info"><span style="padding-right:33px;"><img src="<?php echo $PATH_IMG?>phone_icon2.png"/></span> <?php echo $phone;?></p>
+                                                                            <p style="word-break:break-all;" class="info"><span style="padding-right:27px;"><img src="<?php echo $PATH_IMG?>phone_icon2.png"/></span> <?php echo $phone;?></p>
                                                                             <?php } if(!empty($email)) {?>
-                                                                            <p class="info"><span style="padding-right:28px;"><img src="<?php echo $PATH_IMG?>email_icon2.png"/></span> <?php echo $email;?></p>
+                                                                            <p style="word-break:break-all;" class="info"><span style="padding-right:22px;"><img src="<?php echo $PATH_IMG?>email_icon2.png"/></span> <?php echo $email;?></p>
                                                                             <?php }?>
 									</div>
 									
-									<div class="margin-top:40px;">
-										<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>details_icon.png"/> &nbsp; Details:</h4>
-										<div class="row" style="padding:0 20% 40px; font-size:16px;">
-										<?php echo $profile['description'];?>
-								
-										</div>
-									</div>
+									
                                         <!--Edit profile button-->
 
                                   
                                     
-  <div style="text-align:center;">
-          <a href="#" data-toggle="modal" data-target="#basicModal" class="btn btn-lg edit" style="color:white;border-radius:10px;">Edit Profile
-          </a>
-          <a href="<? echo base_url()?>account/myaccount_accountinfo" class="btn btn-lg edit" style="color:white;border-radius:10px;">My Account
-          </a>
-      </div>
+  
 
 
 
@@ -168,8 +191,8 @@ jQuery(document).ready(function () {
                         $requiredthings = array('onsubmit' => 'return check_image()');
                         echo form_open_multipart(base_url().'main/update_profile', $requiredthings);
                     ?>
-                    <div class="form-group row">
-                        <p>Type of Account</p>
+                    <div class="form-group row" style="text-align:center;">
+                        <p><strong>Type of Account</strong></p>
                         <label class="radio-inline" id="regular" data-content="regular" data-trigger="hover" data-placement="bottom">
                                 <input type="radio" name="account_change" id="inlineRadio1" value="0"> Regular
                                 </br>
@@ -305,7 +328,7 @@ jQuery(document).ready(function () {
                         <div class="form-group row">
                             <label class="col-sm-2">Day:</label>
                             <div class="col-sm-2">
-                                <select name="business-day[]" class="form-control">
+                                <select name="business-day[]" class="form-control" style="padding:0;">
                                     <option value="" selected="selected"></option>
                                     <option value="Mon">Mon</option>
                                     <option value="Tues">Tues</option>
@@ -317,7 +340,7 @@ jQuery(document).ready(function () {
                                 </select>
                             </div>
                             <div class="col-sm-2">
-                                <select name="business-start_time[]" class="form-control">
+                                <select name="business-start_time[]" class="form-control" style="padding:0;">
                                     <option value="" selected="selected"></option>
                                     <option value="01:00">1:00AM</option>
                                     <option value="02:00">2:00AM</option>
@@ -347,7 +370,7 @@ jQuery(document).ready(function () {
                             </div>
                             <label class="col-sm-1">TO</label>
                             <div class="col-sm-2">
-                                <select name="business-end_time[]" class="form-control">
+                                <select name="business-end_time[]" class="form-control" style="padding:0;">
                                     <option value="" selected="selected"></option>
                                     <option value="01:00">1:00AM</option>
                                     <option value="02:00">2:00AM</option>
@@ -416,17 +439,17 @@ jQuery(document).ready(function () {
                      
                      <div class="row">
                      <!--WREVS-->
-                          <div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
-                                <div class="panel-body">
+                          <div class="panel panel-default" style="background:none; box-shadow:none; border:none;padding:0 10%;">
+                                <div class="panel-body" style="background:rgba(255,255,255,0.3);border-radius:10px;">
                                 
-                                    <ul class="nav nav-pills wrev-tabs">
+                                    <ul class="nav nav-pills wrev-tabs wrev-tabs2">
                                         <li id="past_wrevs" onclick="change_to_past_wrevs()"><a href="#" onclick="return false;">Past Wrevs</a></li>
                                         <li id="attending_wrevs" onclick="change_to_attending_wrevs()"><a href="#" onclick="return false;">Attending Wrevs</a></li>
                                         <li id="mywrevs" onclick="change_to_mywrevs()"><a href="#" onclick="return false;">MyWrevs</a></li>
                                     </ul>
                                   
                                     
-                                        <div id="all_wrevs_panel" class="panel" style="background:#E9EEF2;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);border-radius:10px;" hidden>
+                                        <div id="all_wrevs_panel" class="panel" style="background:none;" hidden>
                                             <div class="panel-body">
                                 	<div class="row">
                                 	<div class="table-responsive">
@@ -578,16 +601,17 @@ jQuery(document).ready(function () {
                      
                      <div class="row">
                      <!--Followers-->
-                     	<div class="panel panel-default" style="background:#E9EEF2;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);border-radius:10px;">
+                     	<div class="panel panel-default" style="background:none;border:none;box-shadow:none;">
                             <div class="panel-body">
                                 <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;"><?php echo $number_of_friends;?></span> Friends</h3>                        
-                                    <div class="row">
+                                    <div style="padding:0 15%;">
+									<div class="row" style="background:rgba(255,255,255,0.3);border-radius:10px;">
                                         <?php if(isset($all_friends)){
                                             for($i = 0; $i < $number_of_friends && $i < 6; $i++) {?>
                                                 <div class="col-md-4 col-sm-3 col-xs-6">
                                                     	<a href="<?php echo base_url().'main/delete_friend/'.$all_friends[$i]['friend_user_id']?>" class="pull-right" onclick="return confirm_delete()">X</a>
-                                                    	<a href="<?php echo base_url().'public_profile/user/'.$all_friends[$i]['friend_user_id']?>">
-                                                            <img src="<?php echo base_url().'uploads/'.$all_friends[$i]['friend_picture']?>" style="border-radius:150%; width:100px; height:100px;"/>
+                                                    	<a href="<?php echo base_url().'public_profile/user/'.$all_friends[$i]['friend_user_id']?>" style="color:#414042;">
+                                                            <img src="<?php echo base_url().'uploads/'.$all_friends[$i]['friend_picture']?>" style="border-radius:150%; width:80px; height:80px;"/>
                                                                 <div class="caption" style="text-align:center;">
                                                                     <p><?php echo $all_friends[$i]['friend_fullname'];?></p></a>
 
@@ -596,11 +620,14 @@ jQuery(document).ready(function () {
                                                 </div>
                                         <?php }}
                                             else {?>
-                                                <div style="padding-left:25px;"> You have no friends. :(</div>
+                                                <div style="padding:25px;"> You have no friends. :(</div>
                                         <?php }?>
                                     </div>
-                                    <a href="#" data-toggle="modal" data-target="#showmore"><button type="button" class="btn btn-lg" style="background:#478EBF; color:white; font-size:20px; margin-left:auto; margin-right:auto; display:block; padding:5px; border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">View All</button></a>
-                            </div>
+									</div>
+									<div style="text-align:center;margin-top:20px;">
+                                    <a href="#" data-toggle="modal" data-target="#showmore"><button type="button" class="btn btn-lg" style="background:#478EBF; color:white; font-size:20px; padding:5px; border-radius:10px;">View All</button></a>
+									</div>
+							</div>
                         </div><!--END OF followers--> 
                     </div>
                 
@@ -637,8 +664,8 @@ jQuery(document).ready(function () {
                        </div>
                 </div><!--end of popup-->
                      
-					 <div class="row" style="text-align:center;">
-                    <!--Reviews COMMENTED OUT
+					 <!--<div class="row" style="text-align:center;">
+                    Reviews COMMENTED OUT
                      	
                                 <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;">#</span> Reviews</h3>                        
 									<div style="padding-left:20%;padding-right:20%;">
@@ -661,19 +688,19 @@ jQuery(document).ready(function () {
 								</div>
                                     <a href="#" data-toggle="modal" data-target="" class="btn morereviews" style="font-size:20px;margin-top:10px;">More Reviews</a>
                             
-                    <!--END OF reviews--> 
-                    </div>
+                    <!--END OF reviews 
+                    </div>-->
 					 
                      </div> <!--end of column-->
                      
-                     <div class="col-md-6">
+                     <div class="col-md-6" style="background:#C8D8E5;">
                      <div class="row">
                      <!--MESSAGING-->
                       <div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
                                 <div class="panel-body">
                                     <!--Check Inbox-->
                                     <div class="row inbox-btn" style="padding-top:10px;">                                     
-                                        <a href="" class="btn btn-lg btn-block blue-button" style="border-radius:10px;border:2px solid #478EBF;"><span class="glyphicon glyphicon-user"></span> Check Inbox</a>
+                                        <a href="" class="btn btn-lg btn-block blue-button" style="border-radius:10px;border:2px solid #478EBF;width:55%;"><span class="glyphicon glyphicon-user"></span> Check Inbox</a>
                                     </div>
 
                                 
@@ -686,8 +713,8 @@ jQuery(document).ready(function () {
                      
                      <div class="row">
                      <!--PHOTOS AND VIDEOS-->
-                     	<div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
-                                <div class="panel-body">
+                     	<div class="panel panel-default" style="background:none; box-shadow:none; border:none;padding:0 7%;">
+                                <div class="panel-body" style="background:rgba(255,255,255,0.3);border-radius:10px;">
                                     <!--<ul class="nav nav-pills nav-justified" style="font-size:20px;">
                                         <li class="active"><a href="#photos" aria-controls="photos" role="tab" data-toggle="tab">Photos</a></li>
                                         <li><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Videos</a></li>
@@ -702,23 +729,23 @@ jQuery(document).ready(function () {
                                                                             foreach($profile['photos'] as $picture){
                                                                                 if($first) {?>
                                                                                     <div class="item active">
-                                                                                        <img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" alt="...">
+                                                                                        <a href="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" rel="lightbox"><img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" alt="..."></a>
                                                                                     </div>
                                                                                 <?php $first = false;
                                                                                 } else {?>
                                                                                 <div class="item">
-                                                                                    <img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" alt="...">
+																						<a href="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" rel="lightbox"><img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" alt="..."></a>
                                                                                 </div>
                                                                                 
                                                                     <?php }}}?>                                                                    
                                                             </div>
 
                                                             <!-- Controls -->
-                                                            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                                            <a class="left carousel-control"  style="background:none;"  href="#carousel-example-generic" role="button" data-slide="prev">
                                                             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                                                             <span class="sr-only">Previous</span>
                                                             </a>
-                                                            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                                            <a class="right carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="next">
                                                             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                                                             <span class="sr-only">Next</span>
                                                             </a>
@@ -737,8 +764,9 @@ jQuery(document).ready(function () {
                             </div><!--END OF PHOTOS AND VIDEOS-->
                      </div>
 					 
-					 <div class="row">
-							<div>
+					 <!--Hours-->
+					 <div class="row" style="padding:10px 15%;">
+							<div style="background:rgba(255,255,255,0.3);border-radius:10px;padding:13px 0;">
 							<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>clock_icon.png"/> &nbsp; Hours</h4>
 								<div style="padding:0% 17%;font-size:18px;line-height:70%;">
                                                                     <?php for($i = 0; $i < 7; $i++) {
@@ -827,6 +855,7 @@ jQuery(document).ready(function () {
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.js"></script>
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.min.js"></script>  
     <script src="<?php echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/lightbox.js"></script>
     <script>
 	$('#reputationInfo').popover();
 	</script>
