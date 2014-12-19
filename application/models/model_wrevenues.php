@@ -117,6 +117,37 @@ class Model_wrevenues extends CI_Model{
         else
             return true;
     }
+    //Wrevenue search
+    public function search_wrevenues($search,$state,$city,$zipcode) {
+        if ($city || $zipcode || $state){
+            if(!$state){$state = '%';}
+            if(!$city){$city = '%';}
+            if(!$zipcode){$zipcode = '%';}
+            $sql = 'SELECT * FROM wrevenues WHERE (state LIKE ? and city LIKE ? and zipcode LIKE ?) ORDER BY id DESC';
+            $query = $this->db->query($sql,array($state, $city, $zipcode));
+            $wrevenues = $query->result_array();
+        }
+        else{
+            $this->db->order_by('id','desc');
+            $query = $this->db->get('wrevenues');
+            $wrevenues = $query->result_array();
+        }
+        $related_wrevenues= array();
+        /*check if there is an specific word or letter that user is searching for in wrevenues */
+        if($search != ""){
+            foreach($wrevenues as $wrevenue){
+                if (stristr($wrevenue['place'],$search) !== false) {
+                    array_push($related_wrevenues,$wrevenue);
+                }
+            }
+        }
+        /*find all the wrevenues */
+        else {
+            $related_wrevenues = $wrevenues;
+        }
+        return $related_wrevenues;
+    }
+    
     //Converts the time to AM and PM.
     public function convert_time($temp_start_time) {
   	if($temp_start_time >= 780) {

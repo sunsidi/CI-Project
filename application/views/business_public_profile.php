@@ -313,12 +313,11 @@ jQuery(document).ready(function () {
                      <!--Followers-->
                      	<div class="panel panel-default" style="background:#E9EEF2;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);border-radius:10px;">
                             <div class="panel-body">
-                                <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;">#</span> Friends</h3>                        
+                                <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;"><?php echo $number_of_friends;?></span> Friends</h3>                        
                                     <div class="row">
                                         <?php if(isset($all_friends)){
                                             for($i = 0; $i < $number_of_friends && $i < 6; $i++) {?>
                                                 <div class="col-md-4 col-sm-3 col-xs-6">
-                                                    	<a href="<?php echo base_url().'main/delete_friend/'.$all_friends[$i]['friend_user_id']?>" class="pull-right" onclick="return confirm_delete()">X</a>
                                                     	<a href="<?php echo base_url().'public_profile/user/'.$all_friends[$i]['friend_user_id']?>">
                                                             <img src="<?php echo base_url().'uploads/'.$all_friends[$i]['friend_picture']?>" style="border-radius:150%; width:100px; height:100px;"/>
                                                                 <div class="caption" style="text-align:center;">
@@ -351,7 +350,6 @@ jQuery(document).ready(function () {
 	                                        for($i = 0; $i < $number_of_friends; $i++) {?>
                                                 <div class="col-md-4 col-sm-3 col-xs-6">
                                                     <div class="thumbnail default">
-                                                    	<a href="<?php echo base_url().'main/delete_friend/'.$all_friends[$i]['friend_user_id']?>" class="pull-right" onclick="return confirm_delete()">X</a>
                                                     	<a href="<?php echo base_url().'public_profile/user/'.$all_friends[$i]['friend_user_id']?>">
                                                             <img src="<?php echo base_url().'uploads/'.$all_friends[$i]['friend_picture']?>" style="border-radius:150%; width:100px; height:100px;"/>
                                                                 <div class="caption" style="text-align:center;">
@@ -486,55 +484,51 @@ jQuery(document).ready(function () {
                                     
                                 </div>
                             </div><!--END OF MESSAGING-->
-                     </div>
+                    </div>
                      
                      
                      
-                     <div class="row">
+                    <div class="row">
                      <!--PHOTOS AND VIDEOS-->
-						<div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
-                                <div class="panel-body">
-                                    <!--<ul class="nav nav-pills nav-justified" style="font-size:20px;">
-                                        <li class="active"><a href="#photos" aria-controls="photos" role="tab" data-toggle="tab">Photos</a></li>
-                                        <li><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Videos</a></li>
-                                    </ul>-->
-									<h3 style="text-align:center;">Photos</h3>
-									<div class="tab-content">
-										<div role="tabpanel" class="tab-pane active" id="photos">
-											<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
-												<div class="carousel-inner" role="listbox">
-													<div class="item active">
-														<img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo $PATH_IMG?>outdoor_party.png" alt="...">
-										
-													</div>
-													<div class="item">
-														<img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo $PATH_IMG?>balt.jpg" alt="...">
-											
-													</div>
-    
-												</div>
+                    <div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
+                        <div class="panel-body">
+                            <h3 style="text-align:center;">Photos</h3>
+                                <div class="tab-content">
+                                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
+                                        <div role="tabpanel" class="tab-pane active" id="photos">
+                                            <div class="carousel-inner" role="listbox">
+                                                <?php if(!empty($profile['photos'])) {
+                                                        $first = true;
+                                                        foreach($profile['photos'] as $picture){
+                                                            if($first) {?>
+                                                                <div class="item active">
+                                                                    <img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" alt="...">
+                                                                </div>
+                                                            <?php $first = false;
+                                                            } else {?>
+                                                            <div class="item">
+                                                                <img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" alt="...">
+                                                            </div>
 
-												<!-- Controls -->
-												<a class="left carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="prev">
-												<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-												<span class="sr-only">Previous</span>
-												</a>
-												<a class="right carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="next">
-												<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-												<span class="sr-only">Next</span>
-												</a>
-											</div>
-										</div>
-										<!--<div role="tabpanel" class="tab-pane active" id="videos">
-											
-										</div>-->
-									</div>	
-                                    <div class="row" style="padding-top:10px;text-align:center;">
-                                       
-                                        <a href="#" class="btn btn-lg photos-button" style="font-size:20px;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);padding:5px 20px;">Browse all</button></a>
-                                        <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);padding:5px 8px;"><span class="glyphicon glyphicon-camera"></span></button></a>
+                                                <?php }}}?>                                                                    
+                                            </div>
+                                            <!-- Controls -->
+                                            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
                                     </div>
+                                </div>	
+                                <div class="row" style="padding-top:10px;text-align:center;">
+                                    <a href="#" class="btn btn-lg photos-button" style="font-size:20px;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);padding:5px 20px;">Browse all</button></a>
+                                    <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);padding:5px 8px;"><span class="glyphicon glyphicon-camera"></span></button></a>
                                 </div>
+                        </div>
                             </div><!--END OF PHOTOS AND VIDEOS-->
                      </div>
 					 

@@ -201,7 +201,6 @@ class Model_users extends CI_Model{
         */
        
         $data = $this->input->post();
-        echo '<pre>', print_r($data, true), '</pre>';
         foreach ($data as $i => $value){
           //if user inputted a value then update it
             if($i == 'account_change') {
@@ -209,15 +208,12 @@ class Model_users extends CI_Model{
                 if($value) {
                     if(!file_exists('./uploads/profile/'.$user_id.'/photos/')) {
                         mkdir('./uploads/profile/'.$user_id.'/photos/', 0777, true);
-                        chmod('./uploads/profile/'.$user_id.'/photos/', 0777, true);
+                        chmod('./uploads/profile/'.$user_id.'/photos/', 0777);
                     }
                     $check_if_exists = $this->db->get_where('users_business', array('user_id' => $user_id));
                     if($check_if_exists->num_rows() == 0) {
                         $this->db->insert('users_business', array('user_id' => $user_id));
                         $this->session->set_flashdata('message', 'Welcome to your new business profile!');
-                    }
-                    else {
-                        $this->session->set_flashdata('message', 'Welcome back! Your previous data has been restored and saved.');
                     }
                 }
             }
@@ -231,7 +227,6 @@ class Model_users extends CI_Model{
             }
         }
         if(isset($business_data)) {
-            echo '<pre>', print_r($business_data, true), '</pre>';
             foreach($business_data as $i => $value) {
                 if($value && strpos($i, 'start_time') === false && strpos($i, 'end_time') === false) {
                     if($i == 'wrevenue_file') {
@@ -259,7 +254,6 @@ class Model_users extends CI_Model{
             $query = $this->db->update('users', $info_updating, array('user_id'=>$user_id));
         }
         if(isset($business_info_updating)) {
-            echo '<pre>', print_r($business_info_updating, true), '</pre>';
             $query2 = $this->db->update('users_business', $business_info_updating, array('user_id' => $user_id));
         }
         return true;

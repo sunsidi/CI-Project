@@ -24,14 +24,15 @@
 <div class="container" style="width:90%;padding-bottom:50px;">
     <div class="row" style="margin-top:50px;">
         <h1 class="title" style="text-align:center;font-family:GillSans;color:white;"><img class="w_logo" src="<?php echo $PATH_IMG?>w1.png"/>Wrevenues</h1>
+        <?php echo form_open('wrevenues/search_wrevenues');?>
         <div class="form-group row" style="padding:20px;">
             <div class="left-inner-addon  col-md-3 col-sm-3 col-xs-6 col-md-offset-3 col-sm-offset-1" style="padding:0;">
                 <span class="glyphicon glyphicon-search"></span>
                 <label class="sr-only">Names</label>
-                <input type="text" name="search" class="form-control" placeholder="search name of wrevenue">
+                <input type="text" name="search_search" class="form-control" placeholder="search name of wrevenue">
             </div>
             <div class="col-md-1 col-sm-2" style="padding:0;">
-                <select class="form-control">
+                <select name="search_state" class="form-control">
                     <option value="" selected="selected">State</option>
                     <option value="AK">AK</option>
                     <option value="AL">AL</option>
@@ -87,14 +88,15 @@
                 </select>
             </div>
             <div class="col-md-1 col-sm-2" style="padding:0;">
-                <input class="form-control" placeholder="City">
+                <input name="search_city" class="form-control" placeholder="City">
             </div>
             <div class="col-md-1 col-sm-1" style="padding:0;">
-                <input name="zipcode" type="text" pattern=".{5,5}" maxlength="5" class="form-control" placeholder="Zip" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                <input name="search_zipcode" name="zipcode" type="text" pattern=".{5,5}" maxlength="5" class="form-control" placeholder="Zip" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
             </div>
             <!--<input type="submit" class="btn" style="background:#1C74BB; color:white;font-size:20px; padding:1px 10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);" value="advanced search">-->
             <input type="submit" class="btn" style="background:#1C74BB; color:white;font-size:20px; padding:1px 10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);" value="go">
         </div>
+        <?php echo form_close();?>
         <div class="row row-centered">
             <div class="col-md-11 col-centered col-sm-11 col-xs-11" style="color:white;text-align:center;padding:10px 10%;">
                 <h4 style="text-align:left;margin-left:5%;"><em>Newest Wrevenues</em></h4>
@@ -696,22 +698,22 @@
                         <div class="row">
 
                             <div class="col-md-4 col-sm-4 col-xs-6" style="margin-top:5%;">
-                                <img class="img-responsive" src="<?php echo $PATH_IMG?>losangeles.png" />
+                                <a href="<?php echo base_url().'wrevenues/search_wrevenues_city/los_angeles';?>"><img class="img-responsive" src="<?php echo $PATH_IMG?>losangeles.png"></a>
                             </div>
                             <div class="col-md-4 col-sm-4 col-xs-6" style="margin-top:5%;">
-                                <img class="img-responsive" src="<?php echo $PATH_IMG?>lasvegas.png" />
+                                <a href="<?php echo base_url().'wrevenues/search_wrevenues_city/las_vegas';?>"><img class="img-responsive" src="<?php echo $PATH_IMG?>lasvegas.png" />
                             </div>
                             <div class="col-md-4 col-sm-4 col-xs-6" style="margin-top:5%;">
-                                <img class="img-responsive" src="<?php echo $PATH_IMG?>chicago.png" />
+                                <a href="<?php echo base_url().'wrevenues/search_wrevenues_city/chicago';?>"><img class="img-responsive" src="<?php echo $PATH_IMG?>chicago.png" />
                             </div>
                             <div class="col-md-4 col-sm-4 col-xs-6" style="margin-top:5%;">
-                                <img class="img-responsive" src="<?php echo $PATH_IMG?>newyork.png" />
+                                <a href="<?php echo base_url().'wrevenues/search_wrevenues_city/new_york';?>"><img class="img-responsive" src="<?php echo $PATH_IMG?>newyork.png" />
                             </div>
                             <div class="col-md-4 col-sm-4 col-xs-6" style="margin-top:5%;">
-                                <img class="img-responsive" src="<?php echo $PATH_IMG?>miami.png" />
+                                <a href="<?php echo base_url().'wrevenues/search_wrevenues_city/miami';?>"><img class="img-responsive" src="<?php echo $PATH_IMG?>miami.png" />
                             </div>
                             <div class="col-md-4 col-sm-4 col-xs-6" style="margin-top:5%;">
-                                <img class="img-responsive" src="<?php echo $PATH_IMG?>boston.png" />
+                                <a href="<?php echo base_url().'wrevenues/search_wrevenues_city/boston';?>"><img class="img-responsive" src="<?php echo $PATH_IMG?>boston.png" />
                             </div>
 
                         </div>

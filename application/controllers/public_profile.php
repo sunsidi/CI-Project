@@ -39,6 +39,24 @@ class Public_profile extends CI_Controller {
 	
 	        $data['PATH_PROFILE'] = $path['PATH_PROFILE'];
 	        $other_email = $this->model_users->get_email($user_id);
+                /**
+                 * Everything to do with Friends List here.
+                 * Might want to do this in the model to make it cleaner.
+                 */
+                // Grab all your friends. Stored in 'all_friends'
+                $data['all_friends'] = $this->model_friend_request->get_friendlists($user_id);
+                $data['number_of_friends'] = count($data['all_friends']);
+                //Remap all needed information that will be printed: Friend ID, Friend picture, Friend name.
+                for($i = 0; $i < $data['number_of_friends']; $i++) {
+                    $temp_friend_data = $this->model_users->get_email($data['all_friends'][$i]['other_user_id']);
+                    $data['all_friends'][$i]['friend_user_id'] = $temp_friend_data[0]['user_id'];
+                    $data['all_friends'][$i]['friend_picture'] = $temp_friend_data[0]['image_key'];
+                    $data['all_friends'][$i]['friend_fullname'] = $temp_friend_data[0]['fullname'];
+                }
+                /**
+                 * End of Friends List.
+                 */
+                
 	        if($other_email[0]['email'] == $email)
 	            redirect('showroom/profile');
 	        else {
@@ -101,6 +119,8 @@ class Public_profile extends CI_Controller {
                                                'other_chatbox_file'     => $other_data['chatbox_file']);
                         if($other_data['business']) {
                             $remapped_data['other_profile'] = $this->model_users->get_business_info($other_data['user_id']);
+                            $data['profile'] = $this->model_users->get_business_info($other_data['user_id']);
+                            $data['profile']['photos'] = array_diff(scandir('./uploads/profile/'.$other_data['user_id'].'/photos/'), array('..', '.'));
                         }
                         //boolean statement----> determine whether or not to put a notification
                         $nav_data = $this->session->all_userdata();
