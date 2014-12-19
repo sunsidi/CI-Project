@@ -757,7 +757,7 @@ jQuery(document).ready(function () {
                                     </div>
                                     <div class="row" style="padding-top:10px;text-align:center;">
                                        
-                                        <a href="#" class="btn btn-lg photos-button" style="font-size:18px;border-radius:10px;padding:5px 20px;">Browse all</button></a>
+                                        <!--<a href="#" class="btn btn-lg photos-button" style="font-size:18px;border-radius:10px;padding:5px 20px;">Browse all</button></a>
                                         <a href="#" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:18px;border-radius:10px;padding:5px 8px;"><span class="glyphicon glyphicon-camera"></span></button></a>
                                     </div>
                                 </div>

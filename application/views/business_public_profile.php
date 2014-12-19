@@ -517,8 +517,8 @@ jQuery(document).ready(function () {
                      
                      <div class="row">
                      <!--PHOTOS AND VIDEOS-->
-						<div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
-                                <div class="panel-body">
+						<div class="panel panel-default" style="background:none; box-shadow:none; border:none;padding:0 7%;">
+                                <div class="panel-body" style="background:rgba(255,255,255,0.3);border-radius:10px;">
                                     <!--<ul class="nav nav-pills nav-justified" style="font-size:20px;">
                                         <li class="active"><a href="#photos" aria-controls="photos" role="tab" data-toggle="tab">Photos</a></li>
                                         <li><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Videos</a></li>
