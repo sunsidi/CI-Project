@@ -103,7 +103,7 @@ jQuery(document).ready(function () {
 					<span style="text-shadow:none;">(#)</span>
 				</h3>
             </div>-->
-			<div class="col-md-11" style="position:relative;height:125px;background-image:url(<?php echo $PATH_IMG?>balt.jpg);background-size:100%;">
+			<div class="col-md-11" style="position:relative;height:125px;background-image:url(<?php echo base_url().'uploads/'.$profile['cover_photo'];?>);background-size:100%;">
 					
 					<h3 style="margin-top:80px;"><p style="margin-left:15%;font-family:GillSans;text-shadow:1px 1px 3px #000000;"><?php echo $fullname;?> <span class="pull-right" style="font-size:18px;">
 					<i class="fa fa-star"></i>
@@ -410,6 +410,18 @@ jQuery(document).ready(function () {
                             <label for ="file-upload" hidden>
                             </label>
                             <input id="file-input-profile" name = "userprofile" type = "file" style="display:none"/>
+                            <input id="file-upload" type = "submit" hidden>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2">Cover Photo:</label>
+                        <div class="image-upload">
+                            <label for="file-input-cover">
+                                <img src="<?php echo $PATH_IMG?>camera_icon.png"  style="min-width:100%; max-width:100%; margin-top:20px;">
+                            </label>
+                            <label for ="file-upload" hidden>
+                            </label>
+                            <input id="file-input-cover" name = "usercover" type = "file" style="display:none"/>
                             <input id="file-upload" type = "submit" hidden>
                         </div>
                     </div>
