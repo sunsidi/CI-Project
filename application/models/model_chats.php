@@ -21,6 +21,26 @@ class Model_chats extends CI_Model{
          }
          else return NULL;
       }
+      
+      //Might as well unhide both so we don't have to check which one to unhide.
+      public function unhide_both_chats($id) {
+          $this->db->update('chats', array('person1_hide' => 0, 'person2_hide' => 0), array('m_id' => $id));
+      }
+      
+      //Hide the chat for a current user.
+      public function hide_chat($currentUser, $m_id) {
+          $query = $this->db->get_where('chats', array('m_id' => $m_id));
+          $the_chat = $query->row_array(0);
+          //Find out which person's chat to hide. Then hide it.
+          if($the_chat['person1'] == $currentUser) {
+              $this->db->update('chats', array('person1_hide' => 1), array('m_id' => $m_id));
+          }
+          else if($the_chat['person2'] == $currentUser) {
+              $this->db->update('chats', array('person2_hide' => 1), array('m_id' => $m_id));
+          }
+      }
+      
+      
   public function create_chats($currentUser,$otherUser,$chat_file)
     {
       $data = array
@@ -43,8 +63,25 @@ class Model_chats extends CI_Model{
   /* retrieves all chats related to current user */
     $sql ='SELECT * FROM chats WHERE person1=? or person2=? ORDER BY reply_time DESC';
     $query = $this->db->query($sql,array($currentUser,$currentUser));
+    $only_nonhidden = array();
     if ($query->num_rows()){
-	return $query->result_array();
+        $temp_data = $query->result_array();
+        for($i = 0; $i < count($temp_data); $i++) {
+            if($temp_data[$i]['person1'] == $currentUser) {
+                if(!$temp_data[$i]['person1_hide']) {
+                    array_push($only_nonhidden, $temp_data[$i]);
+                }
+            }
+            else if($temp_data[$i]['person2'] == $currentUser) {
+                if(!$temp_data[$i]['person2_hide']) {
+                    array_push($only_nonhidden, $temp_data[$i]);
+                }
+            }
+        }
+	if(count($only_nonhidden)) {
+            return $only_nonhidden;
+        }
+        return array();
       //print_r($data);
     }
     else{
