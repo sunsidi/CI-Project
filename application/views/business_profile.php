@@ -711,7 +711,7 @@ jQuery(document).ready(function () {
                                 <div class="panel-body">
                                     <!--Check Inbox-->
                                     <div class="row inbox-btn" style="padding-top:10px;">                                     
-                                        <a href="" class="btn btn-lg btn-block blue-button bp-button" style="border-radius:10px;width:55%;"><span class="glyphicon glyphicon-user"></span> Check Inbox</a>
+                                        <a href="<?php echo base_url().'chat/messageView';?>" class="btn btn-lg btn-block blue-button bp-button" style="border-radius:10px;width:55%;"><span class="glyphicon glyphicon-user"></span> Check Inbox</a>
                                     </div>
 
                                 
@@ -804,7 +804,7 @@ jQuery(document).ready(function () {
                                                         </div><!-- END OF GOOGLE MAPS -->
 							
 							<div style="text-align:center;">
-							<a class="btn viewmorewrevs" style="font-size:18px;color:white; border-radius:8px;">Get directions</a>
+							<a class="btn viewmorewrevs" style="font-size:18px;color:white; border-radius:8px;">Get directions(COMING SOON)</a>
 							</div>
 						</div>	
 					 </div>
