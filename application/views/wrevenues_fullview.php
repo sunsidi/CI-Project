@@ -13,7 +13,7 @@
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
-<link href="<?php echo $PATH_BOOTSTRAP?>css/wrevenues-lightbox.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/business-lightbox.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false"
