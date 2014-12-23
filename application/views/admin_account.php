@@ -454,13 +454,63 @@
 
                                                 <div class="col-md-3">
                                                     <div class="left-inner-addon-ml">
-                                                        <input type="text" name="multi_e_date[]" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Date">
+                                                        <input id="multi_e_date[]" type="text" name="multi_e_date[]" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="mm/dd/yyyy">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-3">
                                                     <div class="left-inner-addon-ml">
-                                                        <input type="text" name="multi_start_time[]" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Time Start">
+                                                        <select id="multi_start_time" name="multi_start_time[]" type="time" class="form-control" style="margin-top: 1px;font-size:15px; width: 100%;">
+                                                            <option value="" selected="selected">Start Time</option> 
+                                                            <option value="00:00">12:00am</option>
+                                                            <option value="00:30">12:30am</option>
+                                                            <option value="01:00">1:00am</option>
+                                                            <option value="01:30">1:30am</option>
+                                                            <option value="02:00">2:00am</option>
+                                                            <option value="02:30">2:30am</option>
+                                                            <option value="03:00">3:00am</option>
+                                                            <option value="03:30">3:30am</option>
+                                                            <option value="04:00">4:00am</option>
+                                                            <option value="04:30">4:30am</option>
+                                                            <option value="05:00">5:00am</option>
+                                                            <option value="05:30">5:30am</option>
+                                                            <option value="06:00">6:00am</option>
+                                                            <option value="06:30">6:30am</option>
+                                                            <option value="07:00">7:00am</option>
+                                                            <option value="07:30">7:30am</option>
+                                                            <option value="08:00">8:00am</option>
+                                                            <option value="08:30">8:30am</option>
+                                                            <option value="09:00">9:00am</option>
+                                                            <option value="09:30">9:30am</option>
+                                                            <option value="10:00">10:00am</option>
+                                                            <option value="10:30">10:30am</option>
+                                                            <option value="11:00">11:00am</option>
+                                                            <option value="11:30">11:30am</option>
+                                                            <option value="12:00">12:00pm</option>
+                                                            <option value="12:30">12:30pm</option>
+                                                            <option value="13:00">1:00pm</option>
+                                                            <option value="13:30">1:30pm</option>
+                                                            <option value="14:00">2:00pm</option>
+                                                            <option value="14:30">2:30pm</option>
+                                                            <option value="15:00">3:00pm</option>
+                                                            <option value="15:30">3:30pm</option>
+                                                            <option value="16:00">4:00pm</option>
+                                                            <option value="16:30">4:30pm</option>
+                                                            <option value="17:00">5:00pm</option>
+                                                            <option value="17:30">5:30pm</option>
+                                                            <option value="18:00">6:00pm</option>
+                                                            <option value="18:30">6:30pm</option>
+                                                            <option value="19:00">7:00pm</option>
+                                                            <option value="19:30">7:30pm</option>
+                                                            <option value="20:00">8:00pm</option>
+                                                            <option value="20:30">8:30pm</option>
+                                                            <option value="21:00">9:00pm</option>
+                                                            <option value="21:30">9:30pm</option>
+                                                            <option value="22:00">10:00pm</option>
+                                                            <option value="22:30">10:30pm</option>
+                                                            <option value="23:00">11:00pm</option>
+                                                            <option value="23:30">11:30pm</option>
+                                                        </select>
                                                     </div>
                                                 </div>
 
@@ -478,7 +528,60 @@
 
                                                 <div class="col-md-2">
                                                     <div class="left-inner-addon-ml">
-                                                        <input type="text" name="multi_state[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="State">
+                                                        <select id="multi_state" name="multi_state[]" type="text" class="form-control" style="margin-top: 5px;font-size:15px; width: 100%;">
+                                                            <option value="" selected="selected">State</option> 
+                                                            <option value="AK">AK</option>
+                                                            <option value="AL">AL</option>
+                                                            <option value="AR">AR</option>
+                                                            <option value="AZ">AZ</option>
+                                                            <option value="CA">CA</option>
+                                                            <option value="CO">CO</option>
+                                                            <option value="CT">CT</option>
+                                                            <option value="DC">DC</option>
+                                                            <option value="DE">DE</option>
+                                                            <option value="FL">FL</option>
+                                                            <option value="GA">GA</option>
+                                                            <option value="HI">HI</option>
+                                                            <option value="IA">IA</option>
+                                                            <option value="ID">ID</option>
+                                                            <option value="IL">IL</option>
+                                                            <option value="IN">IN</option>
+                                                            <option value="KS">KS</option>
+                                                            <option value="KY">KY</option>
+                                                            <option value="LA">LA</option>
+                                                            <option value="MA">MA</option>
+                                                            <option value="MD">MD</option>
+                                                            <option value="ME">ME</option>
+                                                            <option value="MI">MI</option>
+                                                            <option value="MN">MN</option>
+                                                            <option value="MO">MO</option>
+                                                            <option value="MS">MS</option>
+                                                            <option value="MT">MT</option>
+                                                            <option value="NC">NC</option>
+                                                            <option value="ND">ND</option>
+                                                            <option value="NE">NE</option>
+                                                            <option value="NH">NH</option>
+                                                            <option value="NJ">NJ</option>
+                                                            <option value="NM">NM</option>
+                                                            <option value="NV">NV</option>
+                                                            <option value="NY">NY</option>
+                                                            <option value="OH">OH</option>
+                                                            <option value="OK">OK</option>
+                                                            <option value="OR">OR</option>
+                                                            <option value="PA">PA</option>
+                                                            <option value="RI">RI</option>
+                                                            <option value="SC">SC</option>
+                                                            <option value="SD">SD</option>
+                                                            <option value="TN">TN</option>
+                                                            <option value="TX">TX</option>
+                                                            <option value="UT">UT</option>
+                                                            <option value="VA">VA</option>
+                                                            <option value="VT">VT</option>
+                                                            <option value="WA">WA</option>
+                                                            <option value="WI">WI</option>
+                                                            <option value="WV">WV</option>
+                                                            <option value="WY">WY</option>
+                                                        </select>
                                                     </div>
                                                 </div>                        
 
@@ -566,13 +669,63 @@
 
                                 +'<div class="col-md-3">'
                                     +'<div class="left-inner-addon-ml">'
-                                        +'<input type="text" name="multi_e_date[]" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Date">'
+                                        +'<input id="multi_e_date[]" type="text" name="multi_e_date[]" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="mm/dd/yyyy">'
                                     +'</div>'
                                 +'</div>'
 
                                 +'<div class="col-md-3">'
                                     +'<div class="left-inner-addon-ml">'
-                                        +'<input type="text" name="multi_start_time[]" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Time Start">'
+                                        +'<select id="multi_start_time" name="multi_start_time[]" type="time" class="form-control" style="margin-top: 1px;font-size:15px; width: 100%;">'
+                                            +'<option value="" selected="selected">Start Time</option>'
+                                            +'<option value="00:00">12:00am</option>'
+                                            +'<option value="00:30">12:30am</option>'
+                                            +'<option value="01:00">1:00am</option>'
+                                            +'<option value="01:30">1:30am</option>'
+                                            +'<option value="02:00">2:00am</option>'
+                                            +'<option value="02:30">2:30am</option>'
+                                            +'<option value="03:00">3:00am</option>'
+                                            +'<option value="03:30">3:30am</option>'
+                                            +'<option value="04:00">4:00am</option>'
+                                            +'<option value="04:30">4:30am</option>'
+                                            +'<option value="05:00">5:00am</option>'
+                                            +'<option value="05:30">5:30am</option>'
+                                            +'<option value="06:00">6:00am</option>'
+                                            +'<option value="06:30">6:30am</option>'
+                                            +'<option value="07:00">7:00am</option>'
+                                            +'<option value="07:30">7:30am</option>'
+                                            +'<option value="08:00">8:00am</option>'
+                                            +'<option value="08:30">8:30am</option>'
+                                            +'<option value="09:00">9:00am</option>'
+                                            +'<option value="09:30">9:30am</option>'
+                                            +'<option value="10:00">10:00am</option>'
+                                            +'<option value="10:30">10:30am</option>'
+                                            +'<option value="11:00">11:00am</option>'
+                                            +'<option value="11:30">11:30am</option>'
+                                            +'<option value="12:00">12:00pm</option>'
+                                            +'<option value="12:30">12:30pm</option>'
+                                            +'<option value="13:00">1:00pm</option>'
+                                            +'<option value="13:30">1:30pm</option>'
+                                            +'<option value="14:00">2:00pm</option>'
+                                            +'<option value="14:30">2:30pm</option>'
+                                            +'<option value="15:00">3:00pm</option>'
+                                            +'<option value="15:30">3:30pm</option>'
+                                            +'<option value="16:00">4:00pm</option>'
+                                            +'<option value="16:30">4:30pm</option>'
+                                            +'<option value="17:00">5:00pm</option>'
+                                            +'<option value="17:30">5:30pm</option>'
+                                            +'<option value="18:00">6:00pm</option>'
+                                            +'<option value="18:30">6:30pm</option>'
+                                            +'<option value="19:00">7:00pm</option>'
+                                            +'<option value="19:30">7:30pm</option>'
+                                            +'<option value="20:00">8:00pm</option>'
+                                            +'<option value="20:30">8:30pm</option>'
+                                            +'<option value="21:00">9:00pm</option>'
+                                            +'<option value="21:30">9:30pm</option>'
+                                            +'<option value="22:00">10:00pm</option>'
+                                            +'<option value="22:30">10:30pm</option>'
+                                            +'<option value="23:00">11:00pm</option>'
+                                            +'<option value="23:30">11:30pm</option>'
+                                        +'</select>'
                                     +'</div>'
                                 +'</div>'
 
@@ -590,7 +743,60 @@
 
                                 +'<div class="col-md-2">'
                                     +'<div class="left-inner-addon-ml">'
-                                        +'<input type="text" name="multi_state[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="State">'
+                                        +'<select id="multi_state" name="multi_state[]" type="text" class="form-control" style="margin-top: 5px;font-size:15px; width: 100%;">'
+                                            +'<option value="" selected="selected">State</option>' 
+                                            +'<option value="AK">AK</option>'
+                                            +'<option value="AL">AL</option>'
+                                            +'<option value="AR">AR</option>'
+                                            +'<option value="AZ">AZ</option>'
+                                            +'<option value="CA">CA</option>'
+                                            +'<option value="CO">CO</option>'
+                                            +'<option value="CT">CT</option>'
+                                            +'<option value="DC">DC</option>'
+                                            +'<option value="DE">DE</option>'
+                                            +'<option value="FL">FL</option>'
+                                            +'<option value="GA">GA</option>'
+                                            +'<option value="HI">HI</option>'
+                                            +'<option value="IA">IA</option>'
+                                            +'<option value="ID">ID</option>'
+                                            +'<option value="IL">IL</option>'
+                                            +'<option value="IN">IN</option>'
+                                            +'<option value="KS">KS</option>'
+                                            +'<option value="KY">KY</option>'
+                                            +'<option value="LA">LA</option>'
+                                            +'<option value="MA">MA</option>'
+                                            +'<option value="MD">MD</option>'
+                                            +'<option value="ME">ME</option>'
+                                            +'<option value="MI">MI</option>'
+                                            +'<option value="MN">MN</option>'
+                                            +'<option value="MO">MO</option>'
+                                            +'<option value="MS">MS</option>'
+                                            +'<option value="MT">MT</option>'
+                                            +'<option value="NC">NC</option>'
+                                            +'<option value="ND">ND</option>'
+                                            +'<option value="NE">NE</option>'
+                                            +'<option value="NH">NH</option>'
+                                            +'<option value="NJ">NJ</option>'
+                                            +'<option value="NM">NM</option>'
+                                            +'<option value="NV">NV</option>'
+                                            +'<option value="NY">NY</option>'
+                                            +'<option value="OH">OH</option>'
+                                            +'<option value="OK">OK</option>'
+                                            +'<option value="OR">OR</option>'
+                                            +'<option value="PA">PA</option>'
+                                            +'<option value="RI">RI</option>'
+                                            +'<option value="SC">SC</option>'
+                                            +'<option value="SD">SD</option>'
+                                            +'<option value="TN">TN</option>'
+                                            +'<option value="TX">TX</option>'
+                                            +'<option value="UT">UT</option>'
+                                            +'<option value="VA">VA</option>'
+                                            +'<option value="VT">VT</option>'
+                                            +'<option value="WA">WA</option>'
+                                            +'<option value="WI">WI</option>'
+                                            +'<option value="WV">WV</option>'
+                                            +'<option value="WY">WY</option>'
+                                        +'</select>'
                                     +'</div>'
                                 +'</div>'                     
 
