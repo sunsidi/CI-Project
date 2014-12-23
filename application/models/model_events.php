@@ -145,125 +145,160 @@ class Model_events extends CI_Model{
    return $related_events;      
   }
 
-	    public function create_event($userID,$e_image)
-	    {		
-	        $this->load->helper('date');
-		
-		$data['e_image'] = $e_image;
-		$data['e_name'] =  strip_tags($this->input->post('e_name'));
-                $data['e_description'] = strip_tags($this->input->post('e_description'));
-                $data['e_state'] = strip_tags($this->input->post('e_state'));
-		$data['e_city'] = strip_tags($this->input->post('e_city'));
-                $data['e_zipcode'] = strip_tags($this->input->post('e_zipcode'));
-	        $data['e_country'] = strip_tags($this->input->post('e_country'));
-	        $data['e_phone'] = strip_tags($this->input->post('e_phone'));
-	        $data['e_email'] = strip_tags($this->input->post('e_email'));
-		$data['e_website'] = strip_tags($this->input->post('e_website'),'<a>');
-	        $data['e_capacity'] = strip_tags($this->input->post('e_capacity'));
-		$data['e_address'] = strip_tags($this->input->post('e_address'));
-		$data['e_is_address_hide'] = $this->input->post('e_is_hide');
-		$data['e_is_online'] = $this->input->post('e_is_online');
-		$data['e_is_ticketed'] = $this->input->post('e_is_ticketed');
-		if($this->input->post('e_type') == 'private') {
-			$data['e_private'] = 1;
-		}
-                
-		//$data['e_end_time'] = $this->input->post('e_date').' '.$this->input->post('e_end_time');
-		if($this->input->post('e_end_time') == NULL)
-			$data['e_end_time'] = strip_tags($this->input->post('e_end_time'));
-		else
-			$data['e_end_time'] = $this->timestamp(strip_tags($this->input->post('e_end_time')));
-		//echo $data['e_end_time'];
-	        
-		//$data['e_start_time'] = $this->input->post('e_date').' '.$this->input->post('e_start_time');
-		//echo $this->input->post('e_start_time');
-		$data['e_start_time'] = $this->timestamp(strip_tags($this->input->post('e_start_time')));
-		//echo $data['e_end_time'];
-		
-	        
-		$temp_date = strip_tags($this->input->post('e_date'));
-                $split_date = explode('/',$temp_date);
-                $real_date = $split_date[2] . '-' . $split_date[0] . '-' . $split_date[1];
-		$data['e_date'] = $real_date;
-		//echo $data['e_date'];
-		if($this->input->post('period') > 0)
-	        	$data['period'] = $this->input->post('period');
-	        else if($this->input->post('period') == -1) {
-	        	$data['period_text'] = 'Every Weekday';
-	        	$data['e_date'] = '9999-12-31';
-	        }
-	        else if($this->input->post('period') == -7) {
-	       		$data['period_text'] = 'Every Weekend';
-	       		$data['e_date'] = '9999-12-31';
-	        }
+    public function create_event($userID,$e_image)
+    {		
+        $this->load->helper('date');
 
-		//$data['e_category']= $this->input->post('e_category');
-	        $data['e_category']= $this->input->post('hotspots') + $this->input->post('icebreakers') + $this->input->post('culture')+
-	        $this->input->post('meetups')+ $this->input->post('explore')+ $this->input->post('romance')+$this->input->post('parties')+
-	        $this->input->post('clubs')+ $this->input->post('concerts')+$this->input->post('festivals')+$this->input->post('lounges')+
-	        $this->input->post('bars');
-		
-	       /* 
-                echo $this->input->post('e_is_free')."<br/>";
-                echo $this->input->post('e_price')."<br/>";
-                echo $this->input->post('e_is_ticket')."<br/>";
-                echo $this->input->post('e_type')."<br/>";
-                echo $this->input->post('e_is_hide')."<br/>";
-                echo $this->input->post('is_hotspot')."<br/>";
-	       */
-	       $data['e_creatorID']= $userID;
-	       $lowest_price = -1;
-	       $data['e_pricetemp'] = $lowest_price;
-	       $this->db->insert('events',$data);
-               $query_id = $this->db->insert_id();
-               if($data['e_is_ticketed']) {
-                $ticket_type = $this->input->post('type');
-                $ticket_info = $this->input->post('info');
-                $ticket_quantity = $this->input->post('e_quantity');
-                $ticket_price = $this->input->post('e_price');
-                $ticket_date = $this->input->post('max_date');
-                $ticket_time = $this->input->post('max_time');
-                
-               	for($i = 0; $i < count($ticket_type); $i++) {
-               		$ticket_data = array('event_id' => $query_id,
-               				     'type'	=> strip_tags($ticket_type[$i]),
-               				     'info'	=> strip_tags($ticket_info[$i]),
-               				     'quantity' => strip_tags($ticket_quantity[$i]),
-               				     'price'	=> strip_tags($ticket_price[$i]),
-               				     'date'	=> strip_tags($ticket_date[$i]),
-               				     'time'	=> $this->timestamp(strip_tags($ticket_time[$i])));
-               		if($lowest_price != 0 || $lowest_price > $ticket_price[$i])
-	                	$lowest_price = $ticket_price[$i];
-               		$this->db->insert('event_ticket_types', $ticket_data);
-               	 
-                }
-               }
-               if($lowest_price == -1)
-               	$lowest_price = 0;
-               $this->db->update('events', array('e_pricetemp' => $lowest_price), array('event_id' => $query_id));
-               
-               return $query_id;
-	    }
-	    
-	    
-	    public function timestamp($input)//CHANGED! SAVED AS SMALL INT
-	    {
-	    	 if(strpos($input, ':')) {
-	    	  	$input = explode(':', $input);
-	    	  	$sum = $input[0] * 60;
-	    	 	$sum += $input[1];
-	    	 }
-	    	 else
-	    	 	$sum = 0;
-		  /*$data = $this->db->query('SELECT UNIX_TIMESTAMP('. '\''.$input.'\''.')');
-		  $result = $data->result_array();
-		  //print_r($result);
-		  //$data['e_start_time'] = $result[0]['UNIX_TIMESTAMP('. '\''.$input.'\''.')'];
-		  
-		  
-		  $quary =$result[0]['UNIX_TIMESTAMP('. '\''.$input.'\''.')'];*/
-		  return $sum;
-	    }
+        $data['e_image'] = $e_image;
+        $data['e_name'] =  strip_tags($this->input->post('e_name'));
+        $data['e_description'] = strip_tags($this->input->post('e_description'));
+        $data['e_state'] = strip_tags($this->input->post('e_state'));
+        $data['e_city'] = strip_tags($this->input->post('e_city'));
+        $data['e_zipcode'] = strip_tags($this->input->post('e_zipcode'));
+        $data['e_country'] = strip_tags($this->input->post('e_country'));
+        $data['e_phone'] = strip_tags($this->input->post('e_phone'));
+        $data['e_email'] = strip_tags($this->input->post('e_email'));
+        $data['e_website'] = strip_tags($this->input->post('e_website'),'<a>');
+        $data['e_capacity'] = strip_tags($this->input->post('e_capacity'));
+        $data['e_address'] = strip_tags($this->input->post('e_address'));
+        $data['e_is_address_hide'] = $this->input->post('e_is_hide');
+        $data['e_is_online'] = $this->input->post('e_is_online');
+        $data['e_is_ticketed'] = $this->input->post('e_is_ticketed');
+        if($this->input->post('e_type') == 'private') {
+                $data['e_private'] = 1;
+        }
+
+        //$data['e_end_time'] = $this->input->post('e_date').' '.$this->input->post('e_end_time');
+        if($this->input->post('e_end_time') == NULL)
+                $data['e_end_time'] = strip_tags($this->input->post('e_end_time'));
+        else
+                $data['e_end_time'] = $this->timestamp(strip_tags($this->input->post('e_end_time')));
+        //echo $data['e_end_time'];
+
+        //$data['e_start_time'] = $this->input->post('e_date').' '.$this->input->post('e_start_time');
+        //echo $this->input->post('e_start_time');
+        $data['e_start_time'] = $this->timestamp(strip_tags($this->input->post('e_start_time')));
+        //echo $data['e_end_time'];
+
+
+        $temp_date = strip_tags($this->input->post('e_date'));
+        $split_date = explode('/',$temp_date);
+        $real_date = $split_date[2] . '-' . $split_date[0] . '-' . $split_date[1];
+        $data['e_date'] = $real_date;
+        //echo $data['e_date'];
+        if($this->input->post('period') > 0)
+                $data['period'] = $this->input->post('period');
+        else if($this->input->post('period') == -1) {
+                $data['period_text'] = 'Every Weekday';
+                $data['e_date'] = '9999-12-31';
+        }
+        else if($this->input->post('period') == -7) {
+                $data['period_text'] = 'Every Weekend';
+                $data['e_date'] = '9999-12-31';
+        }
+
+        //$data['e_category']= $this->input->post('e_category');
+        $data['e_category']= $this->input->post('hotspots') + $this->input->post('icebreakers') + $this->input->post('culture')+
+        $this->input->post('meetups')+ $this->input->post('explore')+ $this->input->post('romance')+$this->input->post('parties')+
+        $this->input->post('clubs')+ $this->input->post('concerts')+$this->input->post('festivals')+$this->input->post('lounges')+
+        $this->input->post('bars');
+
+       /* 
+        echo $this->input->post('e_is_free')."<br/>";
+        echo $this->input->post('e_price')."<br/>";
+        echo $this->input->post('e_is_ticket')."<br/>";
+        echo $this->input->post('e_type')."<br/>";
+        echo $this->input->post('e_is_hide')."<br/>";
+        echo $this->input->post('is_hotspot')."<br/>";
+       */
+       $data['e_creatorID']= $userID;
+       $lowest_price = -1;
+       $data['e_pricetemp'] = $lowest_price;
+       $this->db->insert('events',$data);
+       $query_id = $this->db->insert_id();
+       if($data['e_is_ticketed']) {
+        $ticket_type = $this->input->post('type');
+        $ticket_info = $this->input->post('info');
+        $ticket_quantity = $this->input->post('e_quantity');
+        $ticket_price = $this->input->post('e_price');
+        $ticket_date = $this->input->post('max_date');
+        $ticket_time = $this->input->post('max_time');
+
+        for($i = 0; $i < count($ticket_type); $i++) {
+                $ticket_data = array('event_id' => $query_id,
+                                     'type'	=> strip_tags($ticket_type[$i]),
+                                     'info'	=> strip_tags($ticket_info[$i]),
+                                     'quantity' => strip_tags($ticket_quantity[$i]),
+                                     'price'	=> strip_tags($ticket_price[$i]),
+                                     'date'	=> strip_tags($ticket_date[$i]),
+                                     'time'	=> $this->timestamp(strip_tags($ticket_time[$i])));
+                if($lowest_price != 0 || $lowest_price > $ticket_price[$i])
+                        $lowest_price = $ticket_price[$i];
+                $this->db->insert('event_ticket_types', $ticket_data);
+
+        }
+       }
+       if($lowest_price == -1)
+        $lowest_price = 0;
+       $this->db->update('events', array('e_pricetemp' => $lowest_price), array('event_id' => $query_id));
+
+       return $query_id;
+    }
+    
+    //create multiple events
+    public function create_multi_event($id) {
+        $data = $this->input->post();
+        for($i = 0; $i < count($data['multi_categories']); $i++) {
+            $insert_data['e_category'] = $data['multi_categories'][$i];
+            $insert_data['e_name'] = strip_tags($data['multi_e_name'][$i]);
+            $insert_data['e_date'] = strip_tags($data['multi_e_date'][$i]);
+            $insert_data['e_start_time'] = $this->timestamp($data['multi_start_time'][$i]);
+            $insert_data['e_address'] = strip_tags($data['multi_address'][$i]);
+            $insert_data['e_city'] = strip_tags($data['multi_city'][$i]);
+            $insert_data['e_state'] = strip_tags($data['multi_state'][$i]);
+            $insert_data['e_zipcode'] = strip_tags($data['multi_zipcode'][$i]);
+            $insert_data['e_website'] = strip_tags($data['multi_website'][$i]);
+            $insert_data['e_pricetemp'] = strip_tags($data['multi_price'][$i]);
+            $insert_data['e_description'] = strip_tags($data['multi_description'][$i]);
+            $insert_data['e_creatorID'] = $id;
+            $this->db->insert('events', $insert_data);
+            $insert_ids[$i] = $this->db->insert_id();
+            
+        }
+        if(isset($insert_ids)) {
+            return $insert_ids;
+        }
+    }
+    
+    //After we create we need to keep track of the images that we uploaded. So update database.
+    public function update_multi_images($new_paths, $insert_ids) {
+        for($i = 0; $i < count($new_paths); $i++) {
+            $query = $this->db->update('events', array('e_image' => $new_paths[$i]), array('event_id' => $insert_ids[$i]));
+        }
+        if($query) {
+            return true;
+        }
+        return false;
+    }
+    
+    public function timestamp($input)//CHANGED! SAVED AS SMALL INT
+    {
+         if(strpos($input, ':')) {
+                $input = explode(':', $input);
+                $sum = $input[0] * 60;
+                $sum += $input[1];
+         }
+         else
+                $sum = 0;
+          /*$data = $this->db->query('SELECT UNIX_TIMESTAMP('. '\''.$input.'\''.')');
+          $result = $data->result_array();
+          //print_r($result);
+          //$data['e_start_time'] = $result[0]['UNIX_TIMESTAMP('. '\''.$input.'\''.')'];
+
+
+          $quary =$result[0]['UNIX_TIMESTAMP('. '\''.$input.'\''.')'];*/
+          return $sum;
+    }
 public function get_latest_related_events($search,$category,$price,$state,$zipcode){
     //get all events
       /*

@@ -102,7 +102,9 @@ class Model_wrevenues extends CI_Model{
             $query = $this->db->get_where('wrevenues', array('id' => $id));
             $temp = $query->row_array(0);
             if($temp['image_key'] != 'default_wrevenue_image.jpg') {
-                unlink('./uploads/'.$temp['image_key']);
+            	if(!file_exists('./uploads/'.$temp['image_key'])) {
+                	unlink('./uploads/'.$temp['image_key']);
+                }
             }
             $new_data['image_key'] = $wrevenue_image;
             

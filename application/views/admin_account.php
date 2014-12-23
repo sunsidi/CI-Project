@@ -421,113 +421,100 @@
 				
 				<!--multiple listings-->
 				<div class="tab-pane" id="multiple_listings" style="background:rgba(255,255,255,0.5);color:#404041; padding:10%;text-align:center;">
-				<div class="addmore">
+				<?php echo form_open_multipart('admin/create_multiple_events');?>
+                                    <div id="button_base" class="addmore">
 				        <div class="panel" style="border-color: transparent; background:#a1bbc8;">
-      
-            <div class="panel-body">
-                <form class="form-inline" role="form" style="">
+                                            <div class="panel-body">
+                                                <div class="col-md-3">
+                                                    <button id="category_button" type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background:white;font-size:14px; width: 100%;">
+                                                        Categories
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a onclick="change_category(this, 1024)">hotspots</a></li>
+                                                        <li><a onclick="change_category(this, 1)">icebreakers</a></li>
+                                                        <li><a onclick="change_category(this, 2048)">culture</a></li>
+                                                        <li><a onclick="change_category(this, 2)">meet ups</a></li>
+                                                        <li><a onclick="change_category(this, 64)">exploring your city</a></li>
+                                                        <li><a onclick="change_category(this, 128)">love and romance</a></li>
+                                                        <li><a onclick="change_category(this, 4)">parties</a></li>
+                                                        <li><a onclick="change_category(this, 8)">clubs</a></li>
+                                                        <li><a onclick="change_category(this, 16)">concerts</a></li>
+                                                        <li><a onclick="change_category(this, 32)">festivals</a></li>
+                                                        <li><a onclick="change_category(this, 256)">lounges</a></li>
+                                                        <li><a onclick="change_category(this, 512)">bars</a></li>
+                                                    </ul>
+                                                </div>
+                                                <input id="category_change" type="number" value="0" name="multi_categories[]" hidden>
 
-  			
-  
-  			
-                        <div class="col-md-3">
-                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background:white;font-size:14px; width: 100%;">
-                                Categories
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">hotspots</a></li>
-                                <li><a href="#">icebreakers</a></li>
-                                <li><a href="#">culture</a></li>
-                                <li><a href="#">meet ups</a></li>
-                                <li><a href="#">exploring your city</a></li>
-                                <li><a href="#">love and romance</a></li>
-                                <li><a href="#">parties</a></li>
-                                <li><a href="#">clubs</a></li>
-                                <li><a href="#">concerts</a></li>
-                                <li><a href="#">festivals</a></li>
-                                <li><a href="#">lounges</a></li>
-                                <li><a href="#">bars</a></li>
-                            </ul>
-                        </div>
-                        
-                        <div class="col-md-3">
-                            <div class="left-inner-addon-ml">
-                              	<input type="text" name="e_name" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Title">
-  			    </div>
-                        </div>
-                        
-  			<div class="col-md-3">
-                            <div class="left-inner-addon-ml">
-                              	<input type="text" name=""class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Date">
-  			    </div>
-                        </div>
-                        
-                        <div class="col-md-3">
-                            <div class="left-inner-addon-ml">
-                              	<input type="text" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Time Start">
-  			    </div>
-                        </div>
-                        
-                        <div class="col-md-5">
-                            <div class="left-inner-addon-ml">
-                              	<input type="text" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Location">
-  			    </div>
-                        </div>
-                        
-                        <div class="col-md-2">
-                            <div class="left-inner-addon-ml">
-                              	<input type="text" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="City">
-  			    </div>
-                        </div>
-                        
-                        <div class="col-md-2">
-                            <div class="left-inner-addon-ml">
-                              	<input type="text" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="State">
-  			    </div>
-                        </div>                        
-                        
-                        <div class="col-md-3">
-                            <div class="left-inner-addon-ml">
-                              	<input type="text" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Zip Code">
-  			    </div>
-                        </div>
-                        
-                        <div class="col-md-3">
-                            <div class="left-inner-addon-ml">
-                              	<input type="text" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Website">
-  			    </div>
-                        </div>
-                        
-                        <div class="col-md-2">
-                            <div class="left-inner-addon-ml">
-                              	<input type="text" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Price">
-  			    </div>
-                        </div>
-                        
-                                                
-                <div class="col-md-5">
-                <textarea class="form-control" id="message" name="message" placeholder="Description" rows="1" style="margin-top: 5px;font-size:15px; width: 100%;"></textarea>
-                </div>
-                
-                
-                <div class="col-md-2" style="padding-top: 5px;">
-                        <label for="file-input">
-                        
-                            <img src="<?php echo $PATH_IMG?>camera_icon.png" style="width:70%;">
-                        	
-                        </label>
-                </div>
-                </form>
-                
+                                                <div class="col-md-3">
+                                                    <div class="left-inner-addon-ml">
+                                                        <input type="text" name="multi_e_name[]" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Title">
+                                                    </div>
+                                                </div>
 
-                   
-                   	          
-            </div>
-        </div>
-        </div>
-         <button id="addmore-button"type="button" class="btn btn-md" style="float:left;background: #6ca5cc; color:white; font-size:20px;">Add More</button>
-         <button type="button" class="btn btn-md" style="float:right;background: #6ca5cc; color:white; font-size:20px;">Submit</button>
-	
+                                                <div class="col-md-3">
+                                                    <div class="left-inner-addon-ml">
+                                                        <input type="text" name="multi_e_date[]" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Date">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="left-inner-addon-ml">
+                                                        <input type="text" name="multi_start_time[]" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Time Start">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-5">
+                                                    <div class="left-inner-addon-ml">
+                                                        <input type="text" name="multi_address[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Location">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="left-inner-addon-ml">
+                                                        <input type="text" name="multi_city[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="City">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="left-inner-addon-ml">
+                                                        <input type="text" name="multi_state[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="State">
+                                                    </div>
+                                                </div>                        
+
+                                                <div class="col-md-3">
+                                                    <div class="left-inner-addon-ml">
+                                                        <input type="text" name="multi_zipcode[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Zip Code">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="left-inner-addon-ml">
+                                                        <input type="text" name="multi_website[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Website">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="left-inner-addon-ml">
+                                                        <input type="text" name="multi_price[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Price">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <textarea class="form-control" id="message" name="multi_description[]" placeholder="Description" rows="1" style="margin-top: 5px;font-size:15px; width: 100%;"></textarea>
+                                                </div>
+                                                <div class="col-md-2" style="padding-top: 5px;">
+                                                    <label for="file-input-multi0">
+                                                        <img src="<?php echo $PATH_IMG?>camera_icon.png" style="width:70%;">
+                                                    </label>
+                                                    <input id="file-input-multi0" id="" name="multi_file_input[]" type="file">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                <button id="addmore-button"type="button" class="btn btn-md" style="float:left;background: #6ca5cc; color:white; font-size:20px;">Add More</button>
+                                <button type="submit" class="btn btn-md" style="float:right;background: #6ca5cc; color:white; font-size:20px;">Submit</button>
+                                <?php echo form_close();?>
 				</div>
 			</div>
 		</div>  
@@ -547,10 +534,98 @@
     <script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
     <script>
+        var file_input_counter = 1;
     $("#addmore-button").click(function () {
- 
-	  $("<div class='panel' style='border-color: transparent; background:#a1bbc8;'><div class='panel-body'><form class='form-inline' role='form' style=''><div class='col-md-3'><button type='button' class='btn dropdown-toggle' data-toggle='dropdown' style='background:white;font-size:14px; width: 100%;'>Categories</button><ul class='dropdown-menu'><li><a href='#'>hotspots</a></li><li><a href='#'>icebreakers</a></li><li><a href='#'>culture</a></li><li><a href='#'>meet ups</a></li><li><a href='#'>exploring your city</a></li><li><a href='#'>love and romance</a></li><li><a href='#'>parties</a></li><li><a href='#'>clubs</a></li><li><a href='#'>concerts</a></li><li><a href='#'>festivals</a></li><li><a href='#'>lounges</a></li><li><a href='#'>bars</a></li></ul></div><div class='col-md-3'><div class='left-inner-addon-ml'><input type='text' class='form-control'  style='margin-top: 1px;font-size:15px; width: 100%;' placeholder='Title'></div></div><div class='col-md-3'><div class='left-inner-addon-ml'><input type='text' class='form-control' style='margin-top: 1px;font-size:15px; width: 100%;' placeholder='Date'></div></div><div class='col-md-3'><div class='left-inner-addon-ml'><input type='text' class='form-control'  style='margin-top: 1px;font-size:15px; width: 100%;' placeholder='Time Start'></div></div><div class='col-md-5'><div class='left-inner-addon-ml'><input type='text' class='form-control'  style='margin-top: 5px;font-size:15px; width: 100%;' placeholder='Location'></div></div><div class='col-md-2'><div class='left-inner-addon-ml'><input type='text' class='form-control'  style='margin-top: 5px;font-size:15px; width: 100%;' placeholder='City'></div></div><div class='col-md-2'><div class='left-inner-addon-ml'><input type='text' class='form-control'  style='margin-top: 5px;font-size:15px; width: 100%;' placeholder='State'></div></div><div class='col-md-3'><div class='left-inner-addon-ml'><input type='text' class='form-control'  style='margin-top: 5px;font-size:15px; width: 100%;' placeholder='Zip Code'></div></div><div class='col-md-3'><div class='left-inner-addon-ml'><input type='text' class='form-control'  style='margin-top: 5px;font-size:15px; width: 100%;' placeholder='Website'></div></div><div class='col-md-2'><div class='left-inner-addon-ml'><input type='text' class='form-control'  style='margin-top: 5px;font-size:15px; width: 100%;' placeholder='Price'></div></div><div class='col-md-5'><textarea class='form-control' id='message' name='message' placeholder='Description' rows='1' style='margin-top: 5px;font-size:15px; width: 100%;'></textarea></div><div class='col-md-2' style='padding-top: 5px;'><label for='file-input'><img src='<?php echo $PATH_IMG?>camera_icon.png' style='width:70%;'></label></div></form></div></div>").appendTo('.addmore');
- 
+        var content =   '<div class="panel" style="border-color: transparent; background:#a1bbc8;">'
+                            +'<div class="panel-body">'
+                                +'<div class="col-md-3">'
+                                    +'<button id="category_button" type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background:white;font-size:14px; width: 100%;">Categories'
+                                    +'</button>'
+                                    +'<ul class="dropdown-menu">'
+                                        +'<li><a onclick="change_category(this, 1024)">hotspots</a></li>'
+                                        +'<li><a onclick="change_category(this, 1)">icebreakers</a></li>'
+                                        +'<li><a onclick="change_category(this, 2048)">culture</a></li>'
+                                        +'<li><a onclick="change_category(this, 2)">meet ups</a></li>'
+                                        +'<li><a onclick="change_category(this, 64)">exploring your city</a></li>'
+                                        +'<li><a onclick="change_category(this, 128)">love and romance</a></li>'
+                                        +'<li><a onclick="change_category(this, 4)">parties</a></li>'
+                                        +'<li><a onclick="change_category(this, 8)">clubs</a></li>'
+                                        +'<li><a onclick="change_category(this, 16)">concerts</a></li>'
+                                        +'<li><a onclick="change_category(this, 32)">festivals</a></li>'
+                                        +'<li><a onclick="change_category(this, 256)">lounges</a></li>'
+                                        +'<li><a onclick="change_category(this, 512)">bars</a></li>'
+                                    +'</ul>'
+                                +'</div>'
+                                +'<input id="category_change" type="number" value="0" name="multi_categories[]" hidden>'
+
+                                +'<div class="col-md-3">'
+                                    +'<div class="left-inner-addon-ml">'
+                                        +'<input type="text" name="multi_e_name[]" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Title">'
+                                    +'</div>'
+                                +'</div>'
+
+                                +'<div class="col-md-3">'
+                                    +'<div class="left-inner-addon-ml">'
+                                        +'<input type="text" name="multi_e_date[]" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Date">'
+                                    +'</div>'
+                                +'</div>'
+
+                                +'<div class="col-md-3">'
+                                    +'<div class="left-inner-addon-ml">'
+                                        +'<input type="text" name="multi_start_time[]" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Time Start">'
+                                    +'</div>'
+                                +'</div>'
+
+                                +'<div class="col-md-5">'
+                                    +'<div class="left-inner-addon-ml">'
+                                        +'<input type="text" name="multi_address[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Location">'
+                                    +'</div>'
+                                +'</div>'
+
+                                +'<div class="col-md-2">'
+                                    +'<div class="left-inner-addon-ml">'
+                                        +'<input type="text" name="multi_city[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="City">'
+                                    +'</div>'
+                                +'</div>'
+
+                                +'<div class="col-md-2">'
+                                    +'<div class="left-inner-addon-ml">'
+                                        +'<input type="text" name="multi_state[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="State">'
+                                    +'</div>'
+                                +'</div>'                     
+
+                                +'<div class="col-md-3">'
+                                    +'<div class="left-inner-addon-ml">'
+                                        +'<input type="text" name="multi_zipcode[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Zip Code">'
+                                    +'</div>'
+                                +'</div>'
+
+                                +'<div class="col-md-3">'
+                                    +'<div class="left-inner-addon-ml">'
+                                        +'<input type="text" name="multi_website[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Website">'
+                                    +'</div>'
+                                +'</div>'
+
+                                +'<div class="col-md-2">'
+                                    +'<div class="left-inner-addon-ml">'
+                                        +'<input type="text" name="multi_price[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Price">'
+                                    +'</div>'
+                                +'</div>'
+
+                                +'<div class="col-md-5">'
+                                    +'<textarea class="form-control" id="message" name="multi_description[]" placeholder="Description" rows="1" style="margin-top: 5px;font-size:15px; width: 100%;"></textarea>'
+                                +'</div>'
+
+                                +'<div class="col-md-2" style="padding-top: 5px;">'
+                                    +'<label for="file-input-multi'+file_input_counter+'">'
+                                        +'<img src="<?php echo $PATH_IMG?>camera_icon.png" style="width:70%;">'
+                                    +'</label>'
+                                        +'<input id="file-input-multi'+file_input_counter+'" name="multi_file_input[]" type="file">'
+                                +'</div>'
+                            +'</div>'
+                        +'</div>'
+        file_input_counter++;
+	$('#button_base').append(content);  
     });
     </script>
     <script>
@@ -663,6 +738,13 @@
                     $(this).parent().hide();
                 }
             }); 
+        }
+    </script>
+    <script>
+        function change_category(i, value) {
+            $(i).parent().parent().parent().siblings('#category_change').attr("value", value);
+            $(i).parent().parent().parent().children('#category_button').html($(i).html());
+            console.log($(i).parent().parent().parent().siblings('#category_change').val());
         }
     </script>
 </body>

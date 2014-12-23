@@ -380,9 +380,11 @@
                         
                         <!-- EDIT AND RATINGS MODAL -->
                         <div class="col-sm-4">
+                            <?php if($id_check == $wrevenues['creator_id']) {?>
                             <div>
                                 <a href="#" data-toggle="modal" data-target="#editwrevenue" class="btn edit-wrevenue">Edit Wrevenue</a>
                             </div>
+                            <?php }?>
                             <!-- COMMENTED OUT <div style="margin-top:7px;">
                                 <i class="fa fa-star fa-2x"></i>
                                 <i class="fa fa-star fa-2x"></i>
@@ -409,7 +411,7 @@
                                 <?php if(!empty($wrevenues['shoutout'])) {?>
                                 <div style="background:#F0F3F6;border-radius:8px;padding:10px;"><?php echo $wrevenues['shoutout']?></div>
                                 <?php }else {?>
-                                <div style="background:#F0F3F6;border-radius:8px;padding:10px;"> Placeholder shoutout here</div>
+                                <div style="background:#F0F3F6;border-radius:8px;padding:10px;"> Send us a message if you have any questions!</div>
                                 <?php }?>
                             </div><!-- END OF SHOUTOUT -->
                             
@@ -439,7 +441,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php }?>
+                                <?php } else { echo 'There are no upcoming wrevs for this wrevenue';}?>
                             </div><!-- END OF UPCOMING WREVS -->
 							
                             <!-- CONTACT INFO -->
@@ -479,21 +481,24 @@
                             <!-- HOURS -->
                             <div style="margin-top:40px;">
                                 <h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>clock_icon.png"/> &nbsp; Hours</h4>
+                                <?php $hours_check = 0;?>
                                 <div style="padding:0% 17%;font-size:18px;line-height:70%;">
                                     <?php for($i = 0; $i < 7; $i++) {
-                                            if($wrevenues['day'][$i] != false) {?>
+                                            if($wrevenues['day'][$i] != false) { $hours_check = 1;?>
                                                 <p><?php echo strtoupper($wrevenues['day'][$i]['day']);?> &nbsp;&nbsp <?php echo $wrevenues['day'][$i]['start_time'].' to '.$wrevenues['day'][$i]['end_time'];?></p>
                                     <?php }}?>
                                 </div>
+                                <?php if(!$hours_check) { echo 'There are no hours for this wrevenue'; }?>
                             </div><!-- END OF HOURS -->
                             
                             <!-- PHOTOS -->
                             <div style="margin-top:40px;">
                                 <h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>photo_icon.png"/> &nbsp; Photos:</h4>
+                                <?php if(!empty($wrevenues['photos'])) {?>
                                 <div style="padding:0% 5%;font-size:18px;line-height:70%;">
                                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
 										<div class="carousel-inner" role="listbox">
-											<?php if(!empty($wrevenues['photos'])) {
+											<?php 
 											$first = true;
 											foreach($wrevenues['photos'] as $picture){
 												if($first) {?>
@@ -508,7 +513,7 @@
 													<a href="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" rel="lightbox"> <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" alt="..."></a>
 												</div>
 
-											<?php }}}?> 
+											<?php }}} else { echo 'There are no photos for this wrevenue'; }?> 
 									
 										</div>
 											<a class="left carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="prev">

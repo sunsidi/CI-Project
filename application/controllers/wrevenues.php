@@ -40,6 +40,13 @@ class wrevenues extends CI_Controller{
         $path = $this->path->getPath();
         $this->load->library('session');
         $data['wrevenues'] = $this->model_wrevenues->find_wrevenue($id);
+        if(!file_exists('./uploads/wrevenues/'.$id.'/photos/')) {
+        	mkdir('./uploads/wrevenues/'.$id.'/photos/',0777, true);
+        	chmod('./uploads/wrevenues/'.$id.'/photos/',0777);
+        	
+        }
+        $email = $this->session->userdata('email');
+        $data['id_check'] = $this->model_users->get_userID($email);
         $data['events'] = $this->model_users->get_my_events_by_date($data['wrevenues']['creator_id']);
         $this->load->helper('date');
         $datestring = "%Y-%m-%d";
