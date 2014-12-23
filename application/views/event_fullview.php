@@ -722,7 +722,7 @@ jQuery(document).ready(function () {
                         </div>
                         <div class="col-md-6" style="text-align:center;margin-top:10px;">              	
                             <div class="row" style="color:white;">
-                            	<a href="http://wrevenues.wrevel.com" class="btn viewmorewrevs" style="border-radius:10px;font-size:23px;color:white;">View Wrevenue</a>
+                            	<a href="<?php echo base_url().'wrevenues/wrevenues_main'?>" class="btn viewmorewrevs" style="border-radius:10px;font-size:23px;color:white;">View Wrevenue</a>
                                 
                                 <!--Ticketing System button-->
                                 <?php if($event[0]['e_is_ticketed']) {?>

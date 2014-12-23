@@ -722,7 +722,10 @@ position:absolute;
     <script src="<?php echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script>
 	$('#reputationInfo').popover();
+	$('#regular').popover();
+	$('#business').popover();
 	</script>
+	
 <script>
 	
     function myFunction()
