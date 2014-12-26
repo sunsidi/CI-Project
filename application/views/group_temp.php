@@ -243,7 +243,7 @@
                                                     <a class="btn btn-default" onclick="add_more_photos()"><i class="fa fa-plus"></i></a>
                                                 </div>
 					    </div>
-						<div class="form-group" style="margin-top: 10px;">
+						<div class="form-group" style="margin-top: -15px;">
                                                 <label style="float: left; margin-top: 10px;">Create tags</label>
                                                 <textarea name="description" class="form-control" rows="4" placeholder=""></textarea>
 						</div>
@@ -265,7 +265,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    </form>
+                                
                                 </div>
                             </div>
                         </div>
