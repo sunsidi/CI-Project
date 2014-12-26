@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <title>Groups</title>
 
- <?php $event_info =$this->_ci_cached_vars;?>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript"
@@ -132,13 +131,13 @@
                 <div class="row" style="margin-top: 10px;">
                     <center><a class="btn btn-lg btn-wrevenues" href="#" data-toggle="modal" data-target="#create_wrevenue">Create a Group</a>
 		    </center>
-                    <div class="modal fade" id="create_wrevenue" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="create_wrevenue" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color: white;">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content wrevenue-background">
                                 <div class="modal-header" style="border:none;">
                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
                                     </button>
-                                    <h4 style="font-family:GillSans; font-size:27px;">add a group</h4>
+                                    <center><h4 style="font-family:GillSans; font-size:27px;">add a group</h4></center>
                                 </div>
                                 <div class="modal-body" style="padding:2% 4%;text-align:left;">
                                     <?php echo form_open_multipart( 'wrevenues/create_wrevenue');?>
@@ -158,7 +157,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-2">Name:</label>
                                                 <div class="col-sm-10">
-                                                    <input name="place" type="text" class="form-control" placeholder="name of venue">
+                                                    <input name="place" type="text" class="form-control" placeholder="name of group">
                                                 </div>
                                             </div>
 
@@ -228,24 +227,28 @@
                                                 <div class="col-sm-5">
                                                     <input name="name" type="text" class="form-control">
                                                 </div>
-                                                <div class="col-sm-1">
+                                              <!-- <div class="col-sm-1">
                                                     <button class="btn" style="background:#27AAE0;"><i class="fa fa-camera"></i>
                                                     </button>
-                                                </div>
+                                                </div>-->
                                             </div>
                                             <div class="form-group row">
                                                 <div id="photos_upload" class="col-sm-5">
                                                     <div class="image-upload">
                                                         <label>Choose an Image:</label>
-                                                        <input name="wrevenue_file_array[]" type="file" style="overflow:hidden;" />
+                                                        <input name="wrevenue_file_array[]" type="file" style="overflow:hidden;"/>
                                                     </div>
                                                 </div>
-                                                <div>
+                                                <div style="margin-left: 80%; margin-top: 10px;">
                                                     <a class="btn btn-default" onclick="add_more_photos()"><i class="fa fa-plus"></i></a>
                                                 </div>
-						                                            <div class="form-group">
-                                                <label>Create tags</label>
+					    </div>
+						<div class="form-group" style="margin-top: 10px;">
+                                                <label style="float: left; margin-top: 10px;">Create tags</label>
                                                 <textarea name="description" class="form-control" rows="4" placeholder=""></textarea>
+						</div>
+						<button type="submit" class="btn btn-xs" style="background: white;color: black;">add</button>
+                                                <button type="submit" class="btn btn-xs" style="background: white;color: black;">delete</button>
                                             </div>
                                             </div>
                                             <!-- REMOVING UNTIL LATER 
@@ -257,7 +260,7 @@
                                                     <button type="button" style="color:#216EAD;">delete</button>
                                                 </div>
                                             </div>-->
-                                            <div class="row" style="padding-right:3%;">
+                                            <div class="row" style="padding-right:3%; margin-top: 10px;">
                                                 <button type="submit" class="btn pull-right" style="background:#6B94A8;font-size:20px;">submit</button>
                                             </div>
                                         </div>
