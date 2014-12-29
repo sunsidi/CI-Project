@@ -281,9 +281,8 @@ class Event extends CI_Controller {
             $data['states']= $events_states;
             $data['zipcode'] = $events_zipcode;
             
-            //Loads all the necessary Nav bar data.
-            $nav_data = $this->session->all_userdata();
-            $result = array_merge($data, $nav_data, $path);
+            $data['events'] = $this->model_events->featured_search();
+            $result = array_merge($data, $path);
             //echo "<pre> ",print_r($data,true) ,"</pre>";
             $this->load->view('Create_Wrevel_View', $path);
             $this->load->view('hub',$result);

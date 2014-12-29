@@ -303,6 +303,14 @@ class Model_events extends CI_Model{
           $quary =$result[0]['UNIX_TIMESTAMP('. '\''.$input.'\''.')'];*/
           return $sum;
     }
+    
+    //Featured Events Search.
+    public function featured_search() {
+        $sql = 'SELECT * FROM events WHERE (e_date > NOW()+INTERVAL 1 DAY) ORDER BY e_date ASC';
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+    
 public function get_latest_related_events($search,$category,$price,$state,$zipcode){
     //get all events
       /*

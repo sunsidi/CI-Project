@@ -8,6 +8,68 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 <link href="<? echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
+<style>
+	.marquee {
+    width: 85%;
+    //margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    //border: 1px #414042 solid;
+	background:rgba(255,255,255,0.3);
+	padding:10px;
+	border-top-right-radius:8px;
+	border-bottom-right-radius:8px;
+}
+
+.marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    text-indent: 0;
+    -webkit-marquee-speed: fast;
+	-webkit-animation: marquee 70s linear infinite;
+   -moz-animation: marquee 70s linear infinite;
+    -ms-animation: marquee 70s linear infinite;
+     -o-animation: marquee 70s linear infinite;
+    animation: marquee 70s linear infinite;
+	color:#414042;
+	font-size:19px;
+}
+
+
+
+.marquee span:hover {
+    -webkit-animation-play-state: paused; 
+    animation-play-state: paused
+}
+
+/* Make it move */
+
+@-webkit-keyframes marquee{
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+/* Make it pretty */
+.microsoft {
+    padding-left: 1.5em;
+    position: relative;
+    font: 16px 'Segoe UI', Tahoma, Helvetica, Sans-Serif;
+}
+
+ul.ticket-event-dp > li > a:hover{
+    background-image: none;
+	background-color:#DB787D;
+}
+
+
+
+</style>
 </head>
 
 <body>
@@ -17,8 +79,33 @@
 ==============================================-->
  <?php $events_info =$this->_ci_cached_vars;?>
 
-<div class="container" style="margin-top: 5%;padding-bottom:50px; width:90%">
-    
+ <div style="width:80%;margin-left:auto;margin-right:auto;margin-top:3%;">
+		<div class="btn-group" style="float:left;">
+		<button type="button" class="btn btn-lg dropdown-toggle ticker" data-toggle="dropdown" aria-expanded="false">Featured Events <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+			<ul class="dropdown-menu ticket-event-dp" style="font-size:18px;" role="menu">
+				<li><a href="#" class="ticker-event" style="color:white;">Featured Events</a></li>
+				<li><a href="#" class="ticker-event" style="color:white;">Upcoming Events</a></li>
+				<li><a href="#" class="ticker-event" style="color:white;">Friends' Events</a></li>
+				
+			</ul>
+		</div>
+		<p class="marquee">
+			<!--Scrolling Events-->
+			<span>
+                            <?php if(isset($events)) {
+                                for($i = 0; $i < count($events) && $i < 15; $i++) {?>
+				<a href="<?php echo base_url().'event/event_info/latest/'.$events[$i]['event_id'];?>" style="color:#414042;"><?php $originalDate = $events[$i]['e_date']; $newDate = date("F j", strtotime($originalDate)); echo $newDate;?> &nbsp;&nbsp;&nbsp; <strong><?php echo $events[$i]['e_name'];?></strong> &nbsp;&nbsp;&nbsp; <?php echo $events[$i]['e_address'];?> &nbsp;&nbsp;&nbsp; <strong style="color:#2c75bb;font-weight:100;"><?php echo substr($events[$i]['e_description'],0,14);?></strong></a> &nbsp;&nbsp;&nbsp;
+                            <?php }} else {?>
+                                <a href="#" style="color:#414042;">No events here =(</a>
+                            <?php }?>
+			</span>
+		</p>
+	</div>
+	
+<div class="container" style="margin-top: 3%;padding-bottom:50px; width:90%">
+	
+	
+	
     <div class="col-md-6" style="">
     
 <!--Latest Wrevs-->   
