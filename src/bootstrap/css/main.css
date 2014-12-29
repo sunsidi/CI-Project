@@ -1194,6 +1194,14 @@ color:white;
 //background:#DB787D;
 //}
 
+.blog-container{
+padding:0 50px; 
+margin-top: -100px;
+}
+
+.blog-header{
+height: 160px;
+}
 
 
 @media (max-width: 1025px){
@@ -1296,6 +1304,15 @@ color:white;
 	.inbox-btn{
 	display:none;
 	}
+	.blog-header{
+	height: auto;
+	}
+	.hidden-bar{
+	display:none;
+	}
+	.related-blog{
+	display:none;
+	}
 }
 
 
@@ -1321,6 +1338,10 @@ color:white;
 	.pricing-points{
 	margin-left: 25%;
 	}
+	.blog-container{
+	padding:0; 
+	margin-top: -100px;
+	}
 }
 
 @media (max-width:533px){
@@ -1338,7 +1359,8 @@ color:white;
 	width:100%;
 	margin-left:auto;
 	margin-right:auto;
-}
+	}
+	
 
 }
 

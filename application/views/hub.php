@@ -26,16 +26,28 @@
     display: inline-block;
     padding-left: 100%;
     text-indent: 0;
-    //border: 1px red solid;
+	-webkit-animation: marquee 20s linear infinite;
+   -moz-animation: marquee 20s linear infinite;
+    -ms-animation: marquee 20s linear infinite;
+     -o-animation: marquee 20s linear infinite;
     animation: marquee 20s linear infinite;
 	color:#414042;
 	font-size:19px;
 }
+
+
+
 .marquee span:hover {
     animation-play-state: paused
 }
 
 /* Make it move */
+
+@-webkit-keyframes marquee{
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
 @keyframes marquee {
     0%   { transform: translate(0, 0); }
     100% { transform: translate(-100%, 0); }
