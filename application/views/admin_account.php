@@ -353,24 +353,20 @@
                                                 <input id="search_users" type="Search" class="form-control" style="border-radius:10px;font-size:20px;" placeholder="Search" onkeyup="show_users(event)">						
                                             </div>
        					</div>
+					<div style="margin-top: 5px; width: 90%;">
+						<span style="margin-left: 6%;text-align: center; color:#5697CA;"><b>Username</b></span>
+						<span style="margin-left:10%;text-align: center;color: #5697CA;"><b>Date</b></span>
+						<span style="margin-left: 31%;text-align: center;color: #5697CA;"><b>Notification</b></span>
+					</div>
        					<div style="height:500px;overflow-y:auto;">
        					<table style="width:100%;text-align:left;">
-       						<thead style="color:#5697CA;">
-       							<tr>
-
-                                                            <td style="width:25%;">Username</td>														
-                                                            <td style="width:25%;">Date</td>
-                                                            <td style="width:25%;">Notification</td>
-							    
-							</tr>
-						</thead>
 						<tbody>
 						<?php if(isset($all_users)) {
 							for($i = 0; $i < count($all_users); $i++) {?>
 							<tr>
-                                                            <td style="word-break:break-all;">Tony</td>
-                                                            <td style="word-break:break-all;">12-25-2014</td>
-                                                            <td style="word-break:break-all;">Merry Christmas</td>
+                                                            <td style="word-break:break-all;text-align: center;width: 15%;">Tony</td>
+                                                            <td style="word-break:break-all;text-align: center;width: 15%;">12-25-2014</td>
+                                                            <td style="word-break:break-all;text-align: center;width: 50%;">Merry Christmas</td>
 							</tr>
 						<?php }}?>
 						</tbody>
