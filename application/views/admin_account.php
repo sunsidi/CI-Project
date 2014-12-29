@@ -65,6 +65,9 @@
 						<li style="float: none;"><a href="#listing_stats" data-toggle="tab">Listing Stats</a></li>-->
 						<li><a href="#site_stats" data-toggle="tab">Site Stats</a></li>
 						<li><a href="#multiple_listings" data-toggle="tab">Multiple Listings</a></li>
+						<li><a href="#newsfeed_automation " data-toggle="tab">Newsfeed Automation</a></li>
+						<li><a href="#notification_center" data-toggle="tab">Notification Center</a></li>
+
 					</ul>
 				</div>
 			</div>
@@ -318,7 +321,62 @@
 					<a href="#blog" data-toggle="tab"><button class="btn" style="color:white;background:#698BA7;font-size:25px;border-radius:10px;padding:5px 20px;">Previous Page</button></a>
 					
 				</div>
+				
+				<!--newsfeed_automation-->
+				<div class="tab-pane" id="newsfeed_automation" style="background:rgba(255,255,255,0.5);padding:6% 15%;">					
+					
+					<h2><i class="fa fa-file-text-o"></i> Body</h2>
+					<textarea class="form-control" rows="10" style="border:dashed 2px gray;resize: none;font-size:19px;border-radius:0;background:none;"></textarea>
+					
+					<div class="row" style="margin-left: 10px;text-align:right; margin-top:25px;padding:0 30px;text-align:left;">
+					<textarea class="form-control" rows="1" style="resize: none; font-size:20px;border-radius:0;width:75%;float:left;" placeholder="Filename"></textarea> 
+					<button class="btn" style="padding:5px 15px;font-size:25px; margin-left:10px;background:#27AAE2;color:white;"><span class="glyphicon glyphicon-camera"></span></button>
+					</div>
+					
+					<div class="row" style="text-align:right; margin-top:10px;padding:15px;">
+						<button class="btn" style="color:white;background:#698BA7;font-size:25px;border-radius:10px;padding:5px 20px;">Post</button>
+					</div>					
+				</div>
 	  	
+				<!--notification_center-->
+				<div class="tab-pane" id="notification_center" style="background:rgba(255,255,255,0.5);padding:6% 15%;">
+					<center><h1><i class="fa fa-bell"></i> Notifications</h1></center>
+					<center><h2 style="margin-top:20px;"><strong>####</strong> Notifications</h2></center>
+					<button type="button" class="btn admin_tabs" onclick="show_all_users()">All</button>
+					<button type="button" class="btn admin_tabs" onclick="show_new_users()">New</button>
+					<button type="button" class="btn admin_tabs" onclick="show_current_users()">Current</button>
+                                        <form id="delete_users" action="<?php echo base_url()."admin/delete_users"?>" method="POST">
+					<div class="form-group" style="margin-top:10px;width:60%;margin-left:auto;margin-right:auto;">
+                                            <div class="left-inner-addon" style="text-align:left;">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                                <label class="sr-only">Search</label>
+                                                <input id="search_users" type="Search" class="form-control" style="border-radius:10px;font-size:20px;" placeholder="Search" onkeyup="show_users(event)">						
+                                            </div>
+       					</div>
+       					<div style="height:500px;overflow-y:auto;">
+       					<table style="width:100%;text-align:left;">
+       						<thead style="color:#5697CA;">
+       							<tr>
+
+                                                            <td style="width:25%;">Username</td>														
+                                                            <td style="width:25%;">Date</td>
+                                                            <td style="width:25%;">Notification</td>
+							    
+							</tr>
+						</thead>
+						<tbody>
+						<?php if(isset($all_users)) {
+							for($i = 0; $i < count($all_users); $i++) {?>
+							<tr>
+                                                            <td style="word-break:break-all;">Tony</td>
+                                                            <td style="word-break:break-all;">12-25-2014</td>
+                                                            <td style="word-break:break-all;">Merry Christmas</td>
+							</tr>
+						<?php }}?>
+						</tbody>
+       					</table>
+					</div>
+				</div>
 				<!--User Stats DELETED* SAME AS USERS-->
 				<!--<div class="tab-pane" id="user_stats" style="background:rgba(255,255,255,0.5);padding:10%;text-align:center;font-size:18px;">
 					<img src="<?php echo $PATH_IMG?>users_icon.png" style="width:40%;"/>

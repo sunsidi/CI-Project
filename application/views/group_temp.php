@@ -32,7 +32,7 @@
                 <div class="mosaic-block bar2" style="width: 200px; height: 280px; margin-left:-15px;">
 		    <a target="_blank" class="mosaic-overlay" style="display: inline; left: 0px;text-decoration: none;">
                         <!--Description -->
-                        <p class="description" style="margin-top: 40px;">
+                        <p class="description" style="margin-top: 30px; padding: 20px;">
                         A good Meetup Group description explains what your Meetup Group is about,
 			who should join, what members can expect of the group,
 			and what you expect of them.
@@ -63,7 +63,7 @@
                 <div class="mosaic-block bar2" style="width: 200px; height: 280px; margin-left:-15px;">
 		    <a target="_blank" class="mosaic-overlay" style="display: inline; left: 0px;text-decoration: none;">
                         <!--Description -->
-                        <p class="description" style="margin-top: 40px;">
+                        <p class="description" style="margin-top: 30px;padding: 20px;">
                         A good Meetup Group description explains what your Meetup Group is about,
 			who should join, what members can expect of the group,
 			and what you expect of them.
