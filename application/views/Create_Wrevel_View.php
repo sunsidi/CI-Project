@@ -41,9 +41,9 @@
         <h1 class="cw_heading" style="text-align:center;font-family:GillSans;padding:10px;">create a wrev</h1>
           
           <div class="col-md-4" style="padding:0 10px; ">
-              <p style="text-align:center;font-size:15px;"><span style="color:red;font-weight:normal;font-size:23px;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;">* </span> Please select one primary category (by double-clicking on the icon), select as many sub categories as you want.
+              <div style="text-align:center;font-size:15px;"><span style="color:red;font-weight:normal;font-size:23px;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;">* </span> Please select one primary category (by double-clicking on the icon), select as many sub categories as you want.
                   
-              </p>
+              </div>
               
   
     

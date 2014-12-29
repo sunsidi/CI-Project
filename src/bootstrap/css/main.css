@@ -1173,6 +1173,29 @@ color:white;
 //color:#1A75BF;
 //}
 
+.ticker{
+padding:10px;
+//background:#D1565C;
+background:#CA585B;
+color:white;
+text-align:center;
+border-radius:0;
+border-top-left-radius:8px;
+border-bottom-left-radius:8px;
+}
+
+ul.ticket-event-dp{
+background:#CA585B;
+color:white;
+}
+
+//ul.ticket-event-dp :hover
+//{
+//background:#DB787D;
+//}
+
+
+
 @media (max-width: 1025px){
   .eventlist{
     margin-left: -30px;

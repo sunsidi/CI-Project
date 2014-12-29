@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>8 Essential Tools for a Startup Entrepreneur</title>
-<meta name="description" content="Welcome to the Wrevel blogspace! Here we will share with you our thoughts on all things Wrevel. Stay posted!">
+<meta name="description" content="Do you have a brilliant startup idea? Don’t know where to begin? You can finally get started with the basics and get organized with some pointers on how to get started.">
 <meta name="keywords" content="event hosting, parties, new york city life, tickets, wrevel, online tickets, tech company, spaces, buy tickets, services, blog">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap.min.css" rel="stylesheet">

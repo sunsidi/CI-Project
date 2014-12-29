@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>What’s in store for Wrevel?</title>
-<meta name="description" content="Welcome to the Wrevel blogspace! Here we will share with you our thoughts on all things Wrevel. Stay posted!">
+<meta name="description" content="As we wave goodbye to a long hardworking 9 months to bring to you our newly launched Project Phoenix, we say hello to a new chapter of Wrevel in the making. Since early February, our extraordinary team of developers and designers has given Project Phoenix a whole new meaning to social media. With custom coding and absolutely no initial framework, Project Phoenix has offered users a new online experience with sleek modern UX/UI design and easy navigation. However, we have vowed that bringing our users the most satisfying of social experiences will never stop. What we have planned starting this upcoming fall will definitely have you asking for more.">
 <meta name="keywords" content="event hosting, parties, new york city life, tickets, wrevel, online tickets, tech company, spaces, buy tickets, services, blog">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap.min.css" rel="stylesheet">
