@@ -640,11 +640,11 @@
                         
                         <input id="file-input" name = "userfile" type = "file" style="overflow:hidden;"/>
                         <input id="file-upload" type = "submit" >
-                        </form>
                 
                     </div>
                         
                 </div>
+                      
 <div class="col-sm-6">
 <div class="row">
                         <label class="col-sm-5">Hide event address <i class="fa fa-question-circle" id="info" data-content="The address of this event will remain hidden until you approve the finalized attendee list." data-trigger="hover" data-placement="top"></i></label>
@@ -677,8 +677,14 @@
                     }
                    </style>
 </div>
-
-                  </div>
+                    <label class="col-sm-4">More Event Images.</label>
+                        <div class="col-sm-6" id="event_images_base">
+                            <div class="image-upload">
+                                <input id="file-input" name = "event_photos[]" type = "file"/>
+                            </div>
+                        </div>
+                        <a id="add_more_event_images" class="btn" type="button" onclick="add_more_event_images()">Add More</a>
+                    </div>
                   
                     
   		<hr>
@@ -1041,7 +1047,7 @@
 				       +"</select></div><div>"
 				       +"Price"
 				       +"<input id='e_price' type='number' step='0.01' min='0.00' name='e_price[]' value='0.00' class='e_price form-control'>"
-				       +"<input type='hidden' value='please do not change the above value using this console, even if you do nothing will happen.'>"
+				       +"<input type='hidden' value='nothing here'>"
 				   +"</div></div>"
 				  +"<div class='col-sm-4' alt='You can drag this text box around to make it larger' title='You can drag this text box around to make it larger'> Info"
 				      +"<textarea name='info[]' class='form-control' rows='3'></textarea>"
@@ -1167,6 +1173,14 @@
     			$('#location5').attr('disabled', false);
     		}
 	}
+    </script>
+    <script>
+        function add_more_event_images() {
+            var content = '<div class="image-upload">'
+                                +'<input id="file-input" name = "event_photos[]" type = "file"/>'
+                            '</div>';
+            $('#event_images_base').append(content);
+        }
     </script>
 </body>
 </html>

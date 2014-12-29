@@ -145,11 +145,10 @@ class Model_events extends CI_Model{
    return $related_events;      
   }
 
-    public function create_event($userID,$e_image)
+    public function create_event($userID)
     {		
         $this->load->helper('date');
 
-        $data['e_image'] = $e_image;
         $data['e_name'] =  strip_tags($this->input->post('e_name'));
         $data['e_description'] = strip_tags($this->input->post('e_description'));
         $data['e_state'] = strip_tags($this->input->post('e_state'));
@@ -258,7 +257,7 @@ class Model_events extends CI_Model{
             $insert_data['e_state'] = strip_tags($data['multi_state'][$i]);
             $insert_data['e_zipcode'] = strip_tags($data['multi_zipcode'][$i]);
             $insert_data['e_website'] = strip_tags($data['multi_website'][$i]);
-            $insert_data['e_pricetemp'] = strip_tags($data['multi_price'][$i]);
+            $insert_data['e_pricetemp'] = "Ask for price.";
             $insert_data['e_description'] = strip_tags($data['multi_description'][$i]);
             $insert_data['e_creatorID'] = $id;
             $this->db->insert('events', $insert_data);
@@ -268,6 +267,11 @@ class Model_events extends CI_Model{
         if(isset($insert_ids)) {
             return $insert_ids;
         }
+    }
+    
+    //Update a single event's image_key. NOTE: Could probably combine this and the function below.
+    public function update_images($e_image, $event_id) {
+        $query = $this->db->update('events', array('e_image' => $e_image), array('event_id' => $event_id));
     }
     
     //After we create we need to keep track of the images that we uploaded. So update database.

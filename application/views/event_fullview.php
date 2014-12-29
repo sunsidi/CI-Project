@@ -712,6 +712,42 @@ jQuery(document).ready(function () {
                             	 <img src="<?php echo base_url()."uploads/".$event[0]['e_image']?>"style="max-width:90%; min-width:90%; padding:2%;"/>
 
                             </div>
+                            <!-- PHOTOS -->
+                            <div style="margin-top:40px;">
+                                <h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>photo_icon.png"/> &nbsp; Photos:</h4>
+                                <?php if(!empty($event['photos'])) {?>
+                                <div style="padding:0% 5%;font-size:18px;line-height:70%;">
+                                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
+                                        <div class="carousel-inner" role="listbox">
+                                            <?php 
+                                            $first = true;
+                                            foreach($event['photos'] as $picture){
+                                                    if($first) {?>
+                                                    <div class="item active">
+                                                            <a href="<?php echo base_url().'/uploads/events/'.$event[0]['event_id'].'/photos/'.$picture?>" rel="lightbox">
+                                                            <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/events/'.$event[0]['event_id'].'/photos/'.$picture?>" alt="...">
+                                                            </a>
+                                                    </div>
+                                                    <?php $first = false;
+                                                    } else {?>
+                                                    <div class="item">
+                                                            <a href="<?php echo base_url().'/uploads/events/'.$event[0]['event_id'].'/photos/'.$picture?>" rel="lightbox"> <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/events/'.$event[0]['event_id'].'/photos/'.$picture?>" alt="..."></a>
+                                                    </div>
+
+                                            <?php }}?> 
+                                        </div>
+                                        <a class="left carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="right carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <?php } else { echo 'There are no photos for this event'; }?>
+                            </div><!-- END OF PHOTOS -->
                             <div class="row" style="padding:0 10px 0;">
                             	
                                     <h3><i class="fa fa-exclamation-circle"></i> What is this?</h3>

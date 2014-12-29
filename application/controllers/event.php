@@ -47,6 +47,10 @@ class Event extends CI_Controller {
                         $data['my_user_id'] = $user_id;
 			$data['card_data'] = $user_data['cust_id'];
 		}
+                if(!file_exists('./uploads/events/'.$event_id.'/photos/')) {
+                    mkdir('./uploads/events/'.$event_id.'/photos/',0777, true);
+                    chmod('./uploads/events/'.$event_id.'/photos/',0777);
+                }
                 $eventMap = $this->hashmap_cata->get_EventMap();
                 $path = $this->path->getpath();
                 $data['path'] = $this->path->getpath();
@@ -143,8 +147,8 @@ class Event extends CI_Controller {
                 $data['posted_recip_id'] = $data['user_email_temp'][0]['recip_id'];
                 $data['posted_fullname'] = $data['user_email_temp'][0]['fullname'];
                 $data['poster_image_key'] = $data['user_email_temp'][0]['image_key'];
-                $nav_data = $this->session->all_userdata();
-                $result = array_merge($data,$path,$nav_data);
+                $data['event']['photos'] = array_diff(scandir('./uploads/events/'.$event_id.'/photos/'), array('..', '.'));
+                $result = array_merge($data,$path);
 
 		
                 //echo "<pre> ",print_r($data,true) ,"</pre>";
@@ -180,47 +184,60 @@ class Event extends CI_Controller {
             $this->load->model('model_events');
             $this->load->library('path');
             $path = $this->path->getPath();
-            $config['upload_path']='./uploads/';
-            $config['allowed_types']= 'gif|jpg|png|jpeg';
-            $config['max_size']	= '10000';
-            $config['file_name'] = md5(uniqid());
-            //echo $image_name;
-            $this->load->library('upload',$config);
-            if (!$this->upload->do_upload())
-            {
-                $e_image = 'default_event_image.jpg';
-            }
-            else{
-		$upload_data = $this->upload->data();
-                $data = array('upload_data' => $this->upload->data());
-		$image_name = $upload_data['file_name'];
-                $e_image = $image_name;
-            }
+            
             $email = $this->session->userdata('email');
             $my_name = $this->model_users->get_name($email);
             $id = $this->model_users->get_userID($email);
-            $event_id = $this->model_events->create_event($id,$e_image);
+            $event_id = $this->model_events->create_event($id);
             if($event_id) {
-	            $this->model_events->update_attending($id, $event_id);
-	            $this->model_users->add_reputation($email, 10);
-	            $this->session->set_flashdata('message','You just earned 10 reputation points for creating a new wrev!' );
-	            $this->load->view('Create_Wrevel_View', $path);
-	            $this->load->view('successful-event-posting', $path);
-	            $this->load->library('email',array('mailtype'=>'html'));
-		    $this->email->from('donotreply@wrevel.com', "Wrevel, Inc.");
-		    $this->email->to($email);
-		    $this->email->subject("Event Created!");
-		    //message to user confirms see load library email, 2nd argument is setting to html not default text
-		    $message ="<p> Hello ".$my_name."!"."</p><p>You have successfully created an event on Wrevel. You can use the following link to access your event. You can also edit the event in your My Accounts area.</p>";
-		    $message .= "<p><a href='".base_url()."event/event_info/latest/".$event_id."'>Your new event.</a></p><p>________________________________</p><p>Copyright 2014 Wrevel, Inc.,<i> All Rights Reserved.</i></p><div>Connect with us!</div>";
-		    $message .= "<div>www.wrevel.com</div>";
-		    $message .= "<div>Facebook: www.facebook.com/wrevelinc</div>";
-		    $message .= "<div>Twitter: www.twitter.com/wrevelco</div>";
-		    $message .= "<div>Instagram: www.instagram.com/wrevel</div>";
-		    $message .= "<div>Tumblr: wrevel.tumblr.com</div>";
-		    $message .= "<div>E-mail: support@wrevel.com</div>";
-		    $this->email->message($message);
-		    $this->email->send();
+                mkdir('./uploads/events/'.$event_id.'/photos/', 0777, true);
+                chmod('./uploads/events/'.$event_id.'/photos/', 0777);
+                $config['upload_path']='./uploads/events/'.$event_id;
+                $config['allowed_types']= 'gif|jpg|png|jpeg';
+                $config['max_size']	= '10000';
+                //echo $image_name;
+                $this->load->library('upload',$config);
+                if (!$this->upload->do_upload('userfile'))
+                {
+                    $e_image = 'default_event_image.jpg';
+                }
+                else{
+                    $upload_data = $this->upload->data();
+                    $data = array('upload_data' => $this->upload->data());
+                    $image_name = $upload_data['file_name'];
+                    $e_image = $image_name;
+                }
+                $config2['upload_path'] = './uploads/events/'.$event_id.'/photos/';
+                $config2['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config2['max_size'] = '10000';
+                //echo $image_name;
+                $this->load->library('upload', $config2);
+                $this->upload->initialize($config2);
+                if (!$this->upload->do_multi_upload('event_photos'))
+                {
+                    $this->session->set_flashdata('message', 'There was an error uploading one or more files. Check if your files are all there.');
+                }
+                $this->model_events->update_images($e_image, $event_id);
+                $this->model_events->update_attending($id, $event_id);
+                $this->model_users->add_reputation($email, 10);
+                $this->session->set_flashdata('message','You just earned 10 reputation points for creating a new wrev!' );
+                $this->load->view('Create_Wrevel_View', $path);
+                $this->load->view('successful-event-posting', $path);
+                $this->load->library('email',array('mailtype'=>'html'));
+                $this->email->from('donotreply@wrevel.com', "Wrevel, Inc.");
+                $this->email->to($email);
+                $this->email->subject("Event Created!");
+                //message to user confirms see load library email, 2nd argument is setting to html not default text
+                $message ="<p> Hello ".$my_name."!"."</p><p>You have successfully created an event on Wrevel. You can use the following link to access your event. You can also edit the event in your My Accounts area.</p>";
+                $message .= "<p><a href='".base_url()."event/event_info/latest/".$event_id."'>Your new event.</a></p><p>________________________________</p><p>Copyright 2014 Wrevel, Inc.,<i> All Rights Reserved.</i></p><div>Connect with us!</div>";
+                $message .= "<div>www.wrevel.com</div>";
+                $message .= "<div>Facebook: www.facebook.com/wrevelinc</div>";
+                $message .= "<div>Twitter: www.twitter.com/wrevelco</div>";
+                $message .= "<div>Instagram: www.instagram.com/wrevel</div>";
+                $message .= "<div>Tumblr: wrevel.tumblr.com</div>";
+                $message .= "<div>E-mail: support@wrevel.com</div>";
+                $this->email->message($message);
+                $this->email->send();
 	    }
             
         }

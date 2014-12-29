@@ -89,8 +89,9 @@ class admin extends CI_Controller{
                     }
                 }
                 if($this->model_events->update_multi_images($new_paths, $insert_ids)) {
-                    echo 'success!';
+                    $this->session->set_flashdata('message', 'Your events have been created! Visit mywrevs to view them now.');
                 }
             }
+            redirect('admin/admin_account');
         }
 }

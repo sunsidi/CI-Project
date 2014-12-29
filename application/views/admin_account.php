@@ -596,15 +596,28 @@
                                                         <input type="text" name="multi_website[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Website">
                                                     </div>
                                                 </div>
-
-                                                <div class="col-md-2">
-                                                    <div class="left-inner-addon-ml">
-                                                        <input type="text" name="multi_price[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Price">
-                                                    </div>
-                                                </div>
                                                 <div class="col-md-5">
                                                     <textarea class="form-control" id="message" name="multi_description[]" placeholder="Description" rows="1" style="margin-top: 5px;font-size:15px; width: 100%;"></textarea>
                                                 </div>
+                                                <!--<div class="form-group row"> COMMENTED OUT FOR LATER.
+                                                    <div style="text-align:center;">
+                                                        ticketed <input type="radio" name="multi_e_is_ticketed0" value = "1"> 
+                                                        nonticketed <input type="radio" name="multi_e_is_ticketed0" value = "0" checked> 
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- INSERT TICKETS INTO HERE 
+                                                <div>
+                                                    <div class="panel" style="background:none;padding:0;box-shadow:none;">
+                                                        <div class="multi_add_ticket_type" style="padding:0;">
+
+                                                        </div>
+                                                    </div>
+                                                </div><!--end of add ticket type 
+                                                        
+                                                <div id="multi_add_more_base" class="testing_class" style="text-align:right;" hidden>lalala
+                                                    <a id="multi_add_more" type="button" class="btn" style="background:#478EBF;color:white;padding:3px;font-size:12px;margin-right:20px;margin-top:15px;" onclick="multi_add_more_tickets(this)"> Add More</a>
+                                                </div> -->
                                                 <div class="col-md-2" style="padding-top: 5px;">
                                                     <label for="file-input-multi0">
                                                         <img src="<?php echo $PATH_IMG?>camera_icon.png" style="width:70%;">
@@ -811,17 +824,29 @@
                                         +'<input type="text" name="multi_website[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Website">'
                                     +'</div>'
                                 +'</div>'
-
-                                +'<div class="col-md-2">'
-                                    +'<div class="left-inner-addon-ml">'
-                                        +'<input type="text" name="multi_price[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Price">'
-                                    +'</div>'
-                                +'</div>'
-
+                        
                                 +'<div class="col-md-5">'
                                     +'<textarea class="form-control" id="message" name="multi_description[]" placeholder="Description" rows="1" style="margin-top: 5px;font-size:15px; width: 100%;"></textarea>'
                                 +'</div>'
+                                +'<!--<div class="form-group row"> COMMENTED OUT FOR LATER'
+                                    +'<div style="text-align:center;">'
+                                        +'ticketed <input type="radio" name="multi_e_is_ticketed'+file_input_counter+'" value = "1"> '
+                                        +'nonticketed <input type="radio" name="multi_e_is_ticketed'+file_input_counter+'" value = "0" checked> '
+                                    +'</div>'
+                                +'</div>'
 
+                                +'<!-- INSERT TICKETS INTO HERE'
+                                +'<div>'
+                                    +'<div class="panel" style="background:none;padding:0;box-shadow:none;">'
+                                       +'<div class="multi_add_ticket_type" style="padding:0;">'
+
+                                       +'</div>'
+                                    +'</div>'
+                                +'</div><!--end of add ticket type'
+
+                                +'<div id="multi_add_more_base" style="text-align:right;" hidden>'
+                                    +'<a id="multi_add_more" type="button" class="btn" style="background:#478EBF;color:white;padding:3px;font-size:12px;margin-right:20px;margin-top:15px;"> Add More</a>'
+                                +'</div>-->'
                                 +'<div class="col-md-2" style="padding-top: 5px;">'
                                     +'<label for="file-input-multi'+file_input_counter+'">'
                                         +'<img src="<?php echo $PATH_IMG?>camera_icon.png" style="width:70%;">'
@@ -829,9 +854,19 @@
                                         +'<input id="file-input-multi'+file_input_counter+'" name="multi_file_input[]" type="file">'
                                 +'</div>'
                             +'</div>'
-                        +'</div>'
+                        +'</div>';
+	$('#button_base').append(content);
+        $('input[type=radio][name=multi_e_is_ticketed'+file_input_counter+']').change(function() {
+            if (this.value == '1') {
+                $("#multi_add_more_base'+file_input_counter+'").show();
+                $("#multi_add_more'+file_input_counter+'").trigger("click");
+            }
+            else if (this.value == '0') {
+                $("#multi_add_more_base'+file_input_counter+'").hide();
+                $(".multi_ticket_group").remove();
+            }
+        });
         file_input_counter++;
-	$('#button_base').append(content);  
     });
     </script>
     <script>
@@ -953,5 +988,125 @@
             console.log($(i).parent().parent().parent().siblings('#category_change').val());
         }
     </script>
+    <!--<script>
+    	var type_counters = 0;
+    	function multi_add_more_tickets(i) {
+            var content = "<div class='multi_ticket_group form-group-row' id='multi_ticket_base" +type_counters+ "'>"
+                             +"<div class='row'>"
+                             +"<div class='col-sm-3'>"
+                             +"<div>"
+                             +"Type"
+
+                                 +"<select name='multi_type[][]' type='text' class='select_type form-control' style='padding:0;' required>"
+                                     +"<option value='' selected='selected'></option>"
+                                     +"<option value='free'>Free</option>"
+                                     +"<option value='regular'>Regular</option>"
+                                     +"<option value='early bird'>Early Bird</option>"
+                                     +"<option value='v.i.p'>V.I.P.</option>"
+                                  +"</select></div><div>"
+                                  +"Price"
+                                  +"<input id='multi_e_price' type='number' step='0.01' min='0.00' name='multi_e_price[][]' value='0.00' class='e_price form-control'>"
+                                  +"<input type='hidden' value='nothing here'>"
+                              +"</div></div>"
+                             +"<div class='col-sm-4' alt='You can drag this text box around to make it larger' title='You can drag this text box around to make it larger'> Info"
+                                 +"<textarea name='multi_info[][]' class='form-control' rows='3'></textarea>"
+                             +"</div>"
+                             +"<div class='col-sm-2'>Qty."
+                                 +"<input type='number' max='500' min='1' name='e_quantity[]' class='form-control'>"
+                                 +"Deadline"
+                                 +"<input type='text' name='multi_max_date[][]' class='d_date form-control' placeholder='mm/dd/yyyy'>"
+                             +"</div>"
+
+
+                             +"<div class='col-sm-2'>Time"
+                                 +"<select name='multi_max_time[][]' type='time' class='form-control' style='padding:0;'>"
+                                     +"<option value='' selected='selected'></option>"
+                                     +"<option value='00:00'>12:00am</option>"
+                                     +"<option value='00:30'>12:30am</option>"
+                                     +"<option value='01:00'>1:00am</option>"
+                                     +"<option value='01:30'>1:30am</option>"
+                                     +"<option value='02:00'>2:00am</option>"
+                                     +"<option value='02:30'>2:30am</option>"
+                                     +"<option value='03:00'>3:00am</option>"
+                                     +"<option value='03:30'>3:30am</option>"
+                                     +"<option value='04:00'>4:00am</option>"
+                                     +"<option value='04:30'>4:30am</option>"
+                                     +"<option value='05:00'>5:00am</option>"
+                                     +"<option value='05:30'>5:30am</option>"
+                                     +"<option value='06:00'>6:00am</option>"
+                                     +"<option value='06:30'>6:30am</option>"
+                                     +"<option value='07:00'>7:00am</option>"
+                                     +"<option value='07:30'>7:30am</option>"
+                                     +"<option value='08:00'>8:00am</option>"
+                                     +"<option value='08:30'>8:30am</option>"
+                                     +"<option value='09:00'>9:00am</option>"
+                                     +"<option value='09:30'>9:30am</option>"
+                                     +"<option value='10:00'>10:00am</option>"
+                                     +"<option value='10:30'>10:30am</option>"
+                                     +"<option value='11:00'>11:00am</option>"
+                                     +"<option value='11:30'>11:30am</option>"
+                                     +"<option value='12:00'>12:00pm</option>"
+                                     +"<option value='12:30'>12:30pm</option>"
+                                     +"<option value='13:00'>1:00pm</option>"
+                                     +"<option value='13:30'>1:30pm</option>"
+                                     +"<option value='14:00'>2:00pm</option>"
+                                     +"<option value='14:30'>2:30pm</option>"
+                                     +"<option value='15:00'>3:00pm</option>"
+                                     +"<option value='15:30'>3:30pm</option>"
+                                     +"<option value='16:00'>4:00pm</option>"
+                                     +"<option value='16:30'>4:30pm</option>"
+                                     +"<option value='17:00'>5:00pm</option>"
+                                     +"<option value='17:30'>5:30pm</option>"
+                                     +"<option value='18:00'>6:00pm</option>"
+                                     +"<option value='18:30'>6:30pm</option>"
+                                     +"<option value='19:00'>7:00pm</option>"
+                                     +"<option value='19:30'>7:30pm</option>"
+                                     +"<option value='20:00'>8:00pm</option>"
+                                     +"<option value='20:30'>8:30pm</option>"
+                                     +"<option value='21:00'>9:00pm</option>"
+                                     +"<option value='21:30'>9:30pm</option>"
+                                     +"<option value='22:00'>10:00pm</option>"
+                                     +"<option value='22:30'>10:30pm</option>"
+                                     +"<option value='23:00'>11:00pm</option>"
+                                     +"<option value='23:30'>11:30pm</option>"
+                                 +"</select>"
+                             +"</div>"
+                             +"</div>"
+                             +"<a href='#' class='remove_ticket'>X</a>"
+                           +"</div>";
+            console.log($(i));
+            $('.multi_add_ticket_type').append(content);
+            $('.remove_ticket').on("click", function() {
+                   $(this).parent().remove();
+                   type_counters--;
+            });
+            $('.select_type').change(function() {
+                //alert($(this).parent().parentchildren());
+                if($(this).val() == 'free') {
+                    console.log($(this).parent().parent().children().children('.e_price'));
+                    $(this).parent().parent().children().children('.e_price').attr('value', '0.00');
+                    $(this).parent().parent().children().children('.e_price').parent().hide();
+                }
+                else
+                    $(this).parent().parent().children().children('.e_price').parent().show();
+            });
+            type_counters++;
+    	};
+    </script>
+    <script>
+    	$(document).ready(function() {
+    		$('input[type=radio][name=multi_e_is_ticketed0]').change(function() {
+            if (this.value == '1') {
+                $("#multi_add_more_base").show();
+                $(this).parent().parent().siblings("#multi_add_more_base").children().click();
+                //$(this).siblings("#multi_add_more").trigger("click");
+            }
+            else if (this.value == '0') {
+                $("#multi_add_more_base0").hide();
+                $(".multi_ticket_group").remove();
+            }
+        });
+	});
+    </script>-->
 </body>
 </html> 
