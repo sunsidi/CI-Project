@@ -67,7 +67,7 @@
 </div>
 
 <div class="container" style="padding-bottom:5%;">
-    		<div class="col-md-offset-3 col-md-3" style="height: 250px;margin-top: 5%;background:rgba(255,255,255,0.7); border-radius:10px;  color:#414042;">
+    		<div class="col-md-offset-3 col-md-3" style="height: 280px;margin-top: 5%;background:rgba(255,255,255,0.7); border-radius:10px;  color:#414042;">
     			 
     			 <div style="padding-bottom: 30px; padding-left: 12%;padding-top:30px;">
                 <p style="font-family:GillSans;font-size:25px;"><i class="fa fa-info-circle" style="font-size:30px;"></i>
@@ -80,13 +80,14 @@ what is mywrevs?</p>
             </div>
             
     		</div>
-    		<div class="col-md-offset-1 col-md-3"  style="height: 250px;margin-top: 5%;background-color: #81a4b5;border-radius:10px;">
+    		<div class="col-md-offset-1 col-md-3"  style="height: 280px;margin-top: 5%;background-color: #81a4b5;border-radius:10px;">
     		<div style="padding-bottom: 30px; padding-left: 12%;padding-top:30px;">
                 <p style="color: white;font-family:GillSans;font-size:25px;"><span class="glyphicon glyphicon-globe" style="font-size:27px;"></span> wrevenues.</p>
                 <p class="text" style="color: white; font-size: 18px; width:85%;">Looking for the coolest locations to visit or host your next party? Check out <b>Wrevenues</b> where you can find the best venues near you!</p>
             
             <?php if($this->session->userdata('is_logged_in')) {?>
-            <a href="<?php echo base_url().'wrevenues/wrevenues_main'?>" class="btn btn-lg wrevenues-btn" style="font-size:25px; padding:5px 10px;border-radius:5px;border:2px solid rgba(255,255,255,0.7); margin-left:15%;">go to wrevenues</a>
+			<div style="text-align:center;">
+            <a href="<?php echo base_url().'wrevenues/wrevenues_main'?>" class="btn btn-lg wrevenues-btn" style="font-size:25px; padding:5px 10px;border-radius:5px;border:2px solid rgba(255,255,255,0.7); margin-left:auto;margin-right:auto;">go to wrevenues</a></div>
             <?php }?>
         	</div>
     		</div>
