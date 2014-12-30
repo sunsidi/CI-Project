@@ -86,7 +86,7 @@ what is mywrevs?</p>
                 <p class="text" style="color: white; font-size: 18px; width:85%;">Looking for the coolest locations to visit or host your next party? Check out <b>Wrevenues</b> where you can find the best venues near you!</p>
             
             <?php if($this->session->userdata('is_logged_in')) {?>
-            <a href="http://wrevenues.wrevel.com" class="btn btn-lg wrevenues-btn" style="font-size:25px; padding:5px 10px;border-radius:5px;border:2px solid rgba(255,255,255,0.7); margin-left:15%;">go to wrevenues</a>
+            <a href="<?php echo base_url().'wrevenues/wrevenues_main'?>" class="btn btn-lg wrevenues-btn" style="font-size:25px; padding:5px 10px;border-radius:5px;border:2px solid rgba(255,255,255,0.7); margin-left:15%;">go to wrevenues</a>
             <?php }?>
         	</div>
     		</div>

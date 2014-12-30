@@ -1173,6 +1173,47 @@ color:white;
 //color:#1A75BF;
 //}
 
+.ticker{
+padding:10px;
+//background:#D1565C;
+background:#CA585B;
+color:white;
+text-align:center;
+border-radius:0;
+border-top-left-radius:8px;
+border-bottom-left-radius:8px;
+}
+
+ul.ticket-event-dp{
+background:#CA585B;
+color:white;
+}
+
+//ul.ticket-event-dp :hover
+//{
+//background:#DB787D;
+//}
+
+.blog-container{
+padding:0 50px; 
+margin-top: -100px;
+}
+
+.blog-header{
+height: 160px;
+}
+
+.related-blog-small{
+display:none;
+}
+
+.pagenumber{
+background:transparent !important;
+}
+.pagenumber:hover{
+background:rgba(65,64,66,0.1) !important;
+}
+
 @media (max-width: 1025px){
   .eventlist{
     margin-left: -30px;
@@ -1273,6 +1314,18 @@ color:white;
 	.inbox-btn{
 	display:none;
 	}
+	.blog-header{
+	height: auto;
+	}
+	.hidden-bar{
+	display:none;
+	}
+	.related-blog{
+	display:none;
+	}
+	.related-blog-small{
+	display:initial;
+	}
 }
 
 
@@ -1298,6 +1351,10 @@ color:white;
 	.pricing-points{
 	margin-left: 25%;
 	}
+	.blog-container{
+	padding:0; 
+	margin-top: -100px;
+	}
 }
 
 @media (max-width:533px){
@@ -1315,7 +1372,8 @@ color:white;
 	width:100%;
 	margin-left:auto;
 	margin-right:auto;
-}
+	}
+	
 
 }
 

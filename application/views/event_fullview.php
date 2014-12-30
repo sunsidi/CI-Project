@@ -13,6 +13,7 @@
 <link href="<?php echo $path['PATH_BOOTSTRAP']?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<?php echo $path['PATH_BOOTSTRAP']?>css/main.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<meta name="description" content="<?php echo $event[0]['e_description']?>">
 
 <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false"
             type="text/javascript"></script> 
@@ -722,7 +723,7 @@ jQuery(document).ready(function () {
                         </div>
                         <div class="col-md-6" style="text-align:center;margin-top:10px;">              	
                             <div class="row" style="color:white;">
-                            	<a href="http://wrevenues.wrevel.com" class="btn viewmorewrevs" style="border-radius:10px;font-size:23px;color:white;">View Wrevenue</a>
+                            	<a href="<?php echo base_url().'wrevenues/wrevenues_main'?>" class="btn viewmorewrevs" style="border-radius:10px;font-size:23px;color:white;">View Wrevenue</a>
                                 
                                 <!--Ticketing System button-->
                                 <?php if($event[0]['e_is_ticketed']) {?>
