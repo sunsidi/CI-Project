@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="<?php echo $PATH_BOOTSTRAP?>css/mosaic.css" type="text/css" media="screen">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="<?php echo $PATH_CSS?>redmond/jquery-ui-1.10.4.custom.css" rel="stylesheet">
 </head>
 
 <body>
@@ -23,24 +24,6 @@
 
 <!--content
 ==============================================-->
-<div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-        </script>
-    </div>
-</div>
 <div class="container">
 <div class="row" style="margin:30px;">
   <p class="event"><img src="<?php echo $PATH_IMG?><?php echo $event_info[$category]['image']?>" class="wrev-image"/> <strong><?php echo $event_info[$category]['name']?> </strong> <span class="pronounce"><?php echo $event_info[$category]['pronunciation']?></span></p>
@@ -83,7 +66,7 @@
                 	<div style="margin-left:25%;margin-right:auto;margin-top:25px;">
 <!--                <form class="form-inline" role="form"> -->
             <?php $save_search = array('onsubmit' => 'return save_search()');
-            echo form_open(base_url().'main/get_related_events/'.$category, $save_search)?>
+            echo form_open(base_url().'main/get_related_events_search/'.$category, $save_search)?>
 		
 
         
@@ -157,10 +140,12 @@
               <option value="WY">WY</option>
             </select>     
         </div>
-      <div class="col-xs-1" style="padding:0;">
+        <div class="col-xs-1" style="padding:0;">
             <input id="cookie_zipcode" name="zipcode" type="text" pattern=".{5,5}" maxlength="5" class="form-control" placeholder="Zip" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
            </div>
-      
+        <div class="col-xs-1" style="padding:0;">
+            <input id="cookie_date" name="search_date" class="form-control" type="text" placeholder="Date">
+        </div>
         <input type="submit" class="btn" style="background:#1C74BB; color:white;font-size:20px; padding:1px 10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);"value="go">
             <?php echo form_close() ?>
             </div>
@@ -319,6 +304,7 @@
     		$.cookie("price", $("#cookie_price").val());
     		$.cookie("state", $("#cookie_state").val());
     		$.cookie("zipcode", $("#cookie_zipcode").val());
+                $.cookie("date", $("#cookie_date").val());
     	}
     </script>
     <script>
@@ -327,10 +313,12 @@
     		$("#cookie_price").attr('value', $.cookie("price"));
     		$("#cookie_state").val($.cookie("state"));
     		$("#cookie_zipcode").attr('value', $.cookie("zipcode"));
+                $("#cookie_date").attr('value', $.cookie("date"));
     		$.cookie("search", "");
     		$.cookie("price", "");
     		$.cookie("state", "");
     		$.cookie("zipcode", "");
+                $.cookie("date", "");
     	});
     </script>
     <script>
@@ -363,8 +351,11 @@
     <script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>jquery.cookie.js"></script>
+<script src="<?php echo $PATH_JAVASCRIPT?>jquery-ui-1.10.4.custom.js"></script>
+<script>
+  $(function() {
+    $("#cookie_date").datepicker();
+  });
+  </script>
 </body>
-<link rel="stylesheet" type="text/css" href="<?php echo $PATH_JAVASCRIPT?>jquery.datetimepicker.css"/>
-<script src="<?php echo $PATH_JAVASCRIPT?>jquery.js"></script>
-<script src="<?php echo $PATH_JAVASCRIPT?>jquery.datetimepicker.js"></script>
 </html> 

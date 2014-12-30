@@ -395,6 +395,85 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
    //print_r($related_events);
    return $related_events;      
   }
+  
+  //COPY OF THE TOP ONE UNTIL WE USE THIS EVERYWHERE.
+  public function get_latest_related_events_search($search,$category,$price,$state,$zipcode,$date){
+    //get all events
+      /*
+      echo "search: ".$search. "<br>";
+      echo "category: ".$category. "<br>";
+      echo "price: ".$price. "<br>";
+      echo "state: ".$state. "<br>";
+      */
+    //Check if anything was chosen and get those events
+    if ($state || $price || $zipcode){
+        if(!$zipcode){$zipcode = '%';}
+        if(!$state){$state = '%';}
+    $sql = 'SELECT * FROM events WHERE (e_pricetemp<=? and e_zipcode LIKE ? and e_state LIKE ? and e_private = 0 e_date = ?) OR (e_is_online = 1 and e_date = ?) ORDER BY event_id DESC';
+    $query = $this->db->query($sql,array($price,$zipcode,$state,$date,$date));
+    $events = $query->result_array();
+   }
+   
+   else{
+    $sql = 'SELECT * FROM events WHERE (e_private = 0 and e_date = ?) OR (e_is_online = 1 and e_date = ?) ORDER BY event_id DESC';
+    $query = $this->db->query($sql, array($date,$date));
+    
+     $events = $query->result_array();
+   }
+    /* add IF STATEMENT FOR LATEST WREVS */
+
+
+      /*
+     echo "<br>events without change <br><br>";
+     print_r($events); 
+     echo "<br><br><br>";
+     */
+
+     //SELECT * FROM `events` WHERE `e_state`='NY'and `e_price`<=10 ORDER BY `event_id` DESC
+    //initizalize an array 
+    $related_events= array();
+    //look at each event
+    foreach ($events as $event){
+      //get key for the events which is needed to find out what category its in
+      $hashkey = $event['e_category'];
+     // echo  "events e_category: ". $hashkey. "<br>";
+      //call function from library to get array of the category its in
+      //          and check if the event is in the category we want.
+      
+      /*get an array of categories the event falls into */
+      $event_category = $this->hashmap_cata->hash($hashkey);
+
+      /*check to see if event is in category we want */
+      if(in_array($category,$event_category))
+      {
+        //check to see if the name is similar or contains the word that was written in search
+        //this is case sensitive!!!!! need to fix!!
+
+        //if $search has something if not skip this part!
+        if($search){
+            if (stristr($event['e_name'],$search) !== false) {
+            // strpos
+            /*event is in category we want, then push it to array called related_events */
+             array_push($related_events,$event);
+            }
+          }
+        else{  //put everything in array since no specific word was given by user to search
+        array_push($related_events,$event);  
+        }
+      }
+
+   }   
+   $related_events['size']= sizeof($related_events);
+   for($i = 0; $i < $related_events['size']; $i++) {
+    	$related_events[$i]['e_start_time'] = $this->convert_time($related_events[$i]['e_start_time']);
+    	if($related_events[$i]['e_date'] == '9999-12-31') {
+	    	$related_events[$i]['e_date'] = $related_events[$i]['period_text'];
+	    }
+    }
+   //print_r($related_events);
+   return $related_events;      
+  }
+  
   public function get_states(){
     $sql = "SELECT DISTINCT e_state FROM events ORDER BY e_state";
     $query= $this->db->query($sql);
@@ -485,6 +564,49 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
   else{
     $sql = 'SELECT * FROM events WHERE (e_private = 0 and e_date > NOW()+INTERVAL 1 DAY) OR (e_is_online = 1 and e_date > NOW()+INTERVAL 1 DAY) ORDER BY event_id DESC';
     $query = $this->db->query($sql);
+    $events = $query->result_array();
+    }
+    $related_events= array();
+    /*check if there is an specific word or letter that user is searching for in latest event */
+    if($search != ""){
+      foreach($events as $event){
+          if (stristr($event['e_name'],$search) !== false) {
+                // strpos
+                /*event is in category we want, then push it to array called related_events */
+            array_push($related_events,$event);
+            }
+        }
+        $related_events['size']= sizeof($related_events);
+    }
+    /*find all the latest events */
+    else {$related_events = $events;
+    $related_events['size']= sizeof($related_events);}
+    
+    //echo "<pre> ",print_r($related_events,true) ,"</pre>";
+    for($i = 0; $i < $related_events['size']; $i++) {
+    	$related_events[$i]['e_start_time'] = $this->convert_time($related_events[$i]['e_start_time']);
+    	if($related_events[$i]['e_date'] == '9999-12-31') {
+	    	$related_events[$i]['e_date'] = $related_events[$i]['period_text'];
+	    }
+    }
+    return $related_events;
+  }
+  
+  public function get_latest_events_search($search,$price,$zipcode,$state,$date){
+    $this->load->helper('date');
+    if ($price || $zipcode || $state){
+        if(!$zipcode){$zipcode = '%';}
+        if(!$state){$state = '%';}
+    $datestring = '%Y-%m-%d';
+    $time = time();
+    $today = mdate($datestring, $time);
+    $sql = 'SELECT * FROM events WHERE (e_pricetemp<=? and e_zipcode LIKE ? and e_state LIKE ? and e_private = 0 and e_date = ?) OR (e_is_online = 1 and e_date = ?)  ORDER BY event_id DESC';
+    $query = $this->db->query($sql,array($price,$zipcode,$state,$date,$date));
+    $events = $query->result_array();
+  }
+  else{
+    $sql = 'SELECT * FROM events WHERE (e_private = 0 and e_date = ?) OR (e_is_online = 1 and e_date = ?) ORDER BY event_id DESC';
+    $query = $this->db->query($sql,array($date,$date));
     $events = $query->result_array();
     }
     $related_events= array();

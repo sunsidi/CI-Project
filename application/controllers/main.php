@@ -711,8 +711,8 @@ public function get_related_events($category)
       $price = $this->input->post('price');
         $state = $this->input->post('state');
         $zipcode = $this->input->post('zipcode');
-      $related_events= $this->model_events->get_latest_related_events($search,$category,$price,$state,$zipcode);
-
+        
+    	$related_events= $this->model_events->get_latest_related_events($search,$category,$price,$state,$zipcode);
 
 
       $result = array_merge($related_events, $path);
@@ -746,50 +746,64 @@ public function get_related_events($category)
 
       //$this->model_events->print_values();
   }
-		public function get_related_events_search($category)
-	{
-		//echo "category is: ".$category;
-		$this->load->library('path');
-		$this->load->library('hashmap_cata');
-		$eventMap = $this->hashmap_cata->get_EventMap();
-		$path = $this->path->getPath();
-		//get category from having clicked the link which acts as a submit button
-		//					with value giving category
-		//$category = $this->input->post('category');  //maybe use get? to show user category of event?
-    	$this->load->model('model_events');
-    	// get all events related to chosen category
-    	//$related_events = $this->model_events->get_events($category);
+    
+    public function get_related_events_search($category)
+    {
+    //echo "category is: ".$category;
+    $this->load->library('path');
+    $this->load->library('hashmap_cata');
+    $this->load->library('session');
+    $eventMap = $this->hashmap_cata->get_EventMap();
+    $path = $this->path->getPath();
+    //get category from having clicked the link which acts as a submit button
+    //          with value giving category
+    //$category = $this->input->post('category');  //maybe use get? to show user category of event?
+      $this->load->model('model_events');
+      // get all events related to chosen category
+      //$related_events = $this->model_events->get_events($category);
 
 
-    	$search = $this->input->post('search');
-    	$price = $this->input->post('price');
+      $search = $this->input->post('search');
+      $price = $this->input->post('price');
         $state = $this->input->post('state');
+        $zipcode = $this->input->post('zipcode');
+        $originalDate = $this->input->post('search_date');
+        $date = date("Y-m-d", strtotime($originalDate));
+        
+    	$related_events= $this->model_events->get_latest_related_events_search($search,$category,$price,$state,$zipcode,$date);
 
-        //CHECK THIS METHOD ITS CAUSING SOME REPETITTION!!!!!!
-    	$related_events= $this->model_events->get_latest_related_events($search,$category,$price,$state);
 
+      $result = array_merge($related_events, $path);
+      $data = array_merge($result,$eventMap);
+      //pass what type of event we are looking for to allow the usage of just one html view for 
+      //        the different pages
+      $data['category'] = $category;
+      //$events_states=$this->model_events->get_states();
 
-    	//echo "<pre> ",print_r($related_events,true) ,"</pre>";
-
-    	$result = array_merge($related_events, $path);
-    	$data = array_merge($result,$eventMap);
-    	//pass what type of event we are looking for to allow the usage of just one html view for 
-    	//				the different pages
-    	$data['category'] = $category;
-    	//$events_states=$this->model_events->get_states();
-        $events_states = $this->model_events->get_category_states($category);
+      $events_states = $this->model_events->get_category_states($category);
         $data['states']= $events_states;
 
+        /*TODO */
+        $events_zipcode = $this->model_events->get_category_zipcode($category);
+        $data['zipcode']=  $events_zipcode;
+	$nav_data = $this->session->all_userdata();
+    	$result = array_merge($data,$nav_data,$path);
 
 
-    	//print_r($result);
-    	//echo print_r($result);
-    	//echo "<pre> ",print_r($data,true) ,"</pre>";
-    	$this->load->view('event_template',$data);
+      //print_r($result);
+      //echo print_r($result);
+      //echo "<pre> ",print_r($data,true) ,"</pre>";
 
-    	//$this->model_events->print_values();
 
-	}
+         //echo "<pre> ",print_r($nav_data,true) ,"</pre>";
+
+      //print_r($result);
+      //echo print_r($result);
+      $this->load->view('Create_Wrevel_View', $path);
+      $this->load->view('event_template',$result);
+
+      //$this->model_events->print_values();
+  }
   public function get_latest_events(){
     $this->load->library('path');
     $this->load->library('hashmap_cata');
@@ -805,12 +819,50 @@ public function get_related_events($category)
       $price = $this->input->post('price');
         $state = $this->input->post('state');
         $zipcode = $this->input->post('zipcode');
-
         //echo $zipcode . "<br>";
         //echo $state. "<br>";
         //echo $price."<br>";
 
     $latest_events = $this->model_events->get_latest_events($search,$price,$zipcode,$state);
+    
+ 
+
+    $data = array_merge($latest_events,$path);
+    $events_states = $this->model_events->get_states();
+        $data['states']= $events_states;
+        $events_zipcode = $this->model_events->get_zipcode();
+        $data['zipcode'] = $events_zipcode;
+    $nav_data = $this->session->all_userdata();
+    $all = array_merge($data,$eventMap,$nav_data);
+
+      //echo "<pre> ",print_r($all,true) ,"</pre>";
+    $this->load->view('Create_Wrevel_View', $path);
+    $this->load->view('latestwrevs',$all);
+
+  }
+  
+  public function get_latest_events_search(){
+    $this->load->library('path');
+    $this->load->library('hashmap_cata');
+    $this->load->library('session');
+    $eventMap = $this->hashmap_cata->get_EventMap();
+    $path = $this->path->getPath();
+    $this->load->model('model_events');
+
+
+
+    //$search = $this->input->post('search');
+    $search = $this->input->post('search');
+      $price = $this->input->post('price');
+        $state = $this->input->post('state');
+        $zipcode = $this->input->post('zipcode');
+        $originalDate = $this->input->post('search_date');
+        $date = date("Y-m-d", strtotime($originalDate));
+        //echo $zipcode . "<br>";
+        //echo $state. "<br>";
+        //echo $price."<br>";
+
+    $latest_events = $this->model_events->get_latest_events_search($search,$price,$zipcode,$state,$date);
     
  
 
