@@ -47,11 +47,11 @@
 		    <div style="background: rgba(3,90,86,1); margin-left:auto;margin-right:auto;width: 100px; height: 40px;border-radius:10px; -moz-box-shadow:4px 4px 4px rgba(0, 0, 0, .3);-webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, .3);box-shadow:4px 4px 4px rgba(0, 0, 0, .3);">
 			<p style="color: white; font-size: 23px;  padding-top:5px;"><b>Nov 14</b></p>
 		    </div>
-		    <hr style="border-color: grey; width: 70%; border-width: 2px;"/>
-		    <p style=" font-size: 20px;">48 <i class="fa fa-heart-o"></i></p>
+		    <!--<hr style="border-color: grey; width: 70%; border-width: 2px;"/>
+		    <p style=" font-size: 20px;">48 <i class="fa fa-heart-o"></i></p>-->
 		    <hr style="border-color: grey; width: 70%; border-width: 2px;"/>
 		<!--Click to Share-->
-
+				
                 <a href="#" data-toggle="modal" data-target="#shareModal" class="btn btn-lg create-btn" style=" font-size:25px; padding:5px 10px;border-radius:5px;border:2px solid #414042; ">Share This</a>
                 
                 <!--Popup for share this-->
@@ -108,8 +108,59 @@ For eight long months, our extraordinary hardworking team of 2 frontend and 3 ba
 		</div>
 		</div>
 		
-		<div class="row">
-			Posted on <span style="background: rgba(3,90,86,1); margin-left:auto;margin-right:auto;width: 100px; height: 40px;border-radius:10px; -moz-box-shadow:4px 4px 4px rgba(0, 0, 0, .3);-webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, .3);box-shadow:4px 4px 4px rgba(0, 0, 0, .3);">Nov 14</span>
+		<div class="row related-blog-small" style="text-align:center;">
+			<hr style="border-color: grey; width: 80%; border-width: 2px;"/>
+			<!--Posted on 
+			<span style="color: white; padding:5px;background: rgba(3,90,86,1); margin-left:auto;margin-right:auto;width: 100px; height: 40px;border-radius:10px; -moz-box-shadow:4px 4px 4px rgba(0, 0, 0, .3);-webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, .3);box-shadow:4px 4px 4px rgba(0, 0, 0, .3);">Nov 14</span> -->
+			<div class="row">
+				<!--<div class="col-sm-6 col-xs-6">
+					
+					<p style="font-size: 20px;">Posted on</p>
+					<div style="background: rgba(3,90,86,1); margin-left:auto;margin-right:auto;width: 100px; height: 40px;border-radius:10px; -moz-box-shadow:4px 4px 4px rgba(0, 0, 0, .3);-webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, .3);box-shadow:4px 4px 4px rgba(0, 0, 0, .3);">
+						<p style="color: white; font-size: 20px;  padding-top:5px;"><b>Nov 14</b></p>
+					</div>
+				</div>
+				<div class="col-sm-6 col-xs-6">
+					<!--<hr style="border-color: grey; width: 55%; border-width: 2px;"/>
+					<p style=" font-size: 20px;padding-top:25px;">48 <i class="fa fa-heart-o"></i></p>
+				</div>-->
+				<div class="col-sm-12">
+				<p style="font-size: 20px;">Posted on</p>
+					<div style="background: rgba(3,90,86,1); margin-left:auto;margin-right:auto;width: 100px; height: 40px;border-radius:10px; -moz-box-shadow:4px 4px 4px rgba(0, 0, 0, .3);-webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, .3);box-shadow:4px 4px 4px rgba(0, 0, 0, .3);">
+						<p style="color: white; font-size: 20px;  padding-top:5px;"><b>Nov 14</b></p>
+					</div>
+				</div>
+			</div>
+		    <hr style="border-color: grey; width: 65%; border-width: 2px;"/>
+		<!--Click to Share-->
+				<div style="margin-left:auto;margin-right:auto;">
+                <a href="#" data-toggle="modal" data-target="#shareModal2" class="btn btn-lg create-btn" style="font-size:25px; padding:5px 10px;border-radius:5px;border:2px solid #414042; ">Share This</a>
+                </div>
+                <!--Popup for share this-->
+                <div class="modal fade" id="shareModal2" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+                    <div class="modal-dialog">
+                         <div class="modal-content" style="background:#c2d2dc;">
+                              <div class="modal-header" style="background:#628da3; color:white;text-align:center; font-size:20px;">
+                              <button type="button" class="close" data-dismiss="modal" style="color:white;"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                              <i class="fa fa-share-square-o"></i> Share on Social Media
+                              </div>
+                              <div class="modal-body">
+                                   
+                                    <center><span class='st_sharethis_large' displayText='ShareThis'></span>
+				    <span class='st_facebook_large' displayText='Facebook'></span>
+				    <span class='st_twitter_large' displayText='Tweet'></span>
+				    <span class='st_linkedin_large' displayText='LinkedIn'></span>
+			 	    <span class='st_pinterest_large' displayText='Pinterest'></span>
+				    <span class='st_email_large' displayText='Email'></span></center>
+                               </div>
+                         </div>
+                    </div>
+                 </div>
+		    <hr style="border-color: grey; width: 65%; border-width: 2px;"/>
+		    <p style=" font-size: 20px;">Related Posts</p>
+		    <!--<hr style="border-color: grey; width: 55%; border-width: 2px;"/>-->
+		    <a href="<?php echo base_url().'info/blog1'?>"><img src="<?php echo $PATH_IMG?>projectgrind_image.jpg" style="width: 100%;"></a>
+		    <a href=<?php echo base_url().'info/blog1'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>What’s in store for Wrevel?</b></p></a>
 		</div>
 		
 	     </div>

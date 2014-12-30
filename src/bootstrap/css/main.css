@@ -1203,6 +1203,9 @@ margin-top: -100px;
 height: 160px;
 }
 
+.related-blog-small{
+display:none;
+}
 
 @media (max-width: 1025px){
   .eventlist{
@@ -1312,6 +1315,9 @@ height: 160px;
 	}
 	.related-blog{
 	display:none;
+	}
+	.related-blog-small{
+	display:initial;
 	}
 }
 

@@ -38,7 +38,8 @@
 
 
 .marquee span:hover {
-    animation-play-state: paused
+-webkit-animation-play-state: paused; 
+    animation-play-state: paused;
 }
 
 /* Make it move */
