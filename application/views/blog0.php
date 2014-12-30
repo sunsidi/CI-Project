@@ -77,8 +77,11 @@
 		    <hr style="border-color: grey; width: 70%; border-width: 2px;"/>
 		    <p style=" font-size: 20px;">Related Posts</p>
 		    <hr style="border-color: grey; width: 70%; border-width: 2px;"/>
-		    <a href="<?php echo base_url().'info/blog1'?>"><img src="<?php echo $PATH_IMG?>projectgrind_image.jpg" style="width: 100%;"></a>
-		    <a href=<?php echo base_url().'info/blog1'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>What’s in store for Wrevel?</b></p></a>
+		    <a href="<?php echo base_url().'info/blog3'?>"><img src="<?php echo $PATH_IMG?>NYE-2015-Wrev.jpg" style="width: 100%;"></a>
+		    <a href="<?php echo base_url().'info/blog3'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>New Years Eve 2015</b></p></a>
+			<hr style="border-color: grey; width: 70%; border-width: 2px;"/>
+			<a href="<?php echo base_url().'info/blog1'?>"><img src="<?php echo $PATH_IMG?>grind.png" style="width: 100%;"></a>
+		    <a href=<?php echo base_url().'info/blog1'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>What&rsquo;s in store for Wrevel</b></p></a>
 		    
 		</div>
 		
@@ -159,8 +162,12 @@ For eight long months, our extraordinary hardworking team of 2 frontend and 3 ba
 		    <hr style="border-color: grey; width: 65%; border-width: 2px;"/>
 		    <p style=" font-size: 20px;">Related Posts</p>
 		    <!--<hr style="border-color: grey; width: 55%; border-width: 2px;"/>-->
-		    <a href="<?php echo base_url().'info/blog1'?>"><img src="<?php echo $PATH_IMG?>projectgrind_image.jpg" style="width: 100%;"></a>
-		    <a href=<?php echo base_url().'info/blog1'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>What’s in store for Wrevel?</b></p></a>
+		    <a href="<?php echo base_url().'info/blog3'?>"><img src="<?php echo $PATH_IMG?>NYE-2015-Wrev.jpg" style="width: 100%;"></a>
+		    <a href="<?php echo base_url().'info/blog3'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>New Years Eve 2015</b></p></a>
+			<hr style="border-color: grey; width: 70%; border-width: 2px;"/>
+			<a href="<?php echo base_url().'info/blog1'?>"><img src="<?php echo $PATH_IMG?>grind.png" style="width: 100%;"></a>
+		    <a href=<?php echo base_url().'info/blog1'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>What&rsquo;s in store for Wrevel</b></p></a>
+		
 		</div>
 		
 	     </div>

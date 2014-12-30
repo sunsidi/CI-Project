@@ -442,7 +442,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php } else { echo 'There are no upcoming wrevs for this wrevenue';}?>
+                                <?php } else { echo '<div style="padding-left:70px;">There are no upcoming wrevs for this wrevenue</div>';}?>
                             </div><!-- END OF UPCOMING WREVS -->
 							
                             <!-- CONTACT INFO -->
@@ -489,7 +489,7 @@
                                                 <p><?php echo strtoupper($wrevenues['day'][$i]['day']);?> &nbsp;&nbsp <?php echo $wrevenues['day'][$i]['start_time'].' to '.$wrevenues['day'][$i]['end_time'];?></p>
                                     <?php }}?>
                                 </div>
-                                <?php if(!$hours_check) { echo 'There are no hours for this wrevenue'; }?>
+                                <?php if(!$hours_check) { echo '<div style="padding-left:70px;">There are no hours for this wrevenue</div>'; }?>
                             </div><!-- END OF HOURS -->
                             
                             <!-- PHOTOS -->
@@ -514,7 +514,7 @@
 													<a href="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" rel="lightbox"> <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" alt="..."></a>
 												</div>
 
-											<?php }}} else { echo 'There are no photos for this wrevenue'; }?> 
+											<?php }}} else { echo '<div style="padding-left:70px;">There are no photos for this wrevenue</div>'; }?> 
 									
 										</div>
 											<a class="left carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="prev">

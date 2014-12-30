@@ -79,13 +79,13 @@ ul.ticket-event-dp > li > a:hover{
 ==============================================-->
  <?php $events_info =$this->_ci_cached_vars;?>
 
- <div style="width:80%;margin-left:auto;margin-right:auto;margin-top:3%;">
+ <div style="width:85%;margin-left:auto;margin-right:auto;margin-top:3%;">
 		<div class="btn-group" style="float:left;">
 		<button type="button" class="btn btn-lg dropdown-toggle ticker" data-toggle="dropdown" aria-expanded="false">Featured Events <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
 			<ul class="dropdown-menu ticket-event-dp" style="font-size:18px;" role="menu">
 				<li><a href="#" class="ticker-event" style="color:white;" onclick="show_featured_events()">Featured Events</a></li>
 				<li><a href="#" class="ticker-event" style="color:white;" onclick="show_upcoming_events()">Upcoming Events</a></li>
-				<li><a href="#" class="ticker-event" style="color:white;">Friends' Events</a></li>
+				<!--<li><a href="#" class="ticker-event" style="color:white;">Friends' Events</a></li>-->
 				
 			</ul>
 		</div>
