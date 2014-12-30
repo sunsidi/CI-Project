@@ -95,8 +95,10 @@ class admin extends CI_Controller{
                         $new_paths[$i] = 'events/'.$insert_ids[$i].'/'.$temp_data[$i]['file_name'];
                     }
                 }
-                if($this->model_events->update_multi_images($new_paths, $insert_ids)) {
-                    $this->session->set_flashdata('message', 'Your events have been created! Visit mywrevs to view them now.');
+                if(isset($new_paths)) {
+                    if($this->model_events->update_multi_images($new_paths, $insert_ids)) {
+                        $this->session->set_flashdata('message', 'Your events have been created! Visit mywrevs to view them now.');
+                    }
                 }
             }
             redirect('admin/admin_account');

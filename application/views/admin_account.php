@@ -12,6 +12,12 @@
 <link rel="stylesheet" href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap.vertical-tabs.css">
 
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+jQuery(document).ready(function () {
+    //hide a div after 3 seconds
+    setTimeout(function(){ jQuery("#sentMessage").hide(); }, 5000);
+});
+</script>
 <style>
 	ul.tabs-left>li{
 	background:#55C3C0;
@@ -46,6 +52,7 @@
 
 <!--content
 ==============================================-->
+<div id='sentMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:20px;width: 40%; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>
   <div class="container" style="padding-bottom:50px;">
 	<div class="row" style="margin-top:50px;">
 		<div class="col-md-3 col-md-offset-1"> <!-- required for floating -->
@@ -565,7 +572,18 @@
                                                         <input id="multi_e_date[]" type="text" name="multi_e_date[]" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="mm/dd/yyyy">
                                                     </div>
                                                 </div>
-
+                                                <label class="col-sm-1 control-label" style="padding-top:10px;">period:</label>
+                                                <div class="col-sm-2">
+                                                  <select id="period" name="multi_period[]" type="number" class="form-control" style="padding:0;font-size:10px;">
+                                                    <option value="" selected="selected"></option> 
+                                                    <option value="1">Every day</option>
+                                                    <option value="7">7 days </option>
+                                                    <option value="30">1 month</option>
+                                                    <option value="365">1 year</option>
+                                                    <option value="-1">Every week day</option>
+                                                    <option value="-7">Every weekend</option>
+                                                  </select> 
+                                                </div>
                                                 <div class="col-md-3">
                                                     <div class="left-inner-addon-ml">
                                                         <select id="multi_start_time" name="multi_start_time[]" type="time" class="form-control" style="margin-top: 1px;font-size:15px; width: 100%;">

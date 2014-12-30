@@ -257,7 +257,18 @@ class Model_events extends CI_Model{
         for($i = 0; $i < count($data['multi_categories']); $i++) {
             $insert_data['e_category'] = $data['multi_categories'][$i];
             $insert_data['e_name'] = strip_tags($data['multi_e_name'][$i]);
-            $insert_data['e_date'] = strip_tags($data['multi_e_date'][$i]);
+            $temp_date = strip_tags($data['multi_e_date'][$i]);
+            $insert_data['e_date'] = date("Y-m-d", strtotime($temp_date));
+            if($data['multi_period'][$i] > 0)
+                $insert_data['period'] = $data['multi_period'][$i];
+            else if($data['multi_period'][$i] == -1) {
+                    $insert_data['period_text'] = 'Every Weekday';
+                    $insert_data['e_date'] = '9999-12-31';
+            }
+            else if($data['multi_period'][$i] == -7) {
+                    $insert_data['period_text'] = 'Every Weekend';
+                    $insert_data['e_date'] = '9999-12-31';
+            }
             $insert_data['e_start_time'] = $this->timestamp($data['multi_start_time'][$i]);
             $insert_data['e_address'] = strip_tags($data['multi_address'][$i]);
             $insert_data['e_city'] = strip_tags($data['multi_city'][$i]);
