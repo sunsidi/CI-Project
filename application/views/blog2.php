@@ -75,8 +75,8 @@
 		    <hr style="border-color: grey; width: 70%; border-width: 2px;"/>
 		    <p style="text-align: center; font-size: 20px;">Related Posts</p>
 		    <hr style="border-color: grey; width: 70%; border-width: 2px;"/>
-		    <a href="<?php echo base_url().'info/blog0'?>"><img src="<?php echo $PATH_IMG?>projectphoenix_image.jpg" style="width: 100%;"></a>
-		    <a href="<?php echo base_url().'info/blog0'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>Introducing Wrevel’s Project Phoenix</b></p></a>
+		    <!--<a href="<?php echo base_url().'info/blog0'?>"><img src="<?php echo $PATH_IMG?>projectphoenix_image.jpg" style="width: 100%;"></a>
+		    <a href="<?php echo base_url().'info/blog0'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>Introducing Wrevel’s Project Phoenix</b></p></a>-->
 		    
 		    
 		</div>
@@ -168,8 +168,8 @@
 		    <hr style="border-color: grey; width: 65%; border-width: 2px;"/>
 		    <p style=" font-size: 20px;">Related Posts</p>
 		    <!--<hr style="border-color: grey; width: 55%; border-width: 2px;"/>-->
-		    <a href="<?php echo base_url().'info/blog0'?>"><img src="<?php echo $PATH_IMG?>projectphoenix_image.jpg" style="width: 100%;"></a>
-		    <a href=<?php echo base_url().'info/blog0'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>Introducing Wrevel’s Project Phoenix</b></p></a>
+		    <!--<a href="<?php echo base_url().'info/blog0'?>"><img src="<?php echo $PATH_IMG?>projectphoenix_image.jpg" style="width: 100%;"></a>
+		    <a href=<?php echo base_url().'info/blog0'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>Introducing Wrevel’s Project Phoenix</b></p></a>-->
 		</div>
 		
 	     </div>
