@@ -67,6 +67,9 @@ position:absolute;
 		<div style="float: left;margin-top: 20px; margin-left: 10%">
 		<span style="font-size: 25px; color: white; text-align: center;">4213&nbsp;&nbsp;<i class="fa fa-heart-o"></i></span>
 		</div>
+		<button type="button" class="btn" style="margin-top: 15px;margin-left: 3%;float: left;background: rgba(240,112,112,0.6);color: white;font-size:25px;">
+		<span aria-hidden="true"></span> <i class="fa fa-users"></i>
+		</button>
 		</div>
             </div>
 	   
