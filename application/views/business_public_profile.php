@@ -101,7 +101,7 @@ jQuery(document).ready(function () {
 					<span style="text-shadow:none;">(#)</span>
 				</h3>
             </div>-->
-			<div class="col-md-11" style="position:relative;height:125px;background-image:url(<?php echo $PATH_IMG?>balt.jpg);background-size:100%;">
+			<div class="col-md-11" style="position:relative;height:125px;background-image:url(<?php echo base_url().'uploads/'.$profile['cover_photo'];?>);background-size:100%;">
 					
 					<h3 style="margin-top:80px;"><p style="margin-left:15%;font-family:GillSans;text-shadow:1px 1px 3px #000000;"><?php echo $other_fullname;?> <span class="pull-right" style="font-size:18px;">
 					<!--<i class="fa fa-star"></i>

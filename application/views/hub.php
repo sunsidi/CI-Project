@@ -26,11 +26,12 @@
     display: inline-block;
     padding-left: 100%;
     text-indent: 0;
-	-webkit-animation: marquee 20s linear infinite;
-   -moz-animation: marquee 20s linear infinite;
-    -ms-animation: marquee 20s linear infinite;
-     -o-animation: marquee 20s linear infinite;
-    animation: marquee 20s linear infinite;
+    -webkit-marquee-speed: fast;
+	-webkit-animation: marquee 70s linear infinite;
+   -moz-animation: marquee 70s linear infinite;
+    -ms-animation: marquee 70s linear infinite;
+     -o-animation: marquee 70s linear infinite;
+    animation: marquee 70s linear infinite;
 	color:#414042;
 	font-size:19px;
 }
@@ -38,8 +39,8 @@
 
 
 .marquee span:hover {
--webkit-animation-play-state: paused; 
-    animation-play-state: paused;
+    -webkit-animation-play-state: paused; 
+    animation-play-state: paused
 }
 
 /* Make it move */
@@ -82,8 +83,8 @@ ul.ticket-event-dp > li > a:hover{
 		<div class="btn-group" style="float:left;">
 		<button type="button" class="btn btn-lg dropdown-toggle ticker" data-toggle="dropdown" aria-expanded="false">Featured Events <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
 			<ul class="dropdown-menu ticket-event-dp" style="font-size:18px;" role="menu">
-				<li><a href="#" class="ticker-event" style="color:white;">Featured Events</a></li>
-				<li><a href="#" class="ticker-event" style="color:white;">Upcoming Events</a></li>
+				<li><a href="#" class="ticker-event" style="color:white;" onclick="show_featured_events()">Featured Events</a></li>
+				<li><a href="#" class="ticker-event" style="color:white;" onclick="show_upcoming_events()">Upcoming Events</a></li>
 				<li><a href="#" class="ticker-event" style="color:white;">Friends' Events</a></li>
 				
 			</ul>
@@ -91,7 +92,17 @@ ul.ticket-event-dp > li > a:hover{
 		<p class="marquee">
 			<!--Scrolling Events-->
 			<span>
-				<a href="#" style="color:#414042;">December 30 &nbsp;&nbsp;&nbsp; <strong>Event name</strong> &nbsp;&nbsp;&nbsp; Location &nbsp;&nbsp;&nbsp; <strong style="color:#2c75bb;font-weight:100;">Description</strong></a>
+                            <?php if(isset($events)) {
+                                $j = 0;
+                                for($i = 0; $i < count($events); $i++) {
+                                    if($events[$i]['e_featured'] && $j < 5) {?>
+                                        <a class="featured_group" href="<?php echo base_url().'event/event_info/latest/'.$events[$i]['event_id'];?>" style="color:#414042;"><?php $originalDate = $events[$i]['e_date']; $newDate = date("F j", strtotime($originalDate)); echo $newDate;?> &nbsp;&nbsp;&nbsp; <strong><?php echo $events[$i]['e_name'];?></strong> &nbsp;&nbsp;&nbsp; <?php echo $events[$i]['e_address'];?> &nbsp;&nbsp;&nbsp; <strong style="color:#2c75bb;font-weight:100;"><?php echo substr($events[$i]['e_description'],0,14);?> &nbsp;&nbsp;&nbsp;</strong></a>
+                                    <?php $j++;}
+                                        if($i < 15) {?>
+                                            <a class="upcoming_group" href="<?php echo base_url().'event/event_info/latest/'.$events[$i]['event_id'];?>" style="color:#414042;" hidden><?php $originalDate = $events[$i]['e_date']; $newDate = date("F j", strtotime($originalDate)); echo $newDate;?> &nbsp;&nbsp;&nbsp; <strong><?php echo $events[$i]['e_name'];?></strong> &nbsp;&nbsp;&nbsp; <?php echo $events[$i]['e_address'];?> &nbsp;&nbsp;&nbsp; <strong style="color:#2c75bb;font-weight:100;"><?php echo substr($events[$i]['e_description'],0,14);?> &nbsp;&nbsp;&nbsp;</strong></a>
+                                    <?php }}} else {?>
+                                <a href="#" style="color:#414042;">No events here =(</a>
+                            <?php }?>
 			</span>
 		</p>
 	</div>
@@ -431,6 +442,16 @@ border-bottom: 20px solid transparent;margin-left:14%;float:left;"></div>
         		input.setCustomValidity('Enter a valid zipcode.');
     		}
 	}
+    </script>
+    <script>
+        function show_featured_events() {
+            $('.upcoming_group').hide();
+            $('.featured_group').show();
+        }
+        function show_upcoming_events() {
+            $('.featured_group').hide();
+            $('.upcoming_group').show();
+        }
     </script>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  
