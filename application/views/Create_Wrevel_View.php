@@ -677,15 +677,17 @@
                     }
                    </style>
 </div>
-                    <label class="col-sm-4">More Event Images.</label>
+                    
+                    </div>
+                  <div class="form-group row">
+				  <label class="col-sm-4">More Event Images.</label>
                         <div class="col-sm-6" id="event_images_base">
                             <div class="image-upload">
-                                <input id="file-input" name = "event_photos[]" type = "file"/>
+                                <input id="file-input" name = "event_photos[]" type = "file" style="width:100%;overflow:hidden;text-overflow: ellipsis;"/>
                             </div>
                         </div>
                         <a id="add_more_event_images" class="btn" type="button" onclick="add_more_event_images()">Add More</a>
-                    </div>
-                  
+				  </div>
                     
   		<hr>
   		

@@ -47,8 +47,8 @@
 		    <div style="background: rgba(3,90,86,1); margin-left:auto;margin-right:auto;width: 100px; height: 40px;border-radius:10px; -moz-box-shadow:4px 4px 4px rgba(0, 0, 0, .3);-webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, .3);box-shadow:4px 4px 4px rgba(0, 0, 0, .3);">
 			<p style="color: white; font-size: 23px;  padding-top:5px;"><b>Dec 30</b></p>
 		    </div>
-		    <hr style="border-color: grey; width: 70%; border-width: 2px;"/>
-		    <p style=" font-size: 20px;">48 <i class="fa fa-heart-o"></i></p>
+		    <!--<hr style="border-color: grey; width: 70%; border-width: 2px;"/>
+		    <p style=" font-size: 20px;">48 <i class="fa fa-heart-o"></i></p>-->
 		    <hr style="border-color: grey; width: 70%; border-width: 2px;"/>
 		<!--Click to Share-->
 				
@@ -76,9 +76,9 @@
                  </div>
 		    <hr style="border-color: grey; width: 70%; border-width: 2px;"/>
 		    <p style=" font-size: 20px;">Related Posts</p>
-		    <hr style="border-color: grey; width: 70%; border-width: 2px;"/>
-		    <!--<a href="<?php echo base_url().'info/blog1'?>"><img src="<?php echo $PATH_IMG?>projectgrind_image.jpg" style="width: 100%;"></a>
-		    <a href=<?php echo base_url().'info/blog1'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>What¡¯s in store for Wrevel?</b></p></a>-->
+			<hr style="border-color: grey; width: 70%; border-width: 2px;"/>
+			<a href="<?php echo base_url().'info/blog1'?>"><img src="<?php echo $PATH_IMG?>grind.png" style="width: 100%;"></a>
+		    <a href=<?php echo base_url().'info/blog1'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>What&rsquo;s in store for Wrevel</b></p></a>
 		    
 		</div>
 		
@@ -148,8 +148,9 @@
 		    <hr style="border-color: grey; width: 65%; border-width: 2px;"/>
 		    <p style=" font-size: 20px;">Related Posts</p>
 		    <!--<hr style="border-color: grey; width: 55%; border-width: 2px;"/>-->
-		    <!--<a href="<?php echo base_url().'info/blog1'?>"><img src="<?php echo $PATH_IMG?>projectgrind_image.jpg" style="width: 100%;"></a>
-		    <a href=<?php echo base_url().'info/blog1'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>What&rsquo;s in store for Wrevel?</b></p></a>-->
+		    
+			<a href="<?php echo base_url().'info/blog1'?>"><img src="<?php echo $PATH_IMG?>grind.png" style="width: 100%;"></a>
+		    <a href=<?php echo base_url().'info/blog1'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>What&rsquo;s in store for Wrevel</b></p></a>
 		
 	     </div>
         </div>

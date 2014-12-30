@@ -46,8 +46,8 @@
 		    <div style="background: rgba(3,90,86,1); width: 100px;margin-left:auto;margin-right:auto; height: 40px;border-radius:10px; -moz-box-shadow:4px 4px 4px rgba(0, 0, 0, .3);-webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, .3);box-shadow:4px 4px 4px rgba(0, 0, 0, .3);">
 			<p style="color: white; font-size: 23px; padding-top:5px;"><b>Nov 14</b></p>
 		    </div>
-		    <hr style="border-color: grey; width: 70%; border-width: 2px;"/>
-		    <p style=" font-size: 20px;">32 <i class="fa fa-heart-o"></i></p>
+		    <!--<hr style="border-color: grey; width: 70%; border-width: 2px;"/>
+		    <p style=" font-size: 20px;">32 <i class="fa fa-heart-o"></i></p>-->
 		    <hr style="border-color: grey; width: 70%; border-width: 2px;"/>
 		    		<!--Click to Share-->
 
@@ -77,8 +77,9 @@
 		    <hr style="border-color: grey; width: 70%; border-width: 2px;"/>
 		    <p style="font-size: 20px;">Related Posts</p>
 		    <hr style="border-color: grey; width: 70%; border-width: 2px;"/>
-		    <a href="<?php echo base_url().'info/blog0'?>"><img src="<?php echo $PATH_IMG?>projectphoenix_image.jpg" style="width: 100%;"></a>
-		    <a href="<?php echo base_url().'info/blog0'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>Introducing Wrevel’s Project Phoenix</b></p></a>
+		    <a href="<?php echo base_url().'info/blog3'?>"><img src="<?php echo $PATH_IMG?>NYE-2015-Wrev.jpg" style="width: 100%;"></a>
+		    <a href="<?php echo base_url().'info/blog3'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>New Years Eve 2015</b></p></a>
+			
 		    
 		    
 		</div>
@@ -151,8 +152,9 @@
 		    <hr style="border-color: grey; width: 65%; border-width: 2px;"/>
 		    <p style=" font-size: 20px;">Related Posts</p>
 		    <!--<hr style="border-color: grey; width: 55%; border-width: 2px;"/>-->
-		    <a href="<?php echo base_url().'info/blog0'?>"><img src="<?php echo $PATH_IMG?>projectphoenix_image.jpg" style="width: 100%;"></a>
-		    <a href=<?php echo base_url().'info/blog0'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>Introducing Wrevel’s Project Phoenix</b></p></a>
+		   <a href="<?php echo base_url().'info/blog3'?>"><img src="<?php echo $PATH_IMG?>NYE-2015-Wrev.jpg" style="width: 100%;"></a>
+		    <a href="<?php echo base_url().'info/blog3'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>New Years Eve 2015</b></p></a>
+			
 		</div>
 		
 	     </div>
