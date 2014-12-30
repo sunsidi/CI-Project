@@ -1,5 +1,5 @@
 <!doctype html>
-
+<html>
 <head>
 <meta charset="utf-8">
 <title><?php echo $event[0]['e_name']?></title>
@@ -45,7 +45,7 @@ jQuery(document).ready(function () {
 <script type="text/javascript">stLight.options({publisher: "98b7df42-3881-4ba4-adc3-bcb7a479d75e", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
 
-
+<body>
 <?php $this->load->view('header');?>
 
 <!--content
@@ -535,6 +535,15 @@ jQuery(document).ready(function () {
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
+                                                        <label class="col-sm-2">Event Photos</label>
+                                                        <div class="col-sm-4" id="edit_event_photos_base">
+                                                            <div class="image-upload">
+                                                                <input id="file-input" name = "edit_event_photos[]" type = "file" style="overflow:hidden;"/>
+                                                            </div>
+                                                        </div>
+                                                        <a id="edit_more_event_photos" class="btn pull-right" type="button" onclick="edit_more_event_photos()">Add More</a>
+                                                    </div>
+                                                    <div class="form-group row">
                                                         <label class="col-sm-2">Event Type</label>
                                                         <input type="radio" name="status" value="public"> public
                                                         <input type="radio" name="status" value="private"> private
@@ -724,14 +733,14 @@ jQuery(document).ready(function () {
                                             foreach($event['photos'] as $picture){
                                                     if($first) {?>
                                                     <div class="item active">
-                                                            <a href="<?php echo base_url().'/uploads/events/'.$event[0]['event_id'].'/photos/'.$picture?>" rel="lightbox">
-                                                            <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/events/'.$event[0]['event_id'].'/photos/'.$picture?>" alt="...">
+                                                            <a href="<?php echo base_url().'uploads/events/'.$event[0]['event_id'].'/photos/'.$picture?>" rel="lightbox">
+                                                            <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'uploads/events/'.$event[0]['event_id'].'/photos/'.$picture?>" alt="...">
                                                             </a>
                                                     </div>
                                                     <?php $first = false;
                                                     } else {?>
                                                     <div class="item">
-                                                            <a href="<?php echo base_url().'/uploads/events/'.$event[0]['event_id'].'/photos/'.$picture?>" rel="lightbox"> <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/events/'.$event[0]['event_id'].'/photos/'.$picture?>" alt="..."></a>
+                                                            <a href="<?php echo base_url().'uploads/events/'.$event[0]['event_id'].'/photos/'.$picture?>" rel="lightbox"> <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'uploads/events/'.$event[0]['event_id'].'/photos/'.$picture?>" alt="..."></a>
                                                     </div>
 
                                             <?php }}?> 
@@ -1317,6 +1326,16 @@ jQuery(document).ready(function () {
     		});
 	});
     </script>
+    <script>
+        function edit_more_event_photos() {
+            var content = '<div class="image-upload">'
+                                +'<input id="file-input" name = "edit_event_photos[]" type = "file"/>'
+                            '</div>';
+            $('#edit_event_photos_base').append(content);
+        }
+    </script>
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  -->
     <!--<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.min.js"></script>
 	<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.js"></script> -->
+</body>
+</html>

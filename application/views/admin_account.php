@@ -64,6 +64,7 @@
 						<!--<li style="float: none;"><a href="#user_stats" data-toggle="tab">User Stats</a></li>
 						<li style="float: none;"><a href="#listing_stats" data-toggle="tab">Listing Stats</a></li>-->
 						<li><a href="#site_stats" data-toggle="tab">Site Stats</a></li>
+                                                <li><a href="#featured" data-toggle="tab">Featured Events</a></li>
 						<li><a href="#multiple_listings" data-toggle="tab">Multiple Listings</a></li>
 					</ul>
 				</div>
@@ -417,6 +418,59 @@
 					<div style="margin-top:20px;border:1px solid #B1CFE8;">
 					Graph of users and listings here
 					</div>
+				</div>
+                                
+                                <!--Listings-->
+				<div class="tab-pane" id="featured" style="background:rgba(255,255,255,0.5);padding:10%;text-align:center;font-size:18px;">
+					<img src="<?php echo $PATH_IMG?>listing_icon.png" style="width:40%;"/>
+					<h1 style="margin-top:20px;"><strong><?php echo count($all_events)?></strong> Listings</h1>
+					<button type="button" class="btn admin_tabs" onclick="show_all_events()">All</button>
+					<button type="button" class="btn admin_tabs" onclick="show_new_events()">New</button>
+					<button type="button" class="btn admin_tabs" onclick="show_current_events()">Current</button>
+                                        <form id="delete_users" action="<?php echo base_url()."admin/feature_events"?>" method="POST">
+					<div class="form-group" style="margin-top:10px;width:60%;margin-left:auto;margin-right:auto;">
+              					<div class="left-inner-addon" style="text-align:left;">
+                					<span class="glyphicon glyphicon-search"></span>
+          						<label class="sr-only">Search</label>
+          						<input id="search_featured" type="Search" class="form-control" style="border-radius:10px;font-size:20px;" placeholder="Search" onkeyup="show_featured(event)">						
+          					</div>
+       					</div>
+       					<div style="height:500px;overflow-y:auto;">
+       					<table style="width:100%;text-align:left;">
+       						<thead style="color:#5697CA;">
+       							<tr>
+                                                            <td style="width:25%;">Box</td>	
+                                                            <td style="width:25%;">Title</td>							
+                                                            <td style="width:25%;">Category</td>							
+                                                            <td style="width:25%;">Creator ID</td>
+                                                            <td style="width:25%;">Event Date</td>
+                                                            <td style="width:25%;">Date and Time Created</td>
+                                                            <td style="width:25%;">Difference</td>
+							</tr>
+						</thead>
+						<tbody>
+						<?php if(isset($all_events)) {
+							for($i = 0; $i < count($all_events); $i++) {?>
+							<tr>
+                                                            <?php if($all_events[$i]['e_featured']) {?>
+                                                                <td><input type="checkbox" name="featured_checkbox[]" value="<?php echo $all_events[$i]['event_id'];?>" checked></td>
+                                                            <?php } else {?>
+                                                                <td><input type="checkbox" name="featured_checkbox[]" value="<?php echo $all_events[$i]['event_id'];?>"></td>
+                                                            <?php }?>
+                                                            <td class="featured_group" style="word-break:break-all;"><?php echo $all_events[$i]['e_name']?></td>
+                                                            <td><?php echo $all_events[$i]['e_category']?></td>
+                                                            <td><?php echo $all_events[$i]['e_creatorID']?></td>
+                                                            <td class="featured_group_date"><?php echo $all_events[$i]['e_date']?></td>
+                                                            <td class="featured_group_created"><?php echo $all_events[$i]['create_stamp']?></td>
+                                                            <td class="featured_group_difference"><?php echo $all_events[$i]['diff']?></td>
+							</tr>
+						<?php }}?>
+						</tbody>
+       					</table>
+       					</div>
+                                        <button type="submit" class="btn admin_button" style="background:#8D6893;">Save Featured</button>
+                                        </form>
+                                        
 				</div>
 				
 				<!--multiple listings-->
@@ -918,6 +972,36 @@
                             //Check if an alphanumeric is typed in.
                             else {
                                 if(($(this).html()).indexOf($('#search_events').val()) > -1 && $('#search_events').val().length >= 0) {
+                                    $(this).parent().show();
+                                }
+                                else
+                                    $(this).parent().hide();
+                            }
+                        })
+                    },1000);
+                }(search_value));
+            }
+        }
+    </script>
+    <script>
+        function show_featured(e) {
+            //var regex = new RegExp("^[a-zA-Z0-9_]*$");
+            if (e.keyCode) key = e.keyCode;
+            //else if(e.which) key = e.which;
+            if(/[a-zA-Z0-9 ]/.test(String.fromCharCode(key)) || key == 8) {
+                var search_value = $('#search_featured').val();
+                //First set the search_value checker .
+                (function(search_value) {
+                    //Amount of time to wait before actually doing the search.
+                    setTimeout(function () {
+                        $('.featured_group').each(function() { 
+                            //If value isn't finished typing then skip this function and go to the next.
+                            if(search_value != $('#search_featured').val()) {
+                                return false;
+                            }
+                            //Check if an alphanumeric is typed in.
+                            else {
+                                if(($(this).html()).indexOf($('#search_featured').val()) > -1 && $('#search_featured').val().length >= 0) {
                                     $(this).parent().show();
                                 }
                                 else

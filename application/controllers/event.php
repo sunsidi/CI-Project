@@ -44,6 +44,7 @@ class Event extends CI_Controller {
                 	$user_data = $this->model_users->get_info($email);
 			$user_id = $user_data['user_id'];
 			$my_friends_list = $this->model_friend_request->get_friendlists($user_id);
+                        $data['email'] = $email;
                         $data['my_user_id'] = $user_id;
 			$data['card_data'] = $user_data['cust_id'];
 		}
@@ -205,7 +206,7 @@ class Event extends CI_Controller {
                     $upload_data = $this->upload->data();
                     $data = array('upload_data' => $this->upload->data());
                     $image_name = $upload_data['file_name'];
-                    $e_image = $image_name;
+                    $e_image = 'events/'.$event_id.'/'.$image_name;
                 }
                 $config2['upload_path'] = './uploads/events/'.$event_id.'/photos/';
                 $config2['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -626,10 +627,9 @@ class Event extends CI_Controller {
       	public function edit_event($event_id) {
             $this->load->library('session');
             $this->load->model('model_events');
-            $config['upload_path']='./uploads/';
+            $config['upload_path']='./uploads/events/'.$event_id;
             $config['allowed_types']= 'gif|jpg|png|jpeg';
             $config['max_size']	= '10000';
-            $config['file_name'] = md5(uniqid());
             //echo $image_name;
             $this->load->library('upload',$config);
             if (!$this->upload->do_upload("eventfile")){
@@ -639,10 +639,17 @@ class Event extends CI_Controller {
 		$upload_data = $this->upload->data();
                 $data = array('upload_data' => $this->upload->data());
 		$image_name = $upload_data['file_name'];
-                $e_image = $image_name;
+                $e_image = 'events/'.$event_id.'/'.$image_name;
             }
             if($this->model_events->edit_event_info($event_id, $e_image)){
                 $this->session->set_flashdata('message','Your event info has been updated.' );
+                $config2['upload_path']='./uploads/events/'.$event_id.'/photos/';
+                $config2['allowed_types']= 'gif|jpg|png|jpeg';
+                $config2['max_size']	= '10000';
+                //echo $image_name;
+                $this->load->library('upload',$config);
+                $this->upload->initialize($config2);
+                if (!$this->upload->do_multi_upload("edit_event_photos")){}
                 redirect('event/event_info/latest/'.$event_id);
             }
         }

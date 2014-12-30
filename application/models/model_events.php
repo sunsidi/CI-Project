@@ -41,10 +41,17 @@ class Model_events extends CI_Model{
     }
     
     public function admin_delete_events() {
-              $data = $this->input->post('events_checkbox');
-              $this->db->where_in('event_id', $data);
-              $this->db->delete('events');
-          }
+        $data = $this->input->post('events_checkbox');
+        $this->db->where_in('event_id', $data);
+        $this->db->delete('events');
+    }
+    public function admin_feature_events() {
+        $data = $this->input->post('featured_checkbox');
+        $this->db->update('events', array('e_featured' => 0));
+        for($i = 0; $i < count($data); $i++) {
+            $this->db->update('events', array('e_featured' => 1), array('event_id' => $data[$i]));
+        }
+    }
       public function find_event($e_id)
       {
 	    //$e_name = 'Boris pimp party';
@@ -707,7 +714,9 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
             	$info_updating[$i] = strip_tags($value);
           }
         }
-        $info_updating['e_image'] = $e_image;
+        if($e_image) {
+            $info_updating['e_image'] = $e_image;
+        }
         if(isset($info_updating)){        
             $query = $this->db->update('events', $info_updating, array('event_id'=> $event_id));
             if($query)

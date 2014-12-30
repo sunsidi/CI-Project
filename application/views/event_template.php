@@ -24,6 +24,24 @@
 <!--content
 ==============================================-->
 <div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
+    </div>
+</div>
+<div class="container">
 <div class="row" style="margin:30px;">
   <p class="event"><img src="<?php echo $PATH_IMG?><?php echo $event_info[$category]['image']?>" class="wrev-image"/> <strong><?php echo $event_info[$category]['name']?> </strong> <span class="pronounce"><?php echo $event_info[$category]['pronunciation']?></span></p>
   <p class="definition">&nbsp;&nbsp; <?php echo $event_info[$category]['definition']?></p> 
@@ -346,4 +364,7 @@
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>jquery.cookie.js"></script>
 </body>
+<link rel="stylesheet" type="text/css" href="<?php echo $PATH_JAVASCRIPT?>jquery.datetimepicker.css"/>
+<script src="<?php echo $PATH_JAVASCRIPT?>jquery.js"></script>
+<script src="<?php echo $PATH_JAVASCRIPT?>jquery.datetimepicker.js"></script>
 </html> 

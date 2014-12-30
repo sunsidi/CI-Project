@@ -61,6 +61,13 @@ class admin extends CI_Controller{
             redirect('admin/admin_account');
         }
         
+        //Feature events that are checked.
+        public function feature_events() {
+            $this->load->library('session');
+            $this->load->model('model_events');
+            $this->model_events->admin_feature_events();
+            redirect('admin/admin_account');
+        }
         //creates many events.
         public function create_multiple_events() {
             $this->load->library('session');
