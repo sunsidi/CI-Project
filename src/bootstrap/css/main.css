@@ -1217,7 +1217,7 @@ display:none;
 background:transparent !important;
 }
 .pagenumber:hover{
-background:rgba(65,64,66,0.1) !important;
+background:rgb(241,242,242) !important;
 }
 
 @media (max-width: 1025px){
