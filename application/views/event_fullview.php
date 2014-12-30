@@ -980,7 +980,7 @@ jQuery(document).ready(function () {
                                         <?php }} else {?>
                                         <div class="col-md-10">
                                                 <div class="caption pull-middle" style="text-align:center;">
-                                                    <p style="color:#414042;"><h3>Be the first to attend this event!</h3></p>
+                                                    <p><h3 style="color:#414042;">Be the first to attend this event!</h3></p>
       						</div>
                                         </div>
                                         <?php }?>
