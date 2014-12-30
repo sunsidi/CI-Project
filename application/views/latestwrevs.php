@@ -211,13 +211,13 @@
 </div>
 <div class="text-center">
     <ul class="pagination">
-    	<li><a href="javascript:void(0)" onclick="show_page(1)"><<</a></li>
-    	<li><a href="javascript:void(0)"onclick="show_page(-1)"><</a></li>
+    	<li><a href="javascript:void(0)" onclick="show_page(1)" class="pagenumber"><<</a></li>
+    	<li><a href="javascript:void(0)"onclick="show_page(-1)" class="pagenumber"><</a></li>
     	<?php for($i = 0; $i < $size / 21; $i++) {?>
-        	<li><a id="page_number<?php echo $i+1?>" class="page_number_class" href="javascript:void(0)" onclick="show_page(<?php echo $i+1?>)"><?php echo $i+1?></a></li> 
+        	<li><a id="page_number<?php echo $i+1?>" class="page_number_class pagenumber" href="javascript:void(0)" onclick="show_page(<?php echo $i+1?>)"><?php echo $i+1?></a></li> 
         <?php }?>
-        <li><a href="javascript:void(0)" onclick="show_page(-2)">></a></li> 
-        <li><a href="javascript:void(0)" onclick="show_page(<?php echo (int)($size/21)+1?>)"> >> </a></li> 
+        <li><a href="javascript:void(0)" onclick="show_page(-2)" class="pagenumber">></a></li> 
+        <li><a href="javascript:void(0)" onclick="show_page(<?php echo (int)($size/21)+1?>)" class="pagenumber"> >> </a></li> 
     </ul>
 </div>
             <div class="row" style="text-align:center; padding:10px;">

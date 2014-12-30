@@ -1207,6 +1207,13 @@ height: 160px;
 display:none;
 }
 
+.pagenumber{
+background:transparent !important;
+}
+.pagenumber:hover{
+background:rgba(65,64,66,0.1) !important;
+}
+
 @media (max-width: 1025px){
   .eventlist{
     margin-left: -30px;

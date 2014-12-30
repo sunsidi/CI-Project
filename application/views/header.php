@@ -44,10 +44,10 @@
         
         
         <div id="navbarCollapse" class="collapse navbar-collapse"  style="float: right;">
-        	<div class="pull-left notlogged" style="margin-top:8px;">
+        	<!--<div class="pull-left notlogged" style="margin-top:8px;">
         	<a href="<?php echo base_url().'welcome/home'?>" class="btn header-button">Sign Up</a> &nbsp;
         	<a href="<?php echo base_url().'welcome/home'?>" class="btn header-button">Log In</a>
-        	</div>
+        	</div>-->
         <div role="search" class="navbar-form navbar-left">
           <?php echo form_open(base_url().'main/get_latest_events/')?>
             <div class="form-group">
