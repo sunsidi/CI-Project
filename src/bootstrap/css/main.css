@@ -1051,6 +1051,7 @@ text-shadow:none;
 a.wrevenues-name{
 cursor:pointer;
 }
+
 a.wrevenues-name{
 background:rgba(51,144,132,0.9);
 }
@@ -1062,7 +1063,7 @@ color: #414042;
 
 a.wrevenues-venue:hover{
 color:rgba(255,255,255,0.9);
-background:rgba(65,64,66,0.8a.);
+background:rgba(65,64,66,0.8);
 }
 a.wrevenues-palette{
 background:#7D5E74;
