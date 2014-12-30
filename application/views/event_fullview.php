@@ -12,6 +12,8 @@
 <link href="<?php echo $path['PATH_BOOTSTRAP']?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="<?php echo $path['PATH_BOOTSTRAP']?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<?php echo $path['PATH_BOOTSTRAP']?>css/main.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/event-lightbox.css" rel="stylesheet">
+
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <meta name="description" content="<?php echo $event[0]['e_description']?>">
 
@@ -978,7 +980,7 @@ jQuery(document).ready(function () {
                                         <?php }} else {?>
                                         <div class="col-md-10">
                                                 <div class="caption pull-middle" style="text-align:center;">
-                                                    <p><h3>Be the first to attend this event!</h3></p>
+                                                    <p style="color:#414042;"><h3>Be the first to attend this event!</h3></p>
       						</div>
                                         </div>
                                         <?php }?>
@@ -1338,5 +1340,7 @@ jQuery(document).ready(function () {
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  -->
     <!--<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.min.js"></script>
 	<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.js"></script> -->
+		<script src="<?php echo $PATH_BOOTSTRAP?>js/lightbox.js"></script>
+
 </body>
 </html>
