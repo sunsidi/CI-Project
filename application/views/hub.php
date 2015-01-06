@@ -8,19 +8,9 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 <link href="<? echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-tour.min.css" rel="stylesheet">
 <style>
-	.marquee {
-    width: 85%;
-    //margin: 0 auto;
-    white-space: nowrap;
-    overflow: hidden;
-    box-sizing: border-box;
-    //border: 1px #414042 solid;
-	background:rgba(255,255,255,0.3);
-	padding:10px;
-	border-top-right-radius:8px;
-	border-bottom-right-radius:8px;
-}
+	
 
 .marquee span {
     display: inline-block;
@@ -79,10 +69,10 @@ ul.ticket-event-dp > li > a:hover{
 ==============================================-->
  <?php $events_info =$this->_ci_cached_vars;?>
 
- <div style="width:85%;margin-left:auto;margin-right:auto;margin-top:3%;">
-		<div class="btn-group" style="float:left;">
+ <div id="hub-step" style="width:90%;margin-left:auto;margin-right:auto;margin-top:3%;">
+		<div class="btn-group ticker-button" style="float:left;">
 		<button type="button" class="btn btn-lg dropdown-toggle ticker" data-toggle="dropdown" aria-expanded="false">Featured Events <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
-			<ul class="dropdown-menu ticket-event-dp" style="font-size:18px;" role="menu">
+			<ul class="dropdown-menu ticket-event-dp" role="menu">
 				<li><a href="#" class="ticker-event" style="color:white;" onclick="show_featured_events()">Featured Events</a></li>
 				<li><a href="#" class="ticker-event" style="color:white;" onclick="show_upcoming_events()">Upcoming Events</a></li>
 				<!--<li><a href="#" class="ticker-event" style="color:white;">Friends' Events</a></li>-->
@@ -459,5 +449,7 @@ border-bottom: 20px solid transparent;margin-left:14%;float:left;"></div>
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.js"></script>
     <script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
+	
 </body>
 </html> 
