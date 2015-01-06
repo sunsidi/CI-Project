@@ -216,6 +216,17 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
+                                                <label>Cover Photo</label>
+                                                <div class="col-sm-12" style="border:1px solid white;text-align:center;padding:8%;">
+                                                    <div class="col-sm-12">
+                                                        <div class="image-upload">
+                                                            <label>Choose an Image:</label>
+                                                            <input id="file-input" name="wrevenue_cover" type="file" style="width:100%;overflow:hidden;text-overflow: ellipsis;" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
                                                 <label class="col-sm-2">Name:</label>
                                                 <div class="col-sm-10">
                                                     <input name="place" type="text" class="form-control" placeholder="name of venue">

@@ -103,4 +103,14 @@ class admin extends CI_Controller{
             }
             redirect('admin/admin_account');
         }
+        
+        //Creates new News posts
+        public function create_news() {
+            $this->load->library('session');
+            $this->load->model('model_news');
+            if($this->model_news->post_news()) {
+                $this->session->set_flashdata('message', 'Your news has been posted.');
+            }
+            redirect('admin/admin_account');
+        }
 }

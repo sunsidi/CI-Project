@@ -332,18 +332,19 @@ jQuery(document).ready(function () {
 				
 				<!--newsfeed_automation-->
 				<div class="tab-pane" id="newsfeed_automation" style="background:rgba(255,255,255,0.5);padding:6% 15%;">					
-					
+                                    <?php echo form_open('admin/create_news');?>
 					<h2><i class="fa fa-file-text-o"></i> Body</h2>
-					<textarea class="form-control" rows="10" style="border:dashed 2px gray;resize: none;font-size:19px;border-radius:0;background:none;"></textarea>
+					<textarea name="news_body" class="form-control" rows="10" style="border:dashed 2px gray;resize: none;font-size:19px;border-radius:0;background:none;"></textarea>
 					
 					<div class="row" style="margin-left: 10px;text-align:right; margin-top:25px;padding:0 30px;text-align:left;">
-					<textarea class="form-control" rows="1" style="resize: none; font-size:20px;border-radius:0;width:75%;float:left;" placeholder="Filename"></textarea> 
+					<textarea name="news_filename" class="form-control" rows="1" style="resize: none; font-size:20px;border-radius:0;width:75%;float:left;" placeholder="Filename"></textarea> 
 					<button class="btn" style="padding:5px 15px;font-size:25px; margin-left:10px;background:#27AAE2;color:white;"><span class="glyphicon glyphicon-camera"></span></button>
 					</div>
 					
 					<div class="row" style="text-align:right; margin-top:10px;padding:15px;">
 						<button class="btn" style="color:white;background:#698BA7;font-size:25px;border-radius:10px;padding:5px 20px;">Post</button>
-					</div>					
+					</div>
+                                    <?php echo form_close();?>
 				</div>
 	  	
 				<!--notification_center-->
@@ -811,7 +812,17 @@ jQuery(document).ready(function () {
                                         +'<input id="multi_e_date[]" type="text" name="multi_e_date[]" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="mm/dd/yyyy">'
                                     +'</div>'
                                 +'</div>'
-
+                                +'<div class="col-sm-2">'
+                                    +'<select id="period" name="multi_period[]" type="number" class="form-control" style="padding:0;font-size:10px;">'
+                                      +'<option value="" selected="selected"></option>'
+                                      +'<option value="1">Every day</option>'
+                                      +'<option value="7">7 days </option>'
+                                      +'<option value="30">1 month</option>'
+                                      +'<option value="365">1 year</option>'
+                                      +'<option value="-1">Every week day</option>'
+                                      +'<option value="-7">Every weekend</option>'
+                                    +'</select>'
+                                +'</div>'
                                 +'<div class="col-md-3">'
                                     +'<div class="left-inner-addon-ml">'
                                         +'<select id="multi_start_time" name="multi_start_time[]" type="time" class="form-control" style="margin-top: 1px;font-size:15px; width: 100%;">'
