@@ -16,6 +16,15 @@ class Model_blogs extends CI_Model{
         return false;
     }
     
+    //Gets all blogs in the database. (SAME AS ADMIN_GET_BLOGS) SEPARATED JUST IN CASE.
+    public function get_blogs() {
+        $query = $this->db->get('blogs');
+        if($query->num_rows() != 0) {
+            return $query->result_array();
+        }
+        return false;
+    }
+    
     //Post a blog.
     public function post_blog() {
         $data = $this->input->post();

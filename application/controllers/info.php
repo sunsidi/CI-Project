@@ -15,8 +15,10 @@ class info extends CI_Controller{
 		$this->load->library('path');
             	$path = $this->path->getPath();
             	$this->load->library('session');
-            	$nav_data = $this->session->all_userdata();
-                $result = array_merge($path,$nav_data);
+                $this->load->model('model_blogs');
+                $data['blogs'] = $this->model_blogs->get_blogs();
+                $result = array_merge($path,$data);
+                echo '<pre>', print_r($data, true), '</pre>';
                 $this->load->view('Create_Wrevel_View',$result);
                 $this->load->view('blog',$result);
 	}

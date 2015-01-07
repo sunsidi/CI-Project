@@ -44,7 +44,7 @@ class admin extends CI_Controller{
                     $data['all_events'][$i]['diff'] = $diff->format("%a");
                 }
                 $result = array_merge($path, $data);
-                echo '<pre>', print_r($data['all_notifications'], true), '</pre>';
+                //echo '<pre>', print_r($data['all_notifications'], true), '</pre>';
                   $this->load->view('Create_Wrevel_View',$result);
                  $this->load->view('admin_account',$result);
 	
