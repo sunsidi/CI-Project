@@ -281,18 +281,21 @@ jQuery(document).ready(function () {
        					<div style="height:500px;overflow-y:auto;">
        					<table style="width:100%;text-align:left;">
        						<thead style="color:#5697CA;">
-       							<tr>
-							<th style="width:33.3%;">Title</th>							
-							<th style="width:33.3%;">Username</th>							
-							<th style="width:33.3%;">Date Created</th>							
-							</tr>
+                                                    <tr>
+                                                        <th style="width:33.3%;">Title</th>							
+                                                        <th style="width:33.3%;">Username</th>							
+                                                        <th style="width:33.3%;">Date Created</th>							
+                                                    </tr>
 						</thead>
 						<tbody>
-							<tr>
-							<td>sdasd</td>
-							<td>rtrt</td>
-							<td>rtrt</td>
-							</tr>
+                                                    <?php if(isset($all_blogs)) {
+                                                        for($i = 0; $i < count($all_blogs); $i++) {?>
+                                                        <tr>
+                                                            <td><?php echo $all_blogs[$i]['blog_title'];?></td>
+                                                            <td><?php echo $all_blogs[$i]['blog_filename'];?></td>
+                                                            <td><?php echo $all_blogs[$i]['blog_created'];?></td>
+                                                        </tr>
+                                                    <?php }}?>
 						</tbody>
        					</table>
        					</div>
@@ -306,43 +309,41 @@ jQuery(document).ready(function () {
 	  			
 	  			<!--Create Blog Post-->
 	  			<div class="tab-pane" id="create_blog" style="background:rgba(255,255,255,0.5);padding:6% 15%;">
-					<h2><i class="fa fa-star"></i> Title</h2>
-					<textarea class="form-control" rows="1" style="border:dashed 2px gray;resize: none;font-size:20px;border-radius:0;background:none;"></textarea>
-					
-					<div class="row" style="text-align:right; margin-top:15px;padding:0 30px;text-align:left;">
-						<textarea class="form-control" rows="1" style="resize: none; font-size:20px;border-radius:0;width:75%;float:left;" placeholder="Filename"></textarea> 
-						<button class="btn" style="padding:5px 15px;font-size:25px; margin-left:5px;background:#27AAE2;color:white;"><span class="glyphicon glyphicon-camera"></span></button>
-						
-					</div>
-					
-					
-					<h2><i class="fa fa-file-text-o"></i> Body</h2>
-					<textarea class="form-control" rows="10" style="border:dashed 2px gray;resize: none;font-size:19px;border-radius:0;background:none;"></textarea>
-					
-					<h2><i class="fa fa-tag"></i> Tags</h2>
-					<textarea class="form-control" rows="1" style="border:dashed 2px gray;resize: none;font-size:20px;border-radius:0;background:none;"></textarea>
-					
-					<div class="row" style="text-align:right; margin-top:10px;padding:15px;">
-						<button class="btn" style="color:white;background:#698BA7;font-size:25px;border-radius:10px;padding:5px 20px;">Post</button>
-					</div>
-					
-					<a href="#blog" data-toggle="tab"><button class="btn" style="color:white;background:#698BA7;font-size:25px;border-radius:10px;padding:5px 20px;">Previous Page</button></a>
-					
+                                    <?php echo form_open_multipart('admin/create_blog');?>
+                                        <h2><i class="fa fa-star"></i> Title</h2>
+                                        <textarea name="blog_title" class="form-control" rows="1" style="border:dashed 2px gray;resize: none;font-size:20px;border-radius:0;background:none;"></textarea>
+                                        <div class="row" style="text-align:right; margin-top:15px;padding:0 30px;text-align:left;">
+                                            <label for="file-input-blog-file">
+                                                <img src="<?php echo $PATH_IMG?>camera_icon.png" style="width:70%;">
+                                            </label>
+                                            <input id="file-input-blog-file" id="" name="blog_filename" type="file" style="display:none">
+                                        </div>
+                                        <h2><i class="fa fa-file-text-o"></i> Body</h2>
+                                        <textarea name="blog_body" class="form-control" rows="10" style="border:dashed 2px gray;resize: none;font-size:19px;border-radius:0;background:none;"></textarea>
+                                        <h2><i class="fa fa-tag"></i> Tags</h2>
+                                        <textarea name="blog_tags" class="form-control" rows="1" style="border:dashed 2px gray;resize: none;font-size:20px;border-radius:0;background:none;"></textarea>
+
+                                        <div class="row" style="text-align:right; margin-top:10px;padding:15px;">
+                                            <button class="btn" style="color:white;background:#698BA7;font-size:25px;border-radius:10px;padding:5px 20px;">Post</button>
+                                        </div>
+                                        <a href="#blog" data-toggle="tab"><button class="btn" style="color:white;background:#698BA7;font-size:25px;border-radius:10px;padding:5px 20px;">Previous Page</button></a>
+                                    <?php echo form_close();?>
 				</div>
 				
 				<!--newsfeed_automation-->
 				<div class="tab-pane" id="newsfeed_automation" style="background:rgba(255,255,255,0.5);padding:6% 15%;">					
-                                    <?php echo form_open('admin/create_news');?>
+                                    <?php echo form_open_multipart('admin/create_news');?>
 					<h2><i class="fa fa-file-text-o"></i> Body</h2>
 					<textarea name="news_body" class="form-control" rows="10" style="border:dashed 2px gray;resize: none;font-size:19px;border-radius:0;background:none;"></textarea>
-					
-					<div class="row" style="margin-left: 10px;text-align:right; margin-top:25px;padding:0 30px;text-align:left;">
-					<textarea name="news_filename" class="form-control" rows="1" style="resize: none; font-size:20px;border-radius:0;width:75%;float:left;" placeholder="Filename"></textarea> 
-					<button class="btn" style="padding:5px 15px;font-size:25px; margin-left:10px;background:#27AAE2;color:white;"><span class="glyphicon glyphicon-camera"></span></button>
+                                        <label class="col-sm-3 control-label">Picture For News:</label>
+                                        <div class="row" style="margin-left: 10px;text-align:right; margin-top:25px;padding:0 30px;text-align:left;">
+                                            <label for="file-input-news-feed">
+                                                <img src="<?php echo $PATH_IMG?>camera_icon.png" style="width:70%;">
+                                            </label>
+                                            <input id="file-input-news-feed" id="" name="news_filename" type="file" style="display:none">
 					</div>
-					
 					<div class="row" style="text-align:right; margin-top:10px;padding:15px;">
-						<button class="btn" style="color:white;background:#698BA7;font-size:25px;border-radius:10px;padding:5px 20px;">Post</button>
+                                            <button class="btn" style="color:white;background:#698BA7;font-size:25px;border-radius:10px;padding:5px 20px;">Post</button>
 					</div>
                                     <?php echo form_close();?>
 				</div>
@@ -362,22 +363,28 @@ jQuery(document).ready(function () {
                                                 <input id="search_users" type="Search" class="form-control" style="border-radius:10px;font-size:20px;" placeholder="Search" onkeyup="show_users(event)">						
                                             </div>
        					</div>
-					<div style="margin-top: 5px; width: 90%;">
-						<span style="margin-left: 6%;text-align: center; color:#5697CA;"><b>Username</b></span>
-						<span style="margin-left:10%;text-align: center;color: #5697CA;"><b>Date</b></span>
-						<span style="margin-left: 31%;text-align: center;color: #5697CA;"><b>Notification</b></span>
-					</div>
+					<table style="margin-top: 5px; width: 90%;">
+                                            <tr>
+                                                <th style="margin-left: 3%;text-align: center; color:#5697CA;"><b>First User</b></th>
+                                                <th></th>
+                                                <th style="margin-left: 6%;text-align: center; color:#5697CA;"><b>Second User</b></th>
+						<th style="margin-left:10%;text-align: center;color: #5697CA;"><b>Date</b></th>
+						<th style="margin-left: 31%;text-align: center;color: #5697CA;"><b>Notification</b></th>
+                                            </tr>
+                                        </table>
        					<div style="height:500px;overflow-y:auto;">
        					<table style="width:100%;text-align:left;">
 						<tbody>
-						<?php if(isset($all_users)) {
-							for($i = 0; $i < count($all_users); $i++) {?>
-							<tr>
-                                                            <td style="word-break:break-all;text-align: center;width: 15%;">Tony</td>
-                                                            <td style="word-break:break-all;text-align: center;width: 15%;">12-25-2014</td>
-                                                            <td style="word-break:break-all;text-align: center;width: 50%;">Merry Christmas</td>
-							</tr>
-						<?php }}?>
+						<?php if(isset($all_notifications)) {
+							for($i = 0; $i < count($all_notifications); $i++) {?>
+                                                            <tr>
+                                                                <td style="word-break:break-all;text-align: center;width: 15%;"><?php echo $all_notifications[$i]['user_id'];?></td>
+                                                                <td style="word-break:break-all;text-align: center;width: 15%;"><?php echo $all_notifications[$i]['to_from'];?></td>
+                                                                <td style="word-break:break-all;text-align: center;width: 15%;"><?php echo $all_notifications[$i]['other_user_id'];?></td>
+                                                                <td style="word-break:break-all;text-align: center;width: 15%;"><?php echo $all_notifications[$i]['time_sent'];?></td>
+                                                                <td style="word-break:break-all;text-align: center;width: 50%;"><?php echo $all_notifications[$i]['message'];?></td>
+                                                            </tr>
+                                                <?php }}?>
 						</tbody>
        					</table>
 					</div>

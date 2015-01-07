@@ -483,6 +483,14 @@ class Model_users extends CI_Model{
         return $data['username'];
 
      }
+     public function get_username_with_id($user_id){
+
+       $sql = "SELECT username FROM users WHERE user_id = ?;";
+       $query = $this->db->query($sql,array($user_id,));
+        $data = $query->row_array(0);
+        return $data['username'];
+
+     }
      public function create_chatBox($filename,$username){
 
        $sql = 'UPDATE users SET chatbox_file= ? WHERE username=?';

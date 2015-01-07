@@ -20,10 +20,15 @@ class admin extends CI_Controller{
             	$this->load->model('model_users');
             	$this->load->model('model_events');
             	$this->load->model('model_tickets');
+                $this->load->model('model_blogs');
+                $this->load->model('model_friend_request');
             	
             	$data['all_users'] = $this->model_users->admin_get_users();
             	$data['all_events'] = $this->model_events->admin_get_events();
             	$data['all_tickets'] = $this->model_tickets->admin_get_tickets();
+                $data['all_blogs'] = $this->model_blogs->admin_get_blogs();
+                $data['all_notifications'] = $this->model_friend_request->get_notifications_simplified();
+                
                 $datestring = "%Y-%m-%d %H:%i:%s";
                 $time = time();
             	$data['today'] = mdate($datestring, $time);
@@ -38,8 +43,8 @@ class admin extends CI_Controller{
                     $diff = date_diff($date1,$date3);
                     $data['all_events'][$i]['diff'] = $diff->format("%a");
                 }
-            	  $nav_data = $this->session->all_userdata();
-                $result = array_merge($path, $nav_data, $data);
+                $result = array_merge($path, $data);
+                echo '<pre>', print_r($data['all_notifications'], true), '</pre>';
                   $this->load->view('Create_Wrevel_View',$result);
                  $this->load->view('admin_account',$result);
 	
@@ -103,13 +108,70 @@ class admin extends CI_Controller{
             }
             redirect('admin/admin_account');
         }
+        //Create blog.
+        public function create_blog() {
+            $this->load->library('session');
+            $this->load->model('model_blogs');
+            if(!file_exists('./uploads/blogs/')) {
+                mkdir('./uploads/blogs/', 0777, true);
+                chmod('./uploads/blogs/', 0777);
+            }
+            $blog_id = $this->model_blogs->post_blog();
+            if(!$blog_id) {
+                $this->session->set_flashdata('message', 'Your blog was not created. Please make sure you have inputted the right information.');            
+            }
+            else {
+                mkdir('./uploads/blogs/'.$blog_id, 0777, true);
+                chmod('./uploads/blogs/'.$blog_id, 0777);
+                $config['upload_path'] = './uploads/blogs/'.$blog_id;
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config['max_size'] = '10000';
+                //echo $image_name;
+                $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('blog_filename'))
+                {
+                    $this->session->set_flashdata('message', 'There was an error uploading one or more files. Check if your files are all there.');
+                }
+                else {
+                    $upload_data = $this->upload->data();
+                    $blog_filename = 'blogs/'.$blog_id.'/'.$upload_data['file_name'];
+                    if($this->model_blogs->update_blog_image($blog_filename, $blog_id)) {
+                        $this->session->set_flashdata('message', 'Your blog has been successfully posted');
+                    }
+                    else {
+                        $this->session->set_flashdata('message', 'There was an error uploading your blog image. Please try again.');
+                    }
+                }
+            }            
+            redirect('admin/admin_account');
+        }
         
         //Creates new News posts
         public function create_news() {
             $this->load->library('session');
             $this->load->model('model_news');
-            if($this->model_news->post_news()) {
+            if(!file_exists('./uploads/news_feed/')) {
+                mkdir('./uploads/news_feed/', 0777, true);
+                chmod('./uploads/news_feed/', 0777);
+            }
+            $config['upload_path'] = './uploads/news_feed/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['max_size'] = '10000';
+            //echo $image_name;
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('news_filename'))
+            {
+                $this->session->set_flashdata('message', 'There was an error uploading one or more files. Check if your files are all there.');
+            }
+            else {
+                $upload_data = $this->upload->data();
+                $news_filename = 'news_feed/'.$upload_data['file_name'];
+            }
+            if($this->model_news->post_news($news_filename)) {
                 $this->session->set_flashdata('message', 'Your news has been posted.');
+            }
+            else {
+                $this->session->set_flashdata('message', 'Your news was not created. Please make sure you have inputted the right information.');
             }
             redirect('admin/admin_account');
         }
