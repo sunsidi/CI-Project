@@ -6,6 +6,7 @@
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="<?php echo $PATH_BOOTSTRAP?>css/mosaic.css" type="text/css" media="screen">
 
 <link href="<? echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
 <style>
@@ -267,6 +268,9 @@ ul.ticket-event-dp > li > a:hover{
             ?>
 
                 </div>
+		
+		
+		
                 <div class="row" style="text-align:center; padding:10px;">
 <!--                                    <a href="#"><button type="button" class="btn btn-lg" style="background:#1A75BF; color:white; font-size:20px; padding:5px;">View more</button></a> -->
                                     <a href="#" data-toggle="modal" data-target="#create" class="btn btn-lg createwrevb" style="font-size:20px; padding:5px 10px;border-radius:10px;">Create a Wrev</a>
@@ -459,5 +463,6 @@ border-bottom: 20px solid transparent;margin-left:14%;float:left;"></div>
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.js"></script>
     <script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
+	<script type="text/javascript" src="<?php echo $PATH_BOOTSTRAP?>js/mosaic.1.0.1.js"></script>
 </body>
 </html> 
