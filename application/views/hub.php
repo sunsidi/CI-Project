@@ -69,7 +69,7 @@ ul.ticket-event-dp > li > a:hover{
 ==============================================-->
  <?php $events_info =$this->_ci_cached_vars;?>
 
- <div id="hub-step" style="width:90%;margin-left:auto;margin-right:auto;margin-top:3%;">
+ <div style="width:90%;margin-left:auto;margin-right:auto;margin-top:3%;">
 		<div class="btn-group ticker-button" style="float:left;">
 		<button type="button" class="btn btn-lg dropdown-toggle ticker" data-toggle="dropdown" aria-expanded="false">Featured Events <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
 			<ul class="dropdown-menu ticket-event-dp" role="menu">
@@ -97,7 +97,7 @@ ul.ticket-event-dp > li > a:hover{
 		</p>
 	</div>
 	
-<div class="container" style="margin-top: 3%;padding-bottom:50px; width:90%">
+<div class="container" id="hub-step" style="margin-top: 3%;padding-bottom:50px; width:90%">
 	
 	
 	
@@ -450,6 +450,6 @@ border-bottom: 20px solid transparent;margin-left:14%;float:left;"></div>
     <script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
 	<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
-	
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script>
 </body>
 </html> 

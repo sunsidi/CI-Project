@@ -10,6 +10,7 @@
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 
 <link href="<? echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-tour.min.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
@@ -20,16 +21,16 @@
 <!--content
 ==============================================-->
 <div class="container">
-<div class="row" style="padding-bottom:50px;">
+<div class="row" style="padding-bottom:50px;" >
    
        
          <p style="font-size:40px;color: white; margin-top:2%; text-align:center;font-family:GillSans;">discover your world.</p>
           
        
-    	<div style="margin-top:70px;">
+    	<div style="margin-top:70px;" id="mywrevs-step">
 	 <div class="mywrev-icon">
         <div class="col-md-6 col-xs-10">
-        	<div class="col-hide"><div style="background:rgba(237,28,36,0.7); width:90px; height:30px; margin-left: 55%; border-radius:10px; padding-left:7px;margin-top:0px;">
+        	<div class="col-hide"><div style="background:rgba(237,28,36,0.7); width:90px; height:30px; margin-left: 55%; border-radius:10px; padding-left:7px;margin-top:5px;">
         		<p style="color: white;font-size:23px;">discover</p>
         	</div></div>
             <a href="<?php echo base_url()."main/get_related_events/"?>hotspots"><img src="<?php echo $PATH_IMG?>/hotspots_button.png" onmouseover="this.src='<?php echo $PATH_IMG?>/hotspots_altbutton1.png'" onmouseout="this.src='<?php echo $PATH_IMG?>/hotspots_button.png'" style="width:20%;margin-left: 28%;margin-top:2%;"></a>
@@ -106,5 +107,7 @@ what is mywrevs?</p>
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.js"></script>
     <script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script>
 </body>
 </html> 

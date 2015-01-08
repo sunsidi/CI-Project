@@ -26,7 +26,7 @@
 <div class="row" style="margin:30px;">
   <p class="event"><img src="<?php echo $PATH_IMG?>latest_wrevs_icon.png" class="wrev-image" style="width:50px;"/> <strong>Wrev</strong> <span class="pronounce">[rev]</span></p>
   <p class="definition"><i>noun</i>&nbsp;&nbsp; an event on Wrevel.com</p> 
-          <div class="eventlist">
+          <div>
      <div style="margin-left:auto;margin-right:auto;">
                 	<div style="margin-left:25%;margin-right:auto;margin-top:25px;">     
       <!--<form class="form-inline" role="form">-->
@@ -50,7 +50,7 @@
         </div>
 			
         
-              <div class="left-inner-addon" style="font-size:20px;">
+        <div class="left-inner-addon" style="font-size:20px;">
                 
           <label class="sr-only" for="exampleInputPassword2">Password</label>
           <select id="cookie_state" name="state" type="text" style="float:left; border-radius:5px;padding:4px;">
@@ -122,7 +122,7 @@
           <?php echo form_close()?>
 
     </div>
-</div>
+	</div>
     <!--<div class="text-center">
     <ul class="pagination">
     	<li><a href="javascript:void(0)" onclick="show_page(1)"><<</a></li>
@@ -135,20 +135,21 @@
     </ul>
 </div>-->
 
-        <div class="container" style="margin-top:30px;">
-	  <div class="eventlist">
+        <div class="row row-centered" style="margin-top:30px;">
+		<div class="col-md-11 col-centered col-sm-11 col-xs-11" style="color:white;text-align:center;padding:10px 10%;">
+	  
       <div class="row">
         <!--modify -->
         <?php if($size > 1) {
-            	echo '<span style="color:black;margin-left:43%; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">results found!</span></span>';
+            	echo '<span style="color:black; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">results found!</span></span>';
              }
              else{
-             	echo '<span style="color:black;margin-left:43%; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">result found!</span></span>';
+             	echo '<span style="color:black; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">result found!</span></span>';
                 
             }?>
       </div>
-    	</div>
-    	<div>
+    	
+    	<div style="text-align:left;">
       <?php
       $i = 0;
       $group_page = 1;
@@ -159,11 +160,11 @@
       	    	$size_left--;
       	    	if($group_page == 1) {
       ?>
-	      <div class="<?php echo 'event_group'.$group_page?> col-md-3 col-sm-6 col-xs-12" style="padding:70px 3.2% 0; margin-left:5%;">
+	      <div class="<?php echo 'event_group'.$group_page?> col-md-3 col-sm-6" style="padding:0 9px;">
 	      <?php } else {?>
-	      <div class="<?php echo 'event_group'.$group_page?> col-md-3 col-sm-6 col-xs-12" style="padding:70px 3.2% 0; margin-left:5%;" hidden>
+	      <div class="<?php echo 'event_group'.$group_page?> col-md-3 col-sm-6" style="padding:0 9px;" hidden>
 	      <?php }?>
-                <div class="mosaic-block bar2" onclick="location.href='<?php echo base_url().'event/event_info/latest/'.$event_info[$i]["event_id"]?>';" style="cursor:pointer; border-radius:10px; -moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);" > <!-- <- box to link to full view -->
+                <div class="mosaic-block bar2" onclick="location.href='<?php echo base_url().'event/event_info/latest/'.$event_info[$i]["event_id"]?>';" style="margin-top:18px;cursor:pointer; border-radius:10px; -moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);" > <!-- <- box to link to full view -->
                
 
         <a target="_blank" class="mosaic-overlay latest-box" style="background-color:rgba(178,154,158,1);display: inline; left: 0px;">
@@ -189,7 +190,7 @@
         </a>
       
       <div class="mosaic-backdrop" style="display: block;">
-                                <div style="position: absolute; border-radius:7px; background-color: rgba(239,186,183,0.3); width: 325px; height: 400px; z-index: 0;"></div>
+                                <div style="position: absolute; border-radius:7px; background-color: rgba(239,186,183,0.3); width: 100%; height: 280px; z-index: 0;"></div>
                         <!--Event Image-->
         <img src="<?php echo base_url()."uploads/". $event_info[$i]['e_image']?>" style="max-width:100%; min-width:100%; max-height:100%; min-height:100%;">
         <div class="details">
@@ -210,7 +211,7 @@
             
             <?php $i++;}
             $group_page++;}}?>  
-</div>
+</div></div>
 </div>
 <div class="text-center">
     <ul class="pagination">
@@ -228,7 +229,9 @@
             <?php if($this->session->userdata('is_logged_in')) {?>
             <a href="#" data-toggle="modal" data-target="#create" class="btn btn-lg createwrev" style="font-size:25px; padding:10px;border-radius:10px;">Create a Wrev</a>
             <?php }?>
-    </div>              
+			</div>              
+</div>
+</div>
 </div>
 </div>
 <!--end of content-->
