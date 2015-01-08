@@ -26,7 +26,7 @@
 <div class="row" style="margin:30px;">
   <p class="event"><img src="<?php echo $PATH_IMG?>latest_wrevs_icon.png" class="wrev-image" style="width:50px;"/> <strong>Wrev</strong> <span class="pronounce">[rev]</span></p>
   <p class="definition"><i>noun</i>&nbsp;&nbsp; an event on Wrevel.com</p> 
-          <div>
+          <div class="eventlist">
      <div style="margin-left:auto;margin-right:auto;">
                 	<div style="margin-left:25%;margin-right:auto;margin-top:25px;">     
       <!--<form class="form-inline" role="form">-->
@@ -120,7 +120,7 @@
         <input type="submit" class="btn" style="background:#1C74BB; color:white; font-size:20px; padding:1px 10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);" value="go"></input>
     <!--</form>-->
           <?php echo form_close()?>
-
+</div>
     </div>
 	</div>
     <!--<div class="text-center">
@@ -136,7 +136,7 @@
 </div>-->
 
         <div class="row row-centered" style="margin-top:30px;">
-		<div class="col-md-11 col-centered col-sm-11 col-xs-11" style="color:white;text-align:center;padding:10px 10%;">
+		<div class="col-md-11 col-centered col-sm-11 col-xs-12" style="color:white;text-align:center;padding:10px 10%;">
 	  
       <div class="row">
         <!--modify -->
@@ -169,16 +169,13 @@
 
         <a target="_blank" class="mosaic-overlay latest-box" style="background-color:rgba(178,154,158,1);display: inline; left: 0px;">
       <div class="col-md-12" style="height: 50px; background-color: rgba(159,129,134,1); ">
-                            <p style="text-align:center; color:white; font-size:28px; margin-top:5px;">
-                            <!--Number of likes and like button-->
-                            <span><?php echo $event_info[$i]['e_likes'] ?> </span><i class="fa fa-heart-o"></i> | 
-                            <!--Add to Palette-->
-                            <span class="glyphicon glyphicon-list-alt"></span> | 
-                            <!--Share button-->
-                            <i class="fa fa-share-square-o"></i> </p>
+                            <p style="text-align:center; color:white; font-size:20px; margin-top:5px;">
+                                    <strong style="text-shadow: 1px 1px 0.5px #000000;"><?php 
+                                    $event_name_temp = substr($event_info[$i]['e_name'], 0, 14);
+                                    echo $event_name_temp?></strong> </p>
       </div>
                         <!--Location of event-->
-                        <p class="location location-romance"><i class="fa fa-map-marker"></i><?php echo $event_info[$i]['e_state'] ?> </p>
+                        <p class="location location-romance"><i class="fa fa-map-marker"></i> <?php echo $event_info[$i]['e_state'] ?> </p>
                         
                         <!--Description -->
                         <p class="description" style="height: 40px;text-overflow:ellipsis;">
@@ -194,16 +191,17 @@
                         <!--Event Image-->
         <img src="<?php echo base_url()."uploads/". $event_info[$i]['e_image']?>" style="max-width:100%; min-width:100%; max-height:100%; min-height:100%;">
         <div class="details">
-                                    <p>
-                                    <!--Name of event-->
-                                    <strong style="text-shadow: 1px 1px 0.5px #000000;"><?php 
-                                    $event_name_temp = substr($event_info[$i]['e_name'], 0, 14);
-                                    echo $event_name_temp?></strong> 
+                                    <p style="font-size:17px;">
+									<span class="badge date latest-date"><?php echo $event_info[$i]['e_date']?></span>
+									<span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><i class="fa fa-clock-o"></i><?php echo $event_info[$i]['e_start_time']; ?></span>
+									</p> 
                                     <!--Date of event-->
-                                    <span class="badge date latest-date"><?php echo $event_info[$i]['e_date']?></span></p>
+                                    
                                     <!--Number of people attending-->
-                                    <p style="margin:-8px;font-size:17px;padding:0 9px;"><span class="badge attending"><?php echo $event_info[$i]['e_attending'] ?></span> <span style="text-shadow: 1px 1px 0.5px #000000;">Attending</span>
-                                    <span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><i class="fa fa-clock-o"></i><?php echo $event_info[$i]['e_start_time']; ?></span></p>
+                                    <p style="font-size:17px;">
+									<span class="badge attending"><?php echo $event_info[$i]['e_attending'] ?></span> <span style="text-shadow: 1px 1px 0.5px #000000;">Attending</span>
+									<span class="pull-right"><span><?php echo $event_info[$i]['e_likes'] ?> </span><i class="fa fa-heart-o"></i></span>
+                                    </p>
                                 </div>
                         </div>
     </div>
