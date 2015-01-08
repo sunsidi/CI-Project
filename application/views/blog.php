@@ -78,7 +78,7 @@
             <?php }
             if($alt == 1) {?>
                 <div class="col-md-3 col-sm-6" style="margin-top:30px;">
-                    <a href="<?php echo base_url().'info/blog/'.$blogs[$i]['id'];?>">
+                    <a href="<?php echo base_url().'blog/blog_info/'.$blogs[$i]['id'];?>">
                         <div style="position: relative;width: 100%; height: 322px; background:linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)),url(<?php echo base_url().'/uploads/'.$blogs[$i]['blog_filename'];?>); background-size: 100% 322px;">
                             <div style="position:absolute; bottom:0px;left: 0px;background:linear-gradient(rgba(14,122,76,0.7), rgba(14,122,76,0.7));width: 100%;">
                                 <p style="text-align: center;padding-left: 15px;padding-right:15px;color: white; font-size: 32px;"><?php echo $blogs[$i]['blog_title'];?></p>
@@ -90,7 +90,7 @@
             }
             else {?>
                 <div class="col-md-6" style="margin-top:30px;">
-                    <a href="<?php echo base_url().'info/blog/'.$blogs[$i]['id'];?>">
+                    <a href="<?php echo base_url().'blog/blog_info/'.$blogs[$i]['id'];?>">
                         <div style="position: relative;width: 100%; height: 322px; background:linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)),url(<?php echo base_url().'/uploads/'.$blogs[$i]['blog_filename'];?>); background-size: 100% 322px;">
                             <div style="position:absolute; bottom:0px;left: 0px;background:linear-gradient(rgba(46,49,146,0.7), rgba(46,49,146,0.7));width: 100%;">
                                 <p style="text-align: center;padding-left: 0px;color: white; font-size: 32px;"><?php echo $blogs[$i]['blog_title'];?></p>
@@ -101,12 +101,12 @@
     <?php 
             }
             $start--;
-            if($start == 0) {
-                if($alt == 1) {
+            if($start == 0) { // done with images. Start the next line.
+                if($alt == 1) { //2 big images.
                     $alt = 0;
                     $start = 2;
                 }
-                else if($alt == 0) {
+                else if($alt == 0) { //4 small images.
                     $alt = 1;
                     $start = 4;
                 }?>

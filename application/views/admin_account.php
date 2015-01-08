@@ -265,46 +265,50 @@ jQuery(document).ready(function () {
 				
 				<!--Blog-->
 				<div class="tab-pane" id="blog" style="background:rgba(255,255,255,0.5);padding:10%;text-align:center;font-size:18px;">
-					<i class="fa fa-rss fa-5x"></i>
+                                    <i class="fa fa-rss fa-5x"></i>
 
-					<h1 style="margin-top:20px;"><strong>89</strong> Blogs Created</h1>
-					<button type="button" class="btn admin_tabs">All</button>
-					<button type="button" class="btn admin_tabs">New</button>
-					<button type="button" class="btn admin_tabs">Current</button>
-					<div class="form-group" style="margin-top:10px;width:60%;margin-left:auto;margin-right:auto;">
-              					<div class="left-inner-addon" style="text-align:left;">
-                					<span class="glyphicon glyphicon-search"></span>
-          						<label class="sr-only">Search</label>
-          						<input type="Search" class="form-control" style="border-radius:10px;font-size:20px;" placeholder="Search">						
-          					</div>
-       					</div>
-       					<div style="height:500px;overflow-y:auto;">
-       					<table style="width:100%;text-align:left;">
-       						<thead style="color:#5697CA;">
-                                                    <tr>
-                                                        <th style="width:33.3%;">Title</th>							
-                                                        <th style="width:33.3%;">Username</th>							
-                                                        <th style="width:33.3%;">Date Created</th>							
-                                                    </tr>
-						</thead>
-						<tbody>
-                                                    <?php if(isset($all_blogs)) {
-                                                        for($i = 0; $i < count($all_blogs); $i++) {?>
-                                                        <tr>
-                                                            <td><?php echo $all_blogs[$i]['blog_title'];?></td>
-                                                            <td><?php echo $all_blogs[$i]['blog_filename'];?></td>
-                                                            <td><?php echo $all_blogs[$i]['blog_created'];?></td>
-                                                        </tr>
-                                                    <?php }}?>
-						</tbody>
-       					</table>
-       					</div>
-       					<button type="button" class="btn admin_button" style="background:#4B90C9;">Edit</button>
-       					<button type="button" class="btn admin_button" style="background:#4D1966;">Delete</button>
+                                    <h1 style="margin-top:20px;"><strong><?php echo count($all_blogs);?></strong> Blogs Created</h1>
+                                    <button type="button" class="btn admin_tabs">All</button>
+                                    <button type="button" class="btn admin_tabs">New</button>
+                                    <button type="button" class="btn admin_tabs">Current</button>
+                                        <form id="delete_blogs" action="<?php echo base_url()."admin/delete_blogs"?>" method="POST">
+                                            <div class="form-group" style="margin-top:10px;width:60%;margin-left:auto;margin-right:auto;">
+                                                    <div class="left-inner-addon" style="text-align:left;">
+                                                            <span class="glyphicon glyphicon-search"></span>
+                                                            <label class="sr-only">Search</label>
+                                                            <input type="Search" class="form-control" style="border-radius:10px;font-size:20px;" placeholder="Search">						
+                                                    </div>
+                                            </div>
+                                            <div style="height:500px;overflow-y:auto;">
+                                                <table style="width:100%;text-align:left;">
+                                                        <thead style="color:#5697CA;">
+                                                            <tr>
+                                                                <th>Box</th>
+                                                                <th style="width:33.3%;">Title</th>							
+                                                                <th style="width:33.3%;">Username</th>							
+                                                                <th style="width:33.3%;">Date Created</th>							
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php if(isset($all_blogs) && !empty($all_blogs)) {
+                                                                for($i = 0; $i < count($all_blogs); $i++) {?>
+                                                                <tr>
+                                                                    <td><input type="checkbox" name="blogs_checkbox[]" value="<?php echo $all_blogs[$i]['id'];?>"></td>
+                                                                    <td><?php echo $all_blogs[$i]['blog_title'];?></td>
+                                                                    <td><?php echo $all_blogs[$i]['blog_author'];?></td>
+                                                                    <td><?php echo $all_blogs[$i]['blog_created'];?></td>
+                                                                </tr>
+                                                            <?php }}?>
+                                                        </tbody>
+                                                </table>
+                                            </div>
+                                            <a href="#select_edit_blog" data-toggle="tab"><button type="button" class="btn admin_button" style="background:#4B90C9;">Edit</button></a>
+                                            <button type="submit" class="btn admin_button" style="background:#4D1966;">Delete</button>
        					
-       					<div class="row" style="margin-top:25px;">
-       					<a href="#create_blog" data-toggle="tab"><button type="button" class="btn admin_button" style="background:#9A33CC;">Create Blog</button></a>	
-       					</div>
+                                            <div class="row" style="margin-top:25px;">
+                                                <a href="#create_blog" data-toggle="tab"><button type="button" class="btn admin_button" style="background:#9A33CC;">Create Blog</button></a>	
+                                            </div>
+                                        </form>
 				</div>
 	  			
 	  			<!--Create Blog Post-->
@@ -320,13 +324,77 @@ jQuery(document).ready(function () {
                                         </div>
                                         <h2><i class="fa fa-file-text-o"></i> Body</h2>
                                         <textarea name="blog_body" class="form-control" rows="10" style="border:dashed 2px gray;resize: none;font-size:19px;border-radius:0;background:none;"></textarea>
-                                        <h2><i class="fa fa-tag"></i> Tags</h2>
-                                        <textarea name="blog_tags" class="form-control" rows="1" style="border:dashed 2px gray;resize: none;font-size:20px;border-radius:0;background:none;"></textarea>
+                                        <h2><i class="fa fa-tag"></i> Author</h2>
+                                        <textarea name="blog_author" class="form-control" rows="1" style="border:dashed 2px gray;resize: none;font-size:20px;border-radius:0;background:none;"></textarea>
 
                                         <div class="row" style="text-align:right; margin-top:10px;padding:15px;">
                                             <button class="btn" style="color:white;background:#698BA7;font-size:25px;border-radius:10px;padding:5px 20px;">Post</button>
                                         </div>
                                         <a href="#blog" data-toggle="tab"><button class="btn" style="color:white;background:#698BA7;font-size:25px;border-radius:10px;padding:5px 20px;">Previous Page</button></a>
+                                    <?php echo form_close();?>
+				</div>
+                                
+                                <!-- SELECT A BLOG TO EDIT TAB -->
+                                <div class="tab-pane" id="select_edit_blog" style="background:rgba(255,255,255,0.5);padding:10%;text-align:center;font-size:18px;">
+                                    <i class="fa fa-rss fa-5x"></i>
+
+                                    <h1 style="margin-top:20px;"><strong><?php echo count($all_blogs);?></strong> Blogs Created</h1>
+                                    <button type="button" class="btn admin_tabs">All</button>
+                                    <button type="button" class="btn admin_tabs">New</button>
+                                    <button type="button" class="btn admin_tabs">Current</button>
+                                    <h1 style="margin-top:20px;">Select a Blog to edit.</h1>
+                                    <div class="form-group" style="margin-top:10px;width:60%;margin-left:auto;margin-right:auto;">
+                                        <div class="left-inner-addon" style="text-align:left;">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                                <label class="sr-only">Search</label>
+                                                <input type="Search" class="form-control" style="border-radius:10px;font-size:20px;" placeholder="Search">						
+                                        </div>
+                                    </div>
+                                    <div style="height:500px;overflow-y:auto;">
+                                        <table style="width:100%;text-align:left;">
+                                            <thead style="color:#5697CA;">
+                                                <tr>
+                                                    <th style="width:33.3%;">Title</th>							
+                                                    <th style="width:33.3%;">Username</th>							
+                                                    <th style="width:33.3%;">Date Created</th>							
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php if(isset($all_blogs) && !empty($all_blogs)) {
+                                                    for($i = 0; $i < count($all_blogs); $i++) {?>
+                                                    <tr>
+                                                        <td><a href="#edit_blog" data-toggle="tab" onclick="set_display_values('<?php echo (string)$all_blogs[$i]["id"];?>','<?php echo (string)$all_blogs[$i]["blog_title"];?>','<?php echo (string)$all_blogs[$i]["blog_body"];?>','<?php echo (string)$all_blogs[$i]["blog_author"];?>')"><?php echo (string)$all_blogs[$i]['blog_title'];?></a></td>
+                                                        <td><?php echo $all_blogs[$i]['blog_author'];?></td>
+                                                        <td><?php echo $all_blogs[$i]['blog_created'];?></td>
+                                                    </tr>
+                                                <?php }}?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <a href="#blog" data-toggle="tab"><button class="btn" style="color:white;background:#698BA7;font-size:25px;border-radius:10px;padding:5px 20px;">Cancel Edit</button></a>
+				</div>
+                                
+                                <!--Edit Blog Post-->
+	  			<div class="tab-pane" id="edit_blog" style="background:rgba(255,255,255,0.5);padding:6% 15%;">
+                                    <?php echo form_open_multipart('admin/edit_blog');?>
+                                        <h2><i class="fa fa-star"></i> Title</h2>
+                                        <input id="blog_id_edit" name="blog_id_edit" hidden>
+                                        <textarea id="blog_title_edit" name="blog_title_edit" class="form-control" rows="1" style="border:dashed 2px gray;resize: none;font-size:20px;border-radius:0;background:none;"></textarea>
+                                        <div class="row" style="text-align:right; margin-top:15px;padding:0 30px;text-align:left;">
+                                            <label for="file-input-blog-file-edit">
+                                                <img src="<?php echo $PATH_IMG?>camera_icon.png" style="width:70%;">
+                                            </label>
+                                            <input id="file-input-blog-file-edit" id="" name="blog_filename_edit" type="file" style="display:none">
+                                        </div>
+                                        <h2><i class="fa fa-file-text-o"></i> Body</h2>
+                                        <textarea id="blog_body_edit" name="blog_body_edit" class="form-control" rows="10" style="border:dashed 2px gray;resize: none;font-size:19px;border-radius:0;background:none;"></textarea>
+                                        <h2><i class="fa fa-tag"></i> Author</h2>
+                                        <textarea id="blog_author_edit" name="blog_author_edit" class="form-control" rows="1" style="border:dashed 2px gray;resize: none;font-size:20px;border-radius:0;background:none;"></textarea>
+
+                                        <div class="row" style="text-align:right; margin-top:10px;padding:15px;">
+                                            <button class="btn" style="color:white;background:#698BA7;font-size:25px;border-radius:10px;padding:5px 20px;">Edit</button>
+                                        </div>
+                                        <a href="#select_edit_blog" data-toggle="tab"><button class="btn" style="color:white;background:#698BA7;font-size:25px;border-radius:10px;padding:5px 20px;">Previous Page</button></a>
                                     <?php echo form_close();?>
 				</div>
 				
@@ -388,6 +456,7 @@ jQuery(document).ready(function () {
 						</tbody>
        					</table>
 					</div>
+                                        </form>
 				</div>
 				<!--User Stats DELETED* SAME AS USERS-->
 				<!--<div class="tab-pane" id="user_stats" style="background:rgba(255,255,255,0.5);padding:10%;text-align:center;font-size:18px;">
@@ -1160,6 +1229,14 @@ jQuery(document).ready(function () {
             $(i).parent().parent().parent().siblings('#category_change').attr("value", value);
             $(i).parent().parent().parent().children('#category_button').html($(i).html());
             console.log($(i).parent().parent().parent().siblings('#category_change').val());
+        }
+    </script>
+    <script>
+        function set_display_values(id,title,body,author) {
+            $('#blog_id_edit').attr('value', id);
+            $('#blog_title_edit').attr('placeholder', title);
+            $('#blog_body_edit').attr('placeholder', body);
+            $('#blog_author_edit').attr('placeholder', author);
         }
     </script>
     <!--<script>

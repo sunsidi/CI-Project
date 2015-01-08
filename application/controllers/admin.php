@@ -44,7 +44,7 @@ class admin extends CI_Controller{
                     $data['all_events'][$i]['diff'] = $diff->format("%a");
                 }
                 $result = array_merge($path, $data);
-                //echo '<pre>', print_r($data['all_notifications'], true), '</pre>';
+                //echo '<pre>', print_r($data['all_blogs'], true), '</pre>';
                   $this->load->view('Create_Wrevel_View',$result);
                  $this->load->view('admin_account',$result);
 	
@@ -73,6 +73,15 @@ class admin extends CI_Controller{
             $this->model_events->admin_feature_events();
             redirect('admin/admin_account');
         }
+        
+        //delete blogs that are checked.
+        public function delete_blogs() {
+            $this->load->library('session');
+            $this->load->model('model_blogs');
+            $this->model_blogs->admin_delete_blogs();
+            redirect('admin/admin_account');
+        }
+        
         //creates many events.
         public function create_multiple_events() {
             $this->load->library('session');
@@ -143,6 +152,34 @@ class admin extends CI_Controller{
                     }
                 }
             }            
+            redirect('admin/admin_account');
+        }
+        
+        //Edit blog.
+        public function edit_blog() {
+            $this->load->library('session');
+            $this->load->model('model_blogs');
+            if(!file_exists('./uploads/blogs/')) {
+                mkdir('./uploads/blogs/', 0777, true);
+                chmod('./uploads/blogs/', 0777);
+            }
+            $id = $this->input->post('blog_id_edit');
+            $config['upload_path'] = './uploads/blogs/'.$id;
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['max_size'] = '10000';
+            //echo $image_name;
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('blog_filename_edit'))
+            {
+                $this->session->set_flashdata('message', 'There was an error uploading one or more files. Check if your files are all there.');
+                $blog_filename = "";
+            }
+            else {
+                $upload_data = $this->upload->data();
+                $blog_filename = 'blogs/'.$id.'/'.$upload_data['file_name'];
+            }
+            $this->model_blogs->edit_blog($blog_filename, $id); 
+            $this->session->set_flashdata('message', 'Your blog has been updated! Make sure all the information is correct.');
             redirect('admin/admin_account');
         }
         
