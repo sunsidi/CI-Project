@@ -11,6 +11,7 @@
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-tour.min.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <style>
@@ -142,7 +143,7 @@
         
         
         <div id="navbarCollapse" class="collapse navbar-collapse"  style="float: right;">
-        <a href="#" data-toggle="modal" data-target="#create" class="pull-left"><button class="btn" type="button" style="background:none;margin-top:5px;"><i class="fa fa-plus-circle" style="color:white; font-size:30px;"></i></button></a>
+        <a href="#" id="create-step" data-toggle="modal" data-target="#create" class="pull-left"><button class="btn" type="button" style="background:none;margin-top:5px;"><i class="fa fa-plus-circle" style="color:white; font-size:30px;"></i></button></a>
         <div role="search" class="navbar-form navbar-left">
           <?php echo form_open(base_url().'main/get_latest_events/')?>
             <div class="form-group">
@@ -198,4 +199,6 @@
 				<?php }?>
         });
     </script>
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
+	<!--<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script>-->
 </html>

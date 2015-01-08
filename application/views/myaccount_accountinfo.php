@@ -13,6 +13,7 @@
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-tour.min.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <script>
 jQuery(document).ready(function () {
@@ -44,7 +45,7 @@ jQuery(document).ready(function () {
   				</div>
 			</div>           
         </div>
-        <div class="col-md-7" style="font-size:19px;">
+        <div class="col-md-7" id="myaccount-step1" style="font-size:19px;">
         	<div class="row">
             	<div class="col-md-6" style="padding:0;">
         			<div class="panel panel-default" style="border:none;background:#DFE2E9;padding:10px 0;">
@@ -472,5 +473,7 @@ jQuery(document).ready(function () {
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.js"></script>-->
     <script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script>
 </body>
 </html> 

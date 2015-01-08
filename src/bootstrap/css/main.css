@@ -1198,6 +1198,7 @@ border-bottom-left-radius:8px;
 ul.ticket-event-dp{
 background:#CA585B;
 color:white;
+font-size:18px;
 }
 
 //ul.ticket-event-dp :hover
@@ -1223,6 +1224,20 @@ background:transparent !important;
 }
 .pagenumber:hover{
 background:rgb(241,242,242) !important;
+}
+
+.marquee {
+    width: 80%;
+    //margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    //border: 1px #414042 solid;
+	background:rgba(255,255,255,0.3);
+	padding:10px;
+	border-top-right-radius:8px;
+	border-bottom-right-radius:8px;
+
 }
 
 @media (max-width: 1025px){
@@ -1336,6 +1351,9 @@ background:rgb(241,242,242) !important;
 	}
 	.related-blog-small{
 	display:initial;
+	}
+	.marquee {
+    width: 60%;
 	}
 }
 
@@ -1518,6 +1536,7 @@ background:rgb(241,242,242) !important;
 	.event-post-btn{
 	font-size:15px;
 	}
+
 
 
 	
