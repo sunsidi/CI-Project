@@ -23,6 +23,31 @@ public function index()
 		echo $number;
 	}*/
         
+        public function event_reminders() {
+            $this->load->model('model_events');
+            $data = $this->model_events->cron_email_users_events();
+            //echo '<pre>', print_r($data, true), '</pre>';
+            if($data) {
+                for($i = 0; $i < count($data); $i++) {
+                    $this->load->library('email',array('mailtype'=>'html'));
+                    $this->email->from('donotreply@wrevel.com', "Wrevel, Inc.");
+                    $this->email->to($data[$i]['email']);
+                    $this->email->subject("You have an event today.");
+                    //message to user confirms see load library email, 2nd argument is setting to html not default text
+                    $message ="<p> Hello! </p><p>The event <a href='".base_url()."event/event_info/latest/".$data[$i]['event_id']."'>".$data[$i]['e_name']."</a> is happening today. Be sure to attend!";
+                    $message .= "<p>________________________________</p><p>Copyright 2014 Wrevel, Inc.,<i> All Rights Reserved.</i></p><div>Connect with us!</div>";
+                    $message .= "<div>www.wrevel.com</div>";
+                    $message .= "<div>Facebook: www.facebook.com/wrevelinc</div>";
+                    $message .= "<div>Twitter: www.twitter.com/wrevelco</div>";
+                    $message .= "<div>Instagram: www.instagram.com/wrevel</div>";
+                    $message .= "<div>Tumblr: wrevel.tumblr.com</div>";
+                    $message .= "<div>E-mail: support@wrevel.com</div>";
+                    $this->email->message($message);
+                    $this->email->send();
+                }
+            }
+        }
+        
 	//Delete your friend off your friends list.
 	public function delete_friend($friend_user_id) {
 		$this->load->library('session');

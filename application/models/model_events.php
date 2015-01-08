@@ -34,6 +34,21 @@ class Model_events extends CI_Model{
     	}
     }
     
+    //EMAIL AlL USERS THAT HAVE EVENTS ON THIS DAY. (ON THE DAY THE CRON JOB HAPPENS. WHICH SHOULD BE ONCE A DAY.)
+    public function cron_email_users_events() {
+        $sql = "SELECT p.email, e.e_name, e.event_id "
+                . "FROM events e "
+                . "INNER JOIN users_attending h "
+                . "ON (e.event_id = h.event_id AND e.e_date = DATE(NOW())) "
+                . "INNER JOIN users p "
+                . "ON p.user_id = h.user_id";
+        $query = $this->db->query($sql);
+    	if($query->num_rows() != 0) {
+            return $query->result_array();
+        }
+        return false;
+    }
+    
     public function admin_get_events() {
         $this->db->order_by('create_stamp', 'desc');
     	$query = $this->db->get('events');
