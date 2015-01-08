@@ -206,8 +206,8 @@ He wishes to have his own entertainment brand under his username at Tumblr (bam-
 						</div>	
 						<div class="col-md-6" style="padding:25px;">
 							<div class="row">
-								<!--<img src="<?php echo $PATH_IMG?>kinte_circle.png" align="left" style="width:100px;"/><h3><span style="padding-left:15px;">Kinte Serrant</span></h3>
-								<span style="font-size:17px;padding-left:15px;">Kinte Serrant is a Marketing Intern here at Wrevel Inc. He graduated from the University of the West indies - Cave Hill Campus in Barbados with a Bachelor’s degree in Management with a concentration in Marketing. He is avid lover of all things Musical and Soccer and he’s a very passionate supporter of Liverpool FC in England. Kinte helps with all things marketing here at Wrevel from contacting and interacting with local companies to the formulation of new Marketing ideas. Kinte says that his life is governed by one simple rule ‘Hard work NEVER goes unrewarded’.</span>-->
+								<img src="<?php echo $PATH_IMG?>w_default.png" align="left" style="width:100px;"/><h3><span style="padding-left:15px;">Andrew Day</span></h3>
+								<span style="font-size:17px;padding-left:15px;">Andrew is a marketing intern here that also does social media for Wrevel. He is currently pursuing a Bachelor in Marketing in Hofstra University. He enjoys playing music, playing basketball, and loves eating. Overall hard worker who also makes time for fun.</span>
 							</div>
 						</div>	
 					</div>
@@ -246,6 +246,7 @@ He wishes to have his own entertainment brand under his username at Tumblr (bam-
 						<p>Michelle Boule</p>
 						
 						<h2><strong>PR/Marketing</strong></h2>
+						<p>Kinte Serrant</p>
 						<p>Marchean Gordon</p>
 						<p>Christina Arkous</p>
 						<p>Varagon Ketavanan</p>
