@@ -1053,7 +1053,12 @@ cursor:pointer;
 }
 
 a.wrevenues-name{
-background:rgba(51,144,132,0.9);
+background:rgba(255,255,255,0.9);
+color: #414042;
+}
+a.wrevenues-name:hover{
+background:rgba(255,255,255,0.9);
+color: #414042;
 }
 
 a.wrevenues-venue{
