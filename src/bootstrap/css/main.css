@@ -1239,6 +1239,9 @@ background:rgb(241,242,242) !important;
 .eventlist{
 margin-left:-50px;
 }
+.featuring{
+padding-left:7%;
+}
 
 @media (max-width: 1025px){
   .eventlist{
@@ -1247,6 +1250,9 @@ margin-left:-50px;
   .col-hide{
     display: none;
   }
+  .featuring{
+   padding-left:5%;
+   }
 /*>>>>>>> tony_dev*/
 
 @media (max-width:990px){
@@ -1353,7 +1359,7 @@ margin-left:-50px;
 	display:initial;
 	}
 	.marquee {
-    width: 60%;
+    width: 70%;
 	}
 }
 
@@ -1384,6 +1390,9 @@ margin-left:-50px;
 	padding:0; 
 	margin-top: -100px;
 	}
+	.featuring{
+	padding-left:4%;
+	}
 }
 
 @media (max-width:533px){
@@ -1402,7 +1411,9 @@ margin-left:-50px;
 	margin-left:auto;
 	margin-right:auto;
 	}
-	
+	.featuring{
+	padding-left:1%;
+	}
 
 }
 
@@ -1536,8 +1547,12 @@ margin-left:-50px;
 	.event-post-btn{
 	font-size:15px;
 	}
-
-
+	.marquee{
+	width:50%;
+	}
+	.featuring{
+	padding-left:7%;
+	}
 
 	
   }
@@ -1564,6 +1579,9 @@ margin-left:-50px;
 	}
 	.event-comment-input{
 	width:55%;
+	}
+	.featuring{
+	padding-left:5%;
 	}
 }
 
@@ -1714,6 +1732,12 @@ margin-left:-50px;
 	.event-post-btn{
 	font-size:15px;
 	}
+	.marquee{
+	width:50%;
+	}
+	.featuring{
+	padding-left:4%;
+	}
 }
 
 /* For iPhones and Android*/
@@ -1772,6 +1796,12 @@ margin-left:-50px;
 	}
 	.event-post-textarea{
 	width:auto;
+	}
+	.featuring{
+	padding-left:1%;
+	}
+	.marquee{
+	width:48%;
 	}
 }
 
