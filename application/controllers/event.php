@@ -364,6 +364,50 @@ class Event extends CI_Controller {
             
 
         }
+        
+        //Deletes a comment in your chatbox.
+        public function delete_chatbox_comment($id) {
+            $this->load->library('session');
+            $this->load->model('model_users');
+            $this->load->model('model_events');
+            $chatbox = $this->model_events->get_comments($id);
+            $filename =  "./application/views/events_comments/".$chatbox;
+            //Try to get the contents in the file.
+            if($temp_string = file_get_contents($filename)) {
+                
+                $delete_data = $this->input->post('event_chatbox_test'); //Data to be deleted.
+                $beg_data = strpos($temp_string, $delete_data); //Beginning of the data element.
+                $beg_p_data = strrpos(substr($temp_string, 0, $beg_data), '<p'); //The true beginning of the data we want to delete.
+                $delete_data_len = strlen($delete_data) + 9 +($beg_data - $beg_p_data-1); //Length of data. + the additional </p><br> at the end.
+                $start_of_data = substr($temp_string, 0, $beg_p_data); //This is the data from the beginning up to the <p> of the data we want to delete.
+                $after_delete_data = $beg_p_data+$delete_data_len; //This is the start position of everything after <br> of the data we want to delete.
+                $string_left = strlen($temp_string)-$after_delete_data; //This is the final length of the string after the <br> of the data we want to delete.
+                $end_of_data = substr($temp_string, $after_delete_data, $string_left); //This is the string after the data we want to delete til the end of the full file.
+                $final_string = $start_of_data . $end_of_data; //This is the string that we will put back after deleting the comment we want.
+                //Now just write over the file and we did it! :D
+                if(file_put_contents($filename, $final_string)) {
+                    
+                    $this->session->set_flashdata('message','Your comment has been successfully removed.');
+                }
+                //But then something fails :(
+                else {
+                    if(!empty($final_string)) {
+                        $this->session->set_flashdata('message','There was an error removing the comment. Please try again.');
+                    }
+                    else {
+                        $this->session->set_flashdata('message','Your comment has been successfully removed.');
+                    }
+                }
+                
+                //echo strpos($temp_string, $this->input->post('chatbox_test'));
+            }
+            //Why file not openning?! >:O
+            else 
+                $this->session->set_flashdata('message','There was an error openning your comments. Please contact the network adminstrator.');
+            //Now redirect back to showroom!
+            redirect('event/event_info/latest/'.$id);
+        }
+        
         public function event_comment($category,$id) { //message (chat.php)
             /* username is the user currentUser is talking to */
             $this->load->library('path');
@@ -413,7 +457,7 @@ class Event extends CI_Controller {
             else{
                 //create a file name for the chat
                 $randomName = md5(uniqid()) . ".html";    
-                $filename =  "/home/wrevelco/public_html/application/views/events_comments/".$randomName;
+                $filename =  "./application/views/events_comments/".$randomName;
                 //try to create file
                 if ($handle=fopen($filename,'w+')){
                         //trying to insert info into db
@@ -472,7 +516,7 @@ class Event extends CI_Controller {
             }
             /* check comment if its blank then do not write file_chat */
 
-            $filename =  "/home/wrevelco/public_html/application/views/events_comments/".$data['comment_file'];
+            $filename =  "./application/views/events_comments/".$data['comment_file'];
           //$handle = fopen($filename,'w+');
             $today = date("F j, Y, g:i a"); 
             //add commentors name instead of "Comment:"

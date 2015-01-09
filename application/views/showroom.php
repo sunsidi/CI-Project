@@ -589,13 +589,24 @@ position:absolute;
                                         <p style="text-align:center; font-size:25px;">Chatbox</p>
                                         
                                         <div id = "comment-block" style="overflow:auto; background:#8aa8c0; color:white; border-radius:10px;  width:95%; margin-left: 15px;height: 300px; padding: 10px;">
-                        </div>
+                                        </div>
+                                        <div hidden>
+                                            <div id="temp_chat_loading">
+                                            </div>
+                                        </div>
                     <script>
                         $(document).ready(
                             function() {
                                 setInterval(function() {
                                 //var randomnumber = Math.floor(Math.random() * 100);
-                                $( "#comment-block" ).load( "<?php echo $chatBoxLocation; ?>","limit=20");
+                                    $( "#temp_chat_loading" ).load( "<?php echo $chatBoxLocation; ?>","limit=20");
+                                    setTimeout(function(){
+                                        $("#temp_chat_loading").children('p').each(function() {
+                                            $('<input name="chatbox_test" value="'+$(this).html()+'" hidden><button type="submit">Delete</button>').appendTo(this);
+                                            $(this).wrap('<?php echo form_open("main/delete_chatbox_comment/")?></form>');
+                                        });
+                                        $("#comment-block").html($("#temp_chat_loading").html());
+                                    },50);
                                 }, 1000);
                             });
                     </script>     
