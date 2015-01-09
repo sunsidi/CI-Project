@@ -28,39 +28,7 @@
 <div class="row" style="margin:30px;">
   <p class="event"><img src="<?php echo $PATH_IMG?><?php echo $event_info[$category]['image']?>" class="wrev-image"/> <strong><?php echo $event_info[$category]['name']?> </strong> <span class="pronounce"><?php echo $event_info[$category]['pronunciation']?></span></p>
   <p class="definition">&nbsp;&nbsp; <?php echo $event_info[$category]['definition']?></p> 
-      <!--
-  <div class="row"> 
-    <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3" style="margin-top:10px;">      
-      <form class="form-inline" role="form">
-        <div class="form-group">
-              <div class="left-inner-addon">
-                <span class="glyphicon glyphicon-search"></span>
-          <label class="sr-only">Search</label>
-          <input type="search" class="form-control" style="font-size:14px;" placeholder="search name of wrev"></div>
-        </div>
-        <div class="form-group">
-              <div class="left-inner-addon">
-                <i class="fa fa-map-marker"></i>
-          <label class="sr-only">Location</label>
-          <input type="text" class="form-control"  style="font-size:14px;" placeholder="New York, NY"></div>
-        </div>
-       
-        <div class="btn-group">
-        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="font-size:14px; padding:1px 10px;">
-          price
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-            <li><a href="#">Dropdown link</a></li>
-            <li><a href="#">Dropdown link</a></li>
-        </ul>
-        </div>
       
-  
-        <button type="submit" class="btn" style="background:#1C74BB; color:white; font-size:14px; padding:1px 10px;">go</button>
-    </form>
-    </div>  
-    </div>-->
     <div class="eventlist">
                 <div style="margin-left:auto;margin-right:auto;">
                 	<div style="margin-left:25%;margin-right:auto;margin-top:25px;">
@@ -150,7 +118,7 @@
             <?php echo form_close() ?>
             </div>
 		</div>
-           
+     </div>      
 <!--<div class="text-center" style=";margin-right:8%;margin-left:8%;">
     <ul class="pagination">
     	<li><a href="javascript:void(0)" onclick="show_page(1)"><<</a></li>
@@ -163,19 +131,19 @@
     </ul>
 </div>-->
 
-    <div class="container" style=" margin-top:30px;">
-      <div class="eventlist">
+    <div class="row row-centered" style=" margin-top:30px;">
+     <div class="col-md-11 col-centered col-sm-11 col-xs-12" style="color:white;text-align:center;padding:10px 10%;">
       <div class="row">
         <!--modify -->
         <?php if($size <= 1) {
-            echo '<span style="color:black;margin-left:43%; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">results found!</span></span>';
+            echo '<span style="color:black; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">results found!</span></span>';
              }
              else{
-                echo '<span style="color:black;margin-left:43%; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">results found!</span></span>';
+                echo '<span style="color:black; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">results found!</span></span>';
             }?>
-            </div>
+            
       </div>
-      <div>
+      <div class="row" style="text-align:left;">
       <?php  
       $i = 0;
       $group_page = 1;
@@ -186,29 +154,27 @@
       	    	$size_left--;
       	    	if($group_page == 1) {
       ?>
-	      <div class="<?php echo 'event_group'.$group_page?> col-md-3 col-sm-6 col-xs-12" style="padding:70px 3.2% 0; margin-left:5%;">
+	      <div class="<?php echo 'event_group'.$group_page?> col-md-3 col-sm-6" style="padding:0 9px;">
 	      <?php } else {?>
-	      <div class="<?php echo 'event_group'.$group_page?> col-md-3 col-sm-6 col-xs-12" style="padding:70px 3.2% 0; margin-left:5%;" hidden>
+	      <div class="<?php echo 'event_group'.$group_page?> col-md-3 col-sm-6" style="padding:0 9px;" hidden>
 	      <?php }?>
-                <div class="mosaic-block bar2" onclick="location.href='<?php echo base_url().'event/event_info/'.$category.'/'.$event_info[$i]["event_id"]?>';" style="cursor:pointer;border-radius:10px; -moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);" > <!-- <- box to link to full view -->
+                <div class="mosaic-block bar2" onclick="location.href='<?php echo base_url().'event/event_info/'.$category.'/'.$event_info[$i]["event_id"]?>';" style="margin-top:18px;cursor:pointer;border-radius:10px; -moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);" > <!-- <- box to link to full view -->
                
 
         <a target="_blank" class="mosaic-overlay <?php echo $category?>-box" style="background-color: <?php echo $event_info[$category]['theme-color-1']?>;display: inline; left: 0px;">
-      <div class="col-md-12" style="height: 50px; background-color: <?php echo $event_info[$category]['theme-color-2']?>;">
-                            <p style="text-align:center; color:white; font-size:28px; margin-top:5px;">
-                            <!--Number of likes and like button-->
-                            <span><?php echo $event_info[$i]['e_likes'] ?> </span><i class="fa fa-heart-o"></i> | 
-                            <!--Add to Palette-->
-                            <span class="glyphicon glyphicon-list-alt"></span> | 
-                            <!--Share button-->
-                            <i class="fa fa-share-square-o"></i> </p>
+      <div class="col-md-12" style="height: 50px; background-color: <?php echo $event_info[$category]['theme-color-2']?>;position:relative;">
+                            <p style="text-align:center; color:white; font-size:20px; margin-top:8px;">
+								<strong style="text-shadow: 1px 1px 0.5px #000000;"><?php
+                                    $event_name_temp = substr($event_info[$i]['e_name'], 0, 14);
+                                    echo $event_name_temp; ?></strong>
+                            </p>
       </div>
                         <!--Location of event-->
-                        <p class="location location-romance"><i class="fa fa-map-marker"></i><?php echo $event_info[$i]['e_state'] ?> </p>
+                        <p class="location location-romance"><i class="fa fa-map-marker"></i> <?php echo $event_info[$i]['e_state'] ?> </p>
                         
                         <!--Description -->
                         <p class="description">                       
-                        <?php $event_description_temp = substr($event_info[$i]['e_description'], 0, 150); echo $event_description_temp; ?>......                       
+                        <?php $event_description_temp = substr($event_info[$i]['e_description'], 0, 140); echo $event_description_temp; ?>......                       
                         </p>
                         
                         <!--Click to lead to individual listing page-->
@@ -216,20 +182,21 @@
         </a>
       
       <div class="mosaic-backdrop" style="display: block;">
-                                <div style="position: absolute; border-radius:7px; background-color: rgba(239,186,183,0.3); width: 325px; height: 400px; z-index: 0;"></div>
+                                <div style="position: absolute; border-radius:7px; background-color: rgba(239,186,183,0.3); width: 100%; height: 280px; z-index: 0;"></div>
                         <!--Event Image-->
         <img src="<?php echo base_url()."uploads/". $event_info[$i]['e_image']?>" style="max-width:100%; min-width:100%; max-height:100%; min-height:100%;">
         <div class="details">
-                                    <p>
-                                    <!--Name of event-->
-                                    <strong style="text-shadow: 1px 1px 0.5px #000000;"><?php
-                                    $event_name_temp = substr($event_info[$i]['e_name'], 0, 14);
-                                    echo $event_name_temp; ?></strong> 
+                                    <p style="font-size:17px;">
                                     <!--Date of event-->
-                                    <span class="badge date <?php echo $category?>-date" ><?php echo $event_info[$i]['e_date']?></span></p>
-                                    <!--Number of people attending-->
-                                    <p style="margin-top:-8px;font-size:17px;"><span class="badge attending"><?php echo $event_info[$i]['e_attending'] ?></span> <span style="text-shadow: 1px 1px 0.5px #000000;">Attending</span>
+                                    <span class="badge date <?php echo $category?>-date" ><?php echo $event_info[$i]['e_date']?></span>
                                     <span class="pull-right"style="text-shadow: 1px 1px 0.5px #000000;"><i class="fa fa-clock-o"></i><?php echo $event_info[$i]['e_start_time']?></span>
+                                    </p>
+									
+									
+                                    <!--Number of people attending-->
+                                    <p style="font-size:17px;">
+									<span class="badge attending"><?php echo $event_info[$i]['e_attending'] ?></span> <span style="text-shadow: 1px 1px 0.5px #000000;">Attending</span>
+                                    <span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><span><?php echo $event_info[$i]['e_likes'] ?> </span><i class="fa fa-heart-o"></i></span>
                                     </p>
                                     
                                 </div>
@@ -239,7 +206,7 @@
            
             <?$i++;}
             $group_page++;}}?>   
-            
+            </div>
         </div>
     </div>
     <div class="text-center">
@@ -252,7 +219,7 @@
         <li><a href="javascript:void(0)" onclick="show_page(-2)" class="pagenumber">></a></li> 
         <li><a href="javascript:void(0)" onclick="show_page(<?php echo (int)($size/21)+1?>)" class="pagenumber"> >> </a></li> 
     </ul>
-</div>
+	</div>
     <div class="row" style="text-align:center; padding:10px;">
             <!--<a href="#"><button type="button" class="btn btn-lg" style="background:#1A75BF; color:white; font-size:25px; padding:10px; border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .5);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);box-shadow:2px 2px 2px rgba(0, 0, 0, .5);">View more</button></a>-->
             <?php if($this->session->userdata('is_logged_in')) {?>

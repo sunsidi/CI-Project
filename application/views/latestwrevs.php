@@ -136,7 +136,7 @@
 </div>-->
 
         <div class="row row-centered" style="margin-top:30px;">
-		<div class="col-md-11 col-centered col-sm-11 col-xs-12" style="color:white;text-align:center;padding:10px 10%;">
+		<div class="col-md-11 col-centered col-sm-11 col-xs-11" style="color:white;text-align:center;padding:10px 10%;">
 	  
       <div class="row">
         <!--modify -->
@@ -149,7 +149,7 @@
             }?>
       </div>
     	
-    	<div style="text-align:left;">
+    	<div class="row" style="text-align:left;">
       <?php
       $i = 0;
       $group_page = 1;
@@ -168,8 +168,8 @@
                
 
         <a target="_blank" class="mosaic-overlay latest-box" style="background-color:rgba(178,154,158,1);display: inline; left: 0px;">
-      <div class="col-md-12" style="height: 50px; background-color: rgba(159,129,134,1); ">
-                            <p style="text-align:center; color:white; font-size:20px; margin-top:5px;">
+      <div class="col-md-12" style="height: 50px; background-color: rgba(159,129,134,1); position:relative;">
+                            <p style="text-align:center; color:white; font-size:20px; margin-top:8px;">
                                     <strong style="text-shadow: 1px 1px 0.5px #000000;"><?php 
                                     $event_name_temp = substr($event_info[$i]['e_name'], 0, 14);
                                     echo $event_name_temp?></strong> </p>
@@ -179,7 +179,7 @@
                         
                         <!--Description -->
                         <p class="description" style="height: 40px;text-overflow:ellipsis;">
-                        <?php $event_description_temp = substr($event_info[$i]['e_description'], 0, 150); echo $event_description_temp; ?>......                       
+                        <?php $event_description_temp = substr($event_info[$i]['e_description'], 0, 140); echo $event_description_temp; ?>......                       
                         </p>
                         
                         <!--Click to lead to individual listing page-->
@@ -192,15 +192,16 @@
         <img src="<?php echo base_url()."uploads/". $event_info[$i]['e_image']?>" style="max-width:100%; min-width:100%; max-height:100%; min-height:100%;">
         <div class="details">
                                     <p style="font-size:17px;">
+									<!--Date of event-->
 									<span class="badge date latest-date"><?php echo $event_info[$i]['e_date']?></span>
 									<span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><i class="fa fa-clock-o"></i><?php echo $event_info[$i]['e_start_time']; ?></span>
 									</p> 
-                                    <!--Date of event-->
+                                    
                                     
                                     <!--Number of people attending-->
                                     <p style="font-size:17px;">
 									<span class="badge attending"><?php echo $event_info[$i]['e_attending'] ?></span> <span style="text-shadow: 1px 1px 0.5px #000000;">Attending</span>
-									<span class="pull-right"><span><?php echo $event_info[$i]['e_likes'] ?> </span><i class="fa fa-heart-o"></i></span>
+									<span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><span><?php echo $event_info[$i]['e_likes'] ?> </span><i class="fa fa-heart-o"></i></span>
                                     </p>
                                 </div>
                         </div>
