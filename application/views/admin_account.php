@@ -71,10 +71,11 @@ jQuery(document).ready(function () {
 						<!--<li style="float: none;"><a href="#user_stats" data-toggle="tab">User Stats</a></li>
 						<li style="float: none;"><a href="#listing_stats" data-toggle="tab">Listing Stats</a></li>-->
 						<li><a href="#site_stats" data-toggle="tab">Site Stats</a></li>
-                                                <li><a href="#featured" data-toggle="tab">Featured Events</a></li>
+                        <li><a href="#featured" data-toggle="tab">Featured Events</a></li>
 						<li><a href="#multiple_listings" data-toggle="tab">Multiple Listings</a></li>
 						<li><a href="#newsfeed_automation " data-toggle="tab">Newsfeed Automation</a></li>
 						<li><a href="#notification_center" data-toggle="tab">Notification Center</a></li>
+						<li><a href="#admin_level" data-toggle="tab">Admin Level</a></li>
 
 					</ul>
 				</div>
@@ -538,7 +539,7 @@ jQuery(document).ready(function () {
 				<div class="tab-pane" id="multiple_listings" style="background:rgba(255,255,255,0.5);color:#404041; padding:10%;text-align:center;">
 				<?php echo form_open_multipart('admin/create_multiple_events');?>
                                     <div id="button_base" class="addmore">
-				        <div class="panel" style="border-color: transparent; background:#a1bbc8;">
+										<div class="panel" style="border-color: transparent; background:#a1bbc8;">
                                             <div class="panel-body">
                                                 <div class="col-md-3">
                                                     <button id="category_button" type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background:white;font-size:14px; width: 100%;">
@@ -757,6 +758,54 @@ jQuery(document).ready(function () {
                                 <button id="addmore-button"type="button" class="btn btn-md" style="float:left;background: #6ca5cc; color:white; font-size:20px;">Add More</button>
                                 <button type="submit" class="btn btn-md" style="float:right;background: #6ca5cc; color:white; font-size:20px;">Submit</button>
                                 <?php echo form_close();?>
+				</div>
+				<div class="tab-pane" id="admin_level" style="background:rgba(255,255,255,0.5);padding:2% 5%; font-size:20px;">
+					<h2 style="text-align:center;">Levels of Admin Control</h2>
+					<div style="height:500px;overflow-y:auto;">
+       					<table style="width:100%;text-align:left;">
+       						<thead style="color:#5697CA;">
+       							<tr>
+                                    <th></th>
+									<th>Privileges</th>
+									<th>Authorize</th>
+									<th>Revoke Access</th>
+								</tr>
+							</thead>
+							<tbody style="font-size:18px;">
+								<tr>
+									<td>Level 1</td>
+									<td></td>
+									<td><input type="text"><button class="btn" style="margin-left:5px;">Authorize</button></td>		
+									<td style="text-align:center;"><a href="#">Revoke</a></td>
+									<!--<td style="text-align:center;"><button class="btn">Revoke</button></td>-->
+								</tr>
+								<tr>
+									<td>Level 2</td>
+									<td></td>
+									<td><input type="text"><button class="btn" style="margin-left:5px;">Authorize</button></td>
+									<td style="text-align:center;"><a href="#">Revoke</a></td>
+								</tr>
+								<tr>
+									<td>Level 3</td>
+									<td></td>
+									<td><input type="text"><button class="btn" style="margin-left:5px;">Authorize</button></td>
+									<td style="text-align:center;"><a href="#">Revoke</a></td>	
+								</tr>
+								<tr>
+									<td>Level 4</td>
+									<td></td>
+									<td><input type="text"><button class="btn" style="margin-left:5px;">Authorize</button></td>
+									<td style="text-align:center;"><a href="#">Revoke</a></td>	
+								</tr>
+								<tr>
+									<td>Level 5</td>
+									<td>Investors</td>
+									<td><input type="text"><button class="btn" style="margin-left:5px;">Authorize</button></td>
+									<td style="text-align:center;"><a href="#">Revoke</a></td>		
+								</tr>
+							</tbody>
+						</table>
+					</div>	
 				</div>
 			</div>
 		</div>  
