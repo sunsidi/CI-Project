@@ -83,11 +83,18 @@ var tour = new Tour({
   debug:true,	
   redirect: true,
   
-  //tour starts everytime page is loaded, might need to remove this for site
-  //storage: false,
 });
-// Initialize the tour
-tour.init();
 
-// Start the tour
-tour.start();
+$(window).resize(function() {
+   if ($(this).width() > 800) {
+	// Initialize the tour
+	tour.init();
+
+	// Start the tour
+	tour.start();
+	}
+});
+
+$(document).ready(function() {
+   $(window).resize();
+});
