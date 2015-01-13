@@ -12,7 +12,6 @@
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
-<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-tour.min.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
@@ -23,9 +22,9 @@
 <!--content
 ==============================================-->
 <div class="container">
-<div class="row" style="margin-top:-20px;">
+<div class="row" style="margin-top:30px;">
 <div class="col-md-12" style ="width:100%; color:white;text-align:center;">
-	<p style="margin-top:50px;"><img id="start-tour" src="<?php echo $PATH_IMG?>large_w_logo.png"  style="width:25%;" alt="Welcome to Wrevel"/></p>
+	<p style="margin-top:50px;"><img src="<?php echo $PATH_IMG?>large_w_logo.png"  style="width:25%;" alt="Welcome to Wrevel"/></p>
 	<p style="font-size:52px; text-align:center;font-family:'Lobster';"><span style="font-size:36px;">Welcome to</span> Wrevel</p>
 		<div style="text-align:center;">
 		<a href="#" style="padding-left:15px;" data-toggle="modal" data-target="#sign-in"><img src="<?php echo $PATH_IMG?>sign_in_button.png" style="width:128px;" alt="Sign in"/></a> 
@@ -333,8 +332,6 @@
 	$('#regular').popover();
 	$('#business').popover();
 	</script>
-	<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
- 	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script> 
 	
 
 

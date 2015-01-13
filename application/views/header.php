@@ -11,6 +11,7 @@
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-tour.min.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <style>
@@ -27,7 +28,7 @@
 <?php $this->load->library('session'); if(!$this->session->userdata('is_logged_in')) {?>
 <!--header not logged in
 ===========================================-->
-    <div class="navbar"  role="navigation" style="background:#6A8BA8; height:60px; border-radius:none; -moz-box-shadow:   1px 2px 2px 3px rgba(0, 0, 0, .2);-webkit-box-shadow: 1px 2px 2px 3px rgba(0, 0, 0, .2); box-shadow:  1px 2px 2px 3px rgba(0, 0, 0, .2); position:relative">
+    <div class="navbar navbar-fixed-top"  role="navigation" style="background:#6A8BA8; height:60px; border-radius:none; -moz-box-shadow:   1px 2px 2px 3px rgba(0, 0, 0, .2);-webkit-box-shadow: 1px 2px 2px 3px rgba(0, 0, 0, .2); box-shadow:  1px 2px 2px 3px rgba(0, 0, 0, .2); ">
     	<div class="logo dropdown navbar-brand pull-left" style="margin-left:15px;">
         	<button class="btn" type="button" id="dropdownMenu1" data-toggle="dropdown" style="background:none; padding:0;">
         	<img src="<?php echo $PATH_IMG?>menu_button.png"> </button>
@@ -66,7 +67,7 @@
 <!--header logged in
 ===========================================-->
 <?php $nav_data = get_navi_data()?>
- <div class="navbar"  role="navigation" style="background:#6A8BA8; height:60px; position:relative;-moz-box-shadow:   1px 2px 2px 3px rgba(0, 0, 0, .2);-webkit-box-shadow: 1px 2px 2px 3px rgba(0, 0, 0, .2); box-shadow:  1px 2px 2px 3px rgba(0, 0, 0, .2); ">
+ <div class="navbar navbar-fixed-top"  role="navigation" style="background:#6A8BA8; height:60px; -moz-box-shadow:   1px 2px 2px 3px rgba(0, 0, 0, .2);-webkit-box-shadow: 1px 2px 2px 3px rgba(0, 0, 0, .2); box-shadow:  1px 2px 2px 3px rgba(0, 0, 0, .2); ">
       <div class="logo dropdown navbar-brand">
           <button class="btn" type="button" id="dropdownMenu1" data-toggle="dropdown" style="background:none; padding:0;">
           <img src="<?php echo $PATH_IMG?>menu_button.png" style="margin-left:15px;"> </button>
@@ -142,7 +143,7 @@
         
         
         <div id="navbarCollapse" class="collapse navbar-collapse"  style="float: right;">
-        <a href="#" data-toggle="modal" data-target="#create" class="pull-left"><button class="btn" type="button" style="background:none;margin-top:5px;"><i class="fa fa-plus-circle" style="color:white; font-size:30px;"></i></button></a>
+        <a href="#" id="create-step" data-toggle="modal" data-target="#create" class="pull-left"><button class="btn" type="button" style="background:none;margin-top:5px;"><i class="fa fa-plus-circle" style="color:white; font-size:30px;"></i></button></a>
         <div role="search" class="navbar-form navbar-left">
           <?php echo form_open(base_url().'main/get_latest_events/')?>
             <div class="form-group">
@@ -170,7 +171,7 @@
             </div>
         </div>
     </div>-->
-      <div class="row" style="text-align:center;">
+      <div class="row" style="text-align:center;margin-top:80px;">
             <div class="btn-group btn-group-lg sub">
                 <a href="<?php echo base_url()."main/mywrevs"?>" class="btn tab">mywrevs</a>
                 <a href="<? echo base_url()?>event/hub" class="btn tab">the hub</a>
@@ -198,4 +199,6 @@
 				<?php }?>
         });
     </script>
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
+	<!--<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script>-->
 </html>
