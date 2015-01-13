@@ -1,18 +1,23 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class admin extends CI_Controller{
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('model_users');
+        $this->load->library('path');
+        $this->load->library('session');
+        $email = $this->session->userdata('email');
+        if(!$this->model_users->get_admin_level($email)) {
+            redirect('welcome');
+        }
+
+    }
+    
 	public function admin_account(){
             $this->load->library('session');
-            $allowed_access = array('kelui92@gmail.com','sfoolgenius@gmail.com','abirashukur@gmail.com','cjbackintime@gmail.com','tshum741@gmail.com','sajidzaman39@hotmail.com');
-            $keep_going = false;
-            for($i = 0; $i < 6; $i++) {
-                if($this->session->userdata('email') == $allowed_access[$i]) {
-                    $keep_going = true;
-                }
-            }
-            if(!$keep_going) {
-                redirect('welcome');
-            }
+            $current_user = $this->model_users->get_info($this->session->userdata('email'));
+            $data['current_user'] = $current_user;
 		$this->load->library('path');
                 $this->load->helper('date');
             	$path = $this->path->getPath();
@@ -29,6 +34,43 @@ class admin extends CI_Controller{
                 $data['all_blogs'] = $this->model_blogs->admin_get_blogs();
                 $data['all_notifications'] = $this->model_friend_request->get_notifications_simplified();
                 
+                $data['admin_users'] = $this->model_users->admin_get_admin_users();
+                $data['admin_level_1'] = $data['admin_level_2'] = $data['admin_level_3'] = $data['admin_level_4'] = array();
+                for($i = 0; $i < count($data['admin_users']); $i++) {
+                    if($data['admin_users'][$i]['admin_level'] == 1) {
+                        array_push($data['admin_level_1'], $data['admin_users'][$i]['email']);
+                    }
+                    else if($data['admin_users'][$i]['admin_level'] == 2) {
+                        array_push($data['admin_level_2'], $data['admin_users'][$i]['email']);
+                    }
+                    else if($data['admin_users'][$i]['admin_level'] == 3) {
+                        array_push($data['admin_level_3'], $data['admin_users'][$i]['email']);
+                    }
+                    else if($data['admin_users'][$i]['admin_level'] == 4) {
+                        array_push($data['admin_level_4'], $data['admin_users'][$i]['email']);
+                    }
+                }
+                $data['highest_level'] = 0;
+                if(isset($data['admin_level_1'])) {
+                    if(count($data['admin_level_1']) > $data['highest_level']) {
+                        $data['highest_level'] = count($data['admin_level_1']);
+                    }
+                }
+                if(isset($data['admin_level_2'])) {
+                    if(count($data['admin_level_2']) > $data['highest_level']) {
+                        $data['highest_level'] = count($data['admin_level_2']);
+                    }
+                }
+                if(isset($data['admin_level_3'])) {
+                    if(count($data['admin_level_3']) > $data['highest_level']) {
+                        $data['highest_level'] = count($data['admin_level_3']);
+                    }
+                }
+                if(isset($data['admin_level_4'])) {
+                    if(count($data['admin_level_4']) > $data['highest_level']) {
+                        $data['highest_level'] = count($data['admin_level_4']);
+                    }
+                }
                 $datestring = "%Y-%m-%d %H:%i:%s";
                 $time = time();
             	$data['today'] = mdate($datestring, $time);
@@ -44,10 +86,36 @@ class admin extends CI_Controller{
                     $data['all_events'][$i]['diff'] = $diff->format("%a");
                 }
                 $result = array_merge($path, $data);
-                //echo '<pre>', print_r($data['all_blogs'], true), '</pre>';
+                //echo '<pre>', print_r($data['highest_level'], true), '</pre>';
                   $this->load->view('Create_Wrevel_View',$result);
                  $this->load->view('admin_account',$result);
 	
+        }
+        
+        //Admin level controls only for level 1 users.
+        public function authorize_revoke_users() {
+            $this->load->library('session');
+            $this->load->model('model_users');
+            $op_type = $this->input->post('op_type_user');
+            $op_full = explode("_", $op_type);
+            if(count($op_full) == 2) {
+                $data = $this->input->post('authorize_level_'.$op_full[1]);
+                if($op_full[0] == 'authorize' && $op_full[1] <= 4 && $op_full[1] >= 1) {
+                    $this->model_users->authorize_user($data, $op_full[1]);
+                }
+                else if($op_full[0] == 'revoke' && $op_full[1] <= 4 && $op_full[1] >= 1) {
+                    $this->model_users->revoke_user($data);
+                }
+                else {
+                    $this->session->set_flashdata('message', 'There was an error authorizing or revoking the user(s). Please try again.');
+                    
+                }
+                $this->session->set_flashdata('message', 'Admin levels have been updated. Please check if everything is correct.');
+            }
+            else {
+                $this->session->set_flashdata('message', 'Please make sure you inputted the right information');
+            }
+            redirect('admin/admin_account');
         }
         
         //delete users that are checked.

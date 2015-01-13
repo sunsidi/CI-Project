@@ -63,29 +63,48 @@ jQuery(document).ready(function () {
   				</div>
   				<div class="panel-body" style="background:#D9E2EB;border-bottom-left-radius:15px;border-bottom-right-radius:15px;">
 					<ul class="nav nav-tabs tabs-left" style="text-align:center;border:none;">
-						<li class="active"><a href="#home" data-toggle="tab">Summary</a></li>
-						<li><a href="#users" data-toggle="tab">Users</a></li>
-						<li><a href="#listings" data-toggle="tab">Listings</a></li>
-						<li><a href="#transactions" data-toggle="tab">Transactions</a></li>
-						<li><a href="#blog" data-toggle="tab">Blog</a></li>
-						<!--<li style="float: none;"><a href="#user_stats" data-toggle="tab">User Stats</a></li>
-						<li style="float: none;"><a href="#listing_stats" data-toggle="tab">Listing Stats</a></li>-->
-						<li><a href="#site_stats" data-toggle="tab">Site Stats</a></li>
-                        <li><a href="#featured" data-toggle="tab">Featured Events</a></li>
-						<li><a href="#multiple_listings" data-toggle="tab">Multiple Listings</a></li>
-						<li><a href="#newsfeed_automation " data-toggle="tab">Newsfeed Automation</a></li>
-						<li><a href="#notification_center" data-toggle="tab">Notification Center</a></li>
-						<li><a href="#admin_level" data-toggle="tab">Admin Level</a></li>
-
+                                            <?php if($current_user['admin_level'] > 0) {
+                                                if($current_user['admin_level'] <= 2 || $current_user['admin_level'] == 4) {?>
+                                                    <li class="active"><a href="#home" data-toggle="tab">Summary</a></li>
+                                                <?php }
+                                                if($current_user['admin_level'] == 1) {?>
+                                                    <li><a href="#users" data-toggle="tab">Users</a></li>
+                                                    <li><a href="#listings" data-toggle="tab">Listings</a></li>
+                                                    <li><a href="#transactions" data-toggle="tab">Transactions</a></li>
+                                                <?php }
+                                                if($current_user['admin_level'] <= 3) {?>
+                                                    <li><a href="#blog" data-toggle="tab">Blog</a></li>
+                                                    <!--<li style="float: none;"><a href="#user_stats" data-toggle="tab">User Stats</a></li>
+                                                    <li style="float: none;"><a href="#listing_stats" data-toggle="tab">Listing Stats</a></li>-->
+                                                <?php }
+                                                if($current_user['admin_level'] <= 2 || $current_user['admin_level'] == 4) {?>
+                                                    <li><a href="#site_stats" data-toggle="tab">Site Stats</a></li>
+                                                <?php }
+                                                if($current_user['admin_level'] <= 2 ) {?>
+                                                    <li><a href="#featured" data-toggle="tab">Featured Events</a></li>
+                                                <?php }
+                                                if($current_user['admin_level'] <= 3) {?>
+                                                    <li><a href="#multiple_listings" data-toggle="tab">Multiple Listings</a></li>
+                                                    <li><a href="#newsfeed_automation " data-toggle="tab">Newsfeed Automation</a></li>
+                                                <?php }
+                                                if($current_user['admin_level'] <= 2) {?>
+                                                    <li><a href="#notification_center" data-toggle="tab">Notification Center</a></li>
+                                                <?php }
+                                                if($current_user['admin_level'] == 1) {?>
+                                                    <li><a href="#admin_level" data-toggle="tab">Admin Level</a></li>
+                                                <?php }
+                                            }?>
 					</ul>
 				</div>
 			</div>
 		</div>
 		
+                <?php if($current_user['admin_level'] > 0) {?>
 		<div class="col-md-7" style="padding:0; border-radius:15px;-moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.5);-webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.5); box-shadow: 0px 0px 5px rgba(0,0,0,0.5);">
 			<!-- Tab panes -->
 			<div class="tab-content" style="border-radius:15px;">
 			
+                                <?php if($current_user['admin_level'] <= 2 || $current_user['admin_level'] == 4) {?>
 				<!--Summary-->
 				<div class="tab-pane active default-tabs" id="home" style="background:rgba(255,255,255,0.5);color:#404041; padding:10%;text-align:center;">
 				<div class="row">
@@ -105,8 +124,10 @@ jQuery(document).ready(function () {
 					
 				</div>	
 				</div>
-      
-				<!--Users-->
+                                <?php }?>
+				
+                                <?php if($current_user['admin_level'] == 1) {?>
+                                <!--Users-->
 				<div class="tab-pane" id="users" style="background:rgba(255,255,255,0.5);padding:10%;text-align:center;font-size:18px;">
 					<img src="<?php echo $PATH_IMG?>users_icon.png" style="width:40%;"/>
 					<h1 style="margin-top:20px;"><strong><?php echo count($all_users)?></strong> Users</h1>
@@ -263,7 +284,9 @@ jQuery(document).ready(function () {
        					<button type="button" class="btn admin_button" style="background:#4B90C9;">Open</button>
        					<button type="button" class="btn admin_button" style="background:#684F6F;">Delete</button>
 				</div>
-				
+                                <?php }?>
+                                
+                                <?php if($current_user['admin_level'] <= 3) {?>
 				<!--Blog-->
 				<div class="tab-pane" id="blog" style="background:rgba(255,255,255,0.5);padding:10%;text-align:center;font-size:18px;">
                                     <i class="fa fa-rss fa-5x"></i>
@@ -398,142 +421,10 @@ jQuery(document).ready(function () {
                                         <a href="#select_edit_blog" data-toggle="tab"><button class="btn" style="color:white;background:#698BA7;font-size:25px;border-radius:10px;padding:5px 20px;">Previous Page</button></a>
                                     <?php echo form_close();?>
 				</div>
-				
-				<!--newsfeed_automation-->
-				<div class="tab-pane" id="newsfeed_automation" style="background:rgba(255,255,255,0.5);padding:6% 15%;">					
-                                    <?php echo form_open_multipart('admin/create_news');?>
-					<h2><i class="fa fa-file-text-o"></i> Body</h2>
-					<textarea name="news_body" class="form-control" rows="10" style="border:dashed 2px gray;resize: none;font-size:19px;border-radius:0;background:none;"></textarea>
-                                        <label class="col-sm-3 control-label">Picture For News:</label>
-                                        <div class="row" style="margin-left: 10px;text-align:right; margin-top:25px;padding:0 30px;text-align:left;">
-                                            <label for="file-input-news-feed">
-                                                <img src="<?php echo $PATH_IMG?>camera_icon.png" style="width:70%;">
-                                            </label>
-                                            <input id="file-input-news-feed" id="" name="news_filename" type="file" style="display:none">
-					</div>
-					<div class="row" style="text-align:right; margin-top:10px;padding:15px;">
-                                            <button class="btn" style="color:white;background:#698BA7;font-size:25px;border-radius:10px;padding:5px 20px;">Post</button>
-					</div>
-                                    <?php echo form_close();?>
-				</div>
-	  	
-				<!--notification_center-->
-				<div class="tab-pane" id="notification_center" style="background:rgba(255,255,255,0.5);padding:6% 15%;">
-					<center><h1><i class="fa fa-bell"></i> Notifications</h1></center>
-					<center><h2 style="margin-top:20px;"><strong>####</strong> Notifications</h2></center>
-					<button type="button" class="btn admin_tabs" onclick="show_all_users()">All</button>
-					<button type="button" class="btn admin_tabs" onclick="show_new_users()">New</button>
-					<button type="button" class="btn admin_tabs" onclick="show_current_users()">Current</button>
-                                        <form id="delete_users" action="<?php echo base_url()."admin/delete_users"?>" method="POST">
-					<div class="form-group" style="margin-top:10px;width:60%;margin-left:auto;margin-right:auto;">
-                                            <div class="left-inner-addon" style="text-align:left;">
-                                                <span class="glyphicon glyphicon-search"></span>
-                                                <label class="sr-only">Search</label>
-                                                <input id="search_users" type="Search" class="form-control" style="border-radius:10px;font-size:20px;" placeholder="Search" onkeyup="show_users(event)">						
-                                            </div>
-       					</div>
-					<table style="margin-top: 5px; width: 90%;">
-                                            <tr>
-                                                <th style="margin-left: 3%;text-align: center; color:#5697CA;"><b>First User</b></th>
-                                                <th></th>
-                                                <th style="margin-left: 6%;text-align: center; color:#5697CA;"><b>Second User</b></th>
-						<th style="margin-left:10%;text-align: center;color: #5697CA;"><b>Date</b></th>
-						<th style="margin-left: 31%;text-align: center;color: #5697CA;"><b>Notification</b></th>
-                                            </tr>
-                                        </table>
-       					<div style="height:500px;overflow-y:auto;">
-       					<table style="width:100%;text-align:left;">
-						<tbody>
-						<?php if(isset($all_notifications)) {
-							for($i = 0; $i < count($all_notifications); $i++) {?>
-                                                            <tr>
-                                                                <td style="word-break:break-all;text-align: center;width: 15%;"><?php echo $all_notifications[$i]['user_id'];?></td>
-                                                                <td style="word-break:break-all;text-align: center;width: 15%;"><?php echo $all_notifications[$i]['to_from'];?></td>
-                                                                <td style="word-break:break-all;text-align: center;width: 15%;"><?php echo $all_notifications[$i]['other_user_id'];?></td>
-                                                                <td style="word-break:break-all;text-align: center;width: 15%;"><?php echo $all_notifications[$i]['time_sent'];?></td>
-                                                                <td style="word-break:break-all;text-align: center;width: 50%;"><?php echo $all_notifications[$i]['message'];?></td>
-                                                            </tr>
-                                                <?php }}?>
-						</tbody>
-       					</table>
-					</div>
-                                        </form>
-				</div>
-				<!--User Stats DELETED* SAME AS USERS-->
-				<!--<div class="tab-pane" id="user_stats" style="background:rgba(255,255,255,0.5);padding:10%;text-align:center;font-size:18px;">
-					<img src="<?php echo $PATH_IMG?>users_icon.png" style="width:40%;"/>
-					<h1 style="margin-top:20px;"><strong>2.5K</strong> Users</h1>
-					<button type="button" class="btn admin_tabs">All</button>
-					<button type="button" class="btn admin_tabs">New</button>
-					<button type="button" class="btn admin_tabs">Current</button>
-					<div class="form-group" style="margin-top:10px;width:60%;margin-left:auto;margin-right:auto;">
-              					<div class="left-inner-addon" style="text-align:left;">
-                					<span class="glyphicon glyphicon-search"></span>
-          						<label class="sr-only">Search</label>
-          						<input type="Search" class="form-control" style="border-radius:10px;font-size:20px;" placeholder="Search">						
-          					</div>
-       					</div>
-       					<div style="height:500px;overflow-y:auto;">
-       					<table style="width:100%;text-align:left;">
-       						<thead style="color:#5697CA;">
-       							<tr>
-							<td style="width:25%;">Email</td>							
-							<td style="width:25%;">Join Date</td>						
-							<td style="width:25%;">via Facebook</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-							<td>sdasd</td>
-							<td>rtrt</td>
-							<td>rte</td>
-							</tr>
-						</tbody>
-       					</table>
-       					</div>
-       					<button type="button" class="btn admin_button" style="background:#C25B5C;">Block</button>
-       					<button type="button" class="btn admin_button" style="background:#8D6893;">Delete</button>
-					
-				</div>-->
-	  
-				<!--Listing Stats DELETED* SAME AS LISTINGS-->
-				<!--<div class="tab-pane" id="listing_stats" style="background:rgba(255,255,255,0.5);padding:10%;text-align:center;font-size:18px;">
-					<img src="<?php echo $PATH_IMG?>listing_icon.png" style="width:40%;"/>
-					<h1 style="margin-top:20px;"><strong>2.5K</strong> Listings</h1>
-					<button type="button" class="btn admin_tabs">All</button>
-					<button type="button" class="btn admin_tabs">New</button>
-					<button type="button" class="btn admin_tabs">Current</button>
-                                        <div class="form-group" style="margin-top:10px;width:60%;margin-left:auto;margin-right:auto;">
-                                            <div class="left-inner-addon" style="text-align:left;">
-                                                <span class="glyphicon glyphicon-search"></span>
-                                                <label class="sr-only">Search</label>
-                                                <input type="Search" class="form-control" style="border-radius:10px;font-size:20px;" placeholder="Search">						
-                                            </div>
-                                        </div>
-       					<div style="height:500px;overflow-y:auto;">
-       					<table style="width:100%;text-align:left;">
-       						<thead style="color:#5697CA;">
-       							<tr>
-							<th style="width:25%;">Created Today</th>							
-							<th style="width:25%;">7 days ago</th>							
-							<th style="width:25%;">30 days ago</th>							
-							<th style="width:25%;">Users w/o listings</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-							<td>sdasd</td>
-							<td>rtrt</td>
-							<td>rtrt</td>
-							<td>rte</td>
-							</tr>
-						</tbody>
-       					</table>
-       					</div>
-       					
-				</div>-->
-				
-				<!--Site Stats-->
+                                <?php }?>
+                                
+                                <?php if($current_user['admin_level'] <= 2 || $current_user['admin_level'] == 4) {?>
+                                <!--Site Stats-->
 				<div class="tab-pane" id="site_stats" style="background:rgba(255,255,255,0.5);padding:2% 8%; font-size:25px;">
 					<h2 style="text-align:center;color:#5697CA;"><i class="fa fa-share-alt" style="color:black;"></i> Site Stats</h2>
 					<div style="background:#81a4b5;color:white;">
@@ -558,8 +449,10 @@ jQuery(document).ready(function () {
 					Graph of users and listings here
 					</div>
 				</div>
+                                <?php }?>
                                 
-                                <!--Listings-->
+                                <?php if($current_user['admin_level'] <= 2 ) {?>
+                                <!--Featured Events-->
 				<div class="tab-pane" id="featured" style="background:rgba(255,255,255,0.5);padding:10%;text-align:center;font-size:18px;">
 					<img src="<?php echo $PATH_IMG?>listing_icon.png" style="width:40%;"/>
 					<h1 style="margin-top:20px;"><strong><?php echo count($all_events)?></strong> Listings</h1>
@@ -611,9 +504,11 @@ jQuery(document).ready(function () {
                                         </form>
                                         
 				</div>
-				
-				<!--multiple listings-->
-				<div class="tab-pane" id="multiple_listings" style="background:rgba(255,255,255,0.5);color:#404041; padding:10%;text-align:center;">
+                                <?php }?>
+                                
+                                <?php if($current_user['admin_level'] <= 3) {?>
+                                <!--multiple listings-->
+                                <div class="tab-pane" id="multiple_listings" style="background:rgba(255,255,255,0.5);color:#404041; padding:10%;text-align:center;">
 				<?php echo form_open_multipart('admin/create_multiple_events');?>
                                     <div id="button_base" class="addmore">
 										<div class="panel" style="border-color: transparent; background:#a1bbc8;">
@@ -836,56 +731,166 @@ jQuery(document).ready(function () {
                                 <button type="submit" class="btn btn-md" style="float:right;background: #6ca5cc; color:white; font-size:20px;">Submit</button>
                                 <?php echo form_close();?>
 				</div>
-				<div class="tab-pane" id="admin_level" style="background:rgba(255,255,255,0.5);padding:2% 5%; font-size:20px;">
-					<h2 style="text-align:center;">Levels of Admin Control</h2>
-					<div style="height:500px;overflow-y:auto;">
-       					<table style="width:100%;text-align:left;">
-       						<thead style="color:#5697CA;">
-       							<tr>
-                                    <th></th>
-									<th>Privileges</th>
-									<th>Authorize</th>
-									<th>Revoke Access</th>
-								</tr>
-							</thead>
-							<tbody style="font-size:18px;">
-								<tr>
-									<td>Level 1</td>
-									<td></td>
-									<td><input type="text"><button class="btn" style="margin-left:5px;">Authorize</button></td>		
-									<td style="text-align:center;"><a href="#">Revoke</a></td>
-									<!--<td style="text-align:center;"><button class="btn">Revoke</button></td>-->
-								</tr>
-								<tr>
-									<td>Level 2</td>
-									<td></td>
-									<td><input type="text"><button class="btn" style="margin-left:5px;">Authorize</button></td>
-									<td style="text-align:center;"><a href="#">Revoke</a></td>
-								</tr>
-								<tr>
-									<td>Level 3</td>
-									<td></td>
-									<td><input type="text"><button class="btn" style="margin-left:5px;">Authorize</button></td>
-									<td style="text-align:center;"><a href="#">Revoke</a></td>	
-								</tr>
-								<tr>
-									<td>Level 4</td>
-									<td></td>
-									<td><input type="text"><button class="btn" style="margin-left:5px;">Authorize</button></td>
-									<td style="text-align:center;"><a href="#">Revoke</a></td>	
-								</tr>
-								<tr>
-									<td>Level 5</td>
-									<td>Investors</td>
-									<td><input type="text"><button class="btn" style="margin-left:5px;">Authorize</button></td>
-									<td style="text-align:center;"><a href="#">Revoke</a></td>		
-								</tr>
-							</tbody>
-						</table>
-					</div>	
+                                
+				<!--newsfeed_automation-->
+				<div class="tab-pane" id="newsfeed_automation" style="background:rgba(255,255,255,0.5);padding:6% 15%;">					
+                                    <?php echo form_open_multipart('admin/create_news');?>
+					<h2><i class="fa fa-file-text-o"></i> Body</h2>
+					<textarea name="news_body" class="form-control" rows="10" style="border:dashed 2px gray;resize: none;font-size:19px;border-radius:0;background:none;"></textarea>
+                                        <label class="col-sm-3 control-label">Picture For News:</label>
+                                        <div class="row" style="margin-left: 10px;text-align:right; margin-top:25px;padding:0 30px;text-align:left;">
+                                            <label for="file-input-news-feed">
+                                                <img src="<?php echo $PATH_IMG?>camera_icon.png" style="width:70%;">
+                                            </label>
+                                            <input id="file-input-news-feed" id="" name="news_filename" type="file" style="display:none">
+					</div>
+                                        <label class="col-sm-3 control-label">Author of News:</label>
+                                        <div class="col-md-5">
+                                            <input name="news_author" type="text" class="form-control">
+                                        </div>
+					<div class="row" style="text-align:right; margin-top:10px;padding:15px;">
+                                            <button class="btn" style="color:white;background:#698BA7;font-size:25px;border-radius:10px;padding:5px 20px;">Post</button>
+					</div>
+                                    <?php echo form_close();?>
 				</div>
+                                <?php }?>
+                                
+                                <?php if($current_user['admin_level'] <= 2) {?>
+				<!--notification_center-->
+				<div class="tab-pane" id="notification_center" style="background:rgba(255,255,255,0.5);padding:6% 15%;">
+					<center><h1><i class="fa fa-bell"></i> Notifications</h1></center>
+					<center><h2 style="margin-top:20px;"><strong>####</strong> Notifications</h2></center>
+					<button type="button" class="btn admin_tabs" onclick="show_all_users()">All</button>
+					<button type="button" class="btn admin_tabs" onclick="show_new_users()">New</button>
+					<button type="button" class="btn admin_tabs" onclick="show_current_users()">Current</button>
+                                        <form id="delete_users" action="<?php echo base_url()."admin/delete_users"?>" method="POST">
+					<div class="form-group" style="margin-top:10px;width:60%;margin-left:auto;margin-right:auto;">
+                                            <div class="left-inner-addon" style="text-align:left;">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                                <label class="sr-only">Search</label>
+                                                <input id="search_users" type="Search" class="form-control" style="border-radius:10px;font-size:20px;" placeholder="Search" onkeyup="show_users(event)">						
+                                            </div>
+       					</div>
+					<table style="margin-top: 5px; width: 90%;">
+                                            <tr>
+                                                <th style="margin-left: 3%;text-align: center; color:#5697CA;"><b>First User</b></th>
+                                                <th></th>
+                                                <th style="margin-left: 6%;text-align: center; color:#5697CA;"><b>Second User</b></th>
+						<th style="margin-left:10%;text-align: center;color: #5697CA;"><b>Date</b></th>
+						<th style="margin-left: 31%;text-align: center;color: #5697CA;"><b>Notification</b></th>
+                                            </tr>
+                                        </table>
+       					<div style="height:500px;overflow-y:auto;">
+       					<table style="width:100%;text-align:left;">
+						<tbody>
+						<?php if(isset($all_notifications)) {
+							for($i = 0; $i < count($all_notifications); $i++) {?>
+                                                            <tr>
+                                                                <td style="word-break:break-all;text-align: center;width: 15%;"><?php echo $all_notifications[$i]['user_id'];?></td>
+                                                                <td style="word-break:break-all;text-align: center;width: 15%;"><?php echo $all_notifications[$i]['to_from'];?></td>
+                                                                <td style="word-break:break-all;text-align: center;width: 15%;"><?php echo $all_notifications[$i]['other_user_id'];?></td>
+                                                                <td style="word-break:break-all;text-align: center;width: 15%;"><?php echo $all_notifications[$i]['time_sent'];?></td>
+                                                                <td style="word-break:break-all;text-align: center;width: 50%;"><?php echo $all_notifications[$i]['message'];?></td>
+                                                            </tr>
+                                                <?php }}?>
+						</tbody>
+       					</table>
+					</div>
+                                        </form>
+				</div>
+                                <?php }?>
+                                
+                                <?php if($current_user['admin_level'] == 1) {?>
+				<!-- ADMIN LEVEL -->
+				<div class="tab-pane" id="admin_level" style="background:rgba(255,255,255,0.5);padding:2% 5%; font-size:20px;">
+                                    <h2 style="text-align:center;">Levels of Admin Control</h2>
+                                    <div style="height:500px;overflow-y:auto;">
+                                        <?php echo form_open('admin/authorize_revoke_users');?>
+                                        <input name="op_type_user" id="op_type_user" type="text" hidden>
+       					<table style="width:100%;text-align:left;">
+                                            <thead style="color:#5697CA;">
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Privileges</th>
+                                                    <th>Authorize</th>
+                                                    <th>Revoke Access</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody style="font-size:18px;">
+                                                <tr>
+                                                    <td>Level 1</td>
+                                                    <td></td>
+                                                    <td><input name="authorize_level_1" type="text"><button class="btn" type="submit" style="margin-left:5px;" onclick="change_op_type('authorize_1')">Authorize</button></td>		
+                                                    <td style="text-align:center;"><button class="btn" type="submit" style="margin-left:5px;" onclick="change_op_type('revoke_1')">Revoke</button></td>
+                                                    <!--<td style="text-align:center;"><button class="btn">Revoke</button></td>-->
+                                                </tr>
+                                                <tr>
+                                                    <td>Level 2</td>
+                                                    <td></td>
+                                                    <td><input name="authorize_level_2" type="text"><button class="btn" type="submit" style="margin-left:5px;" onclick="change_op_type('authorize_2')">Authorize</button></td>
+                                                    <td style="text-align:center;"><button class="btn" type="submit" style="margin-left:5px;" onclick="change_op_type('revoke_2')">Revoke</button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Level 3</td>
+                                                    <td></td>
+                                                    <td><input name="authorize_level_3" type="text"><button class="btn" type="submit" style="margin-left:5px;" onclick="change_op_type('authorize_3')">Authorize</button></td>
+                                                    <td style="text-align:center;"><button class="btn" type="submit" style="margin-left:5px;" onclick="change_op_type('revoke_3')">Revoke</button></td>	
+                                                </tr>
+                                                <tr>
+                                                    <td>Level 4</td>
+                                                    <td>Investors</td>
+                                                    <td><input name="authorize_level_4" type="text"><button class="btn" type="submit" style="margin-left:5px;" onclick="change_op_type('authorize_4')">Authorize</button></td>
+                                                    <td style="text-align:center;"><button class="btn" type="submit" style="margin-left:5px;" onclick="change_op_type('revoke_4')">Revoke</button></td>		
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <?php echo form_close();?>
+                                    </div>
+                                    <h2 style="text-align:center;">Current Admins</h2>
+                                    <div style="height:500px;overflow-y:auto;">
+                                        <table style="width:100%;text-align:left;">
+                                            <thead style="color:#5697CA;">
+                                                <tr>
+                                                    <th>Level 1</th>
+                                                    <th>Level 2</th>
+                                                    <th>Level 3</th>
+                                                    <th>Level 4</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody style="font-size:18px;">
+                                                <?php for($i = 0; $i < $highest_level; $i++) {?>
+                                                <tr>
+                                                    <?php 
+                                                    if(isset($admin_level_1[$i])) {?>
+                                                        <td><?php echo $admin_level_1[$i];?></td>
+                                                    <?php } else {?>
+                                                        <td></td>
+                                                    <?php }
+                                                    if(isset($admin_level_2[$i])) {?>
+                                                        <td><?php echo $admin_level_2[$i];?></td>
+                                                    <?php } else {?>
+                                                        <td></td>
+                                                    <?php }
+                                                    if(isset($admin_level_3[$i])) {?>
+                                                        <td><?php echo $admin_level_3[$i];?></td>
+                                                    <?php } else {?>
+                                                        <td></td>
+                                                    <?php }
+                                                    if(isset($admin_level_4[$i])) {?>
+                                                        <td><?php echo $admin_level_4[$i];?></td>
+                                                    <?php } else {?>
+                                                        <td></td>
+                                                    <?php }?>
+                                                </tr>
+                                                <?php }?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <?php }?>
 			</div>
-		</div>  
+		</div>
+                <?php }?>
 	</div>
 </div>
 <!--end of content-->
@@ -901,6 +906,11 @@ jQuery(document).ready(function () {
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.js"></script>-->
     <script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
+    <script>
+        function change_op_type(op_number) {
+            $("#op_type_user").attr("value", op_number);
+        }
+    </script>
     <script>
         var file_input_counter = 1;
     $("#addmore-button").click(function () {

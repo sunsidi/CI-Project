@@ -339,66 +339,58 @@ ul.ticket-event-dp > li > a:hover{
     </div>
     
     <div class="col-md-6" >
-
-<!--Newsfeed-->   
-    <div class="panel" style="border:none; width: 100%;border-radius:15px; -moz-box-shadow:1px 1px 1px rgba(0, 0, 0, .3);-webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);box-shadow:1px 1px 1px rgba(0, 0, 0, .3);background:rgba(255,255,255,0.5);">
-    
+        <!--Newsfeed-->
+        
+        <div class="panel" style="border:none; width: 100%;border-radius:15px; -moz-box-shadow:1px 1px 1px rgba(0, 0, 0, .3);-webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);box-shadow:1px 1px 1px rgba(0, 0, 0, .3);background:rgba(255,255,255,0.5);">
             <div class="panel-heading" style="height:60px;background-color: #478ebf; border-top-left-radius:15px; border-top-right-radius:15px;padding:5px 0 0 0;">
-		<p style="font-size: 26px; color: white;text-align: center;margin-top:8px;">
-               <img src="<?php echo $PATH_IMG?>newsfeed_icon.png" style="z-index:1;margin-top:-5px;"/>
-
-                
+                <p style="font-size: 26px; color: white;text-align: center;margin-top:8px;">
+                    <img src="<?php echo $PATH_IMG?>newsfeed_icon.png" style="z-index:1;margin-top:-5px;"/>
                     <strong>Newsfeed</strong>
                 </p>
-                
             </div>
-      
             <div class="panel-body" style="height:650px;overflow-y:auto;">
-			
-			<div class="row">	
-            	<div style="padding: 0 15px;position:relative;">
-            		<p style="text-align:center;">2014-12-20 4:00PM</p>
-					<img src="<?php echo $PATH_IMG?>latest_fullbutton.png" style="width:70px; height:70px;border-radius: 150px;z-index:5;position:relative;"><span style="color:white;background:#7874a2; padding:5px 25px 5px 40px; border-radius:5px;margin-left:-20px;z-index:3;">The Wrevel Team</span>
-					<div class="arrow-left" style="position:absolute;width: 0; height: 0; border-top: 0px solid transparent;border-right: 35px solid #4991c9;
-border-bottom: 20px solid transparent;margin-left:14%;float:left;"></div>
-					<div style="padding:15px 5%;background:#4991C9;width:80%;float:right;color:white;border-radius:10px;">
-							<p style="text-align:left; font-size:16px;">One of our summer interns, Varagon (Jenny) wrote this awesome blog on what project phoenix (Wrevel 2.0) is all about. <a style="color:white;text-decoration:underline;" href="<?php echo base_url()."info/blog1"?>">Click here</a> to learn more about it! </p>
-            			<a href="<?php echo base_url()."info/blog1"?>"><img class="img-responsive" src="<?php echo $PATH_IMG?>blogscreenshot.png"></a>     	
-            		</div>
-            
-				</div>
-			</div>			
-			<hr>	
-			<div class="row" style="margin-top:20px;padding-bottom:25px;">	
-            	<div style="padding: 0 15px;position:relative;">
-            		<p style="text-align:center;">2014-11-14 2:15PM</p>
-					<img src="<?php echo $PATH_IMG?>latest_fullbutton.png" style="width:70px; height:70px;border-radius: 150px;z-index:5;position:relative;"><span style="color:white;background:#7874a2; padding:5px 25px 5px 40px; border-radius:5px;margin-left:-20px;z-index:3;">The Wrevel Team</span>
-					<div class="arrow-left" style="position:absolute;width: 0; height: 0; border-top: 0px solid transparent;border-right: 35px solid #4991c9;
-border-bottom: 20px solid transparent;margin-left:14%;float:left;"></div>
-					<div style="padding:15px 5%;background:#4991C9;width:80%;float:right;color:white;border-radius:10px;">
-							<p style="text-align:left; font-size:16px;">Welcome to the new Wrevel! We are delighted to have you on board and can’t wait for you to check out all the new features we have for you. You can start by clicking on the <a style="color:white;text-decoration:underline;" href="<?php echo base_url()."main/mywrevs"?>"> MYWREVS</a> tab above and browse through the 12 new categories. Happy Wrevel-ing! :D</p>
-            			<img class="img-responsive" src="<?php echo $PATH_IMG?>projectphoenix_image.jpg">       	
-            		</div>
-            
-				</div>
-			</div>	
-                 <!--<form class="form-inline" role="form" style="margin-left:10%;" >
-            <div class="form-group">
-                        <!--<div class="left-inner-addon">
-                            <span class="glyphicon glyphicon-comment"></span>
-                            <label class="sr-only">Names</label>
-                            <input type="search" class="form-control" style="font-size:20px;border:1px solid #717477;" placeholder="write something"></div>-->
-            		</div>
-                        
-                        <!--<div class="btn-group">
-                                    <a href="#"><button type="button" class="btn btn-lg" style="background:#1A75BF; color:white; font-size:20px;padding:3px 5px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">Post Comment</button></a>
+                <?php if(isset($news_feed)) {
+                    for($i = 0; $i < count($news_feed); $i++) {?>
+                        <div class="row">	
+                            <div style="padding: 0 15px;position:relative;">
+                                <p style="text-align:center;"><?php echo $news_feed[$i]['news_date'];?></p>
+                                <img src="<?php echo $PATH_IMG?>latest_fullbutton.png" style="width:70px; height:70px;border-radius: 150px;z-index:5;position:relative;"><span style="color:white;background:#7874a2; padding:5px 25px 5px 40px; border-radius:5px;margin-left:-20px;z-index:3;"><?php echo $news_feed[$i]['news_author'];?></span>
+                                <div class="arrow-left" style="position:absolute;width: 0; height: 0; border-top: 0px solid transparent;border-right: 35px solid #4991c9; border-bottom: 20px solid transparent;margin-left:14%;float:left;">
+                                </div>
+                                <div style="padding:15px 5%;background:#4991C9;width:80%;float:right;color:white;border-radius:10px;">
+                                    <p style="text-align:left; font-size:16px;"><?php echo $news_feed[$i]['news_body'];?></p>
+                                    <img class="img-responsive" src="<?php echo base_url().'uploads/'.$news_feed[$i]['news_filename'];?>">       	
+                                </div>
+                            </div>
                         </div>
-                        
-                        <div class="btn-group">
-                                    <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px; padding:2px 5px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);"><span class="glyphicon glyphicon-camera"></span></button></a>
-                        </div>-->
-                        
+                        <hr>
+                <?php }}?>
+                <div class="row">	
+                    <div style="padding: 0 15px;position:relative;">
+                        <p style="text-align:center;">2014-12-20 4:00PM</p>
+                        <img src="<?php echo $PATH_IMG?>latest_fullbutton.png" style="width:70px; height:70px;border-radius: 150px;z-index:5;position:relative;"><span style="color:white;background:#7874a2; padding:5px 25px 5px 40px; border-radius:5px;margin-left:-20px;z-index:3;">The Wrevel Team</span>
+                        <div class="arrow-left" style="position:absolute;width: 0; height: 0; border-top: 0px solid transparent;border-right: 35px solid #4991c9; border-bottom: 20px solid transparent;margin-left:14%;float:left;">
+                        </div>
+                        <div style="padding:15px 5%;background:#4991C9;width:80%;float:right;color:white;border-radius:10px;">
+                            <a href="<?php echo base_url()."info/blog1"?>"><img class="img-responsive" src="<?php echo $PATH_IMG?>blogscreenshot.png"></a>     	
+                        </div>
+                    </div>
+                </div>			
+                <hr>	
+                <div class="row" style="margin-top:20px;padding-bottom:25px;">	
+                    <div style="padding: 0 15px;position:relative;">
+                        <p style="text-align:center;">2014-11-14 2:15PM</p>
+                        <img src="<?php echo $PATH_IMG?>latest_fullbutton.png" style="width:70px; height:70px;border-radius: 150px;z-index:5;position:relative;"><span style="color:white;background:#7874a2; padding:5px 25px 5px 40px; border-radius:5px;margin-left:-20px;z-index:3;">The Wrevel Team</span>
+                        <div class="arrow-left" style="position:absolute;width: 0; height: 0; border-top: 0px solid transparent;border-right: 35px solid #4991c9; border-bottom: 20px solid transparent;margin-left:14%;float:left;">
+                        </div>
+                        <div style="padding:15px 5%;background:#4991C9;width:80%;float:right;color:white;border-radius:10px;">
+                            <p style="text-align:left; font-size:16px;">Welcome to the new Wrevel! We are delighted to have you on board and can’t wait for you to check out all the new features we have for you. You can start by clicking on the <a style="color:white;text-decoration:underline;" href="<?php echo base_url()."main/mywrevs"?>"> MYWREVS</a> tab above and browse through the 12 new categories. Happy Wrevel-ing! :D</p>
+                            <img class="img-responsive" src="<?php echo $PATH_IMG?>projectphoenix_image.jpg">       	
+                        </div>
+                    </div>
+                </div>	
             </div>
+        </div>
     </div>
     
     </div>

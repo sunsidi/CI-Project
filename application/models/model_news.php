@@ -7,15 +7,26 @@ class Model_news extends CI_Model{
             parent::__construct();
             $this->load->database();
     }
-    //Gets all wrevenues in the database.
+    //Posts a new news to the database.
     public function post_news($news_filename) {
         $data['news_body'] = $this->input->post('news_body');
         $data['news_filename'] = $news_filename;
+        $data['news_author'] = $this->input->post('news_author');
         if($this->db->insert('news_feed', $data)) {
             return true;
         }
         return false;
     }
+    
+    //Gets all the news in the database.
+    public function get_news() {
+        $this->db->order_by('news_date', 'desc');
+        $query = $this->db->get('news_feed');
+        if($query->num_rows() != 0)
+            return $query->result_array();
+        return false;
+    }
+    
     
     //Converts the time to AM and PM.
     public function convert_time($temp_start_time) {

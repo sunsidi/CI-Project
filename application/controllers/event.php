@@ -272,6 +272,7 @@ class Event extends CI_Controller {
             $this->load->library('session');
             $this->load->model('model_users');
             $this->load->model('model_events');
+            $this->load->model('model_news');
             $email = $this->session->userdata('email');
 
             $data = $this->model_users->get_info($email);
@@ -281,6 +282,8 @@ class Event extends CI_Controller {
             $events_zipcode = $this->model_events->get_zipcode();
             $data['states']= $events_states;
             $data['zipcode'] = $events_zipcode;
+            
+            $data['news_feed'] = $this->model_news->get_news();
             
             $data['events'] = $this->model_events->featured_search();
             $result = array_merge($data, $path);
