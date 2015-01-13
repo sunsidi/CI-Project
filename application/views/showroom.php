@@ -31,6 +31,7 @@
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-tour.min.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <style type="text/css">
 .arrow-left {
@@ -57,7 +58,8 @@ position:absolute;
 <!--content
 ==============================================-->
 <div class="container" style="padding-bottom:50px;">
-    <div class="row" style="margin-top:50px;">
+<div id="showroom-step">
+    <div class="row"  style="margin-top:50px;">
 
         <div class="col-md-9 col-md-offset-1">
             <div class="col-md-1">
@@ -716,7 +718,7 @@ position:absolute;
         </div>
     </div>
 </div>
-
+</div>
 <!--end of content-->
 
 <?php $this->load->view('footer');?>
@@ -886,6 +888,7 @@ document.getElementById("herdzz").innerHTML = " ";
     			return false; 
     	}
     </script>
-
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
+ 	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script> 
 </body>
 </html> 
