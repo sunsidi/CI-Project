@@ -27,6 +27,16 @@ class Model_news extends CI_Model{
         return false;
     }
     
+    //Delets a set list of news.
+    public function delete_news() {
+        $data = $this->input->post('delete_news_checkbox');
+        $this->db->where_in('id', $data);
+        if($this->db->delete('news_feed')) {
+            return true;
+        }
+        return false;
+    }
+    
     
     //Converts the time to AM and PM.
     public function convert_time($temp_start_time) {

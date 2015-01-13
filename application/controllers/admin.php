@@ -27,12 +27,15 @@ class admin extends CI_Controller{
             	$this->load->model('model_tickets');
                 $this->load->model('model_blogs');
                 $this->load->model('model_friend_request');
+                $this->load->model('model_news');
             	
             	$data['all_users'] = $this->model_users->admin_get_users();
             	$data['all_events'] = $this->model_events->admin_get_events();
             	$data['all_tickets'] = $this->model_tickets->admin_get_tickets();
                 $data['all_blogs'] = $this->model_blogs->admin_get_blogs();
                 $data['all_notifications'] = $this->model_friend_request->get_notifications_simplified();
+                $data['all_news'] = $this->model_news->get_news();
+                
                 
                 $data['admin_users'] = $this->model_users->admin_get_admin_users();
                 $data['admin_level_1'] = $data['admin_level_2'] = $data['admin_level_3'] = $data['admin_level_4'] = array();
@@ -277,6 +280,19 @@ class admin extends CI_Controller{
             }
             else {
                 $this->session->set_flashdata('message', 'Your news was not created. Please make sure you have inputted the right information.');
+            }
+            redirect('admin/admin_account');
+        }
+        
+        //Deletes a set of news.
+        public function delete_news() {
+            $this->load->library('session');
+            $this->load->model('model_news');
+            if($this->model_news->delete_news()) {
+                $this->session->set_flashdata('message', 'Your news has been deleted.');
+            }
+            else {
+                $this->session->set_flashdata('message', 'There was an error removing some of the news.');
             }
             redirect('admin/admin_account');
         }

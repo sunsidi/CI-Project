@@ -752,6 +752,32 @@ jQuery(document).ready(function () {
                                             <button class="btn" style="color:white;background:#698BA7;font-size:25px;border-radius:10px;padding:5px 20px;">Post</button>
 					</div>
                                     <?php echo form_close();?>
+                                    <?php echo form_open('admin/delete_news');?>
+                                        <h2 style="text-align:center;">News List (Based on Date)</h2>
+                                            <div style="height:500px;overflow-y:auto;">
+                                                <table style="width:100%;text-align:left;">
+                                                    <thead style="color:#5697CA;">
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>News Date</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody style="font-size:18px;">
+                                                        <?php for($i = 0; $i < count($all_news); $i++) {?>
+                                                        <tr>
+                                                            <?php if(isset($all_news[$i])) {?>
+                                                            <td><input type="checkbox" name="delete_news_checkbox[]" value="<?php echo $all_news[$i]['id'];?>"></td>
+                                                            <td><?php echo $all_news[$i]['news_date'];?></td>
+                                                            <?php }?>
+                                                        </tr>
+                                                        <?php }?>
+                                                    </tbody>
+                                                </table>
+                                                <div class="row" style="text-align:right; margin-top:10px;padding:15px;">
+                                                    <button class="btn" style="color:white;background:#698BA7;font-size:25px;border-radius:10px;padding:5px 20px;">Delete</button>
+                                                </div>
+                                            </div>
+                                    <?php echo form_close();?>
 				</div>
                                 <?php }?>
                                 
