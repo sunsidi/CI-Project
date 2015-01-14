@@ -259,7 +259,137 @@ ul.ticket-event-dp > li > a:hover{
 
                 </div>
 		
-		
+		  <div class="container" style="margin-top: 10px; margin-left: -13px;">
+    
+    
+              <div class="col-md-offset-1 col-md-2 col-sm-6 col-xs-12" style="position: relative;width: 200px; height: 280px; margin-top: 10px;">
+                <div class="mosaic-block bar2" style="width: 200px; height: 280px; margin-left:-15px;">
+		    <a target="_blank" class="mosaic-overlay" style="background-color: blue;display: inline; left: 0px;text-decoration: none;">
+                    <div class="col-md-12" style="height: 50px; background-color: red;position:relative;">
+                            <p style="text-align:center; color:white; font-size:20px; margin-top:8px;">
+								<strong style="text-shadow: 1px 1px 0.5px #000000;">AAA</strong>
+                            </p>
+      </div>
+                        <!--Location of event-->
+                        <p class="location location-romance"><i class="fa fa-map-marker"></i> New York </p>
+                        
+                        <!--Description -->
+                        <p class="description">                       
+                        lalala......                       
+                        </p>
+                        
+                        <!--Click to lead to individual listing page-->
+                        <p class="more">Show more >></p>
+        </a>
+			
+      <div class="mosaic-backdrop" style="display: block;">
+                                <div style="position: absolute; border-radius:7px; background-color: rgba(239,186,183,0.3); width: 100%; height: 280px; z-index: 0;"></div>
+                        <!--Event Image-->
+        <img src="<?php echo $PATH_IMG?>newsfeed_icon.png" style="max-width:100%; min-width:100%; max-height:100%; min-height:100%;">
+        <div class="details">
+                                    <p style="font-size:17px;">
+                                    <!--Date of event-->
+                                    <span class="badge date " >2015</span>
+                                    <span class="pull-right"style="text-shadow: 1px 1px 0.5px #000000;"><i class="fa fa-clock-o"></i>6pm</span>
+                                    </p>
+									
+									
+                                    <!--Number of people attending-->
+                                    <p style="font-size:17px;">
+									<span class="badge attending">10</span> <span style="text-shadow: 1px 1px 0.5px #000000;">Attending</span>
+                                    <span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><span>10</span><i class="fa fa-heart-o"></i></span>
+                                    </p>
+                                    
+                                </div>
+                        </div>
+		</div>
+		</div>
+	                    <div class="col-md-offset-1 col-md-2 col-sm-6 col-xs-12" style="position: relative;width: 200px; height: 280px; margin-top: 10px;">
+                <div class="mosaic-block bar2" style="width: 200px; height: 280px; margin-left:-15px;">
+		    <a target="_blank" class="mosaic-overlay" style="background-color: blue;display: inline; left: 0px;text-decoration: none;">
+                    <div class="col-md-12" style="height: 50px; background-color: red;position:relative;">
+                            <p style="text-align:center; color:white; font-size:20px; margin-top:8px;">
+								<strong style="text-shadow: 1px 1px 0.5px #000000;">AAA</strong>
+                            </p>
+      </div>
+                        <!--Location of event-->
+                        <p class="location location-romance"><i class="fa fa-map-marker"></i> New York </p>
+                        
+                        <!--Description -->
+                        <p class="description">                       
+                        lalala......                       
+                        </p>
+                        
+                        <!--Click to lead to individual listing page-->
+                        <p class="more">Show more >></p>
+        </a>
+			
+      <div class="mosaic-backdrop" style="display: block;">
+                                <div style="position: absolute; border-radius:7px; background-color: rgba(239,186,183,0.3); width: 100%; height: 280px; z-index: 0;"></div>
+                        <!--Event Image-->
+        <img src="<?php echo $PATH_IMG?>newsfeed_icon.png" style="max-width:100%; min-width:100%; max-height:100%; min-height:100%;">
+        <div class="details">
+                                    <p style="font-size:17px;">
+                                    <!--Date of event-->
+                                    <span class="badge date " >2015</span>
+                                    <span class="pull-right"style="text-shadow: 1px 1px 0.5px #000000;"><i class="fa fa-clock-o"></i>6pm</span>
+                                    </p>
+									
+									
+                                    <!--Number of people attending-->
+                                    <p style="font-size:17px;">
+									<span class="badge attending">10</span> <span style="text-shadow: 1px 1px 0.5px #000000;">Attending</span>
+                                    <span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><span>10</span><i class="fa fa-heart-o"></i></span>
+                                    </p>
+                                    
+                                </div>
+                        </div>
+		</div>
+		</div>
+	      
+	                    <div class="col-md-offset-1 col-md-2 col-sm-6 col-xs-12" style="position: relative;width: 200px; height: 280px; margin-top: 10px;">
+                <div class="mosaic-block bar2" style="width: 200px; height: 280px; margin-left:-15px;">
+		    <a target="_blank" class="mosaic-overlay" style="background-color: blue;display: inline; left: 0px;text-decoration: none;">
+                    <div class="col-md-12" style="height: 50px; background-color: red;position:relative;">
+                            <p style="text-align:center; color:white; font-size:20px; margin-top:8px;">
+								<strong style="text-shadow: 1px 1px 0.5px #000000;">AAA</strong>
+                            </p>
+      </div>
+                        <!--Location of event-->
+                        <p class="location location-romance"><i class="fa fa-map-marker"></i> New York </p>
+                        
+                        <!--Description -->
+                        <p class="description">                       
+                        lalala......                       
+                        </p>
+                        
+                        <!--Click to lead to individual listing page-->
+                        <p class="more">Show more >></p>
+        </a>
+			
+      <div class="mosaic-backdrop" style="display: block;">
+                                <div style="position: absolute; border-radius:7px; background-color: rgba(239,186,183,0.3); width: 100%; height: 280px; z-index: 0;"></div>
+                        <!--Event Image-->
+        <img src="<?php echo $PATH_IMG?>newsfeed_icon.png" style="max-width:100%; min-width:100%; max-height:100%; min-height:100%;">
+        <div class="details">
+                                    <p style="font-size:17px;">
+                                    <!--Date of event-->
+                                    <span class="badge date " >2015</span>
+                                    <span class="pull-right"style="text-shadow: 1px 1px 0.5px #000000;"><i class="fa fa-clock-o"></i>6pm</span>
+                                    </p>
+									
+									
+                                    <!--Number of people attending-->
+                                    <p style="font-size:17px;">
+									<span class="badge attending">10</span> <span style="text-shadow: 1px 1px 0.5px #000000;">Attending</span>
+                                    <span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><span>10</span><i class="fa fa-heart-o"></i></span>
+                                    </p>
+                                    
+                                </div>
+                        </div>
+		</div>
+		</div>
+	      </div>
 		
                 <div class="row" style="text-align:center; padding:10px;">
 <!--                                    <a href="#"><button type="button" class="btn btn-lg" style="background:#1A75BF; color:white; font-size:20px; padding:5px;">View more</button></a> -->
@@ -267,8 +397,6 @@ ul.ticket-event-dp > li > a:hover{
                 </div>
             </div>
         </div>
-        
-
 <!--Groups-->
            
         <div class="panel" style="border:none; width: 100%;border-radius:15px; -moz-box-shadow:1px 1px 1px rgba(0, 0, 0, .3);-webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);box-shadow:1px 1px 1px rgba(0, 0, 0, .3);background:rgba(255,255,255,0.5);">
@@ -455,6 +583,22 @@ border-bottom: 20px solid transparent;margin-left:14%;float:left;"></div>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
 
 	<script type="text/javascript" src="<?php echo $PATH_BOOTSTRAP?>js/mosaic.1.0.1.js"></script>
+	    <script type="text/javascript">  
+			
+			jQuery(function($){
+				
+				$('.circle').mosaic({
+					opacity		:	0.8			//Opacity for overlay (0-1)
+				});
+				
+				$('.fade').mosaic();
+				
+				$('.bar2').mosaic({
+					animation	:	'slide'		//fade or slide
+				});
+			});
+		    
+  </script>
 
 	<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
 	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script>
