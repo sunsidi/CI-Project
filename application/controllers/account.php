@@ -182,6 +182,26 @@ class account extends CI_Controller{
                 $this->load->view('Create_Wrevel_View',$result);
                  $this->load->view('myaccount_ticketmanagement',$result);
 	}
+	
+	public function myaccount_stats(){
+	
+		$this->load->library('path');
+            	$path = $this->path->getPath();
+            	$this->load->library('session');
+                $this->load->model('model_users');
+            	$data = $this->model_users->get_info($this->session->userdata('email'));
+                
+                $account_data = $this->get_account_info();
+                
+            	  $nav_data = $this->session->all_userdata();
+                $result = array_merge($path,$data,$nav_data, $account_data);
+                
+                
+                $this->load->view('Create_Wrevel_View',$result);
+                 $this->load->view('myaccount_stats',$result);
+	}
+	
+	
 	//change various account information.
 	public function edit_account_info() {
             $this->load->library('path');
