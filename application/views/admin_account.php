@@ -438,9 +438,9 @@ jQuery(document).ready(function () {
 						<p style="padding:0 20% 10px 15px;">This Month ( - ): <span class="pull-right">#</span></p>
                                             -->
 						<p style="background:#628da3;padding:10px 20% 10px 15px;">Average users online (per day this month): <span class="pull-right">#</span></p>
-						<p style="padding:0 20% 0 15px;">Today (today&rsquo;s date): <span class="pull-right">#</span></p>
-						<p style="padding:0 20% 0 15px;">This Week ( - ): <span class="pull-right">#</span></p>
-						<p style="padding:0 20% 10px 15px;">This Month ( - ): <span class="pull-right">#</span></p>
+						<p style="padding:0 20% 0 15px;">Today (today&rsquo;s date): <span class="pull-right"><?php echo $stats['days'];?></span></p>
+						<p style="padding:0 20% 0 15px;">This Week ( - ): <span class="pull-right"><?php echo $stats['weeks'];?></span></p>
+						<p style="padding:0 20% 10px 15px;">This Month ( - ): <span class="pull-right"><?php echo $stats['months'];?></span></p>
 						
 						<p style="background:#628da3;padding:10px 20% 10px 15px;">Average time spent onsite: <span class="pull-right">#</span></p>
 						<p style="padding:0 20% 0 15px;">Today (today&rsquo;s date): <span class="pull-right">#</span></p>

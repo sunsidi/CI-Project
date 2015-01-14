@@ -43,6 +43,37 @@ class admin extends CI_Controller{
                 $data['all_notifications'] = $this->model_friend_request->get_notifications_simplified();
                 $data['all_news'] = $this->model_news->get_news();
                 
+                //FOR SITE STATS.
+                $data['stats']['months'] = 0;
+                $data['stats']['weeks'] = 0;
+                $data['stats']['days'] = 0;
+                $datestring = "%Y-%m"; //Month
+                $datestring2 = "%Y-%m-%d"; //Day.
+                $time = time();
+                
+                $temp_month = mdate($datestring, $time); //This month.
+                
+                $day = date('w');
+                $temp_week = date('Y-m-d', strtotime('-'.$day.' days')); //This week.
+                
+                $temp_day = mdate($datestring2, $time); //Today.
+                
+                //Add the remainder to make it the start of the first day.
+                $this_month = $temp_month.'-01 00:00:00';
+                $this_week = $temp_week.' 00:00:00';
+                $today = $temp_day.' 00:00:00';
+                
+                for($i = 0; $i < count($data['all_users']); $i++) {
+                    if($data['all_users'][$i]['last_online'] >= $this_month) {
+                        $data['stats']['months']++;
+                    }
+                    if($data['all_users'][$i]['last_online'] >= $this_week) {
+                        $data['stats']['weeks']++;
+                    }
+                    if($data['all_users'][$i]['last_online'] >= $today) {
+                        $data['stats']['days']++;
+                    }
+                }
                 
                 $data['admin_users'] = $this->model_users->admin_get_admin_users();
                 $data['admin_level_1'] = $data['admin_level_2'] = $data['admin_level_3'] = $data['admin_level_4'] = array();
@@ -96,7 +127,7 @@ class admin extends CI_Controller{
                     $data['all_events'][$i]['diff'] = $diff->format("%a");
                 }
                 $result = array_merge($path, $data);
-                //echo '<pre>', print_r($data['highest_level'], true), '</pre>';
+                echo '<pre>', print_r($data['stats'], true), '</pre>';
                   $this->load->view('Create_Wrevel_View',$result);
                  $this->load->view('admin_account',$result);
 	
