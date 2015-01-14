@@ -80,6 +80,57 @@ class Model_events extends CI_Model{
         return false;
     }
     
+    //Update the number of views on all events by 1 each time the latest wrevs is visited.
+    public function update_views() {
+        $this->db->where('e_date >', 'NOW() + INTERVAL 1 DAY', FALSE);
+        $this->db->set('views', 'views+1', FALSE);
+        $this->db->update('events');
+    }
+    
+    //Update the number of views on events based on category.
+    public function update_views_category($category) {
+        $query= $this->db->get('events');
+        $events = $query->result_array();
+        $event_ids = array();
+        foreach ($events as $event){
+	    $hashkey = $event['e_category'];
+	    $event_category = $this->hashmap_cata->hash($hashkey);
+            if(in_array($category,$event_category)) {
+                array_push($event_ids,$event['event_id']);
+            } 
+        }
+        if(isset($event_ids)) {
+            $this->db->where('e_date >', 'NOW() + INTERVAL 1 DAY', FALSE);
+            $this->db->where_in('event_id', $event_ids);
+            $this->db->set('views', 'views+1', FALSE);
+            $this->db->update('events');
+        }
+    }
+    
+    //Update the number of clicks on events.
+    public function update_clicks($event_id) {
+        $this->db->where('event_id', $event_id);
+        $this->db->set('clicks', 'clicks+1', FALSE);
+        $this->db->update('events');
+    }
+    
+    //Gets the total number of views and clicks and returns it.
+    public function get_total_views_clicks($user_id) {
+        $query = $this->db->get_where('events', array('e_creatorID' => $user_id));
+        if($query->num_rows() != 0) {
+            $temp = $query->result_array();
+            $data['total_views'] = 0;
+            $data['total_clicks'] = 0;
+            for($i = 0; $i < count($temp); $i++) {
+                $data['total_views'] = $data['total_views'] + $temp[$i]['views'];
+                $data['total_clicks'] = $data['total_clicks'] + $temp[$i]['clicks'];
+            }
+            return $data;
+        }
+        return false;
+    }
+    
+    
       public function find_event($e_id)
       {
 	    //$e_name = 'Boris pimp party';

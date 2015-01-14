@@ -189,12 +189,12 @@ class account extends CI_Controller{
             	$path = $this->path->getPath();
             	$this->load->library('session');
                 $this->load->model('model_users');
-            	$data = $this->model_users->get_info($this->session->userdata('email'));
+                $this->load->model('model_events');
+            	$user_data = $this->model_users->get_info($this->session->userdata('email'));
+                $data = $this->model_events->get_total_views_clicks($user_data['user_id']);
                 
-                $account_data = $this->get_account_info();
                 
-            	  $nav_data = $this->session->all_userdata();
-                $result = array_merge($path,$data,$nav_data, $account_data);
+                $result = array_merge($path, $data, $user_data);
                 
                 
                 $this->load->view('Create_Wrevel_View',$result);

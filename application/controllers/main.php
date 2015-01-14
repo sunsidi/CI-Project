@@ -671,20 +671,20 @@ public function index()
 	}
 	public function mywrevs()
 	{
-    $this->load->library('path');
-    $this->load->model('model_users');
-    $path = $this->path->getPath();
-    $this->load->library('session');
-    $email = $this->session->userdata('email');
-    $info = $this->model_users->get_info($email);
-    
-    //This loads all the necessary data for the nav bar.
-    $nav_data = $this->session->all_userdata();
-    $info = $this->model_users->get_info($email);
-    $result = array_merge($info,$nav_data,$path);
-    //echo "<pre> ",print_r($result,true) ,"</pre>";
-    $this->load->view('Create_Wrevel_View',$path);
-    $this->load->view('mywrevs',$result);
+            $this->load->library('path');
+            $this->load->model('model_users');
+            $path = $this->path->getPath();
+            $this->load->library('session');
+            $email = $this->session->userdata('email');
+            $info = $this->model_users->get_info($email);
+
+            //This loads all the necessary data for the nav bar.
+            $nav_data = $this->session->all_userdata();
+            $info = $this->model_users->get_info($email);
+            $result = array_merge($info,$nav_data,$path);
+            //echo "<pre> ",print_r($result,true) ,"</pre>";
+            $this->load->view('Create_Wrevel_View',$path);
+            $this->load->view('mywrevs',$result);
     
 	}
 //MARKED FOR DELETION.
@@ -782,7 +782,7 @@ public function get_related_events($category)
         $zipcode = $this->input->post('zipcode');
         
     	$related_events= $this->model_events->get_latest_related_events($search,$category,$price,$state,$zipcode);
-
+        $this->model_events->update_views_category($category);
 
       $result = array_merge($related_events, $path);
       $data = array_merge($result,$eventMap);
@@ -893,7 +893,7 @@ public function get_related_events($category)
         //echo $price."<br>";
 
     $latest_events = $this->model_events->get_latest_events($search,$price,$zipcode,$state);
-    
+    $this->model_events->update_views();
  
 
     $data = array_merge($latest_events,$path);

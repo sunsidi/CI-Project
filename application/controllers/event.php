@@ -58,6 +58,7 @@ class Event extends CI_Controller {
                //$data['PATH_IMG'] = $path['PATH_IMG'];
                 $data['event_id'] = $event_id;
                 $data['event'] = $this->model_events->find_event($event_id);
+                $this->model_events->update_clicks($event_id);
                 $data['event_ticket_types'] = $this->model_events->get_tickets_for_event($event_id);
                 $datestring = "%Y-%m-%d";
                 $datestring2 = "%H:%i";
