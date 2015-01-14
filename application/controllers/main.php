@@ -370,6 +370,7 @@ public function index()
 		$condition = $this->model_users->can_log_in();
                 if($condition == 2)
 		{
+                    $this->model_users->set_last_online();
                     return true;
 		}
                 else if($condition == 3)

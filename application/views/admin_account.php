@@ -106,7 +106,7 @@ jQuery(document).ready(function () {
 			
                                 <?php if($current_user['admin_level'] <= 2 || $current_user['admin_level'] == 4) {?>
 				<!--Summary-->
-				<div class="tab-pane active default-tabs" id="home" style="background:rgba(255,255,255,0.5);color:#404041; padding:10%;text-align:center;">
+				<div class="tab-pane" id="home" style="background:rgba(255,255,255,0.5);color:#404041; padding:10%;text-align:center;">
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-xs-6">
 					<img src="<?php echo $PATH_IMG?>users_icon.png" style="width:80%;"/>
@@ -226,63 +226,66 @@ jQuery(document).ready(function () {
       
 				<!--Transactions-->
 				<div class="tab-pane" id="transactions" style="background:rgba(255,255,255,0.5);padding:10%;text-align:center;font-size:18px;">
-					<img src="<?php echo $PATH_IMG?>tickets_icon.png" style="width:40%;"/>
-					<h1 style="margin-top:20px;"><strong>2.5K</strong> Tickets Sold</h1>
-					<button type="button" class="btn admin_tabs">All</button>
-					<button type="button" class="btn admin_tabs">Recent</button>
-					<button type="button" class="btn admin_tabs">Refunds</button>
-					<div class="form-group" style="margin-top:10px;width:60%;margin-left:auto;margin-right:auto;">
-              					<div class="left-inner-addon" style="text-align:left;">
-                					<span class="glyphicon glyphicon-search"></span>
-          						<label class="sr-only">Search</label>
-          						<input type="Search" class="form-control" style="border-radius:10px;font-size:20px;" placeholder="Search">						
-          					</div>
-       					</div>
-       					<div style="height:500px;overflow-y:auto;">
-       					<table style="width:100%;text-align:left;">
-							<thead style="color:#5697CA;">
-       						<tr>
-							<th>Buyer</th>							
-							<th>Seller</th>							
-							<th>Event ID</th>							
-							<th>Event Name</th>
-							<th>Delivery</th>
-							<th>Ticket Type</th>
-							<th>Price</th>
-							<th>Our Fees</th>
-							<th>Status</th>
-							<th></th>
-							</tr>
-							
-							<tbody>
-							<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td>
-								<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-								Action <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="#">Issue Refund</a></li>
-									<li><a href="#">Cancel Request</a></li>
-									<li><a href="#">Cancel Order</a></li>
-								</ul>
-								</div>
-							</td>
-							</tr>
-							</tbody>
-       					</table>
-       					</div>
-       					<button type="button" class="btn admin_button" style="background:#4B90C9;">Open</button>
-       					<button type="button" class="btn admin_button" style="background:#684F6F;">Delete</button>
+                                    <img src="<?php echo $PATH_IMG?>tickets_icon.png" style="width:40%;"/>
+                                    <h1 style="margin-top:20px;"><strong><?php if(isset($all_tickets) && !empty($all_tickets)) echo count($all_tickets); else echo 0;?></strong> Tickets Sold</h1>
+                                    <button type="button" class="btn admin_tabs">All</button>
+                                    <button type="button" class="btn admin_tabs">Recent</button>
+                                    <button type="button" class="btn admin_tabs">Refunds</button>
+                                    <div class="form-group" style="margin-top:10px;width:60%;margin-left:auto;margin-right:auto;">
+                                        <div class="left-inner-addon" style="text-align:left;">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                            <label class="sr-only">Search</label>
+                                            <input type="Search" class="form-control" style="border-radius:10px;font-size:20px;" placeholder="Search">						
+                                        </div>
+                                    </div>
+                                    <div style="height:500px;overflow-y:auto;">
+                                        <table style="width:100%;text-align:left;">
+                                            <thead style="color:#5697CA;">
+                                                <tr>
+                                                    <th>Buyer</th>							
+                                                    <th>Seller</th>							
+                                                    <th>Event ID</th>							
+                                                    <th>Event Name</th>
+                                                    <th>Delivery</th>
+                                                    <th>Ticket Type</th>
+                                                    <th>Price</th>
+                                                    <th>Our Fees</th>
+                                                    <th>Date Purchased</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php if(isset($all_tickets)) {
+                                                    for($i = 0; $i < count($all_tickets); $i++) {
+                                                        if(isset($all_tickets[$i])) {?>
+                                                            <tr>
+                                                                <td><?php echo $all_tickets[$i]['fullname'];?></td>
+                                                                <td><?php echo $all_tickets[$i]['seller'];?></td>
+                                                                <td><?php echo $all_tickets[$i]['event_id'];?></td>
+                                                                <td><?php echo $all_tickets[$i]['e_name'];?></td>
+                                                                <td><?php echo $all_tickets[$i]['delivery'];?></td>
+                                                                <td><?php echo $all_tickets[$i]['ticket_type'];?></td>
+                                                                <td><?php echo $all_tickets[$i]['total_price'];?></td>
+                                                                <td><?php echo $all_tickets[$i]['fees'];?></td>
+                                                                <td><?php echo $all_tickets[$i]['purchase_time'];?></td>
+                                                                <!--<td> DONT NEED YET.
+                                                                    <div class="btn-group">
+                                                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                                            Action <span class="caret"></span>
+                                                                        </button>
+                                                                        <ul class="dropdown-menu" role="menu">
+                                                                            <li><a href="#">Issue Refund</a></li>
+                                                                            <li><a href="#">Cancel Request</a></li>
+                                                                            <li><a href="#">Cancel Order</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>-->
+                                                            </tr>
+                                                <?php }}}?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <button type="button" class="btn admin_button" style="background:#4B90C9;">Open</button>
+                                    <button type="button" class="btn admin_button" style="background:#684F6F;">Delete</button>
 				</div>
                                 <?php }?>
                                 
@@ -425,15 +428,16 @@ jQuery(document).ready(function () {
                                 
                                 <?php if($current_user['admin_level'] <= 2 || $current_user['admin_level'] == 4) {?>
                                 <!--Site Stats-->
-				<div class="tab-pane" id="site_stats" style="background:rgba(255,255,255,0.5);padding:2% 8%; font-size:25px;">
+				<div class="tab-pane active default-tabs" id="site_stats" style="background:rgba(255,255,255,0.5);padding:2% 8%; font-size:25px;">
 					<h2 style="text-align:center;color:#5697CA;"><i class="fa fa-share-alt" style="color:black;"></i> Site Stats</h2>
 					<div style="background:#81a4b5;color:white;">
+                                            <!-- DONT NEED THIS YET 
 						<p style="background:#628da3;padding:10px 20% 10px 15px;">Total site visits: <span class="pull-right">#</span></p>
 						<p style="padding:0 20% 0 15px;">Today (today&rsquo;s date): <span class="pull-right">#</span></p>
 						<p style="padding:0 20% 0 15px;">This Week ( - ): <span class="pull-right">#</span></p>
 						<p style="padding:0 20% 10px 15px;">This Month ( - ): <span class="pull-right">#</span></p>
-						
-						<p style="background:#628da3;padding:10px 20% 10px 15px;">Average users online (per hour): <span class="pull-right">#</span></p>
+                                            -->
+						<p style="background:#628da3;padding:10px 20% 10px 15px;">Average users online (per day this month): <span class="pull-right">#</span></p>
 						<p style="padding:0 20% 0 15px;">Today (today&rsquo;s date): <span class="pull-right">#</span></p>
 						<p style="padding:0 20% 0 15px;">This Week ( - ): <span class="pull-right">#</span></p>
 						<p style="padding:0 20% 10px 15px;">This Month ( - ): <span class="pull-right">#</span></p>

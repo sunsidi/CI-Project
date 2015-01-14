@@ -107,6 +107,19 @@ class Model_users extends CI_Model{
 	}
     }
     
+    //Set the activity of a user as when he last logged in.
+    public function set_last_online() {
+        $this->load->helper('date');
+        $datestring = "%Y-%m-%d %G:%i:%s";
+        $time = time();
+
+        $insert_time = mdate($datestring, $time);
+        if($this->db->update('users', array('last_online' => $insert_time), array('email' => $this->input->post('email')))) {
+            return true;
+        }
+        return false;
+    }
+    
     public function forgot_password($email_data) {
     	$key = md5(uniqid());
 	$last_query = $this->db->get_where('users_reset_key', array('user_id' => $email_data['user_id']));

@@ -38,9 +38,9 @@
                     		
                    <p style="color:white;"><a style="color:black; text-decoration:underline;" href="<?php echo base_url()."stripe_controller/print_ticket"?>"> Click here to email tickets</a></p>
                    
-                   <?php echo form_open('stripe_controller/print_ticket');?>
-                    <button type="submit" action = "<?php echo base_url()."stripe_controller/print_ticket"?>" class="btn print" style="font-size:20px;">Print Ticket and Receipt</button>
-    			<?php echo form_close();?>
+                    <?php echo form_open('stripe_controller/print_ticket/'.$event_id.'/'.$ticket_id);?>
+                        <button type="submit" class="btn print" style="font-size:20px;">Print Ticket and Receipt</button>
+                    <?php echo form_close();?>
 			</div>
      		</div>
          </div>

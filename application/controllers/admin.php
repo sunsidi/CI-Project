@@ -32,6 +32,13 @@ class admin extends CI_Controller{
             	$data['all_users'] = $this->model_users->admin_get_users();
             	$data['all_events'] = $this->model_events->admin_get_events();
             	$data['all_tickets'] = $this->model_tickets->admin_get_tickets();
+                //More information needed for tickets. event name and seller.
+                for($i = 0; $i < count($data['all_tickets']); $i++) {
+                    $event_data_temp = $this->model_events->admin_get_event_info($data['all_tickets'][$i]['event_id']);
+                    $data['all_tickets'][$i]['e_name'] = $event_data_temp['e_name'];
+                    $data['all_tickets'][$i]['seller'] = $this->model_users->get_username_with_id($event_data_temp['e_creatorID']);
+                }
+                
                 $data['all_blogs'] = $this->model_blogs->admin_get_blogs();
                 $data['all_notifications'] = $this->model_friend_request->get_notifications_simplified();
                 $data['all_news'] = $this->model_news->get_news();

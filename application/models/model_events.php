@@ -67,6 +67,19 @@ class Model_events extends CI_Model{
             $this->db->update('events', array('e_featured' => 1), array('event_id' => $data[$i]));
         }
     }
+    
+    //Minimum information returned for admin to get event name.
+    public function admin_get_event_info($e_id) {
+        $query = $this->db->get_where('events', array('event_id' => $e_id));
+        if($query->num_rows() != 0) {
+            $temp = $query->row_array(0);
+            $name_seller['e_name'] = $temp['e_name'];
+            $name_seller['e_creatorID'] = $temp['e_creatorID'];
+            return $name_seller;
+        }
+        return false;
+    }
+    
       public function find_event($e_id)
       {
 	    //$e_name = 'Boris pimp party';
