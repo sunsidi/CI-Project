@@ -70,6 +70,8 @@
 		
 		.bar2 .mosaic-overlay {
 			background-color: transparent;
+			//bottom:-100px;
+			//height:200px;
 			bottom:-180px;
 			height:280px;
 			opacity:0.8;

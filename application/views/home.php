@@ -22,7 +22,7 @@
 <!--content
 ==============================================-->
 <div class="container">
-<div class="row" style="margin-top:-20px;">
+<div class="row" style="margin-top:30px;">
 <div class="col-md-12" style ="width:100%; color:white;text-align:center;">
 	<p style="margin-top:50px;"><img src="<?php echo $PATH_IMG?>large_w_logo.png"  style="width:25%;" alt="Welcome to Wrevel"/></p>
 	<p style="font-size:52px; text-align:center;font-family:'Lobster';"><span style="font-size:36px;">Welcome to</span> Wrevel</p>

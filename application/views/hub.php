@@ -70,8 +70,8 @@ ul.ticket-event-dp > li > a:hover{
 ==============================================-->
  <?php $events_info =$this->_ci_cached_vars;?>
 
- <div style="width:90%;margin-left:auto;margin-right:auto;margin-top:3%;">
-		<div class="btn-group ticker-button" style="float:left;">
+ <div class="featuring" style="width:100%;margin-left:auto;margin-right:auto;margin-top:3%;position:relative;">
+		<div class="btn-group ticker-button" style="float:left;z-index:3;">
 		<button type="button" class="btn btn-lg dropdown-toggle ticker" data-toggle="dropdown" aria-expanded="false">Featured Events <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
 			<ul class="dropdown-menu ticket-event-dp" role="menu">
 				<li><a href="#" class="ticker-event" style="color:white;" onclick="show_featured_events()">Featured Events</a></li>
@@ -80,7 +80,7 @@ ul.ticket-event-dp > li > a:hover{
 				
 			</ul>
 		</div>
-		<p class="marquee">
+		<p class="marquee" style="z-index:2;">
 			<!--Scrolling Events-->
 			<span>
                             <?php if(isset($events)) {

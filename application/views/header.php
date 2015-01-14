@@ -28,7 +28,7 @@
 <?php $this->load->library('session'); if(!$this->session->userdata('is_logged_in')) {?>
 <!--header not logged in
 ===========================================-->
-    <div class="navbar"  role="navigation" style="background:#6A8BA8; height:60px; border-radius:none; -moz-box-shadow:   1px 2px 2px 3px rgba(0, 0, 0, .2);-webkit-box-shadow: 1px 2px 2px 3px rgba(0, 0, 0, .2); box-shadow:  1px 2px 2px 3px rgba(0, 0, 0, .2); position:relative">
+    <div class="navbar navbar-fixed-top"  role="navigation" style="background:#6A8BA8; height:60px; border-radius:none; -moz-box-shadow:   1px 2px 2px 3px rgba(0, 0, 0, .2);-webkit-box-shadow: 1px 2px 2px 3px rgba(0, 0, 0, .2); box-shadow:  1px 2px 2px 3px rgba(0, 0, 0, .2); ">
     	<div class="logo dropdown navbar-brand pull-left" style="margin-left:15px;">
         	<button class="btn" type="button" id="dropdownMenu1" data-toggle="dropdown" style="background:none; padding:0;">
         	<img src="<?php echo $PATH_IMG?>menu_button.png"> </button>
@@ -67,7 +67,7 @@
 <!--header logged in
 ===========================================-->
 <?php $nav_data = get_navi_data()?>
- <div class="navbar"  role="navigation" style="background:#6A8BA8; height:60px; position:relative;-moz-box-shadow:   1px 2px 2px 3px rgba(0, 0, 0, .2);-webkit-box-shadow: 1px 2px 2px 3px rgba(0, 0, 0, .2); box-shadow:  1px 2px 2px 3px rgba(0, 0, 0, .2); ">
+ <div class="navbar navbar-fixed-top"  role="navigation" style="background:#6A8BA8; height:60px; -moz-box-shadow:   1px 2px 2px 3px rgba(0, 0, 0, .2);-webkit-box-shadow: 1px 2px 2px 3px rgba(0, 0, 0, .2); box-shadow:  1px 2px 2px 3px rgba(0, 0, 0, .2); ">
       <div class="logo dropdown navbar-brand">
           <button class="btn" type="button" id="dropdownMenu1" data-toggle="dropdown" style="background:none; padding:0;">
           <img src="<?php echo $PATH_IMG?>menu_button.png" style="margin-left:15px;"> </button>
@@ -171,7 +171,7 @@
             </div>
         </div>
     </div>-->
-      <div class="row" style="text-align:center;">
+      <div class="row" style="text-align:center;margin-top:80px;">
             <div class="btn-group btn-group-lg sub">
                 <a href="<?php echo base_url()."main/mywrevs"?>" class="btn tab">mywrevs</a>
                 <a href="<? echo base_url()?>event/hub" class="btn tab">the hub</a>
