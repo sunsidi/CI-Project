@@ -594,11 +594,11 @@
                                                 <div class="tab-content">
                                                     <div class="tab-pane active" id="total-visits">
                                                         <div>
-                                                            <p style="text-align:center;"><strong>Number of Views: <?php echo $total_views;?></strong> </p>
+                                                            <p style="text-align:center;"><strong>Number of Views: <?php echo $views_clicks['total_views'];?></strong> </p>
                                                             <canvas id="total_tickets_sold_visits_doughnut"></canvas>
                                                         </div>
                                                         <div style="margin-top:30px;">
-                                                            <p style="text-align:center;"><strong>Number of Clicks: <?php echo $total_clicks;?></strong>
+                                                            <p style="text-align:center;"><strong>Number of Clicks: <?php echo $views_clicks['total_clicks'];?></strong>
                                                             </p>
                                                             <canvas id="total_tickets_returned_visits_doughnut"></canvas>
                                                         </div>
@@ -821,7 +821,7 @@
                     strokeColor: "rgba(173,231,241,1)",
                     highlightFill: "#fff",
                     highlightStroke: "rgba(173,231,241,1)",
-                    data: [20, 30, 40],
+                    data: [20, 30, 400],
                 }
             ]
         }
@@ -833,7 +833,7 @@
                     strokeColor: "rgba(173,231,241,1)",
                     highlightFill: "#fff",
                     highlightStroke: "rgba(173,231,241,1)",
-                    data: [20, 30],
+                    data: [<?php echo $views_clicks['total_views'];?>,<?php echo $views_clicks['total_clicks'];?>],
                 }
             ]
         }
@@ -1104,6 +1104,34 @@
             },
 
         ];
+        var doughnutData3 = [{
+                value: <?php echo $views_clicks['total_views'];?>, // # of days since signup
+                color: "#33B0D3",
+                highlight: "#33B0D3",
+                label: "Views"
+            }, {
+                value: <?php echo $day_since_signup;?>, //Total # of views
+                color: "#D1D3D4",
+                highlight: "#D1D3D4",
+                label: "Days Since Signup"
+            },
+
+        ];
+
+        //Total Number of Tickets Returned	
+        var doughnutData4 = [{
+                value: <?php echo $views_clicks['total_clicks'];?>, // # of days since signup
+                color: "#F65359",
+                highlight: "#F65359",
+                label: "Clicks"
+            }, {
+                value: <?php echo $day_since_signup;?>, //Total # of clicks
+                color: "#D1D3D4",
+                highlight: "#D1D3D4",
+                label: "Days Since Signup"
+            },
+
+        ];
         /*
         //Number of Tickets Sold for Event1	
         var doughnutData3 = [{
@@ -1324,12 +1352,12 @@
                 ctx_doughnut_sold2 = document.getElementById("total_tickets_sold_visits_doughnut").getContext("2d");
                 ctx_doughnut_returned2 = document.getElementById("total_tickets_returned_visits_doughnut").getContext("2d");
                 
-                myDoughnut_sold2  = new Chart(ctx_doughnut_sold2).Doughnut(doughnutData1, {
+                myDoughnut_sold2  = new Chart(ctx_doughnut_sold2).Doughnut(doughnutData3, {
                     responsive : true,
                     animation: false,
                     segmentShowStroke : false,
                 });
-                myDoughnut_returned2 = new Chart(ctx_doughnut_returned2).Doughnut(doughnutData2, {
+                myDoughnut_returned2 = new Chart(ctx_doughnut_returned2).Doughnut(doughnutData4, {
                     responsive : true,
                     animation: false,
                     segmentShowStroke : false,
@@ -1362,7 +1390,7 @@
                 });
                 myBar_sales = new Chart(ctx_bar_graph1).Bar(BarChartData1, {
                     responsive: true,
-            });
+                });
             }, 50);
         }
             

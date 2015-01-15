@@ -184,19 +184,36 @@ class account extends CI_Controller{
 	}
 	
 	public function myaccount_stats(){
-	
+                $this->load->helper('date');
 		$this->load->library('path');
             	$path = $this->path->getPath();
             	$this->load->library('session');
                 $this->load->model('model_users');
                 $this->load->model('model_events');
+                $this->load->model('model_tickets');
             	$user_data = $this->model_users->get_info($this->session->userdata('email'));
-                $data = $this->model_events->get_total_views_clicks($user_data['user_id']);
+                $datestring = "%Y-%m-%d";
+                $time = time();
+                $today = mdate($datestring, $time);
+                $d1 = date_create($today);
+                $join_date = date('Y-m-d', strtotime($user_data['join_stamp']));
+                $d2 = date_create($join_date);
+                $diff = date_diff($d1,$d2);
+                $data['views_clicks'] = $this->model_events->get_total_views_clicks($user_data['user_id']);
+                $data['day_since_signup'] = $diff->format("%a");
+                
+                $all_events_by_user = array();
+                $temp_ticket_data = $this->model_tickets->get_total_ticket_sales($user_data['user_id']);
+                for($i = 0; $i < count($temp_ticket_data); $i++) {
+                    if(!in_array($all_events_by_user, $temp_ticket_data[$i])) {
+                        array_push($all_events_by_user, $temp_ticket_data[$i]);
+                    }
+                }
                 
                 
                 $result = array_merge($path, $data, $user_data);
                 
-                
+                echo '<pre>', print_r($data, true), '</pre>';
                 $this->load->view('Create_Wrevel_View',$result);
                  $this->load->view('myaccount_stats',$result);
 	}
