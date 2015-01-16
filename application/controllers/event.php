@@ -53,6 +53,7 @@ class Event extends CI_Controller {
                //$data['PATH_IMG'] = $path['PATH_IMG'];
                 $data['event_id'] = $event_id;
                 $data['event'] = $this->model_events->find_event($event_id);
+                $this->model_events->update_clicks($event_id);
                 $data['event_ticket_types'] = $this->model_events->get_tickets_for_event($event_id);
                 $datestring = "%Y-%m-%d";
                 $datestring2 = "%H:%i";
@@ -254,6 +255,7 @@ class Event extends CI_Controller {
             $this->load->library('session');
             $this->load->model('model_users');
             $this->load->model('model_events');
+            $this->load->model('model_news');
             $email = $this->session->userdata('email');
 
             $data = $this->model_users->get_info($email);
@@ -263,10 +265,11 @@ class Event extends CI_Controller {
             $events_zipcode = $this->model_events->get_zipcode();
             $data['states']= $events_states;
             $data['zipcode'] = $events_zipcode;
+
+            $data['news_feed'] = $this->model_news->get_news();
             
-            //Loads all the necessary Nav bar data.
-            $nav_data = $this->session->all_userdata();
-            $result = array_merge($data, $nav_data, $path);
+            $data['events'] = $this->model_events->featured_search();
+            $result = array_merge($data, $path);
             //echo "<pre> ",print_r($data,true) ,"</pre>";
             $this->load->view('Create_Wrevel_View', $path);
             $this->load->view('hub',$result);
@@ -278,7 +281,6 @@ class Event extends CI_Controller {
             $this->load->model('model_events');
             $this->load->model('model_users');
             $this->load->library('session');
-
             $email = $this->session->userdata('email');
             $data = $this->model_users->get_info($email);
 
@@ -347,6 +349,50 @@ class Event extends CI_Controller {
             
 
         }
+        
+        //Deletes a comment in your chatbox.
+        public function delete_chatbox_comment($id) {
+            $this->load->library('session');
+            $this->load->model('model_users');
+            $this->load->model('model_events');
+            $chatbox = $this->model_events->get_comments($id);
+            $filename =  "./application/views/events_comments/".$chatbox;
+            //Try to get the contents in the file.
+            if($temp_string = file_get_contents($filename)) {
+                
+                $delete_data = $this->input->post('event_chatbox_test'); //Data to be deleted.
+                $beg_data = strpos($temp_string, $delete_data); //Beginning of the data element.
+                $beg_p_data = strrpos(substr($temp_string, 0, $beg_data), '<p'); //The true beginning of the data we want to delete.
+                $delete_data_len = strlen($delete_data) + 9 +($beg_data - $beg_p_data-1); //Length of data. + the additional </p><br> at the end.
+                $start_of_data = substr($temp_string, 0, $beg_p_data); //This is the data from the beginning up to the <p> of the data we want to delete.
+                $after_delete_data = $beg_p_data+$delete_data_len; //This is the start position of everything after <br> of the data we want to delete.
+                $string_left = strlen($temp_string)-$after_delete_data; //This is the final length of the string after the <br> of the data we want to delete.
+                $end_of_data = substr($temp_string, $after_delete_data, $string_left); //This is the string after the data we want to delete til the end of the full file.
+                $final_string = $start_of_data . $end_of_data; //This is the string that we will put back after deleting the comment we want.
+                //Now just write over the file and we did it! :D
+                if(file_put_contents($filename, $final_string)) {
+                    
+                    $this->session->set_flashdata('message','Your comment has been successfully removed.');
+                }
+                //But then something fails :(
+                else {
+                    if(!empty($final_string)) {
+                        $this->session->set_flashdata('message','There was an error removing the comment. Please try again.');
+                    }
+                    else {
+                        $this->session->set_flashdata('message','Your comment has been successfully removed.');
+                    }
+                }
+                
+                //echo strpos($temp_string, $this->input->post('chatbox_test'));
+            }
+            //Why file not openning?! >:O
+            else 
+                $this->session->set_flashdata('message','There was an error openning your comments. Please contact the network adminstrator.');
+            //Now redirect back to showroom!
+            redirect('event/event_info/latest/'.$id);
+        }
+        
         public function event_comment($category,$id) { //message (chat.php)
             /* username is the user currentUser is talking to */
             $this->load->library('path');
@@ -396,7 +442,7 @@ class Event extends CI_Controller {
             else{
                 //create a file name for the chat
                 $randomName = md5(uniqid()) . ".html";    
-                $filename =  "/home/wrevelco/public_html/application/views/events_comments/".$randomName;
+                $filename =  "./application/views/events_comments/".$randomName;
                 //try to create file
                 if ($handle=fopen($filename,'w+')){
                         //trying to insert info into db
@@ -455,7 +501,7 @@ class Event extends CI_Controller {
             }
             /* check comment if its blank then do not write file_chat */
 
-            $filename =  "/home/wrevelco/public_html/application/views/events_comments/".$data['comment_file'];
+            $filename =  "./application/views/events_comments/".$data['comment_file'];
           //$handle = fopen($filename,'w+');
             $today = date("F j, Y, g:i a"); 
             //add commentors name instead of "Comment:"

@@ -266,38 +266,30 @@ position:absolute;
                                             <div class="panel-body">
                                 	<div class="row">
                                 	<div class="table-responsive">
-                                       <table style='width:100%'>
-                                                <tr>
-                                                    <td>Name:</td>
-                                                    <td>Date:</td>       
-                                                    <td>Start:</td>
-                                                    <td>Description:</td>
-                                                </tr>     
-                                                
 					<?php
                                             if(isset($attending_events)) {
                                                 for ($i = 0;$i < count($attending_events);$i++){?>
-                                                  <tr id="<?php echo 'fullwrev'.$i?>" hidden>
-                                                    <td><a href="<?php echo base_url().'event/event_info/latest/'.$attending_events[$i]['event_id']?>"><img src="<?php echo base_url().'uploads/'.$attending_events[$i]['e_image'];?>" style="border-radius:150%; width:70px; height:70px;"/>
-                                                    <div class="caption">
-                                                        <p><?php 
-                                                        	$event_name_temp = substr($attending_events[$i]['e_name'], 0, 10);
-                                                        	echo $event_name_temp?></p>
-                                                    </div></a></td>
-                                                    <td id="<?php echo 'wrev'.$i?>"><?php $wrev[$i] = $attending_events[$i]['e_date']; if(strpos($wrev[$i], 'Every') == 0) echo $wrev[$i]; else echo date("m-d-Y", strtotime($wrev[$i]));?></td>
-                                                    <td><?php 
-				    				echo $attending_events[$i]['e_start_time'];?></td>
-                                                    <td><?php 
-                                                    		$event_desc_temp = substr($attending_events[$i]['e_description'], 0, 10);
-                                                    		echo $event_desc_temp?></td>
-                                                  </tr>
+                                                <div id="<?php echo 'fullwrev'.$i?>" class="row" style="padding:3% 10% 0%;" hidden>
+                                                    <div class="col-md-12" style="position:relative;background-image:url(<?php echo base_url().'uploads/'.$attending_events[$i]['e_image'];?>); background-size:100%;padding:10px 0px 0px; color:white;">
+                                                        <div style="padding:0 10px 30px;">
+                                                            <p style="text-align:right;"><span class="wrevenue-attending"><?php echo $attending_events[$i]['e_attending'];?></span><span class="wrevenue-attending-text">Attending</span></p>
+                                                            <div style="margin-left:auto;margin-right:auto;text-align:center;">
+                                                                <a href="<?php echo base_url().'event/event_info/latest/'.$attending_events[$i]['event_id'];?>" class="btn wrevenue-wrev"><?php echo substr($attending_events[$i]['e_name'], 0, 10);?></a>
+                                                                <span class="pull-right" style="color:black; position:relative;"><i class="fa fa-clock-o"></i><?php echo $attending_events[$i]['e_start_time'];?></span>
+                                                            </div>
+                                                        </div>		
+                                                        <div style="background:rgba(0,0,0,0.5);postion:absolute;bottom:0;left:0;padding:5px 10px;">
+                                                            <i class="fa fa-calendar"></i> <?php $wrev[$i] = $attending_events[$i]['e_date']; if(strpos($wrev[$i], 'Every') == 0) echo $wrev[$i]; else echo date("m-d-Y", strtotime($wrev[$i]));?> <span class="pull-right"><?php echo $attending_events[$i]['e_likes'];?><i class="fa fa-heart-o"></i> | <a href=""><span class="glyphicon glyphicon-list-alt"></span></a> | <a href=""><i class="fa fa-share-square-o"></i></a></span>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                </div>
                                         <?php }}
                                             else {?>
                                                   <tr>
                                               	     <td>You have no wrevs right now.</td>
                                                   </tr>
                                         <?php }?>
-                                                </table>
                                         </div>
                                     </div>
                                     
@@ -577,13 +569,24 @@ position:absolute;
                                         <p style="text-align:center; font-size:25px;">Chatbox</p>
                                         
                                         <div id = "comment-block" style="overflow:auto; background:#8aa8c0; color:white; border-radius:10px;  width:95%; margin-left: 15px;height: 300px; padding: 10px;">
-                        </div>
+                                        </div>
+                                        <div hidden>
+                                            <div id="temp_chat_loading">
+                                            </div>
+                                        </div>
                     <script>
                         $(document).ready(
                             function() {
                                 setInterval(function() {
                                 //var randomnumber = Math.floor(Math.random() * 100);
-                                $( "#comment-block" ).load( "<?php echo $chatBoxLocation; ?>","limit=20");
+                                    $( "#temp_chat_loading" ).load( "<?php echo $chatBoxLocation; ?>","limit=20");
+                                    setTimeout(function(){
+                                        $("#temp_chat_loading").children('p').each(function() {
+                                            $('<input name="chatbox_test" value="'+$(this).html()+'" hidden><button type="submit">Delete</button>').appendTo(this);
+                                            $(this).wrap('<?php echo form_open("main/delete_chatbox_comment/")?></form>');
+                                        });
+                                        $("#comment-block").html($("#temp_chat_loading").html());
+                                    },50);
                                 }, 1000);
                             });
                     </script>     

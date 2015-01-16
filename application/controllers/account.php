@@ -184,19 +184,67 @@ class account extends CI_Controller{
 	}
 	
 	public function myaccount_stats(){
-	
+                $this->load->helper('date');
 		$this->load->library('path');
             	$path = $this->path->getPath();
             	$this->load->library('session');
                 $this->load->model('model_users');
-            	$data = $this->model_users->get_info($this->session->userdata('email'));
+                $this->load->model('model_events');
+                $this->load->model('model_tickets');
+            	$user_data = $this->model_users->get_info($this->session->userdata('email'));
+                $datestring = "%Y-%m-%d";
+                $time = time();
+                $today = mdate($datestring, $time);
+                $d1 = date_create($today);
+                $join_date = date('Y-m-d', strtotime($user_data['join_stamp']));
+                $d2 = date_create($join_date);
+                $diff = date_diff($d1,$d2);
+                $data['views_clicks'] = $this->model_events->get_total_views_clicks($user_data['user_id']);
+                $data['day_since_signup'] = $diff->format("%a");
                 
-                $account_data = $this->get_account_info();
+                $all_events_by_user = array();
+                $data['total_free'] = 0;
+                $data['total_regular'] = 0;
+                $data['total_early_bird'] = 0;
+                $data['total_vip'] = 0;
+                $temp_ticket_data = $this->model_tickets->get_total_ticket_sales($user_data['user_id']);
+                for($i = 0; $i < count($temp_ticket_data); $i++) {
+                    $not_there = 1;
+                    if($temp_ticket_data[$i]['ticket_type'] == 'free') {
+                        $data['total_free']++;
+                    }
+                    if($temp_ticket_data[$i]['ticket_type'] == 'regular') {
+                        $data['total_regular']++;
+                    }
+                    if($temp_ticket_data[$i]['ticket_type'] == 'early bird') {
+                        $data['total_early_bird']++;
+                    }
+                    if($temp_ticket_data[$i]['ticket_type'] == 'v.i.p.') {
+                        $data['total_vip']++;
+                    }
+                    for($j = 0; $j < count($all_events_by_user); $j++) {
+                        if($all_events_by_user[$j] == $temp_ticket_data[$i]['event_id']) {
+                            $not_there = 0;
+                        }
+                    }
+                    if($not_there) {
+                        array_push($all_events_by_user, $temp_ticket_data[$i]['event_id']);
+                    }
+                }
+                $data['total_tickets_left'] = 0;
+                for($i = 0; $i < count($all_events_by_user); $i++) {
+                    $ticket_for_event = $this->model_events->get_event_ticket_types($all_events_by_user[$i]);
+                    if($ticket_for_event) {
+                        for($j = 0; $j < count($ticket_for_event); $j++) {
+                            $data['total_tickets_left'] += $ticket_for_event[$j]['quantity'];
+                        }
+                    }
+                }
                 
-            	  $nav_data = $this->session->all_userdata();
-                $result = array_merge($path,$data,$nav_data, $account_data);
                 
+                $result = array_merge($path, $data, $user_data);
                 
+                //echo '<pre>', print_r($data, true), '</pre>';
                 $this->load->view('Create_Wrevel_View',$result);
                  $this->load->view('myaccount_stats',$result);
 	}

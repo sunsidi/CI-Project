@@ -260,6 +260,17 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label class="col-sm-3">Cover Photo:</label>
+                        <div class="col-sm-8" style="border:1px solid white;text-align:center;padding:8%;">
+                            <div class="col-sm-7">
+                                <div class="image-upload">
+                                    <label>Choose a Cover Image:</label>
+                                    <input id="file-input" name="wrevenue_cover" type="file" style="overflow:hidden;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label class="col-sm-3">Add more Images:</label>
                         <div id="photos_upload" class="col-sm-5">
                             <div class="image-upload">
@@ -339,7 +350,7 @@
             <div class="panel" style="border:none;border-radius:15px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">
                 
                 <!-- EVENT HEADER -->
-                <div class="panel-header" style="font-family:GillSans;text-align:center;color:white;background:linear-gradient(rgba(70, 107, 121, 0.45), rgba(70, 107, 121, 0.45)),url(<?php echo base_url().'uploads/'.$wrevenues['image_key']?>); background-size:100%;border-top-left-radius:10px;border-top-right-radius:10px;">
+                <div class="panel-header" style="font-family:GillSans;text-align:center;color:white;background:linear-gradient(rgba(70, 107, 121, 0.45), rgba(70, 107, 121, 0.45)),url(<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/cover/'.$wrevenues['cover']?>); background-size:100%;border-top-left-radius:10px;border-top-right-radius:10px;">
                     <div class="row" style="padding:2%;">
                         
                         <!-- LIKES -->

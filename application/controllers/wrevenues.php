@@ -59,6 +59,10 @@ class wrevenues extends CI_Controller{
         }
         if($data['wrevenues'] !== 0) {
             $data['wrevenues']['photos'] = array_diff(scandir('./uploads/wrevenues/'.$data['wrevenues']['id'].'/photos/'), array('..', '.'));
+            $temp = array_diff(scandir('./uploads/wrevenues/'.$data['wrevenues']['id'].'/cover/'), array('..', '.'));
+            foreach($temp as $cover) {
+                $data['wrevenues']['cover'] = $cover;
+            }
             $result = array_merge($path,$data);
             //echo '<pre>', print_r($result, true), '</pre>';
             $this->load->view('Create_Wrevel_View',$result);
@@ -103,6 +107,22 @@ class wrevenues extends CI_Controller{
                 $wrevenue_image = 'wrevenues/'.$insert_id.'/'.$image_name;
             }
             $this->model_wrevenues->update_wrevenue_image($insert_id, $wrevenue_image);
+            
+            //AFTER INSERT THE COVER PHOTO.
+            if(!mkdir('./uploads/wrevenues/'.$insert_id.'/cover/', '0777', true)) {
+                $this->session->set_flashdata('message', 'There was an error making the directory. Please try again.');
+                redirect('wrevenues/wrevenues_main');
+            }
+            else {
+                chmod('./uploads/wrevenues/'.$insert_id.'/cover/', 0777);
+            }
+            $configcover['upload_path']='./uploads/wrevenues/'.$insert_id.'/cover/';
+            $configcover['allowed_types']= 'gif|jpg|png|jpeg';
+            $configcover['max_size']	= '10000';
+            $this->upload->initialize($configcover);
+            if (!$this->upload->do_upload('wrevenue_cover')) {
+                $this->session->set_flashdata('message', 'There was an error uploading your cover photo Please edit your wrevenue.');
+            }
             
             //AFTER GET THE MULTIPLE PHOTOS THAT YOU WANT.
             if(!mkdir('./uploads/wrevenues/'.$insert_id.'/photos/', '0777', true)) {
@@ -151,6 +171,24 @@ class wrevenues extends CI_Controller{
             $data = array('upload_data' => $this->upload->data());
             $image_name = $upload_data['file_name'];
             $wrevenue_image = 'wrevenues/'.$id.'/'.$image_name;
+        }
+        
+        //AFTER CHECK IF THERES A NEW COVER PHOTO.
+        $configcover['upload_path'] ='./uploads/wrevenues/'.$id.'/cover/';
+        $configcover['allowed_types'] = 'gif|jpg|png|jpeg';
+        $configcover['max_size'] = '10000';
+        $temp = array_diff(scandir('./uploads/wrevenues/'.$id.'/cover/'), array('..', '.'));
+        $this->upload->initialize($configcover);
+        
+        if (!$this->upload->do_upload('wrevenue_cover')){
+            $this->session->set_flashdata('message', 'Some files were not uploaded please try again. <br>');
+        }
+        else {
+            if(count($temp) != 0) {
+                foreach($temp as $cover) {
+                    unlink('./uploads/wrevenues/'.$id.'/cover/'.$cover);
+                }
+            }
         }
         //AFTER GET THE MULTIPLE PHOTOS THAT YOU WANT.
         $config2['upload_path'] ='./uploads/wrevenues/'.$id.'/photos/';

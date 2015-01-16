@@ -6,7 +6,8 @@ class test extends CI_Controller{
             	$path = $this->path->getPath();
             	$this->load->library('session');
 		$nav_data = $this->session->all_userdata();
-                $result = array_merge($path,$nav_data);
+                $result = array_merge($path,$nav_data, $data);
+                //echo "<pre>", print_r($result, true), "</pre>";
                 $this->load->view('Create_Wrevel_View',$result);
                 $this->load->view('business_profile',$result);     
 	}

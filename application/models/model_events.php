@@ -34,6 +34,21 @@ class Model_events extends CI_Model{
     	}
     }
     
+    //EMAIL AlL USERS THAT HAVE EVENTS ON THIS DAY. (ON THE DAY THE CRON JOB HAPPENS. WHICH SHOULD BE ONCE A DAY.)
+    public function cron_email_users_events() {
+        $sql = "SELECT p.email, e.e_name, e.event_id "
+                . "FROM events e "
+                . "INNER JOIN users_attending h "
+                . "ON (e.event_id = h.event_id AND e.e_date = DATE(NOW())) "
+                . "INNER JOIN users p "
+                . "ON p.user_id = h.user_id";
+        $query = $this->db->query($sql);
+    	if($query->num_rows() != 0) {
+            return $query->result_array();
+        }
+        return false;
+    }
+    
     public function admin_get_events() {
         $this->db->order_by('create_stamp', 'desc');
     	$query = $this->db->get('events');
@@ -41,10 +56,89 @@ class Model_events extends CI_Model{
     }
     
     public function admin_delete_events() {
-              $data = $this->input->post('events_checkbox');
-              $this->db->where_in('event_id', $data);
-              $this->db->delete('events');
-          }
+        $data = $this->input->post('events_checkbox');
+        $this->db->where_in('event_id', $data);
+        $this->db->delete('events');
+    }
+    public function admin_feature_events() {
+        $data = $this->input->post('featured_checkbox');
+        $this->db->update('events', array('e_featured' => 0));
+        for($i = 0; $i < count($data); $i++) {
+            $this->db->update('events', array('e_featured' => 1), array('event_id' => $data[$i]));
+        }
+    }
+    
+    //Minimum information returned for admin to get event name.
+    public function admin_get_event_info($e_id) {
+        $query = $this->db->get_where('events', array('event_id' => $e_id));
+        if($query->num_rows() != 0) {
+            $temp = $query->row_array(0);
+            $name_seller['e_name'] = $temp['e_name'];
+            $name_seller['e_creatorID'] = $temp['e_creatorID'];
+            return $name_seller;
+        }
+        return false;
+    }
+    
+    //function to get event ticket types and their data.
+    public function get_event_ticket_types($event_id) {
+        $query = $this->db->get_where('event_ticket_types', array('event_id' => $event_id));
+        if($query->num_rows() != 0) {
+            return $query->result_array();
+        }
+        return false;
+    }
+    
+    //Update the number of views on all events by 1 each time the latest wrevs is visited.
+    public function update_views() {
+        $this->db->where('e_date >', 'NOW() + INTERVAL 1 DAY', FALSE);
+        $this->db->set('views', 'views+1', FALSE);
+        $this->db->update('events');
+    }
+    
+    //Update the number of views on events based on category.
+    public function update_views_category($category) {
+        $query= $this->db->get('events');
+        $events = $query->result_array();
+        $event_ids = array();
+        foreach ($events as $event){
+	    $hashkey = $event['e_category'];
+	    $event_category = $this->hashmap_cata->hash($hashkey);
+            if(in_array($category,$event_category)) {
+                array_push($event_ids,$event['event_id']);
+            } 
+        }
+        if(isset($event_ids)) {
+            $this->db->where('e_date >', 'NOW() + INTERVAL 1 DAY', FALSE);
+            $this->db->where_in('event_id', $event_ids);
+            $this->db->set('views', 'views+1', FALSE);
+            $this->db->update('events');
+        }
+    }
+    
+    //Update the number of clicks on events.
+    public function update_clicks($event_id) {
+        $this->db->where('event_id', $event_id);
+        $this->db->set('clicks', 'clicks+1', FALSE);
+        $this->db->update('events');
+    }
+    
+    //Gets the total number of views and clicks and returns it.
+    public function get_total_views_clicks($user_id) {
+        $query = $this->db->get_where('events', array('e_creatorID' => $user_id));
+        if($query->num_rows() != 0) {
+            $temp = $query->result_array();
+            $data['total_views'] = 0;
+            $data['total_clicks'] = 0;
+            for($i = 0; $i < count($temp); $i++) {
+                $data['total_views'] = $data['total_views'] + $temp[$i]['views'];
+                $data['total_clicks'] = $data['total_clicks'] + $temp[$i]['clicks'];
+            }
+            return $data;
+        }
+        return false;
+    }
+    
       public function find_event($e_id)
       {
 	    //$e_name = 'Boris pimp party';

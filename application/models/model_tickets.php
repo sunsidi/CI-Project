@@ -64,5 +64,13 @@ class Model_tickets extends CI_Model{
     		return false;
     }
     
+    public function get_total_ticket_sales($user_id) {
+        $query = $this->db->get_where('tickets', array('user_id' => $user_id));
+        if($query->num_rows() != 0) {
+            return $query->result_array();
+        }
+        return false;
+    }
+    
 }
 ?>

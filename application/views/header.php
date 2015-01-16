@@ -89,13 +89,9 @@ position:absolute;
           <!--<li class="header-link"><a href="<?php echo base_url()."chat/MessageView"?>">Inbox</a></li>-->
           <li class="header-link"><a href="<?php echo base_url().'showroom/notify2'?>">Notifications <span class="badge" style="background:#BE1E2D;"><?php echo $nav_data['counter'] ?></span></a></li>
           <!--<li class="header-link"><a href="#">Search</a></li>-->
-          <?php $this->load->library('session');
-            $allowed_access = array('kelui92@gmail.com','abirashukur@gmail.com','cjbackintime@gmail.com','tshum741@gmail.com','sajidzaman39@hotmail.com');
-            $keep_going = false;
-            for($i = 0; $i < 5; $i++) {
-                if($this->session->userdata('email') == $allowed_access[$i]) {?>
+          <?php if($nav_data['admin_level'] >= 1) {?>
             <li><a href="<? echo base_url()?>admin/admin_account">Admin Console</a></li>
-            <?php break;}}?>
+          <?php }?>
           <li><a href="<? echo base_url()?>account/myaccount_accountinfo">My Account</a></li>
           <li class="divider"></li>
           <li><a href="<?php echo base_url()."main/loginout" ?>">Logout</a></li>

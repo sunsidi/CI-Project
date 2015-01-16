@@ -23,6 +23,74 @@ public function index()
 		echo $number;
 	}*/
         
+        public function event_reminders() {
+            $this->load->model('model_events');
+            $data = $this->model_events->cron_email_users_events();
+            //echo '<pre>', print_r($data, true), '</pre>';
+            if($data) {
+                for($i = 0; $i < count($data); $i++) {
+                    $this->load->library('email',array('mailtype'=>'html'));
+                    $this->email->from('donotreply@wrevel.com', "Wrevel, Inc.");
+                    $this->email->to($data[$i]['email']);
+                    $this->email->subject("You have an event today.");
+                    //message to user confirms see load library email, 2nd argument is setting to html not default text
+                    $message ="<p> Hello! </p><p>The event <a href='".base_url()."event/event_info/latest/".$data[$i]['event_id']."'>".$data[$i]['e_name']."</a> is happening today. Be sure to attend!";
+                    $message .= "<p>________________________________</p><p>Copyright 2014 Wrevel, Inc.,<i> All Rights Reserved.</i></p><div>Connect with us!</div>";
+                    $message .= "<div>www.wrevel.com</div>";
+                    $message .= "<div>Facebook: www.facebook.com/wrevelinc</div>";
+                    $message .= "<div>Twitter: www.twitter.com/wrevelco</div>";
+                    $message .= "<div>Instagram: www.instagram.com/wrevel</div>";
+                    $message .= "<div>Tumblr: wrevel.tumblr.com</div>";
+                    $message .= "<div>E-mail: support@wrevel.com</div>";
+                    $this->email->message($message);
+                    $this->email->send();
+                }
+            }
+        }
+        
+        //Deletes a comment in your chatbox.
+        public function delete_chatbox_comment() {
+            $this->load->library('session');
+            $this->load->model('model_users');
+            $email = $this->session->userdata('email');
+            $username = $this->model_users->get_username($email);
+            $chatbox = $this->model_users->get_chatbox($username);
+            $filename =  "./application/views/chatbox/".$chatbox;
+            //Try to get the contents in the file.
+            if($temp_string = file_get_contents($filename)) {
+                
+                $delete_data = $this->input->post('chatbox_test'); //Data to be deleted.
+                $beg_data = strpos($temp_string, $delete_data); //Beginning of the data element.
+                $beg_p_data = strrpos(substr($temp_string, 0, $beg_data), '<p'); //The true beginning of the data we want to delete.
+                $delete_data_len = strlen($delete_data) + 9 +($beg_data - $beg_p_data-1); //Length of data. + the additional </p><br> at the end.
+                $start_of_data = substr($temp_string, 0, $beg_p_data); //This is the data from the beginning up to the <p> of the data we want to delete.
+                $after_delete_data = $beg_p_data+$delete_data_len; //This is the start position of everything after <br> of the data we want to delete.
+                $string_left = strlen($temp_string)-$after_delete_data; //This is the final length of the string after the <br> of the data we want to delete.
+                $end_of_data = substr($temp_string, $after_delete_data, $string_left); //This is the string after the data we want to delete til the end of the full file.
+                $final_string = $start_of_data . $end_of_data; //This is the string that we will put back after deleting the comment we want.
+                //Now just write over the file and we did it! :D
+                if(file_put_contents($filename, $final_string)) {
+                    $this->session->set_flashdata('message','Your comment has been successfully removed.');
+                }
+                //But then something fails :(
+                else {
+                    if(!empty($final_string)) {
+                        $this->session->set_flashdata('message','There was an error removing the comment. Please try again.');
+                    }
+                    else {
+                        $this->session->set_flashdata('message','Your comment has been successfully removed.');
+                    }
+                }
+                
+                //echo strpos($temp_string, $this->input->post('chatbox_test'));
+            }
+            //Why file not openning?! >:O
+            else 
+                $this->session->set_flashdata('message','There was an error openning your comments. Please contact the network adminstrator.');
+            //Now redirect back to showroom!
+            redirect('showroom/profile');
+        }
+        
 	//Delete your friend off your friends list.
 	public function delete_friend($friend_user_id) {
 		$this->load->library('session');
@@ -302,6 +370,7 @@ public function index()
 		$condition = $this->model_users->can_log_in();
                 if($condition == 2)
 		{
+                    $this->model_users->set_last_online();
                     return true;
 		}
                 else if($condition == 3)
@@ -592,20 +661,22 @@ public function index()
 	}
 	public function mywrevs()
 	{
-    $this->load->library('path');
-    $this->load->model('model_users');
-    $path = $this->path->getPath();
-    $this->load->library('session');
-    $email = $this->session->userdata('email');
-    $info = $this->model_users->get_info($email);
-    
-    //This loads all the necessary data for the nav bar.
-    $nav_data = $this->session->all_userdata();
-    $info = $this->model_users->get_info($email);
-    $result = array_merge($info,$nav_data,$path);
-    //echo "<pre> ",print_r($result,true) ,"</pre>";
-    $this->load->view('Create_Wrevel_View',$path);
-    $this->load->view('mywrevs',$result);
+            $this->load->library('path');
+            $this->load->model('model_users');
+            $this->load->model('model_page_visits');
+            $this->model_page_visits->update_page_visits('mywrevs');
+            $path = $this->path->getPath();
+            $this->load->library('session');
+            $email = $this->session->userdata('email');
+            $info = $this->model_users->get_info($email);
+
+            //This loads all the necessary data for the nav bar.
+            $nav_data = $this->session->all_userdata();
+            $info = $this->model_users->get_info($email);
+            $result = array_merge($info,$nav_data,$path);
+            //echo "<pre> ",print_r($result,true) ,"</pre>";
+            $this->load->view('Create_Wrevel_View',$path);
+            $this->load->view('mywrevs',$result);
     
 	}
 //MARKED FOR DELETION.
@@ -687,6 +758,7 @@ public function get_related_events($category)
     $this->load->library('path');
     $this->load->library('hashmap_cata');
     $this->load->library('session');
+    $this->load->model('model_page_visits');
     $eventMap = $this->hashmap_cata->get_EventMap();
     $path = $this->path->getPath();
     //get category from having clicked the link which acts as a submit button
@@ -695,15 +767,24 @@ public function get_related_events($category)
       $this->load->model('model_events');
       // get all events related to chosen category
       //$related_events = $this->model_events->get_events($category);
-
+    
+    if($category == 'culture') {
+        $this->model_page_visits->update_page_visits('culture');
+    }
+    if($category == 'icebreakers') {
+        $this->model_page_visits->update_page_visits('icebreakers');
+    }
+    if($category == 'hotspots') {
+        $this->model_page_visits->update_page_visits('hotspots');
+    }
 
       $search = $this->input->post('search');
       $price = $this->input->post('price');
         $state = $this->input->post('state');
         $zipcode = $this->input->post('zipcode');
-      $related_events= $this->model_events->get_latest_related_events($search,$category,$price,$state,$zipcode);
 
-
+    	$related_events= $this->model_events->get_latest_related_events($search,$category,$price,$state,$zipcode);
+        $this->model_events->update_views_category($category);
 
       $result = array_merge($related_events, $path);
       $data = array_merge($result,$eventMap);
@@ -727,7 +808,7 @@ public function get_related_events($category)
       //echo "<pre> ",print_r($data,true) ,"</pre>";
 
 
-         //echo "<pre> ",print_r($nav_data,true) ,"</pre>";
+         //echo "<pre> ",print_r($result,true) ,"</pre>";
 
       //print_r($result);
       //echo print_r($result);
@@ -787,14 +868,31 @@ public function get_related_events($category)
     $eventMap = $this->hashmap_cata->get_EventMap();
     $path = $this->path->getPath();
     $this->load->model('model_events');
+    $this->load->model('model_page_visits');
 
-
+    $this->model_page_visits->update_page_visits('latestwrevs');
 
     //$search = $this->input->post('search');
     $search = $this->input->post('search');
       $price = $this->input->post('price');
         $state = $this->input->post('state');
         $zipcode = $this->input->post('zipcode');
+
+        //echo $zipcode . "<br>";
+        //echo $state. "<br>";
+        //echo $price."<br>";
+
+    $latest_events = $this->model_events->get_latest_events($search,$price,$zipcode,$state);
+    $this->model_events->update_views();
+ 
+
+    $data = array_merge($latest_events,$path);
+    $events_states = $this->model_events->get_states();
+        $data['states']= $events_states;
+        $events_zipcode = $this->model_events->get_zipcode();
+        $data['zipcode'] = $events_zipcode;
+    $nav_data = $this->session->all_userdata();
+    $all = array_merge($data,$eventMap,$nav_data);
 
         //echo $zipcode . "<br>";
         //echo $state. "<br>";

@@ -391,27 +391,9 @@ class Showroom extends CI_Controller {
                         $data['attending_events'][$i]['e_image'] = $temp_event[0]['e_image'];
                         $data['attending_events'][$i]['e_name'] = $temp_event[0]['e_name'];
                         $data['attending_events'][$i]['e_date'] = $temp_event[0]['e_date'];
-                        //change start time to 12 hr format.
-                        $temp_start_time = $temp_event[0]['e_start_time'];
-                        if($temp_start_time >= 780) {
-                            $temp_time[0] = sprintf("%02d", floor(($temp_start_time/60) - 12));	
-                            $temp_time[1] = sprintf("%02d", $temp_start_time % 60);
-                            if($temp_time[0] == '00')
-                                    $temp_time[0] = '12';
-                            $final_time = implode(':', $temp_time);
-                            $final_time .='pm';
-                            $final_time = trim($final_time);
-                        }
-                        else {
-                            $temp_time[0] = sprintf("%02d", floor($temp_start_time/60));
-                            $temp_time[1] = sprintf("%02d", $temp_start_time % 60);
-                            if($temp_time[0] == '00')
-                                    $temp_time[0] = '12';
-                            $final_time = implode(':', $temp_time);
-                            $final_time .='am';
-                            $final_time = trim($final_time);
-                        }
-                        $data['attending_events'][$i]['e_start_time'] = $final_time;
+                        $data['attending_events'][$i]['e_attending'] = $temp_event[0]['e_attending'];
+                        $data['attending_events'][$i]['e_likes'] = $temp_event[0]['e_likes'];
+                        $data['attending_events'][$i]['e_start_time'] = $temp_event[0]['e_start_time'];
                         $data['attending_events'][$i]['e_description'] = $temp_event[0]['e_description'];
                     }
                     $result = $data;

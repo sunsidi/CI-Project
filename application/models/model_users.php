@@ -14,12 +14,36 @@ class Model_users extends CI_Model{
         $query = $this->db->get('users');
         return $query->result_array();
     }
+    
+    public function admin_get_admin_users() {
+        $this->db->order_by('admin_level', 'desc');
+        $this->db->where('admin_level >', 0);
+        $query = $this->db->get_where('users');
+        return $query->result_array();
+    }
 
     public function admin_delete_users() {
         $data = $this->input->post('users_checkbox');
         $this->db->where_in('user_id', $data);
         $this->db->delete('users');
     }
+    
+    //This will give many users a certain admin level.
+    public function authorize_user($all_users, $level) {
+        $all_users_array = explode(',', $all_users);
+        for($i = 0; $i < count($all_users_array); $i++) {
+            $this->db->update('users', array('admin_level' => $level), array('email' => trim($all_users_array[$i])));
+        }
+    }
+    
+    //This will revoke users from the admin levels.
+    public function revoke_user($all_users) {
+        $all_users_array = explode(',', $all_users);
+        for($i = 0; $i < count($all_users_array); $i++) {
+            $this->db->update('users', array('admin_level' => 0), array('email' => trim($all_users_array[$i])));
+        }
+    }
+    
     public function can_log_in()
     {
     	$fbcheck = $this->db->get_where('users', array('email' => $this->input->post('email'), 'f_b' => 1));
@@ -81,6 +105,19 @@ class Model_users extends CI_Model{
 	        //Just say sign up.
 	        else return 0;
 	}
+    }
+    
+    //Set the activity of a user as when he last logged in.
+    public function set_last_online() {
+        $this->load->helper('date');
+        $datestring = "%Y-%m-%d %G:%i:%s";
+        $time = time();
+
+        $insert_time = mdate($datestring, $time);
+        if($this->db->update('users', array('last_online' => $insert_time), array('email' => $this->input->post('email')))) {
+            return true;
+        }
+        return false;
     }
     
     public function forgot_password($email_data) {
@@ -398,10 +435,28 @@ class Model_users extends CI_Model{
         return $data['user_id'];
 
      }
+
+    public function get_admin_level($email){
+
+      $sql = "SELECT admin_level FROM users WHERE email = ?;";
+      $query = $this->db->query($sql,array($email,));
+       $data = $query->row_array(0);
+       return $data['admin_level'];
+
+    }
+    
      public function get_username($email){
 
        $sql = "SELECT username FROM users WHERE email = ?;";
        $query = $this->db->query($sql,array($email,));
+        $data = $query->row_array(0);
+        return $data['username'];
+
+     }
+     public function get_username_with_id($user_id){
+
+       $sql = "SELECT username FROM users WHERE user_id = ?;";
+       $query = $this->db->query($sql,array($user_id,));
         $data = $query->row_array(0);
         return $data['username'];
 

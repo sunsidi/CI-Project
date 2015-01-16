@@ -4,6 +4,7 @@ class Stripe_controller extends CI_Controller{
 
 	function __construct()
         {
+            session_start();
                 parent::__construct();
 		$this->load->library('session');
 		$amount_seller = 0;
@@ -248,13 +249,13 @@ class Stripe_controller extends CI_Controller{
 				
 				//
 				
-				$this->insert();
+				$return_data = $this->insert();
 				if($this->session->userdata('is_logged_in')) {
 					$user_id = $this->model_users->get_userID($my_email);
 					$this->model_users->add_reputation($my_email, 5);
 	        			$this->model_events->update_attending($user_id, $event_id);
 	        		}
-				redirect('stripe_controller/Processed_ticket');
+				redirect('stripe_controller/Processed_ticket/'.$return_data['event_id'].'/'.$return_data['ticket_id']);
 			}
 			else {
 				redirect('stripe_controller/load_stripe/'.$billing['event_id']);
@@ -313,6 +314,7 @@ class Stripe_controller extends CI_Controller{
 			$email_message = "<p>You have just purchased a ticket! You can click on the link below to view your order and print your tickets.</p>";
 		}
 		else {
+                        //GUEST USER.
 			$info['user_id'] = -1;
 			$info['fullname'] = $ticket['f_name'];
 			$email = $ticket['email'];
@@ -331,6 +333,10 @@ class Stripe_controller extends CI_Controller{
 		);
 		$this->load->model('model_tickets');
 		$data['ticket_id'] = $this->model_tickets->add_ticket($data, $ticket['quantity']);
+                $return_data = array('e_name' => $ticket['cost_per_ticket'][0]['e_name'], 
+                                     'ticket_id' => $data['ticket_id'],
+                                     'event_id' => $data['event_id'], 
+                                     'send_email' => $email);
                 $this->session->set_userdata(array('e_name' => $ticket['cost_per_ticket'][0]['e_name'], 'ticket_id' => $data['ticket_id'],'event_id' => $data['event_id'], 'send_email' => $email));
 		$this->load->library('email',array('mailtype'=>'html'));
 		$this->email->from('donotreply@wrevel.com', "Wrevel, Inc.");
@@ -347,6 +353,7 @@ class Stripe_controller extends CI_Controller{
 		$message .= "<div>E-mail: support@wrevel.com</div>";
 		$this->email->message($message);
 		$this->email->send();
+                return $return_data;
 		//echo '<pre>', print_r($this->model_users->get_info($this->session->userdata('email')), true), '</pre>';
 		
 	}
@@ -514,28 +521,29 @@ class Stripe_controller extends CI_Controller{
 		);
 	}
 
-	public function Processed_ticket()
+	public function Processed_ticket($event_id, $ticket_id)
 	{
-            $this->load->library('session');
             $path = $this->path->getPath();
             $data['path'] = $this->path->getpath();
             $data['PATH_IMG'] = $path['PATH_IMG'];
             $data['PATH_BOOTSTRAP'] = $path['PATH_BOOTSTRAP'];
             $data['email'] = $this->session->userdata('email');
+            $data['event_id'] = $event_id;
+            $data['ticket_id'] = $ticket_id;
             $this->session->set_userdata(array('session_expired' => 1));
             //echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
 
             //echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
-            $this->load->view('Processed_ticket',$data);
             $this->session->unset_userdata('ticket');
+            $this->load->view('Processed_ticket',$data);
 	}
 
-	public function print_ticket()
+	public function print_ticket($event_id, $ticket_id)
 	{
             $this->load->library('session');
             
             //echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
-            redirect('account/view_ticket/'.$this->session->userdata('event_id').'/'.$this->session->userdata('ticket_id'));
+            redirect('account/view_ticket/'.$event_id.'/'.$ticket_id);
 		//$this->session->unset_userdata('ticket');
 	}
 

@@ -1129,13 +1129,24 @@ jQuery(document).ready(function () {
                        <!-- <div style="text-align:center;">-->
                          <div id = "comment-block" class="comment_section">
                         </div>
+                       <div hidden>
+                                            <div id="event_temp_chat_loading">
+                                            </div>
+                                        </div>
                        <script>
     $(document).ready(
             function() {
                 setInterval(function() {
                     //var randomnumber = Math.floor(Math.random() * 100);
                    
-                    $( "#comment-block" ).load( "<?php echo $commentLocation; ?>","limit=20");
+                    $( "#event_temp_chat_loading" ).load( "<?php echo $commentLocation; ?>","limit=20");
+                    setTimeout(function(){
+                                        $("#event_temp_chat_loading").children('p').each(function() {
+                                            $('<input name="event_chatbox_test" value="'+$(this).html()+'" hidden><button type="submit">Delete</button>').appendTo(this);
+                                            $(this).wrap('<?php echo form_open("event/delete_chatbox_comment/".$event_id)?></form>');
+                                        });
+                                        $("#comment-block").html($("#event_temp_chat_loading").html());
+                                    },50);
 
                 }, 1000);
             });
