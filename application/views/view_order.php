@@ -32,16 +32,16 @@
 		 <span style="font-family:GillSans;">Ticket Number</span> <span style="margin-left:30px;"><?php echo $ticket[$i]['id']?></span>
 	    </p>-->
 	    <p style="text-align: justify; margin-top: 20px;">
-		 <span style="font-size: 20px;">Who's Going?</span> <span style="font-size: 20px;font-family:GillSans;margin-left:40px;"><?php echo $ticket[$i]['fullname']?></span>
+		 <span style="font-size: 15px;color: gray;font-family: ProximaNova-Light;">Who's Going?</span><span style="font-size: 20px;font-family:GillSans;margin-left:40px;"><?php echo $ticket[$i]['fullname']?></span>
 	    </p>
              <p style="text-align: justify;">
-		 <span style="font-size: 20px;;">Ticket Type</span> <span style="font-size: 20px;font-family:GillSans;margin-left:60px;"><?php echo $ticket[$i]['ticket_type']?></span>
+		 <span style="font-size: 15px;color: gray;font-family: ProximaNova-Light;">Ticket Type</span> <span style="font-size: 20px;font-family:GillSans;margin-left:53px;"><?php echo $ticket[$i]['ticket_type']?></span>
 	    </p>
 	    <p style="text-align: justify;">
-		 <span style="font-size: 20px;;">Wrevenue</span> <span style="font-size: 20px;font-family:GillSans;margin-left:65px;">Wrevenue</span>
+		 <span style="font-size: 15px;color: gray;font-family: ProximaNova-Light;">Wrevenue</span> <span style="font-size: 20px;font-family:GillSans;margin-left:60px;">Wrevenue</span>
 	    </p>
 	    <p style="text-align: justify;">
-		 <span style="font-size: 20px;">Event Title</span> <span style="font-size: 20px;font-family:GillSans;margin-left:67px;"><?php echo $ticket[$i]['e_name']?></span>
+		 <span style="font-size: 15px;color: gray;font-family: ProximaNova-Light;">Event Title</span> <span style="font-size: 20px;font-family:GillSans;margin-left:63px;"><?php echo $ticket[$i]['e_name']?></span>
 	    </p>
 		<!--<p style="text-align: justify;">
 		<span style="font-family:GillSans;">Ticketing Price</span> <span style="margin-left:38px;"><?php echo '$'.$ticket[$i]['ticket_price']?></span>
@@ -54,7 +54,7 @@
 		?></span>
 	    </p>-->
 	        <p style="text-align: justify;">
-		<span style="font-size: 20px;">Total Price</span> <span style="font-size: 20px;font-family:GillSans;margin-left:69px;">
+		<span style="font-size: 15px;color: gray;font-family: ProximaNova-Light;">Total Price</span> <span style="font-size: 20px;font-family:GillSans;margin-left:62px;">
 		<?php
 			echo '$'.$ticket[$i]['total_price']
 		?></span>
@@ -66,7 +66,7 @@
 		 	?></span>
 		 </p>-->
 		 <p style="text-align: justify;">
-		 <span style="font-size: 20px;">Date</span> <span style="font-size: 20px;font-family:GillSans;margin-left:109px;">
+		 <span style="font-size: 15px;color: gray;font-family: ProximaNova-Light;">Date</span> <span style="font-size: 20px;font-family:GillSans;margin-left:100px;">
 		 <?php
 			echo $ticket[$i]['e_date']
 					//echo unix_to_human($event[0]['e_end_time'])
@@ -74,15 +74,15 @@
 		?></span>
 	    </p>
 		 <p style="text-align: justify;">
-		 <span style="font-size: 20px;">Time</span> <span style="font-size: 20px;font-family:GillSans;margin-left:109px;">
+		 <span style="font-size: 15px;color: gray;font-family: ProximaNova-Light;">Time</span> <span style="font-size: 20px;font-family:GillSans;margin-left:100px;">
 		 <?php
 			echo $ticket[$i]['e_start_time']		
                 ?></span>
 	    </p>
 		 <p style="text-align: justify;">
-		<span style="font-size: 20px;">Location</span> <span style="font-size: 20px;font-family:GillSans;margin-left:84px;">
+		<span style="font-size: 15px;color: gray;font-family: ProximaNova-Light;">Location</span> <span style="font-size: 20px;font-family:GillSans;margin-left:75px;">
 	    	<?php echo $ticket[$i]['e_address']?></span></br>
-	    	<span style="margin-left:152px;font-size: 20px;font-family:GillSans;"><?php echo $ticket[$i]['e_city']." ";
+	    	<span style="margin-left:135px;font-size: 20px;font-family:GillSans;"><?php echo $ticket[$i]['e_city']." ";
 			echo $ticket[$i]['e_state']." , ".$ticket[$i]['e_zipcode'];
 		?></span>
 	    </p>
@@ -101,8 +101,8 @@ background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#D4E0E4), to(#E3E9ED));"
     -o-transform: rotate(270deg);
     -ms-transform: rotate(270deg);
     transform: rotate(270deg); margin-top: 50px;"src="<?php echo base_url().'application/controllers/barcode.php?barcode='.$ticket[$i]['barcode'].'&width=205&height=150'?>"></center>
-			    <center><div style="background-color: white; border:solid 1px black; margin-top:40px;width: 85%;padding: 2px;">
-			    <p style="font-size:9px;  margin-left: 5px; text-align: left; width: 100%;">
+			    <center><div style="background-color: white; border:solid 1px black; margin-top:40px;width: 95%;padding: 1px 10px;">
+			    <p style="margin-top: 5px; font-size:9px; text-align: justify; width: 100%;font-family: ProximaNova-Light;">
 				<b style="font-family:GillSans;">Disclaimer</b><br><br>
 				Please bring a valid photo ID to the event with this ticket.
 				Your name on the ticket must match with your photo ID.

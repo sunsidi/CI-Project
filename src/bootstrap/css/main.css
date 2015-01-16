@@ -211,6 +211,20 @@ background:#414042;
 	font-size:20px;
 }
 @font-face {
+  font-family: 'ProximaNova-Light';
+    src: url('../fonts/ProximaNova-Light.eot');/*IE*/
+    src: url('../fonts/ProximaNova-Light.eot?#iefix') format('embedded-opentype'),
+     url('../fonts/proximanovalight.ttf') format('truetype'),
+     url('../fonts/ProximaNova-Light.otf');
+}
+@font-face {
+  font-family: 'ProximaNova-Regular';
+    src: url('../fonts/ProximaNova-Regular.eot');/*IE*/
+    src: url('../fonts/ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
+     url('../fonts/proximanovaregular.ttf') format('truetype'),
+     url('../fonts/ProximaNova-Regular.otf');
+}
+@font-face {
   font-family: 'GillSansR';
     src: url('../fonts/gillsans.eot');/*IE*/
     src: url('../fonts/gillsans.eot?#iefix') format('embedded-opentype'),
