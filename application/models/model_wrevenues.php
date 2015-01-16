@@ -9,7 +9,6 @@ class Model_wrevenues extends CI_Model{
     }
     //Gets all wrevenues in the database.
     public function get_wrevenues() {
-        $this->db->order_by('id', 'desc');
         $query = $this->db->get('wrevenues');
         return $query->result_array();
     }
@@ -102,9 +101,7 @@ class Model_wrevenues extends CI_Model{
             $query = $this->db->get_where('wrevenues', array('id' => $id));
             $temp = $query->row_array(0);
             if($temp['image_key'] != 'default_wrevenue_image.jpg') {
-            	if(!file_exists('./uploads/'.$temp['image_key'])) {
-                	unlink('./uploads/'.$temp['image_key']);
-                }
+                unlink('./uploads/'.$temp['image_key']);
             }
             $new_data['image_key'] = $wrevenue_image;
             
@@ -120,37 +117,6 @@ class Model_wrevenues extends CI_Model{
         else
             return true;
     }
-    //Wrevenue search
-    public function search_wrevenues($search,$state,$city,$zipcode) {
-        if ($city || $zipcode || $state){
-            if(!$state){$state = '%';}
-            if(!$city){$city = '%';}
-            if(!$zipcode){$zipcode = '%';}
-            $sql = 'SELECT * FROM wrevenues WHERE (state LIKE ? and city LIKE ? and zipcode LIKE ?) ORDER BY id DESC';
-            $query = $this->db->query($sql,array($state, $city, $zipcode));
-            $wrevenues = $query->result_array();
-        }
-        else{
-            $this->db->order_by('id','desc');
-            $query = $this->db->get('wrevenues');
-            $wrevenues = $query->result_array();
-        }
-        $related_wrevenues= array();
-        /*check if there is an specific word or letter that user is searching for in wrevenues */
-        if($search != ""){
-            foreach($wrevenues as $wrevenue){
-                if (stristr($wrevenue['place'],$search) !== false) {
-                    array_push($related_wrevenues,$wrevenue);
-                }
-            }
-        }
-        /*find all the wrevenues */
-        else {
-            $related_wrevenues = $wrevenues;
-        }
-        return $related_wrevenues;
-    }
-    
     //Converts the time to AM and PM.
     public function convert_time($temp_start_time) {
   	if($temp_start_time >= 780) {

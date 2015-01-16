@@ -16,7 +16,6 @@
 <link rel="stylesheet" href="<?php echo $PATH_BOOTSTRAP?>css/mosaic.css" type="text/css" media="screen">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<link href="<?php echo $PATH_CSS?>redmond/jquery-ui-1.10.4.custom.css" rel="stylesheet">
 </head>
 
 <body>
@@ -28,13 +27,45 @@
 <div class="row" style="margin:30px;">
   <p class="event"><img src="<?php echo $PATH_IMG?><?php echo $event_info[$category]['image']?>" class="wrev-image"/> <strong><?php echo $event_info[$category]['name']?> </strong> <span class="pronounce"><?php echo $event_info[$category]['pronunciation']?></span></p>
   <p class="definition">&nbsp;&nbsp; <?php echo $event_info[$category]['definition']?></p> 
+      <!--
+  <div class="row"> 
+    <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3" style="margin-top:10px;">      
+      <form class="form-inline" role="form">
+        <div class="form-group">
+              <div class="left-inner-addon">
+                <span class="glyphicon glyphicon-search"></span>
+          <label class="sr-only">Search</label>
+          <input type="search" class="form-control" style="font-size:14px;" placeholder="search name of wrev"></div>
+        </div>
+        <div class="form-group">
+              <div class="left-inner-addon">
+                <i class="fa fa-map-marker"></i>
+          <label class="sr-only">Location</label>
+          <input type="text" class="form-control"  style="font-size:14px;" placeholder="New York, NY"></div>
+        </div>
+       
+        <div class="btn-group">
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="font-size:14px; padding:1px 10px;">
+          price
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">Dropdown link</a></li>
+            <li><a href="#">Dropdown link</a></li>
+        </ul>
+        </div>
       
+  
+        <button type="submit" class="btn" style="background:#1C74BB; color:white; font-size:14px; padding:1px 10px;">go</button>
+    </form>
+    </div>  
+    </div>-->
     <div class="eventlist">
                 <div style="margin-left:auto;margin-right:auto;">
                 	<div style="margin-left:25%;margin-right:auto;margin-top:25px;">
 <!--                <form class="form-inline" role="form"> -->
             <?php $save_search = array('onsubmit' => 'return save_search()');
-            echo form_open(base_url().'main/get_related_events_search/'.$category, $save_search)?>
+            echo form_open(base_url().'main/get_related_events/'.$category, $save_search)?>
 		
 
         
@@ -108,17 +139,15 @@
               <option value="WY">WY</option>
             </select>     
         </div>
-        <div class="col-xs-1" style="padding:0;">
+      <div class="col-xs-1" style="padding:0;">
             <input id="cookie_zipcode" name="zipcode" type="text" pattern=".{5,5}" maxlength="5" class="form-control" placeholder="Zip" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
            </div>
-        <div class="col-xs-1" style="padding:0;">
-            <input id="cookie_date" name="search_date" class="form-control" type="text" placeholder="Date">
-        </div>
+      
         <input type="submit" class="btn" style="background:#1C74BB; color:white;font-size:20px; padding:1px 10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);"value="go">
             <?php echo form_close() ?>
             </div>
 		</div>
-     </div>      
+           
 <!--<div class="text-center" style=";margin-right:8%;margin-left:8%;">
     <ul class="pagination">
     	<li><a href="javascript:void(0)" onclick="show_page(1)"><<</a></li>
@@ -131,19 +160,19 @@
     </ul>
 </div>-->
 
-    <div class="row row-centered" style=" margin-top:30px;">
-     <div class="col-md-11 col-centered col-sm-11 col-xs-12" style="color:white;text-align:center;padding:10px 10%;">
+    <div class="container" style=" margin-top:30px;">
+      <div class="eventlist">
       <div class="row">
         <!--modify -->
         <?php if($size <= 1) {
-            echo '<span style="color:black; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">results found!</span></span>';
+            echo '<span style="color:black;margin-left:43%; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">results found!</span></span>';
              }
              else{
-                echo '<span style="color:black; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">results found!</span></span>';
+                echo '<span style="color:black;margin-left:43%; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">results found!</span></span>';
             }?>
-            
+            </div>
       </div>
-      <div class="row" style="text-align:left;">
+      <div>
       <?php  
       $i = 0;
       $group_page = 1;
@@ -154,27 +183,29 @@
       	    	$size_left--;
       	    	if($group_page == 1) {
       ?>
-	      <div class="<?php echo 'event_group'.$group_page?> col-md-3 col-sm-6" style="padding:0 9px;">
+	      <div class="<?php echo 'event_group'.$group_page?> col-md-3 col-sm-6 col-xs-12" style="padding:70px 3.2% 0; margin-left:5%;">
 	      <?php } else {?>
-	      <div class="<?php echo 'event_group'.$group_page?> col-md-3 col-sm-6" style="padding:0 9px;" hidden>
+	      <div class="<?php echo 'event_group'.$group_page?> col-md-3 col-sm-6 col-xs-12" style="padding:70px 3.2% 0; margin-left:5%;" hidden>
 	      <?php }?>
-                <div class="mosaic-block bar2" onclick="location.href='<?php echo base_url().'event/event_info/'.$category.'/'.$event_info[$i]["event_id"]?>';" style="margin-top:18px;cursor:pointer;border-radius:10px; -moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);" > <!-- <- box to link to full view -->
+                <div class="mosaic-block bar2" onclick="location.href='<?php echo base_url().'event/event_info/'.$category.'/'.$event_info[$i]["event_id"]?>';" style="cursor:pointer;border-radius:10px; -moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);" > <!-- <- box to link to full view -->
                
 
         <a target="_blank" class="mosaic-overlay <?php echo $category?>-box" style="background-color: <?php echo $event_info[$category]['theme-color-1']?>;display: inline; left: 0px;">
-      <div class="col-md-12" style="height: 50px; background-color: <?php echo $event_info[$category]['theme-color-2']?>;position:relative;">
-                            <p style="text-align:center; color:white; font-size:20px; margin-top:8px;">
-								<strong style="text-shadow: 1px 1px 0.5px #000000;"><?php
-                                    $event_name_temp = substr($event_info[$i]['e_name'], 0, 14);
-                                    echo $event_name_temp; ?></strong>
-                            </p>
+      <div class="col-md-12" style="height: 50px; background-color: <?php echo $event_info[$category]['theme-color-2']?>;">
+                            <p style="text-align:center; color:white; font-size:28px; margin-top:5px;">
+                            <!--Number of likes and like button-->
+                            <span><?php echo $event_info[$i]['e_likes'] ?> </span><i class="fa fa-heart-o"></i> | 
+                            <!--Add to Palette-->
+                            <span class="glyphicon glyphicon-list-alt"></span> | 
+                            <!--Share button-->
+                            <i class="fa fa-share-square-o"></i> </p>
       </div>
                         <!--Location of event-->
-                        <p class="location location-romance"><i class="fa fa-map-marker"></i> <?php echo $event_info[$i]['e_state'] ?> </p>
+                        <p class="location location-romance"><i class="fa fa-map-marker"></i><?php echo $event_info[$i]['e_state'] ?> </p>
                         
                         <!--Description -->
                         <p class="description">                       
-                        <?php $event_description_temp = substr($event_info[$i]['e_description'], 0, 140); echo $event_description_temp; ?>......                       
+                        <?php $event_description_temp = substr($event_info[$i]['e_description'], 0, 150); echo $event_description_temp; ?>......                       
                         </p>
                         
                         <!--Click to lead to individual listing page-->
@@ -182,21 +213,20 @@
         </a>
       
       <div class="mosaic-backdrop" style="display: block;">
-                                <div style="position: absolute; border-radius:7px; background-color: rgba(239,186,183,0.3); width: 100%; height: 280px; z-index: 0;"></div>
+                                <div style="position: absolute; border-radius:7px; background-color: rgba(239,186,183,0.3); width: 325px; height: 400px; z-index: 0;"></div>
                         <!--Event Image-->
         <img src="<?php echo base_url()."uploads/". $event_info[$i]['e_image']?>" style="max-width:100%; min-width:100%; max-height:100%; min-height:100%;">
         <div class="details">
-                                    <p style="font-size:17px;">
+                                    <p>
+                                    <!--Name of event-->
+                                    <strong style="text-shadow: 1px 1px 0.5px #000000;"><?php
+                                    $event_name_temp = substr($event_info[$i]['e_name'], 0, 14);
+                                    echo $event_name_temp; ?></strong> 
                                     <!--Date of event-->
-                                    <span class="badge date <?php echo $category?>-date" ><?php echo $event_info[$i]['e_date']?></span>
-                                    <span class="pull-right"style="text-shadow: 1px 1px 0.5px #000000;"><i class="fa fa-clock-o"></i><?php echo $event_info[$i]['e_start_time']?></span>
-                                    </p>
-									
-									
+                                    <span class="badge date <?php echo $category?>-date" ><?php echo $event_info[$i]['e_date']?></span></p>
                                     <!--Number of people attending-->
-                                    <p style="font-size:17px;">
-									<span class="badge attending"><?php echo $event_info[$i]['e_attending'] ?></span> <span style="text-shadow: 1px 1px 0.5px #000000;">Attending</span>
-                                    <span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><span><?php echo $event_info[$i]['e_likes'] ?> </span><i class="fa fa-heart-o"></i></span>
+                                    <p style="margin-top:-8px;font-size:17px;"><span class="badge attending"><?php echo $event_info[$i]['e_attending'] ?></span> <span style="text-shadow: 1px 1px 0.5px #000000;">Attending</span>
+                                    <span class="pull-right"style="text-shadow: 1px 1px 0.5px #000000;"><i class="fa fa-clock-o"></i><?php echo $event_info[$i]['e_start_time']?></span>
                                     </p>
                                     
                                 </div>
@@ -206,20 +236,20 @@
            
             <?$i++;}
             $group_page++;}}?>   
-            </div>
+            
         </div>
     </div>
     <div class="text-center">
     <ul class="pagination">
-    	<li><a href="javascript:void(0)" onclick="show_page(1)" class="pagenumber"><<</a></li>
-    	<li><a href="javascript:void(0)"onclick="show_page(-1)" class="pagenumber"><</a></li>
+    	<li><a href="javascript:void(0)" onclick="show_page(1)"><<</a></li>
+    	<li><a href="javascript:void(0)"onclick="show_page(-1)"><</a></li>
     	<?php for($i = 0; $i < $size / 21; $i++) {?>
-        	<li><a id="page_number<?php echo $i+1?>" class="page_number_class pagenumber" href="javascript:void(0)" onclick="show_page(<?php echo $i+1?>)"><?php echo $i+1?></a></li> 
+        	<li><a id="page_number<?php echo $i+1?>" class="page_number_class" href="javascript:void(0)" onclick="show_page(<?php echo $i+1?>)"><?php echo $i+1?></a></li> 
         <?php }?>
-        <li><a href="javascript:void(0)" onclick="show_page(-2)" class="pagenumber">></a></li> 
-        <li><a href="javascript:void(0)" onclick="show_page(<?php echo (int)($size/21)+1?>)" class="pagenumber"> >> </a></li> 
+        <li><a href="javascript:void(0)" onclick="show_page(-2)">></a></li> 
+        <li><a href="javascript:void(0)" onclick="show_page(<?php echo (int)($size/21)+1?>)"> >> </a></li> 
     </ul>
-	</div>
+</div>
     <div class="row" style="text-align:center; padding:10px;">
             <!--<a href="#"><button type="button" class="btn btn-lg" style="background:#1A75BF; color:white; font-size:25px; padding:10px; border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .5);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);box-shadow:2px 2px 2px rgba(0, 0, 0, .5);">View more</button></a>-->
             <?php if($this->session->userdata('is_logged_in')) {?>
@@ -271,7 +301,6 @@
     		$.cookie("price", $("#cookie_price").val());
     		$.cookie("state", $("#cookie_state").val());
     		$.cookie("zipcode", $("#cookie_zipcode").val());
-                $.cookie("date", $("#cookie_date").val());
     	}
     </script>
     <script>
@@ -280,12 +309,10 @@
     		$("#cookie_price").attr('value', $.cookie("price"));
     		$("#cookie_state").val($.cookie("state"));
     		$("#cookie_zipcode").attr('value', $.cookie("zipcode"));
-                $("#cookie_date").attr('value', $.cookie("date"));
     		$.cookie("search", "");
     		$.cookie("price", "");
     		$.cookie("state", "");
     		$.cookie("zipcode", "");
-                $.cookie("date", "");
     	});
     </script>
     <script>
@@ -318,11 +345,5 @@
     <script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>jquery.cookie.js"></script>
-<script src="<?php echo $PATH_JAVASCRIPT?>jquery-ui-1.10.4.custom.js"></script>
-<script>
-  $(function() {
-    $("#cookie_date").datepicker();
-  });
-  </script>
 </body>
 </html> 

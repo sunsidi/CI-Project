@@ -62,7 +62,7 @@
 		<a href="<?php echo base_url().'info/aboutus'?>" style="color:white; font-size:20px;">About Us.</a>
 		<a href="<?php echo base_url().'info/terms'?>" style="color:white; font-size:20px;">Terms of Use.</a>
 		<a href="<?php echo base_url().'info/privacy'?>" style="color:white; font-size:20px;">Privacy Policy.</a>
-		<a href="<?php echo base_url().'wrevenues/wrevenues_main'?>" style="color:white; font-size:20px;">Wrevenues.</a>
+		<a href="http://wrevenues.wrevel.com" style="color:white; font-size:20px;">Wrevenues.</a>
 		<a href="<?php echo base_url().'info/pricing'?>" style="color:white; font-size:20px;">Pricing.</a>
 		<a href="<?php echo base_url().'info/contactus'?>" style="color:white; font-size:20px; padding-bottom:20px;">Contact Us.</a>
 		</div></center>

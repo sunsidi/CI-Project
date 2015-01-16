@@ -23,43 +23,30 @@
       <center><div>
     <h1 style="text-align:center;font-size:40px;font-family:GillSans;color:white;"><img src="<?php echo $PATH_IMG?>w1.png"/>Blog</h1>
     </div></center>
-	<div class="row">
-		<div class="col-md-6" style="margin-top:30px;">
- 	<a href="<?php echo base_url().'info/blog3'?>"><div style="position: relative;width: 100%; height: 322px; background:linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)),
-	    url(<?php echo $PATH_IMG?>NYE-2015-Wrev.jpg); background-size: 100% 322px;">
-		<div style="position:absolute; bottom:0px;left: 0px;background:linear-gradient(rgba(46,49,146,0.7), rgba(46,49,146,0.7));width: 100%;">
-		<p style="text-align: center;padding-left: 0px;color: white; font-size: 32px;">New Years 2015</p>
-		</div>
-	    </div></a></div>
-		
-		<div class="col-md-6" style="margin-top:30px;">
-	     <a href="<?php echo base_url().'info/blog1'?>"><div class="col-md-6" style="position: relative;width: 100%; height: 322px; background:linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)),
-	    url(<?php echo $PATH_IMG?>grind.png); background-size: 100% 322px;">
-		<div style="position:absolute; bottom:0px;left: 0px;background:linear-gradient(rgba(239,65,54,0.7), rgba(239,65,54,0.7));width: 100%;">
-		<p style="text-align: center;padding-left: 0px;color: white; font-size: 32px;">What’s in store for Wrevel?</p>
-		</div>
-	    </div></a></div>
-	</div>
-	
- 	<div class="row">
- 	<div class="col-md-3 col-sm-6" style="margin-top:30px;">
- 	<a href="<?php echo base_url().'info/blog0'?>"><div style="position: relative;width: 100%; height: 322px; background:linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)),
-	    url(<?php echo $PATH_IMG?>collageblog.png); background-size: 100% 322px;">
-		<div style="position:absolute; bottom:0px;left: 0px;background:linear-gradient(rgba(46,49,146,0.7), rgba(46,49,146,0.7));width: 100%;">
+ 	<div class="row" style="margin-top:30px;">
+ 	<div class="col-md-3">
+ 	<a href="<?php echo base_url().'info/blog0'?>"><div style="position: relative;width: 275px; height: 322px; background:linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)),
+	    url(<?php echo $PATH_IMG?>collageblog.png); background-size: 275px 322px;">
+		<div style="position:absolute; bottom:0px;left: 0px;background:linear-gradient(rgba(46,49,146,0.7), rgba(46,49,146,0.7));width: 275px;">
 		<p style="text-align: center;padding-left: 0px;color: white; font-size: 32px;">Introducing Wrevel’s Project Phoenix</p>
 		</div>
 	    </div></a></div>
-	    <div class="col-md-3 col-sm-6" style="margin-top:30px;">
+	    <div class="col-md-3">
 	    
-	    <a href="<?php echo base_url().'info/blog2'?>"><div style="position: relative;width: 100%; height: 322px; background:linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)),
-	    url(<?php echo $PATH_IMG?>toolsstartup.png); background-size: 100% 322px;">
-		<div style="position:absolute; bottom:0px;left: 0px;background:linear-gradient(rgba(14,122,76,0.7), rgba(14,122,76,0.7));width: 100%;">
+	    <a href="<?php echo base_url().'info/blog2'?>"><div style="position: relative;width: 275px; height: 322px; background:linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)),
+	    url(<?php echo $PATH_IMG?>toolsstartup.png); background-size: 275px 322px;">
+		<div style="position:absolute; bottom:0px;left: 0px;background:linear-gradient(rgba(14,122,76,0.7), rgba(14,122,76,0.7));width: 275px;">
 		<p style="text-align: center;padding-left: 15px;padding-right:15px;color: white; font-size: 32px;">8 Essential Tools for a Startup Entrepreneur</p>
 		</div>
 	    </div></a></div>
-	    
-	</div>
-	
+	    <div class="col-md-6">
+	     <a href="<?php echo base_url().'info/blog1'?>"><div class="col-md-6" style="position: relative;width: 550px; height: 322px; background:linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)),
+	    url(<?php echo $PATH_IMG?>grind.png); background-size: 550px 322px;">
+		<div style="position:absolute; bottom:0px;left: 0px;background:linear-gradient(rgba(239,65,54,0.7), rgba(239,65,54,0.7));width: 550px;">
+		<p style="text-align: center;padding-left: 0px;color: white; font-size: 32px;">What’s in store for Wrevel?</p>
+		</div>
+	    </div></a></div>
+</div>
 </div>	    
  		   
 	    <!--<a href="#"><div class="col-md-3" style="position: relative;width: 275px; height: 322px; background:linear-gradient(rgba(249,237,164,0.3), rgba(249,237,164,0.3)),

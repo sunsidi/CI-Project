@@ -409,68 +409,57 @@ public function index()
 		
 	}
 
-	public function update_profile()
-        {
-            $this->load->model('model_users');
-            $this->load->library('session');
-            //if($this->session->userdata('is_logged_in') == 1){
-            $email = $this->session->userdata('email');
-            $user_data = $this->model_users->get_info($email);
-            $user_business_data = $this->model_users->get_business_info($user_data['user_id']);
-            $config['upload_path']='./uploads/profile/'.$user_data['user_id'].'/'; //change it to a user specific directory
-            //if user specific directory does not exist...then create one and then upload
-            $config['allowed_types']= 'gif|jpg|png|jpeg';
+	public function update_profile(){
+		{
+			$this->load->model('model_users');
+			$this->load->library('session');
+		//if($this->session->userdata('is_logged_in') == 1){
+				$email = $this->session->userdata('email');
 
-            $config['max_size']	= '10000';
-            //echo $image_name;
-            $this->load->library('upload',$config);
+		
+		$config['upload_path']='./uploads/'; //change it to a user specific directory
+		//if user specific directory does not exist...then create one and then upload
+		$config['allowed_types']= 'gif|jpg|png|jpeg';
 
-            $data = array(
-                'email'=> $this->session->userdata('email'),
+		$config['max_size']	= '10000';
 
-                'is_logged_in'=>1                          
-            );
+		$config['file_name'] = md5(uniqid());
+		//echo $image_name;
+		$this->load->library('upload',$config);
 
-            $this->session->set_userdata($data);
-            $this->model_users->edit_info($user_data['user_id']);
-            if (!$this->upload->do_upload("userprofile"))
-            {
-                if($this->session->userdata('image_key') == 'default_profile.jpg'){
-                    $image_name = 'default_profile.jpg'; 
-                }
-            }
-            else{
-                $upload_data = $this->upload->data();
-                //$data = array('upload_data' => $this->upload->data());
-                if($user_data['image_key'] != 'default_profile.jpg' && strpos($user_data['image_key'], 'facebook') === false) {
-                    unlink('./uploads/'.$user_data['image_key']);
-                }
-                $image_name = 'profile/'.$user_data['user_id'].'/'.$upload_data['file_name'];
-                $updateDB = $this->model_users->add_image($image_name);
-            }
-            if($user_data['business']) {
-                if (!$this->upload->do_upload("usercover")){}
-                else{
-                    $upload_data2 = $this->upload->data();
-                    //$data = array('upload_data' => $this->upload->data());
-                    if($user_business_data['cover_photo'] != 'default_cover.jpg' && !empty($user_business_data['cover_photo'])) {
-                        unlink('./uploads/'.$user_business_data['cover_photo']);
-                    }
-                    $cover_name = 'profile/'.$user_data['user_id'].'/'.$upload_data2['file_name'];
-                    $updateDB = $this->model_users->add_cover_image($cover_name, $user_data['user_id']);
-                }
-            }
-            //AFTER GET THE MULTIPLE PHOTOS THAT YOU WANT.
-            $config2['upload_path'] ='./uploads/profile/'.$user_data['user_id'].'/photos/';
-            $config2['allowed_types'] = 'gif|jpg|png|jpeg';
-            $config2['max_size'] = '10000';
-            //echo $image_name;
-            $this->load->library('upload', $config2);
-            $this->upload->initialize($config2);
-            if (!$this->upload->do_multi_upload('profile_file_array')) {
+		$data = array(
+                        'email'=> $this->session->userdata('email'),
+                        
+                        'is_logged_in'=>1                          
+                    );
+	
+		$this->session->set_userdata($data);
                 
-            }
-            redirect('showroom/profile');
+                        $this->model_users->edit_info($email);
+			if (!$this->upload->do_upload("userprofile"))
+                        {
+                        	$error = array('error' => $this->upload->display_errors());
+
+				$this->load->view('upload_form', $error);
+                            	if($this->session->userdata('image_key') == 'default_profile.jpg'){
+                                	$image_name = 'default_profile.jpg'; 
+                            	}
+                            	redirect('showroom/profile');
+                            
+                        }
+			else{
+				$upload_data = $this->upload->data();
+				//$data = array('upload_data' => $this->upload->data());
+				$image_name = $upload_data['file_name'];
+                                $updateDB = $this->model_users->add_image($image_name);
+                                if($updateDB){
+                                    redirect('showroom/profile');
+                                }
+                                else{
+                                    echo "could not update database";
+                                }	
+                        }
+	}
         }
 
     public function registration_validation()
@@ -507,14 +496,15 @@ public function index()
 				$message .= "<div>E-mail: <a href='support@wrevel.com'>support@wrevel.com</a></div>";
 				$this->email->message($message);
 				$fullname = $this->input->post('first_name-signup').' '.$this->input->post('last_name-signup');
-				$data = array(
+				    $data = array(
     					'username'=> $this->input->post('username-signup'),
     					'gender'=> $this->input->post('gender-signup'),
-                                        'email'=> $this->input->post('email-signup'),
-                                        'fullname'=>$fullname,
-                                        'password'=> md5($this->input->post('password-signup')),
-                                        'key' => $key,
-                                        'business' => $this->input->post('business'));
+                        'email'=> $this->input->post('email-signup'),
+                        'fullname'=>$fullname,
+                        'password'=> md5($this->input->post('password-signup')),
+                        'key' => $key
+                        //'icon' => null;
+                    );
 
 				if($this->model_users->add_temp_users($data))
 				{
@@ -711,8 +701,8 @@ public function get_related_events($category)
       $price = $this->input->post('price');
         $state = $this->input->post('state');
         $zipcode = $this->input->post('zipcode');
-        
-    	$related_events= $this->model_events->get_latest_related_events($search,$category,$price,$state,$zipcode);
+      $related_events= $this->model_events->get_latest_related_events($search,$category,$price,$state,$zipcode);
+
 
 
       $result = array_merge($related_events, $path);
@@ -746,64 +736,50 @@ public function get_related_events($category)
 
       //$this->model_events->print_values();
   }
-    
-    public function get_related_events_search($category)
-    {
-    //echo "category is: ".$category;
-    $this->load->library('path');
-    $this->load->library('hashmap_cata');
-    $this->load->library('session');
-    $eventMap = $this->hashmap_cata->get_EventMap();
-    $path = $this->path->getPath();
-    //get category from having clicked the link which acts as a submit button
-    //          with value giving category
-    //$category = $this->input->post('category');  //maybe use get? to show user category of event?
-      $this->load->model('model_events');
-      // get all events related to chosen category
-      //$related_events = $this->model_events->get_events($category);
+		public function get_related_events_search($category)
+	{
+		//echo "category is: ".$category;
+		$this->load->library('path');
+		$this->load->library('hashmap_cata');
+		$eventMap = $this->hashmap_cata->get_EventMap();
+		$path = $this->path->getPath();
+		//get category from having clicked the link which acts as a submit button
+		//					with value giving category
+		//$category = $this->input->post('category');  //maybe use get? to show user category of event?
+    	$this->load->model('model_events');
+    	// get all events related to chosen category
+    	//$related_events = $this->model_events->get_events($category);
 
 
-      $search = $this->input->post('search');
-      $price = $this->input->post('price');
+    	$search = $this->input->post('search');
+    	$price = $this->input->post('price');
         $state = $this->input->post('state');
-        $zipcode = $this->input->post('zipcode');
-        $originalDate = $this->input->post('search_date');
-        $date = date("Y-m-d", strtotime($originalDate));
-        
-    	$related_events= $this->model_events->get_latest_related_events_search($search,$category,$price,$state,$zipcode,$date);
+
+        //CHECK THIS METHOD ITS CAUSING SOME REPETITTION!!!!!!
+    	$related_events= $this->model_events->get_latest_related_events($search,$category,$price,$state);
 
 
-      $result = array_merge($related_events, $path);
-      $data = array_merge($result,$eventMap);
-      //pass what type of event we are looking for to allow the usage of just one html view for 
-      //        the different pages
-      $data['category'] = $category;
-      //$events_states=$this->model_events->get_states();
+    	//echo "<pre> ",print_r($related_events,true) ,"</pre>";
 
-      $events_states = $this->model_events->get_category_states($category);
+    	$result = array_merge($related_events, $path);
+    	$data = array_merge($result,$eventMap);
+    	//pass what type of event we are looking for to allow the usage of just one html view for 
+    	//				the different pages
+    	$data['category'] = $category;
+    	//$events_states=$this->model_events->get_states();
+        $events_states = $this->model_events->get_category_states($category);
         $data['states']= $events_states;
 
-        /*TODO */
-        $events_zipcode = $this->model_events->get_category_zipcode($category);
-        $data['zipcode']=  $events_zipcode;
-	$nav_data = $this->session->all_userdata();
-    	$result = array_merge($data,$nav_data,$path);
 
 
-      //print_r($result);
-      //echo print_r($result);
-      //echo "<pre> ",print_r($data,true) ,"</pre>";
+    	//print_r($result);
+    	//echo print_r($result);
+    	//echo "<pre> ",print_r($data,true) ,"</pre>";
+    	$this->load->view('event_template',$data);
 
+    	//$this->model_events->print_values();
 
-         //echo "<pre> ",print_r($nav_data,true) ,"</pre>";
-
-      //print_r($result);
-      //echo print_r($result);
-      $this->load->view('Create_Wrevel_View', $path);
-      $this->load->view('event_template',$result);
-
-      //$this->model_events->print_values();
-  }
+	}
   public function get_latest_events(){
     $this->load->library('path');
     $this->load->library('hashmap_cata');
@@ -819,50 +795,12 @@ public function get_related_events($category)
       $price = $this->input->post('price');
         $state = $this->input->post('state');
         $zipcode = $this->input->post('zipcode');
+
         //echo $zipcode . "<br>";
         //echo $state. "<br>";
         //echo $price."<br>";
 
     $latest_events = $this->model_events->get_latest_events($search,$price,$zipcode,$state);
-    
- 
-
-    $data = array_merge($latest_events,$path);
-    $events_states = $this->model_events->get_states();
-        $data['states']= $events_states;
-        $events_zipcode = $this->model_events->get_zipcode();
-        $data['zipcode'] = $events_zipcode;
-    $nav_data = $this->session->all_userdata();
-    $all = array_merge($data,$eventMap,$nav_data);
-
-      //echo "<pre> ",print_r($all,true) ,"</pre>";
-    $this->load->view('Create_Wrevel_View', $path);
-    $this->load->view('latestwrevs',$all);
-
-  }
-  
-  public function get_latest_events_search(){
-    $this->load->library('path');
-    $this->load->library('hashmap_cata');
-    $this->load->library('session');
-    $eventMap = $this->hashmap_cata->get_EventMap();
-    $path = $this->path->getPath();
-    $this->load->model('model_events');
-
-
-
-    //$search = $this->input->post('search');
-    $search = $this->input->post('search');
-      $price = $this->input->post('price');
-        $state = $this->input->post('state');
-        $zipcode = $this->input->post('zipcode');
-        $originalDate = $this->input->post('search_date');
-        $date = date("Y-m-d", strtotime($originalDate));
-        //echo $zipcode . "<br>";
-        //echo $state. "<br>";
-        //echo $price."<br>";
-
-    $latest_events = $this->model_events->get_latest_events_search($search,$price,$zipcode,$state,$date);
     
  
 

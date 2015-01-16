@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+
 <head>
 <meta charset="utf-8">
 <title><?php echo $event[0]['e_name']?></title>
@@ -12,10 +12,7 @@
 <link href="<?php echo $path['PATH_BOOTSTRAP']?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="<?php echo $path['PATH_BOOTSTRAP']?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<?php echo $path['PATH_BOOTSTRAP']?>css/main.css" rel="stylesheet">
-<link href="<?php echo $PATH_BOOTSTRAP?>css/event-lightbox.css" rel="stylesheet">
-
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<meta name="description" content="<?php echo $event[0]['e_description']?>">
 
 <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false"
             type="text/javascript"></script> 
@@ -48,7 +45,7 @@ jQuery(document).ready(function () {
 <script type="text/javascript">stLight.options({publisher: "98b7df42-3881-4ba4-adc3-bcb7a479d75e", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
 
-<body>
+
 <?php $this->load->view('header');?>
 
 <!--content
@@ -538,15 +535,6 @@ jQuery(document).ready(function () {
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label class="col-sm-2">Event Photos</label>
-                                                        <div class="col-sm-4" id="edit_event_photos_base">
-                                                            <div class="image-upload">
-                                                                <input id="file-input" name = "edit_event_photos[]" type = "file" style="overflow:hidden;"/>
-                                                            </div>
-                                                        </div>
-                                                        <a id="edit_more_event_photos" class="btn pull-right" type="button" onclick="edit_more_event_photos()">Add More</a>
-                                                    </div>
-                                                    <div class="form-group row">
                                                         <label class="col-sm-2">Event Type</label>
                                                         <input type="radio" name="status" value="public"> public
                                                         <input type="radio" name="status" value="private"> private
@@ -724,42 +712,6 @@ jQuery(document).ready(function () {
                             	 <img src="<?php echo base_url()."uploads/".$event[0]['e_image']?>"style="max-width:90%; min-width:90%; padding:2%;"/>
 
                             </div>
-                            <!-- PHOTOS -->
-                            <div style="margin-top:40px;">
-                                <h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>photo_icon.png"/> &nbsp; Photos:</h4>
-                                <?php if(!empty($event['photos'])) {?>
-                                <div style="padding:0% 5%;font-size:18px;line-height:70%;">
-                                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
-                                        <div class="carousel-inner" role="listbox">
-                                            <?php 
-                                            $first = true;
-                                            foreach($event['photos'] as $picture){
-                                                    if($first) {?>
-                                                    <div class="item active">
-                                                            <a href="<?php echo base_url().'uploads/events/'.$event[0]['event_id'].'/photos/'.$picture?>" rel="lightbox">
-                                                            <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'uploads/events/'.$event[0]['event_id'].'/photos/'.$picture?>" alt="...">
-                                                            </a>
-                                                    </div>
-                                                    <?php $first = false;
-                                                    } else {?>
-                                                    <div class="item">
-                                                            <a href="<?php echo base_url().'uploads/events/'.$event[0]['event_id'].'/photos/'.$picture?>" rel="lightbox"> <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'uploads/events/'.$event[0]['event_id'].'/photos/'.$picture?>" alt="..."></a>
-                                                    </div>
-
-                                            <?php }}?> 
-                                        </div>
-                                        <a class="left carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="prev">
-                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                                <span class="sr-only">Previous</span>
-                                        </a>
-                                        <a class="right carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="next">
-                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                                <span class="sr-only">Next</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <?php } else { echo 'There are no photos for this event'; }?>
-                            </div><!-- END OF PHOTOS -->
                             <div class="row" style="padding:0 10px 0;">
                             	
                                     <h3><i class="fa fa-exclamation-circle"></i> What is this?</h3>
@@ -770,7 +722,7 @@ jQuery(document).ready(function () {
                         </div>
                         <div class="col-md-6" style="text-align:center;margin-top:10px;">              	
                             <div class="row" style="color:white;">
-                            	<a href="<?php echo base_url().'wrevenues/wrevenues_main'?>" class="btn viewmorewrevs" style="border-radius:10px;font-size:23px;color:white;">View Wrevenue</a>
+                            	<a href="http://wrevenues.wrevel.com" class="btn viewmorewrevs" style="border-radius:10px;font-size:23px;color:white;">View Wrevenue</a>
                                 
                                 <!--Ticketing System button-->
                                 <?php if($event[0]['e_is_ticketed']) {?>
@@ -981,6 +933,8 @@ jQuery(document).ready(function () {
                                         <div class="col-md-10">
                                                 <div class="caption pull-middle" style="text-align:center;">
                                                     <p><h3 style="color:#414042;">Be the first to attend this event!</h3></p>
+                                        
+
       						</div>
                                         </div>
                                         <?php }?>
@@ -1220,7 +1174,6 @@ jQuery(document).ready(function () {
     </div>            
 </div>
 
-
 <!--end of content-->
 
 <?php $this->load->view('footer');?>
@@ -1330,18 +1283,6 @@ jQuery(document).ready(function () {
     		});
 	});
     </script>
-    <script>
-        function edit_more_event_photos() {
-            var content = '<div class="image-upload">'
-                                +'<input id="file-input" name = "edit_event_photos[]" type = "file"/>'
-                            '</div>';
-            $('#edit_event_photos_base').append(content);
-        }
-    </script>
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  -->
     <!--<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.min.js"></script>
 	<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.js"></script> -->
-		<script src="<?php echo $PATH_BOOTSTRAP?>js/lightbox.js"></script>
-
-</body>
-</html>

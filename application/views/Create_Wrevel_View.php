@@ -41,9 +41,9 @@
         <h1 class="cw_heading" style="text-align:center;font-family:GillSans;padding:10px;">create a wrev</h1>
           
           <div class="col-md-4" style="padding:0 10px; ">
-              <div style="text-align:center;font-size:15px;"><span style="color:red;font-weight:normal;font-size:23px;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;">* </span> Please select one primary category (by double-clicking on the icon), select as many sub categories as you want.
+              <p style="text-align:center;font-size:15px;"><span style="color:red;font-weight:normal;font-size:23px;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;">* </span> Please select one primary category (by double-clicking on the icon), select as many sub categories as you want.
                   
-              </div>
+              </p>
               
   
     
@@ -640,11 +640,11 @@
                         
                         <input id="file-input" name = "userfile" type = "file" style="overflow:hidden;"/>
                         <input id="file-upload" type = "submit" >
+                        </form>
                 
                     </div>
                         
                 </div>
-                      
 <div class="col-sm-6">
 <div class="row">
                         <label class="col-sm-5">Hide event address <i class="fa fa-question-circle" id="info" data-content="The address of this event will remain hidden until you approve the finalized attendee list." data-trigger="hover" data-placement="top"></i></label>
@@ -677,17 +677,9 @@
                     }
                    </style>
 </div>
-                    
-                    </div>
-                  <div class="form-group row">
-				  <label class="col-sm-4">More Event Images.</label>
-                        <div class="col-sm-6" id="event_images_base">
-                            <div class="image-upload">
-                                <input id="file-input" name = "event_photos[]" type = "file" style="width:100%;overflow:hidden;text-overflow: ellipsis;"/>
-                            </div>
-                        </div>
-                        <a id="add_more_event_images" class="btn" type="button" onclick="add_more_event_images()">Add More</a>
-				  </div>
+
+                  </div>
+                  
                     
   		<hr>
   		
@@ -1049,7 +1041,7 @@
 				       +"</select></div><div>"
 				       +"Price"
 				       +"<input id='e_price' type='number' step='0.01' min='0.00' name='e_price[]' value='0.00' class='e_price form-control'>"
-				       +"<input type='hidden' value='nothing here'>"
+				       +"<input type='hidden' value='please do not change the above value using this console, even if you do nothing will happen.'>"
 				   +"</div></div>"
 				  +"<div class='col-sm-4' alt='You can drag this text box around to make it larger' title='You can drag this text box around to make it larger'> Info"
 				      +"<textarea name='info[]' class='form-control' rows='3'></textarea>"
@@ -1175,14 +1167,6 @@
     			$('#location5').attr('disabled', false);
     		}
 	}
-    </script>
-    <script>
-        function add_more_event_images() {
-            var content = '<div class="image-upload">'
-                                +'<input id="file-input" name = "event_photos[]" type = "file"/>'
-                            '</div>';
-            $('#event_images_base').append(content);
-        }
     </script>
 </body>
 </html>

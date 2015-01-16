@@ -23,7 +23,6 @@ class Public_profile extends CI_Controller {
 	        $counter =0;
 	        $this->load->model('model_friend_request');
 	        $this->load->model('model_users');
-                $this->load->model('model_events');
 	        $this->load->library('path');
 	        $path = $this->path->getPath();
 	
@@ -39,24 +38,6 @@ class Public_profile extends CI_Controller {
 	
 	        $data['PATH_PROFILE'] = $path['PATH_PROFILE'];
 	        $other_email = $this->model_users->get_email($user_id);
-                /**
-                 * Everything to do with Friends List here.
-                 * Might want to do this in the model to make it cleaner.
-                 */
-                // Grab all your friends. Stored in 'all_friends'
-                $data['all_friends'] = $this->model_friend_request->get_friendlists($user_id);
-                $data['number_of_friends'] = count($data['all_friends']);
-                //Remap all needed information that will be printed: Friend ID, Friend picture, Friend name.
-                for($i = 0; $i < $data['number_of_friends']; $i++) {
-                    $temp_friend_data = $this->model_users->get_email($data['all_friends'][$i]['other_user_id']);
-                    $data['all_friends'][$i]['friend_user_id'] = $temp_friend_data[0]['user_id'];
-                    $data['all_friends'][$i]['friend_picture'] = $temp_friend_data[0]['image_key'];
-                    $data['all_friends'][$i]['friend_fullname'] = $temp_friend_data[0]['fullname'];
-                }
-                /**
-                 * End of Friends List.
-                 */
-                
 	        if($other_email[0]['email'] == $email)
 	            redirect('showroom/profile');
 	        else {
@@ -66,77 +47,33 @@ class Public_profile extends CI_Controller {
 	            if($chatBox !=""){
 	            	$data['chatBoxLocation'] = base_url()."application/views/chatbox/".$chatBox;
 	            }
-                    if($data)
-                    {
-                        //Get events data.
-                        $all_events = $this->model_users->get_attending_events($user_id);
-                        for($i = 0; $i < count($all_events); $i++) {
-                            $temp_event = $this->model_events->find_event($all_events[$i]['event_id']);
-                            $temp_user_email = $this->model_users->get_email($temp_event[0]['e_creatorID']);
-                            $data['attending_events'][$i]['creator_email'] = $temp_user_email[0]['email'];
-                            $data['attending_events'][$i]['event_id'] = $temp_event[0]['event_id'];
-                            $data['attending_events'][$i]['e_image'] = $temp_event[0]['e_image'];
-                            $data['attending_events'][$i]['e_name'] = $temp_event[0]['e_name'];
-                            $data['attending_events'][$i]['e_date'] = $temp_event[0]['e_date'];
-                            //change start time to 12 hr format.
-                            $temp_start_time = $temp_event[0]['e_start_time'];
-                            if($temp_start_time >= 780) {
-                                $temp_time[0] = sprintf("%02d", floor(($temp_start_time/60) - 12));	
-                                $temp_time[1] = sprintf("%02d", $temp_start_time % 60);
-                                if($temp_time[0] == '00')
-                                        $temp_time[0] = '12';
-                                $final_time = implode(':', $temp_time);
-                                $final_time .='pm';
-                                $final_time = trim($final_time);
-                            }
-                            else {
-                                $temp_time[0] = sprintf("%02d", floor($temp_start_time/60));
-                                $temp_time[1] = sprintf("%02d", $temp_start_time % 60);
-                                if($temp_time[0] == '00')
-                                        $temp_time[0] = '12';
-                                $final_time = implode(':', $temp_time);
-                                $final_time .='am';
-                                $final_time = trim($final_time);
-                            }
-                            $data['attending_events'][$i]['e_start_time'] = $final_time;
-                            $data['attending_events'][$i]['e_description'] = $temp_event[0]['e_description'];
-                        }
-                        //This is to make sure the data doesn't conflict with the navagation bar data.
-                        $remapped_data = array('other_id'		    => $user_id,
-                                               'other_fullname'         => $other_data['fullname'],
-                                               'other_email'            => $other_email[0]['email'],
-                                               'other_username'         => $other_data['username'],
-                                               'other_phone'            => $other_data['phone'],
-                                               'other_gender'           => $other_data['gender'],
-                                               'other_birthday'         => $other_data['birthday'],
-                                               'other_reputation'       => $other_data['reputation'],
-                                               'other_tagline'          => $other_data['tagline'],
-                                               'other_relationship'     => $other_data['relationship'],
-                                               'other_location'         => $other_data['location'],
-                                               'other_school'           => $other_data['school'],
-                                               'other_user_reference'   => $other_data['user_reference'],
-                                               'other_image_key'        => $other_data['image_key'],
-                                               'other_chatbox_file'     => $other_data['chatbox_file']);
-                        if($other_data['business']) {
-                            $remapped_data['other_profile'] = $this->model_users->get_business_info($other_data['user_id']);
-                            $data['profile'] = $this->model_users->get_business_info($other_data['user_id']);
-                            $data['profile']['photos'] = array_diff(scandir('./uploads/profile/'.$other_data['user_id'].'/photos/'), array('..', '.'));
-                        }
-                        //boolean statement----> determine whether or not to put a notification
-                        $nav_data = $this->session->all_userdata();
-                        if($data)
-                        {
-                            $result = array_merge($nav_data, $data, $remapped_data);
-                            //echo '<pre>', print_r($result, true), '</pre>';
-                            $this->load->view('Create_Wrevel_View', $result);
-                            if($other_data['business']) {
-                                $this->load->view('business_public_profile', $result);
-                            }
-                            else {
-                                $this->load->view('public_profile',$result);
-                            }
-                        }
-                    }
+	            //This is to make sure the data doesn't conflict with the navagation bar data.
+	            $remapped_data = array('other_id'		    => $user_id,
+	            			   'other_fullname'         => $other_data['fullname'],
+	                                   'other_email'            => $other_email[0]['email'],
+	                                   'other_username'         => $other_data['username'],
+	                                   'other_phone'            => $other_data['phone'],
+	                                   'other_gender'           => $other_data['gender'],
+	                                   'other_birthday'         => $other_data['birthday'],
+	                                   'other_reputation'       => $other_data['reputation'],
+	                                   'other_tagline'          => $other_data['tagline'],
+	                                   'other_relationship'     => $other_data['relationship'],
+	                                   'other_location'         => $other_data['location'],
+	                                   'other_school'           => $other_data['school'],
+	                                   'other_user_reference'   => $other_data['user_reference'],
+	                                   'other_image_key'        => $other_data['image_key'],
+	                                   'other_chatbox_file'     => $other_data['chatbox_file']);
+	                                   
+	            //boolean statement----> determine whether or not to put a notification
+	            $nav_data = $this->session->all_userdata();
+	            if($data)
+	            {
+	                //echo '<pre>', print_r($this->session->all_userdata(), true), '</pre>';
+	                $result = array_merge($nav_data, $data, $remapped_data);
+	                $this->load->view('Create_Wrevel_View', $result);
+	                $this->load->view('public_profile',$result);
+	    
+	            }
 	            else{
 	
 	                //$this->load->view('')
@@ -195,7 +132,7 @@ class Public_profile extends CI_Controller {
             else{
                 //create a file name for the chat
                 $randomName = md5(uniqid()) . ".html";    
-                $filename =  "./application/views/chatbox/".$randomName;
+                $filename =  "/home/wrevelco/public_html/application/views/chatbox/".$randomName;
                 //try to create file
                 if ($handle=fopen($filename,'w+')){
                         //trying to insert info into db
@@ -254,7 +191,7 @@ class Public_profile extends CI_Controller {
             }
             /* check comment if its blank then do not write file_chat */
 
-            $filename =  "./application/views/chatbox/".$data['chatbox_file'];
+            $filename =  "/home/wrevelco/public_html/application/views/chatbox/".$data['chatbox_file'];
           //$handle = fopen($filename,'w+');
             $today = date("F j, Y, g:i a"); 
             //add commentors name instead of "Comment:"
