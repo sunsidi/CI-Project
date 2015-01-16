@@ -39,6 +39,7 @@ jQuery(document).ready(function () {
                     <a href="<? echo base_url()?>account/myaccount_eventattending"><button type="button" class="btn btn-lg btn-block account">Events I&rsquo;m Attending</button></a>
                     <a href="<? echo base_url()?>account/myaccount_eventlisting" style="color:#628DA3;"><button type="button" class="btn btn-lg btn-block account-active">My Event Listings</button></a>
                     <a href="<? echo base_url()?>account/myaccount_ticketmanagement"><button type="button" class="btn btn-lg btn-block account">Ticket Sales Management</button></a>
+					<a href="<? echo base_url()?>account/myaccount_stats"><button type="button" class="btn btn-lg btn-block account">Statistics and Analysis</button></a>
   				</div>
 			</div>           
         </div>

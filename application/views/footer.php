@@ -24,7 +24,7 @@
 				<a href="http://wrevel.tumblr.com" style="color:white;"><i class="fa fa-tumblr" style="padding:20px 15px;"></i></a>
 				<a href="http://www.youtube.com/wrevelinc" style="color:white;"><i class="fa fa-youtube" style="padding:20px 15px;"></i></a>
 			</p>
-			<p class="copy_right">&copy; Wrevel, Inc.</p>
+			<p class="copy_right">&copy; Wrevel, Inc. <span id="siteseal"><script type="text/javascript" src="https://seal.starfieldtech.com/getSeal?sealID=6JoyFkkkD2QHvR5L8Y99TLSZ3BeOkoBsN5VMQLzjwMqYDTsEyK6T2FE6sfy1"></script></span></p>
 		</div>
 		<div class="col-md-8">
 		<div class="aceg">
