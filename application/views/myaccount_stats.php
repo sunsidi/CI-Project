@@ -76,10 +76,10 @@
                                     <!-- Nav tabs -->
                                     <ul id="myTab" class="nav nav-pills stat-type">
                                         <li class="dropdown">
-                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:white;">Site Stats <span class="caret"></span></a>
+                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:white;">Ticket Stats <span class="caret"></span></a>
                                             <ul class="dropdown-menu">
                                                 <li>
-                                                    <a id="tab1_change" href="#tab1" role="tab" data-toggle="pill" onclick="tab1_click()">Site Stats</a>
+                                                    <a id="tab1_change" href="#tab1" role="tab" data-toggle="pill" onclick="tab1_click()">Ticket Stats</a>
                                                 </li>
                                                 <li>
                                                     <a id="tab2_change" href="#tab2" role="tab" data-toggle="pill" onclick="tab2_click()">Visitor Stats</a>
@@ -88,7 +88,7 @@
                                                     <a href="#tab3" data-toggle="pill">Invitation Stats</a>
                                                 </li>-->
                                                 <li>
-                                                    <a href="#tab4" data-toggle="pill">Repeat Customer Stats</a>
+                                                    <a href="#tab4" data-toggle="pill">Summary</a>
                                                 </li>
                                             </ul>
                                         </li>							
@@ -325,15 +325,9 @@
                                                     <div class="tab-content">
                                                         <div class="tab-pane active" id="total-tickets">
                                                             <div>
-                                                                <p style="text-align:center;"><strong>Tickets Sold: 33</strong> </p>
+                                                                <p style="text-align:center;"><strong>Tickets Sold: <?php echo $total_free + $total_regular + $total_early_bird + $total_vip;?></strong> </p>
                                                                 <canvas id="total_tickets_sold_site_doughnut" />
                                                             </div>
-                                                            <div style="margin-top:30px;">
-                                                                <p style="text-align:center;"><strong>Tickets Returned: 5</strong>
-                                                                </p>
-                                                                <canvas id="total_tickets_returned_site_doughnut" />
-                                                            </div>
-                                                            <p style="text-align:center;margin-top:30px;font-size:20px;"><strong>Total Amount of Tickets:</strong> 50</p>
                                                         </div>
                                                         <!-- NOT USING THIS 
                                                         <div class="tab-pane" id="event1-tickets">
@@ -665,8 +659,9 @@
                                                     <img src="<?php echo $PATH_IMG?>visitor_icon.png">
                                                     <div>
                                                         <div class="btn-group">
+                                                            <span>Ticket Summary</span>
                                                             <!-- Nav tabs -->
-                                                            <ul id="visitor-line" class="nav nav-pills stat-type">
+                                                            <!--<ul id="visitor-line" class="nav nav-pills stat-type">
                                                                 <li class="dropdown">
                                                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:white; font-size:18px;">Repeat Customer Visits (Total)<span class="caret"></span></a>
                                                                     <ul class="dropdown-menu">
@@ -681,15 +676,15 @@
                                                                         </li>
                                                                     </ul>
                                                                 </li>
-                                                            </ul>
+                                                            </ul>-->
 
                                                             <!--Number Changes Based on Dropdown selection-->
-                                                            <span style="color:white;font-weight:bold;padding:0;font-size:40px;">145</span>
+                                                            <span style="color:white;font-weight:bold;padding:0;font-size:40px;"><?php echo $total_free + $total_regular + $total_early_bird + $total_vip;?></span>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <div style="color:gray;padding:2px;">
+                                                <!--<div style="color:gray;padding:2px;">
                                                     only users with 10 or previous visits appear here
                                                 </div>
                                                 <div class="table-responsive">
@@ -714,7 +709,7 @@
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                </div>
+                                                </div>-->
                                             </div>
                                         </div>
                                     </div>
@@ -726,8 +721,9 @@
 
                                                     <div>
                                                         <div class="btn-group">
+                                                            <span>Visits Stats</span>
                                                             <!-- Nav tabs -->
-                                                            <ul id="visitor-line" class="nav nav-pills stat-type">
+                                                            <!--<ul id="visitor-line" class="nav nav-pills stat-type">
                                                                 <li class="dropdown">
                                                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:white; font-size:18px;">Event Name 1<span class="caret"></span></a>
                                                                     <ul class="dropdown-menu">
@@ -742,15 +738,15 @@
                                                                         </li>
                                                                     </ul>
                                                                 </li>
-                                                            </ul>
+                                                            </ul>-->
 
                                                             <!--Number Changes Based on Dropdown selection-->
-                                                            <span style="color:white;font-weight:bold;padding:0;font-size:40px;">145</span>
+                                                            <span style="color:white;font-weight:bold;padding:0;font-size:40px;"><?php echo $views_clicks['total_views'];?></span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div style="color:gray;padding:2px;text-align:center;">
+                                            <!--<div style="color:gray;padding:2px;text-align:center;">
                                                 only users with 10 or previous visits appear here
                                             </div>
                                             <div class="table-responsive">
@@ -775,7 +771,7 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                            </div>
+                                            </div>-->
                                         </div>
                                     </div>
                                 </div>
@@ -814,14 +810,14 @@
 
         //Total Daily Ticket Sales Chart
         var BarChartData1 = {
-            labels: ["VIP Tickets", "General Tickets", "Early Bird"],
+            labels: ["Free Tickets", "General Tickets", "Early Bird", "VIP Tickets"],
             datasets: [{
                     label: "All Tickets",
                     fillColor: "rgba(173,231,241,0.5)",
                     strokeColor: "rgba(173,231,241,1)",
                     highlightFill: "#fff",
                     highlightStroke: "rgba(173,231,241,1)",
-                    data: [20, 30, 400],
+                    data: [<?php echo $total_free;?>, <?php echo $total_regular;?>, <?php echo $total_early_bird;?>, <?php echo $total_vip;?>],
                 }
             ]
         }
@@ -837,6 +833,7 @@
                 }
             ]
         }
+        
         /*var lineChartData1 = {
             labels: ["1", "2", "3", "4", "5", "6", "7"],
             datasets: [{
@@ -1078,12 +1075,27 @@
 
         //Total Number of Tickets Sold
         var doughnutData1 = [{
-                value: 33, // # of tickets sold 
+                value: <?php echo $total_free;?>, //Total # of tickets - # of tickets sold
                 color: "#33B0D3",
                 highlight: "#33B0D3",
-                label: "Tickets Sold"
+                label: "Free Tickets Sold"
             }, {
-                value: 50 - 33, //Total # of tickets - # of tickets sold
+                value: <?php echo $total_regular;?>, //Total # of tickets - # of tickets sold
+                color: "#FD4E5A",
+                highlight: "#FD4E5A",
+                label: "General Tickets Sold"
+            }, {
+                value: <?php echo $total_early_bird;?>, //Total # of tickets - # of tickets sold
+                color: "#E588C3",
+                highlight: "#E588C3",
+                label: "Early Bird Tickets Sold"
+            }, {
+                value: <?php echo $total_vip;?>, //Total # of tickets - # of tickets sold
+                color: "#FFB275",
+                highlight: "#FFB275",
+                label: "VIP Tickets Sold"
+            }, {
+                value: <?php echo $total_tickets_left;?>, // # of tickets sold 
                 color: "#D1D3D4",
                 highlight: "#D1D3D4",
                 label: "Tickets Left"
@@ -1091,19 +1103,6 @@
 
         ];
 
-        //Total Number of Tickets Returned	
-        var doughnutData2 = [{
-                value: 5, // # of tickets returned
-                color: "#F65359",
-                highlight: "#F65359",
-                label: "Tickets Sold"
-            }, {
-                value: 50 - 5, //Total # of tickets - # of tickets returned
-                color: "#D1D3D4",
-                highlight: "#D1D3D4",
-            },
-
-        ];
         var doughnutData3 = [{
                 value: <?php echo $views_clicks['total_views'];?>, // # of days since signup
                 color: "#33B0D3",
@@ -1117,15 +1116,13 @@
             },
 
         ];
-
-        //Total Number of Tickets Returned	
         var doughnutData4 = [{
                 value: <?php echo $views_clicks['total_clicks'];?>, // # of days since signup
                 color: "#F65359",
-                highlight: "#F65359",
-                label: "Clicks"
+                highlight: "F65359",
+                label: "Views"
             }, {
-                value: <?php echo $day_since_signup;?>, //Total # of clicks
+                value: <?php echo $day_since_signup;?>, //Total # of views
                 color: "#D1D3D4",
                 highlight: "#D1D3D4",
                 label: "Days Since Signup"
@@ -1254,8 +1251,8 @@
         var myBar_sales;
         var ctx_bar_graph2;
         var myBar_visits;
-        var ctx_doughnut_returned1;
-        var myDoughnut_returned1;
+        var ctx_doughnut_sold1;
+        var myDoughnut_sold1;
         var ctx_doughnut_returned1;
         var myDoughnut_returned1;
         var ctx_doughnut_sold2;
@@ -1277,6 +1274,7 @@
                 segmentShowStroke: false,
             });
             
+            /*
             //TOTAL TICKETS REFUNDED.
             ctx_doughnut_returned1 = document.getElementById("total_tickets_returned_site_doughnut").getContext("2d");
             myDoughnut_returned1 = new Chart(ctx_doughnut_returned1).Doughnut(doughnutData2, {
@@ -1284,7 +1282,7 @@
                 animation: false,
                 segmentShowStroke: false,
             });
-            /*var ctx = document.getElementById("total_daily_sales_line").getContext("2d");
+            var ctx = document.getElementById("total_daily_sales_line").getContext("2d");
             window.myLine = new Chart(ctx).Line(lineChartData1, {
                 responsive: true,
                 scaleShowVerticalLines: false,
@@ -1346,7 +1344,6 @@
                 // Need to wait for everything to load before we can create the stuff. THERE SHOULD BE A BETTER WAY THOUGH.
                 myBar_sales.destroy();
                 myDoughnut_sold1.destroy();
-                myDoughnut_returned1.destroy();
                 
                 ctx_bar_graph2 = document.getElementById("total_alltime_visits_bar").getContext("2d");
                 ctx_doughnut_sold2 = document.getElementById("total_tickets_sold_visits_doughnut").getContext("2d");
@@ -1376,14 +1373,8 @@
                 
                 ctx_bar_graph1 = document.getElementById("total_alltime_sales_bar").getContext("2d");
                 ctx_doughnut_sold1 = document.getElementById("total_tickets_sold_site_doughnut").getContext("2d");
-                ctx_doughnut_returned1 = document.getElementById("total_tickets_returned_site_doughnut").getContext("2d");
                 
                 myDoughnut_sold1 = new Chart(ctx_doughnut_sold1).Doughnut(doughnutData1, {
-                    responsive : true,
-                    animation: false,
-                    segmentShowStroke : false,
-                });
-                myDoughnut_returned1 = new Chart(ctx_doughnut_returned1).Doughnut(doughnutData2, {
                     responsive : true,
                     animation: false,
                     segmentShowStroke : false,

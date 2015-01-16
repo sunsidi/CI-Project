@@ -80,6 +80,15 @@ class Model_events extends CI_Model{
         return false;
     }
     
+    //function to get event ticket types and their data.
+    public function get_event_ticket_types($event_id) {
+        $query = $this->db->get_where('event_ticket_types', array('event_id' => $event_id));
+        if($query->num_rows() != 0) {
+            return $query->result_array();
+        }
+        return false;
+    }
+    
     //Update the number of views on all events by 1 each time the latest wrevs is visited.
     public function update_views() {
         $this->db->where('e_date >', 'NOW() + INTERVAL 1 DAY', FALSE);

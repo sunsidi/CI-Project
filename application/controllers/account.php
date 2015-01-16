@@ -203,17 +203,48 @@ class account extends CI_Controller{
                 $data['day_since_signup'] = $diff->format("%a");
                 
                 $all_events_by_user = array();
+                $data['total_free'] = 0;
+                $data['total_regular'] = 0;
+                $data['total_early_bird'] = 0;
+                $data['total_vip'] = 0;
                 $temp_ticket_data = $this->model_tickets->get_total_ticket_sales($user_data['user_id']);
                 for($i = 0; $i < count($temp_ticket_data); $i++) {
-                    if(!in_array($all_events_by_user, $temp_ticket_data[$i])) {
-                        array_push($all_events_by_user, $temp_ticket_data[$i]);
+                    $not_there = 1;
+                    if($temp_ticket_data[$i]['ticket_type'] == 'free') {
+                        $data['total_free']++;
+                    }
+                    if($temp_ticket_data[$i]['ticket_type'] == 'regular') {
+                        $data['total_regular']++;
+                    }
+                    if($temp_ticket_data[$i]['ticket_type'] == 'early bird') {
+                        $data['total_early_bird']++;
+                    }
+                    if($temp_ticket_data[$i]['ticket_type'] == 'v.i.p.') {
+                        $data['total_vip']++;
+                    }
+                    for($j = 0; $j < count($all_events_by_user); $j++) {
+                        if($all_events_by_user[$j] == $temp_ticket_data[$i]['event_id']) {
+                            $not_there = 0;
+                        }
+                    }
+                    if($not_there) {
+                        array_push($all_events_by_user, $temp_ticket_data[$i]['event_id']);
+                    }
+                }
+                $data['total_tickets_left'] = 0;
+                for($i = 0; $i < count($all_events_by_user); $i++) {
+                    $ticket_for_event = $this->model_events->get_event_ticket_types($all_events_by_user[$i]);
+                    if($ticket_for_event) {
+                        for($j = 0; $j < count($ticket_for_event); $j++) {
+                            $data['total_tickets_left'] += $ticket_for_event[$j]['quantity'];
+                        }
                     }
                 }
                 
                 
                 $result = array_merge($path, $data, $user_data);
                 
-                echo '<pre>', print_r($data, true), '</pre>';
+                //echo '<pre>', print_r($data, true), '</pre>';
                 $this->load->view('Create_Wrevel_View',$result);
                  $this->load->view('myaccount_stats',$result);
 	}
