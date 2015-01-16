@@ -31,6 +31,7 @@
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-tour.min.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <style type="text/css">
 .arrow-left {
@@ -57,7 +58,8 @@ position:absolute;
 <!--content
 ==============================================-->
 <div class="container" style="padding-bottom:50px;">
-    <div class="row" style="margin-top:50px;">
+<div id="showroom-step">
+    <div class="row"  style="margin-top:50px;">
 
         <div class="col-md-9 col-md-offset-1">
             <div class="col-md-1">
@@ -143,8 +145,20 @@ position:absolute;
                         $requiredthings = array('onsubmit' => 'return check_image()');
                         echo form_open_multipart(base_url().'main/update_profile', $requiredthings);
                     ?>
-                      
-                       <div class="info-hidden row" style="text-align:center;">
+                    <div class="form-group row">
+                        <p>Type of Account</p>
+                        <label class="radio-inline" style="padding-right:15px;" id="regular" data-content="Recommended free account for users that want to attend events,connect with friends,and create events quickly without much setup. " data-trigger="hover" data-placement="bottom">
+                                <input type="radio" name="account_change" id="inlineRadio1" value="0" checked> Personal
+                                </br>
+                                <img src="<?php echo $PATH_IMG?>personal_profile_icon.png" style="width:100px;margin-top:10px;"/>
+                        </label>
+                        <label class="radio-inline" style="margin-left:10px;" id="business" data-content="Recommended free account, ideal for users, organizations and coordinators.  Build a professional portfolio and customize your profile to cater all of your event hosting needs. " data-trigger="hover" data-placement="bottom">
+                                <input type="radio" name="account_change" id="inlineRadio2" value="1"> Professional
+                                </br>
+                                <img src="<?php echo $PATH_IMG?>business_profile_icon.png" style="width:100px;margin-top:10px;"/>
+                        </label>
+                    </div>  
+                    <div class="info-hidden row" style="text-align:center;">
                     <label class="col-sm-2 control-label">Status</label>
 					<div class="col-sm-10">
                     <input type="radio" name="relationship" value="S"> Single
@@ -262,7 +276,7 @@ position:absolute;
                                     </ul>
                                   
                                     
-                                        <div id="all_wrevs_panel" class="panel" style="background:#E9EEF2;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);border-radius:10px;" hidden>
+					<div id="all_wrevs_panel" class="panel" style="background:#E9EEF2;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);border-radius:10px;" hidden>
                                             <div class="panel-body">
                                 	<div class="row">
                                 	<div class="table-responsive">
@@ -696,7 +710,7 @@ position:absolute;
         </div>
     </div>
 </div>
-
+</div>
 <!--end of content-->
 
 <?php $this->load->view('footer');?>
@@ -713,7 +727,10 @@ position:absolute;
     <script src="<?php echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script>
 	$('#reputationInfo').popover();
+	$('#regular').popover();
+	$('#business').popover();
 	</script>
+	
 <script>
 	
     function myFunction()
@@ -863,6 +880,7 @@ document.getElementById("herdzz").innerHTML = " ";
     			return false; 
     	}
     </script>
-
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
+ 	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script> 
 </body>
 </html> 

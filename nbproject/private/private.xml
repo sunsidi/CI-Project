@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/xampp/htdocs/wrevel/application/controllers/config.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/views/Processed_ticket.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/views/myaccount_accountinfo.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/views/showroom.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/views/admin_account.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/controllers/chat.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/controllers/showroom.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/views/event_fullview.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/controllers/Stripe.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/views/myaccount_stats.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/models/model_events.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/index.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/controllers/main.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/views/afterconfirm.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/models/model_users.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/helpers/navi_bar_helper.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/views/hub.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/controllers/account.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/models/model_tickets.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/controllers/stripe_controller.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/config/config.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/controllers/event.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/views/header.php</file>
+            <file>file:/C:/xampp/htdocs/wrevel/application/controllers/admin.php</file>
+        </group>
+    </open-files>
+</project-private>

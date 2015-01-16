@@ -22,12 +22,12 @@
 <!--content
 ==============================================-->
 <div class="container">
-<div class="row" style="margin-top:-20px;">
+<div class="row" style="margin-top:30px;">
 <div class="col-md-12" style ="width:100%; color:white;text-align:center;">
-	<p style="margin-top:50px;"><img src="<?php echo $PATH_IMG?>large_w_logo.png"  style="width:25%;"/></p>
+	<p style="margin-top:50px;"><img src="<?php echo $PATH_IMG?>large_w_logo.png"  style="width:25%;" alt="Welcome to Wrevel"/></p>
 	<p style="font-size:52px; text-align:center;font-family:'Lobster';"><span style="font-size:36px;">Welcome to</span> Wrevel</p>
 		<div style="text-align:center;">
-		<a href="#" style="padding-left:15px;" data-toggle="modal" data-target="#sign-in"><img src="<?php echo $PATH_IMG?>sign_in_button.png" style="width:128px;"/></a> 
+		<a href="#" style="padding-left:15px;" data-toggle="modal" data-target="#sign-in"><img src="<?php echo $PATH_IMG?>sign_in_button.png" style="width:128px;" alt="Sign in"/></a> 
 			<div class="modal fade" id="sign-in" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true" style="height:auto;">
 				<div class="modal-dialog" style="height:auto;">
 					<div class="modal-content" style="height:auto;">
@@ -40,7 +40,7 @@
 							Welcome to
 							
         
-							<img src="<?php echo $PATH_IMG?>wrevel_logo.png" style="width:150px;z-index:1;margin-top:-10px;"/></p>
+							<img src="<?php echo $PATH_IMG?>wrevel_logo.png" style="width:150px;z-index:1;margin-top:-10px;" alt="welcome"/></p>
 							</div>
       
 							<div class="modal-body" style="text-align:left;background:#C2D2DC;">
@@ -73,7 +73,7 @@
             
 
 								<a href="<?php echo $login_url;?>">
-									<img src="<?php echo $PATH_IMG?>fbconnect_button.png" style="z-index: 1;width: 145px;margin-left: 300px;margin-top:5px;">
+									<img src="<?php echo $PATH_IMG?>fbconnect_button.png" alt="Connect with Facebook" style="z-index: 1;width: 145px;margin-left: 300px;margin-top:5px;">
 								</a>
         
 								<!--<p style="margin-top: -40px; margin-left: 400px;font-size:25px;">
@@ -118,7 +118,7 @@
 				</div>
 			</div>
 	
-	    <a href="#" style="padding:15px;" data-toggle="modal" data-target="#sign-up"><img src="<?php echo $PATH_IMG?>signup_button.png" style="width:130px;"/></a>
+	    <a href="#" style="padding:15px;" data-toggle="modal" data-target="#sign-up"><img src="<?php echo $PATH_IMG?>signup_button.png" style="width:130px;" alt="Sign up"/></a>
 			<div class="modal fade" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content" style="background:#C2D2DC;">
@@ -130,12 +130,12 @@
 								Sign Up for
 								
         
-								<img src="<?php echo $PATH_IMG?>wrevel_logo.png" style="width:150px;z-index:1;"/></p>
+								<img src="<?php echo $PATH_IMG?>wrevel_logo.png" style="width:150px;z-index:1;" alt="wrevel sign up"/></p>
 							</div>
                 
 							<div class="modal-body" style="text-align:center; font-size:20px;color:black;background:#C2D2DC;">
 								<p>Join through <a href="<?php echo $login_url;?>">
-									<img src="<?php echo $PATH_IMG?>fbconnect_button.png" style="z-index: 1;width: 145px;">
+									<img src="<?php echo $PATH_IMG?>fbconnect_button.png" alt="Join through Facebook" style="z-index: 1;width: 145px;">
 								</a></p>
 								<hr>
 								 <?php echo form_open(base_url().'main/registration_validation');?>
@@ -154,12 +154,26 @@
                     <input name = 'cpassword-signup' type="password" class="form-control" placeholder="Re-enter Password" required style="margin-top: 2%;">
                     <font color="red"><?php echo form_error('cpassword-signup'); ?></font>
                     </br>
-
-                    <label>
+					
+					<div class="form-group row">
+					<p>Type of Account</p>
+					<label class="radio-inline" style="padding-right:15px;" id="regular" data-content="Recommended free account for users that want to attend events,connect with friends,and create events quickly without much setup. " data-trigger="hover" data-placement="bottom">
+						<input type="radio" name="business" id="inlineRadio1" value="0" checked> Personal
+						</br>
+						<img src="<?php echo $PATH_IMG?>personal_profile_icon.png" style="width:100px;margin-top:10px;"/>
+					</label>
+					<label class="radio-inline"  style="margin-left:10px;" id="business" data-content="Recommended free account, ideal for users, organizations and coordinators.  Build a professional portfolio and customize your profile to cater all of your event hosting needs." data-trigger="hover" data-placement="bottom">
+						<input type="radio" name="business" id="inlineRadio2" value="1"> Professional
+						</br>
+						<img src="<?php echo $PATH_IMG?>business_profile_icon.png" style="width:100px;margin-top:10px;"/>
+					</label>
+					</div>
+                    
+					<label>
       					<input name = "agreement-signup" type="checkbox" required> <span style="font-size:15px;">I agree with the <a href="<?php echo base_url().'info/terms'?>">terms of use</a></span>
       					<font color="red"><?php echo form_error('agreement-signup'); ?></font>
     				</label>
-
+					
                     </br>
                     <button type="submit" class="btn btn-lg" style="background:#1C75BC; color:white;">Join now </button>
                     <?php echo form_close();?>
@@ -174,7 +188,7 @@
 		
 		</div>
 		
-<p style="text-align:center;font-size:32px; padding:8px;"><a href="#" data-toggle="modal" data-target="#video" style="color:white;"><img src="<?php echo $PATH_IMG?>play_button.png" style="padding:0 10px; margin-top:10px;"/> <strong>play video</strong></a></p> 
+<p style="text-align:center;font-size:32px; padding:8px;"><a href="#" data-toggle="modal" data-target="#video" style="color:white;"><img src="<?php echo $PATH_IMG?>play_button.png" alt="Play video" style="padding:0 10px; margin-top:10px;"/> <strong>play video</strong></a></p> 
 	<div class="modal fade" id="video" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -196,7 +210,7 @@
 		<a href="<?php echo base_url()."main/get_related_events/culture"?>"><div class="panel featured_category" style="background-image:url(<?php echo $PATH_IMG?>culture1.png);-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;  color:white; text-align:center; border:2px solid #3F4553; padding:20px 50px;border-radius:15px;">
 			<div class="panel-body">
 				<p style="font-size:45px;"><b>Discover.</b><p>
-				<p style="margin-top:50px;"><img src="<?php echo $PATH_IMG?>culture_button_discover.png"/></p>
+				<p style="margin-top:50px;"><img src="<?php echo $PATH_IMG?>culture_button_discover.png" alt="Discover Culture."/></p>
 				<p style="font-size:32px; margin-top:40px;">[kuhl-cher]</p>
 				<p style="font-size:24px;"> <i>verb</i> &nbsp; Getting out of your comfort zone to try something new. </p>
 			</div>
@@ -206,7 +220,7 @@
 		<a href="<?php echo base_url()."main/get_related_events/icebreakers"?>"><div class="panel featured_category" style="background-image:url(<?php echo $PATH_IMG?>icebreakers1.png);-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;color:white; text-align:center;  border:2px solid #3F4553;padding:20px 50px;border-radius:15px;">
 			<div class="panel-body">
 				<p style="font-size:45px;"><b>Socialize.</b></p>
-				<p style="margin-top:50px;"><img src="<?php echo $PATH_IMG?>icebreakers_button_socialize.png"/></p>
+				<p style="margin-top:50px;"><img src="<?php echo $PATH_IMG?>icebreakers_button_socialize.png" alt="Socialize through Icebreakers."/></p>
 				<p style="font-size:32px; margin-top:40px;">[ahys-brey-kers]</p>
 				<p style="font-size:24px; "> <i>noun</i> &nbsp; A way to meet people with similar interests. </p>
 			</div>
@@ -216,7 +230,7 @@
 		<a href="<?php echo base_url()."main/get_related_events/hotspots"?>"><div class="panel featured_category" style="background-image:url(<?php echo $PATH_IMG?>hotspots1.png);-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;color:white; text-align:center; padding:20px 50px;border-radius:15px; border:2px solid #3F4553;">
 			<div class="panel-body">
 				<p style="font-size:45px;"><b>Experience.</b></p>
-				<p style="margin-top:50px;"><img src="<?php echo $PATH_IMG?>hotspots_button_experience.png"/></p>
+				<p style="margin-top:50px;"><img src="<?php echo $PATH_IMG?>hotspots_button_experience.png" alt="Experience new things through Hotspots"/></p>
 				<p style="font-size:32px; margin-top:40px;">[hat-spats]</p>
 				<p style="font-size:24px;"> <i>noun</i> &nbsp; A place to showcase your talents. </p>
 			</div>
@@ -238,13 +252,13 @@
 	    we have it all.</p>
 		</div>
 		<div class="col-md-6 col-sm-6 col-xs-6">
-			<img src="<?php echo $PATH_IMG?>macbook_events.png" style="width: 100%; "/>
+			<img src="<?php echo $PATH_IMG?>macbook_events.png" alt="Find events." style="width: 100%; "/>
 		</div>
     </div>
 
     <div class="row">
 		<div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-4 col-xs-offset-1">
-			<img src="<?php echo $PATH_IMG?>samantha.png" style="width:100%;"/>
+			<img src="<?php echo $PATH_IMG?>samantha.png" alt="profile" style="width:100%;"/>
 		</div>
 		<div class="col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-5 col-xs-offset-1">
 			<p style="font-size: 45px; color: white; padding-top: 100px;font-center;"><strong>Create an event</strong></p>
@@ -259,27 +273,27 @@
     <div class="row" style="background:#A5B9CB; padding:25px 0;">
     	    <p style="font-size:52px; font-family:'Lobster';text-align:center;color:white;text-decoration:underline;">Pricing</p>	
 	    <div class="col-md-6 col-sm-6 col-xs-6">
-		<p style="text-align: center; color: white; font-size: 33px;font-family:GillSans;"><img src="<?php echo $PATH_IMG?>no_fee_icon.png" style="margin-top:-7px;"/> Most Affordable</p>
+		<p style="text-align: center; color: white; font-size: 33px;font-family:GillSans;"><img src="<?php echo $PATH_IMG?>no_fee_icon.png" alt="affordable" style="margin-top:-7px;"/> Most Affordable</p>
 	        <p style="text-align: center;color: white; font-size: 24px;"><strong>Lowest prices </strong>in the ticketing industry!</p></br>
 	    
-		<p style="text-align: center; color: white; font-size: 33px;font-family:GillSans;"><img src="<?php echo $PATH_IMG?>wrevel_fee_icon.png" /> Wrevel Fee</p>
+		<p style="text-align: center; color: white; font-size: 33px;font-family:GillSans;"><img src="<?php echo $PATH_IMG?>wrevel_fee_icon.png" alt="wrevel fees"/> Wrevel Fee</p>
 	    <p style="text-align: center;color: white; font-size: 24px;">1.5% + .50&#162; per ticket</p></br>
 	    
-	    <p style="text-align: center; color: white; font-size: 33px;font-family:GillSans;"><img src="<?php echo $PATH_IMG?>cc_fee_icon.png" style="margin-top:-7px;"/> Credit Card Fee</p>
-	    <p style="text-align: center;color: white; font-size: 24px;">Credit CardProcessing Fee</p>
+	    <p style="text-align: center; color: white; font-size: 33px;font-family:GillSans;"><img src="<?php echo $PATH_IMG?>cc_fee_icon.png" alt="credit card processing fee style="margin-top:-7px;"/> Credit Card Fee</p>
+	    <p style="text-align: center;color: white; font-size: 24px;">Credit Card Processing Fee</p>
 	    <p style="text-align: center;color: white; font-size: 19px;">(VAT where applicable)</p>
 	    
 	   
 		</div>
 		<div class="col-md-6 col-sm-6 col-xs-6" style="line-height:175%;">
-	    <p style="text-align: center; color: white; font-size: 30px;font-family:GillSans;"><img src="<?php echo $PATH_IMG?>payment_icon.png" style="margin-top:-7px;"/> Simple Payment System</p>
+	    <p style="text-align: center; color: white; font-size: 30px;font-family:GillSans;"><img src="<?php echo $PATH_IMG?>payment_icon.png" alt="wrevel payment system" style="margin-top:-7px;"/> Simple Payment System</p>
 	    <p style="text-align: center;color: white; font-size: 25px;"><b>No start-up fees</b> or extra charges.</p>
 	    <p style="text-align: center;color: white; font-size: 25px; ">We accept <b>all credit cards.</b></p></br>
 	    
-	    <p style="text-align: center;"><img src="<?php echo $PATH_IMG?>mastercard_icon.png"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $PATH_IMG?>visa_icon.png"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $PATH_IMG?>amex_icon.png"/>&nbsp;&nbsp;&nbsp;&nbsp;
-	    <img src="<?php echo $PATH_IMG?>dinersclub_icon.png"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $PATH_IMG?>discover_icon.png"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $PATH_IMG?>jcb_icon.png"/></p></br></br>
+	    <p style="text-align: center;"><img src="<?php echo $PATH_IMG?>mastercard_icon.png" alt="mastercard"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $PATH_IMG?>visa_icon.png" alt="visa"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $PATH_IMG?>amex_icon.png" alt="amex"/>&nbsp;&nbsp;&nbsp;&nbsp;
+	    <img src="<?php echo $PATH_IMG?>dinersclub_icon.png" alt="diners club"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $PATH_IMG?>discover_icon.png" alt="discover"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $PATH_IMG?>jcb_icon.png" alt="jcb"/></p></br></br>
 	    
-	    <p style="line-height: 20px;text-align: center;color: white; font-size: 30px; font-family:GillSans;"><img src="<?php echo $PATH_IMG?>thumbsup_icon.png" style="margin-top:-7px;"/> Free Events</p>
+	    <p style="line-height: 20px;text-align: center;color: white; font-size: 30px; font-family:GillSans;"><img src="<?php echo $PATH_IMG?>thumbsup_icon.png" alt="thumbups for free events" style="margin-top:-7px;"/> Free Events</p>
 	    <p style="text-align: center;color: white; font-size: 25px;">You can still use our beautiful tickets</p>
 	    <p style="text-align: center;color: white; font-size: 25px;">system for <b>absolutely free.</b> We make</p>
 	    <p style="text-align: center;color: white; font-size: 25px;">money only when you make money.</p>
@@ -290,10 +304,10 @@
     <div class="col-md-12" style="background:#58595B;padding:30px 30px 50px;">
     	<p style="font-size:52px; font-family:'Lobster';text-align:center;color:white;text-decoration:underline;">Press</p>	
     	<div class="row">	
-    	   <div class="col-md-3 col-sm-3 col-xs-3"><a href="http://www.brooklynpaper.com/stories/37/44/cl-wrevel-greenpoint-facebook-2014-10-31-bk_37_44.html" target="_blank"><img src="<?php echo $PATH_IMG?>bkpaper.png" style="margin-top:40px; width:100%;margin-left:auto;margin-right:auto;"/></a></div>
-      	   <div class="col-md-3 col-sm-3 col-xs-3"><a href="http://www.dnainfo.com/new-york/20130826/greenpoint/new-party-finding-app-helps-eager-revelers-find-their-match" target="_blank"><img src="<?php echo $PATH_IMG?>dnainfo_logo.png" style="margin-top:35px; width:50%;margin-left:70px;"/></a></div>
-    	   <div class="col-md-3 col-sm-3 col-xs-3"><a href="http://www.greenpointnews.com/entertainment/6332/wrevel-to-relauch-with-exhaustive-partying-options" target="_blank"><img src="<?php echo $PATH_IMG?>greenpointgazette_logo.png" style="margin-top:27px;width:70%;margin-left:auto;margin-right:auto;"/></a></div>
-       	   <div class="col-md-3 col-sm-3 col-xs-3"><a href="http://technical.ly/brooklyn/2014/04/28/8-brooklyn-ventures-saw-pier-92-new-york-tech-day-2014" target="_blank"><img src="<?php echo $PATH_IMG?>technically_logo.png" style="width:70%; margin-left:auto;margin-right:auto;"/></a></div>
+    	   <div class="col-md-3 col-sm-3 col-xs-3"><a href="http://www.brooklynpaper.com/stories/37/44/cl-wrevel-greenpoint-facebook-2014-10-31-bk_37_44.html" target="_blank"><img src="<?php echo $PATH_IMG?>bkpaper.png" alt="Brooklyn Paper" style="margin-top:40px; width:100%;margin-left:auto;margin-right:auto;"/></a></div>
+      	   <div class="col-md-3 col-sm-3 col-xs-3"><a href="http://www.dnainfo.com/new-york/20130826/greenpoint/new-party-finding-app-helps-eager-revelers-find-their-match" target="_blank"><img src="<?php echo $PATH_IMG?>dnainfo_logo.png" alt="DNAinfo" style="margin-top:35px; width:50%;margin-left:70px;"/></a></div>
+    	   <div class="col-md-3 col-sm-3 col-xs-3"><a href="http://www.greenpointnews.com/entertainment/6332/wrevel-to-relauch-with-exhaustive-partying-options" target="_blank"><img src="<?php echo $PATH_IMG?>greenpointgazette_logo.png" alt="Greenpoint Gazette" style="margin-top:27px;width:70%;margin-left:auto;margin-right:auto;"/></a></div>
+       	   <div class="col-md-3 col-sm-3 col-xs-3"><a href="http://technical.ly/brooklyn/2014/04/28/8-brooklyn-ventures-saw-pier-92-new-york-tech-day-2014" target="_blank"><img src="<?php echo $PATH_IMG?>technically_logo.png" alt="Technically" style="width:70%; margin-left:auto;margin-right:auto;"/></a></div>
     	 </div> 
     	</div>
     </div>
@@ -313,6 +327,10 @@
 		function show_forgot_password() {
 			$('#forgot_password_div').show();
 		}
+	</script>
+	<script>
+	$('#regular').popover();
+	$('#business').popover();
 	</script>
 	
 

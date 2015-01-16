@@ -6,8 +6,61 @@
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="<?php echo $PATH_BOOTSTRAP?>css/mosaic.css" type="text/css" media="screen">
 
 <link href="<? echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-tour.min.css" rel="stylesheet">
+<style>
+	
+
+.marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    text-indent: 0;
+    -webkit-marquee-speed: fast;
+	-webkit-animation: marquee 70s linear infinite;
+   -moz-animation: marquee 70s linear infinite;
+    -ms-animation: marquee 70s linear infinite;
+     -o-animation: marquee 70s linear infinite;
+    animation: marquee 70s linear infinite;
+	color:#414042;
+	font-size:19px;
+}
+
+
+
+.marquee span:hover {
+    -webkit-animation-play-state: paused; 
+    animation-play-state: paused
+}
+
+/* Make it move */
+
+@-webkit-keyframes marquee{
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+/* Make it pretty */
+.microsoft {
+    padding-left: 1.5em;
+    position: relative;
+    font: 16px 'Segoe UI', Tahoma, Helvetica, Sans-Serif;
+}
+
+ul.ticket-event-dp > li > a:hover{
+    background-image: none;
+	background-color:#DB787D;
+}
+
+
+
+</style>
 </head>
 
 <body>
@@ -17,8 +70,38 @@
 ==============================================-->
  <?php $events_info =$this->_ci_cached_vars;?>
 
-<div class="container" style="margin-top: 5%;padding-bottom:50px; width:90%">
-    
+ <div class="featuring" style="width:100%;margin-left:auto;margin-right:auto;margin-top:3%;position:relative;">
+		<div class="btn-group ticker-button" style="float:left;z-index:3;">
+		<button type="button" class="btn btn-lg dropdown-toggle ticker" data-toggle="dropdown" aria-expanded="false">Featured Events <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+			<ul class="dropdown-menu ticket-event-dp" role="menu">
+				<li><a href="#" class="ticker-event" style="color:white;" onclick="show_featured_events()">Featured Events</a></li>
+				<li><a href="#" class="ticker-event" style="color:white;" onclick="show_upcoming_events()">Upcoming Events</a></li>
+				<!--<li><a href="#" class="ticker-event" style="color:white;">Friends' Events</a></li>-->
+				
+			</ul>
+		</div>
+		<p class="marquee" style="z-index:2;">
+			<!--Scrolling Events-->
+			<span>
+                            <?php if(isset($events)) {
+                                $j = 0;
+                                for($i = 0; $i < count($events); $i++) {
+                                    if($events[$i]['e_featured'] && $j < 5) {?>
+                                        <a class="featured_group" href="<?php echo base_url().'event/event_info/latest/'.$events[$i]['event_id'];?>" style="color:#414042;"><?php $originalDate = $events[$i]['e_date']; $newDate = date("F j", strtotime($originalDate)); echo $newDate;?> &nbsp;&nbsp;&nbsp; <strong><?php echo $events[$i]['e_name'];?></strong> &nbsp;&nbsp;&nbsp; <?php echo $events[$i]['e_address'];?> &nbsp;&nbsp;&nbsp; <strong style="color:#2c75bb;font-weight:100;"><?php echo substr($events[$i]['e_description'],0,14);?> &nbsp;&nbsp;&nbsp;</strong></a>
+                                    <?php $j++;}
+                                        if($i < 15) {?>
+                                            <a class="upcoming_group" href="<?php echo base_url().'event/event_info/latest/'.$events[$i]['event_id'];?>" style="color:#414042;" hidden><?php $originalDate = $events[$i]['e_date']; $newDate = date("F j", strtotime($originalDate)); echo $newDate;?> &nbsp;&nbsp;&nbsp; <strong><?php echo $events[$i]['e_name'];?></strong> &nbsp;&nbsp;&nbsp; <?php echo $events[$i]['e_address'];?> &nbsp;&nbsp;&nbsp; <strong style="color:#2c75bb;font-weight:100;"><?php echo substr($events[$i]['e_description'],0,14);?> &nbsp;&nbsp;&nbsp;</strong></a>
+                                    <?php }}} else {?>
+                                <a href="#" style="color:#414042;">No events here =(</a>
+                            <?php }?>
+			</span>
+		</p>
+	</div>
+	
+<div class="container" id="hub-step" style="margin-top: 3%;padding-bottom:50px; width:90%">
+	
+	
+	
     <div class="col-md-6" style="">
     
 <!--Latest Wrevs-->   
@@ -194,14 +277,14 @@
 
                 </div>
 		
+		  
+		
                 <div class="row" style="text-align:center; padding:10px;">
 <!--                                    <a href="#"><button type="button" class="btn btn-lg" style="background:#1A75BF; color:white; font-size:20px; padding:5px;">View more</button></a> -->
                                     <a href="#" data-toggle="modal" data-target="#create" class="btn btn-lg createwrevb" style="font-size:20px; padding:5px 10px;border-radius:10px;">Create a Wrev</a>
                 </div>
             </div>
         </div>
-        
-
 <!--Groups-->
            
         <div class="panel" style="border:none; width: 100%;border-radius:15px; -moz-box-shadow:1px 1px 1px rgba(0, 0, 0, .3);-webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);box-shadow:1px 1px 1px rgba(0, 0, 0, .3);background:rgba(255,255,255,0.5);">
@@ -362,11 +445,42 @@
     		}
 	}
     </script>
+    <script>
+        function show_featured_events() {
+            $('.upcoming_group').hide();
+            $('.featured_group').show();
+        }
+        function show_upcoming_events() {
+            $('.featured_group').hide();
+            $('.upcoming_group').show();
+        }
+    </script>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  
     <script src="<? echo $PATH_BOOTSTRAP?>js/bootstrap.min.js"></script>
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.js"></script>
     <script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
+
+	<script type="text/javascript" src="<?php echo $PATH_BOOTSTRAP?>js/mosaic.1.0.1.js"></script>
+	    <script type="text/javascript">  
+			
+			jQuery(function($){
+				
+				$('.circle').mosaic({
+					opacity		:	0.8			//Opacity for overlay (0-1)
+				});
+				
+				$('.fade').mosaic();
+				
+				$('.bar2').mosaic({
+					animation	:	'slide'		//fade or slide
+				});
+			});
+		    
+  </script>
+
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script>
 </body>
 </html> 

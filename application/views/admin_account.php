@@ -12,6 +12,12 @@
 <link rel="stylesheet" href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap.vertical-tabs.css">
 
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+jQuery(document).ready(function () {
+    //hide a div after 3 seconds
+    setTimeout(function(){ jQuery("#sentMessage").hide(); }, 5000);
+});
+</script>
 <style>
 	ul.tabs-left>li{
 	background:#55C3C0;
@@ -46,6 +52,7 @@
 
 <!--content
 ==============================================-->
+<div id='sentMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:20px;width: 40%; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>
   <div class="container" style="padding-bottom:50px;">
 	<div class="row" style="margin-top:50px;">
 		<div class="col-md-3 col-md-offset-1"> <!-- required for floating -->
@@ -87,7 +94,6 @@
                                                     <li><a href="#admin_level" data-toggle="tab">Admin Level</a></li>
                                                 <?php }
                                             }?>
->>>>>>> kevin_dev
 					</ul>
 				</div>
 			</div>
@@ -334,7 +340,6 @@
 	  			
 	  			<!--Create Blog Post-->
 	  			<div class="tab-pane" id="create_blog" style="background:rgba(255,255,255,0.5);padding:6% 15%;">
-
                                     <?php echo form_open_multipart('admin/create_blog');?>
                                         <h2><i class="fa fa-star"></i> Title</h2>
                                         <textarea name="blog_title" class="form-control" rows="1" style="border:dashed 2px gray;resize: none;font-size:20px;border-radius:0;background:none;"></textarea>
@@ -691,98 +696,26 @@
                                                     </div>
                                                 </div>
 
-  			
-  
-  			
-                        <div class="col-md-3">
-                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background:white;font-size:14px; width: 100%;">
-                                Categories
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">hotspots</a></li>
-                                <li><a href="#">icebreakers</a></li>
-                                <li><a href="#">culture</a></li>
-                                <li><a href="#">meet ups</a></li>
-                                <li><a href="#">exploring your city</a></li>
-                                <li><a href="#">love and romance</a></li>
-                                <li><a href="#">parties</a></li>
-                                <li><a href="#">clubs</a></li>
-                                <li><a href="#">concerts</a></li>
-                                <li><a href="#">festivals</a></li>
-                                <li><a href="#">lounges</a></li>
-                                <li><a href="#">bars</a></li>
-                            </ul>
-                        </div>
-                        
-                        <div class="col-md-3">
-                            <div class="left-inner-addon-ml">
-                              	<input type="text" name="e_name" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Title">
-  			    </div>
-                        </div>
-                        
-  			<div class="col-md-3">
-                            <div class="left-inner-addon-ml">
-                              	<input type="text" name=""class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Date">
-  			    </div>
-                        </div>
-                        
-                        <div class="col-md-3">
-                            <div class="left-inner-addon-ml">
-                              	<input type="text" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Time Start">
-  			    </div>
-                        </div>
-                        
-                        <div class="col-md-5">
-                            <div class="left-inner-addon-ml">
-                              	<input type="text" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Location">
-  			    </div>
-                        </div>
-                        
-                        <div class="col-md-2">
-                            <div class="left-inner-addon-ml">
-                              	<input type="text" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="City">
-  			    </div>
-                        </div>
-                        
-                        <div class="col-md-2">
-                            <div class="left-inner-addon-ml">
-                              	<input type="text" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="State">
-  			    </div>
-                        </div>                        
-                        
-                        <div class="col-md-3">
-                            <div class="left-inner-addon-ml">
-                              	<input type="text" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Zip Code">
-  			    </div>
-                        </div>
-                        
-                        <div class="col-md-3">
-                            <div class="left-inner-addon-ml">
-                              	<input type="text" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Website">
-  			    </div>
-                        </div>
-                        
-                        <div class="col-md-2">
-                            <div class="left-inner-addon-ml">
-                              	<input type="text" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Price">
-  			    </div>
-                        </div>
-                        
+                                                <div class="col-md-3">
+                                                    <div class="left-inner-addon-ml">
+                                                        <input type="text" name="multi_website[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Website">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <textarea class="form-control" id="message" name="multi_description[]" placeholder="Description" rows="1" style="margin-top: 5px;font-size:15px; width: 100%;"></textarea>
+                                                </div>
+                                                <!--<div class="form-group row"> COMMENTED OUT FOR LATER.
+                                                    <div style="text-align:center;">
+                                                        ticketed <input type="radio" name="multi_e_is_ticketed0" value = "1"> 
+                                                        nonticketed <input type="radio" name="multi_e_is_ticketed0" value = "0" checked> 
+                                                    </div>
+                                                </div>
                                                 
-                <div class="col-md-5">
-                <textarea class="form-control" id="message" name="message" placeholder="Description" rows="1" style="margin-top: 5px;font-size:15px; width: 100%;"></textarea>
-                </div>
-                
-                
-                <div class="col-md-2" style="padding-top: 5px;">
-                        <label for="file-input">
-                        
-                            <img src="<?php echo $PATH_IMG?>camera_icon.png" style="width:70%;">
-                        	
-                        </label>
-                </div>
-                </form>
-                
+                                                <!-- INSERT TICKETS INTO HERE 
+                                                <div>
+                                                    <div class="panel" style="background:none;padding:0;box-shadow:none;">
+                                                        <div class="multi_add_ticket_type" style="padding:0;">
+
                                                         </div>
                                                     </div>
                                                 </div><!--end of add ticket type 
@@ -896,7 +829,6 @@
        					</table>
 					</div>
                                         </form>
->>>>>>> kevin_dev
 				</div>
                                 <?php }?>
                                 
@@ -1239,7 +1171,6 @@
             }
         });
         file_input_counter++;
->>>>>>> kevin_dev
     });
     </script>
     <script>
@@ -1303,6 +1234,36 @@
         }
     </script>
     <script>
+        function show_featured(e) {
+            //var regex = new RegExp("^[a-zA-Z0-9_]*$");
+            if (e.keyCode) key = e.keyCode;
+            //else if(e.which) key = e.which;
+            if(/[a-zA-Z0-9 ]/.test(String.fromCharCode(key)) || key == 8) {
+                var search_value = $('#search_featured').val();
+                //First set the search_value checker .
+                (function(search_value) {
+                    //Amount of time to wait before actually doing the search.
+                    setTimeout(function () {
+                        $('.featured_group').each(function() { 
+                            //If value isn't finished typing then skip this function and go to the next.
+                            if(search_value != $('#search_featured').val()) {
+                                return false;
+                            }
+                            //Check if an alphanumeric is typed in.
+                            else {
+                                if(($(this).html()).indexOf($('#search_featured').val()) > -1 && $('#search_featured').val().length >= 0) {
+                                    $(this).parent().show();
+                                }
+                                else
+                                    $(this).parent().hide();
+                            }
+                        })
+                    },1000);
+                }(search_value));
+            }
+        }
+    </script>
+    <script>
         function show_all_users() {
             $('.users_group').parent().show();
             $('#search_users').val('');
@@ -1354,7 +1315,6 @@
             }); 
         }
     </script>
-    
     <script>
         function change_category(i, value) {
             $(i).parent().parent().parent().siblings('#category_change').attr("value", value);
