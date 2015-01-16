@@ -236,160 +236,48 @@ ul.ticket-event-dp > li > a:hover{
                 <div class="row" style="margin-left:2%; margin-right:2%;">
                 <?php 
                 if(isset($events_info['size'])){
-                echo "<table style='width:100%'>";
-                echo "<tr>
-                          <td>Name:</td>
-                          <td>Date:</td>        
-                          <td>Start:</td>
-                          <td>Description:</td>
-                        </tr> ";
+                    for($i=0;$i<$events_info['size'];$i++){?>
+                        <div class="col-md-offset-1 col-md-2 col-sm-6 col-xs-12" style="position: relative;width: 200px; height: 280px; margin-top: 10px;">
+                            <div class="mosaic-block bar2" onclick="location.href='<?php echo base_url().'event/event_info/latest'.'/'.$events_info[$i]["event_id"]?>';" style="width: 200px; height: 280px; margin-left:-15px;">
+                                <a target="_blank" class="mosaic-overlay" style="background-color:rgba(178,154,158,1);display: inline; left: 0px;text-decoration: none;">
+                                    <div class="col-md-12" style="height: 50px; background-color:rgba(159,129,134,1);position:relative;">
+                                        <p style="text-align:center; color:white; font-size:20px; margin-top:8px;">
+                                            <strong style="text-shadow: 1px 1px 0.5px #000000;"><?php echo $events_info[$i]['e_name'];?></strong>
+                                        </p>
+                                    </div>
+                                    <!--Location of event-->
+                                    <p class="location location-romance"><i class="fa fa-map-marker"></i><?php echo $events_info[$i]['e_state'];?></p>
 
-                    for($i=0;$i<$events_info['size'];$i++){
-                        echo "<tr>";
-                        echo "<td><a href=".base_url()."event/event_info/latest/".$events_info[$i]['event_id'].'>'.$events_info[$i]['e_name']."</a></td>";
-                        echo "<td>".$events_info[$i]['e_date']."</td>";
-                        echo "<td>".$events_info[$i]['e_start_time']."</td>";
-                        echo "<td>".$events_info[$i]['e_description']."</td>";
-                        echo "</tr>";
-                        }
-                echo "</table>";
-                    }
-                    //print_r($events_info);
-            ?>
+                                    <!--Description -->
+                                    <p class="description">                       
+                                        <?php echo $events_info[$i]['e_description'];?>                       
+                                    </p>
+                                    <!--Click to lead to individual listing page-->
+                                </a>
+                                <div class="mosaic-backdrop" style="display: block;">
+                                    <div style="position: absolute; border-radius:7px; background-color: rgba(239,186,183,0.3); width: 100%; height: 280px; z-index: 0;"></div>
+                                    <!--Event Image-->
+                                    <img src="<?php echo base_url().'uploads/'.$events_info[$i]['e_image'];?>" style="max-width:100%; min-width:100%; max-height:100%; min-height:100%;">
+                                    <div class="details">
+                                        <p style="font-size:17px;">
+                                            <!--Date of event-->
+                                            <span class="badge date " ><?php echo $events_info[$i]['e_date'];?></span>
+                                            <span class="pull-right"style="text-shadow: 1px 1px 0.5px #000000;"><i class="fa fa-clock-o"></i><?php echo $events_info[$i]['e_start_time'];?></span>
+                                        </p>
+                                        <!--Number of people attending-->
+                                        <p style="font-size:17px;">
+                                            <span class="badge attending"><?php echo $events_info[$i]['e_attending'];?></span> <span style="text-shadow: 1px 1px 0.5px #000000;">Attending</span>
+                                            <span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><span><?php echo $events_info[$i]['e_likes'];?></span><i class="fa fa-heart-o"></i></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                <?php }}?>
 
                 </div>
 		
-		  <div class="container" style="margin-top: 10px; margin-left: -13px;">
-    
-    
-              <div class="col-md-offset-1 col-md-2 col-sm-6 col-xs-12" style="position: relative;width: 200px; height: 280px; margin-top: 10px;">
-                <div class="mosaic-block bar2" style="width: 200px; height: 280px; margin-left:-15px;">
-		    <a target="_blank" class="mosaic-overlay" style="background-color: blue;display: inline; left: 0px;text-decoration: none;">
-                    <div class="col-md-12" style="height: 50px; background-color: red;position:relative;">
-                            <p style="text-align:center; color:white; font-size:20px; margin-top:8px;">
-								<strong style="text-shadow: 1px 1px 0.5px #000000;">AAA</strong>
-                            </p>
-      </div>
-                        <!--Location of event-->
-                        <p class="location location-romance"><i class="fa fa-map-marker"></i> New York </p>
-                        
-                        <!--Description -->
-                        <p class="description">                       
-                        lalala......                       
-                        </p>
-                        
-                        <!--Click to lead to individual listing page-->
-                        <p class="more">Show more >></p>
-        </a>
-			
-      <div class="mosaic-backdrop" style="display: block;">
-                                <div style="position: absolute; border-radius:7px; background-color: rgba(239,186,183,0.3); width: 100%; height: 280px; z-index: 0;"></div>
-                        <!--Event Image-->
-        <img src="<?php echo $PATH_IMG?>newsfeed_icon.png" style="max-width:100%; min-width:100%; max-height:100%; min-height:100%;">
-        <div class="details">
-                                    <p style="font-size:17px;">
-                                    <!--Date of event-->
-                                    <span class="badge date " >2015</span>
-                                    <span class="pull-right"style="text-shadow: 1px 1px 0.5px #000000;"><i class="fa fa-clock-o"></i>6pm</span>
-                                    </p>
-									
-									
-                                    <!--Number of people attending-->
-                                    <p style="font-size:17px;">
-									<span class="badge attending">10</span> <span style="text-shadow: 1px 1px 0.5px #000000;">Attending</span>
-                                    <span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><span>10</span><i class="fa fa-heart-o"></i></span>
-                                    </p>
-                                    
-                                </div>
-                        </div>
-		</div>
-		</div>
-	                    <div class="col-md-offset-1 col-md-2 col-sm-6 col-xs-12" style="position: relative;width: 200px; height: 280px; margin-top: 10px;">
-                <div class="mosaic-block bar2" style="width: 200px; height: 280px; margin-left:-15px;">
-		    <a target="_blank" class="mosaic-overlay" style="background-color: blue;display: inline; left: 0px;text-decoration: none;">
-                    <div class="col-md-12" style="height: 50px; background-color: red;position:relative;">
-                            <p style="text-align:center; color:white; font-size:20px; margin-top:8px;">
-								<strong style="text-shadow: 1px 1px 0.5px #000000;">AAA</strong>
-                            </p>
-      </div>
-                        <!--Location of event-->
-                        <p class="location location-romance"><i class="fa fa-map-marker"></i> New York </p>
-                        
-                        <!--Description -->
-                        <p class="description">                       
-                        lalala......                       
-                        </p>
-                        
-                        <!--Click to lead to individual listing page-->
-                        <p class="more">Show more >></p>
-        </a>
-			
-      <div class="mosaic-backdrop" style="display: block;">
-                                <div style="position: absolute; border-radius:7px; background-color: rgba(239,186,183,0.3); width: 100%; height: 280px; z-index: 0;"></div>
-                        <!--Event Image-->
-        <img src="<?php echo $PATH_IMG?>newsfeed_icon.png" style="max-width:100%; min-width:100%; max-height:100%; min-height:100%;">
-        <div class="details">
-                                    <p style="font-size:17px;">
-                                    <!--Date of event-->
-                                    <span class="badge date " >2015</span>
-                                    <span class="pull-right"style="text-shadow: 1px 1px 0.5px #000000;"><i class="fa fa-clock-o"></i>6pm</span>
-                                    </p>
-									
-									
-                                    <!--Number of people attending-->
-                                    <p style="font-size:17px;">
-									<span class="badge attending">10</span> <span style="text-shadow: 1px 1px 0.5px #000000;">Attending</span>
-                                    <span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><span>10</span><i class="fa fa-heart-o"></i></span>
-                                    </p>
-                                    
-                                </div>
-                        </div>
-		</div>
-		</div>
-	      
-	                    <div class="col-md-offset-1 col-md-2 col-sm-6 col-xs-12" style="position: relative;width: 200px; height: 280px; margin-top: 10px;">
-                <div class="mosaic-block bar2" style="width: 200px; height: 280px; margin-left:-15px;">
-		    <a target="_blank" class="mosaic-overlay" style="background-color: blue;display: inline; left: 0px;text-decoration: none;">
-                    <div class="col-md-12" style="height: 50px; background-color: red;position:relative;">
-                            <p style="text-align:center; color:white; font-size:20px; margin-top:8px;">
-								<strong style="text-shadow: 1px 1px 0.5px #000000;">AAA</strong>
-                            </p>
-      </div>
-                        <!--Location of event-->
-                        <p class="location location-romance"><i class="fa fa-map-marker"></i> New York </p>
-                        
-                        <!--Description -->
-                        <p class="description">                       
-                        lalala......                       
-                        </p>
-                        
-                        <!--Click to lead to individual listing page-->
-                        <p class="more">Show more >></p>
-        </a>
-			
-      <div class="mosaic-backdrop" style="display: block;">
-                                <div style="position: absolute; border-radius:7px; background-color: rgba(239,186,183,0.3); width: 100%; height: 280px; z-index: 0;"></div>
-                        <!--Event Image-->
-        <img src="<?php echo $PATH_IMG?>newsfeed_icon.png" style="max-width:100%; min-width:100%; max-height:100%; min-height:100%;">
-        <div class="details">
-                                    <p style="font-size:17px;">
-                                    <!--Date of event-->
-                                    <span class="badge date " >2015</span>
-                                    <span class="pull-right"style="text-shadow: 1px 1px 0.5px #000000;"><i class="fa fa-clock-o"></i>6pm</span>
-                                    </p>
-									
-									
-                                    <!--Number of people attending-->
-                                    <p style="font-size:17px;">
-									<span class="badge attending">10</span> <span style="text-shadow: 1px 1px 0.5px #000000;">Attending</span>
-                                    <span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><span>10</span><i class="fa fa-heart-o"></i></span>
-                                    </p>
-                                    
-                                </div>
-                        </div>
-		</div>
-		</div>
-	      </div>
+		  
 		
                 <div class="row" style="text-align:center; padding:10px;">
 <!--                                    <a href="#"><button type="button" class="btn btn-lg" style="background:#1A75BF; color:white; font-size:20px; padding:5px;">View more</button></a> -->

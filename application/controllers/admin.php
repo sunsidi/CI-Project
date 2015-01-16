@@ -28,6 +28,7 @@ class admin extends CI_Controller{
                 $this->load->model('model_blogs');
                 $this->load->model('model_friend_request');
                 $this->load->model('model_news');
+                $this->load->model('model_page_visits');
             	
             	$data['all_users'] = $this->model_users->admin_get_users();
             	$data['all_events'] = $this->model_events->admin_get_events();
@@ -42,6 +43,7 @@ class admin extends CI_Controller{
                 $data['all_blogs'] = $this->model_blogs->admin_get_blogs();
                 $data['all_notifications'] = $this->model_friend_request->get_notifications_simplified();
                 $data['all_news'] = $this->model_news->get_news();
+                $data['all_page_visits'] = $this->model_page_visits->get_page_visits();
                 
                 //FOR SITE STATS.
                 $data['stats']['months'] = 0;
@@ -127,7 +129,7 @@ class admin extends CI_Controller{
                     $data['all_events'][$i]['diff'] = $diff->format("%a");
                 }
                 $result = array_merge($path, $data);
-                echo '<pre>', print_r($data['stats'], true), '</pre>';
+                //echo '<pre>', print_r($data['all_page_visits'], true), '</pre>';
                   $this->load->view('Create_Wrevel_View',$result);
                  $this->load->view('admin_account',$result);
 	

@@ -106,7 +106,7 @@ jQuery(document).ready(function () {
 			
                                 <?php if($current_user['admin_level'] <= 2 || $current_user['admin_level'] == 4) {?>
 				<!--Summary-->
-				<div class="tab-pane" id="home" style="background:rgba(255,255,255,0.5);color:#404041; padding:10%;text-align:center;">
+				<div class="tab-pane active default-tabs" id="home" style="background:rgba(255,255,255,0.5);color:#404041; padding:10%;text-align:center;">
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-xs-6">
 					<img src="<?php echo $PATH_IMG?>users_icon.png" style="width:80%;"/>
@@ -284,8 +284,8 @@ jQuery(document).ready(function () {
                                             </tbody>
                                         </table>
                                     </div>
-                                    <button type="button" class="btn admin_button" style="background:#4B90C9;">Open</button>
-                                    <button type="button" class="btn admin_button" style="background:#684F6F;">Delete</button>
+                                    <!--<button type="button" class="btn admin_button" style="background:#4B90C9;">Open</button>
+                                    <button type="button" class="btn admin_button" style="background:#684F6F;">Delete</button>-->
 				</div>
                                 <?php }?>
                                 
@@ -428,7 +428,7 @@ jQuery(document).ready(function () {
                                 
                                 <?php if($current_user['admin_level'] <= 2 || $current_user['admin_level'] == 4) {?>
                                 <!--Site Stats-->
-				<div class="tab-pane active default-tabs" id="site_stats" style="background:rgba(255,255,255,0.5);padding:2% 8%; font-size:25px;">
+				<div class="tab-pane" id="site_stats" style="background:rgba(255,255,255,0.5);padding:2% 8%; font-size:25px;">
 					<h2 style="text-align:center;color:#5697CA;"><i class="fa fa-share-alt" style="color:black;"></i> Site Stats</h2>
 					<div style="background:#81a4b5;color:white;">
                                             <!-- DONT NEED THIS YET 
@@ -437,21 +437,23 @@ jQuery(document).ready(function () {
 						<p style="padding:0 20% 0 15px;">This Week ( - ): <span class="pull-right">#</span></p>
 						<p style="padding:0 20% 10px 15px;">This Month ( - ): <span class="pull-right">#</span></p>
                                             -->
-						<p style="background:#628da3;padding:10px 20% 10px 15px;">Average users online (per day this month): <span class="pull-right">#</span></p>
+						<p style="background:#628da3;padding:10px 20% 10px 15px;">Users Online: <span class="pull-right">#</span></p>
 						<p style="padding:0 20% 0 15px;">Today (today&rsquo;s date): <span class="pull-right"><?php echo $stats['days'];?></span></p>
 						<p style="padding:0 20% 0 15px;">This Week ( - ): <span class="pull-right"><?php echo $stats['weeks'];?></span></p>
 						<p style="padding:0 20% 10px 15px;">This Month ( - ): <span class="pull-right"><?php echo $stats['months'];?></span></p>
 						
-						<p style="background:#628da3;padding:10px 20% 10px 15px;">Average time spent onsite: <span class="pull-right">#</span></p>
-						<p style="padding:0 20% 0 15px;">Today (today&rsquo;s date): <span class="pull-right">#</span></p>
-						<p style="padding:0 20% 0 15px;">This Week ( - ): <span class="pull-right">#</span></p>
-						<p style="padding:0 20% 10px 15px;">This Month ( - ): <span class="pull-right">#</span></p>
+						<p style="background:#628da3;padding:10px 20% 10px 15px;">Total page visits: <span class="pull-right"><?php echo $all_page_visits['culture'] + $all_page_visits['icebreakers'] + $all_page_visits['hotspots'] + $all_page_visits['mywrevs'] + $all_page_visits['latestwrevs'];?></span></p>
+						<p style="padding:0 20% 0 15px;">Culture: <span class="pull-right"><?php echo $all_page_visits['culture'];?></span></p>
+						<p style="padding:0 20% 0 15px;">Icebreakers: <span class="pull-right"><?php echo $all_page_visits['icebreakers'];?></span></p>
+						<p style="padding:0 20% 10px 15px;">Hotspots: <span class="pull-right"><?php echo $all_page_visits['hotspots'];?></span></p>
+                                                <p style="padding:0 20% 10px 15px;">Mywrevs: <span class="pull-right"><?php echo $all_page_visits['mywrevs'];?></span></p>
+                                                <p style="padding:0 20% 10px 15px;">Latestwrevs: <span class="pull-right"><?php echo $all_page_visits['latestwrevs'];?></span></p>
 								
 					</div>
 					
-					<div style="margin-top:20px;border:1px solid #B1CFE8;">
+					<!--<div style="margin-top:20px;border:1px solid #B1CFE8;">
 					Graph of users and listings here
-					</div>
+					</div>-->
 				</div>
                                 <?php }?>
                                 

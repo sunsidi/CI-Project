@@ -9,7 +9,7 @@ class test extends CI_Controller{
                 $data['profile'] = $this->model_users->get_business_info(77);
 		$nav_data = $this->session->all_userdata();
                 $result = array_merge($path,$nav_data, $data);
-                echo "<pre>", print_r($result, true), "</pre>";
+                //echo "<pre>", print_r($result, true), "</pre>";
                 $this->load->view('Create_Wrevel_View',$result);
                 $this->load->view('business_profile',$result);     
 	}

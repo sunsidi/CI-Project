@@ -32,14 +32,14 @@
 		 <span style="font-family:GillSans;">Ticket Number</span> <span style="margin-left:30px;"><?php echo $ticket[$i]['id']?></span>
 	    </p>-->
 	    <p style="text-align: justify; margin-top: 20px;">
-		 <span style="font-size: 15px;color: gray;font-family: ProximaNova-Light;">Who's Going?</span><span style="font-size: 20px;font-family:GillSans;margin-left:40px;"><?php echo $ticket[$i]['fullname']?></span>
+		 <span style="font-size: 15px;color: gray;font-family: ProximaNova-Light;">Who's Going?</span><span style="font-size: 20px;font-family:GillSans;margin-left:40px;"><?php echo ucfirst($ticket[$i]['fullname'])?></span>
 	    </p>
              <p style="text-align: justify;">
-		 <span style="font-size: 15px;color: gray;font-family: ProximaNova-Light;">Ticket Type</span> <span style="font-size: 20px;font-family:GillSans;margin-left:53px;"><?php echo $ticket[$i]['ticket_type']?></span>
+		 <span style="font-size: 15px;color: gray;font-family: ProximaNova-Light;">Ticket Type</span> <span style="font-size: 20px;font-family:GillSans;margin-left:53px;"><?php echo ucfirst($ticket[$i]['ticket_type'])?></span>
 	    </p>
-	    <p style="text-align: justify;">
+	    <!--<p style="text-align: justify;">
 		 <span style="font-size: 15px;color: gray;font-family: ProximaNova-Light;">Wrevenue</span> <span style="font-size: 20px;font-family:GillSans;margin-left:60px;">Wrevenue</span>
-	    </p>
+	    </p>-->
 	    <p style="text-align: justify;">
 		 <span style="font-size: 15px;color: gray;font-family: ProximaNova-Light;">Event Title</span> <span style="font-size: 20px;font-family:GillSans;margin-left:63px;"><?php echo $ticket[$i]['e_name']?></span>
 	    </p>
@@ -83,7 +83,7 @@
 		<span style="font-size: 15px;color: gray;font-family: ProximaNova-Light;">Location</span> <span style="font-size: 20px;font-family:GillSans;margin-left:75px;">
 	    	<?php echo $ticket[$i]['e_address']?></span></br>
 	    	<span style="margin-left:135px;font-size: 20px;font-family:GillSans;"><?php echo $ticket[$i]['e_city']." ";
-			echo $ticket[$i]['e_state']." , ".$ticket[$i]['e_zipcode'];
+                        if(isset($ticket[$i]['e_state']) && !empty($ticket[$i]['e_state'])) {echo $ticket[$i]['e_state']." , "; } if(isset($ticket[$i]['e_zipcode'])) { echo $ticket[$i]['e_zipcode'];};
 		?></span>
 	    </p>
 		
@@ -119,7 +119,11 @@ background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#D4E0E4), to(#E3E9ED));"
 			
 			<div class="col-md-12" style="height: 52px;background-color: #CEDBE1;border-bottom-left-radius:10px; border-bottom-right-radius: 10px;">
 			    <p style="font-size: 30px;text-align:center; color: black;font-family:GillSans;">
-			GENERAL ADMISSION</p>
+                                <?php if($ticket[$i]['ticket_type'] == 'free') echo 'FREE';
+                                      else if($ticket[$i]['ticket_type'] == 'regular') echo 'GENERAL ADMISSION';
+                                      else if($ticket[$i]['ticket_type'] == 'early bird') echo 'EARLY BIRD';
+                                      else if($ticket[$i]['ticket_type'] == 'v.i.p.') echo 'VIP';?>
+                            </p>
 			</div>
 		</div>
 		   

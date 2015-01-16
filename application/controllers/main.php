@@ -673,6 +673,8 @@ public function index()
 	{
             $this->load->library('path');
             $this->load->model('model_users');
+            $this->load->model('model_page_visits');
+            $this->model_page_visits->update_page_visits('mywrevs');
             $path = $this->path->getPath();
             $this->load->library('session');
             $email = $this->session->userdata('email');
@@ -766,6 +768,7 @@ public function get_related_events($category)
     $this->load->library('path');
     $this->load->library('hashmap_cata');
     $this->load->library('session');
+    $this->load->model('model_page_visits');
     $eventMap = $this->hashmap_cata->get_EventMap();
     $path = $this->path->getPath();
     //get category from having clicked the link which acts as a submit button
@@ -774,7 +777,16 @@ public function get_related_events($category)
       $this->load->model('model_events');
       // get all events related to chosen category
       //$related_events = $this->model_events->get_events($category);
-
+    
+    if($category == 'culture') {
+        $this->model_page_visits->update_page_visits('culture');
+    }
+    if($category == 'icebreakers') {
+        $this->model_page_visits->update_page_visits('icebreakers');
+    }
+    if($category == 'hotspots') {
+        $this->model_page_visits->update_page_visits('hotspots');
+    }
 
       $search = $this->input->post('search');
       $price = $this->input->post('price');
@@ -806,7 +818,7 @@ public function get_related_events($category)
       //echo "<pre> ",print_r($data,true) ,"</pre>";
 
 
-         //echo "<pre> ",print_r($nav_data,true) ,"</pre>";
+         //echo "<pre> ",print_r($result,true) ,"</pre>";
 
       //print_r($result);
       //echo print_r($result);
@@ -880,8 +892,9 @@ public function get_related_events($category)
     $eventMap = $this->hashmap_cata->get_EventMap();
     $path = $this->path->getPath();
     $this->load->model('model_events');
+    $this->load->model('model_page_visits');
 
-
+    $this->model_page_visits->update_page_visits('latestwrevs');
 
     //$search = $this->input->post('search');
     $search = $this->input->post('search');

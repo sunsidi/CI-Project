@@ -299,7 +299,6 @@ class Event extends CI_Controller {
             $this->load->model('model_events');
             $this->load->model('model_users');
             $this->load->library('session');
-
             $email = $this->session->userdata('email');
             $data = $this->model_users->get_info($email);
 
