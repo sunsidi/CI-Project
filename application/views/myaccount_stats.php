@@ -140,9 +140,9 @@ jQuery(document).ready(function () {
 													<div class="tab-pane" id="event1-monthly-ticket-sale">
 														<canvas id="event1_monthly_sales_line" class="chart-width"></canvas>
 													</div>
-													<!--<div class="tab-pane" id="event1-yearly-ticket-sale">
+													<div class="tab-pane" id="event1-yearly-ticket-sale">
 														<canvas id="event1_yearly_sales_line" class="chart-width"></canvas>
-													</div>-->
+													</div>
 													
 													<div><div class="box" style="background:#FBE6CC;"></div> &nbsp;&nbsp; VIP</div>
 													<div><div class="box" style="background:#FBCBCC;"></div> &nbsp;&nbsp; General Admission</div>
