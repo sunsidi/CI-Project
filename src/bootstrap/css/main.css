@@ -10,6 +10,7 @@
     margin-right:-4px;
 }
 
+
 .groupname{
 	background:rgba(121,116,158,0.5);
 	width:130px;
@@ -210,6 +211,20 @@ background:#414042;
 	font-size:20px;
 }
 @font-face {
+  font-family: 'ProximaNova-Light';
+    src: url('../fonts/ProximaNova-Light.eot');/*IE*/
+    src: url('../fonts/ProximaNova-Light.eot?#iefix') format('embedded-opentype'),
+     url('../fonts/proximanovalight.ttf') format('truetype'),
+     url('../fonts/ProximaNova-Light.otf');
+}
+@font-face {
+  font-family: 'ProximaNova-Regular';
+    src: url('../fonts/ProximaNova-Regular.eot');/*IE*/
+    src: url('../fonts/ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
+     url('../fonts/proximanovaregular.ttf') format('truetype'),
+     url('../fonts/ProximaNova-Regular.otf');
+}
+@font-face {
   font-family: 'GillSansR';
     src: url('../fonts/gillsans.eot');/*IE*/
     src: url('../fonts/gillsans.eot?#iefix') format('embedded-opentype'),
@@ -380,7 +395,7 @@ table {
 
 .date{
 	font-size:17px;
-	float:right;
+	//float:right;
 	opacity:0.8;
 	padding:5px;
 	
@@ -471,9 +486,11 @@ table {
 }
 
 .more{
-	margin-top:30px;
-	float:right;
+	//margin-top:30px;
 	color:white;
+	position:absolute; 
+	bottom:0;
+	right:5px;
 }
 
 
@@ -1053,7 +1070,12 @@ cursor:pointer;
 }
 
 a.wrevenues-name{
-background:rgba(51,144,132,0.9);
+background:rgba(255,255,255,0.9);
+color: #414042;
+}
+a.wrevenues-name:hover{
+background:rgba(255,255,255,0.9);
+color: #414042;
 }
 
 a.wrevenues-venue{
@@ -1193,6 +1215,7 @@ border-bottom-left-radius:8px;
 ul.ticket-event-dp{
 background:#CA585B;
 color:white;
+font-size:18px;
 }
 
 //ul.ticket-event-dp :hover
@@ -1220,13 +1243,36 @@ background:transparent !important;
 background:rgb(241,242,242) !important;
 }
 
+.marquee {
+    width: 80%;
+    //margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    //border: 1px #414042 solid;
+	background:rgba(255,255,255,0.3);
+	padding:10px;
+	border-top-right-radius:8px;
+	border-bottom-right-radius:8px;
+
+}
+.eventlist{
+margin-left:-50px;
+}
+.featuring{
+padding-left:7%;
+}
+
 @media (max-width: 1025px){
   .eventlist{
-    margin-left: -30px;
+    margin-left: -150px;
   }
   .col-hide{
     display: none;
   }
+  .featuring{
+   padding-left:5%;
+   }
 /*>>>>>>> tony_dev*/
 
 @media (max-width:990px){
@@ -1332,6 +1378,9 @@ background:rgb(241,242,242) !important;
 	.related-blog-small{
 	display:initial;
 	}
+	.marquee {
+    width: 70%;
+	}
 }
 
 
@@ -1361,6 +1410,9 @@ background:rgb(241,242,242) !important;
 	padding:0; 
 	margin-top: -100px;
 	}
+	.featuring{
+	padding-left:4%;
+	}
 }
 
 @media (max-width:533px){
@@ -1379,7 +1431,9 @@ background:rgb(241,242,242) !important;
 	margin-left:auto;
 	margin-right:auto;
 	}
-	
+	.featuring{
+	padding-left:1%;
+	}
 
 }
 
@@ -1513,7 +1567,12 @@ background:rgb(241,242,242) !important;
 	.event-post-btn{
 	font-size:15px;
 	}
-
+	.marquee{
+	width:50%;
+	}
+	.featuring{
+	padding-left:7%;
+	}
 
 	
   }
@@ -1540,6 +1599,9 @@ background:rgb(241,242,242) !important;
 	}
 	.event-comment-input{
 	width:55%;
+	}
+	.featuring{
+	padding-left:5%;
 	}
 }
 
@@ -1690,6 +1752,12 @@ background:rgb(241,242,242) !important;
 	.event-post-btn{
 	font-size:15px;
 	}
+	.marquee{
+	width:50%;
+	}
+	.featuring{
+	padding-left:4%;
+	}
 }
 
 /* For iPhones and Android*/
@@ -1748,6 +1816,12 @@ background:rgb(241,242,242) !important;
 	}
 	.event-post-textarea{
 	width:auto;
+	}
+	.featuring{
+	padding-left:1%;
+	}
+	.marquee{
+	width:48%;
 	}
 }
 

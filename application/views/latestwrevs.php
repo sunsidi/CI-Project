@@ -50,7 +50,7 @@
         </div>
 			
         
-              <div class="left-inner-addon" style="font-size:20px;">
+        <div class="left-inner-addon" style="font-size:20px;">
                 
           <label class="sr-only" for="exampleInputPassword2">Password</label>
           <select id="cookie_state" name="state" type="text" style="float:left; border-radius:5px;padding:4px;">
@@ -120,9 +120,9 @@
         <input type="submit" class="btn" style="background:#1C74BB; color:white; font-size:20px; padding:1px 10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);" value="go"></input>
     <!--</form>-->
           <?php echo form_close()?>
-
-    </div>
 </div>
+    </div>
+	</div>
     <!--<div class="text-center">
     <ul class="pagination">
     	<li><a href="javascript:void(0)" onclick="show_page(1)"><<</a></li>
@@ -135,20 +135,21 @@
     </ul>
 </div>-->
 
-        <div class="container" style="margin-top:30px;">
-	  <div class="eventlist">
+        <div class="row row-centered" style="margin-top:30px;">
+		<div class="col-md-11 col-centered col-sm-11 col-xs-11" style="color:white;text-align:center;padding:10px 10%;">
+	  
       <div class="row">
         <!--modify -->
         <?php if($size > 1) {
-            	echo '<span style="color:black;margin-left:43%; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">results found!</span></span>';
+            	echo '<span style="color:black; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">results found!</span></span>';
              }
              else{
-             	echo '<span style="color:black;margin-left:43%; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">result found!</span></span>';
+             	echo '<span style="color:black; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">result found!</span></span>';
                 
             }?>
       </div>
-    	</div>
-    	<div>
+    	
+    	<div class="row" style="text-align:left;">
       <?php
       $i = 0;
       $group_page = 1;
@@ -159,29 +160,26 @@
       	    	$size_left--;
       	    	if($group_page == 1) {
       ?>
-	      <div class="<?php echo 'event_group'.$group_page?> col-md-3 col-sm-6 col-xs-12" style="padding:70px 3.2% 0; margin-left:5%;">
+	      <div class="<?php echo 'event_group'.$group_page?> col-md-3 col-sm-6" style="padding:0 9px;">
 	      <?php } else {?>
-	      <div class="<?php echo 'event_group'.$group_page?> col-md-3 col-sm-6 col-xs-12" style="padding:70px 3.2% 0; margin-left:5%;" hidden>
+	      <div class="<?php echo 'event_group'.$group_page?> col-md-3 col-sm-6" style="padding:0 9px;" hidden>
 	      <?php }?>
-                <div class="mosaic-block bar2" onclick="location.href='<?php echo base_url().'event/event_info/latest/'.$event_info[$i]["event_id"]?>';" style="cursor:pointer; border-radius:10px; -moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);" > <!-- <- box to link to full view -->
+                <div class="mosaic-block bar2" onclick="location.href='<?php echo base_url().'event/event_info/latest/'.$event_info[$i]["event_id"]?>';" style="margin-top:18px;cursor:pointer; border-radius:10px; -moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);" > <!-- <- box to link to full view -->
                
 
         <a target="_blank" class="mosaic-overlay latest-box" style="background-color:rgba(178,154,158,1);display: inline; left: 0px;">
-      <div class="col-md-12" style="height: 50px; background-color: rgba(159,129,134,1); ">
-                            <p style="text-align:center; color:white; font-size:28px; margin-top:5px;">
-                            <!--Number of likes and like button-->
-                            <span><?php echo $event_info[$i]['e_likes'] ?> </span><i class="fa fa-heart-o"></i> | 
-                            <!--Add to Palette-->
-                            <span class="glyphicon glyphicon-list-alt"></span> | 
-                            <!--Share button-->
-                            <i class="fa fa-share-square-o"></i> </p>
+      <div class="col-md-12" style="height: 50px; background-color: rgba(159,129,134,1); position:relative;">
+                            <p style="text-align:center; color:white; font-size:20px; margin-top:8px;">
+                                    <strong style="text-shadow: 1px 1px 0.5px #000000;"><?php 
+                                    $event_name_temp = substr($event_info[$i]['e_name'], 0, 14);
+                                    echo $event_name_temp?></strong> </p>
       </div>
                         <!--Location of event-->
-                        <p class="location location-romance"><i class="fa fa-map-marker"></i><?php echo $event_info[$i]['e_state'] ?> </p>
+                        <p class="location location-romance"><i class="fa fa-map-marker"></i> <?php echo $event_info[$i]['e_state'] ?> </p>
                         
                         <!--Description -->
                         <p class="description" style="height: 40px;text-overflow:ellipsis;">
-                        <?php $event_description_temp = substr($event_info[$i]['e_description'], 0, 150); echo $event_description_temp; ?>......                       
+                        <?php $event_description_temp = substr($event_info[$i]['e_description'], 0, 140); echo $event_description_temp; ?>......                       
                         </p>
                         
                         <!--Click to lead to individual listing page-->
@@ -189,20 +187,22 @@
         </a>
       
       <div class="mosaic-backdrop" style="display: block;">
-                                <div style="position: absolute; border-radius:7px; background-color: rgba(239,186,183,0.3); width: 325px; height: 400px; z-index: 0;"></div>
+                                <div style="position: absolute; border-radius:7px; background-color: rgba(239,186,183,0.3); width: 100%; height: 280px; z-index: 0;"></div>
                         <!--Event Image-->
         <img src="<?php echo base_url()."uploads/". $event_info[$i]['e_image']?>" style="max-width:100%; min-width:100%; max-height:100%; min-height:100%;">
         <div class="details">
-                                    <p>
-                                    <!--Name of event-->
-                                    <strong style="text-shadow: 1px 1px 0.5px #000000;"><?php 
-                                    $event_name_temp = substr($event_info[$i]['e_name'], 0, 14);
-                                    echo $event_name_temp?></strong> 
-                                    <!--Date of event-->
-                                    <span class="badge date latest-date"><?php echo $event_info[$i]['e_date']?></span></p>
+                                    <p style="font-size:17px;">
+									<!--Date of event-->
+									<span class="badge date latest-date"><?php echo $event_info[$i]['e_date']?></span>
+									<span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><i class="fa fa-clock-o"></i><?php echo $event_info[$i]['e_start_time']; ?></span>
+									</p> 
+                                    
+                                    
                                     <!--Number of people attending-->
-                                    <p style="margin:-8px;font-size:17px;padding:0 9px;"><span class="badge attending"><?php echo $event_info[$i]['e_attending'] ?></span> <span style="text-shadow: 1px 1px 0.5px #000000;">Attending</span>
-                                    <span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><i class="fa fa-clock-o"></i><?php echo $event_info[$i]['e_start_time']; ?></span></p>
+                                    <p style="font-size:17px;">
+									<span class="badge attending"><?php echo $event_info[$i]['e_attending'] ?></span> <span style="text-shadow: 1px 1px 0.5px #000000;">Attending</span>
+									<span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><span><?php echo $event_info[$i]['e_likes'] ?> </span><i class="fa fa-heart-o"></i></span>
+                                    </p>
                                 </div>
                         </div>
     </div>
@@ -210,7 +210,7 @@
             
             <?php $i++;}
             $group_page++;}}?>  
-</div>
+</div></div>
 </div>
 <div class="text-center">
     <ul class="pagination">
@@ -228,7 +228,9 @@
             <?php if($this->session->userdata('is_logged_in')) {?>
             <a href="#" data-toggle="modal" data-target="#create" class="btn btn-lg createwrev" style="font-size:25px; padding:10px;border-radius:10px;">Create a Wrev</a>
             <?php }?>
-    </div>              
+			</div>              
+</div>
+</div>
 </div>
 </div>
 <!--end of content-->

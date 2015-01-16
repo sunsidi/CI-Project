@@ -13,6 +13,7 @@
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-tour.min.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
@@ -22,7 +23,7 @@
 <!--content
 ==============================================-->
 <div class="container" style="width:90%;padding-bottom:50px;">
-    <div class="row" style="margin-top:50px;">
+    <div class="row" id="wrevenues-step" style="margin-top:50px;">
         <h1 class="title" style="text-align:center;font-family:GillSans;color:white;"><a href="<?php echo base_url().'wrevenues/wrevenues_main';?>" style="color:white;"><img class="w_logo" src="<?php echo $PATH_IMG?>w1.png"/>Wrevenues</a></h1>
         <?php echo form_open('wrevenues/search_wrevenues');?>
         <div class="form-group row" style="padding:20px;">
@@ -875,5 +876,7 @@
     		$(temp).show();
     	}
     </script>
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script>
 </body>
 </html> 

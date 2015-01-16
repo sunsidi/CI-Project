@@ -31,6 +31,7 @@
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-tour.min.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <style type="text/css">
 .arrow-left {
@@ -57,7 +58,8 @@ position:absolute;
 <!--content
 ==============================================-->
 <div class="container" style="padding-bottom:50px;">
-    <div class="row" style="margin-top:50px;">
+<div id="showroom-step">
+    <div class="row"  style="margin-top:50px;">
 
         <div class="col-md-9 col-md-offset-1">
             <div class="col-md-1">
@@ -274,8 +276,24 @@ position:absolute;
                                     </ul>
                                   
                                     
-                                        <div id="all_wrevs_panel" class="panel" style="background:#E9EEF2;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);border-radius:10px;" hidden>
+					<div id="all_wrevs_panel" class="panel" style="background:#E9EEF2;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);border-radius:10px;" hidden>
                                             <div class="panel-body">
+				<div class="row" style="padding:3% 10% 0%;">
+                                    <div class="col-md-12" style="position:relative;background-image:url(<?php echo $PATH_IMG?>bucket_list.png); background-size:100%;padding:10px 0px 0px; color:white;">
+                                        <div style="padding:0 10px 30px;">
+                                            <p style="text-align:right;"><span class="wrevenue-attending">10</span><span class="wrevenue-attending-text">Attending</span></p>
+                                            <div style="margin-left:auto;margin-right:auto;text-align:center;">
+                                                <a href="" class="btn wrevenue-wrev">name</a>
+                                                <span class="pull-right" style="position:relative;"><i class="fa fa-clock-o"></i>2pm</span>
+                                            </div>
+                                        </div>		
+                                        <div style="background:rgba(0,0,0,0.5);postion:absolute;bottom:0;left:0;padding:5px 10px;">
+                                            <i class="fa fa-calendar"></i> 12 <span class="pull-right">10<i class="fa fa-heart-o"></i> | <a href=""><span class="glyphicon glyphicon-list-alt"></span></a> | <a href=""><i class="fa fa-share-square-o"></i></a></span>
+                                        </div>
+                                    </div>
+                                </div>
+				
+				
                                 	<div class="row">
                                 	<div class="table-responsive">
                                        <table style='width:100%'>
@@ -705,7 +723,7 @@ position:absolute;
         </div>
     </div>
 </div>
-
+</div>
 <!--end of content-->
 
 <?php $this->load->view('footer');?>
@@ -875,6 +893,7 @@ document.getElementById("herdzz").innerHTML = " ";
     			return false; 
     	}
     </script>
-
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
+ 	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script> 
 </body>
 </html> 
