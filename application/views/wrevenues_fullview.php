@@ -13,7 +13,6 @@
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
-<link href="<?php echo $PATH_BOOTSTRAP?>css/business-lightbox.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false"
@@ -133,13 +132,13 @@
                         </div>	
                     </div>
                     <div>
-                        <label class="col-sm-20"><b><u>Schedule:</u></b></label>
+                        <label class="col-sm-20"><b><u>Hours:</u></b></label>
                     </div>
                     <div id="days_base">
                         <div class="form-group row">
                             <label class="col-sm-3">Day:</label>
                             <div class="col-sm-2">
-                                <select name="day[]" class="form-control" style="padding:0;">
+                                <select name="day[]" class="form-control">
                                     <option value="" selected="selected"></option>
                                     <option value="Mon">Mon</option>
                                     <option value="Tues">Tues</option>
@@ -151,7 +150,7 @@
                                 </select>
                             </div>
                             <div class="col-sm-2">
-                                <select name="start_time[]" class="form-control" style="padding:0;">
+                                <select name="start_time[]" class="form-control">
                                     <option value="" selected="selected"></option>
                                     <option value="01:00">1:00AM</option>
                                     <option value="02:00">2:00AM</option>
@@ -181,7 +180,7 @@
                             </div>
                             <label class="col-sm-1">TO</label>
                             <div class="col-sm-2">
-                                <select name="end_time[]" class="form-control" style="padding:0;">
+                                <select name="end_time[]" class="form-control">
                                     <option value="" selected="selected"></option>
                                     <option value="01:00">1:00AM</option>
                                     <option value="02:00">2:00AM</option>
@@ -262,7 +261,7 @@
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-3">Add more Images:</label>
-                        <div id="photos_upload" class="col-sm-6">
+                        <div id="photos_upload" class="col-sm-5">
                             <div class="image-upload">
                                 <label>Choose an Image:</label>
                                 <input name="wrevenue_file_array[]" type="file" style="overflow:hidden;" />
@@ -272,7 +271,7 @@
                             <a class="btn btn-default" onclick="add_more_photos()"><i class="fa fa-plus"></i></a>
                         </div>
                     </div>
-                    <div class="row" style="text-align:right;padding-right:20px;">
+                    <div class="row" style="text-align:right;">
                             <button class="btn" type="submit" style="background:#478ABC;color:white;">Submit</button>
                     </div>
                 </form>
@@ -335,8 +334,7 @@
 <!-- START OF PAGE -->
 <div class="container" style="padding-bottom:50px;">
     <div class="row" style="margin-top:50px;">
-		
-		<h1 class="title" style="text-align:center;font-family:GillSans;color:white;"><a href="<?php echo base_url().'wrevenues/wrevenues_main'?>" style="color:white;"><img class="w_logo" src="<?php echo $PATH_IMG?>w1.png"/>Wrevenues</a></h1>
+        <h1 class="title" style="text-align:center;font-family:GillSans;color:white;"><a href="<?php echo base_url().'wrevenues/wrevenues_main'?>" style="color:white;"><img class="w_logo" src="<?php echo $PATH_IMG?>w1.png"/>Wrevenues</a></h1>
         <div class="col-md-8 col-md-offset-2">
             <div class="panel" style="border:none;border-radius:15px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">
                 
@@ -375,17 +373,15 @@
                         
                         <!-- EVENT NAME -->
                         <div class="col-sm-4" style="padding-top:3%;">
-                            <a class="btn wrevenues-name" style="cursor:default;"><?php echo $wrevenues['place'];?></a>
+                            <a class="btn wrevenues-name"><?php echo $wrevenues['place'];?></a>
                             <h4 style="font-size:19px;" id="pricingInfo" data-html="true" data-content="$ - Free to $10 </br> $$ - $11 to 25 </br> $$$ - $26 to 49 </br> $$$$ - $50 to higher" data-trigger="hover" data-placement="bottom"><img src="<?php echo $PATH_IMG?>dollarbills_icon.png"/><?php echo $wrevenues['price'];?></h4>
                         </div><!-- END OF EVENT NAME -->
                         
                         <!-- EDIT AND RATINGS MODAL -->
                         <div class="col-sm-4">
-                            <?php if($id_check == $wrevenues['creator_id']) {?>
                             <div>
                                 <a href="#" data-toggle="modal" data-target="#editwrevenue" class="btn edit-wrevenue">Edit Wrevenue</a>
                             </div>
-                            <?php }?>
                             <!-- COMMENTED OUT <div style="margin-top:7px;">
                                 <i class="fa fa-star fa-2x"></i>
                                 <i class="fa fa-star fa-2x"></i>
@@ -401,7 +397,7 @@
                 
                 <!-- START OF INNER PANEL -->
 		<div class="panel-body background" style="border-bottom-left-radius:10px;border-bottom-right-radius:10px;">
-                    <div class="row" style="padding-bottom:20px;">
+                    <div class="row">
                         <div class="col-md-6">
                             
                             <!-- SHOUTOUT -->
@@ -412,12 +408,12 @@
                                 <?php if(!empty($wrevenues['shoutout'])) {?>
                                 <div style="background:#F0F3F6;border-radius:8px;padding:10px;"><?php echo $wrevenues['shoutout']?></div>
                                 <?php }else {?>
-                                <div style="background:#F0F3F6;border-radius:8px;padding:10px;"> Send us a message if you have any questions!</div>
+                                <div style="background:#F0F3F6;border-radius:8px;padding:10px;"> Placeholder shoutout here</div>
                                 <?php }?>
                             </div><!-- END OF SHOUTOUT -->
                             
                             <!-- DESCRIPTION -->		
-                            <div style="margin-top:40px;">
+                            <div class="margin-top:40px;">
                                 <h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>details_icon.png"/> &nbsp; Wrevenue Details:</h4>
                                 <div class="row" style="padding:3% 20% 0%; font-size:15px;">
                                     <?php echo $wrevenues['description'];?>
@@ -438,11 +434,11 @@
                                             </div>
                                         </div>		
                                         <div style="background:rgba(0,0,0,0.5);postion:absolute;bottom:0;left:0;padding:5px 10px;">
-                                            <i class="fa fa-calendar"></i> <?php echo $latest_event['e_date'];?> <span class="pull-right"><?php echo $latest_event['e_likes'];?> <i class="fa fa-heart-o"></i> | <a href="<?php echo base_url().'event/event_info/latest/'.$latest_event['event_id'];?>"><span class="glyphicon glyphicon-list-alt"></span></a> | <a href="<?php echo base_url().'event/event_info/latest/'.$latest_event['event_id'];?>"><i class="fa fa-share-square-o"></i></a></span>
+                                            <i class="fa fa-calendar"></i> <?php echo $latest_event['e_date'];?> <span class="pull-right"><?php echo $latest_event['e_likes'];?> <i class="fa fa-heart-o"></i> | <a href="#"><span class="glyphicon glyphicon-list-alt"></span></a> | <a href="#"><i class="fa fa-share-square-o"></i></a></span>
                                         </div>
                                     </div>
                                 </div>
-                                <?php } else { echo '<div style="padding-left:70px;">There are no upcoming wrevs for this wrevenue</div>';}?>
+                                <?php }?>
                             </div><!-- END OF UPCOMING WREVS -->
 							
                             <!-- CONTACT INFO -->
@@ -482,50 +478,24 @@
                             <!-- HOURS -->
                             <div style="margin-top:40px;">
                                 <h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>clock_icon.png"/> &nbsp; Hours</h4>
-                                <?php $hours_check = 0;?>
                                 <div style="padding:0% 17%;font-size:18px;line-height:70%;">
                                     <?php for($i = 0; $i < 7; $i++) {
-                                            if($wrevenues['day'][$i] != false) { $hours_check = 1;?>
+                                            if($wrevenues['day'][$i] != false) {?>
                                                 <p><?php echo strtoupper($wrevenues['day'][$i]['day']);?> &nbsp;&nbsp <?php echo $wrevenues['day'][$i]['start_time'].' to '.$wrevenues['day'][$i]['end_time'];?></p>
                                     <?php }}?>
                                 </div>
-                                <?php if(!$hours_check) { echo '<div style="padding-left:70px;">There are no hours for this wrevenue</div>'; }?>
                             </div><!-- END OF HOURS -->
                             
                             <!-- PHOTOS -->
                             <div style="margin-top:40px;">
-                                <h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>photo_icon.png"/> &nbsp; Photos:</h4>
-                                <?php if(!empty($wrevenues['photos'])) {?>
-                                <div style="padding:0% 5%;font-size:18px;line-height:70%;">
-                                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
-										<div class="carousel-inner" role="listbox">
-											<?php 
-											$first = true;
-											foreach($wrevenues['photos'] as $picture){
-												if($first) {?>
-												<div class="item active">
-													<a href="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" rel="lightbox">
-													<img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" alt="...">
-													</a>
-												</div>
-												<?php $first = false;
-												} else {?>
-												<div class="item">
-													<a href="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" rel="lightbox"> <img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" alt="..."></a>
-												</div>
-
-											<?php }}} else { echo '<div style="padding-left:70px;">There are no photos for this wrevenue</div>'; }?> 
-									
-										</div>
-											<a class="left carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="prev">
-												<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-												<span class="sr-only">Previous</span>
-											</a>
-											<a class="right carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="next">
-												<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-												<span class="sr-only">Next</span>
-											</a>
-									</div>
+                                <h4 style="padding-left:30px;">Photos:</h4>
+                                <div style="padding:0% 17%;font-size:18px;line-height:70%;">
+                                    <?php if(!empty($wrevenues['photos'])) {
+                                            foreach($wrevenues['photos'] as $picture){?>
+                                                <img src="<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/photos/'.$picture?>" class="shoutout-image"/>
+                                    <?php }} else {?>
+                                                <p> You have no photos here. :( </p>
+                                    <?php }?>
                                 </div>
                             </div><!-- END OF PHOTOS -->
                             
@@ -569,7 +539,6 @@
     <!-- Placed at the end of the document so the pages load faster -->	
 	<script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
-	<script src="<? echo $PATH_BOOTSTRAP?>js/lightbox.js"></script>
     <script type="text/javascript"> 
 
     var userLocation =  <?php echo json_encode($wrevenues['address']. "," . $wrevenues['state'] . "," .$wrevenues['city']. "," . $wrevenues['zipcode']); ?>;

@@ -60,47 +60,4 @@ class admin extends CI_Controller{
             $this->model_events->admin_delete_events();
             redirect('admin/admin_account');
         }
-        
-        //Feature events that are checked.
-        public function feature_events() {
-            $this->load->library('session');
-            $this->load->model('model_events');
-            $this->model_events->admin_feature_events();
-            redirect('admin/admin_account');
-        }
-        //creates many events.
-        public function create_multiple_events() {
-            $this->load->library('session');
-            $this->load->model('model_events');
-            $insert_ids = $this->model_events->create_multi_event(77);
-            if(isset($insert_ids)) {
-                for($i = 0; $i < count($insert_ids); $i++) {
-                    mkdir('./uploads/events/'.$insert_ids[$i].'/photos/', 0777, true);
-                    chmod('./uploads/events/'.$insert_ids[$i].'/photos/', 0777);
-                }
-                $config['upload_path'] = './uploads/events/';
-                $config['allowed_types'] = 'gif|jpg|png|jpeg';
-                $config['max_size'] = '10000';
-                //echo $image_name;
-                $this->load->library('upload', $config);
-                $this->upload->initialize($config);
-                if (!$this->upload->do_multi_upload('multi_file_input'))
-                {
-                    $this->session->set_flashdata('message', 'There was an error uploading one or more files. Check if your files are all there.');
-                }
-                else {
-                    $temp_data = $this->upload->get_multi_upload_data();
-                    for($i = 0; $i < count($temp_data); $i++) {
-                        rename('./uploads/events/'.$temp_data[$i]['file_name'], './uploads/events/'.$insert_ids[$i].'/'.$temp_data[$i]['file_name']);
-                        $new_paths[$i] = 'events/'.$insert_ids[$i].'/'.$temp_data[$i]['file_name'];
-                    }
-                }
-                if(isset($new_paths)) {
-                    if($this->model_events->update_multi_images($new_paths, $insert_ids)) {
-                        $this->session->set_flashdata('message', 'Your events have been created! Visit mywrevs to view them now.');
-                    }
-                }
-            }
-            redirect('admin/admin_account');
-        }
 }

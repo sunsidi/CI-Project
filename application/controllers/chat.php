@@ -69,7 +69,6 @@ class Chat extends CI_Controller {
             for ($i=0; $i < count($chatList); $i++){
                         $chats_info[$i]['currentUser']=$currentUser;
                 if ($chatList[$i]['person1']!=$currentUser){ 
-                        $chats_info[$i]['m_id'] = $chatList[$i]['m_id'];
                         /* get other user's image */
                         $image = base_url()."uploads/".$this->model_chats->get_otherUsers_image($chatList[$i]['person1']);
                         $chats_info[$i]['image']=  $image;
@@ -86,7 +85,6 @@ class Chat extends CI_Controller {
                     }
 
                 else{
-                        $chats_info[$i]['m_id'] = $chatList[$i]['m_id'];
                         $image = base_url()."uploads/".$this->model_chats->get_otherUsers_image($chatList[$i]['person2']);
                         //echo $image;
                         $chats_info[$i]['image']=  $image;
@@ -172,8 +170,7 @@ class Chat extends CI_Controller {
             if ($this->model_chats->get_chats($currentUser,$username)){
                 //chat exists so retrieve it!
                 $data = array_merge($data,$this->model_chats->get_chats($currentUser,$username));
-                $this->model_chats->unhide_both_chats($data[0]['m_id']);
-                
+
                 $data['PATH_IMG'] = $path['PATH_IMG'];
                 $data['PATH_PROFILE'] = $path['PATH_PROFILE'];
                 $data['PATH_BOOTSTRAP'] = $path['PATH_BOOTSTRAP'];
@@ -204,7 +201,7 @@ class Chat extends CI_Controller {
             else{
                 //create a file name for the chat
                 $randomName = md5(uniqid()) . ".html";    
-                $filename =  "./application/views/chats/".$randomName;
+                $filename =  "/home/wrevelco/public_html/application/views/chats/".$randomName;
                 //try to create file
                 if ($handle=fopen($filename,'w+')){
                         //trying to insert info into db
@@ -267,8 +264,16 @@ class Chat extends CI_Controller {
             $today = date("F j, Y, g:i a"); 
             //add commentors name instead of "Comment:"
             if($comment){
-            $file_chat = "<p class='$currentUser' style='clear:both'> </br>&nbsp;&nbsp;&nbsp;&nbsp;<img src='$my_image' style='width:40px; height:40px;border-radius: 150px;'/>&nbsp;&nbsp;$fullName:
-	    <p style='border:1px solid #414042;border-radius:10px;padding:10px 20px;'><span class='pull-right'>$today</span></br>$comment</p></p><br>"; 
+            $file_chat = "<div style='position:relative'><div style='position:absolute;z-index:100;width: 0; height: 0; border-left: 10px solid transparent;border-right: 10px solid transparent;
+	border-bottom: 10px solid #D9E0E6; margin-top:61px;margin-left:10px;'></div><div style='    position : absolute;
+    width    : 0;
+    height   : 0;
+    z-index  : 99;
+    
+    border-left   : 12px solid transparent;
+    border-right  : 12px solid transparent;
+    border-bottom : 12px solid #414042;margin-top:59px;margin-left:8px;'></div></div><p class='$currentUser'style='clear:both'> </br>&nbsp;&nbsp;&nbsp;&nbsp;<img src='$my_image' style='width:40px; height:40px;border-radius: 150px;'/>&nbsp;&nbsp;$fullName:
+	    <p style='border:1px solid #414042;border-radius:10px;padding:10px;'><span class='pull-right'>$today</span></br>$comment</p></p><br>"; 
             }
             else{$file_chat = "";}
             //echo "actual message view = ".$somecontent. "<br>";
@@ -322,8 +327,7 @@ class Chat extends CI_Controller {
             if ($this->model_chats->get_chats($currentUser,$To)){
                 //chat exists so retrieve it!
                 $data = array_merge($data,$this->model_chats->get_chats($currentUser,$To));
-                $this->model_chats->unhide_both_chats($data[0]['m_id']);
-                
+
                 $data['PATH_IMG'] = $path['PATH_IMG'];
                 $data['PATH_PROFILE'] = $path['PATH_PROFILE'];
                 $data['PATH_BOOTSTRAP'] = $path['PATH_BOOTSTRAP'];
@@ -582,11 +586,7 @@ class Chat extends CI_Controller {
             $handle=fclose($handle);
 
         }
-        public function hide_chat($currentUser, $m_id) {
-            $this->load->model('model_chats');
-            $this->model_chats->hide_chat($currentUser, $m_id);
-            redirect('chat/messageView');
-        }
+        
         
 }
 

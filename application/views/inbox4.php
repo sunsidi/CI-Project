@@ -147,10 +147,15 @@ jQuery(document).ready(function () {
 							
 							<!--used to differentiate the users apart in convo-->
 							<?php  echo "<style>
-							p.".$chats_info[$i]["currentUser"]."{margin-left:60%;}
+							p.".$chats_info[$i]["currentUser"]."{margin-left:60%; }
 							</style>"; ?>
+<<<<<<< HEAD
+							<!-- bye bye-->
+=======
+							<!-- hello there-->
+>>>>>>> tony_dev
+							
 								<div class="containe">
-                                                                    <a href="<?php echo base_url().'chat/hide_chat/'.$chats_info[$i]['currentUser'].'/'.$chats_info[$i]['m_id'];?>" onclick="return make_sure()">X</a>
 									<div class="heade" onclick="change_chat('<?php echo $chats_info[$i]['chatLocation'];?>','<?php echo $chats_info[$i]['otherUser'];?>');highlightLink(this);">
 										<table class="table">
 											<thead>
@@ -262,15 +267,7 @@ var highlightLink = function () {
             }
         };
     }();
-</script>
-<script>
-    function make_sure() {
-        if(confirm('Are you sure? You will not be able to see any messages from this conversation.'))
-            return true;
-        else 
-            return false;
-    }
-</script>
+</script>	
  <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

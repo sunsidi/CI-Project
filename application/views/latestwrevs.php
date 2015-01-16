@@ -14,7 +14,6 @@
 
 <link href="<?php echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<link href="<?php echo $PATH_CSS?>redmond/jquery-ui-1.10.4.custom.css" rel="stylesheet">
 </head>
 
 <body>
@@ -31,7 +30,7 @@
                 	<div style="margin-left:25%;margin-right:auto;margin-top:25px;">     
       <!--<form class="form-inline" role="form">-->
       <?php $save_search = array('onsubmit' => 'return save_search()');
-      echo form_open(base_url().'main/get_latest_events_search/', $save_search)?>
+      echo form_open(base_url().'main/get_latest_events/', $save_search)?>
        
               <div class="left-inner-addon" style="float:left; border-radius:5px;">
                 <span class="glyphicon glyphicon-search"></span>
@@ -50,7 +49,7 @@
         </div>
 			
         
-        <div class="left-inner-addon" style="font-size:20px;">
+              <div class="left-inner-addon" style="font-size:20px;">
                 
           <label class="sr-only" for="exampleInputPassword2">Password</label>
           <select id="cookie_state" name="state" type="text" style="float:left; border-radius:5px;padding:4px;">
@@ -111,18 +110,16 @@
       <div class="col-xs-1" style="padding:0;">
             <input id="cookie_zipcode" name="zipcode" type="text" pattern=".{5,5}" maxlength="5" class="form-control" placeholder="Zip" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
            </div>
-       <div class="col-xs-1" style="padding:0;">
-            <input id="cookie_date" name="search_date" class="form-control" type="text" placeholder="Date">
-        </div>
+       
         
       
   
         <input type="submit" class="btn" style="background:#1C74BB; color:white; font-size:20px; padding:1px 10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);" value="go"></input>
     <!--</form>-->
           <?php echo form_close()?>
-</div>
+
     </div>
-	</div>
+</div>
     <!--<div class="text-center">
     <ul class="pagination">
     	<li><a href="javascript:void(0)" onclick="show_page(1)"><<</a></li>
@@ -135,21 +132,20 @@
     </ul>
 </div>-->
 
-        <div class="row row-centered" style="margin-top:30px;">
-		<div class="col-md-11 col-centered col-sm-11 col-xs-11" style="color:white;text-align:center;padding:10px 10%;">
-	  
+        <div class="container" style="margin-top:30px;">
+	  <div class="eventlist">
       <div class="row">
         <!--modify -->
         <?php if($size > 1) {
-            	echo '<span style="color:black; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">results found!</span></span>';
+            	echo '<span style="color:black;margin-left:43%; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">results found!</span></span>';
              }
              else{
-             	echo '<span style="color:black; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">result found!</span></span>';
+             	echo '<span style="color:black;margin-left:43%; font-size:26px;font-weight:bold;">'.$size.' <span style="color:white;">result found!</span></span>';
                 
             }?>
       </div>
-    	
-    	<div class="row" style="text-align:left;">
+    	</div>
+    	<div>
       <?php
       $i = 0;
       $group_page = 1;
@@ -160,26 +156,29 @@
       	    	$size_left--;
       	    	if($group_page == 1) {
       ?>
-	      <div class="<?php echo 'event_group'.$group_page?> col-md-3 col-sm-6" style="padding:0 9px;">
+	      <div class="<?php echo 'event_group'.$group_page?> col-md-3 col-sm-6 col-xs-12" style="padding:70px 3.2% 0; margin-left:5%;">
 	      <?php } else {?>
-	      <div class="<?php echo 'event_group'.$group_page?> col-md-3 col-sm-6" style="padding:0 9px;" hidden>
+	      <div class="<?php echo 'event_group'.$group_page?> col-md-3 col-sm-6 col-xs-12" style="padding:70px 3.2% 0; margin-left:5%;" hidden>
 	      <?php }?>
-                <div class="mosaic-block bar2" onclick="location.href='<?php echo base_url().'event/event_info/latest/'.$event_info[$i]["event_id"]?>';" style="margin-top:18px;cursor:pointer; border-radius:10px; -moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);" > <!-- <- box to link to full view -->
+                <div class="mosaic-block bar2" onclick="location.href='<?php echo base_url().'event/event_info/latest/'.$event_info[$i]["event_id"]?>';" style="cursor:pointer; border-radius:10px; -moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);" > <!-- <- box to link to full view -->
                
 
         <a target="_blank" class="mosaic-overlay latest-box" style="background-color:rgba(178,154,158,1);display: inline; left: 0px;">
-      <div class="col-md-12" style="height: 50px; background-color: rgba(159,129,134,1); position:relative;">
-                            <p style="text-align:center; color:white; font-size:20px; margin-top:8px;">
-                                    <strong style="text-shadow: 1px 1px 0.5px #000000;"><?php 
-                                    $event_name_temp = substr($event_info[$i]['e_name'], 0, 14);
-                                    echo $event_name_temp?></strong> </p>
+      <div class="col-md-12" style="height: 50px; background-color: rgba(159,129,134,1); ">
+                            <p style="text-align:center; color:white; font-size:28px; margin-top:5px;">
+                            <!--Number of likes and like button-->
+                            <span><?php echo $event_info[$i]['e_likes'] ?> </span><i class="fa fa-heart-o"></i> | 
+                            <!--Add to Palette-->
+                            <span class="glyphicon glyphicon-list-alt"></span> | 
+                            <!--Share button-->
+                            <i class="fa fa-share-square-o"></i> </p>
       </div>
                         <!--Location of event-->
-                        <p class="location location-romance"><i class="fa fa-map-marker"></i> <?php echo $event_info[$i]['e_state'] ?> </p>
+                        <p class="location location-romance"><i class="fa fa-map-marker"></i><?php echo $event_info[$i]['e_state'] ?> </p>
                         
                         <!--Description -->
                         <p class="description" style="height: 40px;text-overflow:ellipsis;">
-                        <?php $event_description_temp = substr($event_info[$i]['e_description'], 0, 140); echo $event_description_temp; ?>......                       
+                        <?php $event_description_temp = substr($event_info[$i]['e_description'], 0, 150); echo $event_description_temp; ?>......                       
                         </p>
                         
                         <!--Click to lead to individual listing page-->
@@ -187,40 +186,38 @@
         </a>
       
       <div class="mosaic-backdrop" style="display: block;">
-                                <div style="position: absolute; border-radius:7px; background-color: rgba(239,186,183,0.3); width: 100%; height: 280px; z-index: 0;"></div>
+                                <div style="position: absolute; border-radius:7px; background-color: rgba(239,186,183,0.3); width: 325px; height: 400px; z-index: 0;"></div>
                         <!--Event Image-->
         <img src="<?php echo base_url()."uploads/". $event_info[$i]['e_image']?>" style="max-width:100%; min-width:100%; max-height:100%; min-height:100%;">
         <div class="details">
-                                    <p style="font-size:17px;">
-									<!--Date of event-->
-									<span class="badge date latest-date"><?php echo $event_info[$i]['e_date']?></span>
-									<span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><i class="fa fa-clock-o"></i><?php echo $event_info[$i]['e_start_time']; ?></span>
-									</p> 
-                                    
-                                    
+                                    <p>
+                                    <!--Name of event-->
+                                    <strong style="text-shadow: 1px 1px 0.5px #000000;"><?php 
+                                    $event_name_temp = substr($event_info[$i]['e_name'], 0, 14);
+                                    echo $event_name_temp?></strong> 
+                                    <!--Date of event-->
+                                    <span class="badge date latest-date"><?php echo $event_info[$i]['e_date']?></span></p>
                                     <!--Number of people attending-->
-                                    <p style="font-size:17px;">
-									<span class="badge attending"><?php echo $event_info[$i]['e_attending'] ?></span> <span style="text-shadow: 1px 1px 0.5px #000000;">Attending</span>
-									<span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><span><?php echo $event_info[$i]['e_likes'] ?> </span><i class="fa fa-heart-o"></i></span>
-                                    </p>
+                                    <p style="margin:-8px;font-size:17px;padding:0 9px;"><span class="badge attending"><?php echo $event_info[$i]['e_attending'] ?></span> <span style="text-shadow: 1px 1px 0.5px #000000;">Attending</span>
+                                    <span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><i class="fa fa-clock-o"></i><?php echo $event_info[$i]['e_start_time']; ?></span></p>
                                 </div>
                         </div>
     </div>
               </div>
             
-            <?php $i++;}
+            <?$i++;}
             $group_page++;}}?>  
-</div></div>
+</div>
 </div>
 <div class="text-center">
     <ul class="pagination">
-    	<li><a href="javascript:void(0)" onclick="show_page(1)" class="pagenumber"><<</a></li>
-    	<li><a href="javascript:void(0)"onclick="show_page(-1)" class="pagenumber"><</a></li>
+    	<li><a href="javascript:void(0)" onclick="show_page(1)"><<</a></li>
+    	<li><a href="javascript:void(0)"onclick="show_page(-1)"><</a></li>
     	<?php for($i = 0; $i < $size / 21; $i++) {?>
-        	<li><a id="page_number<?php echo $i+1?>" class="page_number_class pagenumber" href="javascript:void(0)" onclick="show_page(<?php echo $i+1?>)"><?php echo $i+1?></a></li> 
+        	<li><a id="page_number<?php echo $i+1?>" class="page_number_class" href="javascript:void(0)" onclick="show_page(<?php echo $i+1?>)"><?php echo $i+1?></a></li> 
         <?php }?>
-        <li><a href="javascript:void(0)" onclick="show_page(-2)" class="pagenumber">></a></li> 
-        <li><a href="javascript:void(0)" onclick="show_page(<?php echo (int)($size/21)+1?>)" class="pagenumber"> >> </a></li> 
+        <li><a href="javascript:void(0)" onclick="show_page(-2)">></a></li> 
+        <li><a href="javascript:void(0)" onclick="show_page(<?php echo (int)($size/21)+1?>)"> >> </a></li> 
     </ul>
 </div>
             <div class="row" style="text-align:center; padding:10px;">
@@ -228,9 +225,7 @@
             <?php if($this->session->userdata('is_logged_in')) {?>
             <a href="#" data-toggle="modal" data-target="#create" class="btn btn-lg createwrev" style="font-size:25px; padding:10px;border-radius:10px;">Create a Wrev</a>
             <?php }?>
-			</div>              
-</div>
-</div>
+    </div>              
 </div>
 </div>
 <!--end of content-->
@@ -248,12 +243,6 @@
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
     <script type="text/javascript" src="<?php echo $PATH_BOOTSTRAP?>js/mosaic.1.0.1.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>jquery.cookie.js"></script>
-    <script src="<?php echo $PATH_JAVASCRIPT?>jquery-ui-1.10.4.custom.js"></script>
-    <script>
-        $(function() {
-          $("#cookie_date").datepicker();
-        });
-    </script>
     <script type="text/javascript">  
       
       jQuery(function($){
@@ -287,7 +276,6 @@
     		$.cookie("price", $("#cookie_price").val());
     		$.cookie("state", $("#cookie_state").val());
     		$.cookie("zipcode", $("#cookie_zipcode").val());
-                $.cookie("date", $("#cookie_date").val());
     	}
     </script>
     <script>
@@ -296,12 +284,10 @@
     		$("#cookie_price").attr('value', $.cookie("price"));
     		$("#cookie_state").val($.cookie("state"));
     		$("#cookie_zipcode").attr('value', $.cookie("zipcode"));
-                $("#cookie_date").attr('value', $.cookie("date"));
     		$.cookie("search", "");
     		$.cookie("price", "");
     		$.cookie("state", "");
     		$.cookie("zipcode", "");
-                $.cookie("date", "");
     	});
     </script>
     <script>

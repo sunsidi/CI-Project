@@ -13,7 +13,6 @@
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
-<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-tour.min.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
@@ -23,17 +22,16 @@
 <!--content
 ==============================================-->
 <div class="container" style="width:90%;padding-bottom:50px;">
-    <div class="row" id="wrevenues-step" style="margin-top:50px;">
-        <h1 class="title" style="text-align:center;font-family:GillSans;color:white;"><a href="<?php echo base_url().'wrevenues/wrevenues_main';?>" style="color:white;"><img class="w_logo" src="<?php echo $PATH_IMG?>w1.png"/>Wrevenues</a></h1>
-        <?php echo form_open('wrevenues/search_wrevenues');?>
+    <div class="row" style="margin-top:50px;">
+        <h1 class="title" style="text-align:center;font-family:GillSans;color:white;"><img class="w_logo" src="<?php echo $PATH_IMG?>w1.png"/>Wrevenues</h1>
         <div class="form-group row" style="padding:20px;">
             <div class="left-inner-addon  col-md-3 col-sm-3 col-xs-6 col-md-offset-3 col-sm-offset-1" style="padding:0;">
                 <span class="glyphicon glyphicon-search"></span>
                 <label class="sr-only">Names</label>
-                <input type="text" name="search_search" class="form-control" placeholder="search name of wrevenue">
+                <input type="text" name="search" class="form-control" placeholder="search name of wrevenue">
             </div>
             <div class="col-md-1 col-sm-2" style="padding:0;">
-                <select name="search_state" class="form-control">
+                <select class="form-control">
                     <option value="" selected="selected">State</option>
                     <option value="AK">AK</option>
                     <option value="AL">AL</option>
@@ -89,43 +87,29 @@
                 </select>
             </div>
             <div class="col-md-1 col-sm-2" style="padding:0;">
-                <input name="search_city" class="form-control" placeholder="City">
+                <input class="form-control" placeholder="City">
             </div>
             <div class="col-md-1 col-sm-1" style="padding:0;">
-                <input name="search_zipcode" name="zipcode" type="text" pattern=".{5,5}" maxlength="5" class="form-control" placeholder="Zip" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                <input name="zipcode" type="text" pattern=".{5,5}" maxlength="5" class="form-control" placeholder="Zip" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
             </div>
             <!--<input type="submit" class="btn" style="background:#1C74BB; color:white;font-size:20px; padding:1px 10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);" value="advanced search">-->
             <input type="submit" class="btn" style="background:#1C74BB; color:white;font-size:20px; padding:1px 10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);" value="go">
         </div>
-        <?php echo form_close();?>
         <div class="row row-centered">
-            <div class="col-md-11 col-centered col-sm-11 col-xs-11" style="color:white;text-align:center;padding:10px 10%;">
-                <h4 style="text-align:left;margin-left:5%;"><em>Newest Wrevenues</em></h4>
+            <div class="col-md-11 col-centered col-sm-11 col-xs-11" style="color:white;text-align:center;">
+                <h4 style="text-align:left;margin-left:10%;"><em>Newest Wrevenues</em></h4>
 
                 <div class="row">
                     <!--one wrevenue-->
-                    <?php
-                    $size = count($wrevenues);
-                    $i = 0;
-                    $group_page = 1;
-                    $size_left = $size;
-                    if (isset($size)){
-                      while($size_left > 0){
-                          for($j=0; $j < 12 && $size_left != 0; $j++) {
-                              $size_left--;
-                              if($group_page == 1) {
-                    ?>
+                    <?php if(isset($wrevenues)) { for($i=0 ; $i < count($wrevenues); $i++) {?>
                     <!--THIS WILL CREATE AS MANY WREVENUES THAT EXISTS-->
-                    <div class="<?php echo 'wrevenue_group'.$group_page?> col-md-3 col-sm-6" style="padding:0 9px;">
-                    <?php }else {?>
-                    <div class="<?php echo 'wrevenue_group'.$group_page?> col-md-3 col-sm-6" style="padding:0 9px;" hidden>
-                    <?php }?>
-                        <div class="panel" style="padding:6%;padding-bottom:9%;border-radius:10px;background:linear-gradient(rgba(70, 107, 121, 0.45), rgba(70, 107, 121, 0.45)),url(<?php echo base_url().'uploads/'.$wrevenues[$i]['image_key'];?>); background-size:100% 280px;text-align:center;font-family:GillSans;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);height:280px;">
-                            <div class="panel-body" style="padding:0;text-shadow: 1px 1px 3px #000000;">
+                    <div class="col-md-4">
+                        <div class="panel" style="padding:8%;padding-bottom:9%;border-radius:10px;background:linear-gradient(rgba(70, 107, 121, 0.45), rgba(70, 107, 121, 0.45)),url(<?php echo base_url().'uploads/'.$wrevenues[$i]['image_key'];?>); background-size:100%;text-align:center;font-family:GillSans;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);height:379px;">
+                            <div class="panel-body" style="padding:0;text-shadow: 2px 2px 4px #000000;">
                                 <div class="row">
                                     <div class="col-sm-12">
 
-                                        <a href="<?php echo base_url().'wrevenues/wrevenues_fullview/'.$wrevenues[$i]['id']?>" class="btn wrevenues-venue" style="max-width:100%;overflow:hidden;text-overflow: ellipsis;">
+                                        <a href="<?php echo base_url().'wrevenues/wrevenues_fullview/'.$wrevenues[$i]['id']?>" class="btn wrevenues-venue">
                                             <?php echo $wrevenues[$i][ 'place'];?>
                                         </a>
                                         <!--<p><i class="fa fa-money"></i> </p>-->
@@ -145,13 +129,13 @@
                                     </div>
                                     <div class="col-sm-12">
                                         <?php $days_open = "";
-                                            for($k = 0; $k < 7; $k++) {
-                                                if($wrevenues[$i]['day'][$k] != false) {
-                                                    $days_open .= ucfirst($wrevenues[$i]['day'][$k]) . ', ';
+                                            for($j = 0; $j < 7; $j++) {
+                                                if($wrevenues[$i]['day'][$j] != false) {
+                                                    $days_open .= ucfirst($wrevenues[$i]['day'][$j]) . ', ';
                                                 }
                                             }
                                             $days_open = substr($days_open,0,strlen($days_open)-2);
-                                            echo '<p style="padding:0;"><i class="fa fa-clock-o"></i> '.$days_open.'</p>';?>
+                                            echo '<p style="padding:0 50px;"><i class="fa fa-clock-o"></i> '.$days_open.'</p>';?>
                                     </div>
 
                                     <div class="col-sm-12">
@@ -175,22 +159,11 @@
                         </div>
                     </div>
                     <!--end of wrevenue-->
-                              <?php $i++;}
-                              $group_page++;}}?>
+                    <?php }}?>
                 </div>
-                <div class="text-center">
-                    <ul class="pagination">
-                        <li><a href="javascript:void(0)" onclick="show_page(1)" class="pagenumber"><<</a></li>
-                        <li><a href="javascript:void(0)"onclick="show_page(-1)" class="pagenumber"><</a></li>
-                        <?php for($i = 0; $i < $size / 12; $i++) {?>
-                                <li><a id="page_number<?php echo $i+1?>" class="page_number_class pagenumber" href="javascript:void(0)" onclick="show_page(<?php echo $i+1?>)"><?php echo $i+1?></a></li> 
-                        <?php }?>
-                        <li><a href="javascript:void(0)" onclick="show_page(-2)" class="pagenumber">></a></li> 
-                        <li><a href="javascript:void(0)" onclick="show_page(<?php echo (int)($size/12)+1?>)" class="pagenumber"> >> </a></li> 
-                    </ul>
-                </div>
+
                 <div class="row">
-                    <!--<a class="btn btn-lg btn-wrevenues">Click for more</a>-->
+                    <a class="btn btn-lg btn-wrevenues">Click for more</a>
                     <a class="btn btn-lg btn-wrevenues" href="#" data-toggle="modal" data-target="#create_wrevenue">Create a Wrevenue</a>
 
                     <div class="modal fade" id="create_wrevenue" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -208,10 +181,10 @@
                                             <div class="form-group row">
                                                 <label>Header Photo</label>
                                                 <div class="col-sm-12" style="border:1px solid white;text-align:center;padding:8%;">
-                                                    <div class="col-sm-12">
+                                                    <div class="col-sm-5">
                                                         <div class="image-upload">
                                                             <label>Choose an Image:</label>
-                                                            <input id="file-input" name="wrevenue_file" type="file" style="width:100%;overflow:hidden;text-overflow: ellipsis;" />
+                                                            <input id="file-input" name="wrevenue_file" type="file" style="overflow:hidden;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -223,9 +196,7 @@
                                                 </div>
                                             </div>
                                             <div id="days_base">
-												<strong>Venue Schedule:</strong>
-                                                <div class="form-group row" style="margin-top:10px;">
-													
+                                                <div class="form-group row">
                                                     <label class="col-sm-2">Day:</label>
                                                     <div class="col-sm-3">
                                                         <select name="day[]" class="form-control" style="padding:0;">
@@ -324,7 +295,7 @@
                                                         </div>-->
                                             <div class="form-group row">
                                                 <label class="col-sm-2">City:</label>
-                                                <div class="col-sm-5">
+                                                <div class="col-sm-4">
                                                     <input name="city" type="text" class="form-control">
                                                 </div>
                                                 <label class="col-sm-2">State:</label>
@@ -391,7 +362,7 @@
                                                     <input name="zipcode" type="text" pattern=".{5,5}" maxlength="5" class="form-control">
                                                 </div>
                                                 <label class="col-sm-2">Country:</label>
-                                                <div class="col-sm-5">
+                                                <div class="col-sm-4">
                                                     <select name="country" type="text" class="form-control" style="padding:0;font-size:10px;">
                                                         <option value="" selected="selected"></option>
                                                         <option value="Afghanistan">Afghanistan</option>
@@ -596,39 +567,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            
-                                            <!-- DON'T NEED.
                                             <div class="form-group row">
-                                                <label class="col-sm-2">Latest Wrevs <i class="fa fa-question-circle" id="latestwrevInfo" data-content="Add your latest event here" data-trigger="hover" data-placement="bottom"></i>
-                                                </label>
-                                                <div class="col-sm-5">
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="col-sm-1">
-                                                    <a class="btn btn-default"><i class="fa fa-plus"></i></a>
-                                                </div>
-                                            </div>-->
-                                            <div class="form-group row">
-                                                <label class="col-sm-2">Price <i class="fa fa-question-circle" id="pricingInfo" data-html="true" data-content="$ - Free to $10  $$ - $11 to 25  $$$ - $26 to 49  $$$$ - $50 to higher" data-trigger="hover" data-placement="top"></i>
-                                                </label>
-                                                <div class="col-sm-4">
-                                                    <select name="price" class="form-control">
-                                                        <option value="" selected="selected"></option>
-                                                        <option value="$">$</option>
-                                                        <option value="$$">$$</option>
-                                                        <option value="$$$">$$$</option>
-                                                        <option value="$$$$">$$$$</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6" style="padding:0 5%;">
-											<div class="form-group">
-                                                <label>Wrevenues Details</label>
-                                                <textarea name="description" class="form-control" rows="4" placeholder="type something attention grabbing"></textarea>
-                                            </div>
-											<strong>Contact Info:</strong>
-											<div class="form-group row" style="margin-top:10px;">
                                                 <label class="col-sm-2">Phone:</label>
                                                 <div class="col-sm-5">
                                                     <input name="telephone" type="text" class="form-control">
@@ -666,7 +605,36 @@
                                                     <input name="twitter" type="text" class="form-control">
                                                 </div>
                                             </div>
-                                            
+                                            <!-- DON'T NEED.
+                                            <div class="form-group row">
+                                                <label class="col-sm-2">Latest Wrevs <i class="fa fa-question-circle" id="latestwrevInfo" data-content="Add your latest event here" data-trigger="hover" data-placement="bottom"></i>
+                                                </label>
+                                                <div class="col-sm-5">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                                <div class="col-sm-1">
+                                                    <a class="btn btn-default"><i class="fa fa-plus"></i></a>
+                                                </div>
+                                            </div>-->
+                                            <div class="form-group row">
+                                                <label class="col-sm-2">Price <i class="fa fa-question-circle" id="pricingInfo" data-html="true" data-content="$ - Free to $10  $$ - $11 to 25  $$$ - $26 to 49  $$$$ - $50 to higher" data-trigger="hover" data-placement="top"></i>
+                                                </label>
+                                                <div class="col-sm-4">
+                                                    <select name="price" class="form-control">
+                                                        <option value="" selected="selected"></option>
+                                                        <option value="$">$</option>
+                                                        <option value="$$">$$</option>
+                                                        <option value="$$$">$$$</option>
+                                                        <option value="$$$$">$$$$</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" style="padding:0 5%;">
+                                            <div class="form-group">
+                                                <label>Wrevenues Details</label>
+                                                <textarea name="description" class="form-control" rows="4" placeholder="type something attention grabbing"></textarea>
+                                            </div>
                                             <div class="form-group">
                                                 <label>Shoutout <i class="fa fa-question-circle" id="shoutoutInfo" data-content="Use shoutout as a way to announce your latest updates" data-trigger="hover" data-placement="bottom"></i>
                                                 </label>
@@ -677,16 +645,16 @@
                                                 <div class="col-sm-5">
                                                     <input name="name" type="text" class="form-control">
                                                 </div>
-                                                <!--<div class="col-sm-1">
+                                                <div class="col-sm-1">
                                                     <button class="btn" style="background:#27AAE0;"><i class="fa fa-camera"></i>
                                                     </button>
-                                                </div>-->
+                                                </div>
                                             </div>
                                             <div class="form-group row">
-                                                <div id="photos_upload" class="col-sm-9">
+                                                <div id="photos_upload" class="col-sm-5">
                                                     <div class="image-upload">
                                                         <label>Choose an Image:</label>
-                                                        <input name="wrevenue_file_array[]" type="file" style="max-width:100%;overflow:hidden;text-overflow: ellipsis;" />
+                                                        <input name="wrevenue_file_array[]" type="file" style="overflow:hidden;" />
                                                     </div>
                                                 </div>
                                                 <div>
@@ -723,22 +691,22 @@
                         <div class="row">
 
                             <div class="col-md-4 col-sm-4 col-xs-6" style="margin-top:5%;">
-                                <a href="<?php echo base_url().'wrevenues/search_wrevenues_city/los_angeles';?>"><img class="img-responsive" src="<?php echo $PATH_IMG?>losangeles.png"></a>
+                                <img class="img-responsive" src="<?php echo $PATH_IMG?>losangeles.png" />
                             </div>
                             <div class="col-md-4 col-sm-4 col-xs-6" style="margin-top:5%;">
-                                <a href="<?php echo base_url().'wrevenues/search_wrevenues_city/las_vegas';?>"><img class="img-responsive" src="<?php echo $PATH_IMG?>lasvegas.png" />
+                                <img class="img-responsive" src="<?php echo $PATH_IMG?>lasvegas.png" />
                             </div>
                             <div class="col-md-4 col-sm-4 col-xs-6" style="margin-top:5%;">
-                                <a href="<?php echo base_url().'wrevenues/search_wrevenues_city/chicago';?>"><img class="img-responsive" src="<?php echo $PATH_IMG?>chicago.png" />
+                                <img class="img-responsive" src="<?php echo $PATH_IMG?>chicago.png" />
                             </div>
                             <div class="col-md-4 col-sm-4 col-xs-6" style="margin-top:5%;">
-                                <a href="<?php echo base_url().'wrevenues/search_wrevenues_city/new_york';?>"><img class="img-responsive" src="<?php echo $PATH_IMG?>newyork.png" />
+                                <img class="img-responsive" src="<?php echo $PATH_IMG?>newyork.png" />
                             </div>
                             <div class="col-md-4 col-sm-4 col-xs-6" style="margin-top:5%;">
-                                <a href="<?php echo base_url().'wrevenues/search_wrevenues_city/miami';?>"><img class="img-responsive" src="<?php echo $PATH_IMG?>miami.png" />
+                                <img class="img-responsive" src="<?php echo $PATH_IMG?>miami.png" />
                             </div>
                             <div class="col-md-4 col-sm-4 col-xs-6" style="margin-top:5%;">
-                                <a href="<?php echo base_url().'wrevenues/search_wrevenues_city/boston';?>"><img class="img-responsive" src="<?php echo $PATH_IMG?>boston.png" />
+                                <img class="img-responsive" src="<?php echo $PATH_IMG?>boston.png" />
                             </div>
 
                         </div>
@@ -853,30 +821,5 @@
             $('#photos_upload').append(content);
         }
     </script>
-    <script>
-    	var current_page = 1; 
-    	var max_page = <?php echo $group_page?>;
-    	function show_page(number) {
-    		if(number == -1 && current_page > 1) {
-    			current_page--;
-    		}
-    		else if(number == -2 && current_page < max_page-1) {
-    			current_page++;
-    		}
-    		else {
-	    		if(number > 0) {
-	    			current_page = number;
-	    		}
-    		}
-    		var temp = '.wrevenue_group'+current_page;
-    		var temp2 = '.page_number'+current_page;
-    		$('[class*="wrevenue_group"]').hide();
-    		$('.page_number_class').removeClass('active');
-    		$(temp2).addClass('active');
-    		$(temp).show();
-    	}
-    </script>
-	<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
-	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script>
 </body>
 </html> 

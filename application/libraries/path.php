@@ -17,9 +17,6 @@ class Path {
 		
 		//Javascript files.
 		$this->path['PATH_JAVASCRIPT'] = base_url().'src/js/';
-                
-                //Css files. (only for datepicker now)
-                $this->path['PATH_CSS'] = base_url().'src/css/';
 
 		$this->path['PATH_PROFILE'] = base_url().'src/front-end/';
 		
