@@ -477,7 +477,7 @@ jQuery(document).ready(function () {
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.js"></script>-->
     <script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
-	<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
-	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script>
+	<!--<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script>-->
 </body>
 </html> 
