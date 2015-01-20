@@ -211,20 +211,6 @@ background:#414042;
 	font-size:20px;
 }
 @font-face {
-  font-family: 'ProximaNova-Light';
-    src: url('../fonts/ProximaNova-Light.eot');/*IE*/
-    src: url('../fonts/ProximaNova-Light.eot?#iefix') format('embedded-opentype'),
-     url('../fonts/proximanovalight.ttf') format('truetype'),
-     url('../fonts/ProximaNova-Light.otf');
-}
-@font-face {
-  font-family: 'ProximaNova-Regular';
-    src: url('../fonts/ProximaNova-Regular.eot');/*IE*/
-    src: url('../fonts/ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
-     url('../fonts/proximanovaregular.ttf') format('truetype'),
-     url('../fonts/ProximaNova-Regular.otf');
-}
-@font-face {
   font-family: 'GillSansR';
     src: url('../fonts/gillsans.eot');/*IE*/
     src: url('../fonts/gillsans.eot?#iefix') format('embedded-opentype'),
@@ -1070,12 +1056,7 @@ cursor:pointer;
 }
 
 a.wrevenues-name{
-background:rgba(255,255,255,0.9);
-color: #414042;
-}
-a.wrevenues-name:hover{
-background:rgba(255,255,255,0.9);
-color: #414042;
+background:rgba(51,144,132,0.9);
 }
 
 a.wrevenues-venue{
@@ -1285,6 +1266,121 @@ width:800px;
 height:800px;
 }
 
+.platform, .platformleft, .platformright, .platformtop, .platformbottom{
+	margin-top:20px;
+	width:307px;
+	height:220px;
+	display:table;
+	text-align:center;
+	line-height:100%;
+}
+
+.platform{
+	background:#E7ECEF;
+	color:black;
+	border-radius:5px;
+	
+}
+.platform:hover{
+	background:#404042;
+	color:white;
+}
+
+.platform-info{
+	display:table-cell;
+	position:relative;
+	vertical-align:middle;
+	padding:0 10%;
+	font-size:15px;
+}
+
+.platform-info-title{
+	font-size:18px;
+	//font-weight:bold;
+	font-family:GillSans;
+	text-align:center;
+	
+}
+
+.platformleft{
+	background-image:url('../../data/img/left_box_white.png');
+	color:black;
+	
+}
+.platformleft:hover{
+	background-image:url('../../data/img/left_box_black.png');
+	color:white;
+}
+
+.platformright{
+	background-image:url('../../data/img/right_box_white.png');
+	color:black;
+	
+}
+.platformright:hover{
+	background-image:url('../../data/img/right_box_black.png');
+	color:white;
+}
+
+.platformtop{
+	background-image:url('../../data/img/top_box_white.png');
+	color:black;
+	height:206px;
+	width:305px;
+	
+}
+.platformtop:hover{
+	background-image:url('../../data/img/top_box_black.png');
+	color:white;
+}
+
+.platformbottom{
+	background-image:url('../../data/img/bottom_box_white.png');
+	color:black;
+	height:208px;
+	width:306px;
+	margin-top:32px;
+	
+}
+.platformbottom:hover{
+	background-image:url('../../data/img/bottom_box_black.png');
+	color:white;
+}
+
+.center-platform{
+	position:absolute;
+	margin-top:-57px;
+	margin-left:-23px;
+}
+
+.center-ticket{
+	position:absolute;
+	z-index:2;
+	text-align:center;
+	font-size:18px;
+	color:white;
+	margin-top:-310px;
+	width:80%;
+	margin-left:30px;
+}
+
+.center-button{
+	color:black;
+	background:white;
+	font-size:18px;
+}
+
+.ticketing-container{
+    //width:70%;
+    width:960px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.ticket-start{
+    display:none;
+}
+
 @media (max-width: 1025px){
   .eventlist{
     margin-left: -150px;
@@ -1401,7 +1497,31 @@ height:800px;
 	display:initial;
 	}
 	.marquee {
-    width: 70%;
+	width: 70%;
+	}
+	.ticketing-container{
+	width:80%;
+	}
+	.platform{
+	    width:100%;
+	}
+	.platformleft, .platformtop, .platformbottom, .platformright{
+	background:#E7ECEF;
+	border-radius:5px;
+	width:100%;
+	height:220px;
+	}
+	.platformbottom{
+	    margin-top:20px;
+	}
+	.platformleft:hover, .platformtop:hover, .platformbottom:hover, .platformright:hover{
+	    background:#404042;
+	}
+	.platform-hidden{
+	    display:none;
+	}
+	.ticket-start{
+	    display:initial;
 	}
 }
 

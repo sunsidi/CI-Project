@@ -20,7 +20,7 @@
 ==============================================-->	
 <div class="container">
 	<div class="row" style="margin-top:100px;padding-bottom:30px;">
-		<div style="width:70%;margin-left:auto;margin-right:auto;">
+		<div class="ticketing-container">
 			<div class="row">
 				<div class="col-md-4 col-sm-6">
 					<div class="platform">
@@ -60,7 +60,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 col-sm-6">
+				<div class="col-md-4 platform-hidden">
 					<div class="center-platform">
 						<img src="<?php echo $PATH_IMG?>center_image.png" />
 						<div class="center-ticket">
@@ -101,6 +101,15 @@
 				</div>
 				
 				<div class="col-md-4 col-sm-6">
+					<div class="platform">
+						<div class="platform-info">
+							<img src="<?php echo $PATH_IMG?>addcalendar_icon_black.png" onmouseover="this.src='<?php echo $PATH_IMG?>addcalendar_icon_white.png'" onmouseout="this.src='<?php echo $PATH_IMG?>addcalendar_icon_black.png'"/>
+							<p class="platform-info-title">Fast & Simple Set-up Process<p>
+							<p style="text-align:justify;">Set up both your ticketing and event pages in under 30 seconds.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-offset-3 col-sm-6 ticket-start">
 					<div class="platform">
 						<div class="platform-info">
 							<img src="<?php echo $PATH_IMG?>addcalendar_icon_black.png" onmouseover="this.src='<?php echo $PATH_IMG?>addcalendar_icon_white.png'" onmouseout="this.src='<?php echo $PATH_IMG?>addcalendar_icon_black.png'"/>
