@@ -19,9 +19,19 @@
 <!--content
 ==============================================-->	
 <div class="container">
-	<div class="row" style="margin-top:100px;padding-bottom:30px;">
+	<div class="row" style="margin-top:90px;padding-bottom:30px;">
 		<div class="ticketing-container">
 			<div class="row">
+				<div class="col-sm-offset-3 col-sm-6 ticket-start">
+					<div class="platform" style="background:#4088BD;color:white;">
+						<div class="platform-info">
+							<img src="<?php echo $PATH_IMG?>wrevel_ticket.png"/>
+							<p style="font-size:20px;font-family:GillSans;margin-top:10px;">Our Ticketing platform</p>
+							<p>Start sharing your event and selling tickets in seconds with our unique ticketing system.</p>
+							<button type="btn" class="btn start-button">Start now</button>
+						</div>
+					</div>
+				</div>
 				<div class="col-md-4 col-sm-6">
 					<div class="platform">
 						<div class="platform-info">
@@ -109,15 +119,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-offset-3 col-sm-6 ticket-start">
-					<div class="platform">
-						<div class="platform-info">
-							<img src="<?php echo $PATH_IMG?>addcalendar_icon_black.png" onmouseover="this.src='<?php echo $PATH_IMG?>addcalendar_icon_white.png'" onmouseout="this.src='<?php echo $PATH_IMG?>addcalendar_icon_black.png'"/>
-							<p class="platform-info-title">Fast & Simple Set-up Process<p>
-							<p style="text-align:justify;">Set up both your ticketing and event pages in under 30 seconds.</p>
-						</div>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	</div>

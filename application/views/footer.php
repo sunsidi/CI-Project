@@ -42,6 +42,7 @@
 			<ul class="links">
 				<li>Discover.</li>
 				<li><a href="<?php echo base_url().'info/HowItWorks'?>">How Wrevel Works</a></li>
+				<li><a href="<?php echo base_url().'info/ticketing_platform'?>">Our Ticketing Platform</a></li>
 				<li><a href="<?php echo base_url().'wrevenues/wrevenues_main'?>">Wrevenues</a></li>
 				<li><a href="<?php echo base_url().'info/pricing'?>">Pricing</a></li>
 				<li><a href="<?php echo base_url().'info/FAQ'?>">F.A.Q.</a></li>

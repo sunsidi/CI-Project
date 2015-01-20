@@ -1381,6 +1381,15 @@ height:800px;
     display:none;
 }
 
+.start-button{
+    background:white;
+    color:#414042;
+}
+.start-button:hover{
+    background: #414042;
+    color: white;
+}
+
 @media (max-width: 1025px){
   .eventlist{
     margin-left: -150px;
