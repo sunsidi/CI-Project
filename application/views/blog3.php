@@ -78,7 +78,7 @@
 		    <p style=" font-size: 20px;">Related Posts</p>
 			<hr style="border-color: grey; width: 70%; border-width: 2px;"/>
 			<a href="<?php echo base_url().'info/blog1'?>"><img src="<?php echo $PATH_IMG?>grind.png" style="width: 100%;"></a>
-		    <a href=<?php echo base_url().'info/blog1'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>What&rsquo;s in store for Wrevel</b></p></a>
+		    <a href="<?php echo base_url().'info/blog1'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>What&rsquo;s in store for Wrevel</b></p></a>
 		    
 		</div>
 		
@@ -150,11 +150,11 @@
 		    <!--<hr style="border-color: grey; width: 55%; border-width: 2px;"/>-->
 		    
 			<a href="<?php echo base_url().'info/blog1'?>"><img src="<?php echo $PATH_IMG?>grind.png" style="width: 100%;"></a>
-		    <a href=<?php echo base_url().'info/blog1'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>What&rsquo;s in store for Wrevel</b></p></a>
+		    <a href="<?php echo base_url().'info/blog1'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>What&rsquo;s in store for Wrevel</b></p></a>
 		
 	     </div>
         </div>
-	   
+</div>   
 </div>
 </div>
 <!--content

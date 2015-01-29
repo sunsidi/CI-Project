@@ -28,7 +28,7 @@
 							<img src="<?php echo $PATH_IMG?>wrevel_ticket.png"/>
 							<p style="font-size:20px;font-family:GillSans;margin-top:10px;">Our Ticketing platform</p>
 							<p>Start sharing your event and selling tickets in seconds with our unique ticketing system.</p>
-							<button type="btn" class="btn start-button">Start now</button>
+							<a href="<?php echo base_url();?>" class="btn start-button">Start now</a>
 						</div>
 					</div>
 				</div>
@@ -77,7 +77,7 @@
 							<img src="<?php echo $PATH_IMG?>wrevel_ticket.png"/>
 							<p style="font-size:20px;font-family:GillSans;">Our Ticketing platform</p>
 							<p>Start sharing your event and selling tickets in seconds with our unique ticketing system.</p>
-							<button type="btn" class="btn center-button">Start now</button>
+							<a href="<?php echo base_url();?>" class="btn start-button">Start now</a>
 						</div>
 					</div>
 				</div>

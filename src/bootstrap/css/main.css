@@ -1272,7 +1272,7 @@ height:800px;
 	height:220px;
 	display:table;
 	text-align:center;
-	line-height:100%;
+	line-height:130%;
 }
 
 .platform{
@@ -1327,8 +1327,11 @@ height:800px;
 	color:black;
 	height:206px;
 	width:305px;
-	
+	display:block;
+	padding-top:20px;
 }
+
+
 .platformtop:hover{
 	background-image:url('../../data/img/top_box_black.png');
 	color:white;
@@ -1362,6 +1365,7 @@ height:800px;
 	margin-top:-310px;
 	width:80%;
 	margin-left:30px;
+	line-height: 120%;
 }
 
 .center-button{
@@ -1531,6 +1535,10 @@ height:800px;
 	}
 	.ticket-start{
 	    display:initial;
+	}
+	.platformtop{
+	    display:table;
+	    padding-top:0;
 	}
 }
 
