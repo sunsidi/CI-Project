@@ -19,9 +19,19 @@
 <!--content
 ==============================================-->	
 <div class="container">
-	<div class="row" style="margin-top:100px;padding-bottom:30px;">
-		<div style="width:70%;margin-left:auto;margin-right:auto;">
+	<div class="row" style="margin-top:90px;padding-bottom:30px;">
+		<div class="ticketing-container">
 			<div class="row">
+				<div class="col-sm-offset-3 col-sm-6 ticket-start">
+					<div class="platform" style="background:#4088BD;color:white;">
+						<div class="platform-info">
+							<img src="<?php echo $PATH_IMG?>wrevel_ticket.png"/>
+							<p style="font-size:20px;font-family:GillSans;margin-top:10px;">Our Ticketing platform</p>
+							<p>Start sharing your event and selling tickets in seconds with our unique ticketing system.</p>
+							<a href="<?php echo base_url();?>" class="btn start-button">Start now</a>
+						</div>
+					</div>
+				</div>
 				<div class="col-md-4 col-sm-6">
 					<div class="platform">
 						<div class="platform-info">
@@ -60,14 +70,14 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 col-sm-6">
+				<div class="col-md-4 platform-hidden">
 					<div class="center-platform">
 						<img src="<?php echo $PATH_IMG?>center_image.png" />
 						<div class="center-ticket">
 							<img src="<?php echo $PATH_IMG?>wrevel_ticket.png"/>
 							<p style="font-size:20px;font-family:GillSans;">Our Ticketing platform</p>
 							<p>Start sharing your event and selling tickets in seconds with our unique ticketing system.</p>
-							<button type="btn" class="btn center-button">Start now</button>
+							<a href="<?php echo base_url();?>" class="btn start-button">Start now</a>
 						</div>
 					</div>
 				</div>
@@ -109,6 +119,7 @@
 						</div>
 					</div>
 				</div>
+				
 			</div>
 		</div>
 	</div>

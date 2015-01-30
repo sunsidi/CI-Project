@@ -195,6 +195,6 @@
 				<?php }?>
         });
     </script>
-	<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
+	<!--<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>--> <!--Remove the arrows for this once tutorial is fixed-->
 	<!--<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script>-->
 </html>

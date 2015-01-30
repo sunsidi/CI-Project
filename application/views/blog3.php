@@ -12,9 +12,7 @@
 <link href="<? echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <script type="text/javascript">var switchTo5x=true;</script>
-
 <script type="text/javascript" src="https://w.sharethis.com/button/buttons.js"></script>
-
 <script type="text/javascript">stLight.options({publisher: "98b7df42-3881-4ba4-adc3-bcb7a479d75e", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
 <body>
@@ -25,13 +23,11 @@
 <!--content
 ==============================================-->
     
-
    <h1 class="title" style="text-align:center;font-family:GillSans;color:white;margin-top:80px;"><a href="<?php echo base_url().'info/blog'?>" style="color:white;"><img src="<?php echo $PATH_IMG?>w1.png"/>Blog</a></h1>
     <div class="container" style="padding: 4%;">
 	
 	
 	<div class="container blog-container">
-
     <!--Gazette-->   
         <div class="panel" style="margin-top: 80px;background-color: #d7e0e9; border:none ; border-radius: 10px;">
 	    
@@ -82,9 +78,7 @@
 		    <p style=" font-size: 20px;">Related Posts</p>
 			<hr style="border-color: grey; width: 70%; border-width: 2px;"/>
 			<a href="<?php echo base_url().'info/blog1'?>"><img src="<?php echo $PATH_IMG?>grind.png" style="width: 100%;"></a>
-
 		    <a href="<?php echo base_url().'info/blog1'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>What&rsquo;s in store for Wrevel</b></p></a>
-
 		    
 		</div>
 		
@@ -156,13 +150,11 @@
 		    <!--<hr style="border-color: grey; width: 55%; border-width: 2px;"/>-->
 		    
 			<a href="<?php echo base_url().'info/blog1'?>"><img src="<?php echo $PATH_IMG?>grind.png" style="width: 100%;"></a>
-
 		    <a href="<?php echo base_url().'info/blog1'?>"><p style="padding: 5px; font-size: 15px; color: grey;"><b>What&rsquo;s in store for Wrevel</b></p></a>
 		
 	     </div>
         </div>
 </div>	   
-
 </div>
 </div>
 <!--content

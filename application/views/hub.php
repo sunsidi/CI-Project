@@ -480,7 +480,7 @@ ul.ticket-event-dp > li > a:hover{
 		    
   </script>
 
-	<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
-	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script>
+	<!--<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script>-->
 </body>
 </html> 

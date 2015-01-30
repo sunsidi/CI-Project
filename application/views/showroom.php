@@ -300,9 +300,12 @@ position:absolute;
                                                 </div>
                                         <?php }}
                                             else {?>
-                                                  <tr>
+                                                  <!--<tr>
                                               	     <td>You have no wrevs right now.</td>
-                                                  </tr>
+                                                  </tr>-->
+                                                  <div style="padding:10px;">
+                                                  	You have no wrevs right now.
+                                                  </div>
                                         <?php }?>
                                         </div>
                                     </div>
@@ -880,7 +883,7 @@ document.getElementById("herdzz").innerHTML = " ";
     			return false; 
     	}
     </script>
-	<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
- 	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script> 
+	<!--<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
+ 	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script> -->
 </body>
 </html> 

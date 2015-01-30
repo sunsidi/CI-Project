@@ -851,26 +851,26 @@ jQuery(document).ready(function () {
                                             <tbody style="font-size:18px;">
                                                 <tr>
                                                     <td>Level 1</td>
-                                                    <td></td>
+                                                    <td>Summary, Users, Listings, Transactions, Blog, Sit Stats, Featured Events, Multiple Listing, Newsfeed Automation, Notification Center, Admin Level</td>
                                                     <td><input name="authorize_level_1" type="text"><button class="btn" type="submit" style="margin-left:5px;" onclick="change_op_type('authorize_1')">Authorize</button></td>		
                                                     <td style="text-align:center;"><button class="btn" type="submit" style="margin-left:5px;" onclick="change_op_type('revoke_1')">Revoke</button></td>
                                                     <!--<td style="text-align:center;"><button class="btn">Revoke</button></td>-->
                                                 </tr>
                                                 <tr>
                                                     <td>Level 2</td>
-                                                    <td></td>
+                                                    <td>Notification Center, Summary, Stats, Blog, Featured events, Mutiple Listings, Newsfeed Automation</td>
                                                     <td><input name="authorize_level_2" type="text"><button class="btn" type="submit" style="margin-left:5px;" onclick="change_op_type('authorize_2')">Authorize</button></td>
                                                     <td style="text-align:center;"><button class="btn" type="submit" style="margin-left:5px;" onclick="change_op_type('revoke_2')">Revoke</button></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Level 3</td>
-                                                    <td></td>
+                                                    <td>Blog, Automation, Multiple Listings, Featured Events</td>
                                                     <td><input name="authorize_level_3" type="text"><button class="btn" type="submit" style="margin-left:5px;" onclick="change_op_type('authorize_3')">Authorize</button></td>
                                                     <td style="text-align:center;"><button class="btn" type="submit" style="margin-left:5px;" onclick="change_op_type('revoke_3')">Revoke</button></td>	
                                                 </tr>
                                                 <tr>
                                                     <td>Level 4</td>
-                                                    <td>Investors</td>
+                                                    <td>Summary and Stats</td>
                                                     <td><input name="authorize_level_4" type="text"><button class="btn" type="submit" style="margin-left:5px;" onclick="change_op_type('authorize_4')">Authorize</button></td>
                                                     <td style="text-align:center;"><button class="btn" type="submit" style="margin-left:5px;" onclick="change_op_type('revoke_4')">Revoke</button></td>		
                                                 </tr>
