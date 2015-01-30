@@ -28,7 +28,7 @@ class wrevenues extends CI_Controller{
             }
         }
         $result = array_merge($path,$data);
-        //$this->load->view('Create_Wrevel_View',$result);
+        $this->load->view('Create_Wrevel_View',$result);
         $this->load->view('wrevenues_main',$result);     
     }
 
@@ -40,6 +40,13 @@ class wrevenues extends CI_Controller{
         $path = $this->path->getPath();
         $this->load->library('session');
         $data['wrevenues'] = $this->model_wrevenues->find_wrevenue($id);
+        if(!file_exists('./uploads/wrevenues/'.$id.'/photos/')) {
+        	mkdir('./uploads/wrevenues/'.$id.'/photos/',0777, true);
+        	chmod('./uploads/wrevenues/'.$id.'/photos/',0777);
+        	
+        }
+        $email = $this->session->userdata('email');
+        $data['id_check'] = $this->model_users->get_userID($email);
         $data['events'] = $this->model_users->get_my_events_by_date($data['wrevenues']['creator_id']);
         $this->load->helper('date');
         $datestring = "%Y-%m-%d";
@@ -59,6 +66,10 @@ class wrevenues extends CI_Controller{
         }
         if($data['wrevenues'] !== 0) {
             $data['wrevenues']['photos'] = array_diff(scandir('./uploads/wrevenues/'.$data['wrevenues']['id'].'/photos/'), array('..', '.'));
+            $temp = array_diff(scandir('./uploads/wrevenues/'.$data['wrevenues']['id'].'/cover/'), array('..', '.'));
+            foreach($temp as $cover) {
+                $data['wrevenues']['cover'] = $cover;
+            }
             $result = array_merge($path,$data);
             //echo '<pre>', print_r($result, true), '</pre>';
             $this->load->view('Create_Wrevel_View',$result);
@@ -103,6 +114,22 @@ class wrevenues extends CI_Controller{
                 $wrevenue_image = 'wrevenues/'.$insert_id.'/'.$image_name;
             }
             $this->model_wrevenues->update_wrevenue_image($insert_id, $wrevenue_image);
+            
+            //AFTER INSERT THE COVER PHOTO.
+            if(!mkdir('./uploads/wrevenues/'.$insert_id.'/cover/', '0777', true)) {
+                $this->session->set_flashdata('message', 'There was an error making the directory. Please try again.');
+                redirect('wrevenues/wrevenues_main');
+            }
+            else {
+                chmod('./uploads/wrevenues/'.$insert_id.'/cover/', 0777);
+            }
+            $configcover['upload_path']='./uploads/wrevenues/'.$insert_id.'/cover/';
+            $configcover['allowed_types']= 'gif|jpg|png|jpeg';
+            $configcover['max_size']	= '10000';
+            $this->upload->initialize($configcover);
+            if (!$this->upload->do_upload('wrevenue_cover')) {
+                $this->session->set_flashdata('message', 'There was an error uploading your cover photo Please edit your wrevenue.');
+            }
             
             //AFTER GET THE MULTIPLE PHOTOS THAT YOU WANT.
             if(!mkdir('./uploads/wrevenues/'.$insert_id.'/photos/', '0777', true)) {
@@ -152,6 +179,24 @@ class wrevenues extends CI_Controller{
             $image_name = $upload_data['file_name'];
             $wrevenue_image = 'wrevenues/'.$id.'/'.$image_name;
         }
+        
+        //AFTER CHECK IF THERES A NEW COVER PHOTO.
+        $configcover['upload_path'] ='./uploads/wrevenues/'.$id.'/cover/';
+        $configcover['allowed_types'] = 'gif|jpg|png|jpeg';
+        $configcover['max_size'] = '10000';
+        $temp = array_diff(scandir('./uploads/wrevenues/'.$id.'/cover/'), array('..', '.'));
+        $this->upload->initialize($configcover);
+        
+        if (!$this->upload->do_upload('wrevenue_cover')){
+            $this->session->set_flashdata('message', 'Some files were not uploaded please try again. <br>');
+        }
+        else {
+            if(count($temp) != 0) {
+                foreach($temp as $cover) {
+                    unlink('./uploads/wrevenues/'.$id.'/cover/'.$cover);
+                }
+            }
+        }
         //AFTER GET THE MULTIPLE PHOTOS THAT YOU WANT.
         $config2['upload_path'] ='./uploads/wrevenues/'.$id.'/photos/';
         $config2['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -169,5 +214,90 @@ class wrevenues extends CI_Controller{
             $this->session->set_flashdata('message', $this->session->flashdata('message').'There was an error updating your wrevenue. Please try again');
         }
         redirect('wrevenues/wrevenues_fullview/'.$id);
+    }
+    //Search for specific wrevenues with name, city, state, zipcode.
+    public function search_wrevenues() {
+        $this->load->library('path');
+        $this->load->library('session');
+        $this->load->model('model_wrevenues');
+        $this->load->model('model_events');
+        $this->load->model('model_users');
+        $path = $this->path->getPath();
+        
+        //the searched values.
+        $search = $this->input->post('search_search');
+        $state = $this->input->post('search_state');
+        $city = $this->input->post('search_city');
+        $zipcode = $this->input->post('search_zipcode');
+        
+        //Now do the search on the database.
+        $data['wrevenues'] = $this->model_wrevenues->search_wrevenues($search, $state, $city, $zipcode);
+        for($i = 0; $i < count($data['wrevenues']); $i++) {
+            $data['events'] = $this->model_users->get_my_events_by_date($data['wrevenues'][$i]['creator_id']);
+            $data['wrevenues'][$i]['total_likes'] = 0;
+            for($j = 0; $j < count($data['events']); $j++) {
+                $data['wrevenues'][$i]['total_likes'] += $data['events'][$j]['e_likes'];
+            }
+            $day_array = array('mon', 'tues', 'wed', 'thurs', 'fri', 'sat', 'sun');
+            for($j = 0; $j < 7; $j++) {
+                if(!empty($data['wrevenues'][$i][$day_array[$j]])) {
+                    $temp_hours = explode('|', $data['wrevenues'][$i][$day_array[$j]]);
+                    $data['wrevenues'][$i]['day'][$j] = $day_array[$j];
+                }
+                else {
+                    $data['wrevenues'][$i]['day'][$j] = false;
+                }
+            }
+        }
+        
+        //Now we're done. So load the view with the data.
+        $result = array_merge($path,$data);
+        $this->load->view('Create_Wrevel_View',$result);
+        $this->load->view('wrevenues_main',$result);
+    }
+    // THIS IS FOR THE FEATURED SEARCH CLICKS. MAYBE THERES A BETTER WAY THAN COPYING THE ABOVE CODE.
+    public function search_wrevenues_city($temp_city) {
+        $this->load->library('path');
+        $this->load->library('session');
+        $this->load->model('model_wrevenues');
+        $this->load->model('model_events');
+        $this->load->model('model_users');
+        $path = $this->path->getPath();
+        
+        //the searched values.
+        $search = $state = $zipcode = "";
+        $city_array = explode('_', $temp_city);
+        $city = "";
+        //Future proofed for when citys have more than 1 word.
+        for($i = 0; $i < count($city_array); $i++) {
+            $city .= $city_array[$i];
+            $city .= " ";
+        }
+        $city = substr($city,0,strlen($city)-1);
+        
+        //Now do the search on the database.
+        $data['wrevenues'] = $this->model_wrevenues->search_wrevenues($search, $state, $city, $zipcode);
+        for($i = 0; $i < count($data['wrevenues']); $i++) {
+            $data['events'] = $this->model_users->get_my_events_by_date($data['wrevenues'][$i]['creator_id']);
+            $data['wrevenues'][$i]['total_likes'] = 0;
+            for($j = 0; $j < count($data['events']); $j++) {
+                $data['wrevenues'][$i]['total_likes'] += $data['events'][$j]['e_likes'];
+            }
+            $day_array = array('mon', 'tues', 'wed', 'thurs', 'fri', 'sat', 'sun');
+            for($j = 0; $j < 7; $j++) {
+                if(!empty($data['wrevenues'][$i][$day_array[$j]])) {
+                    $temp_hours = explode('|', $data['wrevenues'][$i][$day_array[$j]]);
+                    $data['wrevenues'][$i]['day'][$j] = $day_array[$j];
+                }
+                else {
+                    $data['wrevenues'][$i]['day'][$j] = false;
+                }
+            }
+        }
+        
+        //Now we're done. So load the view with the data.
+        $result = array_merge($path,$data);
+        $this->load->view('Create_Wrevel_View',$result);
+        $this->load->view('wrevenues_main',$result);
     }
 } 

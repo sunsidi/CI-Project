@@ -24,7 +24,7 @@
 				<a href="http://wrevel.tumblr.com" style="color:white;"><i class="fa fa-tumblr" style="padding:20px 15px;"></i></a>
 				<a href="http://www.youtube.com/wrevelinc" style="color:white;"><i class="fa fa-youtube" style="padding:20px 15px;"></i></a>
 			</p>
-			<p class="copy_right">&copy; Wrevel, Inc. <span id="siteseal"><script type="text/javascript" src="https://seal.starfieldtech.com/getSeal?sealID=6JoyFkkkD2QHvR5L8Y99TLSZ3BeOkoBsN5VMQLzjwMqYDTsEyK6T2FE6sfy1"></script></span></p>
+			<p class="copy_right">&copy; Wrevel, Inc.</p>
 		</div>
 		<div class="col-md-8">
 		<div class="aceg">
@@ -62,7 +62,7 @@
 		<a href="<?php echo base_url().'info/aboutus'?>" style="color:white; font-size:20px;">About Us.</a>
 		<a href="<?php echo base_url().'info/terms'?>" style="color:white; font-size:20px;">Terms of Use.</a>
 		<a href="<?php echo base_url().'info/privacy'?>" style="color:white; font-size:20px;">Privacy Policy.</a>
-		<a href="http://wrevenues.wrevel.com" style="color:white; font-size:20px;">Wrevenues.</a>
+		<a href="<?php echo base_url().'wrevenues/wrevenues_main'?>" style="color:white; font-size:20px;">Wrevenues.</a>
 		<a href="<?php echo base_url().'info/pricing'?>" style="color:white; font-size:20px;">Pricing.</a>
 		<a href="<?php echo base_url().'info/contactus'?>" style="color:white; font-size:20px; padding-bottom:20px;">Contact Us.</a>
 		</div></center>

@@ -130,6 +130,24 @@ class Model_friend_request extends CI_Model{
         }
         return $data;
     }
+    //Get Notifications Simplified for admins.
+    public function get_notifications_simplified()
+    {
+        $this->load->model('model_users');
+        $sql = "SELECT notifications.id, user_id, other_user_id, message, to_from, time_sent "
+              . "FROM friends_notifications_list INNER JOIN notifications "
+              . "ON friends_notifications_list.id = notifications.notification_id";
+        $query = $this->db->query($sql);
+        for($i = 0; $i < $query->num_rows(); $i++) {
+            $data[$i] = $query->row_array($i);
+            $data[$i]['user_id'] = $this->model_users->get_username_with_id($data[$i]['user_id']);
+            $data[$i]['other_user_id'] = $this->model_users->get_username_with_id($data[$i]['other_user_id']);
+        }
+        if(isset($data))
+            return $data;
+        return false;
+    }
+    
     //Add a new friend to your friends list.
     public function add_friend($note_id) {
         $friend_list_id = $this->db->get_where('notifications', array('id' => $note_id));

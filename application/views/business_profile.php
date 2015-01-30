@@ -31,6 +31,7 @@
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/business-lightbox.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <style type="text/css">
 .arrow-left {
@@ -38,15 +39,37 @@ position:absolute;
 	width: 0; 
 	height: 0; 
 	border-top: 0px solid transparent;
-	border-right: 35px solid #02a89e;
+	border-right: 28px solid #414042;
 	
 	border-bottom: 20px solid transparent;
         //margin-left:108px;
         margin-left:50%;
         margin-top:10px;
+	z-index:99;	
+}
+.arrow-left2 {
+position:absolute;
+	width: 0; 
+	height: 0; 
+	border-top: 0px solid transparent;
+	border-right: 26px solid #e4e5e6;;
+	
+	border-bottom: 18px solid transparent;
+        //margin-left:108px;
+        margin-left:50%;
+        margin-top:10px;
+		z-index:100;
 }
 
 </style>
+<script>
+jQuery(document).ready(function () {
+    //hide a div after 3 seconds
+    setTimeout(function(){ jQuery("#sentMessage").hide(); }, 5000);
+});
+</script>
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false"
+            type="text/javascript"></script> 
 </head>
 
 
@@ -56,19 +79,21 @@ position:absolute;
 
 <!--content
 ==============================================-->
+<div id='sentMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:20px;width: 500px; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>
 <div class="container" style="padding-bottom:50px;">
     <div class="row" style="margin-top:50px;">
 
         <div class="col-md-9 col-md-offset-1">
 			<div style="color:white;">
             <div class="col-md-1">
-                <img class="profile-image" src="<?php echo $PATH_IMG?>outdoor_party.png" style="position:absolute; z-index:2;  border-radius:150px;  border:2px solid #7874a2;"/>
+                <img class="profile-image" src="<?php echo base_url().'/uploads/'. $image_key?>" style="position:absolute; z-index:2;  border-radius:150px;  border:2px solid #7874a2;"/>
                </div>
-            <div class="col-md-7 profile-name" style="background:#7874a2; height:65px;">
-            <h2 class="profile-fullname">Name here</h2>
+            <!--<div class="col-md-7 profile-name" style="background:#7874a2; height:65px;">
+            <h2 class="profile-fullname"><?php echo $fullname;?></h2>
             </div>
-			<div class="col-md-1 col-sm-6" style="background:#5F929C;height:65px;"><h3 style="text-align:center;">$$$$</h3></div> 
-            <div class="col-md-3 col-sm-6" style="height:65px;background:#6ca5cc; border-top-right-radius:5px;text-align:center;text-shadow: 1px 1px 0.5px #000000;">
+	
+            <div class="col-md-4" style="height:65px;background:#6ca5cc; border-top-right-radius:5px;text-align:center;text-shadow: 1px 1px 0.5px #000000;">
+
 				<h3>
 					<i class="fa fa-star"></i>
 					<i class="fa fa-star"></i>
@@ -77,188 +102,347 @@ position:absolute;
 					<i class="fa fa-star"></i>
 					<span style="text-shadow:none;">(#)</span>
 				</h3>
-            </div>
+            </div>-->
+			<div class="col-md-11" style="position:relative;height:125px;background-image:url(<?php echo base_url().'uploads/'.$profile['cover_photo'];?>);background-size:100%;">
+					
+					<h3 style="margin-top:80px;"><p style="margin-left:15%;font-family:GillSans;text-shadow:1px 1px 3px #000000;"><?php echo $fullname;?> <span class="pull-right" style="font-size:18px;">
+					<!--<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<span style="text-shadow:none;">(#)</span>--></span></p></h3>
+					
+			</div>
 			</div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">       
-                <div class="panel-body background">
-                    <!--Quote
-                    <div class="row" style="width:100%;">
-			<div class="arrow-left" style="margin-top:20px;margin-left:70px;"></div>
-                        <p class="col-md-8 col-md-offset-2 quote-box" style="background:#00A79D; color:white; font-size:18px; border-radius:5px;padding:15px 20px;margin-left:100px;">
-                        <?php if($tagline != "") 
-                        	echo $tagline;
-                              else 
-                              	echo "Welcome to my Showroom! Don��t hesitate to shoot me a message or a friend request!";?>
-                        </p>
-                     </div>-->
+            <div class="panel panel-default" style="border:none;">       
+                <div class="panel-body" style="padding:0;background:#e4e5e6;">
                      
                      <div class="col-md-6">
                             <div class="row" style="width:100%;">
-			<div class="arrow-left" style="margin-left:70px; margin-top:30px;"></div>
-                        <p class="col-md-8 col-md-offset-2 quote-box" style="background:#00A79D; color:white; font-size:18px; border-radius:5px;padding:15px 20px;margin-left:100px; margin-top:20px;">
-                       
+			<div class="arrow-left" style="margin-left:72px; margin-top:30px;"></div>
+			<div class="arrow-left2" style="margin-left:75px; margin-top:31px;"></div>
+                        <p class="col-md-8 col-md-offset-2 quote-box" style="background:none; color:#414042; border:1px solid #414042; font-size:18px; border-radius:10px;padding:15px 20px;margin-left:100px; margin-top:20px;">
+                            <?php if($tagline != "") 
+                                    echo $tagline;
+                                  else 
+                                    echo "Welcome to my Showroom! Don't hesitate to shoot me a message or a friend request!";?>
                         </p>
                      </div>
+
+					<div style="margin-top:40px;padding:0 25px;">	
+						<div style="background:rgba(255,255,255,0.30);padding:10px;border-radius:10px;">
+							<h4><img src="<?php echo $PATH_IMG?>details_icon.png"/> &nbsp;About Us</h4>
+							<div class="row" style="padding:0 15% 30px; font-size:16px;">
+							<?php echo $profile['description'];?>
+								
+							</div>
+						</div>
+					</div>
+					
+					<div style="text-align:center;margin-top:20px;">
+						<a href="#" data-toggle="modal" data-target="#basicModal" class="btn btn-lg edit" style="color:white;border-radius:10px;padding:5px 15px;">Edit Profile
+						</a>
+						<a href="<? echo base_url()?>account/myaccount_accountinfo" class="btn btn-lg edit" style="color:white;border-radius:10px;padding:5px 15px;">My Account
+						</a>
+					</div>
                      	<div class="row">
                      	<!--PROFILE-->
-                     	   <div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
+                     	   <div class="panel panel-default" style="background:none; box-shadow:none; border:none;padding:20px 15% 5px;">
                                 <div class="panel-body" >
-									<div style="padding:3% 17%;">
-										<p class="info"><span style="padding-right:30px;"><img src="<?php echo $PATH_IMG?>globe_icon2.png"/></span> website link here</p>
-										<p class="info"><i class="fa fa-facebook" style="width:47px;margin-left:6px;"></i> facebook link here</p>
-										<p class="info"><i class="fa fa-twitter" style="width:47px;margin-left:6px;"></i> twitter link here</p>
-										<p class="info"><span style="padding-right:33px;"><img src="<?php echo $PATH_IMG?>phone_icon2.png"/></span> phone number</p>
-										<p class="info"><span style="padding-right:28px;"><img src="<?php echo $PATH_IMG?>email_icon2.png"/></span> email address</p>
+									<div style="padding:7%;background:rgba(255,255,255,0.3);border-radius:10px;">
+                                                                            <?php if(!empty($profile['website'])) {?>
+                                                                            <p style="word-break:break-all;"><a href="<?php if(strpos($profile['website'], 'http://') === false && strpos($profile['website'], 'https://') === false) echo 'http://'.$profile['website']; else echo $profile['website'];?>" class="info"><span style="padding-right:24px;"><img src="<?php echo $PATH_IMG?>globe_icon2.png"/></span> <?php echo $profile['website'];?> </a></p>
+                                                                            <?php } if(!empty($profile['facebook'])) {?>
+                                                                            <p style="word-break:break-all;"><i class="fa fa-facebook" style="width:41px;margin-left:6px;"></i><a href="<?php if(strpos($profile['facebook'], 'http://') === false && strpos($profile['facebook'], 'https://') === false) echo 'http://'.$profile['facebook']; else echo $profile['facebook'];?>" class="info"> <?php echo $profile['facebook'];?> </a></p>
+                                                                            <?php } if(!empty($profile['twitter'])) {?>
+                                                                            <p style="word-break:break-all;"><i class="fa fa-twitter" style="width:41px;margin-left:6px;"></i><a href="<?php if(strpos($profile['twitter'], 'http://') === false && strpos($profile['twitter'], 'https://') === false) echo 'http://'.$profile['twitter']; else echo $profile['twitter'];?>" class="info"> <?php echo $profile['facebook'];?> </a></p>
+                                                                            <?php } if(!empty($phone)) {?>
+                                                                            <p style="word-break:break-all;" class="info"><span style="padding-right:27px;"><img src="<?php echo $PATH_IMG?>phone_icon2.png"/></span> <?php echo $phone;?></p>
+                                                                            <?php } if(!empty($email)) {?>
+                                                                            <p style="word-break:break-all;" class="info"><span style="padding-right:22px;"><img src="<?php echo $PATH_IMG?>email_icon2.png"/></span> <?php echo $email;?></p>
+                                                                            <?php }?>
 									</div>
 									
-									<div class="margin-top:40px;">
-										<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>details_icon.png"/> &nbsp; Details:</h4>
-										<div class="row" style="padding:0 20% 40px; font-size:16px;">
-										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-								
-										</div>
-									</div>
+									
                                         <!--Edit profile button-->
 
                                   
                                     
-  <div style="text-align:center;">
-          <a href="#" data-toggle="modal" data-target="#basicModal" class="btn btn-lg edit" style="color:white;border-radius:10px;">Edit Profile
-          </a>
-          <a href="<? echo base_url()?>account/myaccount_accountinfo" class="btn btn-lg edit" style="color:white;border-radius:10px;">My Account
-          </a>
-      </div>
+  
 
 
 
- <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-      
-
-    
-    
-      <div class="modal-header" style="background-color: #628DA3; height: 80px;padding:20px;">
-      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <p style="font-size: 215%; color: white;text-align:center;">
-          <i class="fa fa-pencil-square-o" style="font-size:30px;"></i> Edit Profile</p>
-        
-      </div>
-      
-    <div class="modal-body" style="font-size:20px;background:#c2d2dc;">
+    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog" style="width:45%;">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #628DA3; height: 80px;padding:20px;">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <p style="font-size: 215%; color: white;text-align:center;">
+                            <i class="fa fa-pencil-square-o" style="font-size:30px;"></i> Edit Profile
+                        </p>
+                </div>
+                <div class="modal-body" style="font-size:15px;background:#c2d2dc;">
                     <?php 
                         $requiredthings = array('onsubmit' => 'return check_image()');
                         echo form_open_multipart(base_url().'main/update_profile', $requiredthings);
                     ?>
-                      
-                    
-					
-                        <form class="form-horizontal" role="form">
-						<div class="form-group row">
-                        <label class="col-sm-2 control-label">Details</label>
-                         <div class="col-sm-10">
-                           <textarea class="form-control" rows="3"></textarea>
-                         </div>
-                        </div>
-						
-						<div class="form-group row">
-                         <label class="col-sm-2 control-label">Location</label>
-                         <div class="col-sm-10">
-                           <input name = 'location' type="text" class="form-control" placeholder="">
-                         </div>
-						</div>
-						
-						<div class="form-group row">
-                        <label class="col-sm-2 control-label">Phone</label>
-                        <div class="col-sm-10"> 
-                         <input name = 'phone' type="text" class="form-control" placeholder="">
-                         </div>
-						</div>
-						
-						<div class="form-group row">	
-                        <label class="col-sm-2 control-label">Links</label>
-                        <div class="col-sm-10">
-                        <input name = 'user_reference' type="text" class="form-control" placeholder="" >
-                        </div>
-						</div>
-						
-						<div class="form-group row">
-						<label class="col-sm-2 control-label">Facebook</label>
-                        <div class="col-sm-10">
-                        <input name = 'user_reference' type="text" class="form-control" placeholder="" >
-                        </div>
-						</div>
-						
-						<div class="form-group row">
+                    <div class="form-group row" style="text-align:center;">
+                        <p><strong>Type of Account</strong></p>
+                        <label class="radio-inline" style="padding-right:15px;" id="regular" data-content="Recommended free account for users that want to attend events,connect with friends,and create events quickly without much setup. " data-trigger="hover" data-placement="bottom">
+                                <input type="radio" name="account_change" id="inlineRadio1" value="0"> Personal
+                                </br>
+                                <img src="<?php echo $PATH_IMG?>personal_profile_icon.png" style="width:100px;margin-top:10px;"/>
+                        </label>
+                        <label class="radio-inline" style="margin-left:10px;" id="business" data-content="Recommended free account, ideal for users, organizations and coordinators.  Build a professional portfolio and customize your profile to cater all of your event hosting needs." data-trigger="hover" data-placement="bottom">
+                                <input type="radio" name="account_change" id="inlineRadio2" value="1" checked> Professional
+                                </br>
+                                <img src="<?php echo $PATH_IMG?>business_profile_icon.png" style="width:100px;margin-top:10px;"/>
+                        </label>
+                    </div>
+                    <div class="form-group row">
                         <label class="col-sm-2 control-label">Name</label>
                         <div class="col-sm-10">
-                        <input name = 'fullname' type="text" class="form-control" placeholder="">
+                            <input name="fullname" type="text" class="form-control" placeholder="">
                         </div>
-						</div>
-						
-						<div class="form-group row">
+                    </div>
+                    <div class="form-group row">
                         <label class="col-sm-2 control-label">Quote</label>
                         <div class="col-sm-10">
-                        <input name = 'tagline' type="text" class="form-control" placeholder=" (character limit 85)">
+                            <input name="tagline" type="text" class="form-control" placeholder=" (character limit 85)">
                         </div>
-						</div>
-						
-						<div class="form-group row">
-						<label class="col-sm-2 control-label">Price</label>
-                        <div class="col-sm-3">
-							<select class="form-control">
-								<option value="" selected="selected"></option>
-								<option value="$">$</option>
-								<option value="$$">$$</option>
-								<option value="$$$">$$$</option>
-								<option value="$$$$">$$$$</option>
-							</select>
-                        </div>
-						</div>
-                      
-      
-                    <div class="image-upload" style="text-align:center;">
-                   
-                        <label for="file-input-profile">
-                        
-                            <img src="<?php echo $PATH_IMG?>camera_icon.png"  style="min-width:100%; max-width:100%; margin-top:20px;">
-                        	
-                        </label>
-                            <label for ="file-upload">
-                         
-
-                            </label>
-
-
-                        
-                        <input id="file-input-profile" name = "userprofile" type = "file"/>
-                        <input id="file-upload" type = "submit" >
-                        <button type="submit" class="btn btn-lg" style="background:#478EBF; color:white; margin-top:20px;margin-left:10px;">Submit Changes</button>
-                        </form>
-                
                     </div>
-                
-                    <style>
-
-                    .image-upload > input
-                    {
-                        display: none;
-                    }
-                   </style>
-                
-                                        
+                    <div class="form-group row">
+                        <label class="col-sm-2 control-label">About Us</label>
+                        <div class="col-sm-10">
+                            <textarea name="business-description" class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2">Address:</label>
+                        <div class="col-sm-10">
+                            <input name="business-address" class="form-control"></textarea>
+                        </div>	
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2">City:</label>
+                        <div class="col-sm-3">
+                            <input name="business-city" class="form-control"></textarea>
+                        </div>	
+						<label class="col-sm-2">State:</label>
+                        <div class="col-sm-2">
+                            <select id="state" name="business-state" class="form-control" style="padding:0;">
+              			<option value="" selected="selected"></option> 
+              			<option value="AK">AK</option>
+              			<option value="AL">AL</option>
+              			<option value="AR">AR</option>
+              			<option value="AZ">AZ</option>
+              			<option value="CA">CA</option>
+              			<option value="CO">CO</option>
+              			<option value="CT">CT</option>
+              			<option value="DC">DC</option>
+              			<option value="DE">DE</option>
+              			<option value="FL">FL</option>
+              			<option value="GA">GA</option>
+              			<option value="HI">HI</option>
+              			<option value="IA">IA</option>
+              			<option value="ID">ID</option>
+              			<option value="IL">IL</option>
+              			<option value="IN">IN</option>
+              			<option value="KS">KS</option>
+              			<option value="KY">KY</option>
+              			<option value="LA">LA</option>
+              			<option value="MA">MA</option>
+              			<option value="MD">MD</option>
+              			<option value="ME">ME</option>
+              			<option value="MI">MI</option>
+              			<option value="MN">MN</option>
+              			<option value="MO">MO</option>
+              			<option value="MS">MS</option>
+              			<option value="MT">MT</option>
+              			<option value="NC">NC</option>
+              			<option value="ND">ND</option>
+              			<option value="NE">NE</option>
+              			<option value="NH">NH</option>
+              			<option value="NJ">NJ</option>
+              			<option value="NM">NM</option>
+              			<option value="NV">NV</option>
+              			<option value="NY">NY</option>
+              			<option value="OH">OH</option>
+              			<option value="OK">OK</option>
+              			<option value="OR">OR</option>
+              			<option value="PA">PA</option>
+              			<option value="RI">RI</option>
+              			<option value="SC">SC</option>
+              			<option value="SD">SD</option>
+              			<option value="TN">TN</option>
+              			<option value="TX">TX</option>
+              			<option value="UT">UT</option>
+              			<option value="VA">VA</option>
+              			<option value="VT">VT</option>
+              			<option value="WA">WA</option>
+              			<option value="WI">WI</option>
+              			<option value="WV">WV</option>
+              			<option value="WY">WY</option>
+            		      </select> 
+                        </div>
+                        <label class="col-sm-1">Zip:</label>
+                        <div class="col-sm-2">
+                            <input name="business-zipcode" class="form-control" type="text" value = "" pattern="\d{5,5}(-\d{4,4})?">
+                        </div>	
+                    </div>
                     
-    </div>
-    
- 
- 
+                    <div class="form-group row">
+                        <label class="col-sm-2 control-label">Phone</label>
+                        <div class="col-sm-4"> 
+                            <input name="phone" type="text" class="form-control" placeholder="">
+                        </div>
+						<label class="col-sm-2">Website:</label>
+                        <div class="col-sm-4">
+                            <input name="business-website" class="form-control">
+                        </div>	
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-sm-2">Facebook:</label>
+                        <div class="col-sm-4">
+                            <input name="business-facebook" class="form-control">
+                        </div>	
+						<label class="col-sm-2">Twitter:</label>
+                        <div class="col-sm-4">
+                            <input name="business-twitter" class="form-control">
+                        </div>	
+                    </div>
+                  
+                    <div>
+                        <label class="col-sm-20"><b><u>Hours:</u></b></label>
+                    </div>
+                    <div id="days_base">
+                        <div class="form-group row">
+                            <label class="col-sm-2">Day:</label>
+                            <div class="col-sm-2">
+                                <select name="business-day[]" class="form-control" style="padding:0;">
+                                    <option value="" selected="selected"></option>
+                                    <option value="Mon">Mon</option>
+                                    <option value="Tues">Tues</option>
+                                    <option value="Wed">Wed</option>
+                                    <option value="Thurs">Thurs</option>
+                                    <option value="Fri">Fri</option>
+                                    <option value="Sat">Sat</option>
+                                    <option value="Sun">Sun</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2">
+                                <select name="business-start_time[]" class="form-control" style="padding:0;">
+                                    <option value="" selected="selected"></option>
+                                    <option value="01:00">1:00AM</option>
+                                    <option value="02:00">2:00AM</option>
+                                    <option value="03:00">3:00AM</option>
+                                    <option value="04:00">4:00AM</option>
+                                    <option value="05:00">5:00AM</option>
+                                    <option value="06:00">6:00AM</option>
+                                    <option value="07:00">7:00AM</option>
+                                    <option value="08:00">8:00AM</option>
+                                    <option value="09:00">9:00AM</option>
+                                    <option value="10:00">10:00AM</option>
+                                    <option value="11:00">11:00AM</option>
+                                    <option value="12:00">12:00PM</option>
+                                    <option value="13:00">1:00PM</option>
+                                    <option value="14:00">2:00PM</option>
+                                    <option value="15:00">3:00PM</option>
+                                    <option value="16:00">4:00PM</option>
+                                    <option value="17:00">5:00PM</option>
+                                    <option value="18:00">6:00PM</option>
+                                    <option value="19:00">7:00PM</option>
+                                    <option value="20:00">8:00PM</option>
+                                    <option value="21:00">9:00PM</option>
+                                    <option value="22:00">10:00PM</option>
+                                    <option value="23:00">11:00PM</option>
+                                    <option value="24:00">12:00AM</option>
+                                </select>
+                            </div>
+                            <label class="col-sm-1">TO</label>
+                            <div class="col-sm-2">
+                                <select name="business-end_time[]" class="form-control" style="padding:0;">
+                                    <option value="" selected="selected"></option>
+                                    <option value="01:00">1:00AM</option>
+                                    <option value="02:00">2:00AM</option>
+                                    <option value="03:00">3:00AM</option>
+                                    <option value="04:00">4:00AM</option>
+                                    <option value="05:00">5:00AM</option>
+                                    <option value="06:00">6:00AM</option>
+                                    <option value="07:00">7:00AM</option>
+                                    <option value="08:00">8:00AM</option>
+                                    <option value="09:00">9:00AM</option>
+                                    <option value="10:00">10:00AM</option>
+                                    <option value="11:00">11:00AM</option>
+                                    <option value="12:00">12:00PM</option>
+                                    <option value="13:00">1:00PM</option>
+                                    <option value="14:00">2:00PM</option>
+                                    <option value="15:00">3:00PM</option>
+                                    <option value="16:00">4:00PM</option>
+                                    <option value="17:00">5:00PM</option>
+                                    <option value="18:00">6:00PM</option>
+                                    <option value="19:00">7:00PM</option>
+                                    <option value="20:00">8:00PM</option>
+                                    <option value="21:00">9:00PM</option>
+                                    <option value="22:00">10:00PM</option>
+                                    <option value="23:00">11:00PM</option>
+                                    <option value="24:00">12:00AM</option>
+                                </select>
+                            </div>
+                        <a class="btn btn-default" id="days_end"onclick="add_more_days()"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-5">Edit Profile Image:</label>
+                        <div class="image-upload">
+                            <label for="file-input-profile">
+                                <img src="<?php echo $PATH_IMG?>camera_icon.png"  style="min-width:100%; max-width:100%; margin-top:20px;">
+                            </label>
+                            <label for ="file-upload" hidden>
+                            </label>
+                            <input id="file-input-profile" name = "userprofile" type = "file" style="display:none"/>
+                            <input id="file-upload" type = "submit" hidden>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2">Cover Photo:</label>
+                        <div class="image-upload">
+                            <label for="file-input-cover">
+                                <img src="<?php echo $PATH_IMG?>camera_icon.png"  style="min-width:100%; max-width:100%; margin-top:20px;">
+                            </label>
+                            <label for ="file-upload" hidden>
+                            </label>
+                            <input id="file-input-cover" name = "usercover" type = "file" style="display:none"/>
+                            <input id="file-upload" type = "submit" hidden>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-5">Add Photos to your Profile:</label>
+                        <div id="photos_upload" class="col-sm-5">
+                            <div class="image-upload">
+                                <label>Choose an Image:</label>
+                                <input name="profile_file_array[]" type="file" style="overflow:hidden;" />
+                            </div>
+                        </div>
+                        <div>
+                            <a class="btn btn-default" onclick="add_more_photos()"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+					<div style="text-align:center;">
+                    <button type="submit" class="btn btn-lg" style="background:#478EBF; color:white; margin-top:20px;margin-left:10px;">Submit Changes</button>
+					</div>
+                    </form>
+                    
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+     </div>
 
                                 </div>
                      	</div><!--END OF PROFILE-->
@@ -266,17 +450,17 @@ position:absolute;
                      
                      <div class="row">
                      <!--WREVS-->
-                          <div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
-                                <div class="panel-body">
+                          <div class="panel panel-default" style="background:none; box-shadow:none; border:none;padding:0 10%;">
+                                <div class="panel-body" style="background:rgba(255,255,255,0.3);border-radius:10px;">
                                 
-                                    <ul class="nav nav-pills wrev-tabs">
+                                    <ul class="nav nav-pills wrev-tabs wrev-tabs2">
                                         <li id="past_wrevs" onclick="change_to_past_wrevs()"><a href="#" onclick="return false;">Past Wrevs</a></li>
                                         <li id="attending_wrevs" onclick="change_to_attending_wrevs()"><a href="#" onclick="return false;">Attending Wrevs</a></li>
                                         <li id="mywrevs" onclick="change_to_mywrevs()"><a href="#" onclick="return false;">MyWrevs</a></li>
                                     </ul>
                                   
                                     
-                                        <div id="all_wrevs_panel" class="panel" style="background:#E9EEF2;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);border-radius:10px;" hidden>
+                                        <div id="all_wrevs_panel" class="panel" style="background:none;" hidden>
                                             <div class="panel-body">
                                 	<div class="row">
                                 	<div class="table-responsive">
@@ -428,16 +612,17 @@ position:absolute;
                      
                      <div class="row">
                      <!--Followers-->
-                     	<div class="panel panel-default" style="background:#E9EEF2;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);border-radius:10px;">
+                     	<div class="panel panel-default" style="background:none;border:none;box-shadow:none;">
                             <div class="panel-body">
-                                <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;">#</span> Followers</h3>                        
-                                    <div class="row">
+                                <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;"><?php echo $number_of_friends;?></span> Friends</h3>                        
+                                    <div style="padding:0 15%;">
+									<div class="row" style="background:rgba(255,255,255,0.3);border-radius:10px;">
                                         <?php if(isset($all_friends)){
                                             for($i = 0; $i < $number_of_friends && $i < 6; $i++) {?>
                                                 <div class="col-md-4 col-sm-3 col-xs-6">
                                                     	<a href="<?php echo base_url().'main/delete_friend/'.$all_friends[$i]['friend_user_id']?>" class="pull-right" onclick="return confirm_delete()">X</a>
-                                                    	<a href="<?php echo base_url().'public_profile/user/'.$all_friends[$i]['friend_user_id']?>">
-                                                            <img src="<?php echo base_url().'uploads/'.$all_friends[$i]['friend_picture']?>" style="border-radius:150%; width:100px; height:100px;"/>
+                                                    	<a href="<?php echo base_url().'public_profile/user/'.$all_friends[$i]['friend_user_id']?>" style="color:#414042;">
+                                                            <img src="<?php echo base_url().'uploads/'.$all_friends[$i]['friend_picture']?>" style="border-radius:150%; width:80px; height:80px;"/>
                                                                 <div class="caption" style="text-align:center;">
                                                                     <p><?php echo $all_friends[$i]['friend_fullname'];?></p></a>
 
@@ -446,11 +631,14 @@ position:absolute;
                                                 </div>
                                         <?php }}
                                             else {?>
-                                                <div style="padding-left:25px;"> You have no followers. :(</div>
+                                                <div style="padding:25px;"> You have no friends. :(</div>
                                         <?php }?>
                                     </div>
-                                    <a href="#" data-toggle="modal" data-target="#showmore"><button type="button" class="btn btn-lg" style="background:#478EBF; color:white; font-size:20px; margin-left:auto; margin-right:auto; display:block; padding:5px; border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">View All</button></a>
-                            </div>
+									</div>
+									<div style="text-align:center;margin-top:20px;">
+                                    <a href="#" data-toggle="modal" data-target="#showmore"><button type="button" class="btn btn-lg" style="background:#478EBF; color:white; font-size:20px; padding:5px; border-radius:10px;">View All</button></a>
+									</div>
+							</div>
                         </div><!--END OF followers--> 
                     </div>
                 
@@ -487,8 +675,8 @@ position:absolute;
                        </div>
                 </div><!--end of popup-->
                      
-					 <div class="row" style="text-align:center;">
-                    <!--Reviews COMMENTED OUT
+					 <!--<div class="row" style="text-align:center;">
+                    Reviews COMMENTED OUT
                      	
                                 <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;">#</span> Reviews</h3>                        
 									<div style="padding-left:20%;padding-right:20%;">
@@ -511,19 +699,19 @@ position:absolute;
 								</div>
                                     <a href="#" data-toggle="modal" data-target="" class="btn morereviews" style="font-size:20px;margin-top:10px;">More Reviews</a>
                             
-                    <!--END OF reviews--> 
-                    </div>
+                    <!--END OF reviews 
+                    </div>-->
 					 
                      </div> <!--end of column-->
                      
-                     <div class="col-md-6">
+                     <div class="col-md-6" style="background:#d5dade;">
                      <div class="row">
                      <!--MESSAGING-->
                       <div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
                                 <div class="panel-body">
                                     <!--Check Inbox-->
                                     <div class="row inbox-btn" style="padding-top:10px;">                                     
-                                        <a href="" class="btn btn-lg btn-block blue-button" style="border-radius:10px;border:2px solid #478EBF;"><span class="glyphicon glyphicon-user"></span> Check Inbox</a>
+                                        <a href="<?php echo base_url().'chat/messageView';?>" class="btn btn-lg btn-block blue-button bp-button" style="border-radius:10px;width:55%;"><span class="glyphicon glyphicon-user"></span> Check Inbox</a>
                                     </div>
 
                                 
@@ -536,83 +724,96 @@ position:absolute;
                      
                      <div class="row">
                      <!--PHOTOS AND VIDEOS-->
-                     	<div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
-                                <div class="panel-body">
+                     	<div class="panel panel-default" style="background:none; box-shadow:none; border:none;padding:0 7%;">
+                                <div class="panel-body" style="background:rgba(255,255,255,0.3);border-radius:10px;">
                                     <!--<ul class="nav nav-pills nav-justified" style="font-size:20px;">
                                         <li class="active"><a href="#photos" aria-controls="photos" role="tab" data-toggle="tab">Photos</a></li>
                                         <li><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Videos</a></li>
                                     </ul>-->
-									<h3 style="text-align:center;">Photos</h3>
-									<div class="tab-content">
-											<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
-										<div role="tabpanel" class="tab-pane active" id="photos">
-												<div class="carousel-inner" role="listbox">
-													<div class="item active">
-														<img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo $PATH_IMG?>outdoor_party.png" alt="...">
-										
-													</div>
-													<div class="item">
-														<img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo $PATH_IMG?>balt.jpg" alt="...">
-											
-													</div>
-    
-												</div>
+                                    <h3 style="text-align:center;"> <img src="<?php echo $PATH_IMG?>photo_icon.png"/> &nbsp;Photos</h3>
+                                    <div class="tab-content">
+                                                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
+                                            <div role="tabpanel" class="tab-pane active" id="photos">
+                                                            <div class="carousel-inner" role="listbox">
+                                                                    <?php if(!empty($profile['photos'])) {
+                                                                            $first = true;
+                                                                            foreach($profile['photos'] as $picture){
+                                                                                if($first) {?>
+                                                                                    <div class="item active">
+                                                                                        <a href="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" rel="lightbox"><img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" alt="..."></a>
+                                                                                    </div>
+                                                                                <?php $first = false;
+                                                                                } else {?>
+                                                                                <div class="item">
+																						<a href="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" rel="lightbox"><img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" alt="..."></a>
+                                                                                </div>
+                                                                                
+                                                                    <?php }}}?>                                                                    
+                                                            </div>
 
-												<!-- Controls -->
-												<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-												<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-												<span class="sr-only">Previous</span>
-												</a>
-												<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-												<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-												<span class="sr-only">Next</span>
-												</a>
-											</div>
-										</div>
-										<!--<div role="tabpanel" class="tab-pane active" id="videos">
-											
-										</div>-->
-									</div>	
+                                                            <!-- Controls -->
+                                                            <a class="left carousel-control"  style="background:none;"  href="#carousel-example-generic" role="button" data-slide="prev">
+                                                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                            <span class="sr-only">Previous</span>
+                                                            </a>
+                                                            <a class="right carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="next">
+                                                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                            <span class="sr-only">Next</span>
+                                                            </a>
+                                                    </div>
+                                            </div>
+                                            <!--<div role="tabpanel" class="tab-pane active" id="videos">
+
+                                            </div>-->
+                                    </div>
                                     <div class="row" style="padding-top:10px;text-align:center;">
                                        
-                                        <a href="#"><button type="button" class="btn btn-lg" style="background:#1A75BF; color:white; font-size:20px;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);padding:5px;">Browse all</button></a>
-                                        <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);padding:8.5px;"><span class="glyphicon glyphicon-camera"></span></button></a>
+                                        <!--<a href="#" class="btn btn-lg photos-button" style="font-size:18px;border-radius:10px;padding:5px 20px;">Browse all</button></a>
+                                        <a href="#" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:18px;border-radius:10px;padding:5px 8px;"><span class="glyphicon glyphicon-camera"></span></button></a>-->
                                     </div>
                                 </div>
                             </div><!--END OF PHOTOS AND VIDEOS-->
                      </div>
 					 
-					 <div class="row">
-							<div>
+					 <!--Hours-->
+					 <div class="row" style="padding:10px 15%;">
+							<div style="background:rgba(255,255,255,0.3);border-radius:10px;padding:13px 0;">
 							<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>clock_icon.png"/> &nbsp; Hours</h4>
 								<div style="padding:0% 17%;font-size:18px;line-height:70%;">
-									<p><em>Thursday</em> &nbsp;&nbsp 10:00PM to 3:00PM</p>
-									<p><em>Friday</em> &nbsp;&nbsp 10:00PM to 3:00PM</p>
+                                                                    <?php for($i = 0; $i < 7; $i++) {
+                                                                            if($profile['day'][$i] != false) {?>
+                                                                                <p><em><?php echo ucfirst($profile['day'][$i]['day']);?></em> &nbsp;&nbsp <?php echo $profile['day'][$i]['start_time'].' to '.$profile['day'][$i]['end_time'];?></p>
+                                                                    <?php }}?>
 								</div>
 							</div>
 					 </div>
 					 
-					 <div class="row" style="margin-top:15px;">
+					 <!--location-->
+					 <div class="row" style="margin-top:15px;padding-left:10%;padding-right:10%;">
+						<div style="background:rgba(255,255,255,0.3);padding:10px; border-radius:10px;">
 						<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>map_icon.png"/> &nbsp; Where is it?</h4>
 							<div style="text-align:center;font-size:18px;padding:20px;line-height:60%;">
-								<p>67 West St, Brooklyn, NY 10019</p>
-								<p style="font-family:GillSans">Neighborhood, </p>
+								<p><?php echo $profile['address'].', '.$profile['city']. ', '.$profile['state']. ' '.$profile['zipcode'];?></p>
 							</div>
 							
-							<div>
-								Google map here
-							</div>
+							<!-- GOOGLE MAPS -->
+                                                        <div class="col-md-12">
+                                                            <div id="pano" style="max-width:100%;min-width:100%; height: 200px;"></div>
+                                                            <div id="map_canvas" style="max-width:100%;min-width:100%; height: 200px;"></div> 
+                                                            <!--   Google Map Goes Here, different depending on where location is-->
+                                                        </div><!-- END OF GOOGLE MAPS -->
 							
 							<div style="text-align:center;">
-							<a href="" class="btn viewmorewrevs" style="font-size:18px;color:white; border-radius:8px;">Get directions</a>
+							<a class="btn viewmorewrevs" style="font-size:18px;color:white; border-radius:8px;">Get directions(COMING SOON)</a>
 							</div>
+						</div>	
 					 </div>
 					 
 					     <!--Chatbox-->
                          <div class="row" style="padding-top:15px;">
-                                        <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;">#</span> Comments</h3>
+                                        <h3 style="text-align:center;"> Chatbox</h3>
                                         
-                                        <div id = "comment-block" style="overflow:auto; background:#8aa8c0; color:white; border-radius:10px;  width:95%; margin-left: 15px;height: 300px; padding: 10px;">
+                                        <div id = "comment-block" style="overflow:auto; background:rgba(255,255,255,0.3); color:#414042; border-radius:10px;  width:95%; margin-left: 15px;height: 300px; padding: 10px;">
                         </div>
                     <script>
                         $(document).ready(
@@ -626,6 +827,7 @@ position:absolute;
                         <?php echo form_open('showroom/chatbox_comment/'.$username); ?>
                        
                                     </div>
+									<div style="padding-bottom:15px;">
                                     <div class="row left-inner-addon post-input" style="padding-top:10px;float:left;">
                                         <!--<span class="glyphicon glyphicon-comment"></span>-->
                                         <!--<input type="text" class="form-control" placeholder="write something">-->
@@ -637,7 +839,7 @@ position:absolute;
                                         <a href="#"><button type="submit" class="btn btn-lg post-comment-btn" style="background:#478EBF; color:white; padding:5px; border-radius:10px;">Post Comment</button></a>
                                         <?php echo form_close() ?>
                                        <!-- <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;"><span class="glyphicon glyphicon-camera"></span></button></a>-->
-						
+									</div>
 						<!--Tags NOT YET!
 						<div class="row" style="padding:20px;">
 							<h4><i class="fa fa-tag"></i> &nbsp; Tags</h4>
@@ -668,6 +870,7 @@ position:absolute;
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.js"></script>
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.min.js"></script>  
     <script src="<?php echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/lightbox.js"></script>
     <script>
 	$('#reputationInfo').popover();
 	</script>
@@ -820,6 +1023,126 @@ document.getElementById("herdzz").innerHTML = " ";
     			return false; 
     	}
     </script>
+    <script type="text/javascript"> 
 
+    var userLocation =  <?php echo json_encode($profile['address']. "," . $profile['state'] . "," .$profile['city']. "," . $profile['zipcode']); ?>;
+
+    if (GBrowserIsCompatible()) {
+       var geocoder = new GClientGeocoder();
+       geocoder.getLocations(userLocation, function (locations) {         
+          if (locations.Placemark)
+          {
+             var north = locations.Placemark[0].ExtendedData.LatLonBox.north;
+             var south = locations.Placemark[0].ExtendedData.LatLonBox.south;
+             var east  = locations.Placemark[0].ExtendedData.LatLonBox.east;
+             var west  = locations.Placemark[0].ExtendedData.LatLonBox.west;
+
+             var bounds = new GLatLngBounds(new GLatLng(south, west), 
+                                            new GLatLng(north, east));
+
+             var map = new GMap2(document.getElementById("map_canvas"));
+
+             map.setCenter(bounds.getCenter(), map.getBoundsZoomLevel(bounds));
+             map.addOverlay(new GMarker(bounds.getCenter()));
+
+             new GStreetviewPanorama(document.getElementById("pano"),
+                                     { latlng: bounds.getCenter() })
+          }
+       });
+    }
+    </script>
+    <script>
+        function add_more_days() {
+            $('#days_end').remove();
+            var content = '<div class="form-group row">'
+                        +'<label class="col-sm-2">Day:</label>'
+                        +'<div class="col-sm-2">'
+                            +'<select name="business-day[]" class="form-control">'
+                                +'<option value="" selected="selected"></option>'
+                                +'<option value="Mon">Mon</option>'
+                                +'<option value="Tues">Tues</option>'
+                                +'<option value="Wed">Wed</option>'
+                                +'<option value="Thurs">Thurs</option>'
+                                +'<option value="Fri">Fri</option>'
+                                +'<option value="Sat">Sat</option>'
+                                +'<option value="Sun">Sun</option>'
+                            +'</select>'	
+                        +'</div>'
+                        +'<div class="col-sm-2">'
+                            +'<select name="business-start_time[]" class="form-control">'
+                                +'<option value="" selected="selected"></option>'
+                                +'<option value="01:00">1:00AM</option>'
+                                +'<option value="02:00">2:00AM</option>'
+                                +'<option value="03:00">3:00AM</option>'
+                                +'<option value="04:00">4:00AM</option>'
+                                +'<option value="05:00">5:00AM</option>'
+                                +'<option value="06:00">6:00AM</option>'
+                                +'<option value="07:00">7:00AM</option>'
+                                +'<option value="08:00">8:00AM</option>'
+                                +'<option value="09:00">9:00AM</option>'
+                                +'<option value="10:00">10:00AM</option>'
+                                +'<option value="11:00">11:00AM</option>'
+                                +'<option value="12:00">12:00PM</option>' 
+                                +'<option value="13:00">1:00PM</option>'
+                                +'<option value="14:00">2:00PM</option>'
+                                +'<option value="15:00">3:00PM</option>'
+                                +'<option value="16:00">4:00PM</option>'
+                                +'<option value="17:00">5:00PM</option>'
+                                +'<option value="18:00">6:00PM</option>'
+                                +'<option value="19:00">7:00PM</option>'
+                                +'<option value="20:00">8:00PM</option>'
+                                +'<option value="21:00">9:00PM</option>'
+                                +'<option value="22:00">10:00PM</option>'
+                                +'<option value="23:00">11:00PM</option>'
+                                +'<option value="24:00">12:00AM</option>'
+                            +'</select>'
+                        +'</div>'
+                        +'<label class="col-sm-1">TO</label>'
+                        +'<div class="col-sm-2">'
+                            +'<select name="business-end_time[]" class="form-control">'
+                                +'<option value="" selected="selected"></option>'
+                                +'<option value="01:00">1:00AM</option>'
+                                +'<option value="02:00">2:00AM</option>'
+                                +'<option value="03:00">3:00AM</option>'
+                                +'<option value="04:00">4:00AM</option>'
+                                +'<option value="05:00">5:00AM</option>'
+                                +'<option value="06:00">6:00AM</option>'
+                                +'<option value="07:00">7:00AM</option>'
+                                +'<option value="08:00">8:00AM</option>'
+                                +'<option value="09:00">9:00AM</option>'
+                                +'<option value="10:00">10:00AM</option>'
+                                +'<option value="11:00">11:00AM</option>'
+                                +'<option value="12:00">12:00PM</option>' 
+                                +'<option value="13:00">1:00PM</option>'
+                                +'<option value="14:00">2:00PM</option>'
+                                +'<option value="15:00">3:00PM</option>'
+                                +'<option value="16:00">4:00PM</option>'
+                                +'<option value="17:00">5:00PM</option>'
+                                +'<option value="18:00">6:00PM</option>'
+                                +'<option value="19:00">7:00PM</option>'
+                                +'<option value="20:00">8:00PM</option>'
+                                +'<option value="21:00">9:00PM</option>'
+                                +'<option value="22:00">10:00PM</option>'
+                                +'<option value="23:00">11:00PM</option>'
+                                +'<option value="24:00">12:00AM</option>' 
+                            +'</select>'
+                        +'</div>'
+                        +'<a class="btn btn-default" id="days_end"onclick="add_more_days()"><i class="fa fa-plus"></i></a>';
+            $('#days_base').append(content);
+        }
+    </script>
+    <script>
+        function add_more_photos() {
+            var content =   '<div class="image-upload">'
+                                +'<label>Choose an Image:</label>'
+                                +'<input name = "profile_file_array[]" type = "file" style="overflow:hidden;"/>'
+                            +'</div>';
+            $('#photos_upload').append(content);
+        }
+    </script>
+    <script>
+	$('#regular').popover();
+	$('#business').popover();
+    </script>
 </body>
 </html> 

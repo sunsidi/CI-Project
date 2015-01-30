@@ -31,6 +31,7 @@
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-tour.min.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <style type="text/css">
 .arrow-left {
@@ -57,7 +58,8 @@ position:absolute;
 <!--content
 ==============================================-->
 <div class="container" style="padding-bottom:50px;">
-    <div class="row" style="margin-top:50px;">
+<div id="showroom-step">
+    <div class="row"  style="margin-top:50px;">
 
         <div class="col-md-9 col-md-offset-1">
             <div class="col-md-1">
@@ -143,8 +145,20 @@ position:absolute;
                         $requiredthings = array('onsubmit' => 'return check_image()');
                         echo form_open_multipart(base_url().'main/update_profile', $requiredthings);
                     ?>
-                      
-                       <div class="info-hidden row" style="text-align:center;">
+                    <div class="form-group row">
+                        <p>Type of Account</p>
+                        <label class="radio-inline" style="padding-right:15px;" id="regular" data-content="Recommended free account for users that want to attend events,connect with friends,and create events quickly without much setup. " data-trigger="hover" data-placement="bottom">
+                                <input type="radio" name="account_change" id="inlineRadio1" value="0" checked> Personal
+                                </br>
+                                <img src="<?php echo $PATH_IMG?>personal_profile_icon.png" style="width:100px;margin-top:10px;"/>
+                        </label>
+                        <label class="radio-inline" style="margin-left:10px;" id="business" data-content="Recommended free account, ideal for users, organizations and coordinators.  Build a professional portfolio and customize your profile to cater all of your event hosting needs. " data-trigger="hover" data-placement="bottom">
+                                <input type="radio" name="account_change" id="inlineRadio2" value="1"> Professional
+                                </br>
+                                <img src="<?php echo $PATH_IMG?>business_profile_icon.png" style="width:100px;margin-top:10px;"/>
+                        </label>
+                    </div>  
+                    <div class="info-hidden row" style="text-align:center;">
                     <label class="col-sm-2 control-label">Status</label>
 					<div class="col-sm-10">
                     <input type="radio" name="relationship" value="S"> Single
@@ -262,42 +276,34 @@ position:absolute;
                                     </ul>
                                   
                                     
-                                        <div id="all_wrevs_panel" class="panel" style="background:#E9EEF2;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);border-radius:10px;" hidden>
+					<div id="all_wrevs_panel" class="panel" style="background:#E9EEF2;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);border-radius:10px;" hidden>
                                             <div class="panel-body">
                                 	<div class="row">
                                 	<div class="table-responsive">
-                                       <table style='width:100%'>
-                                                <tr>
-                                                    <td>Name:</td>
-                                                    <td>Date:</td>       
-                                                    <td>Start:</td>
-                                                    <td>Description:</td>
-                                                </tr>     
-                                                
 					<?php
                                             if(isset($attending_events)) {
                                                 for ($i = 0;$i < count($attending_events);$i++){?>
-                                                  <tr id="<?php echo 'fullwrev'.$i?>" hidden>
-                                                    <td><a href="<?php echo base_url().'event/event_info/latest/'.$attending_events[$i]['event_id']?>"><img src="<?php echo base_url().'uploads/'.$attending_events[$i]['e_image'];?>" style="border-radius:150%; width:70px; height:70px;"/>
-                                                    <div class="caption">
-                                                        <p><?php 
-                                                        	$event_name_temp = substr($attending_events[$i]['e_name'], 0, 10);
-                                                        	echo $event_name_temp?></p>
-                                                    </div></a></td>
-                                                    <td id="<?php echo 'wrev'.$i?>"><?php $wrev[$i] = $attending_events[$i]['e_date']; if(strpos($wrev[$i], 'Every') == 0) echo $wrev[$i]; else echo date("m-d-Y", strtotime($wrev[$i]));?></td>
-                                                    <td><?php 
-				    				echo $attending_events[$i]['e_start_time'];?></td>
-                                                    <td><?php 
-                                                    		$event_desc_temp = substr($attending_events[$i]['e_description'], 0, 10);
-                                                    		echo $event_desc_temp?></td>
-                                                  </tr>
+                                                <div id="<?php echo 'fullwrev'.$i?>" class="row" style="padding:3% 10% 0%;" hidden>
+                                                    <div class="col-md-12" style="position:relative;background-image:url(<?php echo base_url().'uploads/'.$attending_events[$i]['e_image'];?>); background-size:100%;padding:10px 0px 0px; color:white;">
+                                                        <div style="padding:0 10px 30px;">
+                                                            <p style="text-align:right;"><span class="wrevenue-attending"><?php echo $attending_events[$i]['e_attending'];?></span><span class="wrevenue-attending-text">Attending</span></p>
+                                                            <div style="margin-left:auto;margin-right:auto;text-align:center;">
+                                                                <a href="<?php echo base_url().'event/event_info/latest/'.$attending_events[$i]['event_id'];?>" class="btn wrevenue-wrev"><?php echo substr($attending_events[$i]['e_name'], 0, 10);?></a>
+                                                                <span class="pull-right" style="color:black; position:relative;"><i class="fa fa-clock-o"></i><?php echo $attending_events[$i]['e_start_time'];?></span>
+                                                            </div>
+                                                        </div>		
+                                                        <div style="background:rgba(0,0,0,0.5);postion:absolute;bottom:0;left:0;padding:5px 10px;">
+                                                            <i class="fa fa-calendar"></i> <?php $wrev[$i] = $attending_events[$i]['e_date']; if(strpos($wrev[$i], 'Every') == 0) echo $wrev[$i]; else echo date("m-d-Y", strtotime($wrev[$i]));?> <span class="pull-right"><?php echo $attending_events[$i]['e_likes'];?><i class="fa fa-heart-o"></i> | <a href=""><span class="glyphicon glyphicon-list-alt"></span></a> | <a href=""><i class="fa fa-share-square-o"></i></a></span>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                </div>
                                         <?php }}
                                             else {?>
                                                   <tr>
                                               	     <td>You have no wrevs right now.</td>
                                                   </tr>
                                         <?php }?>
-                                                </table>
                                         </div>
                                     </div>
                                     
@@ -577,13 +583,24 @@ position:absolute;
                                         <p style="text-align:center; font-size:25px;">Chatbox</p>
                                         
                                         <div id = "comment-block" style="overflow:auto; background:#8aa8c0; color:white; border-radius:10px;  width:95%; margin-left: 15px;height: 300px; padding: 10px;">
-                        </div>
+                                        </div>
+                                        <div hidden>
+                                            <div id="temp_chat_loading">
+                                            </div>
+                                        </div>
                     <script>
                         $(document).ready(
                             function() {
                                 setInterval(function() {
                                 //var randomnumber = Math.floor(Math.random() * 100);
-                                $( "#comment-block" ).load( "<?php echo $chatBoxLocation; ?>","limit=20");
+                                    $( "#temp_chat_loading" ).load( "<?php echo $chatBoxLocation; ?>","limit=20");
+                                    setTimeout(function(){
+                                        $("#temp_chat_loading").children('p').each(function() {
+                                            $('<input name="chatbox_test" value="'+$(this).html()+'" hidden><button type="submit">Delete</button>').appendTo(this);
+                                            $(this).wrap('<?php echo form_open("main/delete_chatbox_comment/")?></form>');
+                                        });
+                                        $("#comment-block").html($("#temp_chat_loading").html());
+                                    },50);
                                 }, 1000);
                             });
                     </script>     
@@ -693,7 +710,7 @@ position:absolute;
         </div>
     </div>
 </div>
-
+</div>
 <!--end of content-->
 
 <?php $this->load->view('footer');?>
@@ -710,7 +727,10 @@ position:absolute;
     <script src="<?php echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script>
 	$('#reputationInfo').popover();
+	$('#regular').popover();
+	$('#business').popover();
 	</script>
+	
 <script>
 	
     function myFunction()
@@ -860,6 +880,7 @@ document.getElementById("herdzz").innerHTML = " ";
     			return false; 
     	}
     </script>
-
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
+ 	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script> 
 </body>
 </html> 

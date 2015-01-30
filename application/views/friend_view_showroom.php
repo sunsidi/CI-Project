@@ -552,6 +552,9 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  
 
+    <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.min.js"></script>
+    <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.js"></script> 
+
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap.js"></script> 
     <script src="https://code.jquery.com/jquery.js"></script>

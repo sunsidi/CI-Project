@@ -44,15 +44,21 @@ class Event extends CI_Controller {
                 	$user_data = $this->model_users->get_info($email);
 			$user_id = $user_data['user_id'];
 			$my_friends_list = $this->model_friend_request->get_friendlists($user_id);
+                        $data['email'] = $email;
                         $data['my_user_id'] = $user_id;
 			$data['card_data'] = $user_data['cust_id'];
 		}
+                if(!file_exists('./uploads/events/'.$event_id.'/photos/')) {
+                    mkdir('./uploads/events/'.$event_id.'/photos/',0777, true);
+                    chmod('./uploads/events/'.$event_id.'/photos/',0777);
+                }
                 $eventMap = $this->hashmap_cata->get_EventMap();
                 $path = $this->path->getpath();
                 $data['path'] = $this->path->getpath();
                //$data['PATH_IMG'] = $path['PATH_IMG'];
                 $data['event_id'] = $event_id;
                 $data['event'] = $this->model_events->find_event($event_id);
+                $this->model_events->update_clicks($event_id);
                 $data['event_ticket_types'] = $this->model_events->get_tickets_for_event($event_id);
                 $datestring = "%Y-%m-%d";
                 $datestring2 = "%H:%i";
@@ -143,8 +149,8 @@ class Event extends CI_Controller {
                 $data['posted_recip_id'] = $data['user_email_temp'][0]['recip_id'];
                 $data['posted_fullname'] = $data['user_email_temp'][0]['fullname'];
                 $data['poster_image_key'] = $data['user_email_temp'][0]['image_key'];
-                $nav_data = $this->session->all_userdata();
-                $result = array_merge($data,$path,$nav_data);
+                $data['event']['photos'] = array_diff(scandir('./uploads/events/'.$event_id.'/photos/'), array('..', '.'));
+                $result = array_merge($data,$path);
 
 		
                 //echo "<pre> ",print_r($data,true) ,"</pre>";
@@ -180,47 +186,60 @@ class Event extends CI_Controller {
             $this->load->model('model_events');
             $this->load->library('path');
             $path = $this->path->getPath();
-            $config['upload_path']='./uploads/';
-            $config['allowed_types']= 'gif|jpg|png|jpeg';
-            $config['max_size']	= '10000';
-            $config['file_name'] = md5(uniqid());
-            //echo $image_name;
-            $this->load->library('upload',$config);
-            if (!$this->upload->do_upload())
-            {
-                $e_image = 'default_event_image.jpg';
-            }
-            else{
-		$upload_data = $this->upload->data();
-                $data = array('upload_data' => $this->upload->data());
-		$image_name = $upload_data['file_name'];
-                $e_image = $image_name;
-            }
+            
             $email = $this->session->userdata('email');
             $my_name = $this->model_users->get_name($email);
             $id = $this->model_users->get_userID($email);
-            $event_id = $this->model_events->create_event($id,$e_image);
+            $event_id = $this->model_events->create_event($id);
             if($event_id) {
-	            $this->model_events->update_attending($id, $event_id);
-	            $this->model_users->add_reputation($email, 10);
-	            $this->session->set_flashdata('message','You just earned 10 reputation points for creating a new wrev!' );
-	            $this->load->view('Create_Wrevel_View', $path);
-	            $this->load->view('successful-event-posting', $path);
-	            $this->load->library('email',array('mailtype'=>'html'));
-		    $this->email->from('donotreply@wrevel.com', "Wrevel, Inc.");
-		    $this->email->to($email);
-		    $this->email->subject("Event Created!");
-		    //message to user confirms see load library email, 2nd argument is setting to html not default text
-		    $message ="<p> Hello ".$my_name."!"."</p><p>You have successfully created an event on Wrevel. You can use the following link to access your event. You can also edit the event in your My Accounts area.</p>";
-		    $message .= "<p><a href='".base_url()."event/event_info/latest/".$event_id."'>Your new event.</a></p><p>________________________________</p><p>Copyright 2014 Wrevel, Inc.,<i> All Rights Reserved.</i></p><div>Connect with us!</div>";
-		    $message .= "<div>www.wrevel.com</div>";
-		    $message .= "<div>Facebook: www.facebook.com/wrevelinc</div>";
-		    $message .= "<div>Twitter: www.twitter.com/wrevelco</div>";
-		    $message .= "<div>Instagram: www.instagram.com/wrevel</div>";
-		    $message .= "<div>Tumblr: wrevel.tumblr.com</div>";
-		    $message .= "<div>E-mail: support@wrevel.com</div>";
-		    $this->email->message($message);
-		    $this->email->send();
+                mkdir('./uploads/events/'.$event_id.'/photos/', 0777, true);
+                chmod('./uploads/events/'.$event_id.'/photos/', 0777);
+                $config['upload_path']='./uploads/events/'.$event_id;
+                $config['allowed_types']= 'gif|jpg|png|jpeg';
+                $config['max_size']	= '10000';
+                //echo $image_name;
+                $this->load->library('upload',$config);
+                if (!$this->upload->do_upload('userfile'))
+                {
+                    $e_image = 'default_event_image.jpg';
+                }
+                else{
+                    $upload_data = $this->upload->data();
+                    $data = array('upload_data' => $this->upload->data());
+                    $image_name = $upload_data['file_name'];
+                    $e_image = 'events/'.$event_id.'/'.$image_name;
+                }
+                $config2['upload_path'] = './uploads/events/'.$event_id.'/photos/';
+                $config2['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config2['max_size'] = '10000';
+                //echo $image_name;
+                $this->load->library('upload', $config2);
+                $this->upload->initialize($config2);
+                if (!$this->upload->do_multi_upload('event_photos'))
+                {
+                    $this->session->set_flashdata('message', 'There was an error uploading one or more files. Check if your files are all there.');
+                }
+                $this->model_events->update_images($e_image, $event_id);
+                $this->model_events->update_attending($id, $event_id);
+                $this->model_users->add_reputation($email, 10);
+                $this->session->set_flashdata('message','You just earned 10 reputation points for creating a new wrev!' );
+                $this->load->view('Create_Wrevel_View', $path);
+                $this->load->view('successful-event-posting', $path);
+                $this->load->library('email',array('mailtype'=>'html'));
+                $this->email->from('donotreply@wrevel.com', "Wrevel, Inc.");
+                $this->email->to($email);
+                $this->email->subject("Event Created!");
+                //message to user confirms see load library email, 2nd argument is setting to html not default text
+                $message ="<p> Hello ".$my_name."!"."</p><p>You have successfully created an event on Wrevel. You can use the following link to access your event. You can also edit the event in your My Accounts area.</p>";
+                $message .= "<p><a href='".base_url()."event/event_info/latest/".$event_id."'>Your new event.</a></p><p>________________________________</p><p>Copyright 2014 Wrevel, Inc.,<i> All Rights Reserved.</i></p><div>Connect with us!</div>";
+                $message .= "<div>www.wrevel.com</div>";
+                $message .= "<div>Facebook: www.facebook.com/wrevelinc</div>";
+                $message .= "<div>Twitter: www.twitter.com/wrevelco</div>";
+                $message .= "<div>Instagram: www.instagram.com/wrevel</div>";
+                $message .= "<div>Tumblr: wrevel.tumblr.com</div>";
+                $message .= "<div>E-mail: support@wrevel.com</div>";
+                $this->email->message($message);
+                $this->email->send();
 	    }
             
         }
@@ -254,6 +273,7 @@ class Event extends CI_Controller {
             $this->load->library('session');
             $this->load->model('model_users');
             $this->load->model('model_events');
+            $this->load->model('model_news');
             $email = $this->session->userdata('email');
 
             $data = $this->model_users->get_info($email);
@@ -264,9 +284,10 @@ class Event extends CI_Controller {
             $data['states']= $events_states;
             $data['zipcode'] = $events_zipcode;
             
-            //Loads all the necessary Nav bar data.
-            $nav_data = $this->session->all_userdata();
-            $result = array_merge($data, $nav_data, $path);
+            $data['news_feed'] = $this->model_news->get_news();
+            
+            $data['events'] = $this->model_events->featured_search();
+            $result = array_merge($data, $path);
             //echo "<pre> ",print_r($data,true) ,"</pre>";
             $this->load->view('Create_Wrevel_View', $path);
             $this->load->view('hub',$result);
@@ -278,7 +299,6 @@ class Event extends CI_Controller {
             $this->load->model('model_events');
             $this->load->model('model_users');
             $this->load->library('session');
-
             $email = $this->session->userdata('email');
             $data = $this->model_users->get_info($email);
 
@@ -347,6 +367,50 @@ class Event extends CI_Controller {
             
 
         }
+        
+        //Deletes a comment in your chatbox.
+        public function delete_chatbox_comment($id) {
+            $this->load->library('session');
+            $this->load->model('model_users');
+            $this->load->model('model_events');
+            $chatbox = $this->model_events->get_comments($id);
+            $filename =  "./application/views/events_comments/".$chatbox;
+            //Try to get the contents in the file.
+            if($temp_string = file_get_contents($filename)) {
+                
+                $delete_data = $this->input->post('event_chatbox_test'); //Data to be deleted.
+                $beg_data = strpos($temp_string, $delete_data); //Beginning of the data element.
+                $beg_p_data = strrpos(substr($temp_string, 0, $beg_data), '<p'); //The true beginning of the data we want to delete.
+                $delete_data_len = strlen($delete_data) + 9 +($beg_data - $beg_p_data-1); //Length of data. + the additional </p><br> at the end.
+                $start_of_data = substr($temp_string, 0, $beg_p_data); //This is the data from the beginning up to the <p> of the data we want to delete.
+                $after_delete_data = $beg_p_data+$delete_data_len; //This is the start position of everything after <br> of the data we want to delete.
+                $string_left = strlen($temp_string)-$after_delete_data; //This is the final length of the string after the <br> of the data we want to delete.
+                $end_of_data = substr($temp_string, $after_delete_data, $string_left); //This is the string after the data we want to delete til the end of the full file.
+                $final_string = $start_of_data . $end_of_data; //This is the string that we will put back after deleting the comment we want.
+                //Now just write over the file and we did it! :D
+                if(file_put_contents($filename, $final_string)) {
+                    
+                    $this->session->set_flashdata('message','Your comment has been successfully removed.');
+                }
+                //But then something fails :(
+                else {
+                    if(!empty($final_string)) {
+                        $this->session->set_flashdata('message','There was an error removing the comment. Please try again.');
+                    }
+                    else {
+                        $this->session->set_flashdata('message','Your comment has been successfully removed.');
+                    }
+                }
+                
+                //echo strpos($temp_string, $this->input->post('chatbox_test'));
+            }
+            //Why file not openning?! >:O
+            else 
+                $this->session->set_flashdata('message','There was an error openning your comments. Please contact the network adminstrator.');
+            //Now redirect back to showroom!
+            redirect('event/event_info/latest/'.$id);
+        }
+        
         public function event_comment($category,$id) { //message (chat.php)
             /* username is the user currentUser is talking to */
             $this->load->library('path');
@@ -396,7 +460,7 @@ class Event extends CI_Controller {
             else{
                 //create a file name for the chat
                 $randomName = md5(uniqid()) . ".html";    
-                $filename =  "/home/wrevelco/public_html/application/views/events_comments/".$randomName;
+                $filename =  "./application/views/events_comments/".$randomName;
                 //try to create file
                 if ($handle=fopen($filename,'w+')){
                         //trying to insert info into db
@@ -455,7 +519,7 @@ class Event extends CI_Controller {
             }
             /* check comment if its blank then do not write file_chat */
 
-            $filename =  "/home/wrevelco/public_html/application/views/events_comments/".$data['comment_file'];
+            $filename =  "./application/views/events_comments/".$data['comment_file'];
           //$handle = fopen($filename,'w+');
             $today = date("F j, Y, g:i a"); 
             //add commentors name instead of "Comment:"
@@ -610,10 +674,9 @@ class Event extends CI_Controller {
       	public function edit_event($event_id) {
             $this->load->library('session');
             $this->load->model('model_events');
-            $config['upload_path']='./uploads/';
+            $config['upload_path']='./uploads/events/'.$event_id;
             $config['allowed_types']= 'gif|jpg|png|jpeg';
             $config['max_size']	= '10000';
-            $config['file_name'] = md5(uniqid());
             //echo $image_name;
             $this->load->library('upload',$config);
             if (!$this->upload->do_upload("eventfile")){
@@ -623,10 +686,17 @@ class Event extends CI_Controller {
 		$upload_data = $this->upload->data();
                 $data = array('upload_data' => $this->upload->data());
 		$image_name = $upload_data['file_name'];
-                $e_image = $image_name;
+                $e_image = 'events/'.$event_id.'/'.$image_name;
             }
             if($this->model_events->edit_event_info($event_id, $e_image)){
                 $this->session->set_flashdata('message','Your event info has been updated.' );
+                $config2['upload_path']='./uploads/events/'.$event_id.'/photos/';
+                $config2['allowed_types']= 'gif|jpg|png|jpeg';
+                $config2['max_size']	= '10000';
+                //echo $image_name;
+                $this->load->library('upload',$config);
+                $this->upload->initialize($config2);
+                if (!$this->upload->do_multi_upload("edit_event_photos")){}
                 redirect('event/event_info/latest/'.$event_id);
             }
         }

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Business Public Profile</title>
+<title><?php echo $other_fullname;?></title>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript"
@@ -31,6 +31,7 @@
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/business-lightbox.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <style type="text/css">
 .arrow-left {
@@ -38,15 +39,37 @@ position:absolute;
 	width: 0; 
 	height: 0; 
 	border-top: 0px solid transparent;
-	border-right: 35px solid #02a89e;
+	border-right: 28px solid #414042;
 	
 	border-bottom: 20px solid transparent;
         //margin-left:108px;
         margin-left:50%;
         margin-top:10px;
+	z-index:99;	
+}
+.arrow-left2 {
+position:absolute;
+	width: 0; 
+	height: 0; 
+	border-top: 0px solid transparent;
+	border-right: 26px solid #e4e5e6;;
+	
+	border-bottom: 18px solid transparent;
+        //margin-left:108px;
+        margin-left:50%;
+        margin-top:10px;
+		z-index:100;
 }
 
 </style>
+<script>
+jQuery(document).ready(function () {
+    //hide a div after 3 seconds
+    setTimeout(function(){ jQuery("#sentMessage").hide(); }, 5000);
+});
+</script>
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false"
+            type="text/javascript"></script> 
 </head>
 
 
@@ -56,19 +79,19 @@ position:absolute;
 
 <!--content
 ==============================================-->
+<div id='sentMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:20px;width: 500px; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>
 <div class="container" style="padding-bottom:50px;">
     <div class="row" style="margin-top:50px;">
 
         <div class="col-md-9 col-md-offset-1">
 			<div style="color:white;">
             <div class="col-md-1">
-                <img class="profile-image" src="<?php echo $PATH_IMG?>outdoor_party.png" style="position:absolute; z-index:2;  border-radius:150px;  border:2px solid #7874a2;"/>
+                <img class="profile-image" src="<?php echo base_url().'uploads/'.$other_image_key?>" style="position:absolute; z-index:2;  border-radius:150px;  border:2px solid #7874a2;"/>
                </div>
-            <div class="col-md-7 profile-name" style="background:#7874a2; height:65px;">
-            <h2 class="profile-fullname">Name here</h2>
-            </div>
-			<div class="col-md-1" style="background:#5F929C;height:65px;"><h3>$$$$</h3></div> 
-            <div class="col-md-3" style="height:65px;background:#6ca5cc; border-top-right-radius:5px;text-align:center;text-shadow: 1px 1px 0.5px #000000;">
+            <!--<div class="col-md-7 profile-name" style="background:#7874a2; height:65px;">
+            <h2 class="profile-fullname"><?php echo $other_fullname;?></h2>
+            </div>	 
+            <div class="col-md-4" style="height:65px;background:#6ca5cc; border-top-right-radius:5px;text-align:center;text-shadow: 1px 1px 0.5px #000000;">
 				<h3>
 					<i class="fa fa-star"></i>
 					<i class="fa fa-star"></i>
@@ -77,51 +100,66 @@ position:absolute;
 					<i class="fa fa-star"></i>
 					<span style="text-shadow:none;">(#)</span>
 				</h3>
-            </div>
+            </div>-->
+			<div class="col-md-11" style="position:relative;height:125px;background-image:url(<?php echo base_url().'uploads/'.$profile['cover_photo'];?>);background-size:100%;">
+					
+					<h3 style="margin-top:80px;"><p style="margin-left:15%;font-family:GillSans;text-shadow:1px 1px 3px #000000;"><?php echo $other_fullname;?> <span class="pull-right" style="font-size:18px;">
+					<!--<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<span style="text-shadow:none;">(#)</span>--></span></p></h3>
+					
+			</div>
 			</div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">       
-                <div class="panel-body background">
-                    <!--Quote
-                    <div class="row" style="width:100%;">
-			<div class="arrow-left" style="margin-top:20px;margin-left:70px;"></div>
-                        <p class="col-md-8 col-md-offset-2 quote-box" style="background:#00A79D; color:white; font-size:18px; border-radius:5px;padding:15px 20px;margin-left:100px;">
-                        <?php if($tagline != "") 
-                        	echo $tagline;
-                              else 
-                              	echo "Welcome to my Showroom! Don¡¯t hesitate to shoot me a message or a friend request!";?>
-                        </p>
-                     </div>-->
+            <div class="panel panel-default" style="border:none;">       
+                <div class="panel-body" style="padding:0;background:#e4e5e6;">
                      
-                     <div class="col-md-6">
+                     <div class="col-md-6" >
                             <div class="row" style="width:100%;">
-			<div class="arrow-left" style="margin-left:70px; margin-top:30px;"></div>
-                        <p class="col-md-8 col-md-offset-2 quote-box" style="background:#00A79D; color:white; font-size:18px; border-radius:5px;padding:15px 20px;margin-left:100px; margin-top:20px;">
-                       
+			<div class="arrow-left" style="margin-left:72px; margin-top:30px;"></div>
+			<div class="arrow-left2" style="margin-left:75px; margin-top:31px;"></div>
+                        <p class="col-md-8 col-md-offset-2 quote-box" style="background:none; color:#414042; border:1px solid #414042; font-size:18px; border-radius:10px;padding:15px 20px;margin-left:100px; margin-top:20px;">
+                            <?php if($other_tagline != "") 
+                                    echo $other_tagline;
+                                  else 
+                                    echo "Welcome to my Showroom! Donï¿½ï¿½t hesitate to shoot me a message or a friend request!";?>
                         </p>
                      </div>
-                     	<div class="row">
-                     	<!--PROFILE-->
-                     	   <div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
-                                <div class="panel-body" >
-									<div style="padding:3% 17%;">
-										<p class="info"><span style="padding-right:30px;"><img src="<?php echo $PATH_IMG?>globe_icon2.png"/></span> website link here</p>
-										<p class="info"><i class="fa fa-facebook" style="width:47px;margin-left:6px;"></i> facebook link here</p>
-										<p class="info"><i class="fa fa-twitter" style="width:47px;margin-left:6px;"></i> twitter link here</p>
-										<p class="info"><span style="padding-right:33px;"><img src="<?php echo $PATH_IMG?>phone_icon2.png"/></span> phone number</p>
-										<p class="info"><span style="padding-right:28px;"><img src="<?php echo $PATH_IMG?>email_icon2.png"/></span> email address</p>
-									</div>
-									
-									<div class="margin-top:40px;">
-										<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>details_icon.png"/> &nbsp; Details:</h4>
-										<div class="row" style="padding:0 20%; font-size:16px;">
-										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+						
+						<div style="margin-top:40px;padding:0 25px;">
+							<div style="background:rgba(255,255,255,0.30);padding:10px;border-radius:10px;">
+										<h4><img src="<?php echo $PATH_IMG?>details_icon.png"/> &nbsp;About Us:</h4>
+										<div class="row" style="padding:0 15% 30px; font-size:16px;">
+                                                                                    <?php echo $other_profile['description'];?>
 								
 										</div>
+							</div>
+						</div>
+                     	<div class="row">
+                     	<!--PROFILE-->
+                     	   <div class="panel panel-default" style="background:none; box-shadow:none; border:none;padding:20px 15% 5px;">
+                                <div class="panel-body" >
+									<div style="padding:7%;background:rgba(255,255,255,0.3);border-radius:10px;">
+										<?php if(!empty($other_profile['website'])) {?>
+                                                                                <p><a href="<?php if(strpos($other_profile['website'], 'http://') === false && strpos($other_profile['website'], 'https://') === false) echo 'http://'.$other_profile['website']; else echo $other_profile['website'];?>" class="info"><span style="padding-right:30px;"><img src="<?php echo $PATH_IMG?>globe_icon2.png"/></span> <?php echo $other_profile['website'];?> </a></p>
+                                                                                <?php } if(!empty($other_profile['facebook'])) {?>
+                                                                                <p><i class="fa fa-facebook" style="width:47px;margin-left:6px;"></i><a href="<?php if(strpos($other_profile['facebook'], 'http://') === false && strpos($other_profile['facebook'], 'https://') === false) echo 'http://'.$other_profile['facebook']; else echo $other_profile['facebook'];?>" class="info"> <?php echo $other_profile['facebook'];?> </a></p>
+                                                                                <?php } if(!empty($other_profile['twitter'])) {?>
+                                                                                <p><i class="fa fa-twitter" style="width:47px;margin-left:6px;"></i><a href="<?php if(strpos($other_profile['twitter'], 'http://') === false && strpos($other_profile['twitter'], 'https://') === false) echo 'http://'.$other_profile['twitter']; else echo $other_profile['twitter'];?>" class="info"> <?php echo $other_profile['facebook'];?> </a></p>
+                                                                                <?php } if(!empty($other_phone)) {?>
+                                                                                <p class="info"><span style="padding-right:33px;"><img src="<?php echo $PATH_IMG?>phone_icon2.png"/></span> <?php echo $other_phone;?></p>
+                                                                                <?php } if(!empty($other_email)) {?>
+                                                                                <p class="info"><span style="padding-right:28px;"><img src="<?php echo $PATH_IMG?>email_icon2.png"/></span> <?php echo $other_email;?></p>
+                                                                                <?php }?>
 									</div>
+									
+									
                                        
 
                                   
@@ -132,17 +170,17 @@ position:absolute;
                      
                      <div class="row">
                      <!--WREVS-->
-                          <div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
-                                <div class="panel-body">
+                          <div class="panel panel-default" style="background:none; box-shadow:none; border:none;padding:0 10%;">
+                                <div class="panel-body" style="background:rgba(255,255,255,0.3);border-radius:10px;">
                                 
-                                    <ul class="nav nav-pills wrev-tabs">
+                                    <ul class="nav nav-pills wrev-tabs wrev-tabs2">
                                         <li id="past_wrevs" onclick="change_to_past_wrevs()"><a href="#" onclick="return false;">Past Wrevs</a></li>
                                         <li id="attending_wrevs" onclick="change_to_attending_wrevs()"><a href="#" onclick="return false;">Attending Wrevs</a></li>
                                         <li id="mywrevs" onclick="change_to_mywrevs()"><a href="#" onclick="return false;">MyWrevs</a></li>
                                     </ul>
                                   
                                     
-                                        <div id="all_wrevs_panel" class="panel" style="background:#E9EEF2;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);border-radius:10px;" hidden>
+                                        <div id="all_wrevs_panel" class="panel" style="background:none;" hidden>
                                             <div class="panel-body">
                                 	<div class="row">
                                 	<div class="table-responsive">
@@ -174,7 +212,7 @@ position:absolute;
                                         <?php }}
                                             else {?>
                                                   <tr>
-                                              	     <td>You have no wrevs right now.</td>
+                                              	     <td>You have no wrevs right now. :(</td>
                                                   </tr>
                                         <?php }?>
                                                 </table>
@@ -184,108 +222,8 @@ position:absolute;
                                     <!--Shows all users attending -->
                                     <!--<button type="button" class="btn" style="background:#1C74BB; color:white; font-size:20px;border-radius:8px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">View More</button>-->
                                 </div>
-                                </div>
-                                <div class="row" style="text-align:center; padding:10px;">
-                                        <a href="#"  data-toggle="modal" data-target="#create" class="btn btn-lg createwrev" style=" font-size:20px; padding:5px;border-radius:10px;">Create a Wrev</a>
-                                        <br>
-  <div class="modal" id="myModal2" style="padding-right: 200px;">     
-  <div class="modal-dialog">
-      <div class="modal-content" style="width: 800px; height: 1000px; border-radius: 10px;">
-
-      
-    <div class="panel" style="width: 800px; height: 1000px; background-color: #C2D2DC; border-radius: 10px;">
+                                
     
-    <div class="panel-body">
-     <p style="font-size: 230%; color: white;text-align: center;">
-    <b>Set up tickets</b>
-      </p>
-     
-      <p style="font-size: 150%; color: white;text-align: justify;">
-     This is what your ticket will look like
-      </p>
-      
-      <div class="panel" style="width: 700px; border-color: #006eaa; border-radius: 10px; margin-left:40px;">
-    
-    <div class="panel-heading" style="background-color: #3b91c6; height: 70px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-        <p style="font-size: 50px;text-align: left; color: white; margin-top: -10px;">
-      Hot Rabbit
-        
-        <img src="<?php echo $PATH_IMG?>wrevel_logo.png"style="width:200px;z-index:1; float: right; margin-top: 10px;"/>
-        </p>
-    </div>
-    
-        <div class="panel-body">
-      <div class="col-md-8 col-sm-8 col-xs-8">
-     
-      <p style="font-size: 150%;text-align: justify;">
-     Name &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; name
-      </p>
-             <p style="font-size: 150%;text-align: justify;">
-     Ticket Type &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; type
-      </p>
-        <p style="font-size: 150%;text-align: justify;">
-     Wrevenue &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;  wrevenue
-      </p>
-         <p style="font-size: 150%;text-align: justify;">
-     Event Title &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; title
-      </p>
-          <p style="font-size: 150%;text-align: justify;">
-    Price &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;  price
-      </p>
-     <p style="font-size: 150%;text-align: justify;">
-     Description  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-     description1<br>
-     &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;2<br>
-     &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;3<br>
-     &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;4<br>
-     &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;5<br>
-     </p>
-     <p style="font-size: 150%;text-align: justify;">
-     Date &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; date
-      </p>
-     <p style="font-size: 150%;text-align: justify;">
-     Time &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; time
-      </p>
-     <p style="font-size: 150%;text-align: justify;">
-    Location  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; location
-      </p>
-     
-    <hr style="width:1px; height:480px; background-color: grey; margin-top: -480px; margin-left: 400px;"/>
-      </div>
-      
-      <div class="col-md-4 col-sm-4 col-xs-4">
-          <img src="<?php echo $PATH_IMG?>2d.png"style="width:200px;z-index:1; margin-top: 25px;"/>
-          <p style="font-size:7px; margin-top: 100px;">
-        <b>Disclaimer</b><br>
-        Please bring a valid photo ID to the event with this ticket.<br>
-        Your name on the ticket must match with your photo ID.<br>
-        To prevent confusion, we only allow one ticket per person<br>
-        and one ticket per group in case of group purchase.<br>
-        All sales are final. No refund or exchange can be issued.<br>
-        Valid only for the event specified on this ticket<br>
-        <br>
-        If you have any questions or concerns, feel free to email.<br>
-        customer support at admin@wrevel.com
-          </p>
-      </div>
-        
-    </div>
-      </div>
-
-                    <form style="text-align: center; font-size: 20px; color: white;">
-                <input type="radio" name="gender" value="male"> approve
-          <input type="radio" name="gender" value="female"> disapprove
-              </form>
-      
-      <button type="submit" class="btn btn-lg" style="color: #006eaa; background-color: white; float: right;">Submit</button>
-
-    </div>
-    </div>
- 
-
-      </div>
-    </div>
-</div>
   
                                     </div>
                                 </div>
@@ -294,16 +232,16 @@ position:absolute;
                      
                      <div class="row">
                      <!--Followers-->
-                     	<div class="panel panel-default" style="background:#E9EEF2;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);border-radius:10px;">
+                     	<div class="panel panel-default" style="background:none;border:none;box-shadow:none;">
                             <div class="panel-body">
-                                <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;">#</span> Followers</h3>                        
-                                    <div class="row">
+                                <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;"><?php echo $number_of_friends;?></span> Friends</h3>                        
+                                    <div style="padding:0 15%;">
+									<div class="row" style="background:rgba(255,255,255,0.3);border-radius:10px;">
                                         <?php if(isset($all_friends)){
                                             for($i = 0; $i < $number_of_friends && $i < 6; $i++) {?>
-                                                <div class="col-md-4 col-sm-3 col-xs-6">
-                                                    	<a href="<?php echo base_url().'main/delete_friend/'.$all_friends[$i]['friend_user_id']?>" class="pull-right" onclick="return confirm_delete()">X</a>
+                                                <div class="col-md-4 col-sm-3 col-xs-6" style="padding:15px;">
                                                     	<a href="<?php echo base_url().'public_profile/user/'.$all_friends[$i]['friend_user_id']?>">
-                                                            <img src="<?php echo base_url().'uploads/'.$all_friends[$i]['friend_picture']?>" style="border-radius:150%; width:100px; height:100px;"/>
+                                                            <img src="<?php echo base_url().'uploads/'.$all_friends[$i]['friend_picture']?>" style="border-radius:150%; width:80px; height:80px;"/>
                                                                 <div class="caption" style="text-align:center;">
                                                                     <p><?php echo $all_friends[$i]['friend_fullname'];?></p></a>
 
@@ -312,11 +250,14 @@ position:absolute;
                                                 </div>
                                         <?php }}
                                             else {?>
-                                                <div style="padding-left:25px;"> You have no friends.</div>
+                                                <div style="padding:25px;"> You have no friends. :(</div>
                                         <?php }?>
                                     </div>
-                                    <a href="#" data-toggle="modal" data-target="#showmore"><button type="button" class="btn btn-lg" style="background:#478EBF; color:white; font-size:20px; margin-left:auto; margin-right:auto; display:block; padding:5px; border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">View All</button></a>
-                            </div>
+									</div>
+									<div style="text-align:center;margin-top:20px;">
+                                    <a href="#" data-toggle="modal" data-target="#showmore"><button type="button" class="btn btn-lg" style="background:#478EBF; color:white; font-size:20px; padding:5px; border-radius:10px;">View All</button></a>
+									</div>
+							</div>
                         </div><!--END OF followers--> 
                     </div>
                 
@@ -326,7 +267,7 @@ position:absolute;
                          <div class="modal-content" style="background:#C2D2DC;">
                               <div class="modal-header" style="background:#628da3; color:white;">
                                    <button type="button" class="close" data-dismiss="modal" style="color:white;"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                    <p style="text-align:center;padding:0;font-size:25px;"><i class="fa fa-users"></i> Followers List</p>
+                                    <p style="text-align:center;padding:0;font-size:25px;"><i class="fa fa-users"></i> Friends List</p>
                                </div>
                                <div class="modal-body" style="color:black; font-size:18px;">  
                                          <div style="text-align:left; height:360px; overflow-y:auto; display:inline-block; padding-top:10px;">   
@@ -334,7 +275,6 @@ position:absolute;
 	                                        for($i = 0; $i < $number_of_friends; $i++) {?>
                                                 <div class="col-md-4 col-sm-3 col-xs-6">
                                                     <div class="thumbnail default">
-                                                    	<a href="<?php echo base_url().'main/delete_friend/'.$all_friends[$i]['friend_user_id']?>" class="pull-right" onclick="return confirm_delete()">X</a>
                                                     	<a href="<?php echo base_url().'public_profile/user/'.$all_friends[$i]['friend_user_id']?>">
                                                             <img src="<?php echo base_url().'uploads/'.$all_friends[$i]['friend_picture']?>" style="border-radius:150%; width:100px; height:100px;"/>
                                                                 <div class="caption" style="text-align:center;">
@@ -355,7 +295,7 @@ position:absolute;
                      
 					 <div class="row" style="text-align:center;">
                      <!--Reviews-->
-                     	
+                     	<!-- COMMENTED OUT WILL DO LATER 
                                 <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;">#</span> Reviews</h3>                        
 									<div style="padding-left:20%;padding-right:20%;">
 								<div style="padding:0% 17%;font-size:18px;line-height:70%;background:#F6F8F9;border-radius:10px;padding:10px;">
@@ -367,7 +307,7 @@ position:absolute;
 										<i class="fa fa-star" style="font-size:25px;"></i>
 									</div>
 									<div style="margin-top:20px;">
-										<!--Person's profile image of who posted here-->
+										<!--Person's profile image of who posted here--><!--
 										<img src="<?php echo $PATH_IMG?>/balt.jpg" class="shoutout-image"/>
 										<p style="margin-top:10px;">Name</p>
 										
@@ -382,17 +322,17 @@ position:absolute;
 					 
                      </div> <!--end of column-->
                      
-                     <div class="col-md-6">
+                     <div class="col-md-6" style="background:#d5dade;">
                      <div class="row">
                      <!--MESSAGING-->
                       <div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
                                 <div class="panel-body">
                                     <!--Check Inbox-->
                                    <div class="row">
-                                        <a href="#" data-toggle="modal" data-target="#basicModal"  class="btn btn-lg btn-block blue-button" style="border-radius:10px;"><i class="fa fa-envelope"></i> Message them</a>
+                                        <a href="#" data-toggle="modal" data-target="#basicModal"  class="btn btn-lg btn-block blue-button bp-button" style="border-radius:10px;width:60%;"><i class="fa fa-envelope"></i> Send Message</a>
                                     </div>
 									<div class="row" style="padding-top:10px;">
-                                        <a href="#" class="btn btn-lg btn-block blue-button" style="border-radius:10px;"><span class="glyphicon glyphicon-user"></span> Click to Follow</a>
+                                        <a href="<?php echo base_url().'main/friend_request/'.$other_id;?>" class="btn btn-lg btn-block blue-button bp-button" style="border-radius:10px;width:60%;"><span class="glyphicon glyphicon-user"></span> Click to Follow</a>
                                     </div>
 
 									<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -469,89 +409,93 @@ position:absolute;
                                     
                                 </div>
                             </div><!--END OF MESSAGING-->
-                     </div>
+                    </div>
                      
                      
                      
-                     <div class="row">
+                    <div class="row">
                      <!--PHOTOS AND VIDEOS-->
-						<div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
-                                <div class="panel-body">
-                                    <!--<ul class="nav nav-pills nav-justified" style="font-size:20px;">
-                                        <li class="active"><a href="#photos" aria-controls="photos" role="tab" data-toggle="tab">Photos</a></li>
-                                        <li><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Videos</a></li>
-                                    </ul>-->
-									<h3 style="text-align:center;">Photos</h3>
-									<div class="tab-content">
-										<div role="tabpanel" class="tab-pane active" id="photos">
-											<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
-												<div class="carousel-inner" role="listbox">
-													<div class="item active">
-														<img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo $PATH_IMG?>outdoor_party.png" alt="...">
-										
-													</div>
-													<div class="item">
-														<img class="img-responsive" style="height:250px;max-height:250px;" src="<?php echo $PATH_IMG?>balt.jpg" alt="...">
-											
-													</div>
-    
-												</div>
+                    <div class="panel panel-default" style="background:none; box-shadow:none; border:none;padding:0 7%;">
+                        <div class="panel-body" style="background:rgba(255,255,255,0.3);border-radius:10px;">
+                            <h3 style="text-align:center;"><img src="<?php echo $PATH_IMG?>photo_icon.png"/> &nbsp;Photos</h3>
+                                <div class="tab-content">
+                                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
+                                        <div role="tabpanel" class="tab-pane active" id="photos">
+                                            <div class="carousel-inner" role="listbox">
+                                                <?php if(!empty($profile['photos'])) {
+                                                        $first = true;
+                                                        foreach($profile['photos'] as $picture){
+                                                            if($first) {?>
+                                                                <div class="item active">
+                                                                    <a href="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" rel="lightbox"><img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" alt="..."></a>
+                                                                </div>
+                                                            <?php $first = false;
+                                                            } else {?>
+                                                            <div class="item">
+                                                                <a href="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" rel="lightbox"><img class="img-responsive" style="margin-left:auto;margin-right:auto;height:250px;max-height:250px;" src="<?php echo base_url().'/uploads/profile/'.$profile['user_id'].'/photos/'.$picture?>" alt="..."></a>
+                                                            </div>
 
-												<!-- Controls -->
-												<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-												<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-												<span class="sr-only">Previous</span>
-												</a>
-												<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-												<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-												<span class="sr-only">Next</span>
-												</a>
-											</div>
-										</div>
-										<!--<div role="tabpanel" class="tab-pane active" id="videos">
-											
-										</div>-->
-									</div>	
-                                    <div class="row" style="padding-top:10px;text-align:center;">
-                                       
-                                        <a href="#"><button type="button" class="btn btn-lg" style="background:#1A75BF; color:white; font-size:20px;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);padding:5px;">Browse all</button></a>
-                                        <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);padding:8.5px;"><span class="glyphicon glyphicon-camera"></span></button></a>
+                                                <?php }}}?>                                                                    
+                                            </div>
+                                            <!-- Controls -->
+                                            <a class="left carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="right carousel-control" style="background:none;" href="#carousel-example-generic" role="button" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
                                     </div>
+                                </div>	
+                                <div class="row" style="padding-top:10px;text-align:center;">
+                                    <!--<a href="#" class="btn btn-lg photos-button" style="font-size:20px;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);padding:5px 20px;">Browse all</button></a>
+                                    <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);padding:5px 8px;"><span class="glyphicon glyphicon-camera"></span></button></a>-->
                                 </div>
+                        </div>
                             </div><!--END OF PHOTOS AND VIDEOS-->
                      </div>
 					 
-					 <div class="row">
-							<div>
+					 <!--Hours-->
+					 <div class="row" style="padding:10px 15%;">
+							<div style="background:rgba(255,255,255,0.3);border-radius:10px;padding:13px 0;">
 							<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>clock_icon.png"/> &nbsp; Hours</h4>
 								<div style="padding:0% 17%;font-size:18px;line-height:70%;">
-									<p><em>Thursday</em> &nbsp;&nbsp 10:00PM to 3:00PM</p>
-									<p><em>Friday</em> &nbsp;&nbsp 10:00PM to 3:00PM</p>
+                                                                    <?php for($i = 0; $i < 7; $i++) {
+                                                                            if($other_profile['day'][$i] != false) {?>
+                                                                                <p><em><?php echo ucfirst($other_profile['day'][$i]['day']);?></em> &nbsp;&nbsp <?php echo $other_profile['day'][$i]['start_time'].' to '.$other_profile['day'][$i]['end_time'];?></p>
+                                                                    <?php }}?>
 								</div>
 							</div>
 					 </div>
 					 
-					 <div class="row" style="margin-top:15px;">
+					 <div class="row" style="margin-top:15px;padding-left:10%;padding-right:10%;">
+					 <div style="background:rgba(255,255,255,0.3);padding:10px; border-radius:10px;">
 						<h4 style="padding-left:30px;"><img src="<?php echo $PATH_IMG?>map_icon.png"/> &nbsp; Where is it?</h4>
 							<div style="text-align:center;font-size:18px;padding:20px;line-height:60%;">
-								<p>67 West St, Brooklyn, NY 10019</p>
-								<p style="font-family:GillSans">Neighborhood, </p>
+								<p><?php echo $other_profile['address'].', '.$other_profile['city']. ', '.$other_profile['state']. ' '.$other_profile['zipcode'];?></p>
 							</div>
 							
-							<div>
-								Google map here
-							</div>
+							<!-- GOOGLE MAPS -->
+                                                        <div class="col-md-12">
+                                                            <div id="pano" style="max-width:100%;min-width:100%; height: 200px;"></div>
+                                                            <div id="map_canvas" style="max-width:100%;min-width:100%; height: 200px;"></div> 
+                                                            <!--   Google Map Goes Here, different depending on where location is-->
+                                                        </div><!-- END OF GOOGLE MAPS -->
 							
 							<div style="text-align:center;">
 							<a href="" class="btn viewmorewrevs" style="font-size:18px;color:white; border-radius:8px;">Get directions</a>
 							</div>
+						</div>	
 					 </div>
 					 
 					 <!--Chatbox-->
+					 
                                     <div class="row" style="padding-top:15px;">
-                                        <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;">#</span> Comments</h3>
+                                        <h3 style="text-align:center;">Chatbox</h3>
                                         
-                                        <div id = "comment-block" style="overflow:auto; background:#8aa8c0; color:white; border-radius:10px;  width:95%; margin-left: 15px;height: 300px; padding: 10px;">
+                                        <div id = "comment-block" style="overflow:auto; background:rgba(255,255,255,0.3); color:#414042; border-radius:10px;  width:95%; margin-left: 15px;height: 300px; padding: 10px;">
                         </div>
                     <script>
                         $(document).ready(
@@ -562,7 +506,7 @@ position:absolute;
                                 }, 1000);
                             });
                     </script>     
-                        <?php echo form_open('showroom/chatbox_comment/'.$username); ?>
+                        <?php echo form_open('public_profile/chatbox_comment/'.$other_id); ?>
                        
                                     </div>
                                     <div class="row left-inner-addon post-input" style="padding-top:10px;float:left;">
@@ -577,7 +521,7 @@ position:absolute;
                                         <?php echo form_close() ?>
                                        <!-- <a href="#"><button type="button" class="btn btn-lg" style="background:#2CA8DC; color:white; font-size:20px;"><span class="glyphicon glyphicon-camera"></span></button></a>-->
 					 
-						<!--Tags-->
+						<!--Tags NOT YET!
 						<div class="row" style="padding:20px;">
 							<h4><i class="fa fa-tag"></i> &nbsp; Tags</h4>
 							
@@ -608,6 +552,7 @@ position:absolute;
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.js"></script>
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.min.js"></script>  
     <script src="<?php echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
+	<script src="<?php echo $PATH_BOOTSTRAP?>js/lightbox.js"></script>
     <script>
 	$('#reputationInfo').popover();
 	</script>
@@ -727,7 +672,7 @@ document.getElementById("herdzz").innerHTML = " ";
                     //echo 'alert("'.$email.'")';
                     if(isset($attending_events)) {
                     for($i = 0; $i < count($attending_events); $i++) {
-                        if($attending_events[$i]['creator_email'] == $email)
+                        if($attending_events[$i]['creator_email'] == $other_email)
                             echo '$("#fullwrev'.$i.'").show();';
                         else 
                             echo '$("#fullwrev'.$i.'").hide();';
@@ -760,6 +705,33 @@ document.getElementById("herdzz").innerHTML = " ";
     			return false; 
     	}
     </script>
+    <script type="text/javascript"> 
 
+    var userLocation =  <?php echo json_encode($other_profile['address']. "," . $other_profile['state'] . "," .$other_profile['city']. "," . $other_profile['zipcode']); ?>;
+
+    if (GBrowserIsCompatible()) {
+       var geocoder = new GClientGeocoder();
+       geocoder.getLocations(userLocation, function (locations) {         
+          if (locations.Placemark)
+          {
+             var north = locations.Placemark[0].ExtendedData.LatLonBox.north;
+             var south = locations.Placemark[0].ExtendedData.LatLonBox.south;
+             var east  = locations.Placemark[0].ExtendedData.LatLonBox.east;
+             var west  = locations.Placemark[0].ExtendedData.LatLonBox.west;
+
+             var bounds = new GLatLngBounds(new GLatLng(south, west), 
+                                            new GLatLng(north, east));
+
+             var map = new GMap2(document.getElementById("map_canvas"));
+
+             map.setCenter(bounds.getCenter(), map.getBoundsZoomLevel(bounds));
+             map.addOverlay(new GMarker(bounds.getCenter()));
+
+             new GStreetviewPanorama(document.getElementById("pano"),
+                                     { latlng: bounds.getCenter() })
+          }
+       });
+    }
+    </script>
 </body>
 </html> 

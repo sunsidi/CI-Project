@@ -14,12 +14,36 @@ class Model_users extends CI_Model{
         $query = $this->db->get('users');
         return $query->result_array();
     }
+    
+    public function admin_get_admin_users() {
+        $this->db->order_by('admin_level', 'desc');
+        $this->db->where('admin_level >', 0);
+        $query = $this->db->get_where('users');
+        return $query->result_array();
+    }
 
     public function admin_delete_users() {
         $data = $this->input->post('users_checkbox');
         $this->db->where_in('user_id', $data);
         $this->db->delete('users');
     }
+    
+    //This will give many users a certain admin level.
+    public function authorize_user($all_users, $level) {
+        $all_users_array = explode(',', $all_users);
+        for($i = 0; $i < count($all_users_array); $i++) {
+            $this->db->update('users', array('admin_level' => $level), array('email' => trim($all_users_array[$i])));
+        }
+    }
+    
+    //This will revoke users from the admin levels.
+    public function revoke_user($all_users) {
+        $all_users_array = explode(',', $all_users);
+        for($i = 0; $i < count($all_users_array); $i++) {
+            $this->db->update('users', array('admin_level' => 0), array('email' => trim($all_users_array[$i])));
+        }
+    }
+    
     public function can_log_in()
     {
     	$fbcheck = $this->db->get_where('users', array('email' => $this->input->post('email'), 'f_b' => 1));
@@ -81,6 +105,19 @@ class Model_users extends CI_Model{
 	        //Just say sign up.
 	        else return 0;
 	}
+    }
+    
+    //Set the activity of a user as when he last logged in.
+    public function set_last_online() {
+        $this->load->helper('date');
+        $datestring = "%Y-%m-%d %G:%i:%s";
+        $time = time();
+
+        $insert_time = mdate($datestring, $time);
+        if($this->db->update('users', array('last_online' => $insert_time), array('email' => $this->input->post('email')))) {
+            return true;
+        }
+        return false;
     }
     
     public function forgot_password($email_data) {
@@ -167,22 +204,28 @@ class Model_users extends CI_Model{
                     'username' => $row->username,
                     'reputation' => 0,
                     'f_b' => 0,
+                    'business' => $row->business,
                     'image_key'=> 'default_profile.jpg'
                 );
                 
                 $user_added = $this->db->insert('users',$data);
+                $new_user_id = $this->db->insert_id();
+                if($row->business) {
+                    $this->db->insert('users_business', array('user_id' => $new_user_id, 'cover_photo' => 'default_cover.jpg'));
+                }
             }
-           
            if($user_added)
            {
                 $this->db->where('key',$key);
                 $this->db->delete('temp_users');
+                mkdir('./uploads/profile/'.$new_user_id.'/photos/', 0777,true);
+                chmod('./uploads/profile/'.$new_user_id.'/photos/', 0777);
                 return $data['email'];
             }
             else return false;
     }
     
-    public function edit_info($email) //CHANGED!!!!
+    public function edit_info($user_id) //CHANGED!!!!
     {
         /*
         $data = array(
@@ -195,23 +238,62 @@ class Model_users extends CI_Model{
         */
        
         $data = $this->input->post();
-
         foreach ($data as $i => $value){
           //if user inputted a value then update it
-          if($value and $value != 'Change'){
-            $info_updating[$i] = strip_tags($value);
-          }
+            if($i == 'account_change') {
+                $info_updating['business'] = $value;
+                if($value) {
+                    if(!file_exists('./uploads/profile/'.$user_id.'/photos/')) {
+                        mkdir('./uploads/profile/'.$user_id.'/photos/', 0777, true);
+                        chmod('./uploads/profile/'.$user_id.'/photos/', 0777);
+                    }
+                    $check_if_exists = $this->db->get_where('users_business', array('user_id' => $user_id));
+                    if($check_if_exists->num_rows() == 0) {
+                        $this->db->insert('users_business', array('user_id' => $user_id, 'cover_photo' => 'default_cover.jpg'));
+                        $this->session->set_flashdata('message', 'Welcome to your new business profile!');
+                    }
+                }
+            }
+            else if($value and $value != 'Change'){
+                if(strpos($i, 'business') === false) {
+                    $info_updating[$i] = strip_tags($value);
+                }
+                else {
+                    $business_data[$i] = $value;
+                }
+            }
+        }
+        if(isset($business_data)) {
+            foreach($business_data as $i => $value) {
+                if($value && strpos($i, 'start_time') === false && strpos($i, 'end_time') === false) {
+                    if($i == 'wrevenue_file') {
+                        continue;
+                    }
+                    if(strpos($i, 'day') !== false && $value != "") {
+                        for($j = 0; $j < count($value); $j++) {
+                            if(empty($value[$j])) {
+                                break;
+                            }
+                            $temp_start = $business_data['business-start_time'][$j];
+                            $start_time = $this->timestamp($temp_start, false);
+                            $temp_end = $business_data['business-end_time'][$j];
+                            $end_time = $this->timestamp($temp_end, false);
+                            $business_info_updating[$value[$j]] = $start_time.'|'.$end_time;
+                        }
+                    }
+                    else {
+                        $business_info_updating[substr($i,strpos($i, '-') + 1, strlen($i))] = $value;
+                    }
+                }
+            }
         }
         if(isset($info_updating)){        
-            $query = $this->db->update('users', $info_updating, array('email'=>$email));
-            if($query)
-            {
-                return  true;
-            }
-            else return false;
+            $query = $this->db->update('users', $info_updating, array('user_id'=>$user_id));
         }
-        else
-            return true;
+        if(isset($business_info_updating)) {
+            $query2 = $this->db->update('users_business', $business_info_updating, array('user_id' => $user_id));
+        }
+        return true;
     }
 
     public function get_email($user_id)
@@ -260,7 +342,31 @@ class Model_users extends CI_Model{
        }
        else return NULL;
     }
-
+    
+    //Get the extra business information.
+    public function get_business_info($id) {
+        $query = $this->db->get_where('users_business', array('user_id' => $id));
+        if($query->num_rows() != 0) {
+            $data = $query->row_array(0);
+            $day_array = array('mon', 'tues', 'wed', 'thurs', 'fri', 'sat', 'sun');
+            for($i = 0; $i < 7; $i++) {
+                if(!empty($data[$day_array[$i]])) {
+                    $temp_hours = explode('|', $data[$day_array[$i]]);
+                    $data['day'][$i]['day'] = $day_array[$i];
+                    $data['day'][$i]['start_time'] = $this->convert_time($temp_hours[0]);
+                    $data['day'][$i]['end_time'] = $this->convert_time($temp_hours[1]);
+                }
+                else {
+                    $data['day'][$i] = false;
+                }
+            }
+            return $data;
+        }
+        else {
+            return false;
+        }
+    }
+    
     public function get_name($email)
     {
 
@@ -303,6 +409,14 @@ class Model_users extends CI_Model{
       //echo "This is a test".$email;
       $query = $this->db->update('users', array('image_key'=>$image_key), array('email'=>$email));
       return $query;
+    }
+    
+    public function add_cover_image($cover_name,$user_id) {
+        //echo $image_key;
+        //$email = "Wrevel@gmail.com";
+        //echo "This is a test".$email;
+        $query = $this->db->update('users_business', array('cover_photo'=>$cover_name), array('user_id'=>$user_id));
+        return $query;
     }
 
     public function is_user($userz)
@@ -398,10 +512,28 @@ class Model_users extends CI_Model{
         return $data['user_id'];
 
      }
+
+    public function get_admin_level($email){
+
+      $sql = "SELECT admin_level FROM users WHERE email = ?;";
+      $query = $this->db->query($sql,array($email,));
+       $data = $query->row_array(0);
+       return $data['admin_level'];
+
+    }
+    
      public function get_username($email){
 
        $sql = "SELECT username FROM users WHERE email = ?;";
        $query = $this->db->query($sql,array($email,));
+        $data = $query->row_array(0);
+        return $data['username'];
+
+     }
+     public function get_username_with_id($user_id){
+
+       $sql = "SELECT username FROM users WHERE user_id = ?;";
+       $query = $this->db->query($sql,array($user_id,));
         $data = $query->row_array(0);
         return $data['username'];
 
@@ -524,7 +656,74 @@ class Model_users extends CI_Model{
     public function add_bank_info($user_id, $recip_id) {
     	$this->db->update('users', array('recip_id' => $recip_id), array('user_id' => $user_id));
     }
+    /*
+     * HELPER FUNCTIONS FOR THIS MODEL.
+     */
+    //Converts the time to AM and PM.
+    public function convert_time($temp_start_time) {
+  	if($temp_start_time >= 780) {
+        	$temp_time[0] = sprintf("%02d", floor(($temp_start_time/60) - 12));	
+        	$temp_time[1] = sprintf("%02d", $temp_start_time % 60);
+       		if($temp_time[0] == '00')
+                	$temp_time[0] = '12';
+                $final_time = implode(':', $temp_time);
+                $final_time .='pm';
+                $final_time = trim($final_time);
+        }
+        else {
+                $temp_time[0] = sprintf("%02d", floor($temp_start_time/60));
+                $temp_time[1] = sprintf("%02d", $temp_start_time % 60);
+                if($temp_time[0] == '00')
+                    	$temp_time[0] = '12';
+                $final_time = implode(':', $temp_time);
+                $final_time .='am';
+                $final_time = trim($final_time);
+        }
+        return $final_time;
+    }
+    //Converts the time to small int.(SAVED IN DATABASE)
+    public function timestamp($input, $format) { //CHANGED! SAVED AS SMALL INT
+        if(strpos($input, ':')) {
+            $input = explode(':', $input);
+            if($format) {
+                $input[0] += 12;
+            }
+            $sum = $input[0] * 60;
+            $sum += $input[1];
+        }
+        else
+            $sum = 0;
+        return $sum;
+    }
     
+    public function script_for_changing_links() {
+        $query = $this->db->get('users');
+        $data = $query->result_array();
+        for($i = 0; $i < count($data); $i++) {
+            if(strpos($data[$i]['image_key'], 'facebook') === false && $data[$i]['image_key'] != 'default_profile.jpg') {
+                mkdir('./uploads/profile/'.$data[$i]['user_id'], 0777, true);
+                chmod('./uploads/profile/'.$data[$i]['user_id'], 0777);
+                $temp_image_path = './uploads/profile/'.$data[$i]['user_id'];
+                rename('./uploads/'.$data[$i]['image_key'], $temp_image_path.'/'.$data[$i]['image_key']);
+                $temp_array = array('image_key' => 'profile/'.$data[$i]['user_id'].'/'.$data[$i]['image_key']);
+                $this->db->update('users', $temp_array, array('user_id' => $data[$i]['user_id']));
+                //echo move_uploaded_file('./uploads/'.$data[$i]['image_key'],'./uploads/profile/'.$data[$i]['user_id'].'/'.$data[$i]['image_key'] );
+            }
+        }
+    }
+    
+    public function script_revert() {
+        $query = $this->db->get('users');
+        $data = $query->result_array();
+        for($i = 0; $i < count($data); $i++) {
+            if(strpos($data[$i]['image_key'], 'facebook') === false && strpos($data[$i]['image_key'], 'profile') !== false && $data[$i]['image_key'] != 'default_profile.jpg') {
+                echo $data[$i]['image_key'].'<br>';
+                $temp_pos = explode('/', $data[$i]['image_key']);
+                $revert_data = array('image_key' => $temp_pos[2]);
+                $this->db->update('users', $revert_data, array('user_id' => $data[$i]['user_id']));
+            }
+        }
+    }
     #code
 }
 

@@ -336,7 +336,11 @@ class Showroom extends CI_Controller {
                 //push the text to model users
 
                 $data = $this->model_users->get_info($email);
-
+                $business_bool = $data['business'];
+                if($business_bool) {
+                    $data['profile'] = $this->model_users->get_business_info($data['user_id']);
+                    $data['profile']['photos'] = array_diff(scandir('./uploads/profile/'.$data['user_id'].'/photos/'), array('..', '.'));
+                }
 
                 $data['PATH_IMG'] = $path['PATH_IMG'];
                 $data['PATH_BOOTSTRAP'] = $path['PATH_BOOTSTRAP'];
@@ -391,34 +395,21 @@ class Showroom extends CI_Controller {
                         $data['attending_events'][$i]['e_image'] = $temp_event[0]['e_image'];
                         $data['attending_events'][$i]['e_name'] = $temp_event[0]['e_name'];
                         $data['attending_events'][$i]['e_date'] = $temp_event[0]['e_date'];
-                        //change start time to 12 hr format.
-                        $temp_start_time = $temp_event[0]['e_start_time'];
-                        if($temp_start_time >= 780) {
-                            $temp_time[0] = sprintf("%02d", floor(($temp_start_time/60) - 12));	
-                            $temp_time[1] = sprintf("%02d", $temp_start_time % 60);
-                            if($temp_time[0] == '00')
-                                    $temp_time[0] = '12';
-                            $final_time = implode(':', $temp_time);
-                            $final_time .='pm';
-                            $final_time = trim($final_time);
-                        }
-                        else {
-                            $temp_time[0] = sprintf("%02d", floor($temp_start_time/60));
-                            $temp_time[1] = sprintf("%02d", $temp_start_time % 60);
-                            if($temp_time[0] == '00')
-                                    $temp_time[0] = '12';
-                            $final_time = implode(':', $temp_time);
-                            $final_time .='am';
-                            $final_time = trim($final_time);
-                        }
-                        $data['attending_events'][$i]['e_start_time'] = $final_time;
+                        $data['attending_events'][$i]['e_attending'] = $temp_event[0]['e_attending'];
+                        $data['attending_events'][$i]['e_likes'] = $temp_event[0]['e_likes'];
+                        $data['attending_events'][$i]['e_start_time'] = $temp_event[0]['e_start_time'];
                         $data['attending_events'][$i]['e_description'] = $temp_event[0]['e_description'];
                     }
                     $result = $data;
-                    //echo '<pre>', print_r($this->session->all_userdata(), true), '</pre>';
+                    //echo '<pre>', print_r($result, true), '</pre>';
                     //$this->load->view('header', $result);
                     $this->load->view('Create_Wrevel_View', $path);
-                    $this->load->view('showroom',$result);
+                    if($business_bool) {
+                        $this->load->view('business_profile', $result);
+                    }
+                    else {
+                        $this->load->view('showroom',$result);
+                    }
                     //$this->load->view('footer');
 
                 }
@@ -575,7 +566,7 @@ public function load_account()
             else{
                 //create a file name for the chat
                 $randomName = md5(uniqid()) . ".html";    
-                $filename =  "/home/wrevelco/public_html/application/views/chatbox/".$randomName;
+                $filename =  "./application/views/chatbox/".$randomName;
                 //try to create file
                 if ($handle=fopen($filename,'w+')){
                         //trying to insert info into db
@@ -634,7 +625,7 @@ public function load_account()
             }
             /* check comment if its blank then do not write file_chat */
 
-            $filename =  "/home/wrevelco/public_html/application/views/chatbox/".$data['chatbox_file'];
+            $filename =  "./application/views/chatbox/".$data['chatbox_file'];
           //$handle = fopen($filename,'w+');
             $today = date("F j, Y, g:i a"); 
             //add commentors name instead of "Comment:"
@@ -673,8 +664,12 @@ public function load_account()
             //fclose($handle);
 
         }
-
-	
+        //USE THIS FIRST.
+	public function do_not_type_in() {
+            $this->load->model('model_users');
+            //$this->model_users->script_for_changing_links();
+            //$this->model_users->script_revert();
+        }
 	
 	
 	

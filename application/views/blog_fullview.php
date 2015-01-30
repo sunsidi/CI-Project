@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title><?php echo $blog['blog_title'];?></title>
-<meta name="description" content="Ever feel tired of another boring night alone on the couch with take-out and absolutely nothing to do? That’s exactly how Wrevel founder, Saj, felt one Friday night with an egg roll in hand during his earlier years in college. “Wouldn’t it be cool if there was a website where I could find a party near me and make some new friends?” After saying “goodbye” to Tom the delivery guy and finally putting an end to all those long boring nights, the idea of Wrevel emerged.">
+<meta name="description" content="<?php echo $blog['blog_body'];?>">
 <meta name="keywords" content="event hosting, parties, new york city life, tickets, wrevel, online tickets, tech company, spaces, buy tickets, services, blog">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap.min.css" rel="stylesheet">

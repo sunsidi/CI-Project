@@ -15,8 +15,10 @@ class info extends CI_Controller{
 		$this->load->library('path');
             	$path = $this->path->getPath();
             	$this->load->library('session');
-            	$nav_data = $this->session->all_userdata();
-                $result = array_merge($path,$nav_data);
+                $this->load->model('model_blogs');
+                $data['blogs'] = $this->model_blogs->get_blogs();
+                $result = array_merge($path,$data);
+                //echo '<pre>', print_r($data, true), '</pre>';
                 $this->load->view('Create_Wrevel_View',$result);
                 $this->load->view('blog',$result);
 	}
@@ -46,6 +48,15 @@ class info extends CI_Controller{
                 $result = array_merge($path,$nav_data);
                 $this->load->view('Create_Wrevel_View',$result);
                 $this->load->view('blog2',$result);
+	}
+	public function blog3(){
+		$this->load->library('path');
+            	$path = $this->path->getPath();
+            	$this->load->library('session');
+                $nav_data = $this->session->all_userdata();
+                $result = array_merge($path,$nav_data);
+                $this->load->view('Create_Wrevel_View',$result);
+                $this->load->view('blog3',$result);
 	}
 	
 	public function press(){
@@ -153,15 +164,6 @@ class info extends CI_Controller{
                 $result = array_merge($path,$nav_data);
                 $this->load->view('Create_Wrevel_View',$result);
                 $this->load->view('nation',$result);
-	}
-	public function ticketing_platform(){
-		$this->load->library('path');
-            	$path = $this->path->getPath();
-            	$this->load->library('session');
-            	$nav_data = $this->session->all_userdata();
-                $result = array_merge($path,$nav_data);
-                $this->load->view('Create_Wrevel_View',$result);
-                $this->load->view('ticketing_platform',$result);
 	}
 	
 	public function contactWrevel(){
