@@ -354,7 +354,7 @@
                 <!-- EVENT HEADER -->
                 <?php if(!empty($wrevenues['cover'])) {?>
                 <div class="panel-header" style="font-family:GillSans;text-align:center;color:white;background:linear-gradient(rgba(70, 107, 121, 0.45), rgba(70, 107, 121, 0.45)),url(<?php echo base_url().'uploads/wrevenues/'.$wrevenues['id'].'/cover/'.$wrevenues['cover']?>); background-size:100%;border-top-left-radius:10px;border-top-right-radius:10px;"> <?php }?>
-                    <div class="row" style="padding:2%;">
+                    <div class="row" style="padding:2%; text-align:center;">
                         
                         <!-- LIKES -->
                         <div class="col-sm-4">
