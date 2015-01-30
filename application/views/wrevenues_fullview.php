@@ -7,7 +7,7 @@
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript"
-    src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap.min.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
@@ -16,11 +16,11 @@
 <link href="<?php echo $PATH_BOOTSTRAP?>css/business-lightbox.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false"
+<script src="https://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false"
             type="text/javascript"></script> 
 
 <script type="text/javascript">var switchTo5x=true;</script>
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript" src="https://w.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher: "98b7df42-3881-4ba4-adc3-bcb7a479d75e", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
 
@@ -352,7 +352,8 @@
             <div class="panel" style="border:none;border-radius:15px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">
                 
                 <!-- EVENT HEADER -->
-                <div class="panel-header" style="font-family:GillSans;text-align:center;color:white;background:linear-gradient(rgba(70, 107, 121, 0.45), rgba(70, 107, 121, 0.45)),url(<?php echo base_url().'/uploads/wrevenues/'.$wrevenues['id'].'/cover/'.$wrevenues['cover']?>); background-size:100%;border-top-left-radius:10px;border-top-right-radius:10px;">
+                <?php if(!empty($wrevenues['cover'])) {?>
+                <div class="panel-header" style="font-family:GillSans;text-align:center;color:white;background:linear-gradient(rgba(70, 107, 121, 0.45), rgba(70, 107, 121, 0.45)),url(<?php echo base_url().'uploads/wrevenues/'.$wrevenues['id'].'/cover/'.$wrevenues['cover']?>); background-size:100%;border-top-left-radius:10px;border-top-right-radius:10px;"> <?php }?>
                     <div class="row" style="padding:2%;">
                         
                         <!-- LIKES -->
