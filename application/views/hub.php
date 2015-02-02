@@ -370,7 +370,8 @@ ul.ticket-event-dp > li > a:hover{
             </div>
             <div class="panel-body" style="height:650px;overflow-y:auto;">
                 <?php if(isset($news_feed)) {
-                    for($i = 0; $i < count($news_feed); $i++) {?>
+                    for($i = 0; $i < count($news_feed); $i++) {
+                    	if(!empty($news_feed[$i])) {?>
                         <div class="row">	
                             <div style="padding: 0 15px;position:relative;">
                                 <p style="text-align:center;"><?php echo $news_feed[$i]['news_date'];?></p>
@@ -384,7 +385,7 @@ ul.ticket-event-dp > li > a:hover{
                             </div>
                         </div>
                         <hr>
-                <?php }}?>
+                <?php }}}?>
                 <div class="row">	
                     <div style="padding: 0 15px;position:relative;">
                         <p style="text-align:center;">2014-12-20 4:00PM</p>
