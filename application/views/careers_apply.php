@@ -25,7 +25,7 @@ jQuery(document).ready(function () {
 <!--content
 ==============================================-->
 <div id='sentMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:20px;width: 40%; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>
-  <div class="container" style="padding-bottom:100px;">
+  <div class="container" style="padding-bottom:100px;margin-top:80px;">
 	<div class="row" style="margin-top:20px;">
 		<div class="col-md-10 col-md-offset-1" style="text-align:center;">
 			<h1 style="text-align:center;font-size:40px;font-family:GillSans;color:white;"><img src="<?php echo $PATH_IMG?>w1.png"/>Careers</h1>

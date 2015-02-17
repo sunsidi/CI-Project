@@ -24,7 +24,7 @@
 
 <!--content
 ==============================================-->
-<div class="container">
+<div class="container" style="margin-top:90px;">
 <div class="row" style="margin:30px;">
   <p class="event"><img src="<?php echo $PATH_IMG?><?php echo $event_info[$category]['image']?>" class="wrev-image"/> <strong><?php echo $event_info[$category]['name']?> </strong> <span class="pronounce"><?php echo $event_info[$category]['pronunciation']?></span></p>
   <p class="definition">&nbsp;&nbsp; <?php echo $event_info[$category]['definition']?></p> 
@@ -123,7 +123,7 @@
     <ul class="pagination">
     	<li><a href="javascript:void(0)" onclick="show_page(1)"><<</a></li>
     	<li><a href="javascript:void(0)"onclick="show_page(-1)"><</a></li>
-    	<?php for($i = 0; $i < $size / 21; $i++) {?>
+    	<?php for($i = 0; $i < $size / 24; $i++) {?>
         	<li><a id="page_number<?php echo $i+1?>" class="page_number_class" href="javascript:void(0)" onclick="show_page(<?php echo $i+1?>)"><?php echo $i+1?></a></li> 
         <?php }?>
         <li><a href="javascript:void(0)" onclick="show_page(-2)">></a></li> 
@@ -150,7 +150,7 @@
       $size_left = $size;
       if (isset($size)){
       	while($size_left > 0){
-      	    for($j=0; $j < 21 && $size_left != 0; $j++) {
+      	    for($j=0; $j < 24 && $size_left != 0; $j++) {
       	    	$size_left--;
       	    	if($group_page == 1) {
       ?>
@@ -213,7 +213,7 @@
     <ul class="pagination">
     	<li><a href="javascript:void(0)" onclick="show_page(1)" class="pagenumber"><<</a></li>
     	<li><a href="javascript:void(0)"onclick="show_page(-1)" class="pagenumber"><</a></li>
-    	<?php for($i = 0; $i < $size / 21; $i++) {?>
+    	<?php for($i = 0; $i < $size / 24; $i++) {?>
         	<li><a id="page_number<?php echo $i+1?>" class="page_number_class pagenumber" href="javascript:void(0)" onclick="show_page(<?php echo $i+1?>)"><?php echo $i+1?></a></li> 
         <?php }?>
         <li><a href="javascript:void(0)" onclick="show_page(-2)" class="pagenumber">></a></li> 
@@ -292,6 +292,9 @@
     	var current_page = 1; 
     	var max_page = <?php echo $group_page?>;
     	function show_page(number) {
+    		var $page_id='page_number'+current_page;
+    		$('#'+$page_id).css("font-weight","normal");
+    		$('#'+$page_id).css("color","#428bca");
     		if(number == -1 && current_page > 1) {
     			current_page--;
     		}
@@ -303,6 +306,9 @@
 	    			current_page = number;
 	    		}
     		}
+    		$page_id='page_number'+current_page;
+    		$('#'+$page_id).css("font-weight","900");
+    		$('#'+$page_id).css("color","#000000");
     		var temp = '.event_group'+current_page;
     		var temp2 = '.page_number'+current_page;
     		$('[class*="event_group"]').hide();

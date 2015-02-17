@@ -22,7 +22,7 @@
 
 <!--content
 ==============================================-->
-<div class="container" style="width:90%;padding-bottom:50px;">
+<div class="container" style="width:90%;padding-bottom:50px;margin-top:30px;">
     <div class="row" id="wrevenues-step" style="margin-top:50px;">
         <h1 class="title" style="text-align:center;font-family:GillSans;color:white;"><a href="<?php echo base_url().'wrevenues/wrevenues_main';?>" style="color:white;"><img class="w_logo" src="<?php echo $PATH_IMG?>w1.png"/>Wrevenues</a></h1>
         <?php echo form_open('wrevenues/search_wrevenues');?>

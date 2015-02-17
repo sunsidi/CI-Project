@@ -22,7 +22,7 @@
 
 <!--content
 ==============================================-->
-<div class="container">
+<div class="container" style="margin-top:90px;">
 <div class="row" style="margin:30px;">
   <p class="event"><img src="<?php echo $PATH_IMG?>latest_wrevs_icon.png" class="wrev-image" style="width:50px;"/> <strong>Wrev</strong> <span class="pronounce">[rev]</span></p>
   <p class="definition"><i>noun</i>&nbsp;&nbsp; an event on Wrevel.com</p> 
@@ -127,11 +127,12 @@
     <ul class="pagination">
     	<li><a href="javascript:void(0)" onclick="show_page(1)"><<</a></li>
     	<li><a href="javascript:void(0)"onclick="show_page(-1)"><</a></li>
-    	<?php for($i = 0; $i < $size / 21; $i++) {?>
-        	<li><a href="javascript:void(0)" onclick="show_page(<?php echo $i+1?>)"><?php echo $i+1?></a></li> 
+    	<?php for($i = 0; $i < $size / 24; $i++) // Yuan change this number from 21 to 24 
+    	{?>  
+    	<li><a href="javascript:void(0)" onclick="show_page(<?php echo $i+1?>)"><?php echo $i+1?></a></li> 
         <?php }?>
         <li><a href="javascript:void(0)" onclick="show_page(-2)">></a></li> 
-        <li><a href="javascript:void(0)" onclick="show_page(<?php echo (int)($size/21)+1?>)"> >> </a></li> 
+        <li><a href="javascript:void(0)" onclick="show_page(<?php echo (int)($size/24)+1?>)"> >> </a></li> 
     </ul>
 </div>-->
 
@@ -156,7 +157,7 @@
       $size_left = $size;
       if (isset($size)){
       	while($size_left > 0){
-      	    for($j=0; $j < 21 && $size_left != 0; $j++) {
+      	    for($j=0; $j < 24 && $size_left != 0; $j++) {  // Yuan change this number from 21 to 24
       	    	$size_left--;
       	    	if($group_page == 1) {
       ?>
@@ -193,7 +194,7 @@
         <div class="details">
                                     <p style="font-size:17px;">
 									<!--Date of event-->
-									<span class="badge date latest-date"><?php echo $event_info[$i]['e_date']?></span>
+									<span class="badge date latest-date"><?php echo $event_info[$i]['e_date'];?></span>
 									<span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><i class="fa fa-clock-o"></i><?php echo $event_info[$i]['e_start_time']; ?></span>
 									</p> 
                                     
@@ -216,7 +217,8 @@
     <ul class="pagination">
     	<li><a href="javascript:void(0)" onclick="show_page(1)" class="pagenumber"><<</a></li>
     	<li><a href="javascript:void(0)"onclick="show_page(-1)" class="pagenumber"><</a></li>
-    	<?php for($i = 0; $i < $size / 21; $i++) {?>
+    	<?php for($i = 0; $i < $size / 24; $i++) //========= Yuan changed this number from 21 to 24, here is the page nubmer bar====================
+    	 {?>   
         	<li><a id="page_number<?php echo $i+1?>" class="page_number_class pagenumber" href="javascript:void(0)" onclick="show_page(<?php echo $i+1?>)"><?php echo $i+1?></a></li> 
         <?php }?>
         <li><a href="javascript:void(0)" onclick="show_page(-2)" class="pagenumber">></a></li> 
@@ -308,6 +310,9 @@
     	var current_page = 1; 
     	var max_page = <?php echo $group_page?>;
     	function show_page(number) {
+    		var $page_id='page_number'+current_page;
+    		$('#'+$page_id).css("font-weight","normal");
+    		$('#'+$page_id).css("color","#428bca");
     		if(number == -1 && current_page > 1) {
     			current_page--;
     		}
@@ -319,6 +324,10 @@
 	    			current_page = number;
 	    		}
     		}
+    		$page_id='page_number'+current_page;
+   // 	window.alert($page_id);
+    		$('#'+$page_id).css("font-weight","900");
+    		$('#'+$page_id).css("color","#000000");
     		var temp = '.event_group'+current_page;
     		var temp2 = '.page_number'+current_page;
     		$('[class*="event_group"]').hide();

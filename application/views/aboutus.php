@@ -18,7 +18,7 @@
 
 <!--content
 ==============================================-->
-  <div class="container" style="padding-bottom:100px; width:85%;">
+  <div class="container" style="padding-bottom:100px; width:85%;margin-top:40px;">
 	<div class="row" style="margin-top:5%;">
 		<div class="col-md-4 col-md-offset-1 about-tabs" style="padding:0;">
 			<div class="row">

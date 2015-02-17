@@ -25,7 +25,7 @@ font-family:GillSans;
 
 <!--content
 ==============================================-->
-  <div class="container" style="padding-bottom:50px;">
+  <div class="container" style="padding-bottom:50px;margin-top:50px;">
 	<div class="row" >
 		<div class="col-md-8 col-md-offset-2" style="padding:20px 50px;font-size:15px;">
 			<h1 class="title" style="text-align:center;font-family:GillSans;color:white;"><img class="w_logo" src="<?php echo $PATH_IMG?>w1.png"/>Privacy Policy</h1>

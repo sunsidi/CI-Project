@@ -21,7 +21,7 @@
 ==============================================-->
 
 	
-<div class="container">
+<div class="container" style="margin-top:80px;">
 <div class="col-md-offset-1 col-md-10">
     <img src="<?php echo $PATH_IMG?>nation_header1.png" style="width: 100%; padding-top: 25px;"/>
 <div style="margin-top: 10px;">

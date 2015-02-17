@@ -4,11 +4,15 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$this->load->library('path');
+		$path = $this->path->getPath();
+		$this->load->view('Create_Wrevel_View',$path);
                 $this->load->library('facebook');
                 $this->load->library('session');
                 $data = $this->path->getPath();
                 $data['login_url'] = $this->facebook->login_url();
                 $data['user'] = $this->facebook->get_user();
+
+                $this->load->view('Create_Wrevel_View',$path);
                 if(isset($data['user']['email'])){
                     $datatest = array(
                         'email'=> $data['user']['email'],
@@ -20,9 +24,11 @@ class Welcome extends CI_Controller {
                 }
                 else {
                 	//echo '<pre>', print_r($this->session->all_userdata(), true), '</pre>';
+			
 			$this->load->view('home',$data);
+			
 		}
-
+		
 	}
 	
 	public function home()
@@ -33,6 +39,8 @@ class Welcome extends CI_Controller {
 		$this->load->library('facebook');
 		$data['login_url'] = $this->facebook->login_url();
                 $data['user'] = $this->facebook->get_user();
+                
+                
                 if(isset($data['user']['email'])){
                     $datatest = array(
                         'email'=> $data['user']['email'],
@@ -57,7 +65,7 @@ class Welcome extends CI_Controller {
                 	}
                 	//$this->session->unset_userdata('prompt_log_in');
                 }
-
+                
 	}
 	
 	public function PW_CHECK()

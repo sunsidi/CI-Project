@@ -675,6 +675,9 @@
                     {
                         display: none;
                     }
+                    #file-input{
+                    	display:inline;
+                    }
                    </style>
 </div>
                     
@@ -1182,6 +1185,7 @@
                                 +'<input id="file-input" name = "event_photos[]" type = "file"/>'
                             '</div>';
             $('#event_images_base').append(content);
+            
         }
     </script>
 </body>

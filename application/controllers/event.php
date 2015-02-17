@@ -60,7 +60,7 @@ class Event extends CI_Controller {
                 $data['event'] = $this->model_events->find_event($event_id);
                 $this->model_events->update_clicks($event_id);
                 $data['event_ticket_types'] = $this->model_events->get_tickets_for_event($event_id);
-                $datestring = "%Y-%m-%d";
+                $datestring = "%Y-%m-%d";   // Yuan tried to change this format
                 $datestring2 = "%H:%i";
                 $time = time();
             	$today = mdate($datestring, $time);
@@ -225,21 +225,22 @@ class Event extends CI_Controller {
                 $this->session->set_flashdata('message','You just earned 10 reputation points for creating a new wrev!' );
                 $this->load->view('Create_Wrevel_View', $path);
                 $this->load->view('successful-event-posting', $path);
-                $this->load->library('email',array('mailtype'=>'html'));
-                $this->email->from('donotreply@wrevel.com', "Wrevel, Inc.");
-                $this->email->to($email);
-                $this->email->subject("Event Created!");
+                //Removed email for now
+                //$this->load->library('email',array('mailtype'=>'html'));
+                //$this->email->from('donotreply@wrevel.com', "Wrevel, Inc.");
+                //$this->email->to($email);
+                //$this->email->subject("Event Created!");
                 //message to user confirms see load library email, 2nd argument is setting to html not default text
-                $message ="<p> Hello ".$my_name."!"."</p><p>You have successfully created an event on Wrevel. You can use the following link to access your event. You can also edit the event in your My Accounts area.</p>";
-                $message .= "<p><a href='".base_url()."event/event_info/latest/".$event_id."'>Your new event.</a></p><p>________________________________</p><p>Copyright 2014 Wrevel, Inc.,<i> All Rights Reserved.</i></p><div>Connect with us!</div>";
-                $message .= "<div>www.wrevel.com</div>";
-                $message .= "<div>Facebook: www.facebook.com/wrevelinc</div>";
-                $message .= "<div>Twitter: www.twitter.com/wrevelco</div>";
-                $message .= "<div>Instagram: www.instagram.com/wrevel</div>";
-                $message .= "<div>Tumblr: wrevel.tumblr.com</div>";
-                $message .= "<div>E-mail: support@wrevel.com</div>";
-                $this->email->message($message);
-                $this->email->send();
+                //$message ="<p> Hello ".$my_name."!"."</p><p>You have successfully created an event on Wrevel. You can use the following link to access your event. You can also edit the event in your My Accounts area.</p>";
+                //$message .= "<p><a href='".base_url()."event/event_info/latest/".$event_id."'>Your new event.</a></p><p>________________________________</p><p>Copyright 2014 Wrevel, Inc.,<i> All Rights Reserved.</i></p><div>Connect with us!</div>";
+                //$message .= "<div>www.wrevel.com</div>";
+                //$message .= "<div>Facebook: www.facebook.com/wrevelinc</div>";
+                //$message .= "<div>Twitter: www.twitter.com/wrevelco</div>";
+                //$message .= "<div>Instagram: www.instagram.com/wrevel</div>";
+                //$message .= "<div>Tumblr: wrevel.tumblr.com</div>";
+                //$message .= "<div>E-mail: support@wrevel.com</div>";
+                //$this->email->message($message);
+                //$this->email->send();
 	    }
             
         }

@@ -21,7 +21,7 @@
 ==============================================-->
 
 	
-<div class="container" style="padding-bottom:50px;">
+<div class="container" style="padding-bottom:50px;margin-top:80px;">
 <div class="col-md-offset-2 col-md-8">
 <h1 class="title" style="text-align:center;font-family:GillSans;color:white;"><img class="w_logo" src="<?php echo $PATH_IMG?>w1.png"/>Pricing</h1>
     <!--Gazette-->   

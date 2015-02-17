@@ -19,7 +19,7 @@
 
 <!--content
 ==============================================-->
-<div class="container" style="padding-bottom:50px;">
+<div class="container" style="padding-bottom:50px;margin-top:80px;">
 	<center><img src="<?php echo $PATH_IMG?>howtowrevel_touse.png" style=""></center>
 </div>
 	

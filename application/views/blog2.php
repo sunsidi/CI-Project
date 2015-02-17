@@ -20,7 +20,7 @@
 <!--content
 ==============================================-->
   
-    <h1 class="title" style="text-align:center;	font-family:GillSans;color:white;"><a href="<?php echo base_url().'info/blog'?>" style="color:white;"><img src="<?php echo $PATH_IMG?>w1.png"/>Blog</a></h1>
+    <h1 class="title" style="text-align:center;	font-family:GillSans;color:white;margin-top:80px;"><a href="<?php echo base_url().'info/blog'?>" style="color:white;"><img src="<?php echo $PATH_IMG?>w1.png"/>Blog</a></h1>
     <div class="container" style="padding: 4%;">
 	
 	

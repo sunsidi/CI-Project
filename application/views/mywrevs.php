@@ -21,7 +21,7 @@
 <!--content
 ==============================================-->
 <div class="container">
-<div class="row" style="padding-bottom:50px;" >
+<div class="row" style="padding-bottom:50px;margin-top:50px;" >
    
        
          <p style="font-size:40px;color: white; margin-top:2%; text-align:center;font-family:GillSans;">discover your world.</p>

@@ -19,7 +19,7 @@
 
 <!--content
 ==============================================-->
-<div class="container" style="padding:0 6% 6%;">
+<div class="container" style="padding:0 6% 6%; margin-top:60px;">
     <center>
         <div>
             <h1 style="text-align:center;font-size:40px;font-family:GillSans;color:white;"><img src="<?php echo $PATH_IMG?>w1.png"/>Blog</h1>

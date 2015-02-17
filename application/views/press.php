@@ -23,7 +23,7 @@
 <!--Press-->
   
     	    <center><div>
-	    <h1 style="text-align:center;font-size:40px;font-family:GillSans;color:white;"><img src="<?php echo $PATH_IMG?>w1.png"/>Press</h1>
+	    <h1 style="text-align:center;font-size:40px;font-family:GillSans;color:white;margin-top:80px;"><img src="<?php echo $PATH_IMG?>w1.png"/>Press</h1>
 	    </div></center>
 	
 <div class="container" style="width: 90%;">

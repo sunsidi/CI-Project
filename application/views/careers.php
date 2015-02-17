@@ -18,7 +18,7 @@
 
 <!--content
 ==============================================-->
-  <div class="container" style="padding-bottom:100px;">
+  <div class="container" style="padding-bottom:100px;margin-top:80px;">
 	<div class="row" style="margin-top:20px;">
 		<div class="col-md-8 col-md-offset-2" style="text-align:center;padding:0 3%;">
 			<h1 style="text-align:center;font-size:40px;font-family:GillSans;color:white;"><img src="<?php echo $PATH_IMG?>w1.png"/>Careers</h1>

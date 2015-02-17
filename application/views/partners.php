@@ -21,7 +21,7 @@
 
 <!--content
 ==============================================-->
-  <div class="container" style="padding-bottom:50px;">
+  <div class="container" style="padding-bottom:50px;margin-top:80px;">
 	<div class="row" style="margin-top:50px;">
 		<div class="col-md-10 col-md-offset-1" style="padding:0 5%;">
 			<div class="panel" style="text-align:center;border:none;border-radius:15px;-moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.8);-webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.8); box-shadow: 0px 0px 5px rgba(0,0,0,0.8);">

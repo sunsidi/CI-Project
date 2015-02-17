@@ -84,11 +84,11 @@
 
                     <div class="col-md-offset-1 col-md-6" style="margin-top: 5%;">
                         <a href="#"><img src="<?php echo base_url().'uploads/'.$blog['blog_filename'];?>" style="width: 100%; margin-top: 5%;"></a>
-                        <p style="font-size: 20px;"><?php echo $blog['blog_body'];?></p>
+                        <p style="font-size: 20px;margin-top:20px;"><?php echo $blog['blog_body'];?></p>
                     </div>
                 </div>
                 <?php if($this->session->userdata('is_logged_in')) {?>
-                    <div class="row" style="padding:1% 2% 2%; margin-top:15px;">
+                    <div class="row" style="padding:1% 5% 2%; margin-top:15px;">
                     	<h3><i class="fa fa-comments"></i> Chatbox</h3>
                         <!-- <div style="text-align:center;">-->
                         <div id = "comment-block" class="comment_section">

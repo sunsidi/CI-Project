@@ -261,8 +261,7 @@ public function index()
 	$this->load->library('form_validation');
 	$this->form_validation->set_rules('email','Email Address','required|valid_email|');
         $this->form_validation->set_rules('password','Password','required|md5|callback_PWcheck');
-        
-	
+       
 	
 	
 	if($this->form_validation->run())
@@ -544,6 +543,7 @@ public function index()
 
     public function registration_validation()
     {
+    	  $this->load->library('session'); 
     	//for some reason not emails are being recevied now....not sure what it is
     	$this->load->library('path');
     	$path = $this->path->getPath();
@@ -601,7 +601,17 @@ public function index()
 			/*echo validation_errors();
 			echo "\n";
 			echo "Please try to sign up again.";*/
-			$this->load->view('home', $path);
+			
+			$this->load->library('path');
+			$this->load->library('facebook');
+			$data = $this->path->getPath();
+			$data['login_url'] = $this->facebook->login_url();
+			$data['user'] = $this->facebook->get_user();
+			$this->load->view('home',$data);
+			
+			
+	/*		$this->load->view('home', $path); */
+			
 			echo "<script type='text/javascript'> ";
                     	echo "window.onload = function() {";
                     	echo "$('#sign-up').modal('show');}</script>";
@@ -849,7 +859,7 @@ public function get_related_events($category)
         $state = $this->input->post('state');
         $zipcode = $this->input->post('zipcode');
         $originalDate = $this->input->post('search_date');
-        $date = date("Y-m-d", strtotime($originalDate));
+        $date = date("Y-m-d", strtotime($originalDate));    
         
     	$related_events= $this->model_events->get_latest_related_events_search($search,$category,$price,$state,$zipcode,$date);
 
@@ -939,7 +949,7 @@ public function get_related_events($category)
         $state = $this->input->post('state');
         $zipcode = $this->input->post('zipcode');
         $originalDate = $this->input->post('search_date');
-        $date = date("Y-m-d", strtotime($originalDate));
+        $date = date("Y-m-d", strtotime($originalDate));      
         //echo $zipcode . "<br>";
         //echo $state. "<br>";
         //echo $price."<br>";
