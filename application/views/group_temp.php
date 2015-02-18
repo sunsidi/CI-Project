@@ -23,7 +23,7 @@
 <!--content
 ==============================================-->
 <div class="container">
-<div class="row" style="margin:30px;">
+<div class="row" style="margin:30px;margin-top:80px;">
   <p class="event"><img src="<?php echo $PATH_IMG?>groups_icon.png"/> <strong>Groups </strong></p>
   <div class="container" style="margin-top: 30px;">
     
