@@ -141,7 +141,7 @@ background: -webkit-linear-gradient(top, #6f95ae,#a6bbcb);   /*Safari5.1 Chrome1
 background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#6f95ae), to(#a6bbcb));
 	-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .2);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .2);box-shadow:2px 2px 2px rgba(0, 0, 0, .2);
 	border-radius: 10px;">
-		<p style="text-align: center;padding-top: 10px; color:white; font-size:25px;">What to do a feature on us? Contact us at publicrelations@wrevel.com.</p>
+		<p style="text-align: center;padding-top: 10px; color:white; font-size:25px;">Want to do a feature on us? Contact us at publicrelations@wrevel.com.</p>
             </div>
         </div>
         </div>
