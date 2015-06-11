@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title><?php echo $other_fullname ?></title>
+<title><?php echo $other_fullname ?> | Wrevel - Discover Your World, Host & Experience Events</title>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript"
@@ -45,7 +45,7 @@ position:absolute;
 ==============================================-->
 <div id='sentMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:20px;width: 500px; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>
 <div class="container" style="padding-bottom:50px;">
-    <div class="row" style="margin-top:50px;">
+    <div class="row" style="margin-top:120px;">
 
         <div class="col-md-9 col-md-offset-1">
             <div class="col-md-1">
@@ -55,7 +55,7 @@ position:absolute;
             <h2 class="profile-fullname"><?php echo $other_fullname ?></h2>
             </div>
             <div class="col-md-4" style="height:65px;background:#6ca5cc; color:white; border-top-right-radius:5px;" id="reputationInfo" data-content="The more you interact (attending,creating events) on Wrevel, the more points you receive" data-trigger="hover" data-placement="bottom">
-            <h2 class="reputation" style="text-align:center;margin-left:-15px;cursor:default;float:left;width:100%;margin-top:12px;">Reputation <span class="badge" style="color:#6ca5cc; background:white;font-size:20px;vertical-align:middle; border-radius:50%; padding:10px 0px; width:40px;height:40px; text-align:center;margin-left:15px;"><?php echo $other_reputation ?></span><i class="fa fa-question-circle pull-right" style="font-size:15px;margin-top:10px;padding:0;"></i> </h2>
+            <h2 class="reputation" style="text-align:center;margin-left:-15px;cursor:default;float:left;width:100%;margin-top:12px;">Reputation <span class="badge" style="color:#6ca5cc; background:white;font-size:20px;vertical-align:middle; border-radius:50%; padding:10px 0px; width:40px;height:40px; text-align:center;margin-left:15px;"><?php echo (int)($other_reputation/20) ?></span><i class="fa fa-question-circle pull-right" style="font-size:15px;margin-top:10px;padding:0;"></i> </h2>
             </div>
         </div>
     </div>
@@ -136,9 +136,15 @@ position:absolute;
                                         <a href="#" data-toggle="modal" data-target="#basicModal"  class="btn btn-lg btn-block blue-button" style="border-radius:10px;"><i class="fa fa-envelope"></i> Message <?php echo $other_fullname?></a>
                                     </div>
                                     <!--Add to Friends-->
-                                    <div class="row" style="padding-top:10px;">                                     
-                                        <a href="<?php echo base_url().'main/friend_request/'.$other_id;?>" class="btn btn-lg btn-block blue-button" style="border-radius:10px;"><span class="glyphicon glyphicon-user"></span> Add to Friends List</button></a>
-                                    </div>
+                                    <?php if(!$is_friend){ 
+                                    echo  "<div class='row' style='padding-top:10px;'>";
+                                    echo  "<a href='".base_url()."main/friend_request/".$other_id."' class='btn btn-lg btn-block blue-button' style='border-radius:10px;'><span class='glyphicon glyphicon-user'></span> Add to Friends List</button></a>";
+                                    echo  "</div>";
+                                    }?>
+                                                                         
+                                        
+                                    
+
                                     <!--Chatbox-->
                                     <div class="row" style="padding-top:15px;">
                                         <p style="text-align:center; font-size:25px;">Chatbox</p>
@@ -293,5 +299,15 @@ position:absolute;
     <script>
 	$('#reputationInfo').popover();
 	</script>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41514976-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </body>
 </html> 

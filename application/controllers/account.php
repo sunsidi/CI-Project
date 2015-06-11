@@ -101,6 +101,10 @@ class account extends CI_Controller{
 		$this->load->library('path');
             	$path = $this->path->getPath();
             	$this->load->library('session');
+            	if($this->session->userdata('activation')=="N"){
+            	redirect('account/myaccount_accountinfo');
+            }
+            else{
             	$this->load->model('model_users');
                 $this->load->model('model_events');
                 $data['random_placeholder'] = 'hello';
@@ -120,12 +124,17 @@ class account extends CI_Controller{
 
                 $this->load->view('Create_Wrevel_View',$result);
                  $this->load->view('myaccount_eventlisting',$result);
+            }
 	}
 	public function myaccount_eventattending(){
 	
 		$this->load->library('path');
             	$path = $this->path->getPath();
             	$this->load->library('session');
+            if($this->session->userdata('activation')=="N"){
+            	redirect('account/myaccount_accountinfo');
+            }
+            else{
             	$this->load->model('model_users');
                 $this->load->model('model_events');
                 $this->load->model('model_tickets');
@@ -146,6 +155,7 @@ class account extends CI_Controller{
 
                 $this->load->view('Create_Wrevel_View',$result);
                  $this->load->view('myaccount_eventattending',$result);
+            }
 	}
 	
 	public function myaccount_ticketmanagement(){
@@ -153,6 +163,10 @@ class account extends CI_Controller{
 		$this->load->library('path');
             	$path = $this->path->getPath();
             	$this->load->library('session');
+            if($this->session->userdata('activation')=="N"){
+            	redirect('account/myaccount_accountinfo');
+            }
+            else{
             	$this->load->model('model_users');
                 $this->load->model('model_events');
                 $this->load->model('model_tickets');
@@ -181,6 +195,7 @@ class account extends CI_Controller{
 		
                 $this->load->view('Create_Wrevel_View',$result);
                  $this->load->view('myaccount_ticketmanagement',$result);
+            }
 	}
 	
 	public function myaccount_stats(){
@@ -188,6 +203,10 @@ class account extends CI_Controller{
 		$this->load->library('path');
             	$path = $this->path->getPath();
             	$this->load->library('session');
+            if($this->session->userdata('activation')=="N"){
+            	redirect('account/myaccount_accountinfo');
+            }
+            else{
                 $this->load->model('model_users');
                 $this->load->model('model_events');
                 $this->load->model('model_tickets');
@@ -247,6 +266,7 @@ class account extends CI_Controller{
                 //echo '<pre>', print_r($data, true), '</pre>';
                 $this->load->view('Create_Wrevel_View',$result);
                  $this->load->view('myaccount_stats',$result);
+            }
 	}
 	
 	

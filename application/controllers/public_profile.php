@@ -46,18 +46,21 @@ class Public_profile extends CI_Controller {
                 // Grab all your friends. Stored in 'all_friends'
                 $data['all_friends'] = $this->model_friend_request->get_friendlists($user_id);
                 $data['number_of_friends'] = count($data['all_friends']);
+                $data['is_friend']=false;  // whether the visitor is a friend of the host 
                 //Remap all needed information that will be printed: Friend ID, Friend picture, Friend name.
                 for($i = 0; $i < $data['number_of_friends']; $i++) {
                     $temp_friend_data = $this->model_users->get_email($data['all_friends'][$i]['other_user_id']);
                     $data['all_friends'][$i]['friend_user_id'] = $temp_friend_data[0]['user_id'];
                     $data['all_friends'][$i]['friend_picture'] = $temp_friend_data[0]['image_key'];
                     $data['all_friends'][$i]['friend_fullname'] = $temp_friend_data[0]['fullname'];
+                    if( $temp_friend_data[0]['email']==$email)
+                    	 $data['is_friend']=true;
                 }
                 /**
                  * End of Friends List.
                  */
                 
-	        if($other_email[0]['email'] == $email)
+	        if($other_email[0]['email'] == $email)  // this user is visiting his own showroom
 	            redirect('showroom/profile');
 	        else {
 	            $other_data = $this->model_users->get_info($other_email[0]['email']);
@@ -102,8 +105,12 @@ class Public_profile extends CI_Controller {
                             $data['attending_events'][$i]['e_description'] = $temp_event[0]['e_description'];
                         }
                         //This is to make sure the data doesn't conflict with the navagation bar data.
+                        $other_fullname=$other_data['fullname'];
+                        if(strlen($other_fullname)>20){
+                        	  $other_fullname=substr($other_fullname,0,17).'...';
+                        }
                         $remapped_data = array('other_id'		    => $user_id,
-                                               'other_fullname'         => $other_data['fullname'],
+                                               'other_fullname'         => $other_fullname,
                                                'other_email'            => $other_email[0]['email'],
                                                'other_username'         => $other_data['username'],
                                                'other_phone'            => $other_data['phone'],

@@ -4,7 +4,7 @@
  <meta charset="utf-8">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Inbox</title>
+<title>Inbox | Wrevel - Discover Your World, Host & Experience Events</title>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript"
@@ -247,6 +247,16 @@ for($i =0; $i<$num_chats;$i++){?>
   <script src="<? echo $PATH_BOOTSTRAP?>js/bootstrap.js"></script> -->
       <script src="<? echo $PATH_BOOTSTRAP?>js/inbox.js"></script>
       <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41514976-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 </body>
 </html> 

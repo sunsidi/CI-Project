@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>The Hub</title>
+<title>The Hub | Wrevel - Discover Your World, Host & Experience Events</title>
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap.css" rel="stylesheet">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -70,7 +70,7 @@ ul.ticket-event-dp > li > a:hover{
 ==============================================-->
  <?php $events_info =$this->_ci_cached_vars;?>
 
- <div class="featuring" style="width:100%;margin-left:auto;margin-right:auto;margin-top:3%;position:relative;">
+ <div class="featuring" style="width:100%;margin-left:auto;margin-right:auto;margin-top:8%;position:relative;">
 		<div class="btn-group ticker-button" style="float:left;z-index:3;">
 		<button type="button" class="btn btn-lg dropdown-toggle ticker" data-toggle="dropdown" aria-expanded="false">Featured Events <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
 			<ul class="dropdown-menu ticket-event-dp" role="menu">
@@ -483,5 +483,15 @@ ul.ticket-event-dp > li > a:hover{
 
 	<!--<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
 	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script>-->
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41514976-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </body>
 </html> 

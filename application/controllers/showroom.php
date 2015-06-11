@@ -2,6 +2,21 @@
 
 class Showroom extends CI_Controller {
      //CHANGED TO ONLY SHOW THE FRIEND REQUEST YOU ACCEPTED. MAYBE WE WILL CHANGE TO SHOW ALL NOTIFICATIONS
+     
+
+     public function user_data_submit() {
+  //   $username=$this->input->post('email');
+ //      $username2=$this->input->post('whateer');
+     $ID = $_POST['username'];  //no idea why can not receive data from post request from ionic
+  //   $ID = $_GET['email'];
+//Either you can print value or you can send value to database
+//if(isset($_GET)){
+echo "1";
+//}else {
+//echo 'not set';
+//}
+}
+
      public function notify2()
         {
 	    $this->load->model('model_users');
@@ -10,6 +25,11 @@ class Showroom extends CI_Controller {
             $path = $this->path->getPath();
             $this->load->library('session');
             
+            if($this->session->userdata('activation')=="N"){
+            	redirect('account/myaccount_accountinfo');
+            }
+            //Else continue to load profile.
+            else{
             //get email from session
             $email = $this->session->userdata('email');
             $this->load->model('model_users');
@@ -61,6 +81,7 @@ class Showroom extends CI_Controller {
             else{
                 redirect('main/index');
             }
+          }
         }
 
      public function notify()
@@ -314,19 +335,21 @@ class Showroom extends CI_Controller {
             $this->load->library('session');
             $logged_in = $this->session->userdata('is_logged_in');
             //If the user is not logged in, prompt them to log in or sign up.
-            if(!$logged_in){
+            if(!$logged_in ){
                 $prompt = array('prompt_log_in' => 1);
                 $this->session->set_userdata($prompt);
                 redirect('welcome/home'); 
+            }elseif($this->session->userdata('activation')=="N"){
+            	redirect('account/myaccount_accountinfo');
             }
             //Else continue to load profile.
             else{
+            	;
                 $this->session->unset_userdata('prompt_log_in');
                 $counter =0;
                 $this->load->model('model_friend_request');
                 $this->load->library('path');
                 $path = $this->path->getPath();
-
                 //get email from session
                 $email = $this->session->userdata('email');
                 $this->load->model('model_users');
@@ -367,9 +390,13 @@ class Showroom extends CI_Controller {
                 //Remap all needed information that will be printed: Friend ID, Friend picture, Friend name.
                 for($i = 0; $i < $data['number_of_friends']; $i++) {
                     $temp_friend_data = $this->model_users->get_email($data['all_friends'][$i]['other_user_id']);
+                    $tem_fullname=$temp_friend_data[0]['fullname'];
+                    if(strlen($tem_fullname)>20){
+                        	  $tem_fullname=substr($tem_fullname,0,17).'...';
+                        }
                     $data['all_friends'][$i]['friend_user_id'] = $temp_friend_data[0]['user_id'];
                     $data['all_friends'][$i]['friend_picture'] = $temp_friend_data[0]['image_key'];
-                    $data['all_friends'][$i]['friend_fullname'] = $temp_friend_data[0]['fullname'];
+                    $data['all_friends'][$i]['friend_fullname'] = $tem_fullname;
                 }
                 /**
                  * End of Friends List.
@@ -454,6 +481,7 @@ class Showroom extends CI_Controller {
                         //$this->load->view('')
                         redirect('main/index');
                 }
+            
         }
 
 public function load_account()

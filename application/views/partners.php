@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Partners and Affiliates</title>
+<title>Partners and Affiliates | Wrevel - Discover Your World, Host & Experience Events</title>
 <meta name="description" content="With our different range of social events and activities, we provide a range of partnership opportunities from startups, social organizations, performing arts, and many others.">
 <meta name="keywords" content="partners, partners page, event hosting, parties, new york city life, tickets, wrevel, online tickets, tech company, partnership, buy tickets, sponsors">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap.css" rel="stylesheet">
@@ -120,5 +120,15 @@
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.js"></script>-->
     <script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41514976-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </body>
 </html> 

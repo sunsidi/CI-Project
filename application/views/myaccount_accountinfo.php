@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 
-<title>My Account - Account Information</title>
+<title>My Account - Account Information | Wrevel - Discover Your World, Host & Experience Events</title>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript"
@@ -25,12 +25,12 @@ jQuery(document).ready(function () {
 
 <body>
 <?php $this->load->view('header');?>
-
+<?$this->load->library('session');?>
 <!--content
 ==============================================-->
-<div id='sentMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:20px;width: 500px; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>
+<div id='sentMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:80px;width: 500px; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>
   <div class="container" style="padding-bottom:50px;">
-	<div class="row" style="margin-top:50px;">
+	<div class="row" style="margin-top:110px;">
     
 		<div class="col-md-3 col-md-offset-1">
         		<div class="panel panel-default" style="border:none;">
@@ -54,7 +54,7 @@ jQuery(document).ready(function () {
     						<h3 class="panel-title text-center" style="font-size:25px;"><img src="<?php echo $PATH_IMG?>primary_contact_icon.png" style="vertical-align:top;"/> Primary Contact</h3>
   						</div>
   						<div class="panel-body">
-                        	<div style="padding:0px 15%;">
+                        	<div style="padding:0px 15%;padding-bottom:46px;">
                         	<p><span class="glyphicon glyphicon-user"></span><span style="margin-left:16px;"><?php echo " ".$fullname?></span></p>
                             
                             <p class="pull-left"><i class="fa fa-map-marker"></i></p>
@@ -63,7 +63,14 @@ jQuery(document).ready(function () {
                             <p><i class="fa fa-envelope"></i> <span style="margin-left:16px;"><?php echo $email?></span></p>
                            	</div>
                         	<div style="text-align:center;padding-top:15px;">
-								<a href="#" data-toggle="modal" data-target="#edit" class="btn account-btn" style="font-size:19px;color:white;">Edit</a>
+								<a  
+								<?php 
+								$activation=$this->session->userdata('activation');
+								if($activation=='N'){
+								
+								}else{echo 'href="#" data-toggle="modal" data-target="#edit"'; }
+								?>
+								 class="btn account-btn" style="font-size:19px;color:white;">Edit</a>
 							
 								<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 									<div class="modal-dialog">
@@ -133,7 +140,14 @@ jQuery(document).ready(function () {
 									</div>
 								</div>
 							
-								<a href="#" data-toggle="modal" data-target="#changePassword" class="btn account-btn" style="font-size:19px;">Change Password</a>
+								<a 
+								<?php 
+								$activation=$this->session->userdata('activation');
+								if($activation=='N'){
+								
+								}else{ echo 'href="#" data-toggle="modal" data-target="#changePassword"';}
+								?>
+								class="btn account-btn" style="font-size:19px;">Change Password</a>
 								<div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 									<div class="modal-dialog">
 										<div class="modal-content">
@@ -168,7 +182,14 @@ jQuery(document).ready(function () {
 													</div>
 												<!--</form>-->
                                                                                                 
-                                                                                                <a href="#"><button type="submit" class="btn" style="background:#1D75BD;color:white;font-size:20px;">Save</button></a>
+                                                                                                <a href="#"><button 
+                                                                                                <?php 
+												$activation=$this->session->userdata('activation');
+												if($activation=='N'){
+												
+												}else{ echo 'type="submit"';}
+								?>
+                                                                                                 class="btn" style="background:#1D75BD;color:white;font-size:20px;">Save</button></a>
                                                                                                 <?php echo form_close()?>
 											</div>
 											
@@ -182,13 +203,14 @@ jQuery(document).ready(function () {
 					</div>           
         		</div>
                 <div class="col-md-6">
-        			<div class="panel panel-default" style="background:#DFE2E9;height:270px;padding:10px 0;">
+        			<div class="panel panel-default" style="background:#DFE2E9;height:300px;padding:10px 0;">
   						<div class="panel-heading" style="background:none; color:#1B74BC; border:none;">
-    						<h3 class="panel-title text-center" style="font-size:25px;"><img src="<?php echo $PATH_IMG?>preferences_icon.png" style="vertical-align:top;"/> Preferences</h3>
+    						<h3 class="panel-title text-center" style="font-size:25px;"><img src="<?php echo $PATH_IMG?>preferences_icon.png" style="vertical-align:top;"/> Activation</h3> 
   						</div>
-                                    <p style="text-align:center;font-size:25px;margin-top:75px;"> COMING SOON </p>
-  						<!--<div class="panel-body" style="text-align:center;">
-                        	<p>Email Notifications
+                                    <!--<p style="text-align:center;font-size:25px;margin-top:75px;"> COMING SOON </p>-->
+  						<div class="panel-body" style="text-align:center;"  >
+  													
+                        	<!--<p style="visibility: hidden;">Email Notifications
    							<label class="radio-inline">
   							<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Yes
 							</label>
@@ -196,25 +218,36 @@ jQuery(document).ready(function () {
   							<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> No
 							</label>
                             </p>
-                            <h3 style="color:#1B74BC;">Types of Email Notifications</h3>
-                            <div style="padding:0px 25px;">
-                            	<div class="checkbox" style="text-align:left;">
+                            <h3 style="color:#1B74BC;visibility: hidden">Types of Email Notifications</h3>
+                            <div style="padding:0px 25px;" >
+                            	<div class="checkbox" style="text-align:left;display:none" >
   									<label>
     								<input type="checkbox" value="">
     								Event Alerts
   									</label>
                             	</div>
-                            	<div class="checkbox" style="text-align:left;">    
+                            	<div class="checkbox" style="text-align:left;display:none">    
                                 	<label>
     								<input type="checkbox" value="">
     								Interested Event Alerts
   									</label>
-								</div>
-                            	<button onclick="deactivate()" type="button" class="btn btn-block" style="font-size:19px; background:#1D75BD; color:white;">Deactivate My Account</button>
+								</div> -->
+								<p>You can deactivate your account temporarily. This will hide your account and events from public searches. You can reactivate it again anytime after logging in. </p>
+								<div>							   
+								<?php 
+								$activation=$this->session->userdata('activation');
+								if($activation=='N'){
+							
+								echo '<button onclick="reactivate()" type="button" class="btn btn-block" style="font-size:19px; background:#1D75BD; color:white;">Reactivate My Account</button>';
+								}else{
+								echo '<button onclick="deactivate()" type="button" class="btn btn-block" style="font-size:19px; background:#1D75BD; color:white;">Deactivate My Account</button>';
+								}
+								?>
+                            	
                             
-								<button onclick="deleteacct()" type="button" class="btn btn-block" style="font-size:19px;margin-top:10px;background:#1D75BD; color:white;">Delete My Account</button>
+								<!--<button onclick="deleteacct()" type="button" class="btn btn-block" style="font-size:19px;margin-top:10px;background:#1D75BD; color:white;">Delete My Account</button>-->
                             </div>	
-  						</div>-->
+  						</div>
 					</div>           
         		</div>
             </div>
@@ -242,7 +275,7 @@ jQuery(document).ready(function () {
                                         	<td><?php if(isset($card_data)) echo $card_data['name']?></td>
                                             	<td><?php if(isset($card_data)) echo "************".$card_data['last4']?></td>
                                             	<td><?php if(isset($card_data)) echo $card_data['exp_month'].'/'.$card_data['exp_year']?></td>
-                                            	<!--<td><a href="#" data-toggle="modal" data-target="#editCard">[Edit]</a></td>
+                                            	<!--<td><a href="#" data-toggle="modal" data-target="#editCard"	>[Edit]</a></td>
 												<div class="modal fade" id="editCard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
@@ -295,7 +328,13 @@ jQuery(document).ready(function () {
                                 </div>
                                 
                                 <div style="text-align:right;">
-									<a href="#" data-toggle="modal" data-target="#addCard" class="btn account-btn">Add</a>
+									<a 
+									<?php 
+										$activation=$this->session->userdata('activation');
+										if($activation=='N'){}else{ 
+										echo 'href="#" data-toggle="modal" data-target="#addCard"';}
+									?>
+									 class="btn account-btn">Add</a>
 								
 									<div class="modal fade" id="addCard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
@@ -362,7 +401,13 @@ jQuery(document).ready(function () {
 												<td style="background:white; text-align:center; padding:5px;"><?php if(isset($bank_data)) echo "*********" . $bank_data['last4']?></td>
 												<td style="background:white; text-align:center;"><?php if(isset($bank_data)) echo "*********"?></td>
                                                                                                 
-												<td><a href="#" data-toggle="modal" data-target="#editAcct">[Edit]</a></td>
+												<td><a 
+												<?php 
+												$activation=$this->session->userdata('activation');
+												if($activation=='N'){}else{
+												echo 'href="#" data-toggle="modal" data-target="#editAcct"';	}
+												?>
+												>[Edit]</a></td>
 												
 												<div class="modal fade" id="editAcct" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 													<div class="modal-dialog">
@@ -418,9 +463,15 @@ jQuery(document).ready(function () {
                                            
                                             </tr>
 		
-                                            <tr><p style="padding-left:8%;"><?php if(isset($bank_data)) echo '<span style="color:green;">'.$bank_data["bank_name"].'</span> is now saved on file.'?> You <?php if(isset($bank_data)) echo '<span style="color:green;"><b>are</b></span>'; else echo '<span style="color:red;"><b>are not</b></span>';?> set up to receive payments. <a href="#">[Remove]</a></p></tr>
+                                            <tr><p style="padding-left:8%;"><?php if(isset($bank_data)) echo '<span style="color:green;">'.$bank_data["bank_name"].'</span> is now saved on file.'?> You <?php if(isset($bank_data)) echo '<span style="color:green;"><b>are</b></span>'; else echo '<span style="color:red;"><b>are not</b></span>';?> set up to receive payments. <a 
+                        <?php 
+			$activation=$this->session->userdata('activation');
+			if($activation=='N'){}else{
+			echo 'href="#"';	}
+			?>
+                                 >[Remove]</a></p></tr>
 											
-										</tbody>
+							</tbody>
                                     </table>
                                 </div>
                                 <div style="text-align:right;">
@@ -447,6 +498,13 @@ jQuery(document).ready(function () {
 	<script>
 		function deactivate(){
 			confirm("Are you sure you want to deactivate your account?");
+			alert("An email has been sent to your email address, you are always welcome!");
+			window.location.replace("http://wrevel.com/main/deactivate_account");
+			
+		}
+		function reactivate(){
+			alert("Welcome back, we missed you so much in those days!");
+			window.location.replace("http://wrevel.com/main/deactivate_account");
 		}
 		function deleteacct(){
 			confirm("Are you sure you want to delete your account?");
@@ -476,5 +534,15 @@ jQuery(document).ready(function () {
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
 	<!--<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
 	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script>-->
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41514976-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </body>
 </html> 

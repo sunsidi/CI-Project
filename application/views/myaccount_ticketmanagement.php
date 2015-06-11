@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 
-<title>My Account - Ticket Sales Management</title>
+<title>My Account - Ticket Sales Management | Wrevel - Discover Your World, Host & Experience Events</title>
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap.min.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
@@ -26,9 +26,9 @@ jQuery(document).ready(function () {
 
 <!--content
 ==============================================-->
-<div id='sentMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:20px;width: 500px; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>  <div class="container" style="padding-bottom:50px;">
+<div id='sentMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:80px;width: 500px; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>  <div class="container" style="padding-bottom:50px;">
 	<div class="container" style="padding-bottom:50px;">
-	<div class="row" style="margin-top:50px;">
+	<div class="row" style="margin-top:110px;">
     
 		<div class="col-md-3 col-md-offset-1">
         	<div class="panel panel-default" style="border:none;">
@@ -479,5 +479,15 @@ jQuery(document).ready(function () {
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
 	<!--<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
 	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script>-->
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41514976-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </body>
 </html> 

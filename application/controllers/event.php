@@ -69,7 +69,11 @@ class Event extends CI_Controller {
                 for($i = 0; $i < count($data['event_ticket_types']); $i++) {
                     $date2 = date_create($data['event_ticket_types'][$i]['date']);
                     $diff = date_diff($date1, $date2);
-                    $difference = $diff->format('%R%a');
+
+                 
+                    
+                    
+                /**    $difference = $diff->format('%R%a');
                     if($difference <= 0) {
                         $today_hour = $this->model_events->timestamp($hour);
                         if($today_hour > $data['event_ticket_types'][$i]['time']) {
@@ -81,7 +85,24 @@ class Event extends CI_Controller {
                     }
                     else {
                         $data['event_ticket_types'][$i]['expired'] = 0;
+                    }  **/
+    //           $difference = $diff->format('%a');  //Yuan change this from %R%a to %a
+                    if($diff->format('%R%a') <= 0) {   //too old, expired!
+       /**                 $today_hour = $this->model_events->timestamp($hour);
+                        if($today_hour > $data['event_ticket_types'][$i]['time']) {
+                            $data['event_ticket_types'][$i]['expired'] = 1;
+                        }
+                        else {
+                            $data['event_ticket_types'][$i]['expired'] = 0;
+                        }   **/
+                    	$data['event_ticket_types'][$i]['expired'] = 0;
                     }
+                    else {
+                        $data['event_ticket_types'][$i]['expired'] = 1; //yuan change this to 1 from 0
+                    }     
+                    
+                    
+                    
                     $time_end = $data['event_ticket_types'][$i]['time'];
                     if($time_end >= 780) {
                         $temp_time[0] = sprintf("%02d", floor(($time_end/60) - 12));	
@@ -154,7 +175,7 @@ class Event extends CI_Controller {
 
 		
                 //echo "<pre> ",print_r($data,true) ,"</pre>";
-                $this->load->view('Create_Wrevel_View',$result);
+               $this->load->view('Create_Wrevel_View',$result);
                 $this->load->view('event_fullview',$result);
                 
                 
@@ -190,6 +211,10 @@ class Event extends CI_Controller {
             $email = $this->session->userdata('email');
             $my_name = $this->model_users->get_name($email);
             $id = $this->model_users->get_userID($email);
+            
+            if((!$this->session->userdata('is_logged_in'))) {
+            	
+            }else{
             $event_id = $this->model_events->create_event($id);
             if($event_id) {
                 mkdir('./uploads/events/'.$event_id.'/photos/', 0777, true);
@@ -221,7 +246,7 @@ class Event extends CI_Controller {
                 }
                 $this->model_events->update_images($e_image, $event_id);
                 $this->model_events->update_attending($id, $event_id);
-                $this->model_users->add_reputation($email, 10);
+                $this->model_users->add_reputation($email, 20);
                 $this->session->set_flashdata('message','You just earned 10 reputation points for creating a new wrev!' );
                 $this->load->view('Create_Wrevel_View', $path);
                 $this->load->view('successful-event-posting', $path);
@@ -241,6 +266,7 @@ class Event extends CI_Controller {
                 //$message .= "<div>E-mail: support@wrevel.com</div>";
                 //$this->email->message($message);
                 //$this->email->send();
+	    }
 	    }
             
         }
@@ -269,9 +295,14 @@ class Event extends CI_Controller {
         //echo $script;
         return $script;
         }
+        
         public function hub(){
             $path = $this->path->getpath();
             $this->load->library('session');
+         if($this->session->userdata('activation')=="N"){
+            	redirect('account/myaccount_accountinfo');
+            }
+         else{
             $this->load->model('model_users');
             $this->load->model('model_events');
             $this->load->model('model_news');
@@ -293,6 +324,7 @@ class Event extends CI_Controller {
             $this->load->view('Create_Wrevel_View', $path);
             $this->load->view('hub',$result);
             //$this->load->view('test_event');
+          }
 
         }
         public function hub_search(){
@@ -347,17 +379,7 @@ class Event extends CI_Controller {
 	    if($search_user != "" && $search_user != " ") {
             	$users = $this->model_users->search_by_name($search_user);
             }
-           
 
-            //$input = $this->input->post();
-            //print_r($result);
-            /*
-            foreach($events as $event){
-                echo "<a href=".base_url()."event/event_info/".$event['event_id'].'>'.$event['e_name']."</a><br>";
-
-            }
-            */
-            //get states of where events that are posted are located in.
             $data['users'] = $users;
             $nav_data = $this->session->all_userdata();
             $all = array_merge($data,$path,$nav_data);
@@ -365,7 +387,6 @@ class Event extends CI_Controller {
             //echo "<pre>",print_r($data,true) ,"</pre>";
             $this->load->view('Create_Wrevel_View',$all);
             $this->load->view('hub',$all);
-            
 
         }
         

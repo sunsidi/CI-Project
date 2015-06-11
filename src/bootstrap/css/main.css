@@ -1,3 +1,49 @@
+/*icons*/
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot?-kgrl1u');
+	src:url('../fonts/icomoon.eot?#iefix-kgrl1u') format('embedded-opentype'),
+		url('../fonts/icomoon.woff?-kgrl1u') format('woff'),
+		url('../fonts/icomoon.ttf?-kgrl1u') format('truetype'),
+		url('../fonts/icomoon.svg?-kgrl1u#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-email_icon:before {
+	content: "\e600";
+}
+
+.icon-notifications_icon:before {
+	content: "\e601";
+}
+
+.icon-mywrevs_icon:before {
+	content: "\e60c";
+}
+
+.icon-thehub_icon:before {
+	content: "\e60e";
+}
+
+
+
+/*end of icons*/
+
 .row-centered {
     text-align:center;
 }
@@ -904,8 +950,25 @@ margin-top:-67px;
 display:none;
 }
 
-.featured_category{
+.featured_category_panel{
 height:587px;
+padding:20px 50px;
+}
+
+.featured_category_title{
+font-size:45px;    
+}
+.featured_category_pronounce{
+    font-size:32px;
+    margin-top:40px;
+}
+
+.featured_category_definition{
+    font-size:24px;
+}
+
+.featured_category_button{
+    margin-top:50px;
 }
 
 .event-full-view-container{
@@ -1394,6 +1457,92 @@ height:800px;
     color: white;
 }
 
+.sign-in-button{
+    width:128px;
+}
+
+.sign-up-button{
+    width:130px;
+}
+
+.logo_lg{
+    width:25%;
+}
+
+.press_bkpaper{
+    margin-top:3.5%;
+    text-align:center;
+    padding:0 25%;
+}
+
+.press_dnainfo{
+    margin-top:3.5%;
+    text-align:center;
+    padding:0 30%;
+    //padding-left:30%;
+}
+
+.press_gpgazette{
+    margin-top:3.5%;
+    text-align:center;
+    padding:0 30%;
+    //padding-left:30%;
+}
+
+.press_technically{
+    text-align:center;
+    padding:0 25%;
+}
+
+a.mywrevs-header{
+    color:white;
+    font-size:16px;
+    padding:1px 8px 1px 3px;
+    border-radius:0;
+    margin-top:8px;
+}
+a.mywrevs-header:hover{
+    background:#B4C4D3;
+}
+
+.wrevel-logo-header{
+    width:150px;
+    margin-top:10px;
+    display:block;
+}
+.create-wrev-header{
+    background: none;
+    color:white;
+    margin-top:5px;
+    border:1px solid white;
+    font-size:16px;
+    padding-left:5px;
+    padding-right:5px;
+}
+
+.create-wrev-header:hover{
+    background:white;
+    color:#6A8BA8;
+}
+
+.mywrevs_icon_small{
+    font-size:40px;
+    vertical-align: middle;
+}
+
+h2.section-title{
+    font-size:52px;
+    font-family:'Lobster';
+    text-align:center;
+    color:white;
+    text-decoration:underline;
+}
+
+.icons-only-header{
+display:none;
+
+}
+
 @media (max-width: 1025px){
   .eventlist{
     margin-left: -150px;
@@ -1404,10 +1553,24 @@ height:800px;
   .featuring{
    padding-left:5%;
    }
+   .press_bkpaper{
+    margin-top:7%;
+    padding:0 15%;
+   }
+   .press_dnainfo{
+    margin-top:7%;
+   }
+   .press_gpgazette{
+    margin-top:7%;
+   }
+}
 /*>>>>>>> tony_dev*/
 
 @media (max-width:990px){
 	.footer-link{
+	display:initial;
+	}
+	.icons-only-header{
 	display:initial;
 	}
 }
@@ -1540,6 +1703,14 @@ height:800px;
 	    display:table;
 	    padding-top:0;
 	}
+	.logo_lg{
+            width:40%;
+        }
+	.featured_category_panel{
+	    height:500px;
+	}
+	
+	
 }
 
 
@@ -1572,6 +1743,23 @@ height:800px;
 	.featuring{
 	padding-left:4%;
 	}
+	.press_bkpaper{
+	    width:100%;
+	    padding:0;
+	}
+	.press_dnainfo{
+	    width:70%;
+	    padding:0;
+	}
+	.press_gpgazette{
+	    width:70%;
+	    padding:0;
+	}
+	.press_technically{
+	    width:70%;
+	    padding:0;
+	}
+	
 }
 
 @media (max-width:533px){
@@ -1593,6 +1781,10 @@ height:800px;
 	.featuring{
 	padding-left:1%;
 	}
+	.featured_category_panel{
+	    padding: 10px 40px;
+	}
+	
 
 }
 
@@ -1653,7 +1845,7 @@ height:800px;
 	width:120px;
 	margin-top:-30px;
 	}
-	.featured_category{
+	.featured_category_panel{
 	height:550px;
 	}
 	.line {
@@ -1732,8 +1924,22 @@ height:800px;
 	.featuring{
 	padding-left:7%;
 	}
-
-	
+	.featured_category_button{
+	    margin-top:0;
+	}
+	.wrevel-logo-header{
+	    width:140px;
+	    margin-top:13px;
+	}
+	.mywrevs-small{
+	    font-size:12px;
+	}
+	.mywrevs_icon_small{
+	    font-size:36px;
+	}
+	h2.section-title{
+	    font-size:40px;
+	}
   }
 /*>>>>>>> tony_dev*/
 }
@@ -1917,6 +2123,42 @@ height:800px;
 	.featuring{
 	padding-left:4%;
 	}
+	.featured_category_button{
+	    margin-top:0;
+	}
+	
+	.featured_category_panel{
+	height:450px;
+	padding:0;
+	}
+	
+	.featured_category_title{
+	font-size:35px;
+	}
+	.featured_category_pronounce{
+	    font-size:27px;
+	    margin-top:30px;
+	}
+	
+	.featured_category_definition{
+	    font-size:21px;
+	}
+	.featured_category_image{
+	    width:80%;
+	}
+	.wrevel-logo-header{
+	    width:125px;
+	    margin-top:15px;
+	}
+	.mywrevs-small{
+	    font-size:11px;
+	}
+	.mywrevs_icon_small{
+	    font-size:34px;
+	}
+	h2.section-title{
+	    font-size:40px;
+	}
 }
 
 /* For iPhones and Android*/
@@ -1982,6 +2224,26 @@ height:800px;
 	.marquee{
 	width:48%;
 	}
+	.sign-in-button{
+	    width:110px;
+	}
+	
+	.sign-up-button{
+	    width:115px;
+	}
+	.mywrevs-small{
+	    font-size:5px;
+	}
+	.mywrevs_icon_small{
+	    font-size:26px;
+	}
+	.wrevel-logo-header{
+	    width:120px;
+	    margin-top:15px;
+	}
+	h2.section-title{
+	    font-size:35px;
+	}
 }
 
 @media (width:800px){
@@ -2012,4 +2274,23 @@ height:800px;
 		padding:13% 4%;
 	}
 
+}
+
+
+.video_description{
+    margin-top:-10px;
+    font-size:16px;
+}
+
+a:hover .video{
+    border: solid 1px #CCC;
+	-moz-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    
+}
+
+.btn-media{
+    background:#F1EEED;
+    color:#414042;
 }

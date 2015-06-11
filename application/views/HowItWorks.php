@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>How Wrevel Works</title>
+<title>How Wrevel Works | Wrevel - Discover Your World, Host & Experience Events</title>
 <meta name="description" content="Sign up at Wrevel.com. Customize your showroom, create an event, or send out invites to your event. Access everything on the site from the hub.">
 <meta name="keywords" content="event finder, about wrevel, about us, learn more, ticketing platform, tickets, parties, event space, discover, socialize, experience, hotspots, icebreakers, culture, love and romance">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap.css" rel="stylesheet">
@@ -66,5 +66,15 @@
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.js"></script>-->
     <script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41514976-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </body>
 </html> 
