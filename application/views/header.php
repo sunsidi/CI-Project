@@ -20,7 +20,10 @@
 	display:none;
 	}
 }
-
+.form-control.search-bar::-webkit-input-placeholder { color: white; }
+.form-control.search-bar:-moz-placeholder { color: white; }
+.form-control.search-bar::-moz-placeholder { color: white; }
+.form-control.search-bar:-ms-input-placeholder { color: white; }
 </style>
 <body>
 <?php try { $this->load->library('session'); 
@@ -28,20 +31,16 @@
 if((!$this->session->userdata('is_logged_in'))) {?>
 <!--header not logged in
 ===========================================-->
-    <div class="navbar navbar-fixed-top"  role="navigation" style="background:#6A8BA8; height:60px; border-radius:none; -moz-box-shadow:   1px 2px 2px 3px rgba(0, 0, 0, .2);-webkit-box-shadow: 1px 2px 2px 3px rgba(0, 0, 0, .2); box-shadow:  1px 2px 2px 3px rgba(0, 0, 0, .2); ">
-    	<div class="logo dropdown navbar-brand pull-left" style="margin-left:15px;">
-        	<button class="btn" type="button" id="dropdownMenu1" data-toggle="dropdown" style="background:none; padding:0;">
-        	<img src="<?php echo $PATH_IMG?>menu_button.png"> </button>
-            <ul class="dropdown-menu" role="menu">
-            	<li><a href="<?php echo base_url()."main/mywrevs"?>">MyWrevs</a></li>
-  			</ul>
+    <div class="navbar navbar-fixed-top"  role="navigation" style="background:rgba(106,139,168,0.95); height:60px; border-radius:none; -moz-box-shadow:   1px 2px 2px 3px rgba(0, 0, 0, .2);-webkit-box-shadow: 1px 2px 2px 3px rgba(0, 0, 0, .2); box-shadow:  1px 2px 2px 3px rgba(0, 0, 0, .2); ">
+    	<div class="navbar-brand pull-left" style="margin-left:1%;">
+        	<a class="btn mywrevs-header mywrevs-small" href="<?php echo base_url()."main/mywrevs"?>"><span class="icon-mywrevs_icon mywrevs_icon_small"></span>mywrevs</a>
         </div>
        <!-- <a class="navbar-brand" href="https://www.facebook.com/wrevelinc" style="padding:5px 10px; margin-left:20px;"><img src="<?php echo $PATH_IMG?>facebook_icon.png" alt="wrevel-facebook"/>
 		</a>
 		<a class="navbar-brand" href="https://twitter.com/wrevelco" style="padding:5px 10px;"><img src="<?php echo $PATH_IMG?>twitter_icon.png" alt="wrevel-twitter"/>
 		</a>-->
         
-           <a href="<?php echo base_url()?>" class="brand" style="margin:0 auto; float:none; position:absolute; left:48%; margin-left:-50px; display:block; "><img src="<?php echo $PATH_IMG?>wrevel_logo.png"style="width:150px; margin-top:10px;display:block;" /></a>
+           <a href="<?php echo base_url()?>" class="brand" style="margin:0 auto; float:none; position:absolute; left:48%; margin-left:-50px; display:block; "><img src="<?php echo $PATH_IMG?>wrevel_logo.png" class="wrevel-logo-header" alt="Wrevel logo"/></a>
         
         
         <div id="navbarCollapse" class="collapse navbar-collapse"  style="float: right;">
@@ -49,10 +48,11 @@ if((!$this->session->userdata('is_logged_in'))) {?>
         	<a href="<?php echo base_url().'welcome/home'?>" class="btn header-button">Sign Up</a> &nbsp;
         	<a href="<?php echo base_url().'welcome/home'?>" class="btn header-button">Log In</a>
         	</div>-->
-        <div role="search" class="navbar-form navbar-left">
+        <div role="search" class="navbar-form navbar-left" style="width:150px;margin-top:10px;">
           <?php echo form_open(base_url().'main/get_latest_events/')?>
-            <div class="form-group">
-                <input type="text" name='search' placeholder="Search" class="form-control" style="background:#B4C4D3;border:none;color:white;">
+            <div class="form-group left-inner-addon" style="width:120px;">
+		<span class="glyphicon glyphicon-search" style="color:white;font-size:15px;"></span>
+                <input type="text" name='search' placeholder="Search" class="form-control search-bar" style="background:#B4C4D3;border:none;color:white;width:120px;">
                 <!-- this is commented just incase you need it.
                 <type="text" name='search' class="form-control" placeholder="Search"> -->
             </div>
@@ -67,10 +67,19 @@ if((!$this->session->userdata('is_logged_in'))) {?>
 <!--header logged in
 ===========================================-->
 <?php $nav_data = get_navi_data()?>
- <div class="navbar navbar-fixed-top"  role="navigation" style="background:#6A8BA8; height:60px; -moz-box-shadow:   1px 2px 2px 3px rgba(0, 0, 0, .2);-webkit-box-shadow: 1px 2px 2px 3px rgba(0, 0, 0, .2); box-shadow:  1px 2px 2px 3px rgba(0, 0, 0, .2); ">
+ <div class="navbar navbar-fixed-top"  role="navigation" 
+ <?php 
+	$activation=$this->session->userdata('activation');
+	if($activation=='N'){
+	echo 'style="background:#757575;';
+	}else{
+	echo 'style="background:rgba(106,139,168,0.95);';
+	 }
+?>height:60px; -moz-box-shadow:   1px 2px 2px 3px rgba(0, 0, 0, .2);-webkit-box-shadow: 1px 2px 2px 3px rgba(0, 0, 0, .2); box-shadow:  1px 2px 2px 3px rgba(0, 0, 0, .2); "
+ style="background:rgba(106,139,168,0.95); height:60px; -moz-box-shadow:   1px 2px 2px 3px rgba(0, 0, 0, .2);-webkit-box-shadow: 1px 2px 2px 3px rgba(0, 0, 0, .2); box-shadow:  1px 2px 2px 3px rgba(0, 0, 0, .2); ">
       <div class="logo dropdown navbar-brand">
           <button class="btn" type="button" id="dropdownMenu1" data-toggle="dropdown" style="background:none; padding:0;">
-          <img src="<?php echo $PATH_IMG?>menu_button.png" style="margin-left:15px;"> </button>
+          <img src="<?php echo $PATH_IMG?>menu_button.png" alt=Dropdown menu" style="margin-left:15px;width:63px;margin-top:5px;"> </button>
             <ul class="dropdown-menu" role="menu">
               <li><a href="<? echo base_url()?>showroom/profile"><?php echo $nav_data['fullname']?></a></li>
           <!--<li class="header-link"><a href="<?php echo base_url()."chat/MessageView"?>">Inbox</a></li>-->
@@ -87,23 +96,30 @@ if((!$this->session->userdata('is_logged_in'))) {?>
         <div class="profile">
           <!--profile image-->
           <a class="navbar-brand collapse navbar-collapse" href="<? echo base_url()?>showroom/profile"><img class="fb_pic" src="<?php echo base_url()."uploads/".$nav_data['image_key']?>" 
-                                                style="width:55px; height:55px; border-radius: 150px;
-                                                margin-left:10px; border:2px solid #7874A2;"/></a>
+                                                style="width:40px; height:40px; border-radius: 150px;
+                                                margin-left:10px;margin-top:8px;"/></a>
           
             <a href="<? echo base_url()?>showroom/profile" class="navbar-brand collapse navbar-collapse">
-            <p style="color: white; font-size: 20px; margin-left:10px;margin-top:18px;"><?php echo $nav_data['fullname']?> </p></a>
+            <p style="color: white; font-size: 20px; margin-left:10px;margin-top:18px;"><?php 
+            $nav_fullname=$nav_data['fullname'];
+            	if(strlen($nav_fullname)>20){
+                        	  $nav_fullname=substr($nav_fullname,0,17).'...';
+                        }
+            
+            echo $nav_fullname?> </p></a>
         </div>
 
         <div class="abcd">
-        <a class="navbar-brand collapse navbar-collapse " href="<?php echo base_url()."chat/MessageView"?>"><button class="btn" type="button" style="background:none;float:left; margin-top:5px;"><i class="fa fa-envelope" style="color:white; font-size:30px;"> <span class="badge" style="background:#BE1E2D;"></span></i></button></a>
+        <a class="navbar-brand collapse navbar-collapse " href="<?php echo base_url()."chat/MessageView"?>"><button class="btn" type="button" style="background:none;float:left; margin-top:5px;"><span class="icon-email_icon" style="color:white; font-size:30px;"> <span class="badge" style="background:#BE1E2D;"></span></span></button></a>
 
         <div class="navbar-brand dropdown collapse navbar-collapse" style="margin-top:5px;">
         <button class="btn" type="button" onclick = "myFunction()" id="dropdownMenu1" data-toggle="dropdown" style="background:none;">
-            <i id = "herdzz" class="fa fa-user" style="color:white; font-size:30px;">
+            <!--<img src="<?php echo $PATH_IMG?>notifications_icon.png" style="width:27px;" alt="View your notifications here."/>-->
+	    <span class="icon-notifications_icon" style="color:white; font-size:30px;"></span>
                 <?php if($nav_data['counter'] != 0) {?>
                 <span class="badge" id = "here" style="background:#BE1E2D;display:block;margin-top:-15px;left:20px;"><?php echo $nav_data['counter'] ?> </span>
                 <?php }?>
-            </i>
+            
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" style="text-align:center; background:#d9e3ea; padding:0; padding-bottom:10px;border:none;border-radius:8px;width:500px;">
             <p style="background:#3e8fbb; color:white;font-size:20px; padding:10px;border-top-left-radius:8px;border-top-right-radius:8px;"><strong>Notifications</strong> <!--<a href="#"><i class="fa fa-cog pull-right" ></i></a>--></p>
@@ -113,7 +129,7 @@ if((!$this->session->userdata('is_logged_in'))) {?>
                                 <div style="text-align:left;padding:0 15px;">
                                     <p style="color:gray; text-align:center;"><?php echo $nav_data['all_notifications'][$i]['time_sent'];?> &nbsp;&nbsp; </p><span> <a href="<?php echo base_url().'main/remove_notification/'.$nav_data['all_notifications'][$i]['id'];?>"> X</a></span>
                                     
-                                        <p><img src="<?php echo base_url()."uploads/".$nav_data['all_notifications'][$i]['other_picture'];?>" style="width:55px; height:55px;border-radius: 150px;border:2px solid #7874A2;z-index:5;position:relative;"><span style="color:white;background:#7874A2; padding:5px 12px 5px 30px; border-radius:5px;margin-left:-20px;z-index:3;"> <?php echo $nav_data['all_notifications'][$i]['other_fullname']?> </span>  
+                                        <p><img src="<?php echo base_url()."uploads/".$nav_data['all_notifications'][$i]['other_picture'];?>" alt="<?php echo $nav_data['all_notifications'][$i]['other_fullname']?>" style="width:55px; height:55px;border-radius: 150px;border:2px solid #7874A2;z-index:5;position:relative;"><span style="color:white;background:#7874A2; padding:5px 12px 5px 30px; border-radius:5px;margin-left:-20px;z-index:3;"> <?php echo $nav_data['all_notifications'][$i]['other_fullname']?> </span>  
                                             &nbsp; <b style="word-wrap: break-word;"><?php echo $nav_data['all_notifications'][$i]['message'];?></b></p>
                                             <?php if(strpos($nav_data['all_notifications'][$i]['message'], "friend request")) {?>
                                                     <?php echo form_open('main/accept_decline/'.$nav_data['all_notifications'][$i]['email_explode'][0].'/'.$nav_data['all_notifications'][$i]['email_explode'][1].'/'.$nav_data['all_notifications'][$i]['id']);?>
@@ -134,23 +150,35 @@ if((!$this->session->userdata('is_logged_in'))) {?>
       </div> <!-- end of notifications-->
       
        
-          <a href="<?php echo base_url();?>" class="brand" style="margin:0 auto; float:none; position:absolute; left:48%; margin-left:-50px; display:block; "><img src="<?php echo $PATH_IMG?>wrevel_logo.png"
-                                                style="width:150px; margin-top:10px;display:block;" /></a>
+          <a href="<?php echo base_url();?>" class="brand" style="margin:0 auto; float:none; position:absolute; left:48%; margin-left:-50px; display:block; "><img src="<?php echo $PATH_IMG?>wrevel_logo.png" class="wrevel-logo-header" alt="Wrevel logo" /></a>
         
         
-        <div id="navbarCollapse" class="collapse navbar-collapse"  style="float: right;">
-        <a href="##" id="create-step" data-toggle="modal" data-target="#create" class="pull-left"><button class="btn" type="button" style="background:none;margin-top:5px;"><i class="fa fa-plus-circle" style="color:white; font-size:30px;"></i></button></a>
-        <div role="search" class="navbar-form navbar-left">
+        <div id="navbarCollapse" class="abcd"  style="float: right;padding-right:10px;">
+	
+        <a class="btn mywrevs-header" href="<?php echo base_url()."main/mywrevs"?>"><span class="icon-mywrevs_icon" style="font-size:40px;vertical-align:middle;"></span>mywrevs</a>
+	<a class="btn mywrevs-header" href="<? echo base_url()?>event/hub" style="margin-right:10px;"><span class="icon-thehub_icon" style="font-size:40px;vertical-align:middle;"></span>the hub</a>
+	<a 
+        <?php 
+		$activation=$this->session->userdata('activation');
+		if($activation=='N'){}else{ 
+		echo 'href="##"  data-toggle="modal" data-target="#create"';}
+	?>
+         id="create-step"  class="btn create-wrev-header" type="button">create a wrev</a>
+	<div role="search" class="navbar-form navbar-right" style="width:130px;margin-top:10px;">
           <?php echo form_open(base_url().'main/get_latest_events/')?>
-            <div class="form-group">
-                <input type="text" name='search' placeholder="Search" class="form-control" style="background:#B4C4D3;border:none;color:white;">
+            <div class="form-group left-inner-addon" style="width:100px;">
+		<span class="glyphicon glyphicon-search" style="color:white;font-size:15px;"></span>
+                <input type="text" name='search' placeholder="Search" class="form-control search-bar" style="background:#B4C4D3;border:none;color:white;width:100px;">
                 <!-- this is commented just incase you need it.
                 <type="text" name='search' class="form-control" placeholder="Search"> -->
             </div>
              <?php echo form_close()?>
         </div>
       </div>
-        
+      <div class="icons-only-header pull-right">
+      <a class="btn mywrevs-header" href="<?php echo base_url()."main/mywrevs"?>" style="padding:1px;"><span class="icon-mywrevs_icon" style="font-size:40px;vertical-align:middle;"></span></a>
+	<a class="btn mywrevs-header" href="<? echo base_url()?>event/hub" style="padding:1px;"><span class="icon-thehub_icon" style="font-size:40px;vertical-align:middle;"></span></a>
+      </div>
     </div>
 
 <!--end of header logged in-->
@@ -167,13 +195,13 @@ if((!$this->session->userdata('is_logged_in'))) {?>
             </div>
         </div>
     </div>-->
-      <div class="row" style="text-align:center;margin-top:80px;">
+    <!-- <div class="row subtabs" style="text-align:center;margin-top:80px;">
             <div class="btn-group btn-group-lg sub">
                 <a href="<?php echo base_url()."main/mywrevs"?>" class="btn tab">mywrevs</a>
                 <a href="<? echo base_url()?>event/hub" class="btn tab">the hub</a>
                 <a href="<? echo base_url()?>showroom/profile" class="btn tab">showroom</a>
             </div>
-     </div>
+     </div>-->
 
 
 <!--end of tabs-->
@@ -183,7 +211,7 @@ if((!$this->session->userdata('is_logged_in'))) {?>
     <div class="navbar navbar-fixed-top"  role="navigation" style="background:#6A8BA8; height:60px; border-radius:none; -moz-box-shadow:   1px 2px 2px 3px rgba(0, 0, 0, .2);-webkit-box-shadow: 1px 2px 2px 3px rgba(0, 0, 0, .2); box-shadow:  1px 2px 2px 3px rgba(0, 0, 0, .2); ">
     	<div class="logo dropdown navbar-brand pull-left" style="margin-left:15px;">
         	<button class="btn" type="button" id="dropdownMenu1" data-toggle="dropdown" style="background:none; padding:0;">
-        	<img src="<?php echo $PATH_IMG?>menu_button.png"> </button>
+        	<img src="<?php echo $PATH_IMG?>menu_button.png" alt="dropdown menu"> </button>
             <ul class="dropdown-menu" role="menu">
             	<li><a href="<?php echo base_url()."main/mywrevs"?>">MyWrevs</a></li>
   			</ul>
@@ -193,7 +221,7 @@ if((!$this->session->userdata('is_logged_in'))) {?>
 		<a class="navbar-brand" href="https://twitter.com/wrevelco" style="padding:5px 10px;"><img src="<?php echo $PATH_IMG?>twitter_icon.png" alt="wrevel-twitter"/>
 		</a>-->
         
-           <a href="<?php echo base_url()?>" class="brand" style="margin:0 auto; float:none; position:absolute; left:48%; margin-left:-50px; display:block; "><img src="<?php echo $PATH_IMG?>wrevel_logo.png"style="width:150px; margin-top:10px;display:block;" /></a>
+           <a href="<?php echo base_url()?>" class="brand" style="margin:0 auto; float:none; position:absolute; left:48%; margin-left:-50px; display:block; "><img src="<?php echo $PATH_IMG?>wrevel_logo.png" alt="Wrevel logo" style="width:150px; margin-top:10px;display:block;" /></a>
         
         
         <div id="navbarCollapse" class="collapse navbar-collapse"  style="float: right;">

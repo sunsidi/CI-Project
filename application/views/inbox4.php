@@ -4,7 +4,7 @@
  <meta charset="utf-8">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Inbox</title>
+<title>Inbox | Wrevel - Discover Your World, Host & Experience Events</title>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript"
@@ -33,9 +33,9 @@ jQuery(document).ready(function () {
 
 <!--end of content-->
 
-<div id='sentMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:20px;width: 40%; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>
+<div id='sentMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:80px;width: 40%; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>
 <div class="container" style="padding-bottom:50px;">
-<div class="row" style="padding-top: 40px;">
+<div class="row" style="padding-top: 40px;margin-top:100px;">
 	<div class="col-md-offset-1 col-md-5">
             <div class="panel" style="border:none;border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">
     
@@ -279,6 +279,16 @@ var highlightLink = function () {
   <script src="<? echo $PATH_BOOTSTRAP?>js/bootstrap.js"></script> -->
       <script src="<? echo $PATH_BOOTSTRAP?>js/inbox.js"></script>
       <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41514976-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 </body>
 </html> 

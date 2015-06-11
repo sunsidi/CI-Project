@@ -406,7 +406,7 @@ class Stripe_controller extends CI_Controller{
                     $this->session->set_flashdata('message', 'Your session has expired please reenter your information.');
                     redirect($prev_page.$data['ticket']['cost_per_ticket'][0]['event_id']);
                 }
-                if($ticket_type_temp[5] == 1) {
+                   if($ticket_type_temp[5] == 0) {   //Yuan change it to 0  from 1
                     $prev_page = $this->session->userdata('refresh_page');
                     $this->session->set_flashdata('message', 'This ticket type is already expired. Please choose another type.');
                     redirect($prev_page.$data['ticket']['cost_per_ticket'][0]['event_id']);

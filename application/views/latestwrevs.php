@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Latest Wrevs</title>
+<title>Latest Wrevs | Wrevel - Discover Your World, Host & Experience Events</title>
 
  <?php $event_info =$this->_ci_cached_vars;?>
 
@@ -30,7 +30,9 @@
      <div style="margin-left:auto;margin-right:auto;">
                 	<div style="margin-left:25%;margin-right:auto;margin-top:25px;">     
       <!--<form class="form-inline" role="form">-->
-      <?php $save_search = array('onsubmit' => 'return save_search()');
+
+                	
+                	<?php $save_search = array('onsubmit' => 'return save_search()');
       echo form_open(base_url().'main/get_latest_events_search/', $save_search)?>
        
               <div class="left-inner-addon" style="float:left; border-radius:5px;">
@@ -127,9 +129,8 @@
     <ul class="pagination">
     	<li><a href="javascript:void(0)" onclick="show_page(1)"><<</a></li>
     	<li><a href="javascript:void(0)"onclick="show_page(-1)"><</a></li>
-    	<?php for($i = 0; $i < $size / 24; $i++) // Yuan change this number from 21 to 24 
-    	{?>  
-    	<li><a href="javascript:void(0)" onclick="show_page(<?php echo $i+1?>)"><?php echo $i+1?></a></li> 
+    	<?php for($i = 0; $i < $size / 24; $i++) {?>
+        	<li><a href="javascript:void(0)" onclick="show_page(<?php echo $i+1?>)"><?php echo $i+1?></a></li> 
         <?php }?>
         <li><a href="javascript:void(0)" onclick="show_page(-2)">></a></li> 
         <li><a href="javascript:void(0)" onclick="show_page(<?php echo (int)($size/24)+1?>)"> >> </a></li> 
@@ -157,7 +158,7 @@
       $size_left = $size;
       if (isset($size)){
       	while($size_left > 0){
-      	    for($j=0; $j < 24 && $size_left != 0; $j++) {  // Yuan change this number from 21 to 24
+      	    for($j=0; $j < 24 && $size_left != 0; $j++) {   //Yuan change this number from 21 to 24
       	    	$size_left--;
       	    	if($group_page == 1) {
       ?>
@@ -194,7 +195,7 @@
         <div class="details">
                                     <p style="font-size:17px;">
 									<!--Date of event-->
-									<span class="badge date latest-date"><?php echo $event_info[$i]['e_date'];?></span>
+									<span class="badge date latest-date"><?php echo $event_info[$i]['e_date']?></span>
 									<span class="pull-right" style="text-shadow: 1px 1px 0.5px #000000;"><i class="fa fa-clock-o"></i><?php echo $event_info[$i]['e_start_time']; ?></span>
 									</p> 
                                     
@@ -217,8 +218,7 @@
     <ul class="pagination">
     	<li><a href="javascript:void(0)" onclick="show_page(1)" class="pagenumber"><<</a></li>
     	<li><a href="javascript:void(0)"onclick="show_page(-1)" class="pagenumber"><</a></li>
-    	<?php for($i = 0; $i < $size / 24; $i++) //========= Yuan changed this number from 21 to 24, here is the page nubmer bar====================
-    	 {?>   
+    	<?php for($i = 0; $i < $size / 24; $i++) {?>
         	<li><a id="page_number<?php echo $i+1?>" class="page_number_class pagenumber" href="javascript:void(0)" onclick="show_page(<?php echo $i+1?>)"><?php echo $i+1?></a></li> 
         <?php }?>
         <li><a href="javascript:void(0)" onclick="show_page(-2)" class="pagenumber">></a></li> 
@@ -234,7 +234,7 @@
 </div>
 </div>
 </div>
-</div>
+
 <!--end of content-->
 
 <?php $this->load->view('footer');?>
@@ -324,18 +324,28 @@
 	    			current_page = number;
 	    		}
     		}
-    		$page_id='page_number'+current_page;
-   // 	window.alert($page_id);
-    		$('#'+$page_id).css("font-weight","900");
-    		$('#'+$page_id).css("color","#000000");
     		var temp = '.event_group'+current_page;
     		var temp2 = '.page_number'+current_page;
     		$('[class*="event_group"]').hide();
     		$('.page_number_class').removeClass('active');
     		$(temp2).addClass('active');
     		$(temp).show();
+    		
+    		$page_id='page_number'+current_page;
+    		$('#'+$page_id).css("font-weight","900");
+    		$('#'+$page_id).css("color","#000000");
+  
     	}
     </script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-41514976-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </body>
 </html> 

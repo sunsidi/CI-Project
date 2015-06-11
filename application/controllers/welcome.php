@@ -3,6 +3,7 @@
 class Welcome extends CI_Controller {
 	public function index()
 	{
+		$this->load->model('model_users');
 		$this->load->library('path');
 		$path = $this->path->getPath();
 		$this->load->view('Create_Wrevel_View',$path);
@@ -11,15 +12,20 @@ class Welcome extends CI_Controller {
                 $data = $this->path->getPath();
                 $data['login_url'] = $this->facebook->login_url();
                 $data['user'] = $this->facebook->get_user();
-
+		 
                 $this->load->view('Create_Wrevel_View',$path);
                 if(isset($data['user']['email'])){
+                
+                 $this->add_facebook_user($data['user']);
+                $this->model_users->add_reputation($data['user']['email'],1);
+                    $activation_status=$this->model_users->get_activation_status($data['user']['email']);
                     $datatest = array(
                         'email'=> $data['user']['email'],
-                        'is_logged_in'=>1                          
+                        'is_logged_in'=>1,
+                        'activation'=>$activation_status                          
                     );
                     $this->session->set_userdata($datatest);
-                    $this->add_facebook_user($data['user']);
+                   
                     redirect('showroom/profile');
                 }
                 else {
@@ -33,6 +39,7 @@ class Welcome extends CI_Controller {
 	
 	public function home()
 	{
+		$this->load->model('model_users');
 		$this->load->library('path');
 		$data = $this->path->getPath();
 		$this->load->library('session');
@@ -42,12 +49,16 @@ class Welcome extends CI_Controller {
                 
                 
                 if(isset($data['user']['email'])){
+                	$this->add_facebook_user($data['user']);
+                	$this->model_users->add_reputation($data['user']['email'],1);  // this line doesn't work, no idea why?
+                    $activation_status=$this->model_users->get_activation_status($data['user']['email']);
                     $datatest = array(
                         'email'=> $data['user']['email'],
-                        'is_logged_in'=>1                          
+                        'is_logged_in'=>1,
+                        'activation'=>$activation_status                          
                     );
                     $this->session->set_userdata($datatest);
-                    $this->add_facebook_user($data['user']);
+                    
                     redirect('showroom/profile');
                 }
                 else {

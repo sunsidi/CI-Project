@@ -44,17 +44,25 @@ class Model_users extends CI_Model{
         }
     }
     
-    public function can_log_in()
+    public function can_log_in($email,$pw)
     {
-    	$fbcheck = $this->db->get_where('users', array('email' => $this->input->post('email'), 'f_b' => 1));
-        $email = $this->db->get_where('temp_users', array('email' => $this->input->post('email')));
-        $email2 = $this->db->get_where('users', array('email' => $this->input->post('email')));
+    	if($this->input->post('email')){  //request from web
+    		$input_email=$this->input->post('email');
+    		$input_pw=$this->input->post('password');
+    	}else{   //  request from mobile
+    		$input_email=$email;
+    		$input_pw=$pw;
+    	}
+    	
+    	$fbcheck = $this->db->get_where('users', array('email' => $input_email, 'f_b' => 1));
+        $email = $this->db->get_where('temp_users', array('email' => $input_email));
+        $email2 = $this->db->get_where('users', array('email' => $input_email));
         
-        $query = $this->db->get_where('temp_users', array('email' => $this->input->post('email'),
-                                                          'password' => hash('md5', $this->input->post('password'))));
-        $query2 = $this->db->get_where('users', array('email' => $this->input->post('email'),
-                                                      'password' => hash('md5', $this->input->post('password'))));
-        $old_query = $this->db->get_where('users', array('email' => $this->input->post('email'), 'f_b' => 0)); 
+        $query = $this->db->get_where('temp_users', array('email' => $input_email,
+                                                          'password' => hash('md5', $input_pw)));
+        $query2 = $this->db->get_where('users', array('email' => $input_email,
+                                                      'password' => hash('md5', $input_pw)));
+        $old_query = $this->db->get_where('users', array('email' => $input_email, 'f_b' => 0)); 
         
         if($old_query->num_rows() != 0) {
 	        $old_user = $old_query->row_array(0); 
@@ -75,12 +83,12 @@ class Model_users extends CI_Model{
 	        }  
         }                                           
 
-	if($fbcheck->num_rows() == 1)
+/*	if($fbcheck->num_rows() == 1)   // why we need to check fb user here?
 	{
 		return 0;
 	}
 	else
-	{
+	{ */
 	        //If user has signed up and also confirmed his/her email.
 	        if($query2->num_rows() == 1)
 	        {
@@ -104,7 +112,7 @@ class Model_users extends CI_Model{
 	        }
 	        //Just say sign up.
 	        else return 0;
-	}
+//	}
     }
     
     //Set the activity of a user as when he last logged in.
@@ -574,13 +582,52 @@ class Model_users extends CI_Model{
   }
   
   public function search_by_name($name) {
-  	$sql = 'SELECT * FROM users WHERE fullname LIKE ? or username LIKE ?';
+  	$sql = 'SELECT * FROM users WHERE activation="Y" and (fullname LIKE ? or username LIKE ?)';
   	$name = '%'.$name.'%';
   	$query = $this->db->query($sql,array($name,$name));
   	$users = $query->result_array();
   	$users['size'] = sizeof($users);
   	return $users;
   }
+  
+
+  public function search_by_name_limit($name,$size) {
+  	$sql = 'SELECT * FROM users WHERE (fullname LIKE ? or username LIKE ?) limit ?';
+  	$name = '%'.$name.'%';
+  	$query = $this->db->query($sql,array($name,$name,$size));
+  	$users = $query->result_array();
+  	$users['size'] = sizeof($users);        // the actual size, for sure it's 100 actually
+  	$users['total_size'] = sizeof($users);   // the original size of result
+  	
+  	return $users;
+
+  }
+  
+    public function order_by_reputation() {
+  	
+  	$query = $this->db->query('SELECT * FROM users order by reputation desc limit 12');
+  	return $query->result_array();
+  	
+  /*	$sql = 'SELECT * FROM users WHERE fullname LIKE ? or username LIKE ?';
+  	$query = $this->db->query($sql,array($name,$name));
+  	$users = $query->result_array();
+  	$users['size'] = sizeof($users);
+  	return $users;*/
+  }
+  
+    public function order_by_posting(){
+  	//so far, it's accumulate posting, not 30 days intervel posint
+  	$query = $this->db->query('select * from users,events where e_creatorID=user_id group by e_creatorID order by count(*) desc limit 12');
+  	return $query->result_array();
+  	
+  }
+  
+  public function order_by_attending(){
+  	
+  	$query = $this->db->query('select * from users,users_attending where users.user_id=users_attending.user_id group by users_attending.user_id order by count(*) desc limit 12');
+  	return $query->result_array();
+  }
+  
   //check if the user entered the right password before changing it.
   public function can_change_password($email, $old_password, $new_password)
     {
@@ -629,7 +676,11 @@ class Model_users extends CI_Model{
     		return false;
     	}
     	else {
-    		if($user_data['gender'] == 'male'){
+    		
+    		if(!isset($user_data['gender'])){
+    			$gender = 'M';
+    		}
+    		elseif(($user_data['gender'] == 'male')){
     			$gender = 'M';
     		}
     		else
@@ -638,9 +689,9 @@ class Model_users extends CI_Model{
 	    		       'email' => $user_data['email'],
 	    		       'username' => $user_data['email'],
 	    		       'birthday' => $user_data['birthday'],
+	    		       'reputation' => 0,
 	    		       'image_key' => $user_data['profile_pic'],
 	    		       'gender' => $gender,
-	    		       'reputation' => 0,
 	                       'f_b' => 1
 	    		       );
 	    	$this->db->insert('users', $data);
@@ -723,6 +774,41 @@ class Model_users extends CI_Model{
                 $this->db->update('users', $revert_data, array('user_id' => $data[$i]['user_id']));
             }
         }
+    }
+    
+    public function change_activation_status($email,$current_status){
+    
+    	$sql = 'UPDATE users SET activation=? WHERE email=?';
+    	if($current_status=='N'){
+    		$current_status='Y';
+    	}else{
+    		$current_status='N';
+    	}
+    	$query = $this->db->query($sql,array($current_status,$email));
+    	if ($query){
+    		return true;
+    	}
+    	else return false;
+    }
+    
+    public function get_activation_status($email){
+    
+    	$sql = 'select activation from users WHERE email=?';
+    
+    	$query = $this->db->query($sql,array($email));
+    
+     $data = $query->row_array(0);
+    	return $data['activation'];
+    }
+    
+    public function check_email_exists($email){
+    	$sql = 'SELECT user_id FROM users WHERE email = ?';
+    	$query = $this->db->query($sql,array($email));
+    	 $data = $query->row_array(0);
+    	if($data){
+    	return "1";
+    	}else return "0";
+    	
     }
     #code
 }

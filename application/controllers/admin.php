@@ -197,7 +197,10 @@ class admin extends CI_Controller{
         public function create_multiple_events() {
             $this->load->library('session');
             $this->load->model('model_events');
-            $insert_ids = $this->model_events->create_multi_event(77);
+            $this->load->model('model_users');
+            $email = $this->session->userdata('email');
+            $user_id = $this->model_users->get_userID($email);
+            $insert_ids = $this->model_events->create_multi_event($user_id);
             if(isset($insert_ids)) {
                 for($i = 0; $i < count($insert_ids); $i++) {
                     mkdir('./uploads/events/'.$insert_ids[$i].'/photos/', 0777, true);
@@ -211,7 +214,10 @@ class admin extends CI_Controller{
                 $this->upload->initialize($config);
                 if (!$this->upload->do_multi_upload('multi_file_input'))
                 {
-                    $this->session->set_flashdata('message', 'There was an error uploading one or more files. Check if your files are all there.');
+                for($i = 0; $i < count($insert_ids); $i++) {
+                	$this->model_events->update_images('default_event_image.jpg', $insert_ids[$i]);
+                	}
+                    $this->session->set_flashdata('message', 'You did not upload any picture or maybe there was an error uploading one or more files.');
                 }
                 else {
                     $temp_data = $this->upload->get_multi_upload_data();

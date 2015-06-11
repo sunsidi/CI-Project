@@ -180,7 +180,7 @@ class Model_friend_request extends CI_Model{
     //Grab all friends.
     public function get_friendlists($user_id)
     {
-        $sql = "SELECT * FROM friends_notifications_list WHERE (user_id =? or other_user_id =?) AND friend = 1";
+        $sql = 'SELECT * FROM friends_notifications_list WHERE (user_id =? or other_user_id =?) AND (friend = 1) AND EXISTS(SELECT * FROM users WHERE users.user_id=friends_notifications_list.other_user_id AND users.activation="Y")' ;
         $query = $this->db->query($sql,array($user_id,$user_id,));
         for($i = 0; $i < $query->num_rows(); $i++) {
             $data[$i] = $query->row_array($i);

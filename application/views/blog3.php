@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>New Years Eve 2015</title>
+<title>New Years Eve 2015 | Wrevel - Discover Your World, Host & Experience Events</title>
 <meta name="description" content="Hey everyone! Hope everyone is having a safe and fun holiday season. We all know New Year is coming up fast and people are busy creating their resolutions, trying new things and excited to start over to a new year, and somewhere along the lines, you have to find a party or plan something for you and friends to have fun on New Years Eve. Obviously Wrevel has your back during your busy schedule. We do have a listing of some of the hottest parties that are being held New York City.">
 <meta name="keywords" content="event hosting, parties, new york city life, tickets, wrevel, online tickets, tech company, spaces, buy tickets, services, blog">
 <link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap.css" rel="stylesheet">
@@ -12,8 +12,8 @@
 <link href="<? echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <script type="text/javascript">var switchTo5x=true;</script>
-<script type="text/javascript" src="https://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "98b7df42-3881-4ba4-adc3-bcb7a479d75e", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+<script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "508ee0b6-1f7c-4daa-827e-d76d4d266558", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
 <body>
 <?php $this->load->view('header');?>   
@@ -173,7 +173,16 @@
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.js"></script>-->
     <script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-41514976-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 </body>
 </html> 

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Showroom</title>
+<title>Showroom | Wrevel - Discover Your World, Host & Experience Events</title>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript"
@@ -59,17 +59,21 @@ position:absolute;
 ==============================================-->
 <div class="container" style="padding-bottom:50px;">
 <div id="showroom-step">
-    <div class="row"  style="margin-top:50px;">
+    <div class="row"  style="margin-top:120px;">
 
         <div class="col-md-9 col-md-offset-1">
             <div class="col-md-1">
                 <img class="fb_pic profile-image" src="<?php echo base_url()."uploads/".$image_key?>" style="position:absolute; z-index:2;  border-radius:150px;  border:2px solid #7874a2;"/>
                </div>
             <div class="col-md-7 profile-name" style="background:#7874a2; color:white;height:65px;">
-            <h2 class="profile-fullname"><?php echo $fullname ?></h2>
+            <h2 class="profile-fullname"><?php 
+            if(strlen($fullname)>20){
+                        	  $fullname=substr($fullname,0,16).'...';
+                        }
+            echo $fullname ?></h2>
             </div>
             <div class="col-md-4" style="height:65px;background:#6ca5cc; color:white; border-top-right-radius:5px;" id="reputationInfo" data-content="The more you interact (attending,creating events) on Wrevel, the more points you receive" data-trigger="hover" data-placement="bottom">
-            <h2 class="reputation" style="text-align:center;margin-left:-15px;cursor:default;float:left;width:100%;margin-top:12px;">Reputation <span class="badge" style="color:#6ca5cc; background:white;font-size:20px;vertical-align:middle; border-radius:50%; padding:10px 0px; width:40px;height:40px; text-align:center;margin-left:15px;"><?php echo $reputation ?></span><i class="fa fa-question-circle pull-right" style="font-size:15px;margin-top:10px;padding:0;"></i> </h2>
+            <h2 class="reputation" style="text-align:center;margin-left:-15px;cursor:default;float:left;width:100%;margin-top:12px;">Reputation <span class="badge" style="color:#6ca5cc; background:white;font-size:20px;vertical-align:middle; border-radius:50%; padding:10px 0px; width:40px;height:40px; text-align:center;margin-left:15px;"><?php echo (int)($reputation/20) ?></span><i class="fa fa-question-circle pull-right" style="font-size:15px;margin-top:10px;padding:0;"></i> </h2>
             
             </div>
         </div>
@@ -306,7 +310,7 @@ position:absolute;
                                                   <div style="padding:10px;">
                                                   	You have no wrevs right now.
                                                   </div>
-                                        <?php }?>
+                                        <?php }?>                                      
                                         </div>
                                     </div>
                                     
@@ -873,6 +877,7 @@ document.getElementById("herdzz").innerHTML = " ";
     <script>
         $(document).ready(function(){
             $('#attending_wrevs').click();
+
         })
     </script>
     <script>
@@ -885,5 +890,15 @@ document.getElementById("herdzz").innerHTML = " ";
     </script>
 	<!--<script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap-tour.min.js"></script>
  	<script src="<?php echo $PATH_BOOTSTRAP?>js/tour.js"></script> -->
+ 	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41514976-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </body>
 </html> 

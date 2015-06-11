@@ -35,6 +35,11 @@ class Chat extends CI_Controller {
         */
        public function messageView() /* get rid of $username not needed */
         {
+        $this->load->library('session');
+        if($this->session->userdata('activation')=="N"){
+            	redirect('account/myaccount_accountinfo');
+            }
+            else{
             $this->load->library('path');
             $path = $this->path->getPath();
             $this->load->library('session');
@@ -147,6 +152,7 @@ class Chat extends CI_Controller {
                     //$this->load->view('')
                     redirect('main/index');
                 }
+          }
                 
         }
         public function message() {

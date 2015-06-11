@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Admin System</title>
+<title>Admin System | Wrevel - Discover Your World, Host & Experience Events</title>
 
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap.css" rel="stylesheet">
 <link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap.min.css" rel="stylesheet">
@@ -52,9 +52,9 @@ jQuery(document).ready(function () {
 
 <!--content
 ==============================================-->
-<div id='sentMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:20px;width: 40%; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>
+<div id='sentMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:80px;width: 40%; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>
   <div class="container" style="padding-bottom:50px;">
-	<div class="row" style="margin-top:50px;">
+	<div class="row" style="margin-top:120px;">
 		<div class="col-md-3 col-md-offset-1"> <!-- required for floating -->
 			<!-- Nav tabs -->
 			<div class="panel panel-default" style="border:none;-moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.5);-webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.5); box-shadow: 0px 0px 5px rgba(0,0,0,0.5);border-radius:15px;">
@@ -351,6 +351,7 @@ jQuery(document).ready(function () {
                                         </div>
                                         <h2><i class="fa fa-file-text-o"></i> Body</h2>
                                         <textarea name="blog_body" class="form-control" rows="10" style="border:dashed 2px gray;resize: none;font-size:19px;border-radius:0;background:none;"></textarea>
+                                       
                                         <h2><i class="fa fa-tag"></i> Author</h2>
                                         <textarea name="blog_author" class="form-control" rows="1" style="border:dashed 2px gray;resize: none;font-size:20px;border-radius:0;background:none;"></textarea>
 
@@ -979,6 +980,7 @@ jQuery(document).ready(function () {
                                         +'<input id="multi_e_date[]" type="text" name="multi_e_date[]" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="mm/dd/yyyy">'
                                     +'</div>'
                                 +'</div>'
+                                +'<label class="col-sm-1 control-label" style="padding-top:10px;">period:</label>'
                                 +'<div class="col-sm-2">'
                                     +'<select id="period" name="multi_period[]" type="number" class="form-control" style="padding:0;font-size:10px;">'
                                       +'<option value="" selected="selected"></option>'
@@ -1450,5 +1452,15 @@ jQuery(document).ready(function () {
         });
 	});
     </script>-->
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41514976-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </body>
 </html> 

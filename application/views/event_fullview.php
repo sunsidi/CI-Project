@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title><?php echo $event[0]['e_name']?></title>
+<title><?php echo $event[0]['e_name']?> | Wrevel - Discover Your World, Host & Experience Events</title>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript"
@@ -17,7 +17,7 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <meta name="description" content="<?php echo $event[0]['e_description']?>">
 
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false"
+<script src="https://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false"
             type="text/javascript"></script> 
 <script>
 jQuery(document).ready(function () {
@@ -44,8 +44,8 @@ jQuery(document).ready(function () {
 
 </style>
 <script type="text/javascript">var switchTo5x=true;</script>
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "98b7df42-3881-4ba4-adc3-bcb7a479d75e", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+<script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "508ee0b6-1f7c-4daa-827e-d76d4d266558", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
 
 <body>
@@ -81,7 +81,8 @@ jQuery(document).ready(function () {
                             <div class="modal-dialog">
                                 <div class="modal-content" style="background:#c2d2dc;border:none;">
                                     
-                                        <div class="modal-header" style="background-color: #628DA3;padding:10px;">
+                                        <div class="modal-header" style="background-color: 
+                                        #628DA3;padding:10px;">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>	
                                             <p style="font-size: 26px; color: white;text-align: center;"><i class="fa fa-pencil-square-o" style="font-size:30px;"></i> Edit Your Wrev</p>
                                         </div>
@@ -585,12 +586,12 @@ jQuery(document).ready(function () {
                               </div>
                               <div class="modal-body">
                                    
-                                    <span class='st_sharethis_large' displayText='ShareThis'></span>
-				    <span class='st_facebook_large' displayText='Facebook'></span>
-				    <span class='st_twitter_large' displayText='Tweet'></span>
-				    <span class='st_linkedin_large' displayText='LinkedIn'></span>
-			 	    <span class='st_pinterest_large' displayText='Pinterest'></span>
-				    <span class='st_email_large' displayText='Email'></span>
+<span class='st_sharethis_large' displayText='ShareThis'></span>
+<span class='st_facebook_large' displayText='Facebook'></span>
+<span class='st_twitter_large' displayText='Tweet'></span>
+<span class='st_linkedin_large' displayText='LinkedIn'></span>
+<span class='st_pinterest_large' displayText='Pinterest'></span>
+<span class='st_email_large' displayText='Email'></span>
                                </div>
                          </div>
                     </div>
@@ -955,7 +956,15 @@ jQuery(document).ready(function () {
 			   
 			   <div class="row" style="margin-top:15px;font-size:23px;">
 								<h3 style="color:black;"><em>Posted By</em></h3>
-								<a href="<?php echo base_url().'public_profile/user/'. $posterID?>"><img src="<?php echo base_url().'uploads/'. $poster_image_key?>" class="user-posted" style="border-radius: 150px;border:2px solid #7874a2;z-index:5;position:relative;"><span class="username-posted" style="color:white;background:#7874a2; padding:5px 25px 5px 40px; border-radius:5px;margin-left:-20px;z-index:3;"><?php echo $posted_fullname?></span></a>  
+								<a href="<?php echo base_url().'public_profile/user/'. $posterID?>">
+								<img 
+								src="<?php if(substr($poster_image_key,0,6)=='//grap'){ //use photo from fb
+					echo $poster_image_key;}else{ // use photo from wrevel account
+						echo base_url()?>uploads/<?php echo $poster_image_key;
+}?>"
+								
+								 class="user-posted" style="border-radius: 150px;border:2px solid #7874a2;z-index:5;position:relative;">
+								<span class="username-posted" style="color:white;background:#7874a2; padding:5px 25px 5px 40px; border-radius:5px;margin-left:-20px;z-index:3;"><?php echo $posted_fullname?></span></a>  
 			 </div>
 			   
 			   <div style="margin-top:50px;">
@@ -971,7 +980,12 @@ jQuery(document).ready(function () {
                                     	<div class="col-md-4 col-sm-3 col-xs-6" style="height:220px;">
                                             <div class="thumbnail default">
                                                 <a href="<?php echo base_url().'public_profile/user/'.$attendees[$i]['user_id']?>">
-      						<img src="<?php echo base_url(). 'uploads/'.$attendees[$i]['image_key'];?>" style="border-radius:150%; width:100px; height:100px;"/>
+      						<img 
+      						src="<?php if(substr($attendees[$i]['image_key'],0,6)=='//grap'){ //use photo from fb
+					echo $attendees[$i]['image_key'];}else{ // use photo from wrevel account
+						echo base_url()?>uploads/<?php echo $attendees[$i]['image_key'];
+}?>" 
+      						style="border-radius:150%; width:100px; height:100px;"/>
                                                     <div class="caption" style="text-align:center;">
                                                             <p><?php echo $attendees[$i]['fullname'];?></p>
                                                     </div></a>
@@ -1287,7 +1301,7 @@ jQuery(document).ready(function () {
 		    		$('#quantity_base').children().remove();
 		    		var temp = ($('#ticket_type').val()).split('|');
                                 var price_number = Number(temp[2]).toFixed(2);
-                                if(temp[5] == 0) {
+                                if(temp[5] != 0) {  //YUan change temp[5]==0 to temp[5]!=0
                                     $('#ticket_price').attr('value', price_number);
                                     $('#ticket_price2').html('$'+price_number);
                                     $('#quantity_left').html(temp[1] + ' left.');
@@ -1308,7 +1322,7 @@ jQuery(document).ready(function () {
 		    			$('#billing_info').hide();
                                     }
                                     else {
-                                            <?php if($posted_recip_id != "") {?>
+                                            <?php if($posted_recip_id == "") {?>
                                                     $('#billing_info').show();
                                             <?php } else {?>
                                                     $('#not_set_up').show();
@@ -1353,6 +1367,16 @@ jQuery(document).ready(function () {
     <!--<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.min.js"></script>
 	<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.js"></script> -->
 		<script src="<?php echo $PATH_BOOTSTRAP?>js/lightbox.js"></script>
+		<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41514976-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 </body>
 </html>

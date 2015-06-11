@@ -38,7 +38,7 @@
         <div class="panel" style="border:none; background:#aebdc6;">
         <div class="panel-body" style="background:#aebdc6;">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h1 class="cw_heading" style="text-align:center;font-family:GillSans;padding:10px;">create a wrev</h1>
+        <h1 class="cw_heading" style="text-align:center;font-family:GillSans;padding:10px;">create a wrev...</h1>
           
           <div class="col-md-4" style="padding:0 10px; ">
               <div style="text-align:center;font-size:15px;"><span style="color:red;font-weight:normal;font-size:23px;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;">* </span> Please select one primary category (by double-clicking on the icon), select as many sub categories as you want.
@@ -676,7 +676,7 @@
                         display: none;
                     }
                     #file-input{
-                    	display:inline;
+                    	display:inline;;
                     }
                    </style>
 </div>
@@ -747,6 +747,15 @@
                       
         </form>
                   </div>
+                 
+                  <hr/>
+                  <div>
+  		<strong>Enter the code shown in image:<span style="color:red;font-weight:normal;font-size:23px;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;">* </span></strong><br>
+   <div style="margin-left:20%;margin-right:39%;">     <img id="verification_code_pic1" width="25px" height="39px" style="padding: 3px;"  src="https://wrevel.com/src/data/img/vc_2.png" alt="Verify the event by inputting the code."><img id="verification_code_pic2" width="25px" height="39px" style="padding: 3px;" src="https://wrevel.com/src/data/img/vc_5.png" alt="Verify the event by inputting the code."><img id="verification_code_pic3" width="25px" height="39px" style="padding: 3px;"  src="https://wrevel.com/src/data/img/vc_8.png" alt="Verify the event by inputting the code.">
+     <input id="verification_input" name="verification_input" style="width:100px;float:right;margin-top:3px;" class="form-control"> <br/><span style="cursor:pointer;margin-left:25px;" onclick="reloadVerificationCode()">refresh</span> <span id="vc_match" style="float:right;visibility:hidden;color:red;margin-right:20px;">not match</span></div>
+  		</div>
+
+  		
                   <!--  <div class="col-md-4" style="text-align:center;">
 
                  
@@ -844,7 +853,7 @@
         <p style="font-size: 50px;text-align: left; color: white; margin-top: -10px;">
       Hot Rabbit
         
-        <img src="<?php echo $PATH_IMG?>wrevel_logo.png"style="width:200px;z-index:1; float: right; margin-top: 10px;"/>
+        <img src="<?php echo $PATH_IMG?>wrevel_logo.png" style="width:200px;z-index:1; float: right; margin-top: 10px;" alt="Wrevel logo"/>
         </p>
     </div>
     
@@ -888,7 +897,7 @@
       </div>
       
       <div class="col-md-4 col-sm-4 col-xs-4">
-          <img src="<?php echo $PATH_IMG?>2d.png"style="width:200px;z-index:1; margin-top: 25px;"/>
+          <img src="<?php echo $PATH_IMG?>2d.png"style="width:200px;z-index:1; margin-top: 25px;" alt="QR code"/>
           <p style="font-size:7px; margin-top: 100px;">
         <b>Disclaimer</b><br>
         Please bring a valid photo ID to the event with this ticket.<br>
@@ -928,7 +937,9 @@
     <script src="<?php echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
     <script src="<?php echo $PATH_BOOTSTRAP?>js/checkbox.js"></script>
     <script src="<?php echo $PATH_BOOTSTRAP?>js/imgpick.js"></script> 
+
     <script>
+    	var vc='';
         function check_required_input() {
             if($('#exhgt').attr('primaryselected') === 'true'){}
             else{
@@ -1022,6 +1033,20 @@
                 alert("Please make sure your event has a start time.");
                 return false;
             }
+            if($('#verification_input').val()){}
+            else{
+                alert("Please make sure you entered the verification code.");
+                return false;
+            }
+
+            if($('#verification_input').val()==vc){
+            
+              $('#vc_match').css('visibility','hidden'); 
+            }
+            else{
+                $('#vc_match').css('visibility','visible'); 
+                return false;
+            }
             if($('#file-input').val()){}
             else{
                 if(confirm('You did not select a file to upload, are you sure you want to continue?\n'
@@ -1031,11 +1056,26 @@
                 else return false;
             }
         }
+        
+        
+                function reloadVerificationCode(){
+	vc="";
+	for(var i=1;i<4;i++){
+	
+	var p=Math.floor((Math.random() * 8) + 2);
+	vc=vc+p;
+	$('#verification_code_pic'+i).attr('src','https://wrevel.com/src/data/img/vc_'+p+'.png');
+	}
+//	window.alert("works"+vc);
+
+}
+        
     </script>
     
     <script>
     	var type_counters = 0;
     	$(document).ready(function() {
+    	reloadVerificationCode(); // load the code pic first
     		$("#add_more").click(function(){
     		 var content = "<div class='ticket_group form-group-row' id='ticket_base" +type_counters+ "'>"
     		 		  +"<div class='row'>"
@@ -1060,7 +1100,7 @@
 				  +"<div class='col-sm-2'>Qty."
 				      +"<input type='number' max='500' min='1' name='e_quantity[]' class='form-control'>"
 				      +"Deadline"
-				      +"<input type='text' name='max_date[]' class='d_date form-control' placeholder='mm/dd/yyyy'>"
+				      +"<input type='text' name='max_date[]' class='form-control' placeholder='yyyy/mm/dd'>"
 				  +"</div>"
 				  
 				  
@@ -1140,7 +1180,16 @@
     	
     </script>
     <script>
+	$('#info').popover();
+	$('#online-info').popover();
+	</script>
+	<script>
+	$('#drag').popover();
+	</script>
+	
+	<script>
     	$(document).ready(function() {
+
     		$('input[type=radio][name=e_is_ticketed]').change(function() {
         		if (this.value == '1') {
         			$("#add_more_base").show();
@@ -1153,13 +1202,6 @@
     		});
 	});
     </script>
-    <script>
-	$('#info').popover();
-	$('#online-info').popover();
-	</script>
-	<script>
-	$('#drag').popover();
-	</script>
     <script>
     	function change_to_online() {
     		if($('#e_is_online').prop('checked')) {
@@ -1188,5 +1230,15 @@
             
         }
     </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41514976-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </body>
 </html>

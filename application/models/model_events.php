@@ -429,13 +429,14 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
     if ($state || $price || $zipcode){
         if(!$zipcode){$zipcode = '%';}
         if(!$state){$state = '%';}
-    $sql = 'SELECT * FROM events WHERE (e_pricetemp<=? and e_zipcode LIKE ? and e_state LIKE ? and e_private = 0 and e_date > NOW()+INTERVAL 1 DAY) OR (e_is_online = 1 and e_date > NOW()+INTERVAL 1 DAY) ORDER BY event_id DESC';
+        $activation='G';
+    $sql = 'SELECT * FROM events WHERE ((e_pricetemp<=? and e_zipcode LIKE ? and e_state LIKE ? and e_private = 0 and e_date > NOW()-INTERVAL 1 DAY) OR (e_is_online = 1 and e_date > NOW()-INTERVAL 1 DAY)) AND EXISTS(SELECT * FROM users WHERE users.user_id=events.e_creatorID AND users.activation="Y") ORDER BY e_date ASC, event_id DESC';
     $query = $this->db->query($sql,array($price,$zipcode,$state));
     $events = $query->result_array();
    }
    
    else{
-    $sql = 'SELECT * FROM events WHERE (e_private = 0 and e_date > NOW()+INTERVAL 1 DAY) OR (e_is_online = 1 and e_date > NOW()+INTERVAL 1 DAY) ORDER BY event_id DESC';
+    $sql = 'SELECT * FROM events WHERE ((e_private = 0 and e_date > NOW()-INTERVAL 1 DAY) OR (e_is_online = 1 and e_date > NOW()-INTERVAL 1 DAY)) AND EXISTS(SELECT * FROM users WHERE users.user_id=events.e_creatorID AND users.activation="Y")  ORDER BY e_date ASC, event_id DESC';
     $query = $this->db->query($sql);
     
      $events = $query->result_array();
@@ -519,24 +520,19 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
         if(!$state){$state = '%';}
         if(!$price){$price=0;} // this line is added by yuan
         
-    if($date=='1969-12-31'){ $sql = 'SELECT * FROM events WHERE (e_pricetemp>=? and e_zipcode LIKE ? and e_state LIKE ? and e_private = 0 and e_date > NOW()+INTERVAL 1 DAY) OR (e_is_online = 1)  ORDER BY event_id DESC';  //this line is added by yuan
+    if($date=='1969-12-31'){ $sql = 'SELECT * FROM events WHERE ((e_pricetemp>=? and e_zipcode LIKE ? and e_state LIKE ? and e_private = 0 and e_date > NOW()-INTERVAL 1 DAY) OR (e_is_online = 1)) AND EXISTS(SELECT * FROM users WHERE users.user_id=events.e_creatorID AND users.activation="Y")   ORDER BY e_date ASC, event_id DESC'; 
     $query = $this->db->query($sql,array($price,$zipcode,$state));} // this line is added by yuan
-  	else{  $sql = 'SELECT * FROM events WHERE (e_pricetemp>=? and e_zipcode LIKE ? and e_state LIKE ? and e_private = 0 and e_date = ?) OR (e_is_online = 1 and e_date = ?)  ORDER BY event_id DESC'; // this line is added by yuan
+  	else{  $sql = 'SELECT * FROM events WHERE ((e_pricetemp>=? and e_zipcode LIKE ? and e_state LIKE ? and e_private = 0 and e_date = ?) OR (e_is_online = 1 and e_date = ?)) AND EXISTS(SELECT * FROM users WHERE users.user_id=events.e_creatorID AND users.activation="Y")  ORDER BY e_date ASC, event_id DESC'; 
     $query = $this->db->query($sql,array($price,$zipcode,$state,$date,$date));} // this line is added by yuan
         
-//    $sql = 'SELECT * FROM events WHERE (e_pricetemp<=? and e_zipcode LIKE ? and e_state LIKE ? and e_private = 0 e_date = ?) OR (e_is_online = 1 and e_date = ?) ORDER BY event_id DESC';
-//    $query = $this->db->query($sql,array($price,$zipcode,$state,$date,$date));
     $events = $query->result_array();
    }
    
    else{
-    	if($date=='1969-12-31'){ $sql = 'SELECT * FROM events WHERE (e_private = 0 and e_private = 0 and e_date > NOW()+INTERVAL 1 DAY) OR (e_is_online = 1 and e_private = 0 and e_date > NOW()+INTERVAL 1 DAY ) ORDER BY event_id DESC';  // this line is added by yuan
+    	if($date=='1969-12-31'){ $sql = 'SELECT * FROM events WHERE ((e_private = 0 and e_private = 0 and e_date > NOW()-INTERVAL 1 DAY) OR (e_is_online = 1 and e_private = 0 and e_date > NOW()-INTERVAL 1 DAY )) AND EXISTS(SELECT * FROM users WHERE users.user_id=events.e_creatorID AND users.activation="Y")  ORDER BY e_date ASC, event_id DESC';  
     	$query = $this->db->query($sql);} // this line is added by yuan
-  	else{ $sql = 'SELECT * FROM events WHERE (e_private = 0 and e_date = ?) OR (e_is_online = 1 and e_date = ?) ORDER BY event_id DESC';  // this line is added by yuan
-  	$query = $this->db->query($sql,array($date,$date));}  // this line is added by yuan
-
-//    $sql = 'SELECT * FROM events WHERE (e_private = 0 and e_date = ?) OR (e_is_online = 1 and e_date = ?) ORDER BY event_id DESC';
-//    $query = $this->db->query($sql, array($date,$date));
+  	else{ $sql = 'SELECT * FROM events WHERE ((e_private = 0 and e_date = ?) OR (e_is_online = 1 and e_date = ?)) AND EXISTS(SELECT * FROM users WHERE users.user_id=events.e_creatorID AND users.activation="Y")  ORDER BY e_date ASC, event_id DESC';  
+  	$query = $this->db->query($sql,array($date,$date));}  
     
      $events = $query->result_array();
    }
@@ -589,6 +585,14 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
     	if($related_events[$i]['e_date'] == '9999-12-31') {
 	    	$related_events[$i]['e_date'] = $related_events[$i]['period_text'];
 	    }
+	    if($related_events[$i]['e_date'] == 'Every Weekend') 
+	 {  $related_events[$i]['e_date'] ='Weekends';
+	 }elseif($related_events[$i]['e_date'] == 'Every Weekday'){
+	 $related_events[$i]['e_date'] ='Weekday';
+	 }elseif($related_events[$i]['e_date'] == 'Everyday'){
+	 $related_events[$i]['e_date'] ='Daily';
+	 }else{
+	       $related_events[$i]['e_date'] =date('M d', strtotime($related_events[$i]['e_date']));}  
     }
    //print_r($related_events);
    return $related_events;      
@@ -677,12 +681,12 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
     $datestring = '%Y-%m-%d';
     $time = time();
     $today = mdate($datestring, $time);
-    $sql = 'SELECT * FROM events WHERE (e_pricetemp<=? and e_zipcode LIKE ? and e_state LIKE ? and e_private = 0 and e_date > NOW()+INTERVAL 1 DAY) OR (e_is_online = 1 and e_date > NOW()+INTERVAL 1 DAY)  ORDER BY event_id DESC';
+    $sql = 'SELECT * FROM events WHERE (e_pricetemp<=? and e_zipcode LIKE ? and e_state LIKE ? and e_private = 0 and e_date > NOW()-INTERVAL 1 DAY) OR (e_is_online = 1 and e_date > NOW()-INTERVAL 1 DAY)  AND EXISTS(SELECT * FROM users WHERE users.user_id=events.e_creatorID AND users.activation="Y") ORDER BY e_date ASC, event_id DESC';
     $query = $this->db->query($sql,array($price,$zipcode,$state));
     $events = $query->result_array();
   }
   else{
-    $sql = 'SELECT * FROM events WHERE (e_private = 0 and e_date > NOW()+INTERVAL 1 DAY) OR (e_is_online = 1 and e_date > NOW()+INTERVAL 1 DAY) ORDER BY event_id DESC';
+    $sql = 'SELECT * FROM events WHERE ((e_private = 0 and e_date > NOW()-INTERVAL 1 DAY) OR (e_is_online = 1 and e_date > NOW()-INTERVAL 1 DAY)) AND EXISTS(SELECT * FROM users WHERE users.user_id=events.e_creatorID AND users.activation="Y")  ORDER BY e_date ASC, event_id DESC';
     $query = $this->db->query($sql);
     $events = $query->result_array();
     }
@@ -729,18 +733,19 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
     $datestring = '%Y-%m-%d';
     $time = time();
     $today = mdate($datestring, $time);
-    if($date=='1969-12-31'){ $sql = 'SELECT * FROM events WHERE (e_pricetemp>=? and e_zipcode LIKE ? and e_state LIKE ? and e_private = 0 and e_date > NOW()+INTERVAL 1 DAY) OR (e_is_online = 1)  ORDER BY event_id DESC';  //this line is added by yuan
+    if($date=='1969-12-31'){ $sql = 'SELECT * FROM events WHERE ((e_pricetemp>=? and e_zipcode LIKE ? and e_state LIKE ? and e_private = 0 and e_date > NOW()-INTERVAL 1 DAY) OR (e_is_online = 1)) AND EXISTS(SELECT * FROM users WHERE users.user_id=events.e_creatorID AND users.activation="Y")   ORDER BY e_date ASC, event_id DESC';
     $query = $this->db->query($sql,array($price,$zipcode,$state));} // this line is added by yuan
-  	else{  $sql = 'SELECT * FROM events WHERE (e_pricetemp>=? and e_zipcode LIKE ? and e_state LIKE ? and e_private = 0 and e_date = ?) OR (e_is_online = 1 and e_date = ?)  ORDER BY event_id DESC'; // this line is added by yuan
+  	else{  $sql = 'SELECT * FROM events WHERE (e_pricetemp>=? and e_zipcode LIKE ? and e_state LIKE ? and e_private = 0 and e_date = ?) OR (e_is_online = 1 and e_date = ?)  ORDER BY e_date ASC, event_id DESC';
     $query = $this->db->query($sql,array($price,$zipcode,$state,$date,$date));} // this line is added by yuan
 //    $sql = 'SELECT * FROM events WHERE (e_pricetemp<=? and e_zipcode LIKE ? and e_state LIKE ? and e_private = 0 and e_date = ?) OR (e_is_online = 1 and e_date = ?)  ORDER BY event_id DESC';
 //    $query = $this->db->query($sql,array($price,$zipcode,$state,$date,$date));
     $events = $query->result_array();
   }
   else{
-    	if($date=='1969-12-31'){ $sql = 'SELECT * FROM events WHERE (e_private = 0 and e_private = 0 and e_date > NOW()+INTERVAL 1 DAY) OR (e_is_online = 1 and e_private = 0 and e_date > NOW()+INTERVAL 1 DAY ) ORDER BY event_id DESC';  // this line is added by yuan
+    	if($date=='1969-12-31'){ $sql = 'SELECT * FROM events WHERE ((e_private = 0 and e_private = 0 and e_date > NOW()-INTERVAL 1 DAY) OR (e_is_online = 1 and e_private = 0 and e_date > NOW()-INTERVAL 1 DAY ))AND EXISTS(SELECT * FROM users WHERE users.user_id=events.e_creatorID AND users.activation="Y")  ORDER BY e_date ASC, event_id DESC';  
+    	// this line is added by yuan
     	$query = $this->db->query($sql);} // this line is added by yuan
-  	else{ $sql = 'SELECT * FROM events WHERE (e_private = 0 and e_date = ?) OR (e_is_online = 1 and e_date = ?) ORDER BY event_id DESC';  // this line is added by yuan
+  	else{ $sql = 'SELECT * FROM events WHERE ((e_private = 0 and e_date = ?) OR (e_is_online = 1 and e_date = ?)) AND EXISTS(SELECT * FROM users WHERE users.user_id=events.e_creatorID AND users.activation="Y")  ORDER BY e_date ASC, event_id DESC';  // this line is added by yuan
   	$query = $this->db->query($sql,array($date,$date));}  // this line is added by yuan
  //   $sql = 'SELECT * FROM events WHERE (e_private = 0 and e_date = ?) OR (e_is_online = 1 and e_date = ?) ORDER BY event_id DESC';
  //   $query = $this->db->query($sql,array($date,$date));
@@ -772,9 +777,63 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
 	 }else{
 	       $related_events[$i]['e_date'] =date('M d', strtotime($related_events[$i]['e_date']));}
  }
+ 	if($related_events[$i]['e_date'] == 'Every Weekend') 
+	 {  $related_events[$i]['e_date'] ='Weekends';
+	 }elseif($related_events[$i]['e_date'] == 'Every Weekday'){
+	 $related_events[$i]['e_date'] ='Weekday';
+	 }elseif($related_events[$i]['e_date'] == 'Everyday'){
+	 $related_events[$i]['e_date'] ='Daily';
+	 }else{
+	       $related_events[$i]['e_date'] =date('M d', strtotime($related_events[$i]['e_date']));}  
 	    }
     return $related_events;
+  
+}
+
+public function get_latest_events_main_search_mobile($search){
+    $this->load->helper('date');
+
+$zipcode=$search;
+$state=$search;
+$city=$search; 
+$search='%'.$search.'%';
+
+    $datestring = '%Y-%m-%d';
+    $time = time();
+    $today = mdate($datestring, $time);
+ $sql = 'SELECT * FROM events WHERE (((e_city=? or e_zipcode=? or e_state=? or e_name like?) and e_date > NOW()-INTERVAL 1 DAY) OR (e_is_online = 1) AND EXISTS(SELECT * FROM users WHERE users.user_id=events.e_creatorID AND users.activation="Y") ) ORDER BY e_date ASC, event_id DESC';  //this line is added by yuan
+    $query = $this->db->query($sql,array($city,$zipcode,$state,$search)); // this line is added by yuan
+
+ //   $sql = 'SELECT * FROM events WHERE (e_private = 0 and e_date = ?) OR (e_is_online = 1 and e_date = ?) ORDER BY event_id DESC';
+ //   $query = $this->db->query($sql,array($date,$date));
+    $events = $query->result_array();
+
+$events_size=sizeof($events);
+
+    for($i = 0; $i < $events_size; $i++) {
+    	$events[$i]['e_start_time'] = $this->convert_time($events[$i]['e_start_time']);
+    	if($events[$i]['e_date'] == '9999-12-31') {
+	    	$events[$i]['e_date'] = $events[$i]['period_text'];
+	    		 if($events[$i]['e_date'] == 'Every Weekend') 
+	 {  $events[$i]['e_date'] ='Weekends';
+	 }else{
+	       $events[$i]['e_date'] =date('M d', strtotime($events[$i]['e_date']));}
+ }
+ 	if($events[$i]['e_date'] == 'Every Weekend') 
+	 {  $events[$i]['e_date'] ='Weekends';
+	 }elseif($events[$i]['e_date'] == 'Every Weekday'){
+	 $events[$i]['e_date'] ='Weekday';
+	 }elseif($events[$i]['e_date'] == 'Everyday'){
+	 $events[$i]['e_date'] ='Daily';
+	 }else{
+	       $events[$i]['e_date'] =date('M d', strtotime($events[$i]['e_date']));}  
+	    }
+return $events;
+    /*check if there is an specific word or letter that user is searching for in latest event */
+
+
   }
+  
   
   public function convert_time($temp_start_time) {
   	if($temp_start_time >= 780) {
@@ -971,6 +1030,8 @@ public function get_latest_related_events($search,$category,$price,$state,$zipco
           //if user inputted a value then update it
           if($value and $value != 'Submit'){
             if($i == 'e_start_time') {
+            	$info_updating[$i] = $this->timestamp($value);
+            }elseif($i == 'e_end_time') {
             	$info_updating[$i] = $this->timestamp($value);
             }
             else 

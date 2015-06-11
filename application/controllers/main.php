@@ -181,7 +181,9 @@ public function index()
 	
 	public function forgot_password() {
 		$this->load->model('model_users');
-		$email_data = $this->model_users->get_info($this->input->post('email_reset'));
+
+		 if($this->model_users->check_email_exists($this->input->post('email_reset'))=='1'){
+		 $email_data = $this->model_users->get_info($this->input->post('email_reset'));
 		$key = $this->model_users->forgot_password($email_data);
 		$key = $key['key'];
 		$id = $email_data['user_id'];
@@ -201,6 +203,13 @@ public function index()
                 $this->email->message($message);
                 $this->email->send();
                 redirect('main/email_reset');
+		 }else{
+		echo "<script type='text/javascript'>";
+		echo "window.alert('The email you entered does not exist!');";
+		echo "window.location.assign('http://www.wrevel.com');";
+		echo "</script>";
+		 }
+		
 	}
 	
         //Job applications.
@@ -259,6 +268,7 @@ public function index()
 	
 	$this->load->library('session');
 	$this->load->library('form_validation');
+	$this->load->model('model_users');
 	$this->form_validation->set_rules('email','Email Address','required|valid_email|');
         $this->form_validation->set_rules('password','Password','required|md5|callback_PWcheck');
        
@@ -266,14 +276,36 @@ public function index()
 	
 	if($this->form_validation->run())
 	 {
+	 
+	 $activation_status=$this->model_users->get_activation_status($this->input->post('email'));
+	 	
 		$data = array(
                         'email'=> $this->input->post('email'),
-                        'is_logged_in'=>1                          
+                        'is_logged_in'=>1,
+			'activation'=>$activation_status                          
+                    );
+		if (!isset($_SESSION['is_logged_in'])){
+			$this->model_users->add_reputation($this->input->post('email'), 1);
+
+		}
+		$this->session->set_userdata($data);
+		
+		if($activation_status=='Y'){
+		redirect('showroom/profile');
+		}else{
+			redirect('account/myaccount_accountinfo');
+		}  
+		
+	
+/*		$data = array(
+                        'email'=> $this->input->post('email'),
+                        'is_logged_in'=>1,
+			'activation'=>$activation_status['activation']                     
                     );
 	
 		$this->session->set_userdata($data);
-		//redirect('profile');
-		redirect('showroom/profile');
+		redirect('showroom/profile');    */
+		
 	 }
 	 else
 	 {
@@ -366,7 +398,24 @@ public function index()
 	public function PWcheck()
 	{
 		$this->load->model('model_users');
-		$condition = $this->model_users->can_log_in();
+		$email='initial';
+		$pw='123';
+		if(isset($_GET['user_email']) && isset($_GET['user_pw'])){ //request from mobile 
+		    $email=$_GET['user_email'];
+		    $pw=$_GET['user_pw'];
+			$condition = $this->model_users->can_log_in($email,$pw);
+			if($condition == 2)
+		{
+			$result=$this->model_users->get_info($email);
+			echo json_encode($result);
+		}else{
+		echo 'wrong pw or username!';
+		}
+			return;
+			//using this line, it works! https://wrevel.com/index.php/main/PWcheck?user_email=yuanshen.ncu@gmail.com&user_pw=$wrevelYS
+		};
+		$condition = $this->model_users->can_log_in($email,$pw);
+
                 if($condition == 2)
 		{
                     $this->model_users->set_last_online();
@@ -374,11 +423,13 @@ public function index()
 		}
                 else if($condition == 3)
                 {
+                    if(isset( $this->form_validation))
                     $this->form_validation->set_message('PWcheck', 'Please make sure you have confirmed your email.');
                     return false;
                 }
                 else if($condition == 4)
                 {
+                    if(isset( $this->form_validation))
                     $this->form_validation->set_message('PWcheck', 'Please make sure you entered the correct password.');
                     return false;
                 }
@@ -405,6 +456,7 @@ public function index()
                 }
 		else
 		{
+		     if(isset( $this->form_validation))
                     $this->form_validation->set_message('PWcheck','Incorrect Email/Password combination, Please sign up for a free account.');
                     return false;
 		}
@@ -434,6 +486,44 @@ public function index()
 		}
 		$this->load->view('temporarypassword', $path);
 	}
+	
+	
+	   public function deactivate_account()
+        {
+
+        	$this->load->library('path');
+        	$path = $this->path->getPath();
+        	$this->load->library('session');
+        	$this->load->model('model_users');
+        	$email = $this->session->userdata('email');
+        	$activation_status=$this->session->userdata('activation');
+        	$this->model_users->change_activation_status($email,$activation_status);
+        	
+        	if($activation_status=='Y'){
+        		//When user clicks confirm email, the key will be in the url to distinguish unique users
+        		$key = md5(uniqid());
+        		$this->load->library('email',array('mailtype'=>'html'));
+        		$this->email->from('donotreply@wrevel.com', "Wrevel, Inc.");
+        		$this->email->to($email);
+        		$this->email->subject("Your account has been deactivated");
+        		$message ="<p> Hello!</p><p>You account in Wrevel has been deactivated, we are sorry about that :( </p>
+        				<p>You may reactivate your account any time you want, you are always welcome!</p>";
+        		$message .= "<p>Copyright 2014 Wrevel, Inc.,<i> All Rights Reserved.</i></p><div>Connect with us!</div>";
+        		$message .= "<div><a href='www.wrevel.com'>www.wrevel.com</a></div>";
+        		$message .= "<div>Facebook: <a href='www.facebook.com/wrevelinc'>www.facebook.com/wrevelinc</a></div>";
+        		$message .= "<div>Twitter: <a href='www.twitter.com/wrevelco'>www.twitter.com/wrevelco</a></div>";
+        		$message .= "<div>Instagram: <a href='www.instagram.com/wrevel '>www.instagram.com/wrevel </a></div>";
+        		$message .= "<div>Tumblr: <a href='wrevel.tumblr.com'>wrevel.tumblr.com</a></div>";
+        		$message .= "<div>E-mail: <a href='support@wrevel.com'>support@wrevel.com</a></div>";
+        		$this->email->message($message);
+        		$this->email->send();
+        		redirect('main/logout');
+        		}else{
+        		 $this->session->set_userdata('activation','Y');
+        		redirect('showroom/profile');
+			}
+       
+        }
 	
 	public function email_reset() {
 		$this->load->library('path');
@@ -680,13 +770,16 @@ public function index()
 		
 	}
 	public function mywrevs()
-	{
+	{   $this->load->library('session');
+	if($this->session->userdata('activation')=="N"){
+            	redirect('account/myaccount_accountinfo');
+            }
+        else{
             $this->load->library('path');
             $this->load->model('model_users');
             $this->load->model('model_page_visits');
             $this->model_page_visits->update_page_visits('mywrevs');
             $path = $this->path->getPath();
-            $this->load->library('session');
             $email = $this->session->userdata('email');
             $info = $this->model_users->get_info($email);
 
@@ -697,7 +790,7 @@ public function index()
             //echo "<pre> ",print_r($result,true) ,"</pre>";
             $this->load->view('Create_Wrevel_View',$path);
             $this->load->view('mywrevs',$result);
-    
+    	    }
 	}
 //MARKED FOR DELETION.
 	public function myusers2()
@@ -930,6 +1023,41 @@ public function get_related_events($category)
       //echo "<pre> ",print_r($all,true) ,"</pre>";
     $this->load->view('Create_Wrevel_View', $path);
     $this->load->view('latestwrevs',$all);
+
+  }
+  
+    public function get_latest_events_testing(){
+    $this->load->library('path');
+    $this->load->library('hashmap_cata');
+    $this->load->library('session');
+    $eventMap = $this->hashmap_cata->get_EventMap();
+    $path = $this->path->getPath();
+    $this->load->model('model_events');
+    $this->load->model('model_page_visits');
+
+    $this->load->model('model_users');
+    $this->model_page_visits->update_page_visits('latestwrevs');
+
+    //$search = $this->input->post('search');
+    $search = $this->input->post('search');
+
+    $search_user=$search;
+    $users_search = $this->model_users->search_by_name($search_user);
+ 
+    $active_users = $this->model_users->order_by_reputation();
+    $eaner_users = $this->model_users->order_by_posting();
+    $buyer_users = $this->model_users->order_by_attending();
+     
+    $data['active_users'] = $active_users;
+    $data['eaner_users'] = $eaner_users;
+    $data['buyer_users'] = $buyer_users;
+    $data['users_search'] = $users_search;
+    $nav_data = $this->session->all_userdata();
+    $all = array_merge($data,$eventMap,$nav_data);
+
+      //echo "<pre> ",print_r($all,true) ,"</pre>";
+    $this->load->view('Create_Wrevel_View', $path);
+    $this->load->view('latestwrevs_testing',$all);
 
   }
   
