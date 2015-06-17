@@ -46,16 +46,17 @@
 							</div>
       
 							<div class="modal-body" style="text-align:left;background:#C2D2DC;">
-								<form id="signin" action="<?php echo base_url()."main/login_validation"?>" method="POST">
-								<div class="form-group">
-                                                                    <input type="text" class="form-control" name="email" placeholder="Email address" required="" autofocus="">
+						       <form id="signin" action="<?php echo base_url()."main/login_validation"?>" method="POST">
+
+                                <div class="form-group">
+                                                                    <input type="text" class="form-control" name="email" placeholder="Email address" required="" autofocus="" value="<?php echo isset($_COOKIE['email_cookie'])?$_COOKIE['email_cookie']:null ?>">
                                                                 <div class="pull-left">
                                                                     <font color="red"><?php echo form_error('email'); ?></font>
                                                                 </div>
                                                                 </div>
         
 								<div class="form-group">
-								<input type="password" class="form-control" name="password" placeholder="Password" required="" style="margin-top: 2%;">
+								<input type="password" class="form-control" name="password" placeholder="Password" required="" style="margin-top: 2%;" value = "<?php echo isset($_COOKIE['password_cookie'])?$_COOKIE['password_cookie']:null ?>">
                                                                 <div class='pull-left'>
                                                                     <font color="red"><?php echo form_error('password'); ?></font>
                                                                 </div>
@@ -68,7 +69,7 @@
 								</a>
                 
 								<label class="checkbox" style="float:right; margin-top: -15px;">
-								<input type="checkbox" value="remember-me"> Remember me
+								<input type="checkbox" name="remember-me" value="remember-me"> Remember me
 								</label>
                 
 								</p>
@@ -155,8 +156,21 @@
                     <font color="red"><?php echo form_error('password-signup'); ?></font>
                     <input name = 'cpassword-signup' type="password" class="form-control" placeholder="Re-enter Password" required style="margin-top: 2%;">
                     <font color="red"><?php echo form_error('cpassword-signup'); ?></font>
+
+<!--                                    <div class="image-upload">-->
+<!---->
+<!--                                        <label for="file-input-profile">-->
+<!---->
+<!--                                            <img src="--><?php //echo $PATH_IMG?><!--camera_icon.png"  style="min-width:100%; max-width:100%; margin-top:20px;">-->
+<!---->
+<!--                                        </label>-->
+<!--                                        <label for ="file-upload">-->
+<!---->
+<!---->
+<!--                                        </label>-->
+<!--                                    </div>-->
+
                     </br>
-					
 					<div class="form-group row">
 					<p>Type of Account</p>
 					<label class="radio-inline" style="padding-right:15px;" id="regular" data-content="Recommended free account for users that want to attend events,connect with friends,and create events quickly without much setup. " data-trigger="hover" data-placement="bottom">
