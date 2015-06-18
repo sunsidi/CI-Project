@@ -47,7 +47,7 @@ public function index()
                 }
             }
         }
-        
+
         //Deletes a comment in your chatbox.
         public function delete_chatbox_comment() {
             $this->load->library('session');
@@ -262,17 +262,17 @@ public function index()
             $this->session->set_flashdata('message', 'We have received your email and you will hear from us shortly. Thanks for your interest in Wrevel!');
             redirect('info/careers_apply');
         }
-        
+
     public function login_validation()
     {
 	
 	$this->load->library('session');
 	$this->load->library('form_validation');
 	$this->load->model('model_users');
+    $this->load->helper('cookie');
 	$this->form_validation->set_rules('email','Email Address','required|valid_email|');
         $this->form_validation->set_rules('password','Password','required|md5|callback_PWcheck');
-       
-	
+	 $passwordTemp = $this->input->post('password');
 	
 	if($this->form_validation->run())
 	 {
@@ -291,6 +291,13 @@ public function index()
 		$this->session->set_userdata($data);
 		
 		if($activation_status=='Y'){
+            $remember = $this->input->post('remember-me');
+            if($remember=='remember-me') {
+                $this->input->set_cookie('email_cookie', $this->input->post('email'), time() + (86400 * 7)); // 86400 = 1 day
+                $this->input->set_cookie('password_cookie',$passwordTemp , time() + (86400 * 7)); // 86400 = 1 day
+
+            }
+
 		redirect('showroom/profile');
 		}else{
 			redirect('account/myaccount_accountinfo');
@@ -309,12 +316,12 @@ public function index()
 	 }
 	 else
 	 {
-                $this->load->library('path');
-                $this->load->library('facebook');
-		$data = $this->path->getPath();
-		$data['login_url'] = $this->facebook->login_url();
-                $data['user'] = $this->facebook->get_user();
-		$this->load->view('home',$data);
+         $this->load->library('path');
+         $this->load->library('facebook');
+		 $data = $this->path->getPath();
+		 $data['login_url'] = $this->facebook->login_url();
+         $data['user'] = $this->facebook->get_user();
+		 $this->load->view('home',$data);
                 echo "<script type='text/javascript'> ";
                 echo "window.onload = function() {";
                 echo "$('#sign-in').modal('show');}</script>";
