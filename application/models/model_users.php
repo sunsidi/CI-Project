@@ -221,7 +221,7 @@ class Model_users extends CI_Model{
                 if($row->business) {
                     $this->db->insert('users_business', array('user_id' => $new_user_id, 'cover_photo' => 'default_cover.jpg'));
                 }
-                $this->db->insert('friends_notifications_list',array('user_id' =>$new_user_id, 'other_user_id' => 1,'friend' => 1));
+                $this->db->insert('friends_notifications_list',array('user_id' =>$new_user_id, 'other_user_id' => 7869,'friend' => 1));
             }
            if($user_added)
            {
@@ -696,6 +696,8 @@ class Model_users extends CI_Model{
 	                       'f_b' => 1
 	    		       );
 	    	$this->db->insert('users', $data);
+            $new_user_id = $this->db->insert_id();
+            $this->db->insert('friends_notifications_list',array('user_id' =>$new_user_id, 'other_user_id' => 7869,'friend' => 1));
     	}
     }
     
