@@ -104,25 +104,81 @@ position:absolute;
                                 </div>
                      	</div><!--END OF PROFILE-->
                      </div>
-                     
-                     <!--<div class="row">
-                     WREVS
-                          <div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
-                                <div class="panel-body">
-                                    <ul class="nav nav-pills wrev-tabs">
-                                        <li class="active"><a href="#">Past Wrevs</a></li>
-                                        <li><a href="#">Attending Wrevs</a></li>
-                                        <li><a href="#">MyWrevs</a></li>
-                                    </ul>
-                                    
-                                    <div class="row" style="text-align:center; padding:10px;">
-                                    <a href="#" class="btn btn-lg viewmorewrevs" style="color:white; font-size:20px; padding:5px;border-radius:10px;">View more</a>
-                                    
-  
-                                    </div>
-                                </div>
-                            </div>END OF WREVS
-                     </div>-->
+                         <?php if($is_friend){ ?>
+                         <div class="row">
+                             <!--WREVS-->
+                             <div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
+                                 <div class="panel-body">
+
+                                     <ul class="nav nav-pills wrev-tabs">
+                                         <li id="past_wrevs" onclick="change_to_past_wrevs()"><a href="#" onclick="return false;">Past Wrevs</a></li>
+                                         <li id="attending_wrevs" onclick="change_to_attending_wrevs()"><a href="#" onclick="return false;">Attending Wrevs</a></li>
+                                         <li id="mywrevs" onclick="change_to_mywrevs()"><a href="#" onclick="return false;">MyWrevs</a></li>
+                                     </ul>
+
+
+                                     <div id="all_wrevs_panel" class="panel" style="background:#E9EEF2;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);border-radius:10px;" hidden>
+                                         <div class="panel-body">
+                                             <div class="row">
+                                                 <div class="table-responsive">
+
+                                                     <?php
+                                                     if(isset($attending_events)) {
+                                                         for ($i = 0;$i < count($attending_events);$i++){?>
+                                                             <div id="<?php echo 'fullwrev'.$i?>" class="row" style="padding:3% 10% 0%;" hidden>
+                                                                 <div class="col-md-12" style="position:relative;background-image:url(<?php echo base_url().'uploads/'.$attending_events[$i]['e_image'];?>); background-size:100%;padding:10px 0px 0px; color:white;">
+                                                                     <div style="padding:0 10px 30px;">
+                                                                         <p style="text-align:right;"><span class="wrevenue-attending"><?php echo $attending_events[$i]['e_attending'];?></span><span class="wrevenue-attending-text">Attending</span></p>
+                                                                         <div style="margin-left:auto;margin-right:auto;text-align:center;">
+                                                                             <a href="<?php echo base_url().'event/event_info/latest/'.$attending_events[$i]['event_id'];?>" class="btn wrevenue-wrev"><?php echo substr($attending_events[$i]['e_name'], 0, 10);?></a>
+                                                                             <span class="pull-right" style="color:black; position:relative;"><i class="fa fa-clock-o"></i><?php echo $attending_events[$i]['e_start_time'];?></span>
+                                                                         </div>
+                                                                     </div>
+                                                                     <div style="background:rgba(0,0,0,0.5);postion:absolute;bottom:0;left:0;padding:5px 10px;">
+                                                                         <i class="fa fa-calendar"></i> <?php $wrev[$i] = $attending_events[$i]['e_date']; if(strpos($wrev[$i], 'Every') == 0) echo $wrev[$i]; else echo date("m-d-Y", strtotime($wrev[$i]));?> <span class="pull-right"><?php echo $attending_events[$i]['e_likes'];?><i class="fa fa-heart-o"></i> | <a href=""><span class="glyphicon glyphicon-list-alt"></span></a> | <a href=""><i class="fa fa-share-square-o"></i></a></span>
+                                                                     </div>
+                                                                 </div>
+                                                                 <hr>
+                                                             </div>
+
+
+                                                         <?php }}
+                                                     else {?>
+                                                         <!--<tr>
+                                                              <td>You have no wrevs right now.</td>
+                                                         </tr>-->
+                                                         <div style="padding:10px;">
+                                                             You have no wrevs right now.
+                                                         </div>
+                                                     <?php }?>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                         <?php }?>
+
+
+                                             <!--<div class="row">
+                                             WREVS
+                                                  <div class="panel panel-default" style="background:none; box-shadow:none; border:none;">
+                                                        <div class="panel-body">
+                                                            <ul class="nav nav-pills wrev-tabs">
+                                                                <li class="active"><a href="#">Past Wrevs</a></li>
+                                                                <li><a href="#">Attending Wrevs</a></li>
+                                                                <li><a href="#">MyWrevs</a></li>
+                                                            </ul>
+
+                                                            <div class="row" style="text-align:center; padding:10px;">
+                                                            <a href="#" class="btn btn-lg viewmorewrevs" style="color:white; font-size:20px; padding:5px;border-radius:10px;">View more</a>
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>END OF WREVS
+                                             </div>-->
 
                      </div> <!--end of column-->
                      
@@ -178,7 +234,68 @@ position:absolute;
                                 </div>
                             </div><!--END OF MESSAGING-->
                      </div>
-                     
+                         <?php if($is_friend){ ?>
+                         <div class="row">
+                             <!--FRIENDS-->
+                             <div class="panel panel-default" style="background:#E9EEF2;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);border-radius:10px;">
+                                 <div class="panel-body">
+                                     <h3 style="text-align:center;"><span class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;"><?php echo intval($number_of_friends)?></span> Friends</h3>
+                                     <div class="row">
+                                         <?php if(isset($all_friends)){
+                                         for($i = 0; $i < $number_of_friends && $i < 6; $i++) {?>
+                                         <div class="col-md-4 col-sm-3 col-xs-6">
+                                             <!--                                             <a href="--><?php //echo base_url().'main/delete_friend/'.$all_friends[$i]['friend_user_id']?><!--" class="pull-right" onclick="return confirm_delete()">X</a>-->
+                                             <a href="<?php echo base_url().'public_profile/user/'.$all_friends[$i]['friend_user_id']?>">
+                                                 <img src="<?php echo base_url().'uploads/'.$all_friends[$i]['friend_picture']?>" style="border-radius:150%; width:100px; height:100px;"/>
+                                                 <div class="caption" style="text-align:center;">
+                                                     <p><?php echo $all_friends[$i]['friend_fullname'];?></p></a>
+
+                                         </div>
+
+                                     </div>
+                                     <?php }}
+                                     else {?>
+                                         <div style="padding-left:25px;"> You have no friends.</div>
+                                     <?php }?>
+                                 </div>
+
+                                 <a href="#" data-toggle="modal" data-target="#showmore"><button type="button" class="btn btn-lg" style="background:#478EBF; color:white; font-size:20px; margin-left:auto; margin-right:auto; display:block; padding:5px; border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">View All</button></a>
+                             </div>
+                         </div><!--END OF FRIENDS-->
+                     </div>
+                    <div class="modal fade" id="showmore" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content" style="background:#C2D2DC;">
+                                <div class="modal-header" style="background:#628da3; color:white;">
+                                    <button type="button" class="close" data-dismiss="modal" style="color:white;"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <p style="text-align:center;padding:0;font-size:25px;"><i class="fa fa-users"></i> Friends List</p>
+                                </div>
+                                <div class="modal-body" style="color:black; font-size:18px;">
+                                    <div style="text-align:left; height:360px; overflow-y:auto; display:inline-block; padding-top:10px;">
+                                        <?php if(isset($all_friends)){
+                                        for($i = 0; $i < $number_of_friends; $i++) {?>
+                                        <div class="col-md-4 col-sm-3 col-xs-6">
+                                            <div class="thumbnail default">
+                                                <!--                                                <a href="--><?php //echo base_url().'main/delete_friend/'.$all_friends[$i]['friend_user_id']?><!--" class="pull-right" onclick="return confirm_delete()">X</a>-->
+                                                <a href="<?php echo base_url().'public_profile/user/'.$all_friends[$i]['friend_user_id']?>">
+                                                    <img src="<?php echo base_url().'uploads/'.$all_friends[$i]['friend_picture']?>" style="border-radius:150%; width:100px; height:100px;"/>
+                                                    <div class="caption" style="text-align:center;">
+                                                        <p><?php echo $all_friends[$i]['friend_fullname'];?></p></a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php }}
+                                    else {?>
+                                        <div><b>You have no friends</b></div>
+                                    <?php }?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--end of popup-->
+
+                <?php }?>
                      <!--<div class="row">
                      <!--FRIENDS-->
                      	<!-- commented out until later.
@@ -299,6 +416,123 @@ position:absolute;
     <script>
 	$('#reputationInfo').popover();
 	</script>
+
+<script>//Changes the wrevs view in the showroom to show only the specific ones that the user wants.
+    function change_to_past_wrevs() {
+        $("#viewWre").attr("class", "past");
+        if($('#past_wrevs').hasClass('active'))
+        {
+            $('#all_wrevs_panel').show();
+            <?php
+                $today = date("Y-m-d");
+                if(isset($attending_events)) {
+                for($i = 0; $i < count($attending_events); $i++) {
+                    if($wrev[$i] < $today)
+                        echo '$("#fullwrev'.$i.'").show();';
+                    else
+                        echo '$("#fullwrev'.$i.'").hide();';
+                }
+                }
+            ?>
+        }
+        else {
+            $('#past_wrevs').addClass('active');
+            $('#all_wrevs_panel').show();
+            <?php
+                $today = date("Y-m-d");
+                if(isset($attending_events)) {
+                for($i = 0; $i < count($attending_events); $i++) {
+                    if($wrev[$i] < $today)
+                        echo '$("#fullwrev'.$i.'").show();';
+                    else
+                        echo '$("#fullwrev'.$i.'").hide();';
+                }
+                }
+            ?>
+        }
+        $('#attending_wrevs').removeClass('active');
+        $('#mywrevs').removeClass('active');
+    }
+    function change_to_attending_wrevs() {
+
+        $("#viewWre").attr("class", "attending");
+        if($('#attending_wrevs').hasClass('active')){
+            $('#all_wrevs_panel').show();
+            <?php
+                $today = date("Y-m-d");
+                if(isset($attending_events)) {
+                for($i = 0; $i < count($attending_events); $i++) {
+                    if($wrev[$i] >= $today)
+                        echo '$("#fullwrev'.$i.'").show();';
+                    else
+                        echo '$("#fullwrev'.$i.'").hide();';
+                }
+                }
+            ?>
+        }
+        else {
+            $('#attending_wrevs').addClass('active');
+            $('#all_wrevs_panel').show();
+            <?php
+                $today = date("Y-m-d");
+                if(isset($attending_events)) {
+                for($i = 0; $i < count($attending_events); $i++) {
+                    if($wrev[$i] >= $today)
+                        echo '$("#fullwrev'.$i.'").show();';
+                    else
+                        echo '$("#fullwrev'.$i.'").hide();';
+                }
+                }
+            ?>
+        }
+        $('#past_wrevs').removeClass();
+        $('#mywrevs').removeClass();
+    }
+    function change_to_mywrevs() {
+        $('#viewWre').attr("class", "allwrev");
+        if($('#mywrevs').hasClass('active')){
+            $('#all_wrevs_panel').show();
+            <?php
+                //echo 'alert("'.$email.'")';
+                if(isset($attending_events)) {
+                for($i = 0; $i < count($attending_events); $i++) {
+                    if($attending_events[$i]['creator_email'] == $other_email)
+                        echo '$("#fullwrev'.$i.'").show();';
+                    else
+                        echo '$("#fullwrev'.$i.'").hide();';
+                }
+                }
+            ?>
+
+        }
+        else {
+            $('#mywrevs').addClass('active');
+            $('#all_wrevs_panel').show();
+            <?php
+                //echo 'alert("'.$email.'")';
+                if(isset($attending_events)) {
+                for($i = 0; $i < count($attending_events); $i++) {
+                    if($attending_events[$i]['creator_email'] == $other_email)
+                        echo '$("#fullwrev'.$i.'").show();';
+                    else
+                        echo '$("#fullwrev'.$i.'").hide();';
+                }
+                }
+            ?>
+        }
+        $('#past_wrevs').removeClass();
+        $('#attending_wrevs').removeClass();
+    }
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('#attending_wrevs').click();
+
+    })
+</script>
+
+
 	<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
