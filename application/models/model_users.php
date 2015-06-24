@@ -689,7 +689,7 @@ class Model_users extends CI_Model{
 	    	$data = array( 'fullname' => $user_data['name'],
 	    		       'email' => $user_data['email'],
 	    		       'username' => $user_data['email'],
-	    		       'birthday' => $user_data['birthday'],
+	    		       'birthday' => null,
 	    		       'reputation' => 0,
 	    		       'image_key' => $user_data['profile_pic'],
 	    		       'gender' => $gender,

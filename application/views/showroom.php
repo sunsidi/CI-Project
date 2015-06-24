@@ -769,7 +769,7 @@ document.getElementById("herdzz").innerHTML = " ";
             {
                 $('#all_wrevs_panel').show();
                 <?php 
-                    $today = date("m-d-Y");
+                    $today = date("Y-m-d");
                     if(isset($attending_events)) {
                     for($i = 0; $i < count($attending_events); $i++) {
                         if($wrev[$i] < $today)
@@ -784,7 +784,7 @@ document.getElementById("herdzz").innerHTML = " ";
                 $('#past_wrevs').addClass('active');
                 $('#all_wrevs_panel').show();
                 <?php 
-                    $today = date("m-d-Y");
+                    $today = date("Y-m-d");
                     if(isset($attending_events)) {
                     for($i = 0; $i < count($attending_events); $i++) {
                         if($wrev[$i] < $today)
@@ -802,7 +802,7 @@ document.getElementById("herdzz").innerHTML = " ";
             if($('#attending_wrevs').hasClass('active')){
                 $('#all_wrevs_panel').show();
                 <?php 
-                    $today = date("m-d-Y");
+                    $today = date("Y-m-d");
                     if(isset($attending_events)) {
                     for($i = 0; $i < count($attending_events); $i++) {
                         if($wrev[$i] >= $today)
@@ -817,7 +817,7 @@ document.getElementById("herdzz").innerHTML = " ";
                 $('#attending_wrevs').addClass('active');
                 $('#all_wrevs_panel').show();
                 <?php 
-                    $today = date("m-d-Y");
+                    $today = date("Y-m-d");
                     if(isset($attending_events)) {
                     for($i = 0; $i < count($attending_events); $i++) {
                         if($wrev[$i] >= $today)

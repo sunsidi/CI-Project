@@ -81,6 +81,8 @@ class Public_profile extends CI_Controller {
                             $data['attending_events'][$i]['e_image'] = $temp_event[0]['e_image'];
                             $data['attending_events'][$i]['e_name'] = $temp_event[0]['e_name'];
                             $data['attending_events'][$i]['e_date'] = $temp_event[0]['e_date'];
+                            $data['attending_events'][$i]['e_attending'] = $temp_event[0]['e_attending'];
+                            $data['attending_events'][$i]['e_likes'] = $temp_event[0]['e_likes'];
                             //change start time to 12 hr format.
                             $temp_start_time = $temp_event[0]['e_start_time'];
                             if($temp_start_time >= 780) {
