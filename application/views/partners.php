@@ -29,7 +29,23 @@
 					<h2 class="panel-title" style="color:white;padding:20px;font-family:GillSans;font-size:30px;">Partners and Affiliates</h2>
 				</div>
 				<div class="panel-body" style="background:#f0f3f6;border-bottom-left-radius:15px;border-bottom-right-radius:15px;">
-					<img src="<?php echo $PATH_IMG?>rentah_logo.png"/>
+					<a href="http://rentah.com/" target="_blank">
+					  <div class="partner">
+						<img src="<?php echo $PATH_IMG?>rentah_logo.png"/>
+						<span class="outer">
+						      <span class="partner_info">Rentah is a peer-to-peer marketplace on which anyone is able to rent out their goods, services, or spaces at a price of their choosing. The goal is to allow communities to tap into the value of their underutilized assets, such as the lawnmower that spends all week in the garage, the PA system that comes out once a month, or the sporting goods that won't be needed this season.</span>
+						</span>
+						
+					  </div>
+					</a>
+					<a href="http://www.rockstonemediagroup.com/" target="_blank">
+					  <div class="partner">
+						<img src="<?php echo $PATH_IMG?>RMG_LOGO_1.jpg"/>
+						<span class="outer">
+						      <span class="partner_info">Rockstone Media Group, LLC (RMG) is a content development and production company focused on developing fictional and fact based content. RMG aims to satisfy the needs of an audience that is thought provoked and savvy; an audience of forward thinkers who are interested in &quot;need to know media&quot; Rockstone will aim to spark conversations that affect everyday people with everyday concerns, thoughts and issues through entertaining and diverse productions.</span>
+						</span>
+					  </div>
+					</a>
 					<!--<img src="<?php echo $PATH_IMG?>teller.png">-->
 				</div>
 			</div>

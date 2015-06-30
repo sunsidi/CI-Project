@@ -1543,6 +1543,46 @@ display:none;
 
 }
 
+.partner{
+    //width:33.3%;
+    width:50%;
+    float:left;
+    position:relative;
+}
+//.rmg_logo{
+//    height:146px;
+//}
+.partner img{
+    height:160px;
+}
+
+.outer{
+     background: rgba(0,0,0,0.5);
+  color: white;
+  cursor: pointer;
+  display: table;
+  left: 0;
+  position: absolute;
+  top: -10px;
+  width:100%;
+  height:180px;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+
+.outer:hover{
+    opacity:1;
+}
+
+.partner_info{
+    display: table-cell;
+    vertical-align:middle;
+    text-align:center;
+}
+
 @media (max-width: 1025px){
   .eventlist{
     margin-left: -150px;
@@ -1713,7 +1753,11 @@ display:none;
 	
 }
 
-
+@media (max-width:709px){
+    .partner{
+	width:100%;
+    }
+}
 
 @media (max-width: 603px){
 	.star1{
@@ -2294,3 +2338,4 @@ a:hover .video{
     background:#F1EEED;
     color:#414042;
 }
+
