@@ -145,7 +145,7 @@ position:absolute;
       </div>
       
     <div class="modal-body" style="text-align:center;font-size:20px;background:#c2d2dc;">
-                    <?php 
+                    <?php
                         $requiredthings = array('onsubmit' => 'return check_image()');
                         echo form_open_multipart(base_url().'main/update_profile', $requiredthings);
                     ?>
@@ -282,7 +282,8 @@ position:absolute;
                                     
 					<div id="all_wrevs_panel" class="panel" style="background:#E9EEF2;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);border-radius:10px;" hidden>
                                             <div class="panel-body">
-                                	<div class="row">
+                                                <h3 style="text-align:center;"><span id="NumberWrevelsSpan" class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;"><?php  $Number_Wrevel = count($attending_events); echo intval($Number_Wrevel);?></span> Wrevels</h3>
+                                                <div class="row">
                                 	<div class="table-responsive">
 					<?php
                                             if(isset($attending_events)) {
@@ -434,7 +435,7 @@ position:absolute;
                                     <p style="text-align:center;padding:0;font-size:25px;"><i class="fa fa-users"></i> Wrevels List</p>
                                 </div>
                                 <div class="modal-body" style="color:black; font-size:18px;">
-                                    <div style="text-align:left; height:360px; overflow-y:auto; display:inline-block; padding-top:10px;">
+                                    <div style="text-align:left; height:360px; overflow-y:auto; padding-top:10px;">
                                         <div class="row">
 
                                             <div class="events_past">
@@ -508,7 +509,9 @@ position:absolute;
                                             <div class="events_all">
                                                 <?php
                                                 if(isset($attending_events)) {
-                                                    for ($i = 0;$i < count($attending_events);$i++){?>
+                                                    for ($i = 0;$i < count($attending_events);$i++){
+                                                        if($attending_events[$i]['creator_email'] == $email){
+                                                        ?>
                                                         <div id="<?php echo 'fullwrev-'.$i?>" class="row" style="padding:3% 10% 0%;" >
                                                             <div class="col-md-12" style="position:relative;background-image:url(<?php echo base_url().'uploads/'.$attending_events[$i]['e_image'];?>); background-size:100%;padding:10px 0px 0px; color:white;">
                                                                 <div style="padding:0 10px 30px;">
@@ -524,7 +527,7 @@ position:absolute;
                                                             </div>
                                                             <hr>
                                                         </div>
-                                                    <?php }}
+                                                    <?php }}}
                                                 else {?>
                                                     <!--<tr>
                                                          <td>You have no wrevs right now.</td>
@@ -903,9 +906,25 @@ document.getElementById("herdzz").innerHTML = " ";
         if($('#past_wrevs').hasClass('active'))
         {
             $('#all_wrevs_panel').show();
+
             <?php
                 $today = date("Y-m-d");
                 if(isset($attending_events)) {
+                    global $Number_Wrevel;
+                    $Number_Wrevel=0;
+                    for($i = 0; $i < count($attending_events); $i++) {
+                        $wrev[$i] = $attending_events[$i]['e_date'];
+                        if($wrev[$i] < $today){
+                           ++$Number_Wrevel;
+                        }
+                    }
+                }
+             ?>
+            $("#NumberWrevelsSpan").text(<?php echo $Number_Wrevel; ?>);
+
+            <?php
+
+            if(isset($attending_events)) {
 
                 $countWre =0;
                 for($i = 0; $i < count($attending_events); $i++) {
@@ -925,6 +944,7 @@ document.getElementById("herdzz").innerHTML = " ";
                 }
                 }
             ?>
+
         }
         else {
             $('#past_wrevs').addClass('active');
@@ -932,6 +952,21 @@ document.getElementById("herdzz").innerHTML = " ";
             <?php
                 $today = date("Y-m-d");
                 if(isset($attending_events)) {
+                    global $Number_Wrevel;
+                    $Number_Wrevel=0;
+                    for($i = 0; $i < count($attending_events); $i++) {
+                        $wrev[$i] = $attending_events[$i]['e_date'];
+                        if($wrev[$i] < $today){
+                           ++$Number_Wrevel;
+                        }
+                    }
+                 }
+             ?>
+            $("#NumberWrevelsSpan").text(<?php echo $Number_Wrevel; ?>);
+
+            <?php
+
+            if(isset($attending_events)) {
                 $countWre =0;
                 for($i = 0; $i < count($attending_events); $i++) {
                 $wrev[$i] = $attending_events[$i]['e_date'];
@@ -949,9 +984,13 @@ document.getElementById("herdzz").innerHTML = " ";
                     else
                         echo '$("#fullwrev'.$i.'").hide();';
                 }
+                echo "1";
                 }
+
             ?>
+
         }
+
         $('#attending_wrevs').removeClass('active');
         $('#mywrevs').removeClass('active');
     }
@@ -960,10 +999,22 @@ document.getElementById("herdzz").innerHTML = " ";
         if($('#attending_wrevs').hasClass('active')){
             $('#all_wrevs_panel').show();
             <?php
-
-
                 $today = date("Y-m-d");
                 if(isset($attending_events)) {
+
+                global $Number_Wrevel;
+                $Number_Wrevel=0;
+                for($i = 0; $i < count($attending_events); $i++) {
+                    $wrev[$i] = $attending_events[$i]['e_date'];
+                    if($wrev[$i] >= $today){
+                       ++$Number_Wrevel;
+                    }
+                }
+                }
+             ?>
+            $("#NumberWrevelsSpan").text(<?php echo $Number_Wrevel; ?>);
+            <?php
+            if(isset($attending_events)) {
                 $countWre =0;
                 for($i = 0; $i < count($attending_events); $i++) {
                     $wrev[$i] = $attending_events[$i]['e_date'];
@@ -992,6 +1043,23 @@ document.getElementById("herdzz").innerHTML = " ";
             <?php
                 $today = date("Y-m-d");
                 if(isset($attending_events)) {
+                global $Number_Wrevel;
+                $Number_Wrevel=0;
+                for($i = 0; $i < count($attending_events); $i++) {
+                    $wrev[$i] = $attending_events[$i]['e_date'];
+                    if($wrev[$i] >= $today){
+                       ++$Number_Wrevel;
+                    }
+                }
+
+                 }
+             ?>
+            $("#NumberWrevelsSpan").text(<?php echo $Number_Wrevel; ?>);
+
+            <?php
+
+            if(isset($attending_events)) {
+
                 $countWre =0;
                 for($i = 0; $i < count($attending_events); $i++) {
                     $wrev[$i] = $attending_events[$i]['e_date'];
@@ -1011,6 +1079,7 @@ document.getElementById("herdzz").innerHTML = " ";
                 }
             ?>
         }
+
         $('#past_wrevs').removeClass();
         $('#mywrevs').removeClass();
     }
@@ -1021,6 +1090,16 @@ document.getElementById("herdzz").innerHTML = " ";
             <?php
                 //echo 'alert("'.$email.'")';
                 if(isset($attending_events)) {
+
+                global $Number_Wrevel;
+                $Number_Wrevel = count($attending_events);
+                }
+             ?>
+            $("#NumberWrevelsSpan").text(<?php echo $Number_Wrevel; ?>);
+
+            <?php
+
+            if(isset($attending_events)) {
                 $countWre = 0;
                 for($i = 0; $i < count($attending_events); $i++) {
                     if($attending_events[$i]['creator_email'] == $email){
@@ -1049,6 +1128,16 @@ document.getElementById("herdzz").innerHTML = " ";
             <?php
                 //echo 'alert("'.$email.'")';
                 if(isset($attending_events)) {
+
+                global $Number_Wrevel;
+                $Number_Wrevel = count($attending_events);
+                }
+             ?>
+            $("#NumberWrevelsSpan").text(<?php echo $Number_Wrevel; ?>);
+
+            <?php
+
+            if(isset($attending_events)) {
                 $countWre = 0;
                 for($i = 0; $i < count($attending_events); $i++) {
                     if($attending_events[$i]['creator_email'] == $email){
