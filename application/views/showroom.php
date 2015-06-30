@@ -145,7 +145,7 @@ position:absolute;
       </div>
       
     <div class="modal-body" style="text-align:center;font-size:20px;background:#c2d2dc;">
-                    <?php 
+                    <?php
                         $requiredthings = array('onsubmit' => 'return check_image()');
                         echo form_open_multipart(base_url().'main/update_profile', $requiredthings);
                     ?>
@@ -282,7 +282,8 @@ position:absolute;
                                     
 					<div id="all_wrevs_panel" class="panel" style="background:#E9EEF2;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);border-radius:10px;" hidden>
                                             <div class="panel-body">
-                                	<div class="row">
+                                                <h3 style="text-align:center;"><span id="NumberWrevelsSpan" class="badge" style="color:white; background:#478EBF;font-size:20px; border-radius:150px; padding:18px 10px;width:55px;height:55px;"><?php  $Number_Wrevel = count($attending_events); echo intval($Number_Wrevel);?></span> Wrevels</h3>
+                                                <div class="row">
                                 	<div class="table-responsive">
 					<?php
                                             if(isset($attending_events)) {
@@ -313,14 +314,15 @@ position:absolute;
                                         <?php }?>                                      
                                         </div>
                                     </div>
-                                    
+                                    </br>
                                     <!--Shows all users attending -->
                                     <!--<button type="button" class="btn" style="background:#1C74BB; color:white; font-size:20px;border-radius:8px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">View More</button>-->
+                                                <a id="viewWre"  onclick = "view_All_wrevels()"  href="#" data-toggle="modal" data-target="#showmoreWrevel"><button  type="button" class="btn btn-lg" style="background:#478EBF; color:white; font-size:20px; margin-left:auto; margin-right:auto; display:block; padding:5px; border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);">View All</button></a>
+                                            </div>
                                 </div>
-                                </div>
-                                <div class="row" style="text-align:center; padding:10px;">
-                                        <a href="#"  data-toggle="modal" data-target="#create" class="btn btn-lg createwrev" style=" font-size:20px; padding:5px;border-radius:10px;">Create a Wrev</a>
-                                        <br>
+
+
+
   <div class="modal" id="myModal2" style="padding-right: 200px;">     
   <div class="modal-dialog">
       <div class="modal-content" style="width: 800px; height: 1000px; border-radius: 10px;">
@@ -423,6 +425,141 @@ position:absolute;
                                     </div>
                                 </div>
                             </div><!--END OF WREVS-->
+
+
+                    <div class="modal fade" id="showmoreWrevel" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content" style="background:#C2D2DC;">
+                                <div class="modal-header" style="background:#628da3; color:white;">
+                                    <button type="button" class="close" data-dismiss="modal" style="color:white;"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <p style="text-align:center;padding:0;font-size:25px;"><i class="fa fa-users"></i> Wrevels List</p>
+                                </div>
+                                <div class="modal-body" style="color:black; font-size:18px;">
+                                    <div style="text-align:left; height:360px; overflow-y:auto; padding-top:10px;">
+                                        <div class="row">
+
+                                            <div class="events_past">
+                                                <?php
+                                                if(isset($attending_events)) {
+                                                    for ($i = 0;$i < count($attending_events);$i++){
+                                                        $today = date("Y-m-d");
+                                                        $wrev[$i] = $attending_events[$i]['e_date'];
+                                                        if($wrev[$i] < $today){
+                                                            ?>
+                                                            <div id="<?php echo 'fullwrev-'.$i?>" class="row" style="padding:3% 10% 0%;" >
+                                                                <div class="col-md-12" style="position:relative;background-image:url(<?php echo base_url().'uploads/'.$attending_events[$i]['e_image'];?>); background-size:100%;padding:10px 0px 0px; color:white;">
+                                                                    <div style="padding:0 10px 30px;">
+                                                                        <p style="text-align:right;"><span class="wrevenue-attending"><?php echo $attending_events[$i]['e_attending'];?></span><span class="wrevenue-attending-text">Attending</span></p>
+                                                                        <div style="margin-left:auto;margin-right:auto;text-align:center;">
+                                                                            <a href="<?php echo base_url().'event/event_info/latest/'.$attending_events[$i]['event_id'];?>" class="btn wrevenue-wrev"><?php echo substr($attending_events[$i]['e_name'], 0, 10);?></a>
+                                                                            <span class="pull-right" style="color:black; position:relative;"><i class="fa fa-clock-o"></i><?php echo $attending_events[$i]['e_start_time'];?></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div style="background:rgba(0,0,0,0.5);postion:absolute;bottom:0;left:0;padding:5px 10px;">
+                                                                        <i class="fa fa-calendar"></i> <?php  if(strpos($wrev[$i], 'Every') == 0) echo $wrev[$i]; else echo date("m-d-Y", strtotime($wrev[$i]));?> <span class="pull-right"><?php echo $attending_events[$i]['e_likes'];?><i class="fa fa-heart-o"></i> | <a href=""><span class="glyphicon glyphicon-list-alt"></span></a> | <a href=""><i class="fa fa-share-square-o"></i></a></span>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                            </div>
+                                                        <?php }}}
+                                                else {?>
+                                                    <!--<tr>
+                                                         <td>You have no wrevs right now.</td>
+                                                    </tr>-->
+                                                    <div style="padding:10px;">
+                                                        You have no wrevs right now.
+                                                    </div>
+                                                <?php }?>
+                                            </div>
+
+                                            <div class="events_current">
+                                                <?php
+                                                if(isset($attending_events)) {
+                                                    for ($i = 0;$i < count($attending_events);$i++){
+                                                        $today = date("Y-m-d");
+                                                        $wrev[$i] = $attending_events[$i]['e_date'];
+                                                        if($wrev[$i] >= $today){
+                                                            ?>
+                                                            <div id="<?php echo 'fullwrev-'.$i?>" class="row" style="padding:3% 10% 0%;" >
+                                                                <div class="col-md-12" style="position:relative;background-image:url(<?php echo base_url().'uploads/'.$attending_events[$i]['e_image'];?>); background-size:100%;padding:10px 0px 0px; color:white;">
+                                                                    <div style="padding:0 10px 30px;">
+                                                                        <p style="text-align:right;"><span class="wrevenue-attending"><?php echo $attending_events[$i]['e_attending'];?></span><span class="wrevenue-attending-text">Attending</span></p>
+                                                                        <div style="margin-left:auto;margin-right:auto;text-align:center;">
+                                                                            <a href="<?php echo base_url().'event/event_info/latest/'.$attending_events[$i]['event_id'];?>" class="btn wrevenue-wrev"><?php echo substr($attending_events[$i]['e_name'], 0, 10);?></a>
+                                                                            <span class="pull-right" style="color:black; position:relative;"><i class="fa fa-clock-o"></i><?php echo $attending_events[$i]['e_start_time'];?></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div style="background:rgba(0,0,0,0.5);postion:absolute;bottom:0;left:0;padding:5px 10px;">
+                                                                        <i class="fa fa-calendar"></i> <?php if(strpos($wrev[$i], 'Every') == 0) echo $wrev[$i]; else echo date("m-d-Y", strtotime($wrev[$i]));?> <span class="pull-right"><?php echo $attending_events[$i]['e_likes'];?><i class="fa fa-heart-o"></i> | <a href=""><span class="glyphicon glyphicon-list-alt"></span></a> | <a href=""><i class="fa fa-share-square-o"></i></a></span>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                            </div>
+                                                        <?php }}}
+                                                else {?>
+                                                    <!--<tr>
+                                                         <td>You have no wrevs right now.</td>
+                                                    </tr>-->
+                                                    <div style="padding:10px;">
+                                                        You have no wrevs right now.
+                                                    </div>
+                                                <?php }?>
+                                            </div>
+
+                                            <div class="events_all">
+                                                <?php
+                                                if(isset($attending_events)) {
+                                                    for ($i = 0;$i < count($attending_events);$i++){
+                                                        if($attending_events[$i]['creator_email'] == $email){
+                                                        ?>
+                                                        <div id="<?php echo 'fullwrev-'.$i?>" class="row" style="padding:3% 10% 0%;" >
+                                                            <div class="col-md-12" style="position:relative;background-image:url(<?php echo base_url().'uploads/'.$attending_events[$i]['e_image'];?>); background-size:100%;padding:10px 0px 0px; color:white;">
+                                                                <div style="padding:0 10px 30px;">
+                                                                    <p style="text-align:right;"><span class="wrevenue-attending"><?php echo $attending_events[$i]['e_attending'];?></span><span class="wrevenue-attending-text">Attending</span></p>
+                                                                    <div style="margin-left:auto;margin-right:auto;text-align:center;">
+                                                                        <a href="<?php echo base_url().'event/event_info/latest/'.$attending_events[$i]['event_id'];?>" class="btn wrevenue-wrev"><?php echo substr($attending_events[$i]['e_name'], 0, 10);?></a>
+                                                                        <span class="pull-right" style="color:black; position:relative;"><i class="fa fa-clock-o"></i><?php echo $attending_events[$i]['e_start_time'];?></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div style="background:rgba(0,0,0,0.5);postion:absolute;bottom:0;left:0;padding:5px 10px;">
+                                                                    <i class="fa fa-calendar"></i> <?php $wrev[$i] = $attending_events[$i]['e_date']; if(strpos($wrev[$i], 'Every') == 0) echo $wrev[$i]; else echo date("m-d-Y", strtotime($wrev[$i]));?> <span class="pull-right"><?php echo $attending_events[$i]['e_likes'];?><i class="fa fa-heart-o"></i> | <a href=""><span class="glyphicon glyphicon-list-alt"></span></a> | <a href=""><i class="fa fa-share-square-o"></i></a></span>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                        </div>
+                                                    <?php }}}
+                                                else {?>
+                                                    <!--<tr>
+                                                         <td>You have no wrevs right now.</td>
+                                                    </tr>-->
+                                                    <div style="padding:10px;">
+                                                        You have no wrevs right now.
+                                                    </div>
+                                                <?php }?>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="row" style="text-align:center; padding:10px;">
+                        <a href="#"  data-toggle="modal" data-target="#create" class="btn btn-lg createwrev" style=" font-size:20px; padding:5px;border-radius:10px;">Create a Wrev</a>
+                        <br>
+
+
+
+
+
                      </div>
                      
                      <div class="row">
@@ -763,110 +900,290 @@ document.getElementById("herdzz").innerHTML = " ";
             }
         }
     </script>
-    <script>//Changes the wrevs view in the showroom to show only the specific ones that the user wants.
-        function change_to_past_wrevs() {
-            if($('#past_wrevs').hasClass('active'))
-            {
-                $('#all_wrevs_panel').show();
-                <?php 
-                    $today = date("Y-m-d");
-                    if(isset($attending_events)) {
+<script>//Changes the wrevs view in the showroom to show only the specific ones that the user wants.
+    function change_to_past_wrevs() {
+        $("#viewWre").attr("class", "past");
+        if($('#past_wrevs').hasClass('active'))
+        {
+            $('#all_wrevs_panel').show();
+
+            <?php
+                $today = date("Y-m-d");
+                if(isset($attending_events)) {
+                    global $Number_Wrevel;
+                    $Number_Wrevel=0;
                     for($i = 0; $i < count($attending_events); $i++) {
-                        if($wrev[$i] < $today)
-                            echo '$("#fullwrev'.$i.'").show();';
-                        else 
-                            echo '$("#fullwrev'.$i.'").hide();';
+                        $wrev[$i] = $attending_events[$i]['e_date'];
+                        if($wrev[$i] < $today){
+                           ++$Number_Wrevel;
+                        }
                     }
+                }
+             ?>
+            $("#NumberWrevelsSpan").text(<?php echo $Number_Wrevel; ?>);
+
+            <?php
+
+            if(isset($attending_events)) {
+
+                $countWre =0;
+                for($i = 0; $i < count($attending_events); $i++) {
+                $wrev[$i] = $attending_events[$i]['e_date'];
+                    if($wrev[$i] < $today){
+                        ++$countWre;
+                        echo '$("#fullwrev'.$i.'").show();';
+                        if($countWre==4){
+                            for(++$i;$i<count($attending_events); $i++){
+                                echo '$("#fullwrev'.$i.'").hide();';
+                            }
+                            break;
+                        }
                     }
-                ?>
-            }
-            else {
-                $('#past_wrevs').addClass('active');
-                $('#all_wrevs_panel').show();
-                <?php 
-                    $today = date("Y-m-d");
-                    if(isset($attending_events)) {
-                    for($i = 0; $i < count($attending_events); $i++) {
-                        if($wrev[$i] < $today)
-                            echo '$("#fullwrev'.$i.'").show();';
-                        else 
-                            echo '$("#fullwrev'.$i.'").hide();';
-                    }
-                    }
-                ?>
-            }
-            $('#attending_wrevs').removeClass('active');
-            $('#mywrevs').removeClass('active');
+                    else
+                        echo '$("#fullwrev'.$i.'").hide();';
+                }
+                }
+            ?>
+
         }
-        function change_to_attending_wrevs() {
-            if($('#attending_wrevs').hasClass('active')){
-                $('#all_wrevs_panel').show();
-                <?php 
-                    $today = date("Y-m-d");
-                    if(isset($attending_events)) {
+        else {
+            $('#past_wrevs').addClass('active');
+            $('#all_wrevs_panel').show();
+            <?php
+                $today = date("Y-m-d");
+                if(isset($attending_events)) {
+                    global $Number_Wrevel;
+                    $Number_Wrevel=0;
                     for($i = 0; $i < count($attending_events); $i++) {
-                        if($wrev[$i] >= $today)
-                            echo '$("#fullwrev'.$i.'").show();';
-                        else 
-                            echo '$("#fullwrev'.$i.'").hide();';
+                        $wrev[$i] = $attending_events[$i]['e_date'];
+                        if($wrev[$i] < $today){
+                           ++$Number_Wrevel;
+                        }
                     }
+                 }
+             ?>
+            $("#NumberWrevelsSpan").text(<?php echo $Number_Wrevel; ?>);
+
+            <?php
+
+            if(isset($attending_events)) {
+                $countWre =0;
+                for($i = 0; $i < count($attending_events); $i++) {
+                $wrev[$i] = $attending_events[$i]['e_date'];
+
+                   if($wrev[$i] < $today){
+                        ++$countWre;
+                        echo '$("#fullwrev'.$i.'").show();';
+                        if($countWre==4){
+                            for(++$i;$i<count($attending_events); $i++){
+                                echo '$("#fullwrev'.$i.'").hide();';
+                            }
+                            break;
+                        }
                     }
-                ?>
-            }
-            else {
-                $('#attending_wrevs').addClass('active');
-                $('#all_wrevs_panel').show();
-                <?php 
-                    $today = date("Y-m-d");
-                    if(isset($attending_events)) {
-                    for($i = 0; $i < count($attending_events); $i++) {
-                        if($wrev[$i] >= $today)
-                            echo '$("#fullwrev'.$i.'").show();';
-                        else 
-                            echo '$("#fullwrev'.$i.'").hide();';
-                    }
-                    }
-                ?>
-            }
-            $('#past_wrevs').removeClass();
-            $('#mywrevs').removeClass();
+                    else
+                        echo '$("#fullwrev'.$i.'").hide();';
+                }
+                echo "1";
+                }
+
+            ?>
+
         }
-        function change_to_mywrevs() {
-            if($('#mywrevs').hasClass('active')){
-                $('#all_wrevs_panel').show();
-                <?php 
-                    //echo 'alert("'.$email.'")';
-                    if(isset($attending_events)) {
-                    for($i = 0; $i < count($attending_events); $i++) {
-                        if($attending_events[$i]['creator_email'] == $email)
-                            echo '$("#fullwrev'.$i.'").show();';
-                        else 
-                            echo '$("#fullwrev'.$i.'").hide();';
+
+        $('#attending_wrevs').removeClass('active');
+        $('#mywrevs').removeClass('active');
+    }
+    function change_to_attending_wrevs() {
+        $("#viewWre").attr("class", "attending");
+        if($('#attending_wrevs').hasClass('active')){
+            $('#all_wrevs_panel').show();
+            <?php
+                $today = date("Y-m-d");
+                if(isset($attending_events)) {
+
+                global $Number_Wrevel;
+                $Number_Wrevel=0;
+                for($i = 0; $i < count($attending_events); $i++) {
+                    $wrev[$i] = $attending_events[$i]['e_date'];
+                    if($wrev[$i] >= $today){
+                       ++$Number_Wrevel;
                     }
+                }
+                }
+             ?>
+            $("#NumberWrevelsSpan").text(<?php echo $Number_Wrevel; ?>);
+            <?php
+            if(isset($attending_events)) {
+                $countWre =0;
+                for($i = 0; $i < count($attending_events); $i++) {
+                    $wrev[$i] = $attending_events[$i]['e_date'];
+                    if($wrev[$i] >= $today){
+                        ++$countWre;
+                        echo '$("#fullwrev'.$i.'").show();';
+                        if($countWre==4){
+                            for(++$i;$i<count($attending_events); $i++){
+                                echo '$("#fullwrev'.$i.'").hide();';
+                            }
+                            break;
+                        }
                     }
-                ?>
-                                        
-            }
-            else {
-                $('#mywrevs').addClass('active');
-                $('#all_wrevs_panel').show();
-                <?php 
-                    //echo 'alert("'.$email.'")';
-                    if(isset($attending_events)) {
-                    for($i = 0; $i < count($attending_events); $i++) {
-                        if($attending_events[$i]['creator_email'] == $email)
-                            echo '$("#fullwrev'.$i.'").show();';
-                        else 
-                            echo '$("#fullwrev'.$i.'").hide();';
-                    }
-                    }
-                ?>
-            }
-            $('#past_wrevs').removeClass();
-            $('#attending_wrevs').removeClass();
+
+
+
+                    else
+                        echo '$("#fullwrev'.$i.'").hide();';
+                }
+                }
+            ?>
         }
-    
-    </script>
+        else {
+            $('#attending_wrevs').addClass('active');
+            $('#all_wrevs_panel').show();
+            <?php
+                $today = date("Y-m-d");
+                if(isset($attending_events)) {
+                global $Number_Wrevel;
+                $Number_Wrevel=0;
+                for($i = 0; $i < count($attending_events); $i++) {
+                    $wrev[$i] = $attending_events[$i]['e_date'];
+                    if($wrev[$i] >= $today){
+                       ++$Number_Wrevel;
+                    }
+                }
+
+                 }
+             ?>
+            $("#NumberWrevelsSpan").text(<?php echo $Number_Wrevel; ?>);
+
+            <?php
+
+            if(isset($attending_events)) {
+
+                $countWre =0;
+                for($i = 0; $i < count($attending_events); $i++) {
+                    $wrev[$i] = $attending_events[$i]['e_date'];
+                    if($wrev[$i] >= $today){
+                        ++$countWre;
+                        echo '$("#fullwrev'.$i.'").show();';
+                        if($countWre==4){
+                            for(++$i;$i<count($attending_events); $i++){
+                                echo '$("#fullwrev'.$i.'").hide();';
+                            }
+                            break;
+                        }
+                    }
+                    else
+                        echo '$("#fullwrev'.$i.'").hide();';
+                }
+                }
+            ?>
+        }
+
+        $('#past_wrevs').removeClass();
+        $('#mywrevs').removeClass();
+    }
+    function change_to_mywrevs() {
+        $('#viewWre').attr("class", "allwrev");
+        if($('#mywrevs').hasClass('active')){
+            $('#all_wrevs_panel').show();
+            <?php
+                //echo 'alert("'.$email.'")';
+                if(isset($attending_events)) {
+
+                global $Number_Wrevel;
+                $Number_Wrevel = count($attending_events);
+                }
+             ?>
+            $("#NumberWrevelsSpan").text(<?php echo $Number_Wrevel; ?>);
+
+            <?php
+
+            if(isset($attending_events)) {
+                $countWre = 0;
+                for($i = 0; $i < count($attending_events); $i++) {
+                    if($attending_events[$i]['creator_email'] == $email){
+                        ++$countWre;
+                        echo '$("#fullwrev'.$i.'").show();';
+                        if($countWre==4){
+                            for(++$i;$i<count($attending_events); $i++){
+                                if($attending_events[$i]['creator_email'] == $email){
+                                    echo '$("#fullwrev'.$i.'").hide();';
+                                }
+                            }
+                            break;
+                        }
+                    }
+
+                    else
+                        echo '$("#fullwrev'.$i.'").hide();';
+                }
+                }
+            ?>
+
+        }
+        else {
+            $('#mywrevs').addClass('active');
+            $('#all_wrevs_panel').show();
+            <?php
+                //echo 'alert("'.$email.'")';
+                if(isset($attending_events)) {
+
+                global $Number_Wrevel;
+                $Number_Wrevel = count($attending_events);
+                }
+             ?>
+            $("#NumberWrevelsSpan").text(<?php echo $Number_Wrevel; ?>);
+
+            <?php
+
+            if(isset($attending_events)) {
+                $countWre = 0;
+                for($i = 0; $i < count($attending_events); $i++) {
+                    if($attending_events[$i]['creator_email'] == $email){
+                        ++$countWre;
+                        echo '$("#fullwrev'.$i.'").show();';
+                        if($countWre==4){
+                            for(++$i;$i<count($attending_events); $i++){
+                                if($attending_events[$i]['creator_email'] == $email){
+                                    echo '$("#fullwrev'.$i.'").hide();';
+                                }
+                            }
+                            break;
+                        }
+                    }
+                    else
+                        echo '$("#fullwrev'.$i.'").hide();';
+                }
+                }
+            ?>
+        }
+        $('#past_wrevs').removeClass();
+        $('#attending_wrevs').removeClass();
+    }
+
+</script>
+<script>
+    function view_All_wrevels() {
+        if ($('#viewWre').hasClass('allwrev')) {
+            $('.events_all').show();
+            $('.events_past').hide();
+            $('.events_current').hide();
+
+        } else if ($('#viewWre').hasClass('past')) {
+            $('.events_past').show();
+            $('.events_all').hide();
+            $('.events_current').hide();
+
+        } else if ($('#viewWre').hasClass('attending')) {
+            $('.events_current').show();
+            $('.events_past').hide();
+            $('.events_all').hide();
+
+        }
+    }
+</script>
+
     <script>
     	$(document).ready(function(){
     		<?php if(strpos($image_key, 'facebook')){?>
