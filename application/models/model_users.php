@@ -814,21 +814,6 @@ class Model_users extends CI_Model{
     	
     }
 
-    public function add_login_info($id){
-        $this->load->helper('date');
-        $datestring = "%Y-%m-%d %G:%i:%s";
-        $time = time();
-
-        $insert_time = mdate($datestring, $time);
-
-        $query = $this->db->get_where('users_login',array('user_id' => $id));
-        if($query->num_rows() ==0){
-            $this->db->insert('users_login',array('user_id' => $id, 'last_online' => $insert_time, 'login_status' => 'Y'));
-        }else{
-            $this->db->update('users_login',array('last_online' => $insert_time, 'login_status' => 'Y'));
-        }
-
-    }
     public function check_online_status($email){
         $sql = 'SELECT * from ci_sessions where user_data like ?';
         $dataemail = '%'.$email.'%';
