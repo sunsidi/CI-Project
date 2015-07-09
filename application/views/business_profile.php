@@ -79,8 +79,8 @@ jQuery(document).ready(function () {
 
 <!--content
 ==============================================-->
-<div id='sentMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:20px;width: 500px; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>
-<div class="container" style="padding-bottom:50px;">
+<div id='sentMessage'><?php if ($this->session->flashdata('message')) echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:80px;width: 500px; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">'.$this->session->flashdata('message').'</p>';?></div>
+<div class="container" style="padding-bottom:110px;">
     <div class="row" style="margin-top:50px;">
 
         <div class="col-md-9 col-md-offset-1">
