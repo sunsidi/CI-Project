@@ -39,6 +39,7 @@ class Public_profile extends CI_Controller {
 	
 	        $data['PATH_PROFILE'] = $path['PATH_PROFILE'];
 	        $other_email = $this->model_users->get_email($user_id);
+
                 /**
                  * Everything to do with Friends List here.
                  * Might want to do this in the model to make it cleaner.
@@ -59,7 +60,12 @@ class Public_profile extends CI_Controller {
                 /**
                  * End of Friends List.
                  */
-                
+
+            /**
+             * check if user is online
+             */
+            $data['is_online'] = $this->model_users->check_online_status($other_email[0]['email']);
+
 	        if($other_email[0]['email'] == $email)  // this user is visiting his own showroom
 	            redirect('showroom/profile');
 	        else {
@@ -145,9 +151,9 @@ class Public_profile extends CI_Controller {
                                 $this->load->view('public_profile',$result);
                             }
                         }
+
                     }
 	            else{
-	
 	                //$this->load->view('')
 	                redirect('main/index');
 	            }

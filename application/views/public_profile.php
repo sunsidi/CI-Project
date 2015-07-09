@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html>6
 <html>
 <head>
 <meta charset="utf-8">
@@ -52,7 +52,7 @@ position:absolute;
                 <img src="<?php echo base_url()."uploads/".$other_image_key?>" class="profile-image" style="position:absolute; z-index:2;  border-radius:150px;  border:2px solid #7874a2;"/>
                </div>
             <div class="col-md-7 profile-name" style="background:#7874a2; color:white;height:65px;">
-            <h2 class="profile-fullname"><?php echo $other_fullname ?></h2>
+            <h2 class="profile-fullname"><?php echo $other_fullname ?> &nbsp;<?php if($is_online){ ?><span id="status" data-content="This user is online." data-trigger="hover" data-placement="bottom" style="border-radius:50%;background:#7BCA3D;width:15px;height:15px;display:inline-block;vertical-align:middle;"></span></h2><?php }?>
             </div>
             <div class="col-md-4" style="height:65px;background:#6ca5cc; color:white; border-top-right-radius:5px;" id="reputationInfo" data-content="The more you interact (attending,creating events) on Wrevel, the more points you receive" data-trigger="hover" data-placement="bottom">
             <h2 class="reputation" style="text-align:center;margin-left:-15px;cursor:default;float:left;width:100%;margin-top:12px;">Reputation <span class="badge" style="color:#6ca5cc; background:white;font-size:20px;vertical-align:middle; border-radius:50%; padding:10px 0px; width:40px;height:40px; text-align:center;margin-left:15px;"><?php echo (int)($other_reputation/20) ?></span><i class="fa fa-question-circle pull-right" style="font-size:15px;margin-top:10px;padding:0;"></i> </h2>
@@ -536,6 +536,7 @@ position:absolute;
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
     <script>
 	$('#reputationInfo').popover();
+	$('#status').popover();
 	</script>
 
 <script>//Changes the wrevs view in the showroom to show only the specific ones that the user wants.
