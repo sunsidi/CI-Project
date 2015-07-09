@@ -156,7 +156,7 @@ if((!$this->session->userdata('is_logged_in'))) {?>
         <div id="navbarCollapse" class="abcd"  style="float: right;padding-right:10px;">
 	
         <a class="btn mywrevs-header" href="<?php echo base_url()."main/mywrevs"?>"><span class="icon-mywrevs_icon" style="font-size:40px;vertical-align:middle;"></span>mywrevs</a>
-	<a class="btn mywrevs-header" href="<? echo base_url()?>event/hub" style="margin-right:10px;"><span class="icon-thehub_icon" style="font-size:40px;vertical-align:middle;"></span>the hub</a>
+	<a class="btn mywrevs-header header_nopadding" href="<? echo base_url()?>event/hub" ><span class="icon-thehub_icon" style="font-size:40px;vertical-align:middle;"></span>the hub</a>
 	<a 
         <?php 
 		$activation=$this->session->userdata('activation');

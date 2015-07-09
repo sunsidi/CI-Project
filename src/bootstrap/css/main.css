@@ -1509,6 +1509,10 @@ a.mywrevs-header:hover{
     background:#B4C4D3;
 }
 
+.header_nopadding{
+margin-right:10px;
+}
+
 .wrevel-logo-header{
     width:150px;
     margin-top:10px;
@@ -1650,8 +1654,8 @@ display:table;
 	width:100%;
 }
 
-#toastofbrooklyn .col-md-5{
-	padding-right:25px;
+.toast_padding{
+margin-right:0;
 }
 
 @media (max-width: 1025px){
@@ -1673,6 +1677,9 @@ display:table;
    }
    .press_gpgazette{
     margin-top:7%;
+   }
+   .header_nopadding{
+   margin-right:0;
    }
 }
 /*>>>>>>> tony_dev*/
@@ -1821,8 +1828,8 @@ display:table;
 	    height:500px;
 	}
 	
-	#toastofbrooklyn .col-md-5{
-	padding:initial;
+	.toast_padding{
+	margin-right:-15px;
 	}
 	
 	
