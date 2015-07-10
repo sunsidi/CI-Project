@@ -813,7 +813,22 @@ class Model_users extends CI_Model{
     	}else return "0";
     	
     }
+
+    public function check_online_status($email){
+        $sql = 'SELECT * from ci_sessions where user_data like ?';
+        $dataemail = '%'.$email.'%';
+        $query = $this->db->query($sql,array($dataemail));
+        $data = $query->row_array(0);
+        if($data){
+            return true;
+        }else return false;
+
+    }
     #code
+
+
+
+
 }
 
 

@@ -109,7 +109,10 @@ jQuery(document).ready(function () {
 					<i class="fa fa-star"></i>
 					<i class="fa fa-star"></i>
 					<i class="fa fa-star"></i>
-					<span style="text-shadow:none;">(#)</span>--></span></p></h3>
+					<span style="text-shadow:none;">(#)</span>--></span>
+                            &nbsp;<?php if($is_online){ ?><span id="status" data-content="This user is online." data-trigger="hover" data-placement="bottom" style="border-radius:50%;background:#7BCA3D;width:15px;height:15px;display:inline-block;vertical-align:middle;"></span></h2><?php }?>
+
+                        </p></h3>
 					
 			</div>
 			</div>
