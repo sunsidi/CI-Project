@@ -815,7 +815,7 @@ jQuery(document).ready(function () {
 														<select id="ticket_type" name="ticket_type" type="text" class="form-control" onchange="change_qty_price()" required>
 															<option value="" selected="selected">Select a ticket type</option>
 														<?php for($i = 0; $i < count($event_ticket_types); $i++) {?>
-															<option value="<?php echo $event_ticket_types[$i]['type'].'|'.$event_ticket_types[$i]['quantity'].'|'.$event_ticket_types[$i]['price'].'|'.$event_ticket_types[$i]['info'].'|'.$event_ticket_types[$i]['date'] ." ". $event_ticket_types[$i]['time'].'|'.$event_ticket_types[$i]['expired']?>"><?php echo $event_ticket_types[$i]['type']?></option>
+															<option value="<?php echo $event_ticket_types[$i]['type'].'|'.$event_ticket_types[$i]['quantity'].'|'.$event_ticket_types[$i]['price'].'|'.$event_ticket_types[$i]['info'].'|'.$event_ticket_types[$i]['date'] ." ". $event_ticket_types[$i]['time'].'|'.$event_ticket_types[$i]['expired']?>"><?php echo $event_ticket_types[$i]['type'].'('.$event_ticket_types[$i]['info'].')' ?></option>
 														<?php }?>
 														</select></div>
 													</div>
