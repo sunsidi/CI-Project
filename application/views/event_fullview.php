@@ -550,7 +550,7 @@ jQuery(document).ready(function () {
                                                     <div class="form-group row">
                                                         <label class="col-sm-2">Event Type</label>
                                                         <input type="radio" name="e_private" value="public"> public
-                                                        <input type="radio" name="e_private" value="private"> private
+                                                        <input type="radio" name="e_private" value="1"> private
                                                     </div>
                                                     <div class="row" style="text-align:center;">
                                                         <input type="submit" name="submit" value="Submit" class="btn btn-lg" style="background:#1C75BC;margin-top:20px; color:white;">
