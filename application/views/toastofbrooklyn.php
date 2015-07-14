@@ -106,13 +106,13 @@ jQuery(document).ready(function () {
 				
 				
 				
-				<div style="background:white;text-align:center;margin-top:10px;padding:15px 50px;line-height:200%;">
+				<div style="background:white;text-align:center;margin-top:10px;padding:15px 10%;line-height:200%;">
 					<p><strong>Nov 6 at 5:00PM</strong></p>
-					<p><strong>Nov 7 at 5:00PM</strong></p>
-					<p><strong>Brooklyn Center</strong></p>
+					<p style="border-bottom:1px solid black;"><strong>Nov 7 at 5:00PM</strong></p>
+					<p style="border-bottom:1px solid black;"><strong>Brooklyn Center</strong></p>
 					<p><strong>107 Rivington Street</strong></p>
-					<p>New York, NY</p>
-					<p>Tickets Available from <strong>$20 - $40</strong></p>
+					<p style="border-bottom:1px solid black;">New York, NY</p>
+					<p style="border-bottom:1px solid black;">Tickets Available from <strong>$20 - $40</strong></p>
 					<p>This event is for ages 21 and over</p>
 				</div>
 				
@@ -120,13 +120,13 @@ jQuery(document).ready(function () {
 				
 				<div style="background:white;text-align:center;margin-top:10px;padding:15px;">
 					<p><strong><span class="icon-contacts_icon" style="font-size:20px;vertical-align:middle;"></span> Contact Info for Event</strong></p>
-					<p>(800) 888-8888</p>
-					<p>timetoparty@hotmail.com</p>
+					<p style="color:#2874B0;font-weight:bold;">(800) 888-8888</p>
+					<p style="color:#2874B0;font-weight:bold;">timetoparty@hotmail.com</p>
 				</div>
 				
 				<div style="background:white;text-align:center;margin-top:10px;padding:15px;">
 					<p><span class="icon-link_icon" style="font-size:20px;vertical-align:top;"></span> Links<p>
-					<a href="https://www.facebook.com/toastbrooklyn" target="a_blank">https://www.facebook.com/toastbrooklyn</a>
+					<a href="https://www.facebook.com/toastbrooklyn" target="a_blank" style="color:#2874B0;font-weight:bold;">https://www.facebook.com/toastbrooklyn</a>
 				</div>
 				
 			</div>
@@ -174,7 +174,7 @@ jQuery(document).ready(function () {
 					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 				</div>
 				
-					<div class="row" style="margin-top:10px;text-align:center;padding:0;background:white;">
+					<div class="row" style="margin-top:10px;text-align:center;padding:0;background:white;font-size:12px;">
 						<div class="col-md-2 col-sm-6" style="padding:20px;padding-bottom:0;background:white;">
 						<img src="<?php echo $PATH_IMG?>/experience_image.png" class="attendees"/>
 						<p>Christopher Garcia</p>
