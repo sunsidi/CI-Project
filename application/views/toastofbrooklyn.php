@@ -106,17 +106,259 @@ jQuery(document).ready(function () {
 				
 				
 				
-				<div style="background:white;text-align:center;margin-top:10px;padding:15px 10%;line-height:200%;">
+				<div style="background:white;text-align:center;margin-top:10px;padding:20px 10%;line-height: 100%;">
 					<p><strong>Nov 6 at 5:00PM</strong></p>
-					<p style="border-bottom:1px solid black;"><strong>Nov 7 at 5:00PM</strong></p>
-					<p style="border-bottom:1px solid black;"><strong>Brooklyn Center</strong></p>
+					<p><strong>Nov 7 at 5:00PM</strong></p>
+					<hr style="border-color:black;">
+					<p><strong>Brooklyn Center</strong></p>
+					<hr style="border-color:black;">
 					<p><strong>107 Rivington Street</strong></p>
-					<p style="border-bottom:1px solid black;">New York, NY</p>
-					<p style="border-bottom:1px solid black;">Tickets Available from <strong>$20 - $40</strong></p>
+					<p>New York, NY</p>
+					<hr style="border-color:black;">
+					<p>Tickets Available from <strong>$20 - $40</strong></p>
+					<hr style="border-color:black;">
 					<p>This event is for ages 21 and over</p>
 				</div>
 				
-				<a href="#" class="btn toast_buy">Buy Tickets Now</a>
+				<a href="#" class="btn toast_buy" data-toggle="modal" data-target="#basicModal">Buy Tickets Now</a>
+				
+				<!--buy ticket-->
+				 <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+					<div class="modal-dialog" style="width:80%; ">
+					  <div class="modal-content" style="background-color: transparent; box-shadow: none; border-color: transparent;">
+						  <div class="panel" style="background-color: transparent; box-shadow: none; border-color: transparent;">
+				      
+							  <div class="panel-heading" style="background-color: #2BB473; height: 55px;">
+								  <p style="font-size: 150%; color: white;text-align: center;">
+									  <b>BUY TICKETS NOW</b>
+								  </p>
+					  
+								   <a href="#" data-dismiss="modal" class="btn"  style="float: right;border-radius:5px;font-size:17px;background: #ffffff;color: black; margin-top: -43px;"><b>Back to event listing</b></a>
+				  
+							  </div>
+							  
+							  <div class="panel-heading" style="background-color: #513953; height: 55px;">
+								  <span style="font-size: 150%; color: white;text-align: left;">
+									  <b>Toast of Brooklyn</b>
+								  </span>
+					  
+								  <span style="font-size: 110%; color: white;float: right;margin-top: 10px;">
+									  FRI, NOV 6 or SAT, NOV 7
+								  </span>
+							  </div>
+						  
+						  <div class="panel-body" style="text-align:center; padding: 10px 0px;">
+						      <div class="col-md-5" style="padding: 0px;">
+							  <div style="background-color: white; padding: 30px; height: 300px; font-size: 17px;">
+							  <span><b>Nov 6</b> <span style="color: grey;">at</span> <b>5:00pm</b></span><br/>
+							  <span><b>Nov 7</b> <span style="color: grey;">at</span> <b>5:00pm</b></span>
+							  <hr style="margin: 10px; border-width: 2px; border-color: black;"/>
+							  <span><b>Brooklyn Center</b></span><br/>
+							  <hr style="margin: 10px;border-width: 2px; border-color: black;"/>
+							  <span><b>107 Rivington Street</b> <span style="color: grey;">New York</span></span><br/>
+							  <hr style="margin: 10px;border-width: 2px; border-color: black;"/>
+							  <span><span style="color: grey;">Tickets available from</span> <b>$20-$40</b></span><br/>
+							  <hr style="margin: 10px;border-width: 2px; border-color: black;"/>
+							  <span style="color: grey;">This event is for ages 21 and over</span><br/>
+							  </div>
+				  
+						      </div>
+						      <div class="col-md-7" style="padding: 0px 10px;">
+							  <div style="background-color: #ffffff; padding: 50px 70px; text-align: left;">
+							  <p style="font-size:17px;">
+							  'Toast Of Brooklyn' - A Wine and Food Festival 2013" on September 14th.A Wine and Food Festival 2013" on September 14th.
+							  This Fall festival will combine the distinctive and eclectic taste of Brooklyn's
+							  culinary experience with wines and spirits from around the world.
+							  Join us for an exciting journey, as guests go on a taste-tour in the elegantly
+							  redesigned Courtyard and grand tenting of Bedford Stuyvesant Restoration Plaza.
+							  Designed to capture the feel of an...<br/>
+							  <a href="#" style="float: right;">Read More</a>
+							  </p>
+							  </div>
+						      </div>
+						  </div>
+						  
+							  <div class="panel-heading" style="background-color: #2c5277; text-align: center;">
+								  <span style="font-size: 150%; color: white;">
+									  Tickets Available
+								  </span>
+							  </div>
+							  <div class="panel-body" style="text-align:center; background: white;">
+							      <div class="col-md-6" style="background: #eaf0f4; text-align: left; font-size: 17px; padding: 5px;">Ticket Type</div>
+							      <div class="col-md-2" style="background: #eaf0f4;font-size: 17px;padding: 5px;">Price</div>
+							      <div class="col-md-4" style="background: #eaf0f4;font-size: 17px;padding: 5px;">Quantity</div>
+							      
+							      <div class="col-md-6" style="height: 80px; margin-top: 20px; text-align: left;">
+								  <span style="font-size: 20px;">General Admission I <span style="color: #05406F">Nov 6</span><br/></span>
+								  <span style="color: grey;">Includes general access to event and<br/>
+								  unlimited food and drink</span>
+							      </div>
+							      <div class="col-md-2" style="color: #009344; height: 80px; margin-top: 20px; font-size: 20px;">$20.00</div>
+							      <div class="col-md-4" style="height: 80px; margin-top: 20px;"><a href="javascript:chkAddAmount(1, -1)" onfocus="this.blur();">
+							      <span class="icon-minus_box" style="font-size: 40px;vertical-align: middle;" align="absmiddle" /></a>&nbsp;
+							      <input id="input_count_1" name="input_count_1" type="text" class="input_sl" value="1" style="width: 50px; text-align: center; height: 50px; border: solid 2px grey"/>
+							      &nbsp;<a href="javascript:chkAddAmount(1,1)" onfocus="this.blur();">
+							      <span class="icon-plus_box" style="font-size: 35px;vertical-align:middle;" align="absmiddle" /></a>
+							      </div>
+							      
+							      <div class="col-md-12">
+							      <hr style="border-width: 2px; border-color: black;"/>
+							      </div>
+							      
+							      <div class="col-md-6" style="height: 80px; text-align: left;">
+								  <span style="font-size: 20px;">General Admission I <span style="color: #05406F">Nov 7</span><br/></span>
+								  <span style="color: grey;">Includes general access to event and<br/>
+								  unlimited food and drink</span>
+							      </div>
+							      <div class="col-md-2" style="color: #009344; height: 80px; font-size: 20px;">$20.00</div>
+							      <div class="col-md-4" style="height: 80px;"><a href="javascript:chkAddAmount(2, -1)" onfocus="this.blur();">
+							      <span class="icon-minus_box" width="55" height="55" align="absmiddle" /></a>&nbsp;
+							      <input id="input_count_2" name="input_count_2" type="text" class="input_sl" value="1"/>
+							      &nbsp;<a href="javascript:chkAddAmount(2,1)" onfocus="this.blur();">
+							      <span class="icon-plus_box" width="15" height="15" align="absmiddle" /></a>
+							      </div>
+							      
+							      <div class="col-md-12">
+							      <hr style="border-width: 2px; border-color: black;"/>
+							      </div>
+							      
+							      <div class="col-md-6" style="height: 100px; text-align: left;">
+								  <span style="font-size: 20px;">VIP Admission I <span style="color: #05406F">Nov 6</span><br/></span>
+								  <span style="color: grey;">Access to VIP Lounge<br/>
+								  Includes general access to event and<br/>
+								  unlimited food and drink</span>
+							      </div>
+							      <div class="col-md-2" style="color: #009344; height: 100px; font-size: 20px;">$40.00</div>
+							      <div class="col-md-4" style="height: 100px;"><a href="javascript:chkAddAmount(2, -1)" onfocus="this.blur();">
+							      <span class="icon-minus_box" width="15" height="15" align="absmiddle" /></a>&nbsp;
+							      <input id="input_count_3" name="input_count_3" type="text" class="input_sl" value="1"/>
+							      &nbsp;<a href="javascript:chkAddAmount(3,1)" onfocus="this.blur();">
+							      <span class="icon-plus_box"  width="15" height="15" align="absmiddle" /></a>
+							      </div>
+				  
+							      <div class="col-md-12">
+							      <hr style="border-width: 2px; border-color: black;"/>
+							      </div>
+							      
+							      <div class="col-md-6" style="height: 100px; text-align: left;">
+								  <span style="font-size: 20px;">VIP Admission I <span style="color: #05406F">Nov 7</span><br/></span>
+								  <span style="color: grey;">Access to VIP Lounge<br/>
+								  Includes general access to event and<br/>
+								  unlimited food and drink</span>
+							      </div>
+							      <div class="col-md-2" style="color: #009344; height: 100px; font-size: 20px;">$40.00</div>
+							      <div class="col-md-4" style="height: 100px;"><a href="javascript:chkAddAmount(2, -1)" onfocus="this.blur();">
+							      <span class="icon-minus_box" width="15" height="15" align="absmiddle" /></a>&nbsp;
+							      <input id="input_count_4" name="input_count_4" type="text" class="input_sl" value="1"/>
+							      &nbsp;<a href="javascript:chkAddAmount(4,1)" onfocus="this.blur();">
+							      <span class="icon-plus_box"  width="15" height="15" align="absmiddle" /></a>
+							      </div>			    			
+							  </div>
+							  
+							  <div class="panel-heading" style="background-color: #2c5277; text-align: center; margin-top: 10px;">
+								  <span style="font-size: 150%; color: white;">
+									  Payment and Delivery Information
+								  </span>
+							  </div>
+							  
+						      <div class="panel-body" style="text-align:center; font-size:15px; background-color: #ffffff;">
+				  
+						      <div class="col-md-5">
+						      <div class="panel" style="background-color: transparent;border-color: black;">
+				  
+							  <div class="panel-heading" style="background-color: #1a1718; text-align: center;">
+								  <span style="font-size: 100%; color: white;">
+									  Price Breakdown
+								  </span>
+							  </div>
+							  <div class="panel-heading" style="background-color: #513953; text-align: center; border-radius: 0px;height: 42px;">
+								  <span style="font-size: 100%; color: white; float: left;">
+									  Toast of Brooklyn
+								  </span>
+								  <span style="font-size: 100%; color: white; float: right;">
+									  11/6 - 11/7
+								  </span>
+							  </div>
+							  
+							  <div class="panel-body" style="text-align:center; font-size:15px;">
+							      <span style="float: left;">General Admission I Nov 6 x 1</span><span style="float:right; color:#009344; ">$20.00</span><br/><br/>
+							      <span style="float: left;">VIP Admission I Nov 6 x 2</span><span style="float:right; color:#009344; ">$40.00</span><br/><br/>
+							      <div style="background:#eaf0f4; height: 20px; ">
+							      <span style="float: left;">Delivery Method</span><span style="float:right; color: #5f6063;">Standard Shipping</span>
+							      </div><br/>
+							      <span style="float: left;">Delivery Charge</span><span style="float:right; color:#009344; ">$4.95</span><br/><br/>
+							      <span style="float: left;">Service Fee</span><span style="float:right; color:#009344; ">$4.00</span><br/><br/>
+							      <div style="background:#ededed; height: 20px; ">
+							      <span style="float: left;">Total Price</span><span style="float:right; color:#004A22; ">$68.95</span>
+							      </div>
+							  </div>
+							  
+						      </div>
+				  
+						      </div>
+						      <div class="col-md-7">
+							  <div class="col-md-3" style="text-align: left; font-size: 15px; padding: 40px;"><b><span>Select a <br/>Delivery <br/>Method</span></b></div>
+							  <div class="col-md-3">
+							      <a type="submit" class="btn btn-lg" style="background:#E9EFF3;">
+								  <span class="icon-willcall_icon" style="font-size: 80px; color: black;"></span><br/>
+								  <span style="color: black;font-size: 15px;">Will Call</span><br/>
+								  <span style="color: grey; font-size: 13px;">Free</span></a>
+							  </div>
+							  <div class="col-md-3">
+							      <a type="submit" class="btn btn-lg" style="background:#E9EFF3;">
+								  <span class="icon-printathome_icon" style="font-size: 80px; color: black;"></span><br/>
+								  <span style="color: black;font-size: 15px;">Print at Home</span><br/>
+								  <span style="color: grey; font-size: 13px;">Free</span></a>			    
+							  </div>
+							  <div class="col-md-3">
+							      <button type="submit" class="btn btn-lg" style="background:#E9EFF3;">
+								  <span class="icon-standardshipping_icon" style="font-size: 80px; color: black;"></span><br/>
+								  <span style="color: black;font-size: 15px;">Standard Shipping</span><br/>
+								  <span style="color: grey; font-size: 13px;">$4.95</span></button>
+							  </div>
+				  
+							  <div class="col-md-12" style="margin-top:20px;">
+							  <input name= 'First Name' type="text" class="form-control" placeholder="First Name" required style="width: 35%;float: left; background-color: #e4e5e7; height: 50px;">
+							  <input name= 'Last Name' type="text" class="form-control" placeholder="Last Name" required style="width: 60%;float: right; background: #e4e5e7; height: 50px;">
+							      <div class="col-md-5" style="height: 50px; background:#e4e5e7; float: left; margin-top: 10px; ">
+							      <span>Type</span>
+							      <select id="Type" name="state" type="text" style="height:34px;padding:4px;">
+							      <option value="Credit" selected="selected">Credit</option>
+							      <option value="Debit">Debit</option>
+							      </select>
+							      </div>
+							      <div class="col-md-6 col-md-offset-1" style="height: 50px; background:#e4e5e7; float: left; margin-top: 10px;">
+							      <span>Exp Date</span>
+							      <select id="Type" name="month" type="text" style="height:34px;padding:4px;">
+							      <option value="15" selected="selected">08</option> 
+							      <option value="16">09</option>
+							      <option value="17">10</option>
+							      </select>
+							      <select id="Type" name="year" type="text" style="height:34px;padding:4px;">
+							      <option value="15" selected="selected">15</option> 
+							      <option value="16">16</option>
+							      <option value="17">17</option>
+							      </select>
+							      </div>
+							      <div class="col-md-12" style="margin-top: 10px; padding: 0px;">
+								  <input name= 'CardNumber' type="text" class="form-control" placeholder="Card Number" required style=" background: #e4e5e7; height: 50px;">
+							      </div>
+							      </div>
+						      </div>
+						      <div class="col-md-12" style="margin-top: 10px; float: right;">
+								  <button type="submit" class="btn btn-lg" style="float: right;margin-left:15px; background:#BC1E2D; color:white; padding: 10px 30px;font-size: 25px;">Cancel </button>
+								  <button type="submit" class="btn btn-lg" style="margin-left: 20px;float: right; background:#2BB473; color:white; padding: 10px 30px;font-size: 25px;">Pay now </button>
+						      </div>
+						  </div>
+				  
+					      </div>
+				  
+					      
+					      
+					  </div>
+					</div>
+				    </div>      <!--end of buy ticket--> 
+
 				
 				<div style="background:white;text-align:center;margin-top:10px;padding:15px;">
 					<p><strong><span class="icon-contacts_icon" style="font-size:20px;vertical-align:middle;"></span> Contact Info for Event</strong></p>
@@ -231,6 +473,7 @@ jQuery(document).ready(function () {
  <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    
      <script type="text/javascript"> 
 
     var userLocation =  <?php echo json_encode($event[0]['e_address']. "," . $event[0]['e_state'] . "," .$event[0]['e_city']. "," . $event[0]['e_zipcode']); ?>;
@@ -344,6 +587,7 @@ jQuery(document).ready(function () {
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  -->
     <!--<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.min.js"></script>
 	<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.js"></script> -->
+	 <script src="../../src/js/buy_pos_v2.js"></script>
 		<script src="../../src/bootstrap/js/lightbox.js"></script>
 		<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
