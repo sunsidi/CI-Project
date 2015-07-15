@@ -7,12 +7,12 @@
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript"
     src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<link href="../../src/bootstrap/css/bootstrap.css" rel="stylesheet">
-<link href="../../src/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="../../src/bootstrap/css/bootstrap-theme.css" rel="stylesheet">
-<link href="../../src/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
-<link href="../../src/bootstrap/css/main.css" rel="stylesheet">
-<link href="../../src/bootstrap/css/event-lightbox.css" rel="stylesheet">
+<link href="<?php echo $path['PATH_BOOTSTRAP']?>css/bootstrap.css" rel="stylesheet">
+<link href="<?php echo $path['PATH_BOOTSTRAP']?>css/bootstrap.min.css" rel="stylesheet">
+<link href="<?php echo $path['PATH_BOOTSTRAP']?>css/bootstrap-theme.css" rel="stylesheet">
+<link href="<?php echo $path['PATH_BOOTSTRAP']?>css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="<?php echo $path['PATH_BOOTSTRAP']?>css/main.css" rel="stylesheet">
+<link href="<?php echo $path['PATH_BOOTSTRAP']?>css/event-lightbox.css" rel="stylesheet">
 
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <meta name="description">
@@ -587,7 +587,7 @@ jQuery(document).ready(function () {
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  -->
     <!--<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.min.js"></script>
 	<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.js"></script> -->
-	 <script src="../../src/js/buy_pos_v2.js"></script>
+	 <script src="<?php echo $path['PATH_BOOTSTRAP']?>js/buy_pos_v2.js"></script>
 		<script src="../../src/bootstrap/js/lightbox.js"></script>
 		<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
