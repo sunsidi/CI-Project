@@ -608,7 +608,7 @@ jQuery(document).ready(function () {
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  -->
 <!--<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.min.js"></script>
 	<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.js"></script> -->
-<script src="<?php echo $PATH_BOOTSTRAP?>js/buyv2.js"></script>
+<script src="<?php echo $PATH_BOOTSTRAP?>js/buy_pos_v2.js"></script>
 <script src="<?php echo $PATH_BOOTSTRAP?>js/lightbox.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
