@@ -7,12 +7,12 @@
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript"
     src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<link href="<?php echo $path['PATH_BOOTSTRAP']?>css/bootstrap.css" rel="stylesheet">
-<link href="<?php echo $path['PATH_BOOTSTRAP']?>css/bootstrap.min.css" rel="stylesheet">
-<link href="<?php echo $path['PATH_BOOTSTRAP']?>css/bootstrap-theme.css" rel="stylesheet">
-<link href="<?php echo $path['PATH_BOOTSTRAP']?>css/bootstrap-theme.min.css" rel="stylesheet">
-<link href="<?php echo $path['PATH_BOOTSTRAP']?>css/main.css" rel="stylesheet">
-<link href="<?php echo $path['PATH_BOOTSTRAP']?>css/event-lightbox.css" rel="stylesheet">
+<link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap.css" rel="stylesheet">
+<link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap.min.css" rel="stylesheet">
+<link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
+<link href="<? echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="<? echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
+<link href="<? echo $PATH_BOOTSTRAP?>css/event-lightbox.css" rel="stylesheet">
 
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <meta name="description">
@@ -185,7 +185,7 @@ jQuery(document).ready(function () {
 							  </div>
 							  <div class="panel-body" style="text-align:center; background: white;">
 							      <div class="col-md-6" style="background: #eaf0f4; text-align: left; font-size: 17px; padding: 5px;">Ticket Type</div>
-							      <div class="col-md-2" style="background: #eaf0f4;font-size: 17px;padding: 5px;">Price</div>
+							      <div class="col-md-2" style="background: #eaf0f4;font-size: 17px;padding: 5px;">Price($)</div>
 							      <div class="col-md-4" style="background: #eaf0f4;font-size: 17px;padding: 5px;">Quantity</div>
 							      
 							      <div class="col-md-6" style="height: 80px; margin-top: 20px; text-align: left;">
@@ -193,10 +193,10 @@ jQuery(document).ready(function () {
 								  <span style="color: grey;">Includes general access to event and<br/>
 								  unlimited food and drink</span>
 							      </div>
-							      <div class="col-md-2" style="color: #009344; height: 80px; margin-top: 20px; font-size: 20px;">$20.00</div>
+							      <div id="span_first_price_1" class="col-md-2" style="color: #009344; height: 80px; margin-top: 20px; font-size: 20px;">20.00</div>
 							      <div class="col-md-4" style="height: 80px; margin-top: 20px;"><a href="javascript:chkAddAmount(1, -1)" onfocus="this.blur();">
 							      <span class="icon-minus_box" style="font-size: 40px;vertical-align: middle;" align="absmiddle" /></a>&nbsp;
-							      <input id="input_count_1" name="input_count_1" type="text" class="input_sl" value="1" style="width: 50px; text-align: center; height: 50px; border: solid 2px grey"/>
+							      <input id="input_count_1" name="input_count_1" type="text" class="input_sl" value="0" style="width: 50px; text-align: center; height: 50px; border: solid 2px grey"/>
 							      &nbsp;<a href="javascript:chkAddAmount(1,1)" onfocus="this.blur();">
 							      <span class="icon-plus_box" style="font-size: 35px;vertical-align:middle;" align="absmiddle" /></a>
 							      </div>
@@ -210,10 +210,10 @@ jQuery(document).ready(function () {
 								  <span style="color: grey;">Includes general access to event and<br/>
 								  unlimited food and drink</span>
 							      </div>
-							      <div class="col-md-2" style="color: #009344; height: 80px; font-size: 20px;">$20.00</div>
+							      <div id="span_first_price_2" class="col-md-2" style="color: #009344; height: 80px; font-size: 20px;">20.00</div>
 							      <div class="col-md-4" style="height: 80px;"><a href="javascript:chkAddAmount(2, -1)" onfocus="this.blur();">
 							      <span class="icon-minus_box" width="55" height="55" align="absmiddle" /></a>&nbsp;
-							      <input id="input_count_2" name="input_count_2" type="text" class="input_sl" value="1"/>
+							      <input id="input_count_2" name="input_count_2" type="text" class="input_sl" value="0"/>
 							      &nbsp;<a href="javascript:chkAddAmount(2,1)" onfocus="this.blur();">
 							      <span class="icon-plus_box" width="15" height="15" align="absmiddle" /></a>
 							      </div>
@@ -228,10 +228,10 @@ jQuery(document).ready(function () {
 								  Includes general access to event and<br/>
 								  unlimited food and drink</span>
 							      </div>
-							      <div class="col-md-2" style="color: #009344; height: 100px; font-size: 20px;">$40.00</div>
-							      <div class="col-md-4" style="height: 100px;"><a href="javascript:chkAddAmount(2, -1)" onfocus="this.blur();">
+							      <div id="span_first_price_3" class="col-md-2" style="color: #009344; height: 100px; font-size: 20px;">40.00</div>
+							      <div class="col-md-4" style="height: 100px;"><a href="javascript:chkAddAmount(3, -1)" onfocus="this.blur();">
 							      <span class="icon-minus_box" width="15" height="15" align="absmiddle" /></a>&nbsp;
-							      <input id="input_count_3" name="input_count_3" type="text" class="input_sl" value="1"/>
+							      <input id="input_count_3" name="input_count_3" type="text" class="input_sl" value="0"/>
 							      &nbsp;<a href="javascript:chkAddAmount(3,1)" onfocus="this.blur();">
 							      <span class="icon-plus_box"  width="15" height="15" align="absmiddle" /></a>
 							      </div>
@@ -246,10 +246,10 @@ jQuery(document).ready(function () {
 								  Includes general access to event and<br/>
 								  unlimited food and drink</span>
 							      </div>
-							      <div class="col-md-2" style="color: #009344; height: 100px; font-size: 20px;">$40.00</div>
-							      <div class="col-md-4" style="height: 100px;"><a href="javascript:chkAddAmount(2, -1)" onfocus="this.blur();">
+							      <div id="span_first_price_4" class="col-md-2" style="color: #009344; height: 100px; font-size: 20px;">40.00</div>
+							      <div class="col-md-4" style="height: 100px;"><a href="javascript:chkAddAmount(4, -1)" onfocus="this.blur();">
 							      <span class="icon-minus_box" width="15" height="15" align="absmiddle" /></a>&nbsp;
-							      <input id="input_count_4" name="input_count_4" type="text" class="input_sl" value="1"/>
+							      <input id="input_count_4" name="input_count_4" type="text" class="input_sl" value="0"/>
 							      &nbsp;<a href="javascript:chkAddAmount(4,1)" onfocus="this.blur();">
 							      <span class="icon-plus_box"  width="15" height="15" align="absmiddle" /></a>
 							      </div>			    			
@@ -262,7 +262,7 @@ jQuery(document).ready(function () {
 							  </div>
 							  
 						      <div class="panel-body" style="text-align:center; font-size:15px; background-color: #ffffff;">
-				  
+<!--                                  id="span_sumPirce"-->
 						      <div class="col-md-5">
 						      <div class="panel" style="background-color: transparent;border-color: black;">
 				  
@@ -281,15 +281,17 @@ jQuery(document).ready(function () {
 							  </div>
 							  
 							  <div class="panel-body" style="text-align:center; font-size:15px;">
-							      <span style="float: left;">General Admission I Nov 6 x 1</span><span style="float:right; color:#009344; ">$20.00</span><br/><br/>
-							      <span style="float: left;">VIP Admission I Nov 6 x 2</span><span style="float:right; color:#009344; ">$40.00</span><br/><br/>
+							      <div class="admission1" hidden><span style="float: left;">General Admission I Nov 6 x </span><span id="span_subtotal_num_1" style="float: left;"> 1</span><span id="span_subtotal_price_1" style="float:right; color:#009344; ">20.00</span><span style="float:right; color:#009344;">$</span><br/><br/></div>
+                                  <div class="admission2" hidden><span style="float: left;">General Admission I Nov 7 x </span><span id="span_subtotal_num_2" style="float: left;"> 1</span><span id="span_subtotal_price_2"style="float:right; color:#009344; ">40.00</span><span style="float:right; color:#009344;">$</span><br/><br/></div>
+                                  <div class="admission3" hidden><span style="float: left;">VIP Admission I Nov 6 x </span><span id="span_subtotal_num_3" style="float: left;"> 1</span><span id="span_subtotal_price_3"style="float:right; color:#009344; ">40.00</span><span style="float:right; color:#009344;">$</span><br/><br/></div>
+                                  <div class="admission4" hidden><span style="float: left;">VIP Admission I Nov 7 x </span><span id="span_subtotal_num_4" style="float: left;"> 1</span><span id="span_subtotal_price_4"style="float:right; color:#009344; ">40.00</span><span style="float:right; color:#009344;">$</span><br/><br/></div>
 							      <div style="background:#eaf0f4; height: 20px; ">
 							      <span style="float: left;">Delivery Method</span><span style="float:right; color: #5f6063;">Standard Shipping</span>
 							      </div><br/>
-							      <span style="float: left;">Delivery Charge</span><span style="float:right; color:#009344; ">$4.95</span><br/><br/>
-							      <span style="float: left;">Service Fee</span><span style="float:right; color:#009344; ">$4.00</span><br/><br/>
+							      <span style="float: left;">Delivery Charge</span><span id="deliveryCost" style="float:right; color:#009344; ">0</span><span style="float:right; color:#009344;">$</span><br/><br/>
+							      <span style="float: left;">Service Fee</span><span id="serviceFee" style="float:right; color:#009344; ">4.00</span><span style="float:right; color:#009344;">$</span><br/><br/>
 							      <div style="background:#ededed; height: 20px; ">
-							      <span style="float: left;">Total Price</span><span style="float:right; color:#004A22; ">$68.95</span>
+							      <span style="float: left;">Total Price</span><span style="float:right; color:#004A22; "><span id="span_sumPirce"style="float:right; color:#009344; ">0</span><span style="float:right; color:#009344;">$</span></span>
 							      </div>
 							  </div>
 							  
@@ -299,19 +301,19 @@ jQuery(document).ready(function () {
 						      <div class="col-md-7">
 							  <div class="col-md-3" style="text-align: left; font-size: 15px; padding: 40px;"><b><span>Select a <br/>Delivery <br/>Method</span></b></div>
 							  <div class="col-md-3">
-							      <a type="submit" class="btn btn-lg" style="background:#E9EFF3;">
+							      <button id="delivery1" type="submit" class="btn btn-lg" style="background:#E9EFF3;">
 								  <span class="icon-willcall_icon" style="font-size: 80px; color: black;"></span><br/>
 								  <span style="color: black;font-size: 15px;">Will Call</span><br/>
-								  <span style="color: grey; font-size: 13px;">Free</span></a>
+								  <span style="color: grey; font-size: 13px;">Free</span></button>
 							  </div>
 							  <div class="col-md-3">
-							      <a type="submit" class="btn btn-lg" style="background:#E9EFF3;">
+							      <button id="delivery2" type="submit" class="btn btn-lg" style="background:#E9EFF3;">
 								  <span class="icon-printathome_icon" style="font-size: 80px; color: black;"></span><br/>
 								  <span style="color: black;font-size: 15px;">Print at Home</span><br/>
-								  <span style="color: grey; font-size: 13px;">Free</span></a>			    
+								  <span style="color: grey; font-size: 13px;">Free</span></button>
 							  </div>
 							  <div class="col-md-3">
-							      <button type="submit" class="btn btn-lg" style="background:#E9EFF3;">
+							      <button id="delivery3" type="submit" class="btn btn-lg" style="background:#E9EFF3;">
 								  <span class="icon-standardshipping_icon" style="font-size: 80px; color: black;"></span><br/>
 								  <span style="color: black;font-size: 15px;">Standard Shipping</span><br/>
 								  <span style="color: grey; font-size: 13px;">$4.95</span></button>
@@ -320,24 +322,41 @@ jQuery(document).ready(function () {
 							  <div class="col-md-12" style="margin-top:20px;">
 							  <input name= 'First Name' type="text" class="form-control" placeholder="First Name" required style="width: 35%;float: left; background-color: #e4e5e7; height: 50px;">
 							  <input name= 'Last Name' type="text" class="form-control" placeholder="Last Name" required style="width: 60%;float: right; background: #e4e5e7; height: 50px;">
-							      <div class="col-md-5" style="height: 50px; background:#e4e5e7; float: left; margin-top: 10px; ">
-							      <span>Type</span>
-							      <select id="Type" name="state" type="text" style="height:34px;padding:4px;">
-							      <option value="Credit" selected="selected">Credit</option>
-							      <option value="Debit">Debit</option>
-							      </select>
-							      </div>
+<!--							      <div class="col-md-5" style="height: 50px; background:#e4e5e7; float: left; margin-top: 10px; ">-->
+<!--							      <span>Type</span>-->
+<!--							      <select id="Type" name="state" type="text" style="height:34px;padding:4px;">-->
+<!--							      <option value="Credit" selected="selected">Credit</option>-->
+<!--							      <option value="Debit">Debit</option>-->
+<!--							      </select>-->
+<!--							      </div>-->
+                                  <input name = 'cvc' type="text" class="form-control" placeholder="CVC" required style="width:35%;height: 50px; background:#e4e5e7; float: left; margin-top: 10px;">
 							      <div class="col-md-6 col-md-offset-1" style="height: 50px; background:#e4e5e7; float: left; margin-top: 10px;">
 							      <span>Exp Date</span>
 							      <select id="Type" name="month" type="text" style="height:34px;padding:4px;">
-							      <option value="15" selected="selected">08</option> 
-							      <option value="16">09</option>
-							      <option value="17">10</option>
+							      <option value="01" selected="selected">01</option>
+                                  <option value="02">02</option>
+                                  <option value="03">03</option>
+                                  <option value="04">04</option>
+                                  <option value="05">05</option>
+                                  <option value="06">06</option>
+                                  <option value="07">07</option>
+                                  <option value="08">08</option>
+							      <option value="09">09</option>
+							      <option value="10">10</option>
+                                  <option value="11">11</option>
+                                  <option value="12">12</option>
 							      </select>
 							      <select id="Type" name="year" type="text" style="height:34px;padding:4px;">
+                                  //every year need to change the number
 							      <option value="15" selected="selected">15</option> 
 							      <option value="16">16</option>
 							      <option value="17">17</option>
+							      <option value="18">18</option>
+							      <option value="19">19</option>
+							      <option value="20">20</option>
+							      <option value="21">21</option>
+							      <option value="22">22</option>
+							      <option value="23">23</option>
 							      </select>
 							      </div>
 							      <div class="col-md-12" style="margin-top: 10px; padding: 0px;">
@@ -346,9 +365,11 @@ jQuery(document).ready(function () {
 							      </div>
 						      </div>
 						      <div class="col-md-12" style="margin-top: 10px; float: right;">
-								  <button type="submit" class="btn btn-lg" style="float: right;margin-left:15px; background:#BC1E2D; color:white; padding: 10px 30px;font-size: 25px;">Cancel </button>
+								  <a href="#" type="submit" data-dismiss="modal" class="btn btn-lg" style="float: right;margin-left:15px; background:#BC1E2D; color:white; padding: 10px 30px;font-size: 25px;">Cancel </a>
 								  <button type="submit" class="btn btn-lg" style="margin-left: 20px;float: right; background:#2BB473; color:white; padding: 10px 30px;font-size: 25px;">Pay now </button>
 						      </div>
+<!--                                  </form>-->
+
 						  </div>
 				  
 					      </div>
@@ -474,122 +495,122 @@ jQuery(document).ready(function () {
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     
-     <script type="text/javascript"> 
+     <script type="text/javascript">
 
-    var userLocation =  <?php echo json_encode($event[0]['e_address']. "," . $event[0]['e_state'] . "," .$event[0]['e_city']. "," . $event[0]['e_zipcode']); ?>;
+            var userLocation =  <?php echo json_encode($event[0]['e_address']. "," . $event[0]['e_state'] . "," .$event[0]['e_city']. "," . $event[0]['e_zipcode']); ?>;
 
 
-    if (GBrowserIsCompatible()) {
-       var geocoder = new GClientGeocoder();
-       geocoder.getLocations(userLocation, function (locations) {         
-          if (locations.Placemark)
-          {
-             var north = locations.Placemark[0].ExtendedData.LatLonBox.north;
-             var south = locations.Placemark[0].ExtendedData.LatLonBox.south;
-             var east  = locations.Placemark[0].ExtendedData.LatLonBox.east;
-             var west  = locations.Placemark[0].ExtendedData.LatLonBox.west;
+            if (GBrowserIsCompatible()) {
+                var geocoder = new GClientGeocoder();
+                geocoder.getLocations(userLocation, function (locations) {
+                    if (locations.Placemark)
+                    {
+                        var north = locations.Placemark[0].ExtendedData.LatLonBox.north;
+                        var south = locations.Placemark[0].ExtendedData.LatLonBox.south;
+                        var east  = locations.Placemark[0].ExtendedData.LatLonBox.east;
+                        var west  = locations.Placemark[0].ExtendedData.LatLonBox.west;
 
-             var bounds = new GLatLngBounds(new GLatLng(south, west), 
-                                            new GLatLng(north, east));
+                        var bounds = new GLatLngBounds(new GLatLng(south, west),
+                            new GLatLng(north, east));
 
-             var map = new GMap2(document.getElementById("map_canvas"));
+                        var map = new GMap2(document.getElementById("map_canvas"));
 
-             map.setCenter(bounds.getCenter(), map.getBoundsZoomLevel(bounds));
-             map.addOverlay(new GMarker(bounds.getCenter()));
+                        map.setCenter(bounds.getCenter(), map.getBoundsZoomLevel(bounds));
+                        map.addOverlay(new GMarker(bounds.getCenter()));
 
-             new GStreetviewPanorama(document.getElementById("pano"),
-                                     { latlng: bounds.getCenter() })
-          }
-       });
-    }
-    </script>
-    <script>
-    	var max_tickets = 0;
-    	function change_qty_price() {
-    		if($('#ticket_type').val() == "") {
-    			$('#pricing_base').hide();
-    			$('#info_base').hide();
-    			$('#deadline_base').hide();
-    			$('#billing_info').hide();
-    			$('#not_set_up').hide();
-    		}
-    		else {
-    				$("#payment_submit").removeAttr('disabled');
-    				$('#not_set_up').hide();
-	    			$('#pricing_base').show();
-	    			$('#info_base').show();
-	    			$('#deadline_base').show();
-		    		$('#quantity_base').children().remove();
-		    		var temp = ($('#ticket_type').val()).split('|');
-                                var price_number = Number(temp[2]).toFixed(2);
-                                if(temp[5] != 0) {  //YUan change temp[5]==0 to temp[5]!=0
-                                    $('#ticket_price').attr('value', price_number);
-                                    $('#ticket_price2').html('$'+price_number);
-                                    $('#quantity_left').html(temp[1] + ' left.');
-                                    $('#ticket_info').html(temp[3]);
-                                    $('#ticket_deadline').html(temp[4]);
-                                    max_tickets = temp[1];
-                                    var content = '<select id="quantity_type" class="form-control" placeholder="0" name = "quantity">';
-                                    for(var i = 0; i <= max_tickets; i++) {
-		    			content += '<option value="'+i+'">'+i+'</option>';
-                                    }
-                                    //Commented out until we can handle multiple ticket requests. FINISHED
-                                    /*content += '<option value="0">0</option>';
-                                    if(Number(temp[1])) 
-                                    	content += '<option value="1">1</option>';*/
-                                    content += '</select>';
-                                    $('#quantity_base').append(content);
-                                    if(price_number == 0) {
-		    			$('#billing_info').hide();
-                                    }
-                                    else {
-                                            <?php if($posted_recip_id == "") {?>
-                                                    $('#billing_info').show();
-                                            <?php } else {?>
-                                                    $('#not_set_up').show();
-                                                    $('#payment_submit').attr('disabled','disabled');
-                                            <?php }?>
-                                    }
-                                }
-                                else {
-                                    $('#pricing_base').hide();
-                                    $('#info_base').hide();
-                                    $('#deadline_base').hide();
-                                    $('#billing_info').hide();
-                                    $('#not_set_up').hide();
-                                    $('#expired_base').show();
-                                    $('#payment_submit').attr('disabled','disabled');
-                                }
-                                
-	    	}
-    	}
-    </script>
-    <script>
-    	$(document).ready(function() {
-    		$('input[type=radio][name=saved_card]').change(function() {
-        		if (this.value == 'false') {
-        			$(".enter_card").attr('disabled', false);
-        		}
-        		else {
-        			$(".enter_card").attr('disabled', true);
-        		}
-    		});
-	});
-    </script>
-    <script>
-        function edit_more_event_photos() {
-            var content = '<div class="image-upload">'
-                                +'<input id="file-input" name = "edit_event_photos[]" type = "file"/>'
-                            '</div>';
-            $('#edit_event_photos_base').append(content);
+                        new GStreetviewPanorama(document.getElementById("pano"),
+                            { latlng: bounds.getCenter() })
+                    }
+                });
+            }
+        </script>
+<script>
+    var max_tickets = 0;
+    function change_qty_price() {
+        if($('#ticket_type').val() == "") {
+            $('#pricing_base').hide();
+            $('#info_base').hide();
+            $('#deadline_base').hide();
+            $('#billing_info').hide();
+            $('#not_set_up').hide();
         }
-    </script>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  -->
-    <!--<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.min.js"></script>
+        else {
+            $("#payment_submit").removeAttr('disabled');
+            $('#not_set_up').hide();
+            $('#pricing_base').show();
+            $('#info_base').show();
+            $('#deadline_base').show();
+            $('#quantity_base').children().remove();
+            var temp = ($('#ticket_type').val()).split('|');
+            var price_number = Number(temp[2]).toFixed(2);
+            if(temp[5] != 0) {  //YUan change temp[5]==0 to temp[5]!=0
+                $('#ticket_price').attr('value', price_number);
+                $('#ticket_price2').html('$'+price_number);
+                $('#quantity_left').html(temp[1] + ' left.');
+                $('#ticket_info').html(temp[3]);
+                $('#ticket_deadline').html(temp[4]);
+                max_tickets = temp[1];
+                var content = '<select id="quantity_type" class="form-control" placeholder="0" name = "quantity">';
+                for(var i = 0; i <= max_tickets; i++) {
+                    content += '<option value="'+i+'">'+i+'</option>';
+                }
+                //Commented out until we can handle multiple ticket requests. FINISHED
+                /*content += '<option value="0">0</option>';
+                 if(Number(temp[1]))
+                 content += '<option value="1">1</option>';*/
+                content += '</select>';
+                $('#quantity_base').append(content);
+                if(price_number == 0) {
+                    $('#billing_info').hide();
+                }
+                else {
+                    <?php if($posted_recip_id == "") {?>
+                    $('#billing_info').show();
+                    <?php } else {?>
+                    $('#not_set_up').show();
+                    $('#payment_submit').attr('disabled','disabled');
+                    <?php }?>
+                }
+            }
+            else {
+                $('#pricing_base').hide();
+                $('#info_base').hide();
+                $('#deadline_base').hide();
+                $('#billing_info').hide();
+                $('#not_set_up').hide();
+                $('#expired_base').show();
+                $('#payment_submit').attr('disabled','disabled');
+            }
+
+        }
+    }
+</script>
+<script>
+    $(document).ready(function() {
+        $('input[type=radio][name=saved_card]').change(function() {
+            if (this.value == 'false') {
+                $(".enter_card").attr('disabled', false);
+            }
+            else {
+                $(".enter_card").attr('disabled', true);
+            }
+        });
+    });
+</script>
+<script>
+    function edit_more_event_photos() {
+        var content = '<div class="image-upload">'
+            +'<input id="file-input" name = "edit_event_photos[]" type = "file"/>'
+        '</div>';
+        $('#edit_event_photos_base').append(content);
+    }
+</script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  -->
+<!--<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.min.js"></script>
 	<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.js"></script> -->
-	 <script src="<?php echo $path['PATH_BOOTSTRAP']?>js/buy_pos_v2.js"></script>
-		<script src="../../src/bootstrap/js/lightbox.js"></script>
-		<script>
+<script src="<?php echo $PATH_BOOTSTRAP?>js/buy_pos_v2.js"></script>
+<script src="<?php echo $PATH_BOOTSTRAP?>js/lightbox.js"></script>
+<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
