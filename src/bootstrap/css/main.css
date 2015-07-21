@@ -1692,6 +1692,35 @@ background:#E9EFF3;
 background:#E9EFFF;
 }
 
+.confirm-info p{
+padding:10px 15px;
+font-size:17px;
+margin:0;
+background:white;
+}
+
+.confirm-info .confirm-info-left span{
+float:right;
+}
+.confirm-info .confirm-info-right span{
+display:inline-block;
+width:180px;
+}
+
+a.confirm-button{
+background:#2CB474;
+font-size:17px;
+color:white;
+font-weight:bold;
+}
+
+a.cancel-button{
+background:#BC1E2D;
+font-size:17px;
+color:white;
+font-weight:bold;
+}
+
 
 @media (max-width: 1025px){
   .eventlist{
