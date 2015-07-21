@@ -1684,6 +1684,15 @@ display:table;
 margin-right:0;
 }
 
+.delivery-type{
+background:#E9EFF3;
+}
+
+.type-clicked{
+background:#E9EFFF;
+}
+
+
 @media (max-width: 1025px){
   .eventlist{
     margin-left: -150px;

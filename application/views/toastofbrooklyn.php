@@ -301,27 +301,111 @@ jQuery(document).ready(function () {
 						      <div class="col-md-7">
 							  <div class="col-md-3" style="text-align: left; font-size: 15px; padding: 40px;"><b><span>Select a <br/>Delivery <br/>Method</span></b></div>
 							  <div class="col-md-3">
-							      <button id="delivery1" type="submit" class="btn btn-lg" style="background:#E9EFF3;">
+							      <button id="delivery1" type="submit" class="btn btn-lg delivery_type willcall">
 								  <span class="icon-willcall_icon" style="font-size: 80px; color: black;"></span><br/>
 								  <span style="color: black;font-size: 15px;">Will Call</span><br/>
 								  <span style="color: grey; font-size: 13px;">Free</span></button>
 							  </div>
 							  <div class="col-md-3">
-							      <button id="delivery2" type="submit" class="btn btn-lg" style="background:#E9EFF3;">
+							      <button id="delivery2" type="submit" class="btn btn-lg delivery_type print">
 								  <span class="icon-printathome_icon" style="font-size: 80px; color: black;"></span><br/>
 								  <span style="color: black;font-size: 15px;">Print at Home</span><br/>
 								  <span style="color: grey; font-size: 13px;">Free</span></button>
 							  </div>
 							  <div class="col-md-3">
-							      <button id="delivery3" type="submit" class="btn btn-lg" style="background:#E9EFF3;">
+							      <button id="delivery3" type="submit" class="btn btn-lg delivery_type shipping">
 								  <span class="icon-standardshipping_icon" style="font-size: 80px; color: black;"></span><br/>
 								  <span style="color: black;font-size: 15px;">Standard Shipping</span><br/>
 								  <span style="color: grey; font-size: 13px;">$4.95</span></button>
 							  </div>
+							
+							<div class="col-md-12 willcall_info" style="display:none;margin-top:20px;">
+							  <input name= 'pickup' type="text" class="form-control" placeholder="Person picking up ticket" required style=" background: #e4e5e7; height: 50px;">
+							</div>	
+							
+							<div class="col-md-12 shipping_info" style="display:none;margin-top:20px;">
+							  <input name= 'Address' type="text" class="form-control" placeholder="Address" required style=" background: #e4e5e7; height: 50px;">
+							  <input name= 'Apt' type="text" class="form-control" placeholder="Apt #/Suite" required style="width: 45%;float: left; background-color: #e4e5e7; height: 50px;margin-top:10px;">
+							  <input name= 'City' type="text" class="form-control" placeholder="City" required style="width: 50%;float: right; background: #e4e5e7; height: 50px;margin-top:10px;">
+							  <select name="state" type="text" style="height:50px;padding:4px;float:left;width:45%;margin-top:10px;background:#E4E5E7;">
+							     <option value="" selected="selected">State</option> 
+								<option value="AK">AK</option>
+								<option value="AL">AL</option>
+								<option value="AR">AR</option>
+								<option value="AZ">AZ</option>
+								<option value="CA">CA</option>
+								<option value="CO">CO</option>
+								<option value="CT">CT</option>
+								<option value="DC">DC</option>
+								<option value="DE">DE</option>
+								<option value="FL">FL</option>
+								<option value="GA">GA</option>
+								<option value="HI">HI</option>
+								<option value="IA">IA</option>
+								<option value="ID">ID</option>
+								<option value="IL">IL</option>
+								<option value="IN">IN</option>
+								<option value="KS">KS</option>
+								<option value="KY">KY</option>
+								<option value="LA">LA</option>
+								<option value="MA">MA</option>
+								<option value="MD">MD</option>
+								<option value="ME">ME</option>
+								<option value="MI">MI</option>
+								<option value="MN">MN</option>
+								<option value="MO">MO</option>
+								<option value="MS">MS</option>
+								<option value="MT">MT</option>
+								<option value="NC">NC</option>
+								<option value="ND">ND</option>
+								<option value="NE">NE</option>
+								<option value="NH">NH</option>
+								<option value="NJ">NJ</option>
+								<option value="NM">NM</option>
+								<option value="NV">NV</option>
+								<option value="NY">NY</option>
+								<option value="OH">OH</option>
+								<option value="OK">OK</option>
+								<option value="OR">OR</option>
+								<option value="PA">PA</option>
+								<option value="RI">RI</option>
+								<option value="SC">SC</option>
+								<option value="SD">SD</option>
+								<option value="TN">TN</option>
+								<option value="TX">TX</option>
+								<option value="UT">UT</option>
+								<option value="VA">VA</option>
+								<option value="VT">VT</option>
+								<option value="WA">WA</option>
+								<option value="WI">WI</option>
+								<option value="WV">WV</option>
+								<option value="WY">WY</option>
+								</select> 
+								<input name= 'Zipcode' type="text" class="form-control" placeholder="Zip" required style="width: 50%;float: right; background: #e4e5e7; height: 50px;margin-top:10px;">
+							</div>		
+							<script>
+								$('.willcall').click(function() {
+								  $('.willcall_info').toggle('slow');
+								  $(this).toggleClass('type-clicked');
+								});
+								
+								$('.print').click(function() {
+								  $(this).toggleClass('type-clicked');
+								});
+								
+								$('.shipping').click(function() {
+								  $('.shipping_info').toggle('slow');
+								  $(this).toggleClass('type-clicked');
+								});
+								
+							</script>
 				  
 							  <div class="col-md-12" style="margin-top:20px;">
-							  <input name= 'First Name' type="text" class="form-control" placeholder="First Name" required style="width: 35%;float: left; background-color: #e4e5e7; height: 50px;">
-							  <input name= 'Last Name' type="text" class="form-control" placeholder="Last Name" required style="width: 60%;float: right; background: #e4e5e7; height: 50px;">
+								
+							  <input name= 'Email' type="text" class="form-control" placeholder="Email" required style=" background: #e4e5e7; height: 50px;">
+							      
+							  <input name= 'First Name' type="text" class="form-control" placeholder="First Name" required style="width: 35%;float: left; background-color: #e4e5e7; height: 50px;margin-top:10px;">
+							  <input name= 'Last Name' type="text" class="form-control" placeholder="Last Name" required style="width: 60%;float: right; background: #e4e5e7; height: 50px;margin-top:10px;">
 <!--							      <div class="col-md-5" style="height: 50px; background:#e4e5e7; float: left; margin-top: 10px; ">-->
 <!--							      <span>Type</span>-->
 <!--							      <select id="Type" name="state" type="text" style="height:34px;padding:4px;">-->
