@@ -1707,14 +1707,14 @@ display:inline-block;
 width:180px;
 }
 
-a.confirm-button{
+.confirm-button{
 background:#2CB474;
 font-size:17px;
 color:white;
 font-weight:bold;
 }
 
-a.cancel-button{
+.cancel-button{
 background:#BC1E2D;
 font-size:17px;
 color:white;
