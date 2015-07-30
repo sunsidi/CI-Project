@@ -1,5 +1,5 @@
-﻿   var varPostage = 0 ; //邮费
-   var g_maxNumber = 99 ; //最大购买数量
+﻿	 var varPostage = 0 ;	//邮费
+	 var g_maxNumber = 99 ; //最大购买数量
  
      //得到对象
 
@@ -19,9 +19,9 @@
         //得到数量文本框
         var varObj = getObj(createCountId(id));
         var varObjValue = varObj.val();
-    if(type==0){
-      //为空，用于计算用户输入数量，不改变文本框值，重新计算商品总金额
-    }else if (type == 1) {
+		if(type==0){
+			//为空，用于计算用户输入数量，不改变文本框值，重新计算商品总金额
+		}else if (type == 1) {
           varObjValue++;
         }
         else {
@@ -39,12 +39,12 @@
 
         //判断数量是否大于最大购买数量
         if (varObjValue > g_maxNumber) {
-      alert('a'+g_maxNumber+'b');
-      varObj.val(g_maxNumber);
-      changeSumPrice();
-      changeSubtotal(id,g_maxNumber);
-      return;
-    }
+			alert('a'+g_maxNumber+'b');
+			varObj.val(g_maxNumber);
+			changeSumPrice();
+			changeSubtotal(id,g_maxNumber);
+			return;
+		}
         //判断数量是否小于1
         if (varObjValue < 1) {
           //当前文本框数量为1
@@ -85,7 +85,7 @@
           var varFirstPrice = parseFloat(getObj(createFirstId(index)).text());
             varSumPrice +=  varFirstPrice * amount;
           //varSumPrice += parseFloat(getObj(createSubtotalId(index)).text());
-     // alert(getObj(createSubtotalId(index)).text(1));
+		 // alert(getObj(createSubtotalId(index)).text(1));
         }
 
         varSumPrice = floatCounstrue(varSumPrice);
@@ -96,10 +96,10 @@
       //浮点型分析
 
       function floatCounstrue(val) {
-      
+		  
         val = val.toString();
         var index = val.indexOf(".");
-        if (index > 0) {      
+        if (index > 0) {			
           return val.substring(0, index + 3);
         }
         else {
@@ -131,47 +131,79 @@
       function createSubtotalId(id) {
         return "span_subtotal_price_" + id;
       }
-    
-    function fnChangePictrue(number,flag){
-      switch(number){
-        case 1:
-        
-        break;
-        case 2:
-          var varImagePath1 = baseLocation+"web/images/message_btn.png";
-        var varImagePath2 = baseLocation+"web/images/message_btn1.png";
-        if(flag){
-          alert(varImagePath1);
-            getObj("next2 > img").attr("src",varImagePath2);
-        }else{
-          alert(varImagePath2);
-          getObj("next2 > img").attr("src",varImagePath1);
-        }
-        
-        break;
-        
-      }
-    }
+	  
+	  function fnChangePictrue(number,flag){
+		  switch(number){
+			  case 1:
+			  
+			  break;
+			  case 2:
+			  	var varImagePath1 = baseLocation+"web/images/message_btn.png";
+				var varImagePath2 = baseLocation+"web/images/message_btn1.png";
+				if(flag){
+					alert(varImagePath1);
+				  	getObj("next2 > img").attr("src",varImagePath2);
+				}else{
+					alert(varImagePath2);
+					getObj("next2 > img").attr("src",varImagePath1);
+				}
+				
+			  break;
+			  
+		  }
+	  }
 
 
      //delivery charge
      document.getElementById("delivery1").onclick=function(){displayDeliveryCharge1()};
      function displayDeliveryCharge1()
-     {
+     {   //change price
          document.getElementById("deliveryCost").innerHTML= 0;
-         changeSumPrice()
+         changeSumPrice();
+         //change delivery method name
+         document.getElementById("delivery_name").innerHTML="Will Call";
+         //add info to fill
+         $(".willcall_info").show();
+         $(".shipping_info").hide();
+         //edit the name of three buttons so that we can get what we want in controller file
+         document.getElementById("input_will_call").setAttribute('name', 'will_call_active');
+         document.getElementById("input_print").setAttribute('name', 'print_input');
+         document.getElementById("input_mail").setAttribute('name', 'mail_input');
      }
 
      document.getElementById("delivery2").onclick=function(){displayDeliveryCharge2()};
      function displayDeliveryCharge2()
      {
+         //change price
          document.getElementById("deliveryCost").innerHTML= 0;
-         changeSumPrice()
+         changeSumPrice();
+         //change delivery method name
+         document.getElementById("delivery_name").innerHTML="Print at home";
+
+         $(".willcall_info").hide();
+         $(".shipping_info").hide();
+
+         //edit the name of three buttons so that we can get what we want in controller file
+         document.getElementById("input_will_call").setAttribute('name', 'will_call_input');
+         document.getElementById("input_print").setAttribute('name', 'print_active');
+         document.getElementById("input_mail").setAttribute('name', 'mail_input');
      }
 
      document.getElementById("delivery3").onclick=function(){displayDeliveryCharge3()};
      function displayDeliveryCharge3()
      {
+         //change price
          document.getElementById("deliveryCost").innerHTML= 4.95;
-         changeSumPrice()
+         changeSumPrice();
+
+         //change delivery method name
+         document.getElementById("delivery_name").innerHTML="Standard Shipping";
+         //add info to fill
+         $(".willcall_info").hide();
+         $(".shipping_info").show();
+
+         //edit the name of three buttons so that we can get what we want in controller file
+         document.getElementById("input_will_call").setAttribute('name', 'will_call_input');
+         document.getElementById("input_print").setAttribute('name', 'print_input');
+         document.getElementById("input_mail").setAttribute('name', 'mail_active');
      }
