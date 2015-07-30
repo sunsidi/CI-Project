@@ -121,9 +121,9 @@ jQuery(document).ready(function () {
 				</div>
 				
 				<a href="#" class="btn toast_buy" data-toggle="modal" data-target="#basicModal">Buy Tickets Now</a>
-				
+
 				<!--buy ticket-->
-				 <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
 					<div class="modal-dialog" style="width:80%; ">
 					  <div class="modal-content" style="background-color: transparent; box-shadow: none; border-color: transparent;">
 						  <div class="panel" style="background-color: transparent; box-shadow: none; border-color: transparent;">
@@ -177,8 +177,9 @@ jQuery(document).ready(function () {
 							  </div>
 						      </div>
 						  </div>
-						  
-							  <div class="panel-heading" style="background-color: #2c5277; text-align: center;">
+                              <form class="form-horizontal" role="form" method="post" action="<?php echo base_url()."stripe_controller/load_confirm/".$event[0]['event_id']?>" novalidate>
+
+                              <div class="panel-heading" style="background-color: #2c5277; text-align: center;">
 								  <span style="font-size: 150%; color: white;">
 									  Tickets Available
 								  </span>
@@ -252,7 +253,7 @@ jQuery(document).ready(function () {
 							      <input id="input_count_4" name="input_count_4" type="text" class="input_sl" value="0"/>
 							      &nbsp;<a href="javascript:chkAddAmount(4,1)" onfocus="this.blur();">
 							      <span class="icon-plus_box"  width="15" height="15" align="absmiddle" /></a>
-							      </div>			    			
+							      </div>
 							  </div>
 							  
 							  <div class="panel-heading" style="background-color: #2c5277; text-align: center; margin-top: 10px;">
@@ -286,7 +287,7 @@ jQuery(document).ready(function () {
                                   <div class="admission3" hidden><span style="float: left;">VIP Admission I Nov 6 x </span><span id="span_subtotal_num_3" style="float: left;"> 1</span><span id="span_subtotal_price_3"style="float:right; color:#009344; ">40.00</span><span style="float:right; color:#009344;">$</span><br/><br/></div>
                                   <div class="admission4" hidden><span style="float: left;">VIP Admission I Nov 7 x </span><span id="span_subtotal_num_4" style="float: left;"> 1</span><span id="span_subtotal_price_4"style="float:right; color:#009344; ">40.00</span><span style="float:right; color:#009344;">$</span><br/><br/></div>
 							      <div style="background:#eaf0f4; height: 20px; ">
-							      <span style="float: left;">Delivery Method</span><span style="float:right; color: #5f6063;">Standard Shipping</span>
+							      <span style="float: left;">Delivery Method</span><span id="delivery_name" style="float:right; color: #5f6063;">Standard Shipping</span>
 							      </div><br/>
 							      <span style="float: left;">Delivery Charge</span><span id="deliveryCost" style="float:right; color:#009344; ">0</span><span style="float:right; color:#009344;">$</span><br/><br/>
 							      <span style="float: left;">Service Fee</span><span id="serviceFee" style="float:right; color:#009344; ">4.00</span><span style="float:right; color:#009344;">$</span><br/><br/>
@@ -301,32 +302,34 @@ jQuery(document).ready(function () {
 						      <div class="col-md-7">
 							  <div class="col-md-3" style="text-align: left; font-size: 15px; padding: 40px;"><b><span>Select a <br/>Delivery <br/>Method</span></b></div>
 							  <div class="col-md-3">
-							      <button id="delivery1" type="submit" class="btn btn-lg delivery_type willcall">
+							      <button id="delivery1" name="will_call" type="button" class="btn btn-lg delivery_type willcall">
 								  <span class="icon-willcall_icon" style="font-size: 80px; color: black;"></span><br/>
 								  <span style="color: black;font-size: 15px;">Will Call</span><br/>
-								  <span style="color: grey; font-size: 13px;">Free</span></button>
+								  <span style="color: grey; font-size: 13px;">Free</span>
+                                  <input id="input_will_call" name="will_call_input" type="text" value="will call" hidden>
 							  </div>
 							  <div class="col-md-3">
-							      <button id="delivery2" type="submit" class="btn btn-lg delivery_type print">
+							      <button id="delivery2" name="print" type="button" class="btn btn-lg delivery_type print">
 								  <span class="icon-printathome_icon" style="font-size: 80px; color: black;"></span><br/>
 								  <span style="color: black;font-size: 15px;">Print at Home</span><br/>
 								  <span style="color: grey; font-size: 13px;">Free</span></button>
+                                  <input id="input_print" name="print_input" type="text" value="print" hidden>
 							  </div>
 							  <div class="col-md-3">
-							      <button id="delivery3" type="submit" class="btn btn-lg delivery_type shipping">
+							      <button id="delivery3" name="mail" type="button" class="btn btn-lg delivery_type shipping">
 								  <span class="icon-standardshipping_icon" style="font-size: 80px; color: black;"></span><br/>
 								  <span style="color: black;font-size: 15px;">Standard Shipping</span><br/>
 								  <span style="color: grey; font-size: 13px;">$4.95</span></button>
+                                  <input id="input_mail" name="mail_input" type="text" value="mail" hidden>
 							  </div>
 							
-							<div class="col-md-12 willcall_info" style="display:none;margin-top:20px;">
-							  <input name= 'pickup' type="text" class="form-control" placeholder="Person picking up ticket" required style=" background: #e4e5e7; height: 50px;">
+							<div class="col-md-12 willcall_info" style="display:none;margin-top:20px;" hidden>
+							  <input name= 'person_pickup' type="text" class="form-control" placeholder="Person picking up ticket" required style=" background: #e4e5e7; height: 50px;">
 							</div>	
 							
-							<div class="col-md-12 shipping_info" style="display:none;margin-top:20px;">
-							  <input name= 'Address' type="text" class="form-control" placeholder="Address" required style=" background: #e4e5e7; height: 50px;">
-							  <input name= 'Apt' type="text" class="form-control" placeholder="Apt #/Suite" required style="width: 45%;float: left; background-color: #e4e5e7; height: 50px;margin-top:10px;">
-							  <input name= 'City' type="text" class="form-control" placeholder="City" required style="width: 50%;float: right; background: #e4e5e7; height: 50px;margin-top:10px;">
+							<div class="col-md-12 shipping_info" style="display:none;margin-top:20px;" hidden>
+							  <input name= 'address' type="text" class="form-control" placeholder="Address" required style=" background: #e4e5e7; height: 50px;">
+							  <input name= 'city' type="text" class="form-control" placeholder="City" required style="width: 50%;float: right; background: #e4e5e7; height: 50px;margin-top:10px;">
 							  <select name="state" type="text" style="height:50px;padding:4px;float:left;width:45%;margin-top:10px;background:#E4E5E7;">
 							     <option value="" selected="selected">State</option> 
 								<option value="AK">AK</option>
@@ -381,31 +384,31 @@ jQuery(document).ready(function () {
 								<option value="WV">WV</option>
 								<option value="WY">WY</option>
 								</select> 
-								<input name= 'Zipcode' type="text" class="form-control" placeholder="Zip" required style="width: 50%;float: right; background: #e4e5e7; height: 50px;margin-top:10px;">
+								<input name= 'zip' type="text" class="form-control" placeholder="Zip" required style="width: 50%;float: right; background: #e4e5e7; height: 50px;margin-top:10px;">
 							</div>		
-							<script>
-								$('.willcall').click(function() {
-								  $('.willcall_info').toggle('slow');
-								  $(this).toggleClass('type-clicked');
-								});
-								
-								$('.print').click(function() {
-								  $(this).toggleClass('type-clicked');
-								});
-								
-								$('.shipping').click(function() {
-								  $('.shipping_info').toggle('slow');
-								  $(this).toggleClass('type-clicked');
-								});
-								
-							</script>
+<!--							<script>-->
+<!--								$('.willcall').click(function() {-->
+<!--								  $('.willcall_info').toggle('slow');-->
+<!--								  $(this).toggleClass('type-clicked');-->
+<!--								});-->
+<!--								-->
+<!--								$('.print').click(function() {-->
+<!--								  $(this).toggleClass('type-clicked');-->
+<!--								});-->
+<!--								-->
+<!--								$('.shipping').click(function() {-->
+<!--								  $('.shipping_info').toggle('slow');-->
+<!--								  $(this).toggleClass('type-clicked');-->
+<!--								});-->
+<!--								-->
+<!--							</script>-->
 				  
 							  <div class="col-md-12" style="margin-top:20px;">
 								
-							  <input name= 'Email' type="text" class="form-control" placeholder="Email" required style=" background: #e4e5e7; height: 50px;">
+							  <input name= 'email' type="text" class="form-control" placeholder="Email" required style=" background: #e4e5e7; height: 50px;">
 							      
-							  <input name= 'First Name' type="text" class="form-control" placeholder="First Name" required style="width: 35%;float: left; background-color: #e4e5e7; height: 50px;margin-top:10px;">
-							  <input name= 'Last Name' type="text" class="form-control" placeholder="Last Name" required style="width: 60%;float: right; background: #e4e5e7; height: 50px;margin-top:10px;">
+							  <input name = "f_name" type="text" class="form-control" placeholder="First Name" required style="width: 35%;float: left; background-color: #e4e5e7; height: 50px;margin-top:10px;">
+							  <input name= "l_name" type="text" class="form-control" placeholder="Last Name" required style="width: 60%;float: right; background: #e4e5e7; height: 50px;margin-top:10px;">
 <!--							      <div class="col-md-5" style="height: 50px; background:#e4e5e7; float: left; margin-top: 10px; ">-->
 <!--							      <span>Type</span>-->
 <!--							      <select id="Type" name="state" type="text" style="height:34px;padding:4px;">-->
@@ -416,7 +419,7 @@ jQuery(document).ready(function () {
                                   <input name = 'cvc' type="text" class="form-control" placeholder="CVC" required style="width:35%;height: 50px; background:#e4e5e7; float: left; margin-top: 10px;">
 							      <div class="col-md-6 col-md-offset-1" style="height: 50px; background:#e4e5e7; float: left; margin-top: 10px;">
 							      <span>Exp Date</span>
-							      <select id="Type" name="month" type="text" style="height:34px;padding:4px;">
+							      <select id="Type" name="exp_month" type="text" style="height:34px;padding:4px;">
 							      <option value="01" selected="selected">01</option>
                                   <option value="02">02</option>
                                   <option value="03">03</option>
@@ -430,7 +433,7 @@ jQuery(document).ready(function () {
                                   <option value="11">11</option>
                                   <option value="12">12</option>
 							      </select>
-							      <select id="Type" name="year" type="text" style="height:34px;padding:4px;">
+							      <select id="Type" name="exp_year" type="text" style="height:34px;padding:4px;">
                                   //every year need to change the number
 							      <option value="15" selected="selected">15</option> 
 							      <option value="16">16</option>
@@ -444,7 +447,7 @@ jQuery(document).ready(function () {
 							      </select>
 							      </div>
 							      <div class="col-md-12" style="margin-top: 10px; padding: 0px;">
-								  <input name= 'CardNumber' type="text" class="form-control" placeholder="Card Number" required style=" background: #e4e5e7; height: 50px;">
+								  <input name= 'card' type="text" class="form-control" placeholder="Card Number" required style=" background: #e4e5e7; height: 50px;">
 							      </div>
 							      </div>
 						      </div>
@@ -455,7 +458,7 @@ jQuery(document).ready(function () {
 <!--                                  </form>-->
 
 						  </div>
-				  
+				       </form>
 					      </div>
 				  
 					      
@@ -608,79 +611,79 @@ jQuery(document).ready(function () {
                 });
             }
         </script>
-<script>
-    var max_tickets = 0;
-    function change_qty_price() {
-        if($('#ticket_type').val() == "") {
-            $('#pricing_base').hide();
-            $('#info_base').hide();
-            $('#deadline_base').hide();
-            $('#billing_info').hide();
-            $('#not_set_up').hide();
-        }
-        else {
-            $("#payment_submit").removeAttr('disabled');
-            $('#not_set_up').hide();
-            $('#pricing_base').show();
-            $('#info_base').show();
-            $('#deadline_base').show();
-            $('#quantity_base').children().remove();
-            var temp = ($('#ticket_type').val()).split('|');
-            var price_number = Number(temp[2]).toFixed(2);
-            if(temp[5] != 0) {  //YUan change temp[5]==0 to temp[5]!=0
-                $('#ticket_price').attr('value', price_number);
-                $('#ticket_price2').html('$'+price_number);
-                $('#quantity_left').html(temp[1] + ' left.');
-                $('#ticket_info').html(temp[3]);
-                $('#ticket_deadline').html(temp[4]);
-                max_tickets = temp[1];
-                var content = '<select id="quantity_type" class="form-control" placeholder="0" name = "quantity">';
-                for(var i = 0; i <= max_tickets; i++) {
-                    content += '<option value="'+i+'">'+i+'</option>';
-                }
-                //Commented out until we can handle multiple ticket requests. FINISHED
-                /*content += '<option value="0">0</option>';
-                 if(Number(temp[1]))
-                 content += '<option value="1">1</option>';*/
-                content += '</select>';
-                $('#quantity_base').append(content);
-                if(price_number == 0) {
-                    $('#billing_info').hide();
-                }
-                else {
-                    <?php if($posted_recip_id == "") {?>
-                    $('#billing_info').show();
-                    <?php } else {?>
-                    $('#not_set_up').show();
-                    $('#payment_submit').attr('disabled','disabled');
-                    <?php }?>
-                }
-            }
-            else {
-                $('#pricing_base').hide();
-                $('#info_base').hide();
-                $('#deadline_base').hide();
-                $('#billing_info').hide();
-                $('#not_set_up').hide();
-                $('#expired_base').show();
-                $('#payment_submit').attr('disabled','disabled');
-            }
-
-        }
-    }
-</script>
-<script>
-    $(document).ready(function() {
-        $('input[type=radio][name=saved_card]').change(function() {
-            if (this.value == 'false') {
-                $(".enter_card").attr('disabled', false);
-            }
-            else {
-                $(".enter_card").attr('disabled', true);
-            }
-        });
-    });
-</script>
+<!--<script>-->
+<!--    var max_tickets = 0;-->
+<!--    function change_qty_price() {-->
+<!--        if($('#ticket_type').val() == "") {-->
+<!--            $('#pricing_base').hide();-->
+<!--            $('#info_base').hide();-->
+<!--            $('#deadline_base').hide();-->
+<!--            $('#billing_info').hide();-->
+<!--            $('#not_set_up').hide();-->
+<!--        }-->
+<!--        else {-->
+<!--            $("#payment_submit").removeAttr('disabled');-->
+<!--            $('#not_set_up').hide();-->
+<!--            $('#pricing_base').show();-->
+<!--            $('#info_base').show();-->
+<!--            $('#deadline_base').show();-->
+<!--            $('#quantity_base').children().remove();-->
+<!--            var temp = ($('#ticket_type').val()).split('|');-->
+<!--            var price_number = Number(temp[2]).toFixed(2);-->
+<!--            if(temp[5] != 0) {  //YUan change temp[5]==0 to temp[5]!=0-->
+<!--                $('#ticket_price').attr('value', price_number);-->
+<!--                $('#ticket_price2').html('$'+price_number);-->
+<!--                $('#quantity_left').html(temp[1] + ' left.');-->
+<!--                $('#ticket_info').html(temp[3]);-->
+<!--                $('#ticket_deadline').html(temp[4]);-->
+<!--                max_tickets = temp[1];-->
+<!--                var content = '<select id="quantity_type" class="form-control" placeholder="0" name = "quantity">';-->
+<!--                for(var i = 0; i <= max_tickets; i++) {-->
+<!--                    content += '<option value="'+i+'">'+i+'</option>';-->
+<!--                }-->
+<!--                //Commented out until we can handle multiple ticket requests. FINISHED-->
+<!--                /*content += '<option value="0">0</option>';-->
+<!--                 if(Number(temp[1]))-->
+<!--                 content += '<option value="1">1</option>';*/-->
+<!--                content += '</select>';-->
+<!--                $('#quantity_base').append(content);-->
+<!--                if(price_number == 0) {-->
+<!--                    $('#billing_info').hide();-->
+<!--                }-->
+<!--                else {-->
+<!--                    --><?php //if($posted_recip_id == "") {?>
+//                    $('#billing_info').show();
+//                    <?php //} else {?>
+//                    $('#not_set_up').show();
+//                    $('#payment_submit').attr('disabled','disabled');
+//                    <?php //}?>
+//                }
+//            }
+//            else {
+//                $('#pricing_base').hide();
+//                $('#info_base').hide();
+//                $('#deadline_base').hide();
+//                $('#billing_info').hide();
+//                $('#not_set_up').hide();
+//                $('#expired_base').show();
+//                $('#payment_submit').attr('disabled','disabled');
+//            }
+//
+//        }
+//    }
+<!--//</script>-->
+<!--<script>-->
+<!--    $(document).ready(function() {-->
+<!--        $('input[type=radio][name=saved_card]').change(function() {-->
+<!--            if (this.value == 'false') {-->
+<!--                $(".enter_card").attr('disabled', false);-->
+<!--            }-->
+<!--            else {-->
+<!--                $(".enter_card").attr('disabled', true);-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 <script>
     function edit_more_event_photos() {
         var content = '<div class="image-upload">'
