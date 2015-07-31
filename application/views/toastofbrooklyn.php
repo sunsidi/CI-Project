@@ -329,8 +329,12 @@ jQuery(document).ready(function () {
 							
 							<div class="col-md-12 shipping_info" style="display:none;margin-top:20px;" hidden>
 							  <input name= 'address' type="text" class="form-control" placeholder="Address" required style=" background: #e4e5e7; height: 50px;">
-							  <input name= 'city' type="text" class="form-control" placeholder="City" required style="width: 50%;float: right; background: #e4e5e7; height: 50px;margin-top:10px;">
-							  <select name="state" type="text" style="height:50px;padding:4px;float:left;width:45%;margin-top:10px;background:#E4E5E7;">
+							  <div class="row">
+								<div class="col-md-7">
+								<input name= 'city' type="text" class="form-control" placeholder="City" required style="float: right; background: #e4e5e7; height: 50px;margin-top:10px;">
+								</div>
+								<div class="col-md-2">
+							  <select name="state" type="text" style="height:50px;padding:4px;float:left;margin-top:10px;background:#E4E5E7;">
 							     <option value="" selected="selected">State</option> 
 								<option value="AK">AK</option>
 								<option value="AL">AL</option>
@@ -384,7 +388,11 @@ jQuery(document).ready(function () {
 								<option value="WV">WV</option>
 								<option value="WY">WY</option>
 								</select> 
-								<input name= 'zip' type="text" class="form-control" placeholder="Zip" required style="width: 50%;float: right; background: #e4e5e7; height: 50px;margin-top:10px;">
+								</div>
+								<div class="col-md-3">
+								<input name= 'zip' type="text" class="form-control" placeholder="Zip" required style="float: right; background: #e4e5e7; height: 50px;margin-top:10px;">
+								</div>
+								</div>
 							</div>		
 <!--							<script>-->
 <!--								$('.willcall').click(function() {-->
@@ -465,7 +473,7 @@ jQuery(document).ready(function () {
 					      
 					  </div>
 					</div>
-				    </div>      <!--end of buy ticket--> 
+				          <!--end of buy ticket--> 
 
 				
 				<div style="background:white;text-align:center;margin-top:10px;padding:15px;">
