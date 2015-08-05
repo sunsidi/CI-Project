@@ -1,11 +1,11 @@
 /*icons*/
 @font-face {
 	font-family: 'icomoon';
-	src:url('../fonts/icomoon.eot?-tksge2');
-	src:url('../fonts/icomoon.eot?#iefix-tksge2') format('embedded-opentype'),
-		url('../fonts/icomoon.ttf?-tksge2') format('truetype'),
-		url('../fonts/icomoon.woff?-tksge2') format('woff'),
-		url('../fonts/icomoon.svg?-tksge2#icomoon') format('svg');
+	src:url('../fonts/icomoon.eot?g41pzs');
+	src:url('../fonts/icomoon.eot?#iefixg41pzs') format('embedded-opentype'),
+		url('../fonts/icomoon.ttf?g41pzs') format('truetype'),
+		url('../fonts/icomoon.woff?g41pzs') format('woff'),
+		url('../fonts/icomoon.svg?g41pzs#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -24,47 +24,86 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-calendar_icon:before {
+.icon-paperless_mobile_icon:before {
+	content: "\e619";
+}
+.icon-bars:before {
 	content: "\e600";
 }
-.icon-camera_icon:before {
+.icon-clubs:before {
 	content: "\e601";
 }
-.icon-contacts_icon:before {
+.icon-concerts:before {
 	content: "\e602";
 }
-.icon-link_icon:before {
+.icon-culture:before {
 	content: "\e603";
 }
-.icon-minus_box:before {
+.icon-exploringyourcity:before {
 	content: "\e604";
 }
-.icon-plus_box:before {
+.icon-festivals:before {
 	content: "\e605";
 }
-.icon-plus_icon:before {
+.icon-hotspots:before {
 	content: "\e606";
 }
-.icon-printathome_icon:before {
+.icon-icebreakers:before {
 	content: "\e607";
 }
-.icon-standardshipping_icon:before {
+.icon-lounges:before {
 	content: "\e608";
 }
-.icon-willcall_icon:before {
+.icon-loveandromance:before {
 	content: "\e609";
 }
-.icon-email_icon:before {
-	content: "\e610";
+.icon-meetups:before {
+	content: "\e60a";
 }
-.icon-notifications_icon:before {
-	content: "\e611";
+.icon-parties:before {
+	content: "\e60b";
+}
+.icon-plus_box:before {
+	content: "\e61a";
 }
 .icon-mywrevs_icon:before {
 	content: "\e60c";
 }
 .icon-thehub_icon:before {
 	content: "\e60e";
+}
+.icon-calendar_icon:before {
+	content: "\e60d";
+}
+.icon-camera_icon:before {
+	content: "\e60f";
+}
+.icon-contacts_icon:before {
+	content: "\e610";
+}
+.icon-link_icon:before {
+	content: "\e611";
+}
+.icon-minus_box:before {
+	content: "\e612";
+}
+.icon-plus_icon:before {
+	content: "\e613";
+}
+.icon-printathome_icon:before {
+	content: "\e614";
+}
+.icon-standardshipping_icon:before {
+	content: "\e615";
+}
+.icon-willcall_icon:before {
+	content: "\e616";
+}
+.icon-email_icon:before {
+	content: "\e617";
+}
+.icon-notifications_icon:before {
+	content: "\e618";
 }
 
 /*end of icons*/
@@ -939,11 +978,13 @@ a.event-full_btn:hover{
 	border-right:1px solid white;
 }
 .cwrev_select{
-padding-left:20px;
+//padding-left:20px;
 }
 .cwrev_category{
-width:90px;
-height:90px;
+width:100px;
+height:100px;
+//width:21.5%;
+margin-top:5px;
 }
 
 .cw_descript{
@@ -1719,6 +1760,10 @@ background:#BC1E2D;
 font-size:17px;
 color:white;
 font-weight:bold;
+}
+
+.delivery-method-clicked{
+background:#EDF1F4;
 }
 
 
