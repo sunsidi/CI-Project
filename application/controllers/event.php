@@ -17,8 +17,13 @@ class Event extends CI_Controller {
         $this->load->library('session');
         $data['path'] = $this->path->getpath();
         $data['event'] = $this->model_events->find_event($id);
-        
-        $this->load->view('Event_fullview',$data);
+
+        //add new single Event
+        if($id == '15049'){
+            $this->load->view('toastofbrooklyn',$data);
+        }else{
+            $this->load->view('Event_fullview',$data);
+        }
     }
 
 
@@ -141,20 +146,20 @@ class Event extends CI_Controller {
 	                        $data['friends_to_invite'][$i] = $temp_friend_data[0];
 	                }
 	        }
-                
+
                 $commentFile = $this->model_events->get_comments($event_id);
                 if($commentFile !=""){
                 $data['commentLocation'] = base_url()."application/views/events_comments/".$commentFile;
             }
                 //print_r($data);
                 $complete_address = $data['event'][0]['e_address'].", " . $data['event'][0]['e_city'];
-                
+
 
                 $config['center']= $complete_address;
                 //print_r($data['event'][0]) . "<br>";
                 //print $complete_address;
 
-                
+
                 $marker = array();
                 $this->googlemaps->initialize($config);
 
@@ -173,12 +178,18 @@ class Event extends CI_Controller {
                 $data['event']['photos'] = array_diff(scandir('./uploads/events/'.$event_id.'/photos/'), array('..', '.'));
                 $result = array_merge($data,$path);
 
-		
+
                 //echo "<pre> ",print_r($data,true) ,"</pre>";
                $this->load->view('Create_Wrevel_View',$result);
-                $this->load->view('event_fullview',$result);
-                
-                
+
+
+           //add new single Event
+           if($event_id == '15049'){
+               $this->load->view('toastofbrooklyn',$result);
+           }else{
+               $this->load->view('event_fullview',$result);
+           }
+
         }
         public function Create_Wrevel_View()
             {
@@ -186,19 +197,19 @@ class Event extends CI_Controller {
                 //$data['event'] = $this->model_events->find_event();
                 $data['PATH_IMG'] = $path['PATH_IMG'];
                 $data['PATH_BOOTSTRAP'] = $path['PATH_BOOTSTRAP'];
-                $data['PATH_PROFILE'] = $path['PATH_PROFILE'];    
+                $data['PATH_PROFILE'] = $path['PATH_PROFILE'];
 
                 //$data['box_script']=$this->print_script();
-                //echo $data['box_script'];            
+                //echo $data['box_script'];
                 //echo "<br/>";
                 //echo $this->input->post('e_name');
-                        
+
                 $this->load->view('Create_Wrevel_View',$data);
-                        
-                        
-                        
-                        
-                       // print_r($data);      
+
+
+
+
+                       // print_r($data);
             }
         public function create_event()
         {
@@ -207,13 +218,13 @@ class Event extends CI_Controller {
             $this->load->model('model_events');
             $this->load->library('path');
             $path = $this->path->getPath();
-            
+
             $email = $this->session->userdata('email');
             $my_name = $this->model_users->get_name($email);
             $id = $this->model_users->get_userID($email);
-            
+
             if((!$this->session->userdata('is_logged_in'))) {
-            	
+
             }else{
             $event_id = $this->model_events->create_event($id);
             if($event_id) {
@@ -268,7 +279,7 @@ class Event extends CI_Controller {
                 //$this->email->send();
 	    }
 	    }
-            
+
         }
         public function print_script()
         {
@@ -277,7 +288,7 @@ class Event extends CI_Controller {
                 $data['PATH_IMG'] = $path['PATH_IMG'];
                 $data['PATH_BOOTSTRAP'] = $path['PATH_BOOTSTRAP'];
                 $data['PATH_PROFILE'] = $path['PATH_PROFILE'];
-                        
+
                 $script = '';
 
             /*for ($i = 0; $i < 12; $i++){
@@ -295,7 +306,7 @@ class Event extends CI_Controller {
         //echo $script;
         return $script;
         }
-        
+
         public function hub(){
             $path = $this->path->getpath();
             $this->load->library('session');
@@ -315,9 +326,9 @@ class Event extends CI_Controller {
             $events_zipcode = $this->model_events->get_zipcode();
             $data['states']= $events_states;
             $data['zipcode'] = $events_zipcode;
-            
+
             $data['news_feed'] = $this->model_news->get_news();
-            
+
             $data['events'] = $this->model_events->featured_search();
             $result = array_merge($data, $path);
             //echo "<pre> ",print_r($data,true) ,"</pre>";
@@ -342,7 +353,7 @@ class Event extends CI_Controller {
             $zipcode = $this->input->post('zipcode');
 
             $events = $this->model_events->get_latest_related_events($search,$category,$price,$state,$zipcode);
-           
+
 
             //$input = $this->input->post();
             //print_r($result);
@@ -364,7 +375,7 @@ class Event extends CI_Controller {
             //echo "<pre> ",print_r($all,true) ,"</pre>";
             $this->load->view('Create_Wrevel_View',$all);
             $this->load->view('hub',$all);
-            
+
 
         }
         public function user_search(){
