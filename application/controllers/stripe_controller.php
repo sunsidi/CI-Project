@@ -103,202 +103,417 @@ class Stripe_controller extends CI_Controller{
         
         public function charge($event_id)
         {
-        	$this->load->library('session');
-		$this->load->model('model_events');
-		$this->load->model('model_users');
-		if($this->session->userdata('is_logged_in'))
-			$my_email = $this->session->userdata('email');
-		
-		//echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
-		
-		$data['event'] = $this->model_events->find_event($event_id);
-		$c_email = $this->model_users->get_email($data['event'][0]['e_creatorID']);
-		$c_email = $c_email[0]['email'];
-		$billing = array(
-			'event_id'        => $data['event'][0]['event_id'],
-			'type'		  => $this->input->post('ticket_type'),
-			'cost_per_ticket' => $this->input->post('e_price'), //need to be changed later
-			'quantity'        => $this->input->post('quantity'),
-			'print'		  => $this->input->post('print'),
-			'mail'            => $this->input->post('mail'),
-			'f_name'          => $this->input->post('f_name'),
-			'l_name'	  => $this->input->post('l_name'),
-			'email'		  => $this->input->post('email'),
-			'address'	  => $this->input->post('address'),
-			'city'		  => $this->input->post('city'),
-			'state'		  => $this->input->post('state'),
-			'zipcode'	  => $this->input->post('zip'),
-			 
-			'card'  => array(
-				"number" => $this->input->post('card'),
-				"exp_month" => (int)$this->input->post('exp_month'),
-				"exp_year" => (int)$this->input->post('exp_year'),         
-			)
-		);
-		
-		
-		$amount_seller = $billing['quantity']*$billing['cost_per_ticket']*100;
-		
-		$amount_wrevel = (int)(1.015 * $billing['quantity']*($billing['cost_per_ticket']*100 + 50)) - $amount_seller;
-		
-		$amount_stripe = (int)(($amount_wrevel+$amount_seller) * 2.4 / 100 + 49);
-		
-		if($billing['mail']=='mail')
-		{
-			$amount_wrevel+=345;
-			//echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
-	        }
-		if($this->input->post('approve')=="true")
-		{
-                        
-                    if($this->session->userdata('session_expired') || !$this->session->userdata('ticket')) {
+            $this->load->library('session');
+            $this->load->model('model_events');
+            $this->load->model('model_users');
+            if ($this->session->userdata('is_logged_in'))
+                $my_email = $this->session->userdata('email');
+
+            //echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
+
+            $data['event'] = $this->model_events->find_event($event_id);
+            $c_email = $this->model_users->get_email($data['event'][0]['e_creatorID']);
+            $c_email = $c_email[0]['email'];
+            //add new single Event
+//            if ($event_id == '15049') {
+//                $billing = array(
+//                    'event_id' => $data['event'][0]['event_id'],
+//                    'e_price'	  => array(
+//                        "General6" =>"20",
+//                        "General7" =>"20",
+//                        "VIP6" =>"40",
+//                        "VIP7" =>"40"
+//                    ),
+//                    'type'		  => array(
+//                        "General6" =>"General Admission I Nov 6",
+//                        "General7" =>"General Admission I Nov 7",
+//                        "VIP6" =>"VIP Admission I Nov 6",
+//                        "VIP7" =>"VIP Admission I Nov 7"
+//                    ),
+//                    'quantity'        => array(
+//                        "General6" =>strip_tags($this->input->post('input_count_1')),
+//                        "General7" =>strip_tags($this->input->post('input_count_2')),
+//                        "VIP6" =>strip_tags($this->input->post('input_count_3')),
+//                        "VIP7" =>strip_tags($this->input->post('input_count_4')),
+//                    ),
+//                    'will_call'		  => strip_tags($this->input->post('will_call_active')),
+//                    'print'		  => strip_tags($this->input->post('print_active')),
+//                    'mail'            => strip_tags($this->input->post('mail_active')),
+//                    'person_pickup'            => strip_tags($this->input->post('person_pickup')),
+//                    'f_name'          => strip_tags($this->input->post('f_name')),
+//                    'l_name'	  => strip_tags($this->input->post('l_name')),
+//                    'email'		  => strip_tags($this->input->post('email')),
+//                    'address'	  => strip_tags($this->input->post('address')),
+//                    'city'		  => strip_tags($this->input->post('city')),
+//                    'state'		  => strip_tags($this->input->post('state')),
+//                    'zipcode'	  => strip_tags($this->input->post('zip')),
+//                    'card'  => array(
+//                        "number" => strip_tags($this->input->post('card')),
+//                        "exp_month" => (int)strip_tags($this->input->post('exp_month')),
+//                        "exp_year" => (int)strip_tags($this->input->post('exp_year')),
+//                        "cvc" => strip_tags($this->input->post('cvc'))
+//                    )
+//                );
+                $billing = array(
+                    'event_id' => $data['event'][0]['event_id'],
+                    'will_call'		  => strip_tags($this->input->post('will_call_active')),
+                    'print'		  => strip_tags($this->input->post('print_active')),
+                    'mail'            => strip_tags($this->input->post('mail_active')),
+                    'person_pickup'            => strip_tags($this->input->post('person_pickup')),
+                    'f_name'          => strip_tags($this->input->post('f_name')),
+                    'l_name'	  => strip_tags($this->input->post('l_name')),
+                    'email'		  => strip_tags($this->input->post('email')),
+                    'address'	  => strip_tags($this->input->post('address')),
+                    'city'		  => strip_tags($this->input->post('city')),
+                    'state'		  => strip_tags($this->input->post('state')),
+                    'zipcode'	  => strip_tags($this->input->post('zip')),
+                    'cust_id'	  => "false",
+                    'card'  => array(
+                        "number" => strip_tags($this->input->post('card')),
+                        "exp_month" => (int)strip_tags($this->input->post('exp_month')),
+                        "exp_year" => (int)strip_tags($this->input->post('exp_year')),
+                        "cvc" => strip_tags($this->input->post('cvc'))
+                    )
+                );
+                $ticket_data['event_ticket_types'] = $this->model_events->get_tickets_for_event($event_id);
+                for($i = 0; $i < count($ticket_data['event_ticket_types']); $i++) {
+                    $billing['ticket']['e_price'][$i] = $ticket_data['event_ticket_types'][$i]['price'];
+                    $billing['ticket']['type'][$i] = $ticket_data['event_ticket_types'][$i]['type'];
+                    $tem_input = 'input_count_'.($i+1);
+                    $billing['ticket']['quantity'][$i] = strip_tags($this->input->post($tem_input));
+                }
+
+                $amount_seller =0;
+                $temp_wrevel = 0;
+                for($i = 0; $i < count($ticket_data['event_ticket_types']); $i++) {
+                    $amount_seller += $billing['ticket']['e_price'][$i] * $billing['ticket']['quantity'][$i];
+                    $temp_wrevel += ($billing['ticket']['e_price'][$i]*100 + 50) * $billing['ticket']['quantity'][$i];
+                }
+                $amount_seller = $amount_seller * 100;
+                $amount_wrevel =  (int)(1.015 *  $temp_wrevel)- $amount_seller;
+
+
+
+
+               // $amount_seller = ($billing['quantity']['General6'] * $billing['e_price']['General6'] + $billing['quantity']['General7'] * $billing['e_price']['General7'] + $billing['quantity']['VIP6'] * $billing['e_price']['VIP6'] + $billing['quantity']['VIP7'] * $billing['e_price']['VIP7']) * 100;
+
+               // $amount_wrevel = (int)(1.015 * ($billing['quantity']['General6'] * ($billing['e_price']['General6'] * 100 + 50) + $billing['quantity']['General7'] * ($billing['e_price']['General7'] * 100 + 50) + $billing['quantity']['VIP6'] * ($billing['e_price']['VIP6'] * 100 + 50) + $billing['quantity']['VIP7'] * ($billing['e_price']['VIP7'] * 100 + 50))) - $amount_seller;
+
+                $amount_stripe = (int)(($amount_wrevel + $amount_seller) * 2.4 / 100 + 49);
+
+                if ($billing['mail'] == 'mail') {
+                    $amount_wrevel += 495;
+                    //echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
+                }
+                if ($this->input->post('approve') == "approve") {
+
+                    if ($this->session->userdata('session_expired') || !$this->session->userdata('ticket')) {
                         $this->session->unset_userdata('session_expired');
                         $prev_page = $this->session->userdata('refresh_page');
                         $this->session->set_flashdata('message', 'Your session has expired please reenter the required information.');
-                        redirect($prev_page.$event_id);
+                        redirect($prev_page . $event_id);
                     }
-			$data['event'] = $this->model_events->find_event($event_id);
-			$c_email = $this->model_users->get_email($data['event'][0]['e_creatorID']);
-			//echo '<pre>', print_r($data, true), '</pre>';
-			$c_recip = $c_email[0]['recip_id'];
-			$c_email = $c_email[0]['email'];
-                        
-			//set payment info
-			$ticket = $this->session->userdata('ticket');
-			$deduction_possible = $this->model_events->check_tickets($event_id, $ticket['type'],$ticket['quantity']);
-			if($deduction_possible) {
-				$billing = array(
-					'cost_per_ticket' => $ticket['cost_per_ticket'],
-					'type'		  => $ticket['type'],
-					'e_price'	  => $ticket['e_price'],
-					'quantity'        => $ticket['quantity'],
-					'print'		  => $ticket['print'],
-					'mail'            => $ticket['mail'],
-					'f_name'          => $ticket['f_name'],
-					'l_name'	  => $ticket['l_name'],
-					'email'		  => $ticket['email'],
-					'address'	  => $ticket['address'],
-					'city'		  => $ticket['city'],
-					'state'		  => $ticket['state'],
-					'zipcode'	  => $ticket['zipcode'],
-					'card'            => $ticket['card'],
-					'ticket_price'	  => $ticket['ticket_price'],
-					'fees'		  => $ticket['fees'],
-					'total_price'	  => $ticket['total_price'],
-					'cust_id'	  => $ticket['cust_id']
-					);
-                                
-				//echo '<pre>Stuff', print_r($billing, true), '</pre><br>';
-				
-				/*$amount_seller = $billing['quantity']*$billing['e_price']*100;
-		
-				$amount_wrevel = round((1.015 * $billing['quantity']*($billing['e_price']*100 + 50)) - $amount_seller);
-				$transfer_fee = 25;
-				$amount_wrevel += $transfer_fee;
-				// The "+30" is for the 30 cents stripe takes for processing.
-				// .971 is reversing the 2.9% that stripe takes for processing.
-				$amount_stripe = round((($amount_wrevel+$amount_seller + 30) / .971 - ($amount_wrevel + $amount_seller)));
-				
-				//The "57" is for the transfer fee that stripe takes for third party transfers. It's 25 but it is also processed.
-				
-		
-				if($billing['mail']=='true')
-				{
-					$amount_wrevel+=345;
-				}*/
-		
-				//$total =  $amount_stripe+$amount_wrevel+$amount_seller;
-				$total = $billing['total_price']*100;
+                    $data['event'] = $this->model_events->find_event($event_id);
+                    $c_email = $this->model_users->get_email($data['event'][0]['e_creatorID']);
+                    //echo '<pre>', print_r($data, true), '</pre>';
+                    $c_recip = $c_email[0]['recip_id'];
+                    $c_email = $c_email[0]['email'];
 
-				if($total != 0) {
-					// Changed so we don't have to save card to session. 
-					/*if($billing['cust_id'] == "false") {
-						$customer = Stripe_Customer::create(array(
-							'email' => $billing['email'],
-							'card'  => $billing['card']
-							));
-						$customer_id = $customer->id;
-						//echo "hello";
-					}
-					else {*/
-					$customer_id = $billing['cust_id'];
-					try {
-                                            $charge = Stripe_Charge::create(array(
-                                                    'description' => 'Money will be transferred manually to: EMAIL = '. $c_email .' OR RECIP_ID = '.$c_recip.' AMOUNT TO TRANSFER = '.$billing['ticket_price'],
-                                                    'customer' => $customer_id,
-                                                    'amount'   => (int)($total),
-                                                    'currency' => 'usd'
-                                            ));
-                                        }
-                                        catch(Exception $e) {
-                                            $prev_page = $this->session->userdata('refresh_page');
-                                            $this->session->set_flashdata('message', 'Your card was declined or you may have entered an invalid card or you may have insufficient funds. Please try again.');
-                                            redirect($prev_page.$billing['cost_per_ticket'][0]['event_id']);
-                                        }
-					//make payment THIS IS COMMENTTED OUT BECAUSE IT DOESN'T WORK FOR SOME REASON. WILL HAVE TO MANUALLY TRANSFER ALL MONEY.
-					//$this->transfer($billing['ticket_price']*100, $c_email);
-				
-					//echo "Wrevel Take ".$amount_wrevel."<br />";
-					//echo "Seller will get ".$amount_seller."<br />";
-					//echo "Stripe get charge of ".$amount_stripe."<br/>";
-				
-					//$total =  $amount_stripe+$amount_wrevel+$amount_seller;
-				}
-				$this->model_events->deduct_tickets($event_id, $ticket['type'],$ticket['quantity']);		
-				//echo "The Total Charge is ".$total."<br/>";
-				
-				//
-				
-				$return_data = $this->insert();
-				if($this->session->userdata('is_logged_in')) {
-					$user_id = $this->model_users->get_userID($my_email);
-					$this->model_users->add_reputation($my_email, 5);
-	        			$this->model_events->update_attending($user_id, $event_id);
-	        		}
-				redirect('stripe_controller/Processed_ticket/'.$return_data['event_id'].'/'.$return_data['ticket_id']);
-			}
-			else {
-				redirect('stripe_controller/load_stripe/'.$billing['event_id']);
-			}
-		}
-			
-	
-		else
-		{
-			//echo $this->input->post('approve');
-			redirect('stripe_controller/load_stripe/'.$billing['event_id']);
+                    //set payment info
+                    $ticket = $this->session->userdata('ticket');
+                    $deduction_possible = $this->model_events->check_tickets($event_id, $ticket['type'], $ticket['quantity']);
+                    if ($deduction_possible) {
+                        $billing = array(
+                            'cost_per_ticket' => $ticket['cost_per_ticket'],
+                            'will_call' => $ticket['will_call'],
+                            'print' => $ticket['print'],
+                            'mail' => $ticket['mail'],
+                            'person_pickup' => $ticket['person_pickup'],
+                            'f_name' => $ticket['f_name'],
+                            'l_name' => $ticket['l_name'],
+                            'email' => $ticket['email'],
+                            'address' => $ticket['address'],
+                            'city' => $ticket['city'],
+                            'state' => $ticket['state'],
+                            'zipcode' => $ticket['zipcode'],
+                            'card' => $ticket['card'],
+                            'ticket_price' => $ticket['ticket_price'],
+                            'fees' => $ticket['fees'],
+                            'total_price' => $ticket['total_price'],
+                            'cust_id' => $ticket['cust_id']
+                        );
+                        $ticket_data['event_ticket_types'] = $this->model_events->get_tickets_for_event($event_id);
+                        for($i = 0; $i < count($ticket_data['event_ticket_types']); $i++) {
+                            $billing['ticket']['e_price'][$i] = $ticket_data['event_ticket_types'][$i]['price'];
+                            $billing['ticket']['type'][$i] = $ticket_data['event_ticket_types'][$i]['type'];
+                            $tem_input = 'input_count_'.($i+1);
+                            $billing['ticket']['quantity'][$i] = strip_tags($this->input->post($tem_input));
+                        }
 
-		}
-	
-		$total =  $amount_stripe+$amount_wrevel+$amount_seller;
+                        $total = $billing['total_price'] * 100;
 
-		$customer = Stripe_Customer::create(array(
-			'email' => $billing['email'],
-			'card'  => $billing['card']
-			));
+                        if ($total != 0) {
+                            // Changed so we don't have to save card to session.
+                            /*if($billing['cust_id'] == "false") {
+                                $customer = Stripe_Customer::create(array(
+                                    'email' => $billing['email'],
+                                    'card'  => $billing['card']
+                                    ));
+                                $customer_id = $customer->id;
+                                //echo "hello";
+                            }
+                            else {*/
+                            $customer_id = $billing['cust_id'];
+                            try {
+                                $charge = Stripe_Charge::create(array(
+                                    'description' => 'Money will be transferred manually to: EMAIL = ' . $c_email . ' OR RECIP_ID = ' . $c_recip . ' AMOUNT TO TRANSFER = ' . $billing['ticket_price'],
+                                    'customer' => $customer_id,
+                                    'amount' => (int)($total),
+                                    'currency' => 'usd'
+                                ));
+                            } catch (Exception $e) {
+                                $prev_page = $this->session->userdata('refresh_page');
+                                //$this->session->set_flashdata('message', 'Your card was declined or you may have entered an invalid card or you may have insufficient funds. Please try again.');
+                                $this->session->set_flashdata('message', $e->getMessage());
+                                redirect($prev_page . $billing['cost_per_ticket'][0]['event_id']);
+                            }
+                            //make payment THIS IS COMMENTTED OUT BECAUSE IT DOESN'T WORK FOR SOME REASON. WILL HAVE TO MANUALLY TRANSFER ALL MONEY.
+                            //$this->transfer($billing['ticket_price']*100, $c_email);
 
-		$charge = Stripe_Charge::create(array(
-			'customer' => $customer->id,
-			'amount'   => (int)($total),
-			'currency' => 'usd'
-		));
-		
-		$this->transfer($amount_seller, $c_email);
-		
+                            //echo "Wrevel Take ".$amount_wrevel."<br />";
+                            //echo "Seller will get ".$amount_seller."<br />";
+                            //echo "Stripe get charge of ".$amount_stripe."<br/>";
 
-		//echo "Wrevel Take ".$amount_wrevel."<br />";
-		//echo "Seller will get ".$amount_seller."<br />";
-		//echo "Stripe get charge of ".$amount_stripe."<br/>";
+                            //$total =  $amount_stripe+$amount_wrevel+$amount_seller;
+                        }
+                        $this->model_events->deduct_tickets($event_id, $ticket['type'], $ticket['quantity']);
+                        //echo "The Total Charge is ".$total."<br/>";
 
-		//money being transfered to your account
-		
-		$total =  $amount_stripe+$amount_wrevel+$amount_seller;
-		
-		//echo "The Total Charge is ".$total."<br/>";
-			//transfer notification
-		redirect('stripe_controller/confirm');
-	}
-	
+                        //
+
+                        $return_data = $this->insert();
+                        if ($this->session->userdata('is_logged_in')) {
+                            $user_id = $this->model_users->get_userID($my_email);
+                            $this->model_users->add_reputation($my_email, 5);
+                            $this->model_events->update_attending($user_id, $event_id);
+                        }
+                        redirect('stripe_controller/Processed_ticket/' . $return_data['event_id'] . '/' . $return_data['ticket_id']);
+                    } else {
+                        redirect('stripe_controller/load_stripe/' . $billing['event_id']);
+                    }
+                } else {
+                    //echo $this->input->post('approve');
+                    redirect('stripe_controller/load_stripe/' . $billing['event_id']);
+
+                }
+
+                $total = $amount_stripe + $amount_wrevel + $amount_seller;
+
+                $customer = Stripe_Customer::create(array(
+                    'email' => $billing['email'],
+                    'card' => $billing['card']
+                ));
+
+                $charge = Stripe_Charge::create(array(
+                    'customer' => $customer->id,
+                    'amount' => (int)($total),
+                    'currency' => 'usd'
+                ));
+
+                $this->transfer($amount_seller, $c_email);
+
+
+                //echo "Wrevel Take ".$amount_wrevel."<br />";
+                //echo "Seller will get ".$amount_seller."<br />";
+                //echo "Stripe get charge of ".$amount_stripe."<br/>";
+
+                //money being transfered to your account
+
+                $total = $amount_stripe + $amount_wrevel + $amount_seller;
+
+                //echo "The Total Charge is ".$total."<br/>";
+                //transfer notification
+                redirect('stripe_controller/confirm');
+
+//
+//                    } else {
+//                $billing = array(
+//                    'event_id' => $data['event'][0]['event_id'],
+//                    'type' => $this->input->post('ticket_type'),
+//                    'cost_per_ticket' => $this->input->post('e_price'), //need to be changed later
+//                    'quantity' => $this->input->post('quantity'),
+//                    'print' => $this->input->post('print'),
+//                    'mail' => $this->input->post('mail'),
+//                    'f_name' => $this->input->post('f_name'),
+//                    'l_name' => $this->input->post('l_name'),
+//                    'email' => $this->input->post('email'),
+//                    'address' => $this->input->post('address'),
+//                    'city' => $this->input->post('city'),
+//                    'state' => $this->input->post('state'),
+//                    'zipcode' => $this->input->post('zip'),
+//
+//                    'card' => array(
+//                        "number" => $this->input->post('card'),
+//                        "exp_month" => (int)$this->input->post('exp_month'),
+//                        "exp_year" => (int)$this->input->post('exp_year'),
+//                    )
+//                );
+//
+//
+//                $amount_seller = $billing['quantity'] * $billing['cost_per_ticket'] * 100;
+//
+//                $amount_wrevel = (int)(1.015 * $billing['quantity'] * ($billing['cost_per_ticket'] * 100 + 50)) - $amount_seller;
+//
+//                $amount_stripe = (int)(($amount_wrevel + $amount_seller) * 2.4 / 100 + 49);
+//
+//                if ($billing['mail'] == 'mail') {
+//                    $amount_wrevel += 345;
+//                    //echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
+//                }
+//                if ($this->input->post('approve') == "true") {
+//
+//                    if ($this->session->userdata('session_expired') || !$this->session->userdata('ticket')) {
+//                        $this->session->unset_userdata('session_expired');
+//                        $prev_page = $this->session->userdata('refresh_page');
+//                        $this->session->set_flashdata('message', 'Your session has expired please reenter the required information.');
+//                        redirect($prev_page . $event_id);
+//                    }
+//                    $data['event'] = $this->model_events->find_event($event_id);
+//                    $c_email = $this->model_users->get_email($data['event'][0]['e_creatorID']);
+//                    //echo '<pre>', print_r($data, true), '</pre>';
+//                    $c_recip = $c_email[0]['recip_id'];
+//                    $c_email = $c_email[0]['email'];
+//
+//                    //set payment info
+//                    $ticket = $this->session->userdata('ticket');
+//                    $deduction_possible = $this->model_events->check_tickets($event_id, $ticket['type'], $ticket['quantity']);
+//                    if ($deduction_possible) {
+//                        $billing = array(
+//                            'cost_per_ticket' => $ticket['cost_per_ticket'],
+//                            'type' => $ticket['type'],
+//                            'e_price' => $ticket['e_price'],
+//                            'quantity' => $ticket['quantity'],
+//                            'print' => $ticket['print'],
+//                            'mail' => $ticket['mail'],
+//                            'f_name' => $ticket['f_name'],
+//                            'l_name' => $ticket['l_name'],
+//                            'email' => $ticket['email'],
+//                            'address' => $ticket['address'],
+//                            'city' => $ticket['city'],
+//                            'state' => $ticket['state'],
+//                            'zipcode' => $ticket['zipcode'],
+//                            'card' => $ticket['card'],
+//                            'ticket_price' => $ticket['ticket_price'],
+//                            'fees' => $ticket['fees'],
+//                            'total_price' => $ticket['total_price'],
+//                            'cust_id' => $ticket['cust_id']
+//                        );
+//
+//                        //echo '<pre>Stuff', print_r($billing, true), '</pre><br>';
+//
+//                        /*$amount_seller = $billing['quantity']*$billing['e_price']*100;
+//
+//                        $amount_wrevel = round((1.015 * $billing['quantity']*($billing['e_price']*100 + 50)) - $amount_seller);
+//                        $transfer_fee = 25;
+//                        $amount_wrevel += $transfer_fee;
+//                        // The "+30" is for the 30 cents stripe takes for processing.
+//                        // .971 is reversing the 2.9% that stripe takes for processing.
+//                        $amount_stripe = round((($amount_wrevel+$amount_seller + 30) / .971 - ($amount_wrevel + $amount_seller)));
+//
+//                        //The "57" is for the transfer fee that stripe takes for third party transfers. It's 25 but it is also processed.
+//
+//
+//                        if($billing['mail']=='true')
+//                        {
+//                            $amount_wrevel+=345;
+//                        }*/
+//
+//                        //$total =  $amount_stripe+$amount_wrevel+$amount_seller;
+//                        $total = $billing['total_price'] * 100;
+//
+//                        if ($total != 0) {
+//                            // Changed so we don't have to save card to session.
+//                            /*if($billing['cust_id'] == "false") {
+//                                $customer = Stripe_Customer::create(array(
+//                                    'email' => $billing['email'],
+//                                    'card'  => $billing['card']
+//                                    ));
+//                                $customer_id = $customer->id;
+//                                //echo "hello";
+//                            }
+//                            else {*/
+//                            $customer_id = $billing['cust_id'];
+//                            try {
+//                                $charge = Stripe_Charge::create(array(
+//                                    'description' => 'Money will be transferred manually to: EMAIL = ' . $c_email . ' OR RECIP_ID = ' . $c_recip . ' AMOUNT TO TRANSFER = ' . $billing['ticket_price'],
+//                                    'customer' => $customer_id,
+//                                    'amount' => (int)($total),
+//                                    'currency' => 'usd'
+//                                ));
+//                            } catch (Exception $e) {
+//                                $prev_page = $this->session->userdata('refresh_page');
+//                                $this->session->set_flashdata('message', 'Your card was declined or you may have entered an invalid card or you may have insufficient funds. Please try again.');
+//                                redirect($prev_page . $billing['cost_per_ticket'][0]['event_id']);
+//                            }
+//                            //make payment THIS IS COMMENTTED OUT BECAUSE IT DOESN'T WORK FOR SOME REASON. WILL HAVE TO MANUALLY TRANSFER ALL MONEY.
+//                            //$this->transfer($billing['ticket_price']*100, $c_email);
+//
+//                            //echo "Wrevel Take ".$amount_wrevel."<br />";
+//                            //echo "Seller will get ".$amount_seller."<br />";
+//                            //echo "Stripe get charge of ".$amount_stripe."<br/>";
+//
+//                            //$total =  $amount_stripe+$amount_wrevel+$amount_seller;
+//                        }
+//                        $this->model_events->deduct_tickets($event_id, $ticket['type'], $ticket['quantity']);
+//                        //echo "The Total Charge is ".$total."<br/>";
+//
+//                        //
+//
+//                        $return_data = $this->insert();
+//                        if ($this->session->userdata('is_logged_in')) {
+//                            $user_id = $this->model_users->get_userID($my_email);
+//                            $this->model_users->add_reputation($my_email, 5);
+//                            $this->model_events->update_attending($user_id, $event_id);
+//                        }
+//                        redirect('stripe_controller/Processed_ticket/' . $return_data['event_id'] . '/' . $return_data['ticket_id']);
+//                    } else {
+//                        redirect('stripe_controller/load_stripe/' . $billing['event_id']);
+//                    }
+//                } else {
+//                    //echo $this->input->post('approve');
+//                    redirect('stripe_controller/load_stripe/' . $billing['event_id']);
+//
+//                }
+//
+//                $total = $amount_stripe + $amount_wrevel + $amount_seller;
+//
+//                $customer = Stripe_Customer::create(array(
+//                    'email' => $billing['email'],
+//                    'card' => $billing['card']
+//                ));
+//
+//                $charge = Stripe_Charge::create(array(
+//                    'customer' => $customer->id,
+//                    'amount' => (int)($total),
+//                    'currency' => 'usd'
+//                ));
+//
+//                $this->transfer($amount_seller, $c_email);
+//
+//
+//                //echo "Wrevel Take ".$amount_wrevel."<br />";
+//                //echo "Seller will get ".$amount_seller."<br />";
+//                //echo "Stripe get charge of ".$amount_stripe."<br/>";
+//
+//                //money being transfered to your account
+//
+//                $total = $amount_stripe + $amount_wrevel + $amount_seller;
+//
+//                //echo "The Total Charge is ".$total."<br/>";
+//                //transfer notification
+//                redirect('stripe_controller/confirm');
+//            }
+        }
 	public function insert()
 	{
 		$this->load->library('session');
@@ -316,23 +531,58 @@ class Stripe_controller extends CI_Controller{
 		else {
                         //GUEST USER.
 			$info['user_id'] = -1;
-			$info['fullname'] = $ticket['f_name'];
+			$info['fullname'] = $ticket['f_name']."".$ticket['l_name'] ;
 			$email = $ticket['email'];
 			$email_message = "<p>You have just purchased a ticket on Wrevel.com! You can click on the link below to view your order and print your tickets.  Make sure you save this e-mail as you would need it to access your tickets in the future. You can also sign up for free at www.wrevel.com to save all of your future purchases on your Wrevel account.</p>";
 		}
-		$data = array(
-			'event_id'      => $ticket['cost_per_ticket'][0]['event_id'],
-			'user_id'       => $info['user_id'],
-			'fullname'      => $info['fullname'],
-			'delivery'      => $ticket['mail'],
-			'ticket_type'   => $ticket['type'],
-			'ticket_price'  => $ticket['ticket_price'],
-			'fees'          => $ticket['fees'],
-			'total_price'   => $ticket['total_price']
-			
-		);
-		$this->load->model('model_tickets');
-		$data['ticket_id'] = $this->model_tickets->add_ticket($data, $ticket['quantity']);
+
+//        if ($ticket['cost_per_ticket'][0]['event_id'] == '15049') {
+            if($ticket['mail']=="mail"){
+               $delivery_method = $ticket['mail'];
+            }else if($ticket['print']=="print"){
+                $delivery_method = $ticket['print'];
+            }else if($ticket['will_call']=="will call"){
+                $delivery_method = $ticket['will_call'];
+            }
+            $data = array(
+                'event_id'      => $ticket['cost_per_ticket'][0]['event_id'],
+                'user_id'       => $info['user_id'],
+                'fullname'      => $info['fullname'],
+                'delivery'      => $delivery_method,
+                'ticket_type'   => $ticket['type'],
+                'ticket_price'  => $ticket['ticket_price'],
+                'fees'          => $ticket['fees'],
+                'total_price'   => $ticket['total_price'],
+                'person_pickup' => $ticket['person_pickup']
+            );
+            $this->load->model('model_tickets');
+            $data['ticket_id'] = $this->model_tickets->add_ticket_single($data, $ticket['quantity']);
+            if($ticket['mail']=="mail"){
+                $shipping_information = array(
+                    'ticket_id' => $data['ticket_id'],
+                    'address'   => $ticket['address'],
+                    'city'      => $ticket['city'],
+                    'state'     => $ticket['state'],
+                    'zipcode'   => $ticket['zipcode'],
+                    'name'      => $data['fullname']
+                );
+                $this->model_tickets-> add_shipping_information($shipping_information);
+            }
+//        }else{
+//            $data = array(
+//                'event_id'      => $ticket['cost_per_ticket'][0]['event_id'],
+//                'user_id'       => $info['user_id'],
+//                'fullname'      => $info['fullname'],
+//                'delivery'      => $ticket['mail'],
+//                'ticket_type'   => $ticket['type'],
+//                'ticket_price'  => $ticket['ticket_price'],
+//                'fees'          => $ticket['fees'],
+//                'total_price'   => $ticket['total_price']
+//
+//            );
+//            $this->load->model('model_tickets');
+//		    $data['ticket_id'] = $this->model_tickets->add_ticket($data, $ticket['quantity']);
+//        }
                 $return_data = array('e_name' => $ticket['cost_per_ticket'][0]['e_name'], 
                                      'ticket_id' => $data['ticket_id'],
                                      'event_id' => $data['event_id'], 
@@ -376,83 +626,214 @@ class Stripe_controller extends CI_Controller{
 		
 		$event = $this->model_events->find_event($event_id);
 		$c_email = $this->model_users->get_email($event[0]['e_creatorID']);
-		
-		$ticket_type_temp = explode('|',$this->input->post('ticket_type'));
 
-		$data['ticket'] = array(
-			'cost_per_ticket' => $event, //need to be changed later
-			'e_price'	  => strip_tags($this->input->post('ticket_price')),
-			'type'		  => strip_tags($ticket_type_temp[0]),
-			'quantity'        => strip_tags($this->input->post('quantity')),
-			'print'		  => strip_tags($this->input->post('print')),
-			'mail'            => strip_tags($this->input->post('mail')),
-			'f_name'          => strip_tags($this->input->post('f_name')),
-			'l_name'	  => strip_tags($this->input->post('l_name')),
-			'email'		  => strip_tags($this->input->post('email')),
-			'address'	  => strip_tags($this->input->post('address')),
-			'city'		  => strip_tags($this->input->post('city')),
-			'state'		  => strip_tags($this->input->post('state')),
-			'zipcode'	  => strip_tags($this->input->post('zip')),
-			'cust_id'	  => strip_tags($this->input->post('saved_card')),
-			'card'  => array(
-				"number" => strip_tags($this->input->post('card')),
-				"exp_month" => (int)strip_tags($this->input->post('exp_month')),
-				"exp_year" => (int)strip_tags($this->input->post('exp_year')),
-				"cvc" => strip_tags($this->input->post('cvc'))           
-				)
-		);
-                if($this->session->userdata('session_expired')) {
+        //add new single Event
+//		if($event_id == '15049'){
+//            $data['ticket'] = array(
+//                'cost_per_ticket' => $event, //need to be changed later
+//                'e_price'	  => array(
+//                    "General6" =>"20",
+//                    "General7" =>"20",
+//                    "VIP6" =>"40",
+//                    "VIP7" =>"40"
+//                ),
+//                'type'		  => array(
+//                          "General6" =>"General Admission I Nov 6",
+//                          "General7" =>"General Admission I Nov 7",
+//                          "VIP6" =>"VIP Admission I Nov 6",
+//                          "VIP7" =>"VIP Admission I Nov 7"
+//                ),
+//                'quantity'        => array(
+//                    "General6" =>strip_tags($this->input->post('input_count_1')),
+//                    "General7" =>strip_tags($this->input->post('input_count_2')),
+//                    "VIP6" =>strip_tags($this->input->post('input_count_3')),
+//                    "VIP7" =>strip_tags($this->input->post('input_count_4')),
+//                ),
+//                'will_call'		  => strip_tags($this->input->post('will_call_active')),
+//                'print'		  => strip_tags($this->input->post('print_active')),
+//                'mail'            => strip_tags($this->input->post('mail_active')),
+//                'person_pickup'            => strip_tags($this->input->post('person_pickup')),
+//                'f_name'          => strip_tags($this->input->post('f_name')),
+//                'l_name'	  => strip_tags($this->input->post('l_name')),
+//                'email'		  => strip_tags($this->input->post('email')),
+//                'address'	  => strip_tags($this->input->post('address')),
+//                'city'		  => strip_tags($this->input->post('city')),
+//                'state'		  => strip_tags($this->input->post('state')),
+//                'zipcode'	  => strip_tags($this->input->post('zip')),
+//                'cust_id'	  => "false",
+//                'card'  => array(
+//                    "number" => strip_tags($this->input->post('card')),
+//                    "exp_month" => (int)strip_tags($this->input->post('exp_month')),
+//                    "exp_year" => (int)strip_tags($this->input->post('exp_year')),
+//                    "cvc" => strip_tags($this->input->post('cvc'))
+//                )
+//            );
+            $data['ticket'] = array(
+                'cost_per_ticket' => $event, //need to be changed later
+                'will_call'		  => strip_tags($this->input->post('will_call_active')),
+                'print'		  => strip_tags($this->input->post('print_active')),
+                'mail'            => strip_tags($this->input->post('mail_active')),
+                'person_pickup'            => strip_tags($this->input->post('person_pickup')),
+                'f_name'          => strip_tags($this->input->post('f_name')),
+                'l_name'	  => strip_tags($this->input->post('l_name')),
+                'email'		  => strip_tags($this->input->post('email')),
+                'address'	  => strip_tags($this->input->post('address')),
+                'city'		  => strip_tags($this->input->post('city')),
+                'state'		  => strip_tags($this->input->post('state')),
+                'zipcode'	  => strip_tags($this->input->post('zip')),
+                'cust_id'	  => "false",
+                'card'  => array(
+                    "number" => strip_tags($this->input->post('card')),
+                    "exp_month" => (int)strip_tags($this->input->post('exp_month')),
+                    "exp_year" => (int)strip_tags($this->input->post('exp_year')),
+                    "cvc" => strip_tags($this->input->post('cvc'))
+                )
+            );
+            $ticket_data['event_ticket_types'] = $this->model_events->get_tickets_for_event($event_id);
+            for($i = 0; $i < count($ticket_data['event_ticket_types']); $i++) {
+                $data['ticket']['e_price'][$i] = $ticket_data['event_ticket_types'][$i]['price'];
+                $data['ticket']['type'][$i] = $ticket_data['event_ticket_types'][$i]['type'];
+                $tem_input = 'input_count_'.($i+1);
+                $data['ticket']['quantity'][$i] = strip_tags($this->input->post($tem_input));
+            }
+
+            if($this->session->userdata('session_expired')) {
+                $prev_page = $this->session->userdata('refresh_page');
+                $this->session->set_flashdata('message', 'Your session has expired please reenter your information.');
+                redirect($prev_page.$data['ticket']['cost_per_ticket'][0]['event_id']);
+            }
+//            if($ticket_type_temp[5] == 0) {   //Yuan change it to 0  from 1
+//                $prev_page = $this->session->userdata('refresh_page');
+//                $this->session->set_flashdata('message', 'This ticket type is already expired. Please choose another type.');
+//                redirect($prev_page.$data['ticket']['cost_per_ticket'][0]['event_id']);
+//            }
+            if($data['ticket']['card']['number'] == "") {
+
+                redirect('stripe_controller/load_stripe/'.$data['ticket']['cost_per_ticket'][0]['event_id']);
+            }
+            $amount_seller =0;
+            $temp_wrevel = 0;
+            for($i = 0; $i < count($ticket_data['event_ticket_types']); $i++) {
+                 $amount_seller += $data['ticket']['e_price'][$i] * $data['ticket']['quantity'][$i];
+                 $temp_wrevel += ($data['ticket']['e_price'][$i] + 0.50) * $data['ticket']['quantity'][$i];
+            }
+            $data['ticket']['ticket_price'] = $amount_seller;
+            $amount_wrevel =  round((double)(1.015 *  $temp_wrevel)- $amount_seller,2);
+            //    $data['ticket']['ticket_price'] = $amount_seller = $data['ticket']['quantity']['General6']*$data['ticket']['e_price']['General6'] + $data['ticket']['quantity']['General7']*$data['ticket']['e_price']['General7'] + $data['ticket']['quantity']['VIP6']*$data['ticket']['e_price']['VIP6'] + $data['ticket']['quantity']['VIP7']*$data['ticket']['e_price']['VIP7'];
+            //    $amount_wrevel = round((double)(1.015 * ($data['ticket']['quantity']['General6']*($data['ticket']['e_price']['General6'] + 0.50) + $data['ticket']['quantity']['General7']*($data['ticket']['e_price']['General7'] + 0.50) + $data['ticket']['quantity']['VIP6']*($data['ticket']['e_price']['VIP6'] + 0.50) + $data['ticket']['quantity']['VIP7']*($data['ticket']['e_price']['VIP7'] + 0.50))) - $amount_seller,2);
+                $amount_wrevel += .25;
+                $amount_stripe = round((double)($amount_wrevel+$amount_seller + 0.30) / .971 -($amount_wrevel+$amount_seller),2);
+                if($data['ticket']['mail'] == "mail")
+                    $amount_wrevel =+ 4.95;
+                $total = $amount_stripe + $amount_wrevel;
+                $data['ticket']['fees'] = $total;
+                $data['ticket']['total_price'] = $amount_seller + $total;
+
+                try {
+                    $customer = Stripe_Customer::create(array(
+                        'email' => $data['ticket']['email'],
+                        'card'  => $data['ticket']['card']
+                    ));
+                    $data['ticket']['cust_id'] = $customer->id;
+                }
+                catch(Exception $e) {
                     $prev_page = $this->session->userdata('refresh_page');
-                    $this->session->set_flashdata('message', 'Your session has expired please reenter your information.');
+                    $this->session->set_flashdata('message', 'Your card was declined or you may have entered an invalid card. Please try again.');
                     redirect($prev_page.$data['ticket']['cost_per_ticket'][0]['event_id']);
                 }
-                   if($ticket_type_temp[5] == 0) {   //Yuan change it to 0  from 1
-                    $prev_page = $this->session->userdata('refresh_page');
-                    $this->session->set_flashdata('message', 'This ticket type is already expired. Please choose another type.');
-                    redirect($prev_page.$data['ticket']['cost_per_ticket'][0]['event_id']);
-                }
-		if($data['ticket']['cust_id'] == "false" && $data['ticket']['card']['number'] == "" && $data['ticket']['e_price'] != 0) {
-			
-			redirect('stripe_controller/load_stripe/'.$data['ticket']['cost_per_ticket'][0]['event_id']);
-		}
-		if($data['ticket']['e_price'] != 0) {
-			$data['ticket']['ticket_price'] = $amount_seller = $data['ticket']['quantity']*$data['ticket']['e_price'];
-			$amount_wrevel = round((double)(1.015 * $data['ticket']['quantity']*($data['ticket']['e_price'] + 0.50)) - $data['ticket']['e_price']*$data['ticket']['quantity'],2);
-			$amount_wrevel += .25;
-			$amount_stripe = round((double)($amount_wrevel+$data['ticket']['e_price']*$data['ticket']['quantity'] + 0.30) / .971 -($amount_wrevel+$data['ticket']['e_price']*$data['ticket']['quantity']),2);
-			if($data['ticket']['mail'] == "mail") 
-				$amount_wrevel =+ 3.45;
-				$total = $amount_stripe + $amount_wrevel;
-			$data['ticket']['fees'] = $total;
-			$data['ticket']['total_price'] = $amount_seller + $total;
-		}
-		else {
-			$data['ticket']['ticket_price'] = 0;
-			$data['ticket']['fees'] = 0;
-			$data['ticket']['total_price'] = 0;
-		}
-		if(isset($data['ticket']['cust_id'])) {
-			$data['ticket']['f_name'] = $my_data['fullname'];
-		}
-		else {
-			try {
-				$customer = Stripe_Customer::create(array(
-								'email' => $data['ticket']['email'],
-								'card'  => $data['ticket']['card']
-				));
-				$data['ticket']['cust_id'] == $customer->id;
-			}
-			catch(Exception $e) {
-				$prev_page = $this->session->userdata('refresh_page');
-				$this->session->set_flashdata('message', 'Your card was declined or you may have entered an invalid card. Please try again.');
-				redirect($prev_page.$data['ticket']['cost_per_ticket'][0]['event_id']);
-			}
-			
-		}
-		$data['ticket']['card'] = "";
-		$this->session->set_userdata($data);
-		//echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
-		$this->load->view('Ticket_Confirm',$data);
+
+
+            $data['ticket']['card'] = "";
+            $this->session->set_userdata($data);
+            //echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
+            $this->load->model('model_events');
+            $ticket_data['event_ticket_types'] = $this->model_events->get_tickets_for_event($event_id);
+            $all = array_merge($data,$ticket_data);
+            $this->load->view('confirm-ticket',$all);
+//        }else{
+//		$ticket_type_temp = explode('|',$this->input->post('ticket_type'));
+//
+//		$data['ticket'] = array(
+//			'cost_per_ticket' => $event, //need to be changed later
+//			'e_price'	  => strip_tags($this->input->post('ticket_price')),
+//			'type'		  => strip_tags($ticket_type_temp[0]),
+//			'quantity'        => strip_tags($this->input->post('quantity')),
+//			'print'		  => strip_tags($this->input->post('print')),
+//			'mail'            => strip_tags($this->input->post('mail')),
+//			'f_name'          => strip_tags($this->input->post('f_name')),
+//			'l_name'	  => strip_tags($this->input->post('l_name')),
+//			'email'		  => strip_tags($this->input->post('email')),
+//			'address'	  => strip_tags($this->input->post('address')),
+//			'city'		  => strip_tags($this->input->post('city')),
+//			'state'		  => strip_tags($this->input->post('state')),
+//			'zipcode'	  => strip_tags($this->input->post('zip')),
+//			'cust_id'	  => strip_tags($this->input->post('saved_card')),
+//			'card'  => array(
+//				"number" => strip_tags($this->input->post('card')),
+//				"exp_month" => (int)strip_tags($this->input->post('exp_month')),
+//				"exp_year" => (int)strip_tags($this->input->post('exp_year')),
+//				"cvc" => strip_tags($this->input->post('cvc'))
+//				)
+//		);
+//
+//
+//
+//                if($this->session->userdata('session_expired')) {
+//                    $prev_page = $this->session->userdata('refresh_page');
+//                    $this->session->set_flashdata('message', 'Your session has expired please reenter your information.');
+//                    redirect($prev_page.$data['ticket']['cost_per_ticket'][0]['event_id']);
+//                }
+//                   if($ticket_type_temp[5] == 0) {   //Yuan change it to 0  from 1
+//                    $prev_page = $this->session->userdata('refresh_page');
+//                    $this->session->set_flashdata('message', 'This ticket type is already expired. Please choose another type.');
+//                    redirect($prev_page.$data['ticket']['cost_per_ticket'][0]['event_id']);
+//                }
+//		if($data['ticket']['cust_id'] == "false" && $data['ticket']['card']['number'] == "" && $data['ticket']['e_price'] != 0) {
+//
+//			redirect('stripe_controller/load_stripe/'.$data['ticket']['cost_per_ticket'][0]['event_id']);
+//		}
+//		if($data['ticket']['e_price'] != 0) {
+//			$data['ticket']['ticket_price'] = $amount_seller = $data['ticket']['quantity']*$data['ticket']['e_price'];
+//			$amount_wrevel = round((double)(1.015 * $data['ticket']['quantity']*($data['ticket']['e_price'] + 0.50)) - $data['ticket']['e_price']*$data['ticket']['quantity'],2);
+//			$amount_wrevel += .25;
+//			$amount_stripe = round((double)($amount_wrevel+$data['ticket']['e_price']*$data['ticket']['quantity'] + 0.30) / .971 -($amount_wrevel+$data['ticket']['e_price']*$data['ticket']['quantity']),2);
+//			if($data['ticket']['mail'] == "mail")
+//				$amount_wrevel =+ 3.45;
+//				$total = $amount_stripe + $amount_wrevel;
+//			$data['ticket']['fees'] = $total;
+//			$data['ticket']['total_price'] = $amount_seller + $total;
+//		}
+//		else {
+//			$data['ticket']['ticket_price'] = 0;
+//			$data['ticket']['fees'] = 0;
+//			$data['ticket']['total_price'] = 0;
+//		}
+//		if(isset($data['ticket']['cust_id'])) {
+//            try {
+//                $customer = Stripe_Customer::create(array(
+//                    'email' => $data['ticket']['email'],
+//                    'card'  => $data['ticket']['card']
+//                ));
+//                $data['ticket']['cust_id'] = $customer->id;
+//            }
+//            catch(Exception $e) {
+//                $prev_page = $this->session->userdata('refresh_page');
+//                $this->session->set_flashdata('message', 'Your card was declined or you may have entered an invalid card. Please try again.');
+//                redirect($prev_page.$data['ticket']['cost_per_ticket'][0]['event_id']);
+//            }
+//
+//        }
+//        else {
+//            $data['ticket']['f_name'] = $my_data['fullname'];
+//		}
+//		$data['ticket']['card'] = "";
+//		$this->session->set_userdata($data);
+//		//echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
+//
+//
+//            $this->load->view('Ticket_Confirm',$data);
+//
+//        }
 	}
 	
 	public function transfer($amount_seller, $email)
@@ -535,7 +916,9 @@ class Stripe_controller extends CI_Controller{
 
             //echo '<pre>', print_r($this->session->All_userdata(), true), '</pre>';
             $this->session->unset_userdata('ticket');
+
             $this->load->view('Processed_ticket',$data);
+
 	}
 
 	public function print_ticket($event_id, $ticket_id)

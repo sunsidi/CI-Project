@@ -777,181 +777,301 @@ jQuery(document).ready(function () {
                                 <?php if($event[0]['e_is_ticketed']) {?>
                                 	<a href="#" data-toggle="modal" data-target="#largeModal" class="btn viewmorewrevs buy-ticket" style="border-radius:10px;font-size:23px;color:white;">Buy Tickets</a>
                                 <?php }?>
-				<div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
-					<div class="modal-dialog" >
-						<div class="modal-content" style="background:#C2D2DC;">
-							<div class="modal-heading">	
-								<div class="col-md-6 col-hide" style="background:#628DA3; height:75px; padding-top:20px; ">
-									<img src="<?php echo $path['PATH_IMG']?>wrevel_logo.png"style="width:160px;z-index:1;"/>
-								</div>
-								<div class="col-md-6" style="background:#478EBF; height:75px; font-size:30px; padding:18px 10px 10px 0; ">
-								<button type="button" class="close" data-dismiss="modal" style="z-index:2;"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-									<p>Order Tickets</p>
-								</div>
-						    </div>    
-							<div class="modal-body" style="text-align:left;">
-								
-								<form class="form-horizontal" role="form" method="post" action="<?php echo base_url()."stripe_controller/load_confirm/".$event[0]['event_id']?>">
-									<div class="row">
-										<div class="col-md-12"  style="margin-top:20px;">
-											<p style="font-size:26px;text-align:center;color:#478EBF;">Event Info</p>
-											<hr style="border-color:#5992C2";> 
-												<div class="form-group row">
-													<label class="col-sm-3 control-label">Event ID</label>
-														<div class="col-sm-8">
-															<?php echo $event[0]['event_id']?>
-														</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 control-label">Full Name</label>
-													<div class="col-sm-8">
-														<?php echo $event[0]['e_name']?>
-													</div>
-												</div>
-												<?php if(isset($event_ticket_types)){?>
-													<div class ="form-group row">
-														<label class="col-sm-3 control-label">Ticket Type</label>
-														<div class="col-sm-8">
-														<select id="ticket_type" name="ticket_type" type="text" class="form-control" onchange="change_qty_price()" required>
-															<option value="" selected="selected">Select a ticket type</option>
-														<?php for($i = 0; $i < count($event_ticket_types); $i++) {?>
-															<option value="<?php echo $event_ticket_types[$i]['type'].'|'.$event_ticket_types[$i]['quantity'].'|'.$event_ticket_types[$i]['price'].'|'.$event_ticket_types[$i]['info'].'|'.$event_ticket_types[$i]['date'] ." ". $event_ticket_types[$i]['time'].'|'.$event_ticket_types[$i]['expired']?>"><?php echo $event_ticket_types[$i]['type'].'('.$event_ticket_types[$i]['info'].')' ?></option>
-														<?php }?>
-														</select></div>
-													</div>
-												<?php }?>
-                                                                                                <div id="expired_base" class="form-group row" hidden>
-                                                                                                    <label class="col-sm-3 control-label">Info</label>
-														<div id="expired_info" class="col-sm-9" style="text-align:left; padding-top:7px;">
-                                                                                                                    <span style="color:red">This ticket type has expired. Please choose another ticket type.</span>
-														</div>
-												</div>
-												<div id="info_base" class="form-group row" hidden>
-														<label class="col-sm-3 control-label">Info</label>
-														<div id="ticket_info" class="col-sm-9" style="text-align:left; padding-top:7px;">
-															
-														</div>
-												</div>
-												<div id="deadline_base" class="form-group row" hidden>
-														<label class="col-sm-3 control-label">Deadline</label>
-															<div id="ticket_deadline" class="col-sm-3"></div>
-												</div>
-												<div id="pricing_base" hidden>
-													<div class="form-group row">
-														<label class="col-sm-3 control-label">Price</label>
-														<div id="price_type" class="col-sm-2" style="text-align:left; padding-top:7px;">
-															<span type="text" id="ticket_price2"  class="col-sm-12" name="ticket_price2"></span>
-															<input type="hidden" id="ticket_price" name="ticket_price" value ="">
-														</div>
-														<label class="col-sm-3 control-label">Quantity</label>
-															<div id="quantity_base" class="col-sm-2"></div>
-															<div id="quantity_left" style="color:black;font-weight:bold;">0 left. </div>
-													</div>
-													<!--<div class="form-group row">
-														<label class="col-sm-3 control-label">Quantity</label>
-															<div id="quantity_base" class="col-sm-3"></div>
-															<div id="quantity_left">0 left.</div>
-															
-													</div>-->
-												</div>
-												<div class="form-group row">
-													<label class="col-sm-3 control-label">Delivery Form</label>
-													<div class="col-sm-8 text-left">
-														<input type="checkbox" value = "print" name = "mail" checked> print at home (free) </br>
-														<!--<input type="checkbox" value = "mail" name = "mail"> mail form ($3.45)-->
-													</div>
-												</div>            
-										</div>  
-									</div>
-									<div id="not_set_up" class="row" style="margin-top:50px;" hidden>
-										The creator has not set up payment information. Please purchase one of the free ticket types.
-									</div>
-									<div id="billing_info" class="row" style="margin-top:50px;" hidden>
-									
-										<div class="col-md-12">
-											<p style="font-size:26px;text-align:center;color:#478EBF;">Billing Info</p>
-											<hr style="border-color:#5992C2";>
-												<?php if(isset($card_data)) {?>
-												<div class="form-group row">
-													<label class="col-sm-3 control-label">Select</label>
-														<div class="col-sm-6">
-															<input type="radio" name="saved_card" value="<?php echo $card_data?>">Use Saved Card
-															<input type="radio" name="saved_card" value="false" checked>Enter Card
-														</div>
-												</div>
-												<?php }?>
-												<div class="form-group row">
-													
-													<label class="col-sm-3 control-label">Name</label>
-														<div class="col-sm-8">
-															<input type="text" class="enter_card form-control" name = "f_name">
-														</div>
-												</div>
-												<!--<div class="form-group row">
-													<label class="col-sm-3 control-label" >Last Name</label>
-														<div class="col-sm-8">
-															<input type="text" class="form-control" name = "l_name">
-														</div>
-												</div>-->
-												<div class="form-group row">
-													<label class="col-sm-3 control-label">Email</label>
-														<div class="col-sm-8">
-															<input type="text" class="enter_card form-control" name = "email">
-														</div>
-												</div>
-												<!--<div class="form-group row">
-													<label class="col-sm-3 control-label">Address</label>
-														<div class="col-sm-8">
-															<input type="text" class="form-control" name = "address" >
-														</div>
-												</div> 
-												<div class="form-group row">
-													<label class="col-sm-3 control-label">City</label>
-														<div class="col-sm-8">
-															<input type="text" class="form-control" name = "city">
-														</div>
-												</div> 
-												<div class="form-group row">
-													<label class="col-sm-3 control-label">State</label>
-														<div class="col-sm-8">
-															<input type="text" class="form-control" name = "state">
-														</div>
-												</div>   
-												<div class="form-group row">
-													<label class="col-sm-3 control-label">Zip Code</label>
-													<div class="col-sm-8">
-														<input type="text" class="form-control" name = "zip">
-													</div>
-												</div> -->
-												<div class="form-group row">
-													<label class="col-sm-3 control-label">Credit Card</label>
-													<div class="col-sm-6">
-														<input type="text" class="enter_card form-control" name = "card">
-													</div>
-													<div class="col-sm-2">
-														<input type="text" class="enter_card form-control" placeholder="CVC" name="cvc">
-													</div>
-												</div>   
-												<div class="form-group row">
-													<label class="col-sm-3 control-label">Exp. Date</label>
-													<div class="col-sm-3">
-														<input type="text" class="enter_card form-control" placeholder="MM" name="exp_month">
-													</div>
-													<div class="col-sm-3">
-														<input type="text" class="enter_card form-control" placeholder="YYYY" name = "exp_year">
-													</div>
-												</div>
-										</div>
-									</div>
-									<div class="row">
-										<button id="payment_submit" type="submit" class="btn btn-lg pull-right" style="background:#00AEEF; color:white;margin-right:50px;">submit</button>
-									</div>
-								</form>
-								
-							</div>
-						</div>
-					</div>
-				</div> 
+
+                                <!--buy ticket-->
+                                <div style="color:black;">
+                                <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                                <div class="modal-dialog" style="width:80%; ">
+                                <div class="modal-content" style="background-color: transparent; box-shadow: none; border-color: transparent;">
+                                <div class="panel" style="background-color: transparent; box-shadow: none; border-color: transparent;">
+
+                                <div class="panel-heading" style="background-color: #2BB473; height: 55px;">
+                                    <p style="font-size: 150%; color: white;text-align: center;">
+                                        <b>BUY TICKETS NOW</b>
+                                    </p>
+
+                                    <a href="#" data-dismiss="modal" class="btn"  style="float: right;border-radius:5px;font-size:17px;background: #ffffff;color: black; margin-top: -43px;"><b>Back to event listing</b></a>
+
+                                </div>
+
+                                <div class="panel-heading" style="background-color: #513953; height: 55px;">
+								  <span style="font-size: 150%; color: white;text-align: left;">
+									  <b><?php echo $event[0]['e_name'] ?></b>
+								  </span>
+
+								  <span style="font-size: 110%; color: white;float: right;margin-top: 10px;">
+									  <?php echo $event[0]['e_date'] ?>
+								  </span>
+                                </div>
+
+                                <div class="panel-body" style="text-align:center; padding: 10px 0px;">
+                                    <div class="col-md-5" style="padding: 0px;">
+                                        <div style="background-color: white; padding: 30px; height: 300px; font-size: 17px;">
+                                            <span><b><?php echo $event[0]['e_date'] ?></b> <span style="color: grey;">at</span> <b><?php echo $event[0]['e_start_time'] ?></b></span><br/>
+<!--                                            <span><b>Nov 7</b> <span style="color: grey;">at</span> <b>5:00pm</b></span>-->
+<!--                                            <hr style="margin: 10px; border-width: 2px; border-color: black;"/>-->
+<!--                                            <span><b>Brooklyn Center</b></span><br/>-->
+                                            <hr style="margin: 10px;border-width: 2px; border-color: black;"/>
+                                            <span><b><?php echo $event[0]['e_address'] ?></b> <span style="color: grey;"><?php echo $event[0]['e_city'] ?></span></span><br/>
+<!--                                            <hr style="margin: 10px;border-width: 2px; border-color: black;"/>-->
+<!--                                            <span><span style="color: grey;">Tickets available from</span> <b>$20-$40</b></span><br/>-->
+                                            <hr style="margin: 10px;border-width: 2px; border-color: black;"/>
+                                            <span style="color: grey;">This event is for ages 21 and over</span><br/>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-7" style="padding: 0px 10px;">
+                                        <div style="background-color: #ffffff; padding: 50px 70px; text-align: left;">
+                                            <p style="font-size:17px;">
+                                                <?php echo $event[0]['e_description'] ?><br/>
+<!--                                                <a href="#" style="float: right;">Read More</a>-->
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form class="form-horizontal" role="form" method="post" action="<?php echo base_url()."stripe_controller/load_confirm/".$event[0]['event_id']?>" novalidate>
+
+                                <div class="panel-heading" style="background-color: #2c5277; text-align: center;">
+								  <span style="font-size: 150%; color: white;">
+									  Tickets Available
+								  </span>
+                                </div>
+                                <div class="panel-body" style="text-align:center; background: white;">
+                                    <div class="col-md-6" style="background: #eaf0f4; text-align: left; font-size: 17px; padding: 5px;">Ticket Type</div>
+                                    <div class="col-md-2" style="background: #eaf0f4;font-size: 17px;padding: 5px;">Price($)</div>
+                                    <div class="col-md-4" style="background: #eaf0f4;font-size: 17px;padding: 5px;">Quantity</div>
+                                    <?php for($i = 0; $i < count($event_ticket_types); $i++) {?>
+                                    <div class="col-md-6" style="height: 80px; margin-top: 20px; text-align: left;">
+                                        <span style="font-size: 20px;"><?php echo $event_ticket_types[$i]['type'];?><br/></span>
+								  <span style="color: grey;"><?php echo $event_ticket_types[$i]['info'];?></span>
+                                    </div>
+                                    <div id="span_first_price_<?php echo $i+1;?>" class="col-md-2" style="color: #009344; height: 80px; margin-top: 20px; font-size: 20px;"><?php echo $event_ticket_types[$i]['price'];?></div>
+                                    <div class="col-md-4" style="height: 80px; margin-top: 20px;"><a href="javascript:chkAddAmount(<?php echo $i+1;?>, -1)" onfocus="this.blur();">
+                                            <span class="icon-minus_box" style="font-size: 40px;vertical-align: middle;" align="absmiddle" /></a>&nbsp;
+                                        <input id="input_count_<?php echo $i+1;?>" name="input_count_<?php echo $i+1;?>" type="text" class="input_sl" value="0" style="width: 50px; text-align: center; height: 50px; border: solid 2px grey"/>
+                                        &nbsp;<a href="javascript:chkAddAmount(<?php echo $i+1;?>, 1)" onfocus="this.blur();">
+                                            <span class="icon-plus_box" style="font-size: 35px;vertical-align:middle;" align="absmiddle" /></a>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <hr style="border-width: 2px; border-color: black;"/>
+                                    </div>
+                                    <?php } ?>
+                                </div>
+
+                                <div class="panel-heading" style="background-color: #2c5277; text-align: center; margin-top: 10px;">
+								  <span style="font-size: 150%; color: white;">
+									  Payment and Delivery Information
+								  </span>
+                                </div>
+
+                                <div class="panel-body" style="text-align:center; font-size:15px; background-color: #ffffff;">
+                                    <!--                                  id="span_sumPirce"-->
+                                    <div class="col-md-5">
+                                        <div class="panel" style="background-color: transparent;border-color: black;">
+
+                                            <div class="panel-heading" style="background-color: #1a1718; text-align: center;">
+								  <span style="font-size: 100%; color: white;">
+									  Price Breakdown
+								  </span>
+                                            </div>
+                                            <div class="panel-heading" style="background-color: #513953; text-align: center; border-radius: 0px;height: 42px;">
+								  <span style="font-size: 100%; color: white; float: left;">
+									  <?php echo $event[0]['e_name']; ?>
+								  </span>
+								  <span style="font-size: 100%; color: white; float: right;">
+									  <?php echo $event[0]['e_date']; ?>
+								  </span>
+                                            </div>
+
+                                            <div class="panel-body" style="text-align:center; font-size:15px;">
+                                                <?php for($i = 0; $i < count($event_ticket_types); $i++) {?>
+                                                <div class="admission<?php echo $i+1;?>" hidden><span style="float: left;"><?php echo $event_ticket_types[$i]['type']; ?> x </span><span id="span_subtotal_num_<?php echo $i+1;?>" style="float: left;"> 1</span><span id="span_subtotal_price_<?php echo $i+1;?>" style="float:right; color:#009344; "><?php echo $event_ticket_types[$i]['price'];?></span><span style="float:right; color:#009344;">$</span><br/><br/></div>
+                                                <?php } ?>
+                                                <div style="background:#eaf0f4; height: 20px; ">
+                                                    <span style="float: left;">Delivery Method</span><span id="delivery_name" style="float:right; color: #5f6063;">Standard Shipping</span>
+                                                </div><br/>
+                                                <span style="float: left;">Delivery Charge</span><span id="deliveryCost" style="float:right; color:#009344; ">0</span><span style="float:right; color:#009344;">$</span><br/><br/>
+                                                <span style="float: left;">Service Fee</span><span id="serviceFee" style="float:right; color:#009344; ">4.00</span><span style="float:right; color:#009344;">$</span><br/><br/>
+                                                <div style="background:#ededed; height: 20px; ">
+                                                    <span style="float: left;">Total Price</span><span style="float:right; color:#004A22; "><span id="span_sumPirce"style="float:right; color:#009344; ">0</span><span style="float:right; color:#009344;">$</span></span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="col-md-3" style="text-align: left; font-size: 15px; padding: 40px;"><b><span>Select a <br/>Delivery <br/>Method</span></b></div>
+                                        <div class="col-md-3">
+                                            <button id="delivery1" name="will_call" type="button" class="btn btn-lg delivery_type willcall">
+                                                <span class="icon-willcall_icon" style="font-size: 80px; color: black;"></span><br/>
+                                                <span style="color: black;font-size: 15px;">Will Call</span><br/>
+                                                <span style="color: grey; font-size: 13px;">Free</span>
+                                                <input id="input_will_call" name="will_call_input" type="text" value="will call" hidden>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button id="delivery2" name="print" type="button" class="btn btn-lg delivery_type print">
+                                                <span class="icon-printathome_icon" style="font-size: 80px; color: black;"></span><br/>
+                                                <span style="color: black;font-size: 15px;">Print at Home</span><br/>
+                                                <span style="color: grey; font-size: 13px;">Free</span></button>
+                                            <input id="input_print" name="print_input" type="text" value="print" hidden>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button id="delivery3" name="mail" type="button" class="btn btn-lg delivery_type shipping">
+                                                <span class="icon-standardshipping_icon" style="font-size: 80px; color: black;"></span><br/>
+                                                <span style="color: black;font-size: 15px;">Standard Shipping</span><br/>
+                                                <span style="color: grey; font-size: 13px;">$4.95</span></button>
+                                            <input id="input_mail" name="mail_input" type="text" value="mail" hidden>
+                                        </div>
+
+                                        <div class="col-md-12 willcall_info" style="display:none;margin-top:20px;" hidden>
+                                            <input name= 'person_pickup' type="text" class="form-control" placeholder="Person picking up ticket" required style=" background: #e4e5e7; height: 50px;">
+                                        </div>
+
+                                        <div class="col-md-12 shipping_info" style="display:none;margin-top:20px;" hidden>
+                                            <input name= 'address' type="text" class="form-control" placeholder="Address" required style=" background: #e4e5e7; height: 50px;">
+                                            <input name= 'city' type="text" class="form-control" placeholder="City" required style="width: 50%;float: right; background: #e4e5e7; height: 50px;margin-top:10px;">
+                                            <select name="state" type="text" style="height:50px;padding:4px;float:left;width:45%;margin-top:10px;background:#E4E5E7;">
+                                                <option value="" selected="selected">State</option>
+                                                <option value="AK">AK</option>
+                                                <option value="AL">AL</option>
+                                                <option value="AR">AR</option>
+                                                <option value="AZ">AZ</option>
+                                                <option value="CA">CA</option>
+                                                <option value="CO">CO</option>
+                                                <option value="CT">CT</option>
+                                                <option value="DC">DC</option>
+                                                <option value="DE">DE</option>
+                                                <option value="FL">FL</option>
+                                                <option value="GA">GA</option>
+                                                <option value="HI">HI</option>
+                                                <option value="IA">IA</option>
+                                                <option value="ID">ID</option>
+                                                <option value="IL">IL</option>
+                                                <option value="IN">IN</option>
+                                                <option value="KS">KS</option>
+                                                <option value="KY">KY</option>
+                                                <option value="LA">LA</option>
+                                                <option value="MA">MA</option>
+                                                <option value="MD">MD</option>
+                                                <option value="ME">ME</option>
+                                                <option value="MI">MI</option>
+                                                <option value="MN">MN</option>
+                                                <option value="MO">MO</option>
+                                                <option value="MS">MS</option>
+                                                <option value="MT">MT</option>
+                                                <option value="NC">NC</option>
+                                                <option value="ND">ND</option>
+                                                <option value="NE">NE</option>
+                                                <option value="NH">NH</option>
+                                                <option value="NJ">NJ</option>
+                                                <option value="NM">NM</option>
+                                                <option value="NV">NV</option>
+                                                <option value="NY">NY</option>
+                                                <option value="OH">OH</option>
+                                                <option value="OK">OK</option>
+                                                <option value="OR">OR</option>
+                                                <option value="PA">PA</option>
+                                                <option value="RI">RI</option>
+                                                <option value="SC">SC</option>
+                                                <option value="SD">SD</option>
+                                                <option value="TN">TN</option>
+                                                <option value="TX">TX</option>
+                                                <option value="UT">UT</option>
+                                                <option value="VA">VA</option>
+                                                <option value="VT">VT</option>
+                                                <option value="WA">WA</option>
+                                                <option value="WI">WI</option>
+                                                <option value="WV">WV</option>
+                                                <option value="WY">WY</option>
+                                            </select>
+                                            <input name= 'zip' type="text" class="form-control" placeholder="Zip" required style="width: 50%;float: right; background: #e4e5e7; height: 50px;margin-top:10px;">
+                                        </div>
+                                        <!--							<script>-->
+                                        <!--								$('.willcall').click(function() {-->
+                                        <!--								  $('.willcall_info').toggle('slow');-->
+                                        <!--								  $(this).toggleClass('type-clicked');-->
+                                        <!--								});-->
+                                        <!--								-->
+                                        <!--								$('.print').click(function() {-->
+                                        <!--								  $(this).toggleClass('type-clicked');-->
+                                        <!--								});-->
+                                        <!--								-->
+                                        <!--								$('.shipping').click(function() {-->
+                                        <!--								  $('.shipping_info').toggle('slow');-->
+                                        <!--								  $(this).toggleClass('type-clicked');-->
+                                        <!--								});-->
+                                        <!--								-->
+                                        <!--							</script>-->
+
+                                        <div class="col-md-12" style="margin-top:20px;">
+
+                                            <input name= 'email' type="text" class="form-control" placeholder="Email" required style=" background: #e4e5e7; height: 50px;">
+
+                                            <input name = "f_name" type="text" class="form-control" placeholder="First Name" required style="width: 35%;float: left; background-color: #e4e5e7; height: 50px;margin-top:10px;">
+                                            <input name= "l_name" type="text" class="form-control" placeholder="Last Name" required style="width: 60%;float: right; background: #e4e5e7; height: 50px;margin-top:10px;">
+                                            <!--							      <div class="col-md-5" style="height: 50px; background:#e4e5e7; float: left; margin-top: 10px; ">-->
+                                            <!--							      <span>Type</span>-->
+                                            <!--							      <select id="Type" name="state" type="text" style="height:34px;padding:4px;">-->
+                                            <!--							      <option value="Credit" selected="selected">Credit</option>-->
+                                            <!--							      <option value="Debit">Debit</option>-->
+                                            <!--							      </select>-->
+                                            <!--							      </div>-->
+                                            <input name = 'cvc' type="text" class="form-control" placeholder="CVC" required style="width:35%;height: 50px; background:#e4e5e7; float: left; margin-top: 10px;">
+                                            <div class="col-md-6 col-md-offset-1" style="height: 50px; background:#e4e5e7; float: left; margin-top: 10px;">
+                                                <span>Exp Date</span>
+                                                <select id="Type" name="exp_month" type="text" style="height:34px;padding:4px;">
+                                                    <option value="01" selected="selected">01</option>
+                                                    <option value="02">02</option>
+                                                    <option value="03">03</option>
+                                                    <option value="04">04</option>
+                                                    <option value="05">05</option>
+                                                    <option value="06">06</option>
+                                                    <option value="07">07</option>
+                                                    <option value="08">08</option>
+                                                    <option value="09">09</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                </select>
+                                                <select id="Type" name="exp_year" type="text" style="height:34px;padding:4px;">
+                                                    //every year need to change the number
+                                                    <option value="15" selected="selected">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option>
+                                                    <option value="21">21</option>
+                                                    <option value="22">22</option>
+                                                    <option value="23">23</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-12" style="margin-top: 10px; padding: 0px;">
+                                                <input name= 'card' type="text" class="form-control" placeholder="Card Number" required style=" background: #e4e5e7; height: 50px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 10px; float: right;">
+                                        <a href="#" type="submit" data-dismiss="modal" class="btn btn-lg" style="float: right;margin-left:15px; background:#BC1E2D; color:white; padding: 10px 30px;font-size: 25px;">Cancel </a>
+                                        <button type="submit" class="btn btn-lg" style="margin-left: 20px;float: right; background:#2BB473; color:white; padding: 10px 30px;font-size: 25px;">Pay now </button>
+                                    </div>
+                                    <!--                                  </form>-->
+
+                                </div>
+                                </form>
+                                </div>
+
+
+
+                                </div>
+                                </div>
+                                </div>      <!--end of buy ticket-->
+                                </div>
+
+
+
                          
 			   
 			   <div class="row" style="margin-top:15px;font-size:23px;">
@@ -1363,9 +1483,221 @@ jQuery(document).ready(function () {
             $('#edit_event_photos_base').append(content);
         }
     </script>
+
+    //add payment function
+    <script>
+    var varPostage = 0 ;	//邮费
+    var g_maxNumber = 99 ; //最大购买数量
+
+    //得到对象
+
+
+    function getObj(id) {
+        return $("#" + id);
+    }
+
+
+    var total = <?php echo count($event_ticket_types) ?>; //总数
+
+    function chkAddAmount(id, type) {
+        //得到数量文本框
+        var varObj = getObj(createCountId(id));
+        var varObjValue = varObj.val();
+        if(type==0){
+            //为空，用于计算用户输入数量，不改变文本框值，重新计算商品总金额
+        }else if (type == 1) {
+            varObjValue++;
+        }
+        else {
+            varObjValue--;
+        }
+
+        //$(document).ready(function()
+        //{
+        if (varObjValue > 0) {
+            $(".admission"+id).show();
+        }else{
+            $(".admission"+id).hide();
+        }
+        //});
+
+        //判断数量是否大于最大购买数量
+        if (varObjValue > g_maxNumber) {
+            alert('a'+g_maxNumber+'b');
+            varObj.val(g_maxNumber);
+            changeSumPrice();
+            changeSubtotal(id,g_maxNumber);
+            return;
+        }
+        //判断数量是否小于1
+        if (varObjValue < 1) {
+            //当前文本框数量为1
+            varObj.val(0);
+            //设置当前文本框的
+            getObj(createSubtotalId(id)).text(getObj(createFirstId(id)).text());
+            //改变余额
+            changeSumPrice();
+            return;
+        }
+        varObj.val(varObjValue);
+        changeSubtotal(id, varObjValue);
+
+    }
+
+    //改变小计
+
+    function changeSubtotal(id, amount) {
+        //得到单价
+        var varFirstPrice = getObj(createFirstId(id)).text();
+        //单价乘以数量
+        var varSubtotal = floatCounstrue(varFirstPrice * amount);
+        //赋值
+        getObj(createSubtotalId(id)).text(varSubtotal);
+        getObj(createNumId(id)).text(amount);
+
+        //余额赋值
+        changeSumPrice();
+    }
+
+    //改变余额
+
+    function changeSumPrice() {
+        var index = 1;
+        var varSumPrice = parseFloat(getObj("serviceFee").text()) + parseFloat(getObj("deliveryCost").text());
+        for (index; index <= total; index++) {
+            var amount = getObj(createCountId(index)).val();
+            var varFirstPrice = parseFloat(getObj(createFirstId(index)).text());
+            varSumPrice +=  varFirstPrice * amount;
+            //varSumPrice += parseFloat(getObj(createSubtotalId(index)).text());
+            // alert(getObj(createSubtotalId(index)).text(1));
+        }
+
+        varSumPrice = floatCounstrue(varSumPrice);
+        getObj("span_sumPirce").text(varSumPrice);
+        getObj("b_sumPirce").text(varSumPrice);
+    }
+
+    //浮点型分析
+
+    function floatCounstrue(val) {
+
+        val = val.toString();
+        var index = val.indexOf(".");
+        if (index > 0) {
+            return val.substring(0, index + 3);
+        }
+        else {
+            return val + ".00";
+        }
+    }
+
+
+    //创建单价Id
+
+    function createFirstId(id) {
+        return "span_first_price_" + id;
+    }
+
+    //创建数量 I
+
+    function createCountId(id) {
+        return "input_count_" + id;
+    }
+
+    //创建显示购票数量
+    function createNumId(id){
+        return "span_subtotal_num_"+ id;
+    }
+
+
+    //创建小计Id
+
+    function createSubtotalId(id) {
+        return "span_subtotal_price_" + id;
+    }
+
+    function fnChangePictrue(number,flag){
+        switch(number){
+            case 1:
+
+                break;
+            case 2:
+                var varImagePath1 = baseLocation+"web/images/message_btn.png";
+                var varImagePath2 = baseLocation+"web/images/message_btn1.png";
+                if(flag){
+                    alert(varImagePath1);
+                    getObj("next2 > img").attr("src",varImagePath2);
+                }else{
+                    alert(varImagePath2);
+                    getObj("next2 > img").attr("src",varImagePath1);
+                }
+
+                break;
+
+        }
+    }
+
+
+    //delivery charge
+    document.getElementById("delivery1").onclick=function(){displayDeliveryCharge1()};
+    function displayDeliveryCharge1()
+    {   //change price
+        document.getElementById("deliveryCost").innerHTML= 0;
+        changeSumPrice();
+        //change delivery method name
+        document.getElementById("delivery_name").innerHTML="Will Call";
+        //add info to fill
+        $(".willcall_info").show();
+        $(".shipping_info").hide();
+        //edit the name of three buttons so that we can get what we want in controller file
+        document.getElementById("input_will_call").setAttribute('name', 'will_call_active');
+        document.getElementById("input_print").setAttribute('name', 'print_input');
+        document.getElementById("input_mail").setAttribute('name', 'mail_input');
+    }
+
+    document.getElementById("delivery2").onclick=function(){displayDeliveryCharge2()};
+    function displayDeliveryCharge2()
+    {
+        //change price
+        document.getElementById("deliveryCost").innerHTML= 0;
+        changeSumPrice();
+        //change delivery method name
+        document.getElementById("delivery_name").innerHTML="Print at home";
+
+        $(".willcall_info").hide();
+        $(".shipping_info").hide();
+
+        //edit the name of three buttons so that we can get what we want in controller file
+        document.getElementById("input_will_call").setAttribute('name', 'will_call_input');
+        document.getElementById("input_print").setAttribute('name', 'print_active');
+        document.getElementById("input_mail").setAttribute('name', 'mail_input');
+    }
+
+    document.getElementById("delivery3").onclick=function(){displayDeliveryCharge3()};
+    function displayDeliveryCharge3()
+    {
+        //change price
+        document.getElementById("deliveryCost").innerHTML= 4.95;
+        changeSumPrice();
+
+        //change delivery method name
+        document.getElementById("delivery_name").innerHTML="Standard Shipping";
+        //add info to fill
+        $(".willcall_info").hide();
+        $(".shipping_info").show();
+
+        //edit the name of three buttons so that we can get what we want in controller file
+        document.getElementById("input_will_call").setAttribute('name', 'will_call_input');
+        document.getElementById("input_print").setAttribute('name', 'print_input');
+        document.getElementById("input_mail").setAttribute('name', 'mail_active');
+    }
+
+
+    </script>
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  -->
     <!--<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.min.js"></script>
 	<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.js"></script> -->
+<!--        <script src="--><?php //echo $PATH_BOOTSTRAP?><!--js/buy_pos_v2.js"></script>-->
 		<script src="<?php echo $PATH_BOOTSTRAP?>js/lightbox.js"></script>
 		<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
