@@ -815,7 +815,7 @@ jQuery(document).ready(function () {
                                             <span><b><?php echo $event[0]['e_address'] ?></b> <span style="color: grey;"><?php echo $event[0]['e_city'] ?></span></span><br/>
 <!--                                            <hr style="margin: 10px;border-width: 2px; border-color: black;"/>-->
 <!--                                            <span><span style="color: grey;">Tickets available from</span> <b>$20-$40</b></span><br/>-->
-                                            <hr style="margin: 10px;border-width: 2px; border-color: black;"/>
+                                            <?php if(!isset($event[0]['e_address'])){?><hr style="margin: 10px;border-width: 2px; border-color: black;"/> <?php }?>
                                             <span style="color: grey;">This event is for ages 21 and over</span><br/>
                                         </div>
 
@@ -892,7 +892,7 @@ jQuery(document).ready(function () {
                                                     <span style="float: left;">Delivery Method</span><span id="delivery_name" style="float:right; color: #5f6063;">Standard Shipping</span>
                                                 </div><br/>
                                                 <span style="float: left;">Delivery Charge</span><span id="deliveryCost" style="float:right; color:#009344; ">0</span><span style="float:right; color:#009344;">$</span><br/><br/>
-                                                <span style="float: left;">Service Fee</span><span id="serviceFee" style="float:right; color:#009344; ">4.00</span><span style="float:right; color:#009344;">$</span><br/><br/>
+                                                <span style="float: left;">Service Fee</span><span id="serviceFee" style="float:right; color:#009344; ">0</span><span style="float:right; color:#009344;">$</span><br/><br/>
                                                 <div style="background:#ededed; height: 20px; ">
                                                     <span style="float: left;">Total Price</span><span style="float:right; color:#004A22; "><span id="span_sumPirce"style="float:right; color:#009344; ">0</span><span style="float:right; color:#009344;">$</span></span>
                                                 </div>
@@ -1005,7 +1005,7 @@ jQuery(document).ready(function () {
                                         <!--								-->
                                         <!--							</script>-->
 
-                                        <div class="col-md-12" style="margin-top:20px;">
+                                        <div class="col-md-12" id ="payment_info" style="margin-top:20px;" hidden>
 
                                             <input name= 'email' type="text" class="form-control" placeholder="Email" required style=" background: #e4e5e7; height: 50px;">
 
@@ -1018,6 +1018,7 @@ jQuery(document).ready(function () {
                                             <!--							      <option value="Debit">Debit</option>-->
                                             <!--							      </select>-->
                                             <!--							      </div>-->
+
                                             <input name = 'cvc' type="text" class="form-control" placeholder="CVC" required style="width:35%;height: 50px; background:#e4e5e7; float: left; margin-top: 10px;">
                                             <div class="col-md-6 col-md-offset-1" style="height: 50px; background:#e4e5e7; float: left; margin-top: 10px;">
                                                 <span>Exp Date</span>
@@ -1573,6 +1574,11 @@ jQuery(document).ready(function () {
         }
 
         varSumPrice = floatCounstrue(varSumPrice);
+        if(varSumPrice>0){
+            $("#payment_info").show();
+        }else{
+            $("#payment_info").hide();
+        }
         getObj("span_sumPirce").text(varSumPrice);
         getObj("b_sumPirce").text(varSumPrice);
     }

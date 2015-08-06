@@ -707,28 +707,32 @@ class Stripe_controller extends CI_Controller{
 //                $this->session->set_flashdata('message', 'This ticket type is already expired. Please choose another type.');
 //                redirect($prev_page.$data['ticket']['cost_per_ticket'][0]['event_id']);
 //            }
-            if($data['ticket']['card']['number'] == "") {
 
-                redirect('stripe_controller/load_stripe/'.$data['ticket']['cost_per_ticket'][0]['event_id']);
-            }
             $amount_seller =0;
+            $delivery_charge =0;
             $temp_wrevel = 0;
+            if($data['ticket']['mail'] == "mail"){
+                $delivery_charge = 4.95;
+            }
             for($i = 0; $i < count($ticket_data['event_ticket_types']); $i++) {
                  $amount_seller += $data['ticket']['e_price'][$i] * $data['ticket']['quantity'][$i];
                  $temp_wrevel += ($data['ticket']['e_price'][$i] + 0.50) * $data['ticket']['quantity'][$i];
             }
-            $data['ticket']['ticket_price'] = $amount_seller;
-            $amount_wrevel =  round((double)(1.015 *  $temp_wrevel)- $amount_seller,2);
-            //    $data['ticket']['ticket_price'] = $amount_seller = $data['ticket']['quantity']['General6']*$data['ticket']['e_price']['General6'] + $data['ticket']['quantity']['General7']*$data['ticket']['e_price']['General7'] + $data['ticket']['quantity']['VIP6']*$data['ticket']['e_price']['VIP6'] + $data['ticket']['quantity']['VIP7']*$data['ticket']['e_price']['VIP7'];
-            //    $amount_wrevel = round((double)(1.015 * ($data['ticket']['quantity']['General6']*($data['ticket']['e_price']['General6'] + 0.50) + $data['ticket']['quantity']['General7']*($data['ticket']['e_price']['General7'] + 0.50) + $data['ticket']['quantity']['VIP6']*($data['ticket']['e_price']['VIP6'] + 0.50) + $data['ticket']['quantity']['VIP7']*($data['ticket']['e_price']['VIP7'] + 0.50))) - $amount_seller,2);
+            if($data['ticket']['card']['number'] == "" && ($amount_seller+$delivery_charge)>0) {
+
+                redirect('stripe_controller/load_stripe/'.$data['ticket']['cost_per_ticket'][0]['event_id']);
+            }
+            if(($amount_seller+$delivery_charge)>0) {
+                $data['ticket']['ticket_price'] = $amount_seller;
+                $amount_wrevel = round((double)(1.015 * $temp_wrevel) - $amount_seller, 2);
+                //    $data['ticket']['ticket_price'] = $amount_seller = $data['ticket']['quantity']['General6']*$data['ticket']['e_price']['General6'] + $data['ticket']['quantity']['General7']*$data['ticket']['e_price']['General7'] + $data['ticket']['quantity']['VIP6']*$data['ticket']['e_price']['VIP6'] + $data['ticket']['quantity']['VIP7']*$data['ticket']['e_price']['VIP7'];
+                //    $amount_wrevel = round((double)(1.015 * ($data['ticket']['quantity']['General6']*($data['ticket']['e_price']['General6'] + 0.50) + $data['ticket']['quantity']['General7']*($data['ticket']['e_price']['General7'] + 0.50) + $data['ticket']['quantity']['VIP6']*($data['ticket']['e_price']['VIP6'] + 0.50) + $data['ticket']['quantity']['VIP7']*($data['ticket']['e_price']['VIP7'] + 0.50))) - $amount_seller,2);
                 $amount_wrevel += .25;
-                $amount_stripe = round((double)($amount_wrevel+$amount_seller + 0.30) / .971 -($amount_wrevel+$amount_seller),2);
-                if($data['ticket']['mail'] == "mail")
-                    $amount_wrevel =+ 4.95;
-                $total = $amount_stripe + $amount_wrevel;
+                $amount_stripe = round((double)($amount_wrevel + $amount_seller + 0.30) / .971 - ($amount_wrevel + $amount_seller), 2);
+
+                $total = $amount_stripe + $amount_wrevel + $delivery_charge;
                 $data['ticket']['fees'] = $total;
                 $data['ticket']['total_price'] = $amount_seller + $total;
-
                 try {
                     $customer = Stripe_Customer::create(array(
                         'email' => $data['ticket']['email'],
@@ -741,6 +745,13 @@ class Stripe_controller extends CI_Controller{
                     $this->session->set_flashdata('message', 'Your card was declined or you may have entered an invalid card. Please try again.');
                     redirect($prev_page.$data['ticket']['cost_per_ticket'][0]['event_id']);
                 }
+
+            }else{
+                $data['ticket']['ticket_price'] = 0;
+                $data['ticket']['fees'] = 0;
+                $data['ticket']['total_price'] = 0;
+            }
+
 
 
             $data['ticket']['card'] = "";
