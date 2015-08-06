@@ -61,8 +61,8 @@
 				
 			</div>
 			<div class="col-md-7 confirm-info-right">
-				<p><span>Event Location</span>107 Rivington St, New York</p>
-				<p><span>Venue</span>Brooklyn Center</p>
+				<p><span>Event Location</span><?php echo $ticket['cost_per_ticket']['0']['e_address']." , ".$ticket['cost_per_ticket']['0']['e_city']." , ".$ticket['cost_per_ticket']['0']['e_state']?></p>
+<!--				<p><span>Venue</span>Brooklyn Center</p>-->
 				<p><span>Name of Purchaser</span><?php
                     $ticket = $this->session->userdata('ticket');
                     echo $ticket['f_name']." ".$ticket['l_name']?> </p>
