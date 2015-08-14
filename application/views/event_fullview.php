@@ -775,8 +775,13 @@ jQuery(document).ready(function () {
                                 
                                 <!--Ticketing System button-->
                                 <?php if($event[0]['e_is_ticketed']) {?>
-                                	<a href="#" data-toggle="modal" data-target="#largeModal" class="btn viewmorewrevs buy-ticket" style="border-radius:10px;font-size:23px;color:white;">Buy Tickets</a>
-                                <?php }?>
+                                	<a <?php if(!$this->session->userdata('is_logged_in')){ ?>
+                                         href= "<?php echo base_url()."event/attend_event/".$event[0]['event_id']."/5"?>" <?php
+                                        $previous_page = $this->session->userdata('refresh_page');
+                                        $this->session->set_userdata('redirect', $previous_page.$event[0]['event_id']);
+                                    }else{ ?>
+                                        href='#' data-toggle='modal' data-target='#largeModal'<?php } ?> class='btn viewmorewrevs buy-ticket' style='border-radius:10px;font-size:23px;color:white;'>Buy Tickets</a>
+                                    <?php } ?>
 
                                 <!--buy ticket-->
                                 <div style="color:black;">
@@ -1700,6 +1705,7 @@ jQuery(document).ready(function () {
 
 
     </script>
+
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  -->
     <!--<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.min.js"></script>
 	<script src="<?php echo $path['PATH_BOOTSTRAP']?>js/bootstrap.js"></script> -->

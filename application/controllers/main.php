@@ -298,7 +298,13 @@ public function index()
 
             }
 
-		redirect('showroom/profile');
+            if($this->session->userdata('redirect'))
+            {
+
+                redirect($this->session->userdata('redirect'));
+            }else{
+                redirect('showroom/profile');
+            }
 		}else{
 			redirect('account/myaccount_accountinfo');
 		}  
