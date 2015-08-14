@@ -157,14 +157,22 @@ if((!$this->session->userdata('is_logged_in'))) {?>
 	
         <a class="btn mywrevs-header" href="<?php echo base_url()."main/mywrevs"?>"><span class="icon-mywrevs_icon" style="font-size:40px;vertical-align:middle;"></span>mywrevs</a>
 	<a class="btn mywrevs-header header_nopadding" href="<? echo base_url()?>event/hub" ><span class="icon-thehub_icon" style="font-size:40px;vertical-align:middle;"></span>the hub</a>
-	<a 
-        <?php 
+	<a
+        <?php
 		$activation=$this->session->userdata('activation');
-		if($activation=='N'){}else{ 
-		echo 'href="##"  data-toggle="modal" data-target="#create"';}
+		if($activation=='N'){}else{
+//		echo 'href="##"  data-toggle="modal" data-target="#create"';}
+        echo 'href='.base_url().'event/Create_Wrevel_View';}
 	?>
+
          id="create-step"  class="btn create-wrev-header" type="button">create a wrev</a>
-	<div role="search" class="navbar-form navbar-right" style="width:130px;margin-top:10px;">
+<!--    <a  --><?php //$activation=$this->session->userdata('activation');
+//            		if($activation=='N'){}else{
+//                        "href=".echo base_url()."createwrev"
+//                    }
+//         ?>
+<!--        id="create-step"  class="btn create-wrev-header" type="button">create a wrev</a>-->
+            <div role="search" class="navbar-form navbar-right" style="width:130px;margin-top:10px;">
           <?php echo form_open(base_url().'main/get_latest_events/')?>
             <div class="form-group left-inner-addon" style="width:100px;">
 		<span class="glyphicon glyphicon-search" style="color:white;font-size:15px;"></span>

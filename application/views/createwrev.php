@@ -42,11 +42,29 @@ ul.nav.nav-tabs.tabs-left>li{
 
 <!--content
 ==============================================-->
-
   <div class="container" style="padding-bottom:50px;">
 	<div class="row" style="margin-top:120px;">
 		<div class="col-md-3 col-md-offset-1"> <!-- required for floating -->
-			<!-- Nav tabs -->
+            <?php
+            $hidden = array(
+                'icebreakers'=> 0,
+                'meetups'=> 0,
+                'parties'=> 0,
+                'clubs'=> 0,
+                'concerts'=> 0,
+                'festivals'=> 0,
+                'explore'=> 0,
+                'romance'=> 0,
+                'lounges'=> 0,
+                'bars'=> 0,
+                'hotspots'=> 0,
+                'culture'=> 0,
+            );
+            $requiredinput = array('onsubmit' => 'return check_required_input()');
+            echo form_open_multipart(base_url().'event/create_event', $requiredinput);
+            echo form_hidden($hidden);?>
+
+            <!-- Nav tabs -->
 			<div class="panel panel-default" style="border:none;font-weight:bold;">
 				<div class="panel-heading" style="background:#44454A;color:white;padding-left:0;padding-right:0;position:relative;">
     					<h3 class="panel-title text-center" style="font-size:20px;font-weight:bold;padding:8px;padding-bottom:15px;">Create a Wrev</h3>
@@ -55,16 +73,16 @@ ul.nav.nav-tabs.tabs-left>li{
   				<div class="panel-body" style="background:#F7F7F7;text-align:center;">
 					<ul class="nav nav-tabs tabs-left" style="text-align:center;border:none;">
                                             
-                                                    <li class="active"><a href="#category" data-toggle="tab">Choose a Category</a></li>
-                                                    <li><a href="#details" data-toggle="tab">Type in the Wrevs details</a></li>
-                                                    <li><a href="#customize" data-toggle="tab">Customize your Wrev</a></li>
-                                                    <li><a href="#setup" data-toggle="tab">Set up Tickets</a></li>
-                                                    <li><a href="#delivery" data-toggle="tab">Delivery Method Set up</a></li>
+                                                    <li  class="active"><a href="#category" data-toggle="tab" id = "category_form">Choose a Category</a></li>
+                                                    <li><a href="#details" data-toggle="tab" id = "details_form">Type in the Wrevs details</a></li>
+                                                    <li><a href="#customize" data-toggle="tab" id = "customize_form" >Customize your Wrev</a></li>
+                                                    <li><a href="#setup" data-toggle="tab" id = "tickets_form" style="display: none">Set up Tickets</a></li>
+                                                    <li><a href="#delivery" data-toggle="tab" id = "delivery_form" style="display: none">Delivery Method Set up</a></li>
                                                     
 					</ul>
 				</div>
 				<div class="panel-footer" style="background:#44454A;text-align:center;">				
-					<p><button class="btn" style="border-radius:none;color:white;background:#1B76BD;width:70%;font-size:18px;">Submit Wrev</button></p>
+					<p><button type="submit" class="btn" style="border-radius:none;color:white;background:#1B76BD;width:70%;font-size:18px;">Submit Wrev</button></p>
 					<p><button class="btn" style="border-radius:none;color:white;background:#6D6E72;width:70%;font-size:18px;">Preview Wrev</button></p>
 					<p><button class="btn" style="border-radius:none;color:white;background:#8D4D4D;width:70%;font-size:18px;" onclick="goBack()">Cancel</button></p>
 					<script>
@@ -83,24 +101,7 @@ ul.nav.nav-tabs.tabs-left>li{
 			
 				<!--Summary-->
 				<div class="tab-pane active default-tabs" id="category" style="color:#404041;text-align:center;">
-					 <?php 
-      $hidden = array(
-          'icebreakers'=> 0,
-         'meetups'=> 0,
-         'parties'=> 0,
-          'clubs'=> 0,
-          'concerts'=> 0,
-          'festivals'=> 0,
-          'explore'=> 0,
-          'romance'=> 0,
-          'lounges'=> 0,
-          'bars'=> 0,
-          'hotspots'=> 0,
-          'culture'=> 0,
-         ); 
-      $requiredinput = array('onsubmit' => 'return check_required_input()');
-      echo form_open_multipart(base_url().'event/create_event', $requiredinput);
-      echo form_hidden($hidden);?>
+
 						<div class="row" style="padding:10% 8%;">
 							<div class="col-md-4 col-sm-6" style="background:#F1F1F1;padding:10px;">
 								<strong>Choose 1 Main Category</strong>
@@ -136,19 +137,29 @@ ul.nav.nav-tabs.tabs-left>li{
       
         <img src="<?php echo $PATH_IMG?>bars_new.png" class="cwrev_category" id = '11' name = 'is_bars' value = '1' alt="bars" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
          <div style="visibility: hidden;">
-        <input type="checkbox" id="i0" name="hotspots" value="1024"  />
-        <input type="checkbox" id="i1" name="icebreakers" value="1"  />
-        <input type="checkbox" id="i2" name="culture" value="2048"  />
-        <input type="checkbox" id="i3" name="meetups" value="2"  />
-        <input type="checkbox" id="i4" name="explore" value="64"  />
-        <input type="checkbox" id="i5" name="romance" value="128"  />
-        <input type="checkbox" id="i6" name="parties" value="4"  />
-        <input type="checkbox" id="i7" name="clubs" value="8"  />
-        <input type="checkbox" id="i8" name="concerts" value="16"  />
-        <input type="checkbox" id="i9" name="festivals" value="32"  />
-        <input type="checkbox" id="i10" name="lounges" value="256"  />
-        <input type="checkbox" id="i11" name="bars" value="512" />
+        <input type="checkbox" class = "checkbox" id="i0" name="hotspots" value="1024"  />
+        <input type="checkbox" class = "checkbox" id="i1" name="icebreakers" value="1"  />
+        <input type="checkbox" class = "checkbox" id="i2" name="culture" value="2048"  />
+        <input type="checkbox" class = "checkbox" id="i3" name="meetups" value="2"  />
+        <input type="checkbox" class = "checkbox" id="i4" name="explore" value="64"  />
+        <input type="checkbox" class = "checkbox" id="i5" name="romance" value="128"  />
+        <input type="checkbox" class = "checkbox" id="i6" name="parties" value="4"  />
+        <input type="checkbox" class = "checkbox" id="i7" name="clubs" value="8"  />
+        <input type="checkbox" class = "checkbox" id="i8" name="concerts" value="16"  />
+        <input type="checkbox" class = "checkbox" id="i9" name="festivals" value="32"  />
+        <input type="checkbox" class = "checkbox" id="i10" name="lounges" value="256"  />
+        <input type="checkbox" class = "checkbox" id="i11" name="bars" value="512" />
          </div>
+<!--    <script>-->
+<!--        $(document).ready(function(){-->
+<!--            $(".checkbox").click(function(){-->
+<!--                if($('#exhgt').attr('primaryselected') === 'true'){-->
+<!--                     document.getElementById("category_form").innerHTML = "Choose a Category"&#10003;-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+<!---->
+<!--    </script>-->
     </div>
 							</div>
 						</div>
@@ -162,7 +173,7 @@ ul.nav.nav-tabs.tabs-left>li{
                                
 				<div class="tab-pane" id="details" style="text-align:center;font-size:18px;">
 					<div style="padding:4%;">
-						<input id="e_name" name="e_name" type="text" class="form-control" placeholder="Name of Event" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;"></input>
+						<input id="e_name" name="e_name" type="text" class="form-control" placeholder="Name of Event" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;">
 						<textarea id="e_description" class="form-control" rows="3" name = "e_description" placeholder="Event Info" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px;"></textarea>
 						<textarea class="form-control" rows="1" placeholder="Event Terms (Custom terms ex: Age limit)" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px;"></textarea>
 						<div class="row" style="margin:0;margin-top:10px;">
@@ -170,7 +181,7 @@ ul.nav.nav-tabs.tabs-left>li{
 							<span style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Period <i class="fa fa-question-circle" id="period" data-content=" Events that are recurring" data-trigger="hover" data-placement="bottom"></i></span>
 							
 								<select id="period" name="period" type="number" style="font-size:14px;height:100%;background:transparent;margin-left:5px;">
-								<option value="" selected="selected">None</option> 
+								<option value="" selected="selected">None</option>
 								<option value="1">Every day</option>
 								<option value="7">7 days </option>
 										<option value="30">1 month</option>
@@ -180,7 +191,7 @@ ul.nav.nav-tabs.tabs-left>li{
 								 </select> 
 							</div>
 							<div style="width:45%;float:left;background:#F2F2F2;padding-top:5px;padding-bottom:5px;margin-left:10px;">
-							<span style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Multiple Day Event <i class="fa fa-question-circle" id="multiple" data-content="For events lasting more then one day " data-trigger="hover" data-placement="bottom"></i></span>
+							<span style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Multiple Day Event <i class="fa fa-question-circle" data-content="For events lasting more then one day " data-trigger="hover" data-placement="bottom"></i></span>
 							
 								<select id="multiple-days" style="font-size:14px;height:100%;background:transparent;margin-left:5px;">
 								<option value="0" selected="selected">No</option> 
@@ -188,27 +199,38 @@ ul.nav.nav-tabs.tabs-left>li{
 								</select> 
 							</div>
 							<a class="btn add_day_btn" type="button" onclick="add_day()" id="add_day" style="background:#1D74BB;color:white;display:none;">Add Day</a>
-<script>							
-							$('#multiple-days').on('change', function () {
- if (this.value == '1') {
-        $(".add_day_btn").show();
-    } else {
-        $(".add_day_btn").hide();
-    }
- });
+<script>
+    $('#multiple-days').on('change', function () {
+        if (this.value == '1') {
+            $(".add_day_btn").show();
+            $("select#period").prop('disabled', true);//disbale the period select box
+
+        } else {
+            $(".add_day_btn").hide();
+            $("select#period").prop('disabled', false);
+        }
+    });
+    $('select#period').on('change', function () {
+        if (this.value != '') {
+            $("select#multiple-days").prop('disabled', true);//disable the multiple-days select box
+
+        } else {
+            $("select#multiple-days").prop('disabled', false);
+        }
+    });
 </script>						</div>
 						
 						<div id="event_day">
 						<div class="row" style="margin:0;margin-top:10px;">
 							<div style="width:30%;float:left;background:#F2F2F2;padding-top:5px;padding-bottom:5px;">
 							<label style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Date
-							<input type="text" style="font-size:14px;height:100%;background:transparent;border:1px solid #999999;"></input>
+							<input type="text" style="font-size:14px;height:100%;background:transparent;border:1px solid #999999;" id="e_date" name="e_date[]">
 							</label>
 								
 							</div>
 							<div style="width:34%;float:left;background:#F2F2F2;padding-top:10px;padding-bottom:10px;margin-left:10px;height:44px;vertical-align:middle;">
 							<span style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Time Start</span>
-								<select id="e_start_time" name="e_start_time" type="time" style="font-size:14px;background:transparent;margin-left:5px;">
+								<select id="e_start_time" name="e_start_time[]" type="time" style="font-size:14px;background:transparent;margin-left:5px;">
 									<option value="" selected="selected"></option> 
 									<option value="00:00">12:00am</option>
 									<option value="00:30">12:30am</option>
@@ -262,7 +284,7 @@ ul.nav.nav-tabs.tabs-left>li{
 							</div>
 							<div style="width:33%;float:left;background:#F2F2F2;padding-top:10px;padding-bottom:10px;margin-left:10px;height:44px;">
 							<span style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Time End</span>
-								<select id="e_end_time" name="e_end_time" type="time" style="font-size:14px;background:transparent;margin-left:5px;">
+								<select id="e_end_time" name="e_end_time[]" type="time" style="font-size:14px;background:transparent;margin-left:5px;">
 									<option value="" selected="selected"></option> 
 									<option value="00:00">12:00am</option>
 									<option value="00:30">12:30am</option>
@@ -317,13 +339,13 @@ ul.nav.nav-tabs.tabs-left>li{
 						</div>	
 						</div>
 						
-						<input id="location1" type="text" name = "e_address" class="form-control" placeholder="Address" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px;"></input>
+						<input id="location1" type="text" name = "e_address" class="form-control" placeholder="Address" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px;">
 						<div class="row" style="margin:0;">
 							<div class="col-sm-6" style="padding-left:0;">
-								<input class="form-control" placeholder="Name of Venue (Optional)" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px;"></input>
+								<input name="e_venue" class="form-control" placeholder="Name of Venue (Optional)" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px;">
 							</div>
 							<div class="col-sm-6" style="padding-right:0;">
-								<input id="location2" type="text" class="form-control" name = "e_city" placeholder="City" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px;"></input>
+								<input id="location2" type="text" class="form-control" name = "e_city" placeholder="City" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px;">
 							</div>
 						</div>
 						<div class="row" style="margin:0;margin-top:10px;">
@@ -555,20 +577,55 @@ ul.nav.nav-tabs.tabs-left>li{
                     <div class="row" style="padding:5%;">
 						<div class="col-md-5">
 							<div style="background:#F1F1F1;height:180px;text-align:center;">
-								<span class="glyphicon glyphicon-camera" style="font-size:50px;margin-top:60px;"></span>
+<!--								<span class="glyphicon glyphicon-camera" style="font-size:50px;margin-top:60px;"></span>-->
+                                   <img id="myImg" src="" class="glyphicon glyphicon-camera" style="font-size:50px;margin-top:60px;">
 							</div>
-							<button class="btn btn-block" style="margin-top:10px;background:#92ADC0;color:white;">Upload Main Image</button>
-							<button class="btn btn-block" style="margin-top:10px;background:#908F94;color:white;">Upload More Images</button>
+                            <div style="height:0px;overflow:hidden">
+							<input id="fileInput" type="file" class="btn btn-block hide" name ="uploadImage" hidden>
+                            </div>
+                            <button type="button" onclick="chooseFile();" class="btn btn-block" style="margin-top:10px;background:#92ADC0;color:white;">Upload Main Image</button>
+                            <button type="button" onclick="add_more_event_images();" class="btn btn-block" style="margin-top:10px;background:#908F94;color:white;">Upload More Images</button>
 						</div>
+
+                        <script>
+                            //upload one image
+                            function chooseFile() {
+                                $("#fileInput").click();
+                            }
+
+                            $(function () {
+                                $(":file").change(function () {
+                                    if (this.files && this.files[0]) {
+                                        var reader = new FileReader();
+                                        reader.onload = imageIsLoaded;
+                                        reader.readAsDataURL(this.files[0]);
+                                    }
+                                });
+                            });
+
+                            function imageIsLoaded(e) {
+                                $('#myImg').attr('src', e.target.result);
+                            };
+
+                            //upload more images
+                            function add_more_event_images() {
+                                var content = '<div class="image-upload">'
+                                    +'<input id="file-input" name = "event_photos[]" type = "file"/>'
+                                '</div>';
+                                $('#event_images_base').append(content);
+
+                            }
+                        </script>
+
 						<div class="col-md-7">
 							<div class="row" style="background:#F2F2F2;padding:5px 8px;">
 								<div class="col-xs-6">
 								<span style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Event type</span>
 								</div>
 								<div class="col-xs-6">
-									<select  type="text" class="pull-right" style="font-size:14px;height:100%;background:transparent;margin-left:5px;">
-										<option>Public</option>
-										<option>Private</option>
+									<select  name="e_type" type="text" class="pull-right" style="font-size:14px;height:100%;background:transparent;margin-left:5px;">
+										<option value="0" selected="selected">Public</option>
+										<option value="1">Private</option>
 									</select>
 								</div>
 							</div>
@@ -577,26 +634,26 @@ ul.nav.nav-tabs.tabs-left>li{
 								<span style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Hide Address?</span>
 								</div>
 								<div class="col-xs-6">
-									<select  type="text" class="pull-right" style="font-size:14px;height:100%;background:transparent;margin-left:5px;">
-										<option>No</option>
-										<option>Yes</option>
+									<select  name="e_is_hide" type="text" class="pull-right" style="font-size:14px;height:100%;background:transparent;margin-left:5px;">
+										<option value="0" selected="selected">No</option>
+										<option value="1">Yes</option>
 									</select>
 								</div>
 							</div>
 							<div class="row" style="margin-top:10px;">
 								<div style="width:48.5%;float:left;background:#F2F2F2;padding:5px 20px;">
 								<span style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Free</span>			
-									<select class="pull-right" style="font-size:14px;height:100%;background:transparent;margin-left:5px;">
-									<option value="">Yes</option>
-									<option value="">No</option>
+									<select name="e_is_free" id="freeticket" class="pull-right" style="font-size:14px;height:100%;background:transparent;margin-left:5px;">
+									<option value="1">Yes</option>
+									<option value="0" selected="selected">No</option>
 									</select> 
 								</div>
 								<div style="width:48.5%;float:left;background:#F2F2F2;padding:5px 20px; margin-left:10px;">
 								<span style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Ticketed</span>
 								
-									<select class="pull-right" style="font-size:14px;height:100%;background:transparent;margin-left:5px;">
-									<option value="" selected="selected">No</option> 
-									<option value="">Yes</option> 
+									<select name="e_is_ticketed" id="isTicked" class="pull-right" style="font-size:14px;height:100%;background:transparent;margin-left:5px;">
+									<option value="0" selected="selected">No</option>
+									<option value="1">Yes</option>
 									</select> 
 								</div>
 							</div>
@@ -605,12 +662,15 @@ ul.nav.nav-tabs.tabs-left>li{
 								<span style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Hide Quantity of Tickets</span>
 								</div>
 								<div class="col-xs-6">
-									<select class="pull-right" type="text" style="font-size:14px;height:100%;background:transparent;margin-left:5px;">
-										<option>Yes</option>
-										<option>No</option>
+									<select name="e_is_quantity_hide" class="pull-right" type="text" style="font-size:14px;height:100%;background:transparent;margin-left:5px;">
+										<option value="1" selected="selected">Yes</option>
+										<option value="0">No</option>
 									</select>
 								</div>
 							</div>
+                            <div id="event_images_base" class="row" style="margin-top:10px;">
+
+                            </div>
 							<!--
 							<div class="row" style="margin-top:10px;">
 								<div class="col-md-3">
@@ -646,135 +706,12 @@ ul.nav.nav-tabs.tabs-left>li{
 				</div>
       
 				
-				<div class="tab-pane" id="setup">
-					<div class="row" style="padding:4%;">
+				<div class="tab-pane add_ticket_type" id="setup" style="position: relative;">
+<!--					<div class="row" style="padding:4%;">-->
+
+                        <div class="row ticket_group form-group-row" id="ticket_base0" style="padding:4%;">
 						<div class="col-md-6">
-							<input type="text" class="form-control" placeholder="Ticket Type" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;"></input>
-							<input type="text" class="form-control" placeholder="Event Date" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px;"></input>
-							<div class="row" style="margin:0;margin-top:10px;background:#F2F2F2;padding-top:5px;padding-bottom:5px;">
-								<div class="col-xs-6">
-								<span style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Event Start</span>
-								</div>
-								<div class="col-xs-6">
-									<select  type="text" class="pull-right" style="font-size:14px;height:100%;background:transparent;margin-left:5px;">
-										<option value="" selected="selected"></option> 
-									<option value="00:00">12:00am</option>
-									<option value="00:30">12:30am</option>
-											<option value="01:00">1:00am</option>
-									<option value="01:30">1:30am</option>
-											<option value="02:00">2:00am</option>
-									<option value="02:30">2:30am</option>
-											<option value="03:00">3:00am</option>
-									<option value="03:30">3:30am</option>
-											<option value="04:00">4:00am</option>
-									<option value="04:30">4:30am</option>
-											<option value="05:00">5:00am</option>
-									<option value="05:30">5:30am</option>
-											<option value="06:00">6:00am</option>
-									<option value="06:30">6:30am</option>
-											<option value="07:00">7:00am</option>
-									<option value="07:30">7:30am</option>
-											<option value="08:00">8:00am</option>
-									<option value="08:30">8:30am</option>
-											<option value="09:00">9:00am</option>
-									<option value="09:30">9:30am</option>
-											<option value="10:00">10:00am</option>
-									<option value="10:30">10:30am</option>
-											<option value="11:00">11:00am</option>
-									<option value="11:30">11:30am</option>
-											<option value="12:00">12:00pm</option>
-									<option value="12:30">12:30pm</option>
-											<option value="13:00">1:00pm</option>
-									<option value="13:30">1:30pm</option>
-											<option value="14:00">2:00pm</option>
-									<option value="14:30">2:30pm</option>
-											<option value="15:00">3:00pm</option>
-									<option value="15:30">3:30pm</option>
-											<option value="16:00">4:00pm</option>
-									<option value="16:30">4:30pm</option>
-											<option value="17:00">5:00pm</option>
-									<option value="17:30">5:30pm</option>
-											<option value="18:00">6:00pm</option>
-									<option value="18:30">6:30pm</option>
-											<option value="19:00">7:00pm</option>
-									<option value="19:30">7:30pm</option>
-											<option value="20:00">8:00pm</option>
-									<option value="20:30">8:30pm</option>
-											<option value="21:00">9:00pm</option>
-									<option value="21:30">9:30pm</option>
-											<option value="22:00">10:00pm</option>
-									<option value="22:30">10:30pm</option>
-											<option value="23:00">11:00pm</option>
-									<option value="23:30">11:30pm</option>
-									</select>
-								</div>
-							</div>
-							<div class="row" style="margin:0;margin-top:10px;background:#F2F2F2;padding-top:5px;padding-bottom:5px;">
-								<div class="col-xs-6">
-								<span style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Event End</span>
-								</div>
-								<div class="col-xs-6">
-									<select  type="text" class="pull-right" style="font-size:14px;height:100%;background:transparent;margin-left:5px;">
-										<option value="" selected="selected"></option> 
-									<option value="00:00">12:00am</option>
-									<option value="00:30">12:30am</option>
-											<option value="01:00">1:00am</option>
-									<option value="01:30">1:30am</option>
-											<option value="02:00">2:00am</option>
-									<option value="02:30">2:30am</option>
-											<option value="03:00">3:00am</option>
-									<option value="03:30">3:30am</option>
-											<option value="04:00">4:00am</option>
-									<option value="04:30">4:30am</option>
-											<option value="05:00">5:00am</option>
-									<option value="05:30">5:30am</option>
-											<option value="06:00">6:00am</option>
-									<option value="06:30">6:30am</option>
-											<option value="07:00">7:00am</option>
-									<option value="07:30">7:30am</option>
-											<option value="08:00">8:00am</option>
-									<option value="08:30">8:30am</option>
-											<option value="09:00">9:00am</option>
-									<option value="09:30">9:30am</option>
-											<option value="10:00">10:00am</option>
-									<option value="10:30">10:30am</option>
-											<option value="11:00">11:00am</option>
-									<option value="11:30">11:30am</option>
-											<option value="12:00">12:00pm</option>
-									<option value="12:30">12:30pm</option>
-											<option value="13:00">1:00pm</option>
-									<option value="13:30">1:30pm</option>
-											<option value="14:00">2:00pm</option>
-									<option value="14:30">2:30pm</option>
-											<option value="15:00">3:00pm</option>
-									<option value="15:30">3:30pm</option>
-											<option value="16:00">4:00pm</option>
-									<option value="16:30">4:30pm</option>
-											<option value="17:00">5:00pm</option>
-									<option value="17:30">5:30pm</option>
-											<option value="18:00">6:00pm</option>
-									<option value="18:30">6:30pm</option>
-											<option value="19:00">7:00pm</option>
-									<option value="19:30">7:30pm</option>
-											<option value="20:00">8:00pm</option>
-									<option value="20:30">8:30pm</option>
-											<option value="21:00">9:00pm</option>
-									<option value="21:30">9:30pm</option>
-											<option value="22:00">10:00pm</option>
-									<option value="22:30">10:30pm</option>
-											<option value="23:00">11:00pm</option>
-									<option value="23:30">11:30pm</option>
-									</select>
-								</div>
-							</div>
-							<div class="row" style="margin-top:10px;">
-								<div class="col-sm-6">
-									<input type='number' min='1' name='e_quantity[]' class='form-control' placeholder="Quantity" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;">
-								</div>
-								<div class="col-sm-6">
-									<input id="e_price" type="number" step="0.01" min="0.00" name="e_price[]"  class="e_price form-control" placeholder="Price" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;"></input>
-								</div>
-							</div>
+							<input type="text" name='type[]' class="select_type form-control" placeholder="Ticket Type" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;">
 							<textarea name='info[]' class="form-control" rows="3" placeholder="Ticket Info" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px;"></textarea>
 							<input type='text' name='max_date[]' class='form-control' placeholder='Deadline Date (yyyy/mm/dd)' style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px;"><!--Need to change format to mm/dd/yyyy-->
 							<div class="row" style="margin:0;margin-top:10px;background:#F2F2F2;padding-top:5px;padding-bottom:5px;">
@@ -782,7 +719,7 @@ ul.nav.nav-tabs.tabs-left>li{
 								<span style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Deadline Time</span>
 								</div>
 								<div class="col-xs-6">
-									<select name='max_time[]' type='time' type="text" class="pull-right" style="font-size:14px;height:100%;background:transparent;margin-left:5px;">
+									<select name='max_time[]' type='time' type="text" class="pull-right form-control" style="font-size:14px;height:100%;background:transparent;margin-left:5px;">
 										<option value="" selected="selected"></option> 
 									<option value="00:00">12:00am</option>
 									<option value="00:30">12:30am</option>
@@ -835,46 +772,148 @@ ul.nav.nav-tabs.tabs-left>li{
 									</select>
 								</div>
 							</div>
-							<div class="row" style="text-align:center;margin-top:10px;">
-							<button class="btn" style="background:#808186;color:white;">Clear</button>
-							<button class="btn" style="background:#2173BD;color:white;">Add</button>
-							</div>
+
 						</div>
 						<div class="col-md-6">
-							<div style="padding:0 15%;text-align:center;">
-								<div style="background:#F2F2F2;padding:20px 15%;">
-								<strong>Tickets You've Created</strong>
-								<p>You can view and edit the ticket you added.</p>
-								</div>
-							</div>
-							<div class="row" style="margin-top:10px;">
-								<div class="col-sm-6">
-									<div style="background:#F2F2F2;padding:10px;line-height:125%;">
-										<p><strong>Price</strong><p>
-										<p style="color:#1B7BC5;">Type of ticket</p>
-										<p>Date of Event</p>
-										<p>Qty. #</p>
-										<p>Expires: <strong>Deadline Date at Deadline Time</strong></p>
-										<hr style="border-color:#414042;margin:0px;"/>
-										<p>Ticket Info</p>
-									</div>
-								</div>
-								<div class="col-sm-6">
-									<div style="background:#F2F2F2;padding:10px;line-height:125%;">
-										<p><strong>Price</strong><p>
-										<p style="color:#1B7BC5;">Type of ticket</p>
-										<p>Date of Event</p>
-										<p>Qty. #</p>
-										<p>Expires: <strong>Deadline Date at Deadline Time</strong></p>
-										<hr style="border-color:#414042;margin:0px;"/>
-										<p>Ticket Info</p>
-									</div>
-								</div>
-								
-							</div>
+                            <input name="ticket_event_date[]" type="text" class="form-control" placeholder="Event Date" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px;">
+                            <div class="row" style="margin:0;margin-top:10px;background:#F2F2F2;padding-top:5px;padding-bottom:5px;">
+                                <div class="col-xs-6">
+                                    <span style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Event Start</span>
+                                </div>
+                                <div class="col-xs-6">
+                                    <select  name="ticket_start_time[]"type="text" class="pull-right" style="font-size:14px;height:100%;background:transparent;margin-left:5px;">
+                                        <option value="" selected="selected"></option>
+                                        <option value="00:00">12:00am</option>
+                                        <option value="00:30">12:30am</option>
+                                        <option value="01:00">1:00am</option>
+                                        <option value="01:30">1:30am</option>
+                                        <option value="02:00">2:00am</option>
+                                        <option value="02:30">2:30am</option>
+                                        <option value="03:00">3:00am</option>
+                                        <option value="03:30">3:30am</option>
+                                        <option value="04:00">4:00am</option>
+                                        <option value="04:30">4:30am</option>
+                                        <option value="05:00">5:00am</option>
+                                        <option value="05:30">5:30am</option>
+                                        <option value="06:00">6:00am</option>
+                                        <option value="06:30">6:30am</option>
+                                        <option value="07:00">7:00am</option>
+                                        <option value="07:30">7:30am</option>
+                                        <option value="08:00">8:00am</option>
+                                        <option value="08:30">8:30am</option>
+                                        <option value="09:00">9:00am</option>
+                                        <option value="09:30">9:30am</option>
+                                        <option value="10:00">10:00am</option>
+                                        <option value="10:30">10:30am</option>
+                                        <option value="11:00">11:00am</option>
+                                        <option value="11:30">11:30am</option>
+                                        <option value="12:00">12:00pm</option>
+                                        <option value="12:30">12:30pm</option>
+                                        <option value="13:00">1:00pm</option>
+                                        <option value="13:30">1:30pm</option>
+                                        <option value="14:00">2:00pm</option>
+                                        <option value="14:30">2:30pm</option>
+                                        <option value="15:00">3:00pm</option>
+                                        <option value="15:30">3:30pm</option>
+                                        <option value="16:00">4:00pm</option>
+                                        <option value="16:30">4:30pm</option>
+                                        <option value="17:00">5:00pm</option>
+                                        <option value="17:30">5:30pm</option>
+                                        <option value="18:00">6:00pm</option>
+                                        <option value="18:30">6:30pm</option>
+                                        <option value="19:00">7:00pm</option>
+                                        <option value="19:30">7:30pm</option>
+                                        <option value="20:00">8:00pm</option>
+                                        <option value="20:30">8:30pm</option>
+                                        <option value="21:00">9:00pm</option>
+                                        <option value="21:30">9:30pm</option>
+                                        <option value="22:00">10:00pm</option>
+                                        <option value="22:30">10:30pm</option>
+                                        <option value="23:00">11:00pm</option>
+                                        <option value="23:30">11:30pm</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row" style="margin:0;margin-top:10px;background:#F2F2F2;padding-top:5px;padding-bottom:5px;">
+                                <div class="col-xs-6">
+                                    <span style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Event End</span>
+                                </div>
+                                <div class="col-xs-6">
+                                    <select  name="ticket_end_time[]" type="text" class="pull-right" style="font-size:14px;height:100%;background:transparent;margin-left:5px;">
+                                        <option value="" selected="selected"></option>
+                                        <option value="00:00">12:00am</option>
+                                        <option value="00:30">12:30am</option>
+                                        <option value="01:00">1:00am</option>
+                                        <option value="01:30">1:30am</option>
+                                        <option value="02:00">2:00am</option>
+                                        <option value="02:30">2:30am</option>
+                                        <option value="03:00">3:00am</option>
+                                        <option value="03:30">3:30am</option>
+                                        <option value="04:00">4:00am</option>
+                                        <option value="04:30">4:30am</option>
+                                        <option value="05:00">5:00am</option>
+                                        <option value="05:30">5:30am</option>
+                                        <option value="06:00">6:00am</option>
+                                        <option value="06:30">6:30am</option>
+                                        <option value="07:00">7:00am</option>
+                                        <option value="07:30">7:30am</option>
+                                        <option value="08:00">8:00am</option>
+                                        <option value="08:30">8:30am</option>
+                                        <option value="09:00">9:00am</option>
+                                        <option value="09:30">9:30am</option>
+                                        <option value="10:00">10:00am</option>
+                                        <option value="10:30">10:30am</option>
+                                        <option value="11:00">11:00am</option>
+                                        <option value="11:30">11:30am</option>
+                                        <option value="12:00">12:00pm</option>
+                                        <option value="12:30">12:30pm</option>
+                                        <option value="13:00">1:00pm</option>
+                                        <option value="13:30">1:30pm</option>
+                                        <option value="14:00">2:00pm</option>
+                                        <option value="14:30">2:30pm</option>
+                                        <option value="15:00">3:00pm</option>
+                                        <option value="15:30">3:30pm</option>
+                                        <option value="16:00">4:00pm</option>
+                                        <option value="16:30">4:30pm</option>
+                                        <option value="17:00">5:00pm</option>
+                                        <option value="17:30">5:30pm</option>
+                                        <option value="18:00">6:00pm</option>
+                                        <option value="18:30">6:30pm</option>
+                                        <option value="19:00">7:00pm</option>
+                                        <option value="19:30">7:30pm</option>
+                                        <option value="20:00">8:00pm</option>
+                                        <option value="20:30">8:30pm</option>
+                                        <option value="21:00">9:00pm</option>
+                                        <option value="21:30">9:30pm</option>
+                                        <option value="22:00">10:00pm</option>
+                                        <option value="22:30">10:30pm</option>
+                                        <option value="23:00">11:00pm</option>
+                                        <option value="23:30">11:30pm</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:10px;">
+                                <div class="col-sm-6">
+                                    <input type='number' min='1' name='e_quantity[]' class='form-control' placeholder="Quantity" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input id="e_price" type="number" step="0.01" min="0.00" name="e_price[]"  class="e_price form-control" placeholder="Price" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;">
+                                </div>
+                            </div>
+<!--                            <div class="row" style="text-align:right;margin-top:10px">-->
+<!--                                <button class="btn" style="background:#808186;color:white;">Delete</button>-->
+<!--                            </div>-->
 						</div>
+
+                            <div class="row" style="text-align:right;margin-top:10px;">
+                                <button type="button" id="add_more" onclick="addMoreTickets();"class="btn" style="background:#2173BD;color:white;">Add</button>
+                            </div>
+
 					</div>
-					<div style="width:100%;background:#F1F1F1;padding:10px;text-align:center;">
+
+
+
+					<div style="width:100%;background:#F1F1F1;padding:10px;text-align:center;position:absolute;bottom: 0;">
 						<a href="#customize" data-toggle="tab" class="btn" style="background:#1D74BB;color:white;">Previous</a>
 						<button class="btn" style="background:#6D6E72;color:white;">Clear Page</button>
 						<a href="#delivery" data-toggle="tab"><button class="btn" style="background:#1D74BB;color:white;">Next</button></a>
@@ -892,49 +931,49 @@ ul.nav.nav-tabs.tabs-left>li{
 						<div class="col-md-9">
 							<div class="row">
 								<div class="col-md-3 col-sm-6">
-									<button  type="button" class="btn btn-lg delivery-method will-call" style="background:none;" >
+									<button  id="delivery1" name="will_call" type="button" class="btn btn-lg delivery-method will-call" style="background:none;" >
 										  <span class="icon-willcall_icon" style="font-size: 70px; color: black;"></span><br/>
 										  <span style="color: black;font-size: 15px;font-weight:bold;">Will Call</span><br/>
-										  <input type="text" value="will call" hidden>
-									</button>	
+										  <input id="input_will_call" name="will_call_input" type="text" value="1" hidden>
+                                    </button>
 								</div>	
 								<div class="col-md-3 col-sm-6">
-									<button  type="button" class="btn btn-lg delivery-method" style="background:none;">
+									<button id="delivery2" name="print" type="button" class="btn btn-lg delivery-method" style="background:none;">
 										  <span class="icon-printathome_icon" style="font-size: 70px; color: black;"></span><br/>
 										  <span style="color: black;font-size: 15px;font-weight:bold;">Print at Home</span><br/>
-										  <input type="text" value="will call" hidden>
+                                        <input id="input_print" name="print_input" type="text" value="2" hidden>
 									</button>	
 								</div>	
 								<div class="col-md-3 col-sm-6">
-									<button type="button" class="btn btn-lg delivery-method" style="background:none;">
+									<button id="delivery3" name="mail" type="button" class="btn btn-lg delivery-method" style="background:none;">
 										  <span class="icon-standardshipping_icon" style="font-size: 70px; color: black;"></span><br/>
 										  <span style="color: black;font-size: 15px;font-weight:bold;">Standard Shipping</span><br/>
-										  <input type="text" value="will call" hidden>
+                                        <input id="input_mail" name="mail_input" type="text" value="4" hidden>
 									</button>	
 								</div>		
 								<div class="col-md-3 col-sm-6">
-									<button type="button" class="btn btn-lg delivery-method paperless" style="background:none;">
+									<button id="delivery4" name="paperless" type="button" class="btn btn-lg delivery-method paperless" style="background:none;">
 										  <span class="icon-paperless_mobile_icon" style="font-size: 70px; color: black;"></span><br/>
 										  <span style="color: black;font-size: 15px;font-weight:bold;">Paperless Version</span><br/>
-										  <input type="text" value="will call" hidden>
+                                        <input id="input_paperless" name="paperless_input" type="text" value="8" hidden>
 									</button>	
 								</div>
 								
 							</div>	
 							<div class="row">
-								<input class='form-control will-call-info' placeholder="Will Call Info (ie. Address for pick up)" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px; display:none;">
-								<input class='form-control paperless-info' placeholder="Paperless Info" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px; display:none;">
-									<script>
-									
-									$('.will-call').click(function(){
-										$('input.will-call-info').toggle('show');
-										$(this).toggleClass('delivery-method-clicked');
-									});
-									
-									$('.paperless').click(function(){
-										$('input.paperless-info').toggle('show');
-									});
-									</script>
+								<input class='form-control will-call-info' placeholder="Will Call Info (ie. Address for pick up)" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px; display:none;" hidden>
+								<input class='form-control paperless-info' placeholder="Paperless Info" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px; display:none;" hidden>
+<!--									<script>-->
+<!--									-->
+<!--									$('.will-call').click(function(){-->
+<!--										$('input.will-call-info').toggle('show');-->
+<!--										$(this).toggleClass('delivery-method-clicked');-->
+<!--									});-->
+<!--									-->
+<!--									$('.paperless').click(function(){-->
+<!--										$('input.paperless-info').toggle('show');-->
+<!--									});-->
+<!--									</script>-->
 							</div>
 						</div>
 						
@@ -943,8 +982,8 @@ ul.nav.nav-tabs.tabs-left>li{
 						<a href="#setup" data-toggle="tab" class="btn" style="background:#1D74BB;color:white;">Previous</a>
 						<button class="btn" style="background:#6D6E72;color:white;">Clear Page</button></a>
 						
-					</div>	
-					
+					</div>
+                    <?php echo form_close();?>
 				</div>                 
 			</div>
 		</div>
@@ -963,6 +1002,8 @@ ul.nav.nav-tabs.tabs-left>li{
    
     <script src="<?php echo $PATH_BOOTSTRAP?>js/bootstrap.js"></script>-->
     <script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
+    <script src="<?php echo $PATH_BOOTSTRAP?>js/checkbox.js"></script>
+    <script src="<?php echo $PATH_BOOTSTRAP?>js/imgpick.js"></script>
     <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
 	    <script>
     	var vc='';
@@ -1059,28 +1100,28 @@ ul.nav.nav-tabs.tabs-left>li{
                 alert("Please make sure your event has a start time.");
                 return false;
             }
-            if($('#verification_input').val()){}
-            else{
-                alert("Please make sure you entered the verification code.");
-                return false;
-            }
+//            if($('#verification_input').val()){}
+//            else{
+//                alert("Please make sure you entered the verification code.");
+//                return false;
+//            }
 
-            if($('#verification_input').val()==vc){
-            
-              $('#vc_match').css('visibility','hidden'); 
-            }
-            else{
-                $('#vc_match').css('visibility','visible'); 
-                return false;
-            }
-            if($('#file-input').val()){}
-            else{
-                if(confirm('You did not select a file to upload, are you sure you want to continue?\n'
-                        + 'You will be given a default image')){
-                    return true;
-                }
-                else return false;
-            }
+//            if($('#verification_input').val()==vc){
+//
+//              $('#vc_match').css('visibility','hidden');
+//            }
+//            else{
+//                $('#vc_match').css('visibility','visible');
+//                return false;
+//            }
+//            if($('#file-input').val()){}
+//            else{
+//                if(confirm('You did not select a file to upload, are you sure you want to continue?\n'
+//                        + 'You will be given a default image')){
+//                    return true;
+//                }
+//                else return false;
+//            }
         }
         
         
@@ -1106,13 +1147,13 @@ ul.nav.nav-tabs.tabs-left>li{
 			
 							+'<div style="width:30%;float:left;background:#F2F2F2;padding-top:5px;padding-bottom:5px;">'
 							+'<label style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Date '
-							+'<input type="text" style="font-size:14px;height:100%;background:transparent;border:1px solid #999999;"></input>'
+							+'<input name="e_date[]" type="text" style="font-size:14px;height:100%;background:transparent;border:1px solid #999999;">'
 							+'</label>'
 							
 							+'</div>'
 							+'<div style="width:34%;float:left;background:#F2F2F2;padding-top:10px;padding-bottom:10px;margin-left:10px;height:44px;vertical-align:middle;">'
 							+'<span style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Time Start </span>'
-								+'<select id="e_start_time" name="e_start_time" type="time" style="font-size:14px;background:transparent;margin-left:5px;">'
+								+'<select id="e_start_time" name="e_start_time[]" type="time" style="font-size:14px;background:transparent;margin-left:5px;">'
 									+'<option value="" selected="selected"></option> '
 									+'<option value="00:00">12:00am</option>'
 									+'<option value="00:30">12:30am</option>'
@@ -1166,7 +1207,7 @@ ul.nav.nav-tabs.tabs-left>li{
 							+'</div>'
 							+'<div style="width:33%;float:left;background:#F2F2F2;padding-top:10px;padding-bottom:10px;margin-left:10px;height:44px;vertical-align:middle;">'
 							+'<span style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Time End </span>'
-								+'<select id="e_end_time" name="e_end_time" type="time" style="font-size:14px;background:transparent;margin-left:5px;">'
+								+'<select id="e_end_time" name="e_end_time[]" type="time" style="font-size:14px;background:transparent;margin-left:5px;">'
 									+'<option value="" selected="selected"></option> '
 									+'<option value="00:00">12:00am</option>'
 									+'<option value="00:30">12:30am</option>'
@@ -1236,237 +1277,236 @@ ul.nav.nav-tabs.tabs-left>li{
             $("#op_type_user").attr("value", op_number);
         }
     </script>
-    <script>
-        var file_input_counter = 1;
-    $("#addmore-button").click(function () {
-        var content =   '<div class="panel" style="border-color: transparent; background:#a1bbc8;">'
-                            +'<div class="panel-body">'
-                                +'<div class="col-md-3">'
-                                    +'<button id="category_button" type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background:white;font-size:14px; width: 100%;">Categories'
-                                    +'</button>'
-                                    +'<ul class="dropdown-menu">'
-                                        +'<li><a onclick="change_category(this, 1024)">hotspots</a></li>'
-                                        +'<li><a onclick="change_category(this, 1)">icebreakers</a></li>'
-                                        +'<li><a onclick="change_category(this, 2048)">culture</a></li>'
-                                        +'<li><a onclick="change_category(this, 2)">meet ups</a></li>'
-                                        +'<li><a onclick="change_category(this, 64)">exploring your city</a></li>'
-                                        +'<li><a onclick="change_category(this, 128)">love and romance</a></li>'
-                                        +'<li><a onclick="change_category(this, 4)">parties</a></li>'
-                                        +'<li><a onclick="change_category(this, 8)">clubs</a></li>'
-                                        +'<li><a onclick="change_category(this, 16)">concerts</a></li>'
-                                        +'<li><a onclick="change_category(this, 32)">festivals</a></li>'
-                                        +'<li><a onclick="change_category(this, 256)">lounges</a></li>'
-                                        +'<li><a onclick="change_category(this, 512)">bars</a></li>'
-                                    +'</ul>'
-                                +'</div>'
-                                +'<input id="category_change" type="number" value="0" name="multi_categories[]" hidden>'
+//add multiple tickets
+<script>
+    var type_counters = 1;
+    //$(document).ready(function() {
+        //reloadVerificationCode(); // load the code pic first
+        function addMoreTickets(){
+            var content = "<div class='row ticket_group form-group-row' id='ticket_base" +type_counters+ "' style='padding:4%;'>"
+                +"<div class='col-md-6'>"
 
-                                +'<div class="col-md-3">'
-                                    +'<div class="left-inner-addon-ml">'
-                                        +'<input type="text" name="multi_e_name[]" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="Title">'
-                                    +'</div>'
-                                +'</div>'
+                +"<input name='type[]' type='text' class='select_type form-control' placeholder='Ticket Type' style='border-radius:0;background:#F2F2F2;border:none;box-shadow:none;' required>"
+                +"<textarea name='info[]' class='form-control' rows='3' placeholder='Ticket Info' style='border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px;'></textarea>"
+                +"<input type='text' name='max_date[]' class='form-control' placeholder='Deadline Date (yyyy/mm/dd)' style='border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px;'>"
+                +"<div class='row' style='margin:0;margin-top:10px;background:#F2F2F2;padding-top:5px;padding-bottom:5px;'>"
+                +"<div class='col-xs-6'>"
+                +"<span style='font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;'>Deadline Time</span>"
+                +"</div>"
+                +"<div class='col-xs-6'>"
+                +"<select name='max_time[]' type='time' class='pull-right form-control' style='font-size:14px;height:100%;background:transparent;margin-left:5px;'>"
+                +"<option value='' selected='selected'></option>"
+                +"<option value='00:00'>12:00am</option>"
+                +"<option value='00:30'>12:30am</option>"
+                +"<option value='01:00'>1:00am</option>"
+                +"<option value='01:30'>1:30am</option>"
+                +"<option value='02:00'>2:00am</option>"
+                +"<option value='02:30'>2:30am</option>"
+                +"<option value='03:00'>3:00am</option>"
+                +"<option value='03:30'>3:30am</option>"
+                +"<option value='04:00'>4:00am</option>"
+                +"<option value='04:30'>4:30am</option>"
+                +"<option value='05:00'>5:00am</option>"
+                +"<option value='05:30'>5:30am</option>"
+                +"<option value='06:00'>6:00am</option>"
+                +"<option value='06:30'>6:30am</option>"
+                +"<option value='07:00'>7:00am</option>"
+                +"<option value='07:30'>7:30am</option>"
+                +"<option value='08:00'>8:00am</option>"
+                +"<option value='08:30'>8:30am</option>"
+                +"<option value='09:00'>9:00am</option>"
+                +"<option value='09:30'>9:30am</option>"
+                +"<option value='10:00'>10:00am</option>"
+                +"<option value='10:30'>10:30am</option>"
+                +"<option value='11:00'>11:00am</option>"
+                +"<option value='11:30'>11:30am</option>"
+                +"<option value='12:00'>12:00pm</option>"
+                +"<option value='12:30'>12:30pm</option>"
+                +"<option value='13:00'>1:00pm</option>"
+                +"<option value='13:30'>1:30pm</option>"
+                +"<option value='14:00'>2:00pm</option>"
+                +"<option value='14:30'>2:30pm</option>"
+                +"<option value='15:00'>3:00pm</option>"
+                +"<option value='15:30'>3:30pm</option>"
+                +"<option value='16:00'>4:00pm</option>"
+                +"<option value='16:30'>4:30pm</option>"
+                +"<option value='17:00'>5:00pm</option>"
+                +"<option value='17:30'>5:30pm</option>"
+                +"<option value='18:00'>6:00pm</option>"
+                +"<option value='18:30'>6:30pm</option>"
+                +"<option value='19:00'>7:00pm</option>"
+                +"<option value='19:30'>7:30pm</option>"
+                +"<option value='20:00'>8:00pm</option>"
+                +"<option value='20:30'>8:30pm</option>"
+                +"<option value='21:00'>9:00pm</option>"
+                +"<option value='21:30'>9:30pm</option>"
+                +"<option value='22:00'>10:00pm</option>"
+                +"<option value='22:30'>10:30pm</option>"
+                +"<option value='23:00'>11:00pm</option>"
+                +"<option value='23:30'>11:30pm</option>"
+                +"</select>"
+                +"</div>"
+                +"</div>"
+                +"</div>"
 
-                                +'<div class="col-md-3">'
-                                    +'<div class="left-inner-addon-ml">'
-                                        +'<input id="multi_e_date[]" type="text" name="multi_e_date[]" class="form-control"  style="margin-top: 1px;font-size:15px; width: 100%;" placeholder="mm/dd/yyyy">'
-                                    +'</div>'
-                                +'</div>'
-                                +'<label class="col-sm-1 control-label" style="padding-top:10px;">period:</label>'
-                                +'<div class="col-sm-2">'
-                                    +'<select id="period" name="multi_period[]" type="number" class="form-control" style="padding:0;font-size:10px;">'
-                                      +'<option value="" selected="selected"></option>'
-                                      +'<option value="1">Every day</option>'
-                                      +'<option value="7">7 days </option>'
-                                      +'<option value="30">1 month</option>'
-                                      +'<option value="365">1 year</option>'
-                                      +'<option value="-1">Every week day</option>'
-                                      +'<option value="-7">Every weekend</option>'
-                                    +'</select>'
-                                +'</div>'
-                                +'<div class="col-md-3">'
-                                    +'<div class="left-inner-addon-ml">'
-                                        +'<select id="multi_start_time" name="multi_start_time[]" type="time" class="form-control" style="margin-top: 1px;font-size:15px; width: 100%;">'
-                                            +'<option value="" selected="selected">Start Time</option>'
-                                            +'<option value="00:00">12:00am</option>'
-                                            +'<option value="00:30">12:30am</option>'
-                                            +'<option value="01:00">1:00am</option>'
-                                            +'<option value="01:30">1:30am</option>'
-                                            +'<option value="02:00">2:00am</option>'
-                                            +'<option value="02:30">2:30am</option>'
-                                            +'<option value="03:00">3:00am</option>'
-                                            +'<option value="03:30">3:30am</option>'
-                                            +'<option value="04:00">4:00am</option>'
-                                            +'<option value="04:30">4:30am</option>'
-                                            +'<option value="05:00">5:00am</option>'
-                                            +'<option value="05:30">5:30am</option>'
-                                            +'<option value="06:00">6:00am</option>'
-                                            +'<option value="06:30">6:30am</option>'
-                                            +'<option value="07:00">7:00am</option>'
-                                            +'<option value="07:30">7:30am</option>'
-                                            +'<option value="08:00">8:00am</option>'
-                                            +'<option value="08:30">8:30am</option>'
-                                            +'<option value="09:00">9:00am</option>'
-                                            +'<option value="09:30">9:30am</option>'
-                                            +'<option value="10:00">10:00am</option>'
-                                            +'<option value="10:30">10:30am</option>'
-                                            +'<option value="11:00">11:00am</option>'
-                                            +'<option value="11:30">11:30am</option>'
-                                            +'<option value="12:00">12:00pm</option>'
-                                            +'<option value="12:30">12:30pm</option>'
-                                            +'<option value="13:00">1:00pm</option>'
-                                            +'<option value="13:30">1:30pm</option>'
-                                            +'<option value="14:00">2:00pm</option>'
-                                            +'<option value="14:30">2:30pm</option>'
-                                            +'<option value="15:00">3:00pm</option>'
-                                            +'<option value="15:30">3:30pm</option>'
-                                            +'<option value="16:00">4:00pm</option>'
-                                            +'<option value="16:30">4:30pm</option>'
-                                            +'<option value="17:00">5:00pm</option>'
-                                            +'<option value="17:30">5:30pm</option>'
-                                            +'<option value="18:00">6:00pm</option>'
-                                            +'<option value="18:30">6:30pm</option>'
-                                            +'<option value="19:00">7:00pm</option>'
-                                            +'<option value="19:30">7:30pm</option>'
-                                            +'<option value="20:00">8:00pm</option>'
-                                            +'<option value="20:30">8:30pm</option>'
-                                            +'<option value="21:00">9:00pm</option>'
-                                            +'<option value="21:30">9:30pm</option>'
-                                            +'<option value="22:00">10:00pm</option>'
-                                            +'<option value="22:30">10:30pm</option>'
-                                            +'<option value="23:00">11:00pm</option>'
-                                            +'<option value="23:30">11:30pm</option>'
-                                        +'</select>'
-                                    +'</div>'
-                                +'</div>'
+                +"<div class='col-md-6'>"
 
-                                +'<div class="col-md-5">'
-                                    +'<div class="left-inner-addon-ml">'
-                                        +'<input type="text" name="multi_address[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Location">'
-                                    +'</div>'
-                                +'</div>'
+                +"<input name='ticket_event_date[]' type='text' class='select_type form-control' placeholder='Event Date'style='border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px;'>"
+                +"<div class='row' style='margin:0;margin-top:10px;background:#F2F2F2;padding-top:5px;padding-bottom:5px;'>"
+                +"<div class='col-xs-6'>"
+                +"<span style='font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;'>Event Start</span>"
+                +"</div>"
+                +"<div class='col-xs-6'>"
+                +"<select name='ticket_start_time[]' type='time' class='pull-right form-control' style='font-size:14px;height:100%;background:transparent;margin-left:5px;'>"
+                +"<option value='' selected='selected'></option>"
+                +"<option value='00:00'>12:00am</option>"
+                +"<option value='00:30'>12:30am</option>"
+                +"<option value='01:00'>1:00am</option>"
+                +"<option value='01:30'>1:30am</option>"
+                +"<option value='02:00'>2:00am</option>"
+                +"<option value='02:30'>2:30am</option>"
+                +"<option value='03:00'>3:00am</option>"
+                +"<option value='03:30'>3:30am</option>"
+                +"<option value='04:00'>4:00am</option>"
+                +"<option value='04:30'>4:30am</option>"
+                +"<option value='05:00'>5:00am</option>"
+                +"<option value='05:30'>5:30am</option>"
+                +"<option value='06:00'>6:00am</option>"
+                +"<option value='06:30'>6:30am</option>"
+                +"<option value='07:00'>7:00am</option>"
+                +"<option value='07:30'>7:30am</option>"
+                +"<option value='08:00'>8:00am</option>"
+                +"<option value='08:30'>8:30am</option>"
+                +"<option value='09:00'>9:00am</option>"
+                +"<option value='09:30'>9:30am</option>"
+                +"<option value='10:00'>10:00am</option>"
+                +"<option value='10:30'>10:30am</option>"
+                +"<option value='11:00'>11:00am</option>"
+                +"<option value='11:30'>11:30am</option>"
+                +"<option value='12:00'>12:00pm</option>"
+                +"<option value='12:30'>12:30pm</option>"
+                +"<option value='13:00'>1:00pm</option>"
+                +"<option value='13:30'>1:30pm</option>"
+                +"<option value='14:00'>2:00pm</option>"
+                +"<option value='14:30'>2:30pm</option>"
+                +"<option value='15:00'>3:00pm</option>"
+                +"<option value='15:30'>3:30pm</option>"
+                +"<option value='16:00'>4:00pm</option>"
+                +"<option value='16:30'>4:30pm</option>"
+                +"<option value='17:00'>5:00pm</option>"
+                +"<option value='17:30'>5:30pm</option>"
+                +"<option value='18:00'>6:00pm</option>"
+                +"<option value='18:30'>6:30pm</option>"
+                +"<option value='19:00'>7:00pm</option>"
+                +"<option value='19:30'>7:30pm</option>"
+                +"<option value='20:00'>8:00pm</option>"
+                +"<option value='20:30'>8:30pm</option>"
+                +"<option value='21:00'>9:00pm</option>"
+                +"<option value='21:30'>9:30pm</option>"
+                +"<option value='22:00'>10:00pm</option>"
+                +"<option value='22:30'>10:30pm</option>"
+                +"<option value='23:00'>11:00pm</option>"
+                +"<option value='23:30'>11:30pm</option>"
+                +"</select>"
+                +"</div>"
+                +"</div>"
 
-                                +'<div class="col-md-2">'
-                                    +'<div class="left-inner-addon-ml">'
-                                        +'<input type="text" name="multi_city[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="City">'
-                                    +'</div>'
-                                +'</div>'
+                +"<div class='row' style='margin:0;margin-top:10px;background:#F2F2F2;padding-top:5px;padding-bottom:5px;'>"
+                +"<div class='col-xs-6'>"
+                +"<span style='font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;'>Event End</span>"
+                +"</div>"
+                +"<div class='col-xs-6'>"
+                +"<select name='ticket_end_time[]' type='time' class='pull-right form-control' style='font-size:14px;height:100%;background:transparent;margin-left:5px;'>"
+                +"<option value='' selected='selected'></option>"
+                +"<option value='00:00'>12:00am</option>"
+                +"<option value='00:30'>12:30am</option>"
+                +"<option value='01:00'>1:00am</option>"
+                +"<option value='01:30'>1:30am</option>"
+                +"<option value='02:00'>2:00am</option>"
+                +"<option value='02:30'>2:30am</option>"
+                +"<option value='03:00'>3:00am</option>"
+                +"<option value='03:30'>3:30am</option>"
+                +"<option value='04:00'>4:00am</option>"
+                +"<option value='04:30'>4:30am</option>"
+                +"<option value='05:00'>5:00am</option>"
+                +"<option value='05:30'>5:30am</option>"
+                +"<option value='06:00'>6:00am</option>"
+                +"<option value='06:30'>6:30am</option>"
+                +"<option value='07:00'>7:00am</option>"
+                +"<option value='07:30'>7:30am</option>"
+                +"<option value='08:00'>8:00am</option>"
+                +"<option value='08:30'>8:30am</option>"
+                +"<option value='09:00'>9:00am</option>"
+                +"<option value='09:30'>9:30am</option>"
+                +"<option value='10:00'>10:00am</option>"
+                +"<option value='10:30'>10:30am</option>"
+                +"<option value='11:00'>11:00am</option>"
+                +"<option value='11:30'>11:30am</option>"
+                +"<option value='12:00'>12:00pm</option>"
+                +"<option value='12:30'>12:30pm</option>"
+                +"<option value='13:00'>1:00pm</option>"
+                +"<option value='13:30'>1:30pm</option>"
+                +"<option value='14:00'>2:00pm</option>"
+                +"<option value='14:30'>2:30pm</option>"
+                +"<option value='15:00'>3:00pm</option>"
+                +"<option value='15:30'>3:30pm</option>"
+                +"<option value='16:00'>4:00pm</option>"
+                +"<option value='16:30'>4:30pm</option>"
+                +"<option value='17:00'>5:00pm</option>"
+                +"<option value='17:30'>5:30pm</option>"
+                +"<option value='18:00'>6:00pm</option>"
+                +"<option value='18:30'>6:30pm</option>"
+                +"<option value='19:00'>7:00pm</option>"
+                +"<option value='19:30'>7:30pm</option>"
+                +"<option value='20:00'>8:00pm</option>"
+                +"<option value='20:30'>8:30pm</option>"
+                +"<option value='21:00'>9:00pm</option>"
+                +"<option value='21:30'>9:30pm</option>"
+                +"<option value='22:00'>10:00pm</option>"
+                +"<option value='22:30'>10:30pm</option>"
+                +"<option value='23:00'>11:00pm</option>"
+                +"<option value='23:30'>11:30pm</option>"
+                +"</select>"
+                +"</div>"
+                +"</div>"
 
-                                +'<div class="col-md-2">'
-                                    +'<div class="left-inner-addon-ml">'
-                                        +'<select id="multi_state" name="multi_state[]" type="text" class="form-control" style="margin-top: 5px;font-size:15px; width: 100%;">'
-                                            +'<option value="" selected="selected">State</option>' 
-                                            +'<option value="AK">AK</option>'
-                                            +'<option value="AL">AL</option>'
-                                            +'<option value="AR">AR</option>'
-                                            +'<option value="AZ">AZ</option>'
-                                            +'<option value="CA">CA</option>'
-                                            +'<option value="CO">CO</option>'
-                                            +'<option value="CT">CT</option>'
-                                            +'<option value="DC">DC</option>'
-                                            +'<option value="DE">DE</option>'
-                                            +'<option value="FL">FL</option>'
-                                            +'<option value="GA">GA</option>'
-                                            +'<option value="HI">HI</option>'
-                                            +'<option value="IA">IA</option>'
-                                            +'<option value="ID">ID</option>'
-                                            +'<option value="IL">IL</option>'
-                                            +'<option value="IN">IN</option>'
-                                            +'<option value="KS">KS</option>'
-                                            +'<option value="KY">KY</option>'
-                                            +'<option value="LA">LA</option>'
-                                            +'<option value="MA">MA</option>'
-                                            +'<option value="MD">MD</option>'
-                                            +'<option value="ME">ME</option>'
-                                            +'<option value="MI">MI</option>'
-                                            +'<option value="MN">MN</option>'
-                                            +'<option value="MO">MO</option>'
-                                            +'<option value="MS">MS</option>'
-                                            +'<option value="MT">MT</option>'
-                                            +'<option value="NC">NC</option>'
-                                            +'<option value="ND">ND</option>'
-                                            +'<option value="NE">NE</option>'
-                                            +'<option value="NH">NH</option>'
-                                            +'<option value="NJ">NJ</option>'
-                                            +'<option value="NM">NM</option>'
-                                            +'<option value="NV">NV</option>'
-                                            +'<option value="NY">NY</option>'
-                                            +'<option value="OH">OH</option>'
-                                            +'<option value="OK">OK</option>'
-                                            +'<option value="OR">OR</option>'
-                                            +'<option value="PA">PA</option>'
-                                            +'<option value="RI">RI</option>'
-                                            +'<option value="SC">SC</option>'
-                                            +'<option value="SD">SD</option>'
-                                            +'<option value="TN">TN</option>'
-                                            +'<option value="TX">TX</option>'
-                                            +'<option value="UT">UT</option>'
-                                            +'<option value="VA">VA</option>'
-                                            +'<option value="VT">VT</option>'
-                                            +'<option value="WA">WA</option>'
-                                            +'<option value="WI">WI</option>'
-                                            +'<option value="WV">WV</option>'
-                                            +'<option value="WY">WY</option>'
-                                        +'</select>'
-                                    +'</div>'
-                                +'</div>'                     
+                +"<div class='row' style='margin-top:10px;'>"
+                +"<div class='col-sm-6'>"
+                +"<input type='number' max='500' min='1' name='e_quantity[]' class='form-control' placeholder='Quantity' style='border-radius:0;background:#F2F2F2;border:none;box-shadow:none;'>"
+                +"</div>"
+                +"<div class='col-sm-6'>"
+                +"<input id='e_price' type='number' step='0.01' min='0.00' name='e_price[]' value='0.00' class='e_price form-control'  placeholder='Price' style='border-radius:0;background:#F2F2F2;border:none;box-shadow:none;'>"
+                +"</div></div>"
+                +"<div class='row'  style='text-align:right;margin-top:10px'>"
+                +"<button type='button' class='remove_ticket btn' style='background:#808186;color:white;' >Delete</button>"
+                +"</div>"
+                +"</div>"
+                +"</div>";
 
-                                +'<div class="col-md-3">'
-                                    +'<div class="left-inner-addon-ml">'
-                                        +'<input type="text" name="multi_zipcode[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Zip Code">'
-                                    +'</div>'
-                                +'</div>'
-
-                                +'<div class="col-md-3">'
-                                    +'<div class="left-inner-addon-ml">'
-                                        +'<input type="text" name="multi_website[]" class="form-control"  style="margin-top: 5px;font-size:15px; width: 100%;" placeholder="Website">'
-                                    +'</div>'
-                                +'</div>'
-                        
-                                +'<div class="col-md-5">'
-                                    +'<textarea class="form-control" id="message" name="multi_description[]" placeholder="Description" rows="1" style="margin-top: 5px;font-size:15px; width: 100%;"></textarea>'
-                                +'</div>'
-                                +'<!--<div class="form-group row"> COMMENTED OUT FOR LATER'
-                                    +'<div style="text-align:center;">'
-                                        +'ticketed <input type="radio" name="multi_e_is_ticketed'+file_input_counter+'" value = "1"> '
-                                        +'nonticketed <input type="radio" name="multi_e_is_ticketed'+file_input_counter+'" value = "0" checked> '
-                                    +'</div>'
-                                +'</div>'
-
-                                +'<!-- INSERT TICKETS INTO HERE'
-                                +'<div>'
-                                    +'<div class="panel" style="background:none;padding:0;box-shadow:none;">'
-                                       +'<div class="multi_add_ticket_type" style="padding:0;">'
-
-                                       +'</div>'
-                                    +'</div>'
-                                +'</div><!--end of add ticket type'
-
-                                +'<div id="multi_add_more_base" style="text-align:right;" hidden>'
-                                    +'<a id="multi_add_more" type="button" class="btn" style="background:#478EBF;color:white;padding:3px;font-size:12px;margin-right:20px;margin-top:15px;"> Add More</a>'
-                                +'</div>-->'
-                                +'<div class="col-md-2" style="padding-top: 5px;">'
-                                    +'<label for="file-input-multi'+file_input_counter+'">'
-                                        +'<img src="<?php echo $PATH_IMG?>camera_icon.png" style="width:70%;">'
-                                    +'</label>'
-                                        +'<input id="file-input-multi'+file_input_counter+'" name="multi_file_input[]" type="file">'
-                                +'</div>'
-                            +'</div>'
-                        +'</div>';
-	$('#button_base').append(content);
-        $('input[type=radio][name=multi_e_is_ticketed'+file_input_counter+']').change(function() {
-            if (this.value == '1') {
-                $("#multi_add_more_base'+file_input_counter+'").show();
-                $("#multi_add_more'+file_input_counter+'").trigger("click");
+            $('.add_ticket_type').append(content);
+            if($('#freeticket').val() == '1') {
+                $('.e_price').hide();
             }
-            else if (this.value == '0') {
-                $("#multi_add_more_base'+file_input_counter+'").hide();
-                $(".multi_ticket_group").remove();
+            else {
+                $('.e_price').show();
             }
-        });
-        file_input_counter++;
+            $('.remove_ticket').on("click", function() {
+                $(this).parent().parent().parent().remove();
+                type_counters--;
+            });
+
+            type_counters++;
+        }
+    $('#freeticket').change(function () {
+        if($(this).val() == '1') {
+            $('.e_price').hide();
+        }
+        else {
+            $('.e_price').show();
+        }
     });
-    </script>
+</script>
+
     <script>
         function show_users(e) {
             //var regex = new RegExp("^[a-zA-Z0-9_]*$");
@@ -1624,111 +1664,7 @@ ul.nav.nav-tabs.tabs-left>li{
             $('#blog_author_edit').attr('placeholder', author);
         }
     </script>
-    <!--<script>
-    	var type_counters = 0;
-    	function multi_add_more_tickets(i) {
-            var content = "<div class='multi_ticket_group form-group-row' id='multi_ticket_base" +type_counters+ "'>"
-                             +"<div class='row'>"
-                             +"<div class='col-sm-3'>"
-                             +"<div>"
-                             +"Type"
 
-                                 +"<select name='multi_type[][]' type='text' class='select_type form-control' style='padding:0;' required>"
-                                     +"<option value='' selected='selected'></option>"
-                                     +"<option value='free'>Free</option>"
-                                     +"<option value='regular'>Regular</option>"
-                                     +"<option value='early bird'>Early Bird</option>"
-                                     +"<option value='v.i.p'>V.I.P.</option>"
-                                  +"</select></div><div>"
-                                  +"Price"
-                                  +"<input id='multi_e_price' type='number' step='0.01' min='0.00' name='multi_e_price[][]' value='0.00' class='e_price form-control'>"
-                                  +"<input type='hidden' value='nothing here'>"
-                              +"</div></div>"
-                             +"<div class='col-sm-4' alt='You can drag this text box around to make it larger' title='You can drag this text box around to make it larger'> Info"
-                                 +"<textarea name='multi_info[][]' class='form-control' rows='3'></textarea>"
-                             +"</div>"
-                             +"<div class='col-sm-2'>Qty."
-                                 +"<input type='number' max='500' min='1' name='e_quantity[]' class='form-control'>"
-                                 +"Deadline"
-                                 +"<input type='text' name='multi_max_date[][]' class='d_date form-control' placeholder='mm/dd/yyyy'>"
-                             +"</div>"
-
-
-                             +"<div class='col-sm-2'>Time"
-                                 +"<select name='multi_max_time[][]' type='time' class='form-control' style='padding:0;'>"
-                                     +"<option value='' selected='selected'></option>"
-                                     +"<option value='00:00'>12:00am</option>"
-                                     +"<option value='00:30'>12:30am</option>"
-                                     +"<option value='01:00'>1:00am</option>"
-                                     +"<option value='01:30'>1:30am</option>"
-                                     +"<option value='02:00'>2:00am</option>"
-                                     +"<option value='02:30'>2:30am</option>"
-                                     +"<option value='03:00'>3:00am</option>"
-                                     +"<option value='03:30'>3:30am</option>"
-                                     +"<option value='04:00'>4:00am</option>"
-                                     +"<option value='04:30'>4:30am</option>"
-                                     +"<option value='05:00'>5:00am</option>"
-                                     +"<option value='05:30'>5:30am</option>"
-                                     +"<option value='06:00'>6:00am</option>"
-                                     +"<option value='06:30'>6:30am</option>"
-                                     +"<option value='07:00'>7:00am</option>"
-                                     +"<option value='07:30'>7:30am</option>"
-                                     +"<option value='08:00'>8:00am</option>"
-                                     +"<option value='08:30'>8:30am</option>"
-                                     +"<option value='09:00'>9:00am</option>"
-                                     +"<option value='09:30'>9:30am</option>"
-                                     +"<option value='10:00'>10:00am</option>"
-                                     +"<option value='10:30'>10:30am</option>"
-                                     +"<option value='11:00'>11:00am</option>"
-                                     +"<option value='11:30'>11:30am</option>"
-                                     +"<option value='12:00'>12:00pm</option>"
-                                     +"<option value='12:30'>12:30pm</option>"
-                                     +"<option value='13:00'>1:00pm</option>"
-                                     +"<option value='13:30'>1:30pm</option>"
-                                     +"<option value='14:00'>2:00pm</option>"
-                                     +"<option value='14:30'>2:30pm</option>"
-                                     +"<option value='15:00'>3:00pm</option>"
-                                     +"<option value='15:30'>3:30pm</option>"
-                                     +"<option value='16:00'>4:00pm</option>"
-                                     +"<option value='16:30'>4:30pm</option>"
-                                     +"<option value='17:00'>5:00pm</option>"
-                                     +"<option value='17:30'>5:30pm</option>"
-                                     +"<option value='18:00'>6:00pm</option>"
-                                     +"<option value='18:30'>6:30pm</option>"
-                                     +"<option value='19:00'>7:00pm</option>"
-                                     +"<option value='19:30'>7:30pm</option>"
-                                     +"<option value='20:00'>8:00pm</option>"
-                                     +"<option value='20:30'>8:30pm</option>"
-                                     +"<option value='21:00'>9:00pm</option>"
-                                     +"<option value='21:30'>9:30pm</option>"
-                                     +"<option value='22:00'>10:00pm</option>"
-                                     +"<option value='22:30'>10:30pm</option>"
-                                     +"<option value='23:00'>11:00pm</option>"
-                                     +"<option value='23:30'>11:30pm</option>"
-                                 +"</select>"
-                             +"</div>"
-                             +"</div>"
-                             +"<a href='#' class='remove_ticket'>X</a>"
-                           +"</div>";
-            console.log($(i));
-            $('.multi_add_ticket_type').append(content);
-            $('.remove_ticket').on("click", function() {
-                   $(this).parent().remove();
-                   type_counters--;
-            });
-            $('.select_type').change(function() {
-                //alert($(this).parent().parentchildren());
-                if($(this).val() == 'free') {
-                    console.log($(this).parent().parent().children().children('.e_price'));
-                    $(this).parent().parent().children().children('.e_price').attr('value', '0.00');
-                    $(this).parent().parent().children().children('.e_price').parent().hide();
-                }
-                else
-                    $(this).parent().parent().children().children('.e_price').parent().show();
-            });
-            type_counters++;
-    	};
-    </script>
     <script>
     	$(document).ready(function() {
     		$('input[type=radio][name=multi_e_is_ticketed0]').change(function() {
@@ -1738,12 +1674,143 @@ ul.nav.nav-tabs.tabs-left>li{
                 //$(this).siblings("#multi_add_more").trigger("click");
             }
             else if (this.value == '0') {
-                $("#multi_add_more_base0").hide();
+                $("#multi_add_more_base").hide();
                 $(".multi_ticket_group").remove();
             }
         });
 	});
-    </script>-->
+    </script>
+
+    <script>
+        //second form
+        document.getElementById("e_name").onkeyup=function(){TypeInWrevsDetails()};
+        document.getElementById("e_description").onkeyup=function(){TypeInWrevsDetails()};
+        document.getElementById("e_date").onkeyup=function(){TypeInWrevsDetails()};
+        document.getElementById("e_start_time").onclick=function(){TypeInWrevsDetails()};
+        function TypeInWrevsDetails()
+        {
+
+            var name_value = document.getElementById("e_name").value;
+            var description_value = document.getElementById("e_description").value;
+            var date_value = document.getElementById("e_date").value;
+            var start_time_value = document.getElementById("e_start_time").value;
+            if(name_value!="" && description_value!="" && date_value!="" && start_time_value!=""){
+
+                document.getElementById("details_form").innerHTML = "Type in the Wrevs details &#10003";
+            }else{
+                document.getElementById("details_form").innerHTML = "Type in the Wrevs details";
+            }
+
+        }
+
+        //third form
+        document.getElementById("isTicked").onclick=function(){isChooseTicked();};
+            function isChooseTicked(){
+                if($( "#isTicked option:selected" ).val()=="0"){
+                    $("#tickets_form").hide();
+                    $("#delivery_form").hide();
+                }else{
+                    if($("#freeticket").val()=="1"){
+                        $('.e_price').hide();
+                        $("#tickets_form").show();
+                        $("#delivery_form").show();
+                    }
+                    else{
+                        $('.e_price').show();
+                        $("#tickets_form").show();
+                        $("#delivery_form").show();
+                    }
+                }
+            }
+
+
+
+        //fifth from:delivery choose
+        document.getElementById("delivery1").onclick=function(){displayDeliveryCharge1()};
+        function displayDeliveryCharge1()
+        {
+            //add info to fill
+            $(".paperless-info").hide();
+
+            //edit the name of three buttons so that we can get what we want in controller file
+            var $$ = $("#delivery1");
+            if( !$$.is('.checked')){
+                $$.addClass('checked');
+                document.getElementById("input_will_call").setAttribute('name', 'will_call_active');
+                $(".will-call-info").show();
+            }
+            else {
+                $$.removeClass('checked');
+                document.getElementById("input_will_call").setAttribute('name', 'will_call_input');
+                $(".will-call-info").hide();
+            }
+            document.getElementById("delivery_form").innerHTML = "Delivery Method Set up &#10003";
+        }
+
+        document.getElementById("delivery2").onclick=function(){displayDeliveryCharge2()};
+        function displayDeliveryCharge2()
+        {
+
+            $(".will-call-info").hide();
+            $(".paperless-info").hide();
+
+            //edit the name of three buttons so that we can get what we want in controller file
+            var $$ = $("#delivery2");
+            if( !$$.is('.checked')){
+                $$.addClass('checked');
+                document.getElementById("input_print").setAttribute('name', 'print_active');
+            }
+            else {
+                $$.removeClass('checked');
+                document.getElementById("input_print").setAttribute('name', 'print_input');
+            }
+            document.getElementById("delivery_form").innerHTML = "Delivery Method Set up &#10003";
+        }
+
+        document.getElementById("delivery3").onclick=function(){displayDeliveryCharge3()};
+        function displayDeliveryCharge3()
+        {
+            //add info to fill
+            $(".will-call-info").hide();
+            $(".paperless-info").hide();
+
+            //edit the name of three buttons so that we can get what we want in controller file
+            var $$ = $("#delivery3");
+            if( !$$.is('.checked')){
+                $$.addClass('checked');
+                document.getElementById("input_mail").setAttribute('name', 'mail_active');
+            }
+            else {
+                $$.removeClass('checked');
+                document.getElementById("input_mail").setAttribute('name', 'mail_input');
+            }
+
+            document.getElementById("delivery_form").innerHTML = "Delivery Method Set up &#10003";
+        }
+
+        document.getElementById("delivery4").onclick=function(){displayDeliveryCharge4()};
+        function displayDeliveryCharge4()
+        {
+            //add info to fill
+            $(".will-call-info").hide();
+
+            //edit the name of three buttons so that we can get what we want in controller file
+            var $$ = $("#delivery4");
+            if( !$$.is('.checked')){
+                $$.addClass('checked');
+                document.getElementById("input_paperless").setAttribute('name', 'paperless_active');
+                $(".paperless-info").show();
+            }
+            else {
+                $$.removeClass('checked');
+                document.getElementById("input_paperless").setAttribute('name', 'paperless_input');
+                $(".paperless-info").hide();
+            }
+
+            document.getElementById("delivery_form").innerHTML = "Delivery Method Set up &#10003";
+        }
+
+    </script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

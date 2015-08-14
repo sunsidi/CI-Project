@@ -40,7 +40,7 @@
           <label class="sr-only">Email address</label>
           <input id="cookie_search" type="text" name="search" class="form-control" style="font-size:20px;width: 220px;" placeholder="search name of wrev"></div>
           <div class="btn-group" style="float:left; border-radius:5px;">
-         <input id="cookie_price" type="number" name="price" class="form-control" data-toggle="dropdown" style="font-size:20px; padding:1px 10px;" placeholder="price"></input>
+         <input id="cookie_price" type="number" name="price" class="form-control" data-toggle="dropdown" style="font-size:20px; padding:1px 10px;" placeholder="price">
         
           <!--<span class="caret"></span>
         </button>
@@ -119,7 +119,7 @@
         
       
   
-        <input type="submit" class="btn" style="background:#1C74BB; color:white; font-size:20px; padding:1px 10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);" value="go"></input>
+        <input type="submit" class="btn" style="background:#1C74BB; color:white; font-size:20px; padding:1px 10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .3);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);box-shadow:2px 2px 2px rgba(0, 0, 0, .3);" value="go">
     <!--</form>-->
           <?php echo form_close()?>
 </div>
@@ -228,7 +228,7 @@
             <div class="row" style="text-align:center; padding:10px;">
             <!--<a href="#"><button type="button" class="btn btn-lg" style="background:#1A75BF; color:white; font-size:25px; padding:10px; border-radius:10px;-moz-box-shadow:2px 2px 2px rgba(0, 0, 0, .5);-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);box-shadow:2px 2px 2px rgba(0, 0, 0, .5);">View more</button></a>-->
             <?php if($this->session->userdata('is_logged_in')) {?>
-            <a href="#" data-toggle="modal" data-target="#create" class="btn btn-lg createwrev" style="font-size:25px; padding:10px;border-radius:10px;">Create a Wrev</a>
+            <a href="<? echo base_url()?>event/Create_Wrevel_View"  class="btn btn-lg createwrev" style="font-size:25px; padding:10px;border-radius:10px;">Create a Wrev</a>
             <?php }?>
 			</div>              
 </div>

@@ -652,7 +652,14 @@ public function index()
 		$this->form_validation->set_rules('password-signup','Password','required|min_length[7]|trim');
 		$this->form_validation->set_rules('cpassword-signup', 'Confirm Password','required|trim|matches[password-signup]' );
 		$this->form_validation->set_rules('agreement-signup','Agreement','callback_check');
-
+//        $this->form_validation->set_rules('image-signup','Image','required');
+//        $config['upload_path']='./uploads/profile/'.['user_id'].'/'; //change it to a user specific directory
+//        //if user specific directory does not exist...then create one and then upload
+//        $config['allowed_types']= 'gif|jpg|png|jpeg';
+//
+//        $config['max_size']	= '10000';
+//        //echo $image_name;
+//        $this->load->library('upload',$config);
 
 		//$this->form_validation->setmessage('is_unique',"The email address already exists");
 			if($this->form_validation->run()){
@@ -680,7 +687,9 @@ public function index()
                                         'fullname'=>$fullname,
                                         'password'=> md5($this->input->post('password-signup')),
                                         'key' => $key,
-                                        'business' => $this->input->post('business'));
+                                        'business' => $this->input->post('business'),
+                        'image_key' => $this->input->post('image-signup')
+                );
 
 				if($this->model_users->add_temp_users($data))
 				{
@@ -795,7 +804,8 @@ public function index()
             $info = $this->model_users->get_info($email);
             $result = array_merge($info,$nav_data,$path);
             //echo "<pre> ",print_r($result,true) ,"</pre>";
-            $this->load->view('Create_Wrevel_View',$path);
+            //$this->load->view('Create_Wrevel_View',$path);
+            //$this->load->view('createwrev',$path);
             $this->load->view('mywrevs',$result);
     	    }
 	}
@@ -932,7 +942,8 @@ public function get_related_events($category)
 
       //print_r($result);
       //echo print_r($result);
-      $this->load->view('Create_Wrevel_View', $path);
+      //$this->load->view('Create_Wrevel_View', $path);
+      //$this->load->view('createwrev', $path);
       $this->load->view('event_template',$result);
 
       //$this->model_events->print_values();
@@ -990,7 +1001,8 @@ public function get_related_events($category)
 
       //print_r($result);
       //echo print_r($result);
-      $this->load->view('Create_Wrevel_View', $path);
+      //$this->load->view('Create_Wrevel_View', $path);
+      //$this->load->view('createwrev', $path);
       $this->load->view('event_template',$result);
 
       //$this->model_events->print_values();
@@ -1028,7 +1040,8 @@ public function get_related_events($category)
     $all = array_merge($data,$eventMap,$nav_data);
 
       //echo "<pre> ",print_r($all,true) ,"</pre>";
-    $this->load->view('Create_Wrevel_View', $path);
+    //$this->load->view('Create_Wrevel_View', $path);
+    //$this->load->view('createwrev', $path);
     $this->load->view('latestwrevs',$all);
 
   }
@@ -1063,7 +1076,8 @@ public function get_related_events($category)
     $all = array_merge($data,$eventMap,$nav_data);
 
       //echo "<pre> ",print_r($all,true) ,"</pre>";
-    $this->load->view('Create_Wrevel_View', $path);
+    //$this->load->view('Create_Wrevel_View', $path);
+    //$this->load->view('createwrev', $path);
     $this->load->view('latestwrevs_testing',$all);
 
   }
@@ -1102,7 +1116,8 @@ public function get_related_events($category)
     $all = array_merge($data,$eventMap,$nav_data);
 
       //echo "<pre> ",print_r($all,true) ,"</pre>";
-    $this->load->view('Create_Wrevel_View', $path);
+    //$this->load->view('Create_Wrevel_View', $path);
+    //$this->load->view('createwrev', $path);
     $this->load->view('latestwrevs',$all);
 
   }

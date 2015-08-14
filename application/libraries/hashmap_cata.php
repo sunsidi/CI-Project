@@ -20,7 +20,7 @@ class Hashmap_cata {
 
 	private $hashmap;
 	private $eventmap;
- 
+    private $deliverymap;
 
 				public function __construct()
 	{
@@ -139,11 +139,19 @@ class Hashmap_cata {
 													  'theme-color-2' =>'rgba(196,149,79,0.8)'),
 								'latest'=> array('theme-color-1' =>'rgb(180,182,201)',)
 
-		 ); 
+		 );
 
-	 }
+        $this->deliverymap = array(
+            1 => 'will call',
+            2 => 'print',
+            4 => 'mail',
+            8 => 'paperless',
+
+        );
+
+    }
         
-       
+       //recognize category
        public function hash($hashkey)
        {
 
@@ -167,6 +175,23 @@ class Hashmap_cata {
 
 	return $data; 
        }
+
+        //recognize delivery
+       public function deliveryHash($deliverykey){
+           $data = array();
+           $count = 0;
+           for($i = 3; $i>=0; $i--){
+               if($deliverykey>=pow(2,$i)){
+                   $deliverykey -= pow(2,$i);
+                   $data[$count] = $this->deliverymap[pow(2,$i)];
+                   $count++;
+               }
+           }
+           return $data;
+       }
+
+
+
        public function get_EventMap()
        {
        	return $this->eventmap;

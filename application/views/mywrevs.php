@@ -76,7 +76,7 @@ what is mywrevs?</p>
                 <p class="text" style=" font-size: 18px; width:80%;"><b>mywrevs</b> allows you to create/host your own parties and events, which also include a unique ticket system.</p>
             
             <?php if($this->session->userdata('is_logged_in')) {?>
-            <a href="#" data-toggle="modal" data-target="#create" class="btn btn-lg create-btn" style=" font-size:25px; padding:5px 10px;border-radius:5px;border:2px solid #414042; margin-left:15%; ">create a wrev</a>
+            <a href="<? echo base_url()?>event/Create_Wrevel_View"  class="btn btn-lg create-btn" style=" font-size:25px; padding:5px 10px;border-radius:5px;border:2px solid #414042; margin-left:15%; ">create a wrev</a>
            <?php }?>
             </div>
             
