@@ -961,8 +961,8 @@ ul.nav.nav-tabs.tabs-left>li{
 								
 							</div>	
 							<div class="row">
-								<input class='form-control will-call-info' placeholder="Will Call Info (ie. Address for pick up)" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px; display:none;" hidden>
-								<input class='form-control paperless-info' placeholder="Paperless Info" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px; display:none;" hidden>
+								<input name="will_call_info" class='form-control will-call-info' placeholder="Will Call Info (ie. Address for pick up)" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px; display:none;" hidden>
+								<input name="paperless_info" class='form-control paperless-info' placeholder="Paperless Info" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px; display:none;" hidden>
 <!--									<script>-->
 <!--									-->
 <!--									$('.will-call').click(function(){-->

@@ -490,6 +490,12 @@ class Model_events extends CI_Model{
                 $this->db->insert('event_ticket_types',$ticket_data);
 
         }
+        $delivery_data = array(
+            'event_id' => $query_id,
+            'will_call_info' => strip_tags($this->input->post('will_call_info')),
+            'paperless_info' => strip_tags($this->input->post('paperless_info'))
+        );
+           $this->db->insert('event_ticket_delivery',$delivery_data);
        }
        if($lowest_price == -1)
         $lowest_price = 0;
