@@ -360,6 +360,15 @@ background:#414042;
      url('../fonts/ReporterLTStd-2.otf');
 }
 
+@font-face {
+  font-family: 'Monaco';
+    src: url('../fonts/Monaco.eot');/*IE*/
+    src: url('../fonts/Monaco.eot?#iefix') format('embedded-opentype'),
+     url('../fonts/Monaco.ttf') format('truetype'),
+     url('../fonts/Monaco.otf');
+}
+
+
 .wrev-tabs{
 	font-size:18px;
 	
@@ -1766,6 +1775,14 @@ font-weight:bold;
 background:#EDF1F4;
 }
 
+.print-ticket-box{
+background:#F0F1F1;
+font-family:GillSans;
+font-size:20px;
+padding:20px;
+border-radius:15px;
+color:#414042;
+}
 
 @media (max-width: 1025px){
   .eventlist{
