@@ -783,7 +783,7 @@ jQuery(document).ready(function () {
                                 <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
                                 <div class="modal-dialog" style="width:80%; ">
                                 <div class="modal-content" style="background-color: transparent; box-shadow: none; border-color: transparent;">
-                                <div class="panel" style="background-color: transparent; box-shadow: none; border-color: transparent;">
+                                <div class="panel" style="background-color: transparent; box-shadow: none; border-color: transparent;font-size:initial;">
 
                                 <div class="panel-heading" style="background-color: #2BB473; height: 55px;">
                                     <p style="font-size: 150%; color: white;text-align: center;">

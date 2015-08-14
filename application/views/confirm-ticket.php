@@ -17,11 +17,11 @@
 
 <div class="row">
 	<div class="col-md-8 col-md-offset-2" style="padding-top: 80px; padding-bottom: 45px;">
-		<div class="row" style="background:#2BB473;text-align:center;padding:8px;color:white;font-size:150%;margin:0;font-weight:bold;">
+		<div class="row" style="background:#2BB473;text-align:center;padding:8px;color:white;font-size:150%;font-weight:bold;">
 			<strong style="vertical-align:middle;">BUY TICKETS CONFIRMATION PAGE</strong>
 			<a href="<?php echo base_url()."main/mywrevs"?>" class="btn"  style="float: right;border-radius:5px;font-size:17px;background: #ffffff;color: black;"><b>Back to event listing</b></a>
 		</div>
-		<div class="row confirm-info" style="font-weight:bold;margin-top:10px;">
+		<div class="row confirm-info" style="font-weight:bold;padding:20px;background:#E5E6E7;">
 			<div class="col-md-5 confirm-info-left">
                 <?php
                     $ticket = $this->session->userdata('ticket');
