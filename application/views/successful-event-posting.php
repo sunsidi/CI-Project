@@ -30,7 +30,7 @@
      			<div class="row" style="background:#E2E9EE;text-align:center; padding:50px 20px; font-size:20px; color:black; border-bottom-left-radius:10px; border-bottom-right-radius:10px;">
      				<p>Congratulations!</p>
                     <p>Your event has been posted successfully and you have just earned 1 Reputation point!</p>
-                  	<p><a href="#" data-toggle="modal" data-target="#create"><button class="btn" type="button" style="background:#79749E; font-size:20px; color:white;">Create another Wrev</button></a></p>
+                  	<p><a href="<? echo base_url()?>event/Create_Wrevel_View" ><button class="btn" type="button" style="background:#79749E; font-size:20px; color:white;">Create another Wrev</button></a></p>
                     <p><a href="<?php echo base_url()."main/mywrevs"?>"><button class="btn" type="button" style="background:#6CA5CC; font-size:20px; color:white;">My Wrevs</button></a></p>  
     			</div>
      		</div>

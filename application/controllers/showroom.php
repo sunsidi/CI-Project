@@ -430,7 +430,8 @@ echo "1";
                     $result = $data;
                     //echo '<pre>', print_r($result, true), '</pre>';
                     //$this->load->view('header', $result);
-                    $this->load->view('Create_Wrevel_View', $path);
+                    //$this->load->view('Create_Wrevel_View', $path);
+                    //$this->load->view('createwrev', $path);
                     if($business_bool) {
                         $this->load->view('business_profile', $result);
                     }

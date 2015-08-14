@@ -213,7 +213,7 @@ ul.ticket-event-dp > li > a:hover{
                                   <input name="zipcode" type="text" placeholder="Zip" pattern=".{5,5}" maxlength="5" style="border:1px solid #717477; border-radius:5px;padding:6.5px;width:65px;font-size:13px;height:27px;" onkeypress='return event.charCode >= 48 && event.charCode <= 57' oninput="check(this)">
                                  </div>
                                 <!--<input type="text" class="form-control"  style="font-size:20px; width: 180px;" placeholder="New York, NY">-->
-                                <input type="submit" class="btn" style="background:#1C74BB; color:white; padding:1px 10px;font-size:14px;" value="go"></input>
+                                <input type="submit" class="btn" style="background:#1C74BB; color:white; padding:1px 10px;font-size:14px;" value="go">
                 		</div>
                        
         
@@ -281,7 +281,8 @@ ul.ticket-event-dp > li > a:hover{
 		
                 <div class="row" style="text-align:center; padding:10px;">
 <!--                                    <a href="#"><button type="button" class="btn btn-lg" style="background:#1A75BF; color:white; font-size:20px; padding:5px;">View more</button></a> -->
-                                    <a href="#" data-toggle="modal" data-target="#create" class="btn btn-lg createwrevb" style="font-size:20px; padding:5px 10px;border-radius:10px;">Create a Wrev</a>
+<!--                                    <a href="#" data-toggle="modal" data-target="#create" class="btn btn-lg createwrevb" style="font-size:20px; padding:5px 10px;border-radius:10px;">Create a Wrev</a>-->
+                    <a href="<?php echo base_url().'event/Create_Wrevel_View'?>"  class="btn btn-lg createwrevb" style="font-size:20px; padding:5px 10px;border-radius:10px;">Create a Wrev</a>
                 </div>
             </div>
         </div>

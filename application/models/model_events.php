@@ -371,28 +371,33 @@ class Model_events extends CI_Model{
         $data['e_is_address_hide'] = $this->input->post('e_is_hide');
         $data['e_is_online'] = $this->input->post('e_is_online');
         $data['e_is_ticketed'] = $this->input->post('e_is_ticketed');
-        if($this->input->post('e_type') == 'private') {
-                $data['e_private'] = 1;
-        }
+        $data['e_venue'] = strip_tags($this->input->post('e_venue'));
+        $data['e_private'] =  $this->input->post('e_type');
+        $date['e_is_free'] = $this->input->post('e_is_free');
+        $date['e_is_quantity_hide'] = $this->input->post('e_is_quantity_hide');
 
-        //$data['e_end_time'] = $this->input->post('e_date').' '.$this->input->post('e_end_time');
-        if($this->input->post('e_end_time') == NULL)
-                $data['e_end_time'] = strip_tags($this->input->post('e_end_time'));
-        else
-                $data['e_end_time'] = $this->timestamp(strip_tags($this->input->post('e_end_time')));
-        //echo $data['e_end_time'];
+//        //$data['e_end_time'] = $this->input->post('e_date').' '.$this->input->post('e_end_time');
+//        if($this->input->post('e_end_time') == NULL)
+//                $data['e_end_time'] = strip_tags($this->input->post('e_end_time'));
+//        else
+//                $data['e_end_time'] = $this->timestamp(strip_tags($this->input->post('e_end_time')));
+//        //echo $data['e_end_time'];
+//
+//        //$data['e_start_time'] = $this->input->post('e_date').' '.$this->input->post('e_start_time');
+//        //echo $this->input->post('e_start_time');
+//        $data['e_start_time'] = $this->timestamp(strip_tags($this->input->post('e_start_time')));
+//        //echo $data['e_end_time'];
+//
+//
+//        $temp_date = strip_tags($this->input->post('e_date'));
+//        $split_date = explode('/',$temp_date);
+//        $real_date = $split_date[2] . '-' . $split_date[0] . '-' . $split_date[1];
+//        $data['e_date'] = $real_date;
+//        //echo $data['e_date'];
 
-        //$data['e_start_time'] = $this->input->post('e_date').' '.$this->input->post('e_start_time');
-        //echo $this->input->post('e_start_time');
-        $data['e_start_time'] = $this->timestamp(strip_tags($this->input->post('e_start_time')));
-        //echo $data['e_end_time'];
 
 
-        $temp_date = strip_tags($this->input->post('e_date'));
-        $split_date = explode('/',$temp_date);
-        $real_date = $split_date[2] . '-' . $split_date[0] . '-' . $split_date[1];
-        $data['e_date'] = $real_date;
-        //echo $data['e_date'];
+
         if($this->input->post('period') > 0)
                 $data['period'] = $this->input->post('period');
         else if($this->input->post('period') == -1) {
@@ -410,6 +415,7 @@ class Model_events extends CI_Model{
         $this->input->post('clubs')+ $this->input->post('concerts')+$this->input->post('festivals')+$this->input->post('lounges')+
         $this->input->post('bars');
 
+        $data['e_delivery']=  $this->input->post('will_call_active') +  $this->input->post('print_active') +  $this->input->post('mail_active') +  $this->input->post('paperless_active');
        /* 
         echo $this->input->post('e_is_free')."<br/>";
         echo $this->input->post('e_price')."<br/>";
@@ -423,6 +429,39 @@ class Model_events extends CI_Model{
        $data['e_pricetemp'] = $lowest_price;
        $this->db->insert('events',$data);
        $query_id = $this->db->insert_id();
+
+        //insert events time
+        $temp1_events_date =  $this->input->post('e_date');
+        $temp1_e_start_time =  $this->input->post('e_start_time');
+        $temp1_e_end_time =  $this->input->post('e_end_time');
+
+        for($i = 0; $i < count($temp1_events_date); $i++) {
+            $split_date = explode('/',strip_tags($temp1_events_date[$i]));
+            $real_date = $split_date[2] . '-' . $split_date[0] . '-' . $split_date[1];
+            $temp_events_time_data['e_date'][$i] = $real_date;
+            if($temp1_e_start_time[$i] == NULL){
+                $temp_events_time_data['e_start_time'][$i] = strip_tags($temp1_e_start_time[$i]);
+            }else{
+                $temp_events_time_data['e_start_time'][$i] = $this->timestamp(strip_tags($temp1_e_start_time[$i]));
+            }
+
+            if($temp1_e_end_time[$i] == NULL){
+                $temp_events_time_data['e_end_time'][$i] = strip_tags($temp1_e_end_time[$i]);
+            }else{
+                $temp_events_time_data['e_end_time'][$i] = $this->timestamp(strip_tags($temp1_e_end_time[$i]));
+            }
+            $events_time_data = array('event_id' => $query_id,
+                'e_date'	=> $temp_events_time_data['e_date'][$i],
+                'e_start_time'	=> $temp_events_time_data['e_start_time'][$i],
+                'e_end_time' => $temp_events_time_data['e_end_time'][$i]
+
+            );
+
+            $this->db->insert('events_time',$events_time_data);
+
+        }
+
+
        if($data['e_is_ticketed']) {
         $ticket_type = $this->input->post('type');
         $ticket_info = $this->input->post('info');
@@ -430,7 +469,9 @@ class Model_events extends CI_Model{
         $ticket_price = $this->input->post('e_price');
         $ticket_date = $this->input->post('max_date');
         $ticket_time = $this->input->post('max_time');
-
+        $ticket_event_date = $this->input->post('ticket_event_date');
+        $ticket_start_time = $this->input->post('ticket_start_time');
+        $ticket_end_time = $this->input->post('ticket_end_time');
         for($i = 0; $i < count($ticket_type); $i++) {
                 $ticket_data = array('event_id' => $query_id,
                                      'type'	=> strip_tags($ticket_type[$i]),
@@ -438,10 +479,15 @@ class Model_events extends CI_Model{
                                      'quantity' => strip_tags($ticket_quantity[$i]),
                                      'price'	=> strip_tags($ticket_price[$i]),
                                      'date'	=> strip_tags($ticket_date[$i]),
-                                     'time'	=> $this->timestamp(strip_tags($ticket_time[$i])));
+                                     'time'	=> $this->timestamp(strip_tags($ticket_time[$i])),
+                                     'ticket_date' => strip_tags($ticket_event_date[$i]),
+                                     'ticket_start_time' => $this->timestamp(strip_tags($ticket_start_time[$i])),
+                                     'ticket_end_time' => $this->timestamp(strip_tags($ticket_end_time[$i]))
+                );
+
                 if($lowest_price != 0 || $lowest_price > $ticket_price[$i])
                         $lowest_price = $ticket_price[$i];
-                $this->db->insert('event_ticket_types', $ticket_data);
+                $this->db->insert('event_ticket_types',$ticket_data);
 
         }
        }

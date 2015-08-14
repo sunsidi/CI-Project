@@ -553,7 +553,10 @@ position:absolute;
 
 
                     <div class="row" style="text-align:center; padding:10px;">
-                        <a href="#"  data-toggle="modal" data-target="#create" class="btn btn-lg createwrev" style=" font-size:20px; padding:5px;border-radius:10px;">Create a Wrev</a>
+<!--                        <a href="#"  data-toggle="modal" data-target="#create" class="btn btn-lg createwrev" style=" font-size:20px; padding:5px;border-radius:10px;">Create a Wrev</a>-->
+
+                        <a href="<? echo base_url()?>event/Create_Wrevel_View"  class="btn btn-lg createwrev" style=" font-size:20px; padding:5px;border-radius:10px;">Create a Wrev</a>
+
                         <br>
 
 

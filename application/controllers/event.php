@@ -180,8 +180,7 @@ class Event extends CI_Controller {
 
 
                 //echo "<pre> ",print_r($data,true) ,"</pre>";
-               $this->load->view('Create_Wrevel_View',$result);
-
+               //$this->load->view('Create_Wrevel_View',$result);
 
            //add new single Event
            if($event_id == '15049'){
@@ -204,7 +203,8 @@ class Event extends CI_Controller {
                 //echo "<br/>";
                 //echo $this->input->post('e_name');
 
-                $this->load->view('Create_Wrevel_View',$data);
+                //$this->load->view('Create_Wrevel_View',$data);
+                $this->load->view('createwrev',$data);
 
 
 
@@ -224,7 +224,7 @@ class Event extends CI_Controller {
             $id = $this->model_users->get_userID($email);
 
             if((!$this->session->userdata('is_logged_in'))) {
-
+                echo "e database";
             }else{
             $event_id = $this->model_events->create_event($id);
             if($event_id) {
@@ -259,7 +259,8 @@ class Event extends CI_Controller {
                 $this->model_events->update_attending($id, $event_id);
                 $this->model_users->add_reputation($email, 20);
                 $this->session->set_flashdata('message','You just earned 10 reputation points for creating a new wrev!' );
-                $this->load->view('Create_Wrevel_View', $path);
+                //$this->load->view('Create_Wrevel_View', $path);
+                //$this->load->view('createwrev',$path);
                 $this->load->view('successful-event-posting', $path);
                 //Removed email for now
                 //$this->load->library('email',array('mailtype'=>'html'));
@@ -332,7 +333,8 @@ class Event extends CI_Controller {
             $data['events'] = $this->model_events->featured_search();
             $result = array_merge($data, $path);
             //echo "<pre> ",print_r($data,true) ,"</pre>";
-            $this->load->view('Create_Wrevel_View', $path);
+            //$this->load->view('Create_Wrevel_View', $path);
+             //$this->load->view('createwrev',$path);
             $this->load->view('hub',$result);
             //$this->load->view('test_event');
           }
@@ -373,7 +375,7 @@ class Event extends CI_Controller {
             $all = array_merge($events,$data,$nav_data);
 
             //echo "<pre> ",print_r($all,true) ,"</pre>";
-            $this->load->view('Create_Wrevel_View',$all);
+            //$this->load->view('Create_Wrevel_View',$all);
             $this->load->view('hub',$all);
 
 
@@ -396,7 +398,7 @@ class Event extends CI_Controller {
             $all = array_merge($data,$path,$nav_data);
 
             //echo "<pre>",print_r($data,true) ,"</pre>";
-            $this->load->view('Create_Wrevel_View',$all);
+            //$this->load->view('Create_Wrevel_View',$all);
             $this->load->view('hub',$all);
 
         }
