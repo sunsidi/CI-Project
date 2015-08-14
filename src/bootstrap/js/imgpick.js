@@ -18,7 +18,7 @@ var imgPropPrim = {
 // function to highlight IMGs on click - from: http://coursesweb.net/
 function highlightImg() {
   // gets all <img> tags, and their number
-  var allimgs = document.getElementsByTagName('img');
+  var allimgs = document.getElementsByClassName('cwrev_category');
   var primset = $('#exhgt').attr('primaryselected');
   var nrallimgs = allimgs.length;
 
@@ -46,6 +46,7 @@ function highlightImg() {
         primset = 'true';
         $('#exhgt').attr('primaryselected', true);
         this.setAttribute("primary", true);
+
         //$("#i"+i).prop('checked', true);
       }
       //Primary is another category and this is clicked again, Set to unchecked.
@@ -62,6 +63,11 @@ function highlightImg() {
         this.style.borderStyle = imgProp.borderStyle;
         this.style.borderColor = imgProp.borderColor;
       }
+        if($('#exhgt').attr('primaryselected') === 'true'){
+            document.getElementById("category_form").innerHTML = "Choose a Category &#10003";
+        }else{
+            document.getElementById("category_form").innerHTML = "Choose a Category";
+        }
     }
   }
 }

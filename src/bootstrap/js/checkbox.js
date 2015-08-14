@@ -11,6 +11,7 @@ function checkboxImg() {
             $$.removeClass('checked');
             $('#i0').prop('checked', false);
         }
+
     })
     $('#1').on('click', function(){
         var $$ = $(this)
@@ -155,7 +156,7 @@ function checkboxImg() {
             $$.removeClass('checked');
             $('#i11').prop('checked', false);
         }
-    })    
-	
+    })
+
 }
 checkboxImg();
