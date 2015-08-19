@@ -667,7 +667,16 @@ ul.nav.nav-tabs.tabs-left>li{
 										<option value="0">No</option>
 									</select>
 								</div>
+
 							</div>
+                            <div class="row" style="margin-top:10px;background:#F2F2F2; padding:5px 8px;">
+                                <div class="col-xs-6">
+                                    <label class="col-sm-6">online event <i class="fa fa-question-circle" id="online-info" data-content="This event will have a virtual location." data-trigger="hover" data-placement="top"></i></label>
+                                </div>
+                                <div class="col-xs-6">
+                                    <input id="e_is_online" name = "e_is_online" value="1" type="checkbox">
+                                </div>
+                            </div>
                             <div id="event_images_base" class="row" style="margin-top:10px;">
 
                             </div>
