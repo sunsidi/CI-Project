@@ -17,7 +17,7 @@
 	
 </head>
 
-<body style="background-image:url('<?php echo $PATH_IMG?>welcome_background.png');background-size: 100% ; ">
+<body>
 
 <?php $this->load->view('header');?>
 
@@ -286,37 +286,100 @@
 		</div>
     </div>
       
-    <div class="row" style="background:#A5B9CB; padding:25px 0;">
-    	    <h2 class="section-title">Pricing</h2>	
+	<div class="row" style="background:#F2F0EB url('<?php echo $PATH_IMG?>overlay_events_panel.png') no-repeat center center;background-size:100% 100%;padding:2%;">
+		<div class="col-md-4">
+			<div>
+				<div style="background:#242021;color:white;text-align:center;padding:10px;font-size:20px;">Featured Event</div>
+				<div style="width:20%;float:left;background:#36434C;color:white;text-align:center;padding-top:20px;">
+				<p style="font-size:20px;text-transform:uppercase;">Fri<p>
+				<p>May</p>
+				<p>25</p>
+				<p>8:00PM</p>
+				<p>
+				<span class="home-event-icon icon-bars"></span>
+				</p>
+				</div>
+				<div style="width:80%">
+				</div>
+			</div>
+			<div>
+			</div>
+		</div>
+		<div style="col-md-4">
+		</div>
+		<div style="col-md-4">
+		</div>
+	</div>	
+	  
+	<div class="row" style="background:url('<?php echo $PATH_IMG?>ticketing_platform.jpg') no-repeat center center;background-size:100% 100%;color:white;padding:5% 25px;font-size:20px;line-height:120%;">
+		<div class="col-md-4" style="padding:3% 5%;">
+			<div>
+				<div style="text-align:center;">
+					<img src="<?php echo $PATH_IMG?>addcalendar_icon_white.png"/>
+					<p style="text-align:justify;font-size:25px;color:#F1A640;font-weight:bold;margin-top:10px;">Fast & Simple Set-up Process<p>
+					<p style="text-align:justify;">Set up both your ticketing and event pages in <strong>under 30 seconds</strong>.</p>
+				</div>
+				<div style="text-align:center;margin-top:20px;">
+					<img src="<?php echo $PATH_IMG?>handmoney_icon_white.png"/>
+					<p style="text-align:justify;font-size:25px;color:#F1A640;font-weight:bold;margin-top:10px;">Easily manage your finances<p>
+					<p style="text-align:justify;">Instantly get <strong>paid</strong> for every ticket you sell by linking your bank account.</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div style="border-radius:150%; background: rgba(51,176,168,0.7);text-align:center; padding:60px 50px;font-size:25px;">
+			<img src="<?php echo $PATH_IMG?>wrevel_ticket.png"/>
+							<p style="font-family:GillSans;margin-top:20px;">Our Ticketing Platform</p>
+							<p style="line-height:130%;">Start sharing your event and selling tickets in <strong>seconds</strong> with our unique ticketing system.</p>
+							<a href="<?php echo base_url().'event/Create_Wrevel_View';?>" class="btn start-home-button">Start now</a>
+			</div>
+		</div>
+		<div class="col-md-4" style="padding:3% 5%;">
+			<div style="text-align:center;">
+				<img src="<?php echo $PATH_IMG?>chart_icon_white.png"/>
+				<p style="text-align:justify;font-size:25px;color:#F1A640;font-weight:bold;margin-top:10px;">Track your ticket sales<p>
+				<p style="text-align:justify;">Track and edit the events that you are listing. <strong>Monitor ticket sales data</strong> from event to event.</p>
+			</div>
+			<div style="text-align:center;margin-top:20px;">
+				<img src="<?php echo $PATH_IMG?>eye_icon_white.png"/>
+				<p style="text-align:justify;font-size:25px;color:#F1A640;font-weight:bold;margin-top:10px;">Hide your top secret events<p>
+				<p style="text-align:justify;">Your event address can be <strong>hidden</strong> and the buy ticket form could be disabled until you approve the attendee list.</p>
+			</div>
+		</div>
+	</div>	
+	 
+	  
+    <div class="row" style="background:#231F20 url('<?php echo $PATH_IMG?>filter_fees.png') no-repeat center center;background-size:100% 100%; padding:5% 25px;">
+    	 <!--   <h2 class="section-title">Pricing</h2>	-->
 	    <div class="col-md-6">
-		<p style="text-align: center; color: white; font-size: 33px;font-family:GillSans;"><img src="<?php echo $PATH_IMG?>no_fee_icon.png" alt="affordable" style="margin-top:-7px;"/> Most Affordable</p>
-	        <p style="text-align: center;color: white; font-size: 24px;"><strong>Lowest prices </strong>in the ticketing industry!</p></br>
+		<p style="text-align: center; color: #85D0CB; font-size: 29px;font-family:GillSans;"><img src="<?php echo $PATH_IMG?>no_fee_icon.png" alt="affordable" style="margin-top:-7px;"/> Most Affordable</p>
+	        <p style="text-align: center;color: white; font-size: 20px;"><strong>Lowest prices </strong>in the ticketing industry!</p></br>
 	    
-		<p style="text-align: center; color: white; font-size: 33px;font-family:GillSans;"><img src="<?php echo $PATH_IMG?>wrevel_fee_icon.png" alt="wrevel fees"/> Wrevel Fee</p>
+		<p style="text-align: center; color: #85D0CB; font-size: 29px;font-family:GillSans;"><img src="<?php echo $PATH_IMG?>wrevel_fee_icon.png" alt="wrevel fees"/> Wrevel Fee</p>
 	    <p style="text-align: center;color: white; font-size: 24px;">1.5% + .50&#162; per ticket</p></br>
 	    
-	    <p style="text-align: center; color: white; font-size: 33px;font-family:GillSans;"><img src="<?php echo $PATH_IMG?>cc_fee_icon.png" alt="credit card processing fee style="margin-top:-7px;"/> Credit Card Fee</p>
-	    <p style="text-align: center;color: white; font-size: 24px;">Credit Card Processing Fee</p>
-	    <p style="text-align: center;color: white; font-size: 19px;">(VAT where applicable)</p>
+	    <p style="text-align: center; color:  #85D0CB; font-size: 29px;font-family:GillSans;"><img src="<?php echo $PATH_IMG?>cc_fee_icon.png" alt="credit card processing fee" style="margin-top:-7px;"/> Credit Card Fee</p>
+	    <!--<p style="text-align: center;color: white; font-size: 20px;">Credit Card Processing Fee</p>-->
+	    <p style="text-align: center;color: white; font-size: 15px;">(VAT where applicable)</p>
 	    
 	   
 		</div>
 		<div class="col-md-6" style="line-height:175%;">
-	    <p style="text-align: center; color: white; font-size: 30px;font-family:GillSans;"><img src="<?php echo $PATH_IMG?>payment_icon.png" alt="wrevel payment system" style="margin-top:-7px;"/> Simple Payment System</p>
-	    <p style="text-align: center;color: white; font-size: 25px;"><b>No start-up fees</b> or extra charges.</p>
-	    <p style="text-align: center;color: white; font-size: 25px; ">We accept <b>all credit cards.</b></p></br>
+	    <p style="text-align: center; color: #85D0CB; font-size: 29px;font-family:GillSans;"><img src="<?php echo $PATH_IMG?>payment_icon.png" alt="wrevel payment system" style="margin-top:-7px;"/> Simple Payment System</p>
+	    <p style="text-align: center;color: white; font-size: 20px;"><b>No start-up fees</b> or extra charges.</p>
+	    <p style="text-align: center;color: white; font-size: 20px; ">We accept <b>all credit cards.</b></p></br>
 	    
-	    <p style="text-align: center;"><img src="<?php echo $PATH_IMG?>mastercard_icon.png" alt="mastercard"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $PATH_IMG?>visa_icon.png" alt="visa"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $PATH_IMG?>amex_icon.png" alt="amex"/>&nbsp;&nbsp;&nbsp;&nbsp;
+	    <p class="credit-card" style="text-align: center;"><img src="<?php echo $PATH_IMG?>mastercard_icon.png" alt="mastercard"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $PATH_IMG?>visa_icon.png" alt="visa"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $PATH_IMG?>amex_icon.png" alt="amex"/>&nbsp;&nbsp;&nbsp;&nbsp;
 	    <img src="<?php echo $PATH_IMG?>dinersclub_icon.png" alt="diners club"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $PATH_IMG?>discover_icon.png" alt="discover"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $PATH_IMG?>jcb_icon.png" alt="jcb"/></p></br></br>
 	    
-	    <p style="line-height: 20px;text-align: center;color: white; font-size: 30px; font-family:GillSans;"><img src="<?php echo $PATH_IMG?>thumbsup_icon.png" alt="thumbups for free events" style="margin-top:-7px;"/> Free Events</p>
-	    <p style="text-align: center;color: white; font-size: 25px;">You can still use our beautiful tickets</p>
-	    <p style="text-align: center;color: white; font-size: 25px;">system for <b>absolutely free.</b> We make</p>
-	    <p style="text-align: center;color: white; font-size: 25px;">money only when you make money.</p>
+	    <p style="line-height: 20px;text-align: center;color:  #85D0CB; font-size: 30px; font-family:GillSans;"><img src="<?php echo $PATH_IMG?>thumbsup_icon.png" alt="thumbups for free events" style="margin-top:-7px;"/> Free Events</p>
+	    <p style="text-align: center;color: white; font-size: 20px;">You can still use our beautiful tickets</p>
+	    <p style="text-align: center;color: white; font-size: 20px;">system for <b>absolutely free.</b> We make</p>
+	    <p style="text-align: center;color: white; font-size: 20px;">money only when you make money.</p>
 	    
 		</div>
     </div>
-    <div class="row">
+    <!--<div class="row">
     <div class="col-md-12" style="background:#58595B;padding:30px 30px 50px;">
     	<h2 class="section-title">Press</h2>	
     	<div class="row">	
@@ -326,7 +389,7 @@
        	   <div class="col-md-3 col-xs-6"><a href="http://technical.ly/brooklyn/2014/04/28/8-brooklyn-ventures-saw-pier-92-new-york-tech-day-2014" target="_blank"><img src="<?php echo $PATH_IMG?>technically.png" alt="Technically" class="press_technically"/></a></div>
     	 </div> 
     	</div>
-    </div>
+    </div>-->
 </div>
 
 <?php $this->load->view('footer');?>
