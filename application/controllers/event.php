@@ -224,7 +224,7 @@ class Event extends CI_Controller {
             $id = $this->model_users->get_userID($email);
 
             if((!$this->session->userdata('is_logged_in'))) {
-                echo "e database";
+                redirect("welcome/home");
             }else{
             $event_id = $this->model_events->create_event($id);
             if($event_id) {

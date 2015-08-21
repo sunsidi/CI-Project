@@ -47,23 +47,157 @@ jQuery(document).ready(function () {
             
         <div class="col-md-7" id="myaccount-step3">
         	<div class="row">
+			<div class="panel" style="background: transparent; padding: 0px;">
+				<div class="panel-heading" style="background: #414042;">
+					<div style="display: inline;padding: 0px 150px;">
+					<span style="color: white; font-size: 20px; text-align: center;">Event Name :</span>
+					<span><select type="text" class="form-control" style="margin-top:-3px; width:60%; float: right; background-color: #414042; border:none; box-shadow: none; color: white;">
+                                                                            <option value="" selected="selected">Toast of Brooklyn</option> 
+                                                                            <option value="AK">Toast of Queens</option>
+                                                                            <option value="AL">AL</option>
+                                        </select></span>
+					</div>
+				</div>
+				<div class="panel-body" style="padding: 0px;">
+					<div class="col-md-8" style="background: #E3EBEE; padding: 10px 0px;">
+						<div class="col-md-3">
+							<div style="padding-bottom: 0px;width: 100px;height: 50px;background-color: white;border-top-left-radius: 110px;border-top-right-radius: 110px;border-bottom: 0;">
+							<p style="text-align: center; ">7</p>
+							</div>
+							
+							<div style="width: 100px;height: 50px;background-color: #37678C;border-bottom-left-radius: 110px;border-bottom-right-radius: 110px;border-bottom: 0;">
+							<p style="text-align: center; color: white;">Tickets<br/> Sold</p>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div style="width: 100px;height: 50px;background-color: white;border-top-left-radius: 110px;border-top-right-radius: 110px;border-bottom: 0;">
+							<p style="text-align: center; ">83</p>
+							</div>
+							
+							<div style="width: 100px;height: 50px;background-color: #628DA3;border-bottom-left-radius: 110px;border-bottom-right-radius: 110px;border-bottom: 0;">
+							<p style="text-align: center; color: white;">Tickets<br/> Left</p>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div style="width: 100px;height: 50px;background-color: white;border-top-left-radius: 110px;border-top-right-radius: 110px;border-bottom: 0;">
+							<p style="text-align: center; ">10</p>
+							</div>
+							
+							<div style="width: 100px;height: 50px;background-color: #6D6E71;border-bottom-left-radius: 110px;border-bottom-right-radius: 110px;border-bottom: 0;">
+							<p style="text-align: center; color: white;">Tickets<br/> Pending</p>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div style="width: 100px;height: 50px;background-color: white;border-top-left-radius: 110px;border-top-right-radius: 110px;border-bottom: 0;">
+							<p style="text-align: center; ">0</p>
+							</div>
+							
+							<div style="width: 100px;height: 50px;background-color: #B54A43;border-bottom-left-radius: 110px;border-bottom-right-radius: 110px;border-bottom: 0;">
+							<p style="text-align: center; color: white;">Tickets<br/> Refounded</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4" style="background: #FFFFFF; padding: 0px;">
+						<div style="padding: 10px">
+							<p style="font-size: 30px; text-align: center;">$220</p>
+						</div>
+						<div style="background: #3F8764; padding: 5px;">
+							<p style="font-size: 20px; text-align: center; color: white;">Total Sales Revenue</p>
+						</div>
+					</div>
+				</div>
+			</div>
         		<div class="panel panel-default" style="border:none; background:#DFE2E9;">
-  					<div class="panel-heading" style="background:none; border:none;">
-    					<h3 class="panel-title text-center" style="font-size:25px;padding-top:20px;"><img src="<?php echo $PATH_IMG?>event_listing_icon.png" style="vertical-align:bottom;"/> My Ticket Sales</h3>
+				<div class="panel-heading" style="background: #628DA3; border:none; height: 50px;">
+
+					<select type="text" class="form-control" style="float: right; width: 65%; margin-top:-3px;background-color: #628DA3; border:none; box-shadow: none; color: white;">
+                                                                            <option value="" selected="selected">Toast of Brooklyn</option> 
+                                                                            <option value="AK">Toast of Queens</option>
+                                                                            <option value="AL">AL</option>
+                                        </select>
+				</div>
+  					<div class="panel-heading" style="background: #9BB3C6; border:none;height: 50px;">
+						<div class="col-md-1" style="padding: 0px;">
+						<span style="color: white;">Sort by:</span>
+						</div>
+						<div class="col-md-2" style="padding: 0px;">
+						<select type="text" class="form-control" style="width: 90%; margin-top:-3px; background-color: white; border:none; box-shadow: none; color: black;">
+							<option value="" selected="selected">Last Purchase</option> 
+							<option value="AK">Price</option>
+                                                        <option value="AL">AL</option>
+						</select>
+						</div>
+						<div class="col-md-1" style="padding: 0px;">
+						<span style="color: white;">View:</span>
+						</div>
+						<div class="col-md-1" style="padding: 0px;">
+							<select type="text" class="form-control" style="width: 90%; margin-top:-3px; background-color: white; border:none; box-shadow: none; color: black;">
+							<option value="" selected="selected">10</option> 
+							<option value="AK">20</option>
+                                                        <option value="AL">AL</option>
+						</select>
+						</div>
+						<div class="col-md-4" style="padding: 0px;">
+						<input type="text" class="form-control" placeholder="Search for..." style="width: 90%; margin-top:-3px; ">
+						</div>
+						<div class="col-md-1" style="padding: 0px;">
+						<span style="color: white;">Export as:</span>
+						</div>
+						<div class="col-md-2" style="padding: 0px;">
+						<select type="text" class="form-control" style="width: 90%; margin-top:-3px; background-color: white; border:none; box-shadow: none; color: black;">
+							<option value="" selected="selected">Excel</option> 
+							<option value="AK">PDF</option>
+                                                        <option value="AL">AL</option>
+						</select>
+						</div>
   					</div>
-  					<div class="panel-body" style="height:400px; overflow-y:auto;">
+  					<div class="panel-body" style="height:400px; overflow-y:auto; padding: 0px;">
+					<div class="col-md-12" style="padding: 0px;">
 						<div class="table-responsive">
-							<table>
-								<thead style="color:#1B74BC; font-weight:normal;">
+							<table style="border-collapse: collapse; width: 100%;">
+								<thead style="background: #E3EBEE; font-size: 15px;color: #1C75BC;">
+									<th style="padding: 10px;">Order#</th>
+									<th>Qty</th>
 									<th>Customer</th>
-									<th>Event ID</th>
-									<th>Event Name</th>
 									<!--<th>Qty</th> ONLY ONE TICKET PER PERSON RIGHT NOW -- WILL CHANGE LATER-->
-									<th>Delivery</th>
-									<th>Type of Ticket</th>
+									<th>Order Date</th>
+									<th>Ticket Type</th>
 									<th>Price</th>
-									<th>Status</th>
+									<th>Delivery Method</th>									
+									<th>Options</th>
 								</thead>
+								<tbody style="background: #FFFFFF;">
+                                                                                    <tr>
+                                                                                	<td style="padding: 10px;">59284</td>
+                                                                                        <td>2</td>
+                                                                                        <td>Sajid Zamman</p></a></td>
+                                                                                        <td>7/30/2015</td>
+                                                                                        <td>Free</td>
+                                                                                        <td>$0.00</td>  
+                                                                                        <td>Print at Home</td>                   
+											<td><select type="text" class="form-control" style="background-color: #E3EBEE; border:none; box-shadow: none; color: black; width: 80%;">
+												<option value="" selected="selected">Edit</option> 
+												<option value="AK">Delete</option>
+												<option value="AL">Refund</option>
+											</select></td>
+                                                                                    </tr>
+								</tbody>
+								<tbody>
+                                                                                    <tr style="background: #F7F7F7;">
+                                                                                	<td style="padding: 10px;">59284</td>
+                                                                                        <td>2</td>
+                                                                                        <td>Kim G</p></a></td>
+                                                                                        <td>7/28/2015</td>
+                                                                                        <td>General Admision</td>
+                                                                                        <td>$20.00</td>  
+                                                                                        <td>Moblil</td>                   
+											<td><select type="text" class="form-control" style="background-color: #E3EBEE; border:none; box-shadow: none; color: black; width: 80%;">
+												<option value="" selected="selected">Edit</option> 
+												<option value="AK">Delete</option>
+												<option value="AL">Refund</option>
+											</select></td>
+                                                                                    </tr>
+								</tbody>
 								<tbody>
 									<?php
                                                                             if(isset($attending_events)) {

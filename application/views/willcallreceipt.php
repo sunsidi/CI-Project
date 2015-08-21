@@ -24,7 +24,7 @@ margin:0;
 <body style="background:none;">
     <?php if(isset($ticket)) {
             for($i = 0; $i < count($ticket); $i++) {?>
-	<div class="col-md-8 col-md-offset-2" style="padding-top: 40px; padding-bottom: 80px;padding-left:3%;padding-right:3%;">
+	<div class="col-md-8 col-md-offset-2" style="padding-top: 40px; padding-bottom: 45px;">
 		<div class="panel" style="border:none;text-align:center;">
 			<p style="background:#D0D2D3;padding:10px;">Note: This is your final ticket. Print this out and present at door.</p>
 			<h3 style="text-align:center; color: black;font-family:GillSans;background:#425666;color:white;padding:20px;"><?php echo $ticket[$i]['e_name']?></h3>
@@ -47,6 +47,11 @@ margin:0;
 						<span><?php echo $ticket[$i]['e_city']." , ";
                         if(isset($ticket[$i]['e_state']) && !empty($ticket[$i]['e_state'])) {echo $ticket[$i]['e_state']; } ; ?></span>
 					</div>
+					<div class="print-ticket-box">
+						<p style="color:#2077BC;">Date & Time</p>
+						<p><?php echo $ticket[$i]['e_date'] ?></p>
+						<p><?php echo $ticket[$i]['e_start_time'] ?> </p>
+					</div>
 					<div class="print-ticket-box" style="margin-top:20px;">
 						<p style="color:#2077BC;">Event Terms</p>
 						<p>event terms here</p>
@@ -54,9 +59,9 @@ margin:0;
 				</div>
 				<div class="col-md-6 col-xs-6">
 					<div class="print-ticket-box">
-						<p style="color:#2077BC;">Date & Time</p>
-						<p><?php echo $ticket[$i]['e_date'] ?></p>
-						<p><?php echo $ticket[$i]['e_start_time'] ?> </p>
+						<p style="color:#2077BC;">Will Call Location</p>
+						<p>Address</p>
+						<p>CIty, State</p>
 					</div>
 					<div class="print-ticket-box" style="margin-top:20px;">
 						<p style="color:#2077BC;">Ordered By</p>
@@ -68,11 +73,7 @@ margin:0;
 					</div>
 				</div>
 			</div>
-			<div class="row" style="margin:0;">
-				<div style="background:#F0F1F1;padding:10px;">
-				<img src="<?php echo base_url().'application/controllers/barcode.php?barcode='.$ticket[$i]['barcode'].'&width=205&height=110'?>"/>
-				</div>
-			</div>
+			
 			
 			
 	   <!-- <div class="col-md-7 col-sm-7 col-xs-7" style="height: 500px;border-right-style: solid;border-right-color:#DDDDDD;border-right-width:1px;background-color: #E7ECEF;">

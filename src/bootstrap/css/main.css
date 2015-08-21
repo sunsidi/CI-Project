@@ -360,6 +360,15 @@ background:#414042;
      url('../fonts/ReporterLTStd-2.otf');
 }
 
+@font-face {
+  font-family: 'Monaco';
+    src: url('../fonts/Monaco.eot');/*IE*/
+    src: url('../fonts/Monaco.eot?#iefix') format('embedded-opentype'),
+     url('../fonts/Monaco.ttf') format('truetype'),
+     url('../fonts/Monaco.otf');
+}
+
+
 .wrev-tabs{
 	font-size:18px;
 	
@@ -1764,6 +1773,45 @@ font-weight:bold;
 
 .delivery-method-clicked{
 background:#EDF1F4;
+}
+
+.print-ticket-box{
+background:#F0F1F1;
+font-family:GillSans;
+font-size:20px;
+padding:20px;
+border-radius:15px;
+color:#414042;
+}
+
+.credit-card img{
+	width:35px;
+}
+
+a.start-home-button{
+color:white;
+font-size:20px;
+border:1.5px solid white;
+margin-top:10px;
+}
+
+a.start-home-button:hover{
+background:white;
+color:rgb(51,176,168);
+font-size:20px;
+border:1.5px solid white;
+
+}
+
+.ticket-panel-1{
+padding:0 5%;
+}
+
+.home-event-icon{
+font-size:50px;
+background:white;
+color:black;
+border-radius:8px;
 }
 
 
