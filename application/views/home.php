@@ -286,6 +286,7 @@
 		</div>
     </div>
       
+
 	<div class="row" style="background:#F2F0EB url('<?php echo $PATH_IMG?>transparent.png') no-repeat center center;background-size:100% 100%;padding:2%;">
 		<div class="col-md-4">
 			<!--featured event-->
@@ -299,10 +300,23 @@
 				<p style="font-size:20px">PM</p>
 				<p>
 				<!--icon changes based on what type of event it is-->
+
+	<div class="row" style="background:#F2F0EB url('<?php echo $PATH_IMG?>overlay_events_panel.png') no-repeat center center;background-size:100% 100%;padding:2%;">
+		<div class="col-md-4">
+			<div>
+				<div style="background:#242021;color:white;text-align:center;padding:10px;font-size:20px;">Featured Event</div>
+				<div style="width:20%;float:left;background:#36434C;color:white;text-align:center;padding-top:20px;">
+				<p style="font-size:20px;text-transform:uppercase;">Fri<p>
+				<p>May</p>
+				<p>25</p>
+				<p>8:00PM</p>
+				<p>
+
 				<span class="home-event-icon icon-bars"></span>
 				</p>
 				</div>
 				<div style="width:80%">
+
 					<div>
 					
 					</div>
@@ -365,6 +379,16 @@
 					</div>
 				</div>
 			</div>
+
+				</div>
+			</div>
+			<div>
+			</div>
+		</div>
+		<div style="col-md-4">
+		</div>
+		<div style="col-md-4">
+
 		</div>
 	</div>	
 	  
