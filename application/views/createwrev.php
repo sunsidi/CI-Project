@@ -73,17 +73,17 @@ ul.nav.nav-tabs.tabs-left>li{
   				<div class="panel-body" style="background:#F7F7F7;text-align:center;">
 					<ul class="nav nav-tabs tabs-left" style="text-align:center;border:none;">
                                             
-                                                    <li  class="active"><a href="#category" data-toggle="tab" id = "category_form">Choose a Category</a></li>
-                                                    <li><a href="#details" data-toggle="tab" id = "details_form">Type in the Wrevs details</a></li>
-                                                    <li><a href="#customize" data-toggle="tab" id = "customize_form" >Customize your Wrev</a></li>
-                                                    <li><a href="#setup" data-toggle="tab" id = "tickets_form" style="display: none">Set up Tickets</a></li>
-                                                    <li><a href="#delivery" data-toggle="tab" id = "delivery_form" style="display: none">Delivery Method Set up</a></li>
+                                                    <li id="categorylist" class="active"><a href="#category" data-toggle="tab" id = "category_form">Choose a Category</a></li>
+                                                    <li id="detailslist"><a href="#details" data-toggle="tab" id = "details_form">Type in the Wrevs details</a></li>
+                                                    <li id="customizelist"><a href="#customize" data-toggle="tab" id = "customize_form" >Customize your Wrev</a></li>
+                                                    <li id="setuplist"><a href="#setup" data-toggle="tab" id = "tickets_form" style="display: none">Set up Tickets</a></li>
+                                                    <li id="deliverylist"><a href="#delivery" data-toggle="tab" id = "delivery_form" style="display: none">Delivery Method Set up</a></li>
                                                     
 					</ul>
 				</div>
 				<div class="panel-footer" style="background:#44454A;text-align:center;">				
 					<p><button type="submit" class="btn" style="border-radius:none;color:white;background:#1B76BD;width:70%;font-size:18px;">Submit Wrev</button></p>
-					<p><button class="btn" style="border-radius:none;color:white;background:#6D6E72;width:70%;font-size:18px;">Preview Wrev</button></p>
+					<!--<p><button class="btn" style="border-radius:none;color:white;background:#6D6E72;width:70%;font-size:18px;">Preview Wrev</button></p>-->
 					<p><button class="btn" style="border-radius:none;color:white;background:#8D4D4D;width:70%;font-size:18px;" onclick="goBack()">Cancel</button></p>
 					<script>
 					function goBack() {
@@ -165,8 +165,8 @@ ul.nav.nav-tabs.tabs-left>li{
 						</div>
 						<div style="width:100%;background:#F1F1F1;padding:10px;">
 							
-							<button class="btn" style="background:#6D6E72;color:white;">Clear Page</button></a>
-							<a href="#details" data-toggle="tab"><button class="btn" style="background:#1D74BB;color:white;">Next</button></a>
+							<!--<button class="btn" style="background:#6D6E72;color:white;">Clear Page</button></a>-->
+							<a href="#details" data-toggle="tab"><button class="btn" id="nxtDetail" style="background:#1D74BB;color:white;">Next</button></a>
 						</div>
 					
 				</div>
@@ -565,9 +565,9 @@ ul.nav.nav-tabs.tabs-left>li{
 					</div>	
 					
 					<div style="width:100%;background:#F1F1F1;padding:10px;">
-						<a href="#category" data-toggle="tab" class="btn" style="background:#1D74BB;color:white;">Previous</a>
-						<button class="btn" style="background:#6D6E72;color:white;">Clear Page</button></a>
-						<a href="#customize" data-toggle="tab"><button class="btn" style="background:#1D74BB;color:white;">Next</button></a>
+						<a href="#category" data-toggle="tab" id="preCategory" class="btn" style="background:#1D74BB;color:white;">Previous</a>
+						<!--<button class="btn" style="background:#6D6E72;color:white;">Clear Page</button></a>-->
+						<a href="#customize" data-toggle="tab"><button class="btn" id="nxtCustomize" style="background:#1D74BB;color:white;">Next</button></a>
 					</div>
 					
 				</div>
@@ -576,9 +576,9 @@ ul.nav.nav-tabs.tabs-left>li{
 				<div class="tab-pane" id="customize" style="font-size:18px;">	
                     <div class="row" style="padding:5%;">
 						<div class="col-md-5">
-							<div style="background:#F1F1F1;height:180px;text-align:center;">
+							<div style="background:#F1F1F1;height:180px;text-align:center;overflow:hidden;">
 <!--								<span class="glyphicon glyphicon-camera" style="font-size:50px;margin-top:60px;"></span>-->
-                                   <img id="myImg" src="" class="glyphicon glyphicon-camera" style="font-size:50px;margin-top:60px;">
+                                   <img id="myImg" src="" class="glyphicon glyphicon-camera" style="font-size:50px;width:100%;">
 							</div>
                             <div style="height:0px;overflow:hidden">
 							<input id="fileInput" type="file" class="btn btn-block hide" name ="uploadImage" hidden>
@@ -708,9 +708,9 @@ ul.nav.nav-tabs.tabs-left>li{
 						
 					</div>
 					<div style="width:100%;background:#F1F1F1;padding:10px;text-align:center;">
-						<a href="#details" data-toggle="tab" class="btn" style="background:#1D74BB;color:white;">Previous</a>
-						<button class="btn" style="background:#6D6E72;color:white;">Clear Page</button></a>
-						<a href="#setup" data-toggle="tab"><button class="btn" style="background:#1D74BB;color:white;">Next</button></a>
+						<a href="#details" data-toggle="tab" class="btn" id="preDetails" style="background:#1D74BB;color:white;">Previous</a>
+						<!--<button class="btn" style="background:#6D6E72;color:white;">Clear Page</button></a>-->
+						<a href="#setup" data-toggle="tab"><button class="btn" id="nxtSetup" style="background:#1D74BB;color:white;">Next</button></a>
 					</div>					
 				</div>
       
@@ -923,9 +923,9 @@ ul.nav.nav-tabs.tabs-left>li{
 
 
 					<div style="width:100%;background:#F1F1F1;padding:10px;text-align:center;position:absolute;bottom: 0;">
-						<a href="#customize" data-toggle="tab" class="btn" style="background:#1D74BB;color:white;">Previous</a>
-						<button class="btn" style="background:#6D6E72;color:white;">Clear Page</button>
-						<a href="#delivery" data-toggle="tab"><button class="btn" style="background:#1D74BB;color:white;">Next</button></a>
+						<a href="#customize" data-toggle="tab" class="btn" id="preCustomize" style="background:#1D74BB;color:white;">Previous</a>
+						<!--<button class="btn" style="background:#6D6E72;color:white;">Clear Page</button>-->
+						<a href="#delivery" data-toggle="tab"><button class="btn" id="nxtDelivery" style="background:#1D74BB;color:white;">Next</button></a>
 					</div>	
 				</div>
                                
@@ -988,8 +988,8 @@ ul.nav.nav-tabs.tabs-left>li{
 						
 					</div>	
 					<div style="width:100%;background:#F1F1F1;padding:10px;text-align:center;">
-						<a href="#setup" data-toggle="tab" class="btn" style="background:#1D74BB;color:white;">Previous</a>
-						<button class="btn" style="background:#6D6E72;color:white;">Clear Page</button></a>
+						<a href="#setup" data-toggle="tab" class="btn" id="preSetup" style="background:#1D74BB;color:white;">Previous</a>
+						<!--<button class="btn" style="background:#6D6E72;color:white;">Clear Page</button></a>-->
 						
 					</div>
                     <?php echo form_close();?>
@@ -1713,12 +1713,18 @@ ul.nav.nav-tabs.tabs-left>li{
         }
 
         //third form
-        document.getElementById("isTicked").onclick=function(){isChooseTicked();};
+        $(document).ready(function(){//this function hide the next button when first load the page
+            if($( "#isTicked option:selected" ).val()=="0")    
+            $("#nxtSetup").hide();
+        });
+        document.getElementById("isTicked").onchange=function(){isChooseTicked();};
             function isChooseTicked(){
                 if($( "#isTicked option:selected" ).val()=="0"){
                     $("#tickets_form").hide();
                     $("#delivery_form").hide();
+                    $("#nxtSetup").hide();
                 }else{
+                    $("#nxtSetup").show();
                     if($("#freeticket").val()=="1"){
                         $('.e_price').hide();
                         $("#tickets_form").show();
@@ -1731,6 +1737,7 @@ ul.nav.nav-tabs.tabs-left>li{
                     }
                 }
             }
+            
 
 
 
@@ -1829,6 +1836,44 @@ ul.nav.nav-tabs.tabs-left>li{
   ga('create', 'UA-41514976-1', 'auto');
   ga('send', 'pageview');
 
+</script>
+<!--the following functions are for the NEXT buttons and Previous buttons
+They are make for changing the color of currently activated tabs-->
+<script>
+   //the following functions are for next buttons
+        $("#nxtDetail").click(function(){
+            $("#categorylist").removeClass("active");
+            $("#detailslist").addClass("active");
+        });
+        $("#nxtCustomize").click(function(){
+            $("#detailslist").removeClass("active");
+            $("#customizelist").addClass("active");
+        });
+        $("#nxtSetup").click(function(){
+            $("#customizelist").removeClass("active");
+            $("#setuplist").addClass("active");
+        });
+        $("#nxtDelivery").click(function(){
+            $("#setuplist").removeClass("active");
+            $("#deliverylist").addClass("active");
+        });
+   //the following functions are for previous buttons
+        $("#preCategory").click(function(){
+            $("#categorylist").addClass("active");
+            $("#detailslist").removeClass("active");
+        });
+        $("#preDetails").click(function(){
+            $("#detailslist").addClass("active");
+            $("#customizelist").removeClass("active");
+        });
+        $("#preCustomize").click(function(){
+            $("#customizelist").addClass("active");
+            $("#setuplist").removeClass("active");
+        });
+        $("#preSetup").click(function(){
+            $("#setuplist").addClass("active");
+            $("#deliverylist").removeClass("active");
+        });
 </script>
 </body>
 </html> 

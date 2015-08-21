@@ -15,37 +15,43 @@
 <body>
 <?php $this->load->view('header');?>
 
-	<div class="col-md-6 col-md-offset-3" style="margin-top:80px;">
+	<div class="container" style="margin-top: 90px; width: 90%;">
+        	<div class="panel" style="background-color: transparent; box-shadow: none; border-color: transparent;">
+    
+      			<div class="panel-heading" style="background-color: #208756; height: 55px;">
+        			<p style="font-size: 180%; color: white;text-align: center;">
+          				<b>YOUR EVENT HAS BEEN BOOKED</b>
+        			</p>
+        
+      			         <a href="#" class="btn" style="float: right;border-radius:5px;font-size:17px;background: #ffffff;color: black; margin-top: -48px;"><b>Back to event listing</b></a>
+
+      			</div>
+			
+			<div class="panel-heading" style="background-color: #513953; text-align: center; margin-top: 10px; border-radius: 0px;height: 55px;">
+        			<span style="font-size: 150%; color: white; ">
+          				You're going to Toast of Brooklyn
+        			</span>
+      			</div>
+			
+			<div class="panel-body" style="text-align:center; font-size:15px; background-color: white;">
+			    <span style="font-size: 30px;">Order #&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#1677C5; font-size: 30px;">4637294960gk184950243</span><br/>
+			    <div style="margin-top: 8px;">
+			    <span style="font-size: 22px; margin-top: 10px;">Your order has been saved to </span><span style="font-size:20px;"><b>MyAccount - Event's I'm Attending</b></span><br/>
+			    </div>
+			    <div style="background:#eaf0f4; padding: 10px 10px; margin-top: 8px;">
+			    <span style="font-size: 18px;">Your ticket(s) have been sent to xxxx.xxxx@gmail.com</span>
+			    </div><br/>
+		  
+			<div>
+			<button type="submit" class="btn btn-lg" style="background:#44535E; color:white; padding: 10px 30px;font-size: 20px;">Re-send Email </button>
+			
+			<?php echo form_open('stripe_controller/print_ticket/'.$event_id.'/'.$ticket_id);?>
+			<button type="submit" class="btn btn-lg" style="background:#44535E; color:white; padding: 10px 30px;font-size: 20px;">Print Ticket(s) </button>
+			<?php echo form_close();?>
+			    </div>
+		</div>
+	</div>
 		
-		<div class="panel" style="background:none; border:none; box-shadow:none; color:white;border-radius:10px;">
-    		<div class="panel-body" style="border-radius:10px;">
-				<div class="row" style="border-top-left-radius:10px;border-top-right-radius:10px;">
-        			<div class="col-md-6" style="background:#79749E; height:75px; text-align:center; padding-top:15px; border-top-left-radius:10px;">
-            			<img src="<?php echo $PATH_IMG?>wrevel_logo.png"style="width:180px;z-index:1;"/>
-        			</div>
-         			<div class="col-md-6" style="background:#6CA5CC; height:75px; text-align:center; font-size:35px; padding:15px 10px 10px 0; border-top-right-radius:10px;">
-            			<p>Success</p>
-        			</div>
-     			</div>
-     			<div class="row" style="background:#E2E9EE; height:335px; text-align:center; padding:20px; font-size:20px;border-bottom-left-radius:10px;border-bottom-right-radius:10px;color:black;">
-     				
-                    		<p style="margin-top:25px;">You&rsquo;re going to <?php echo $this->session->userdata('e_name')?>.</p>
-                    		
-                    		<p>Your order has been saved to <a style="color:black; text-decoration:underline;" href="<? echo base_url().'account/myaccount_ticketmanagement'?>" style="color:white;text-decoration:underline;">MyAccount - Events I&rsquo;m Attending.</a></p>
-                    		
-                    		<p><span style="color:#7ACF08;">&#x2713;</span> <?php echo 'Order #'.$this->session->userdata('ticket_id')?></p>
-                    		<p><span style="color:#7ACF08;">&#x2713;</span> Your ticket has been sent to <?php echo $this->session->userdata('send_email')?></p>
-                    		
-                   <p style="color:white;"><a style="color:black; text-decoration:underline;" href="<?php echo base_url()."stripe_controller/print_ticket"?>"> Click here to email tickets</a></p>
-                   
-                    <?php echo form_open('stripe_controller/print_ticket/'.$event_id.'/'.$ticket_id);?>
-                        <button type="submit" class="btn print" style="font-size:20px;">Print Ticket and Receipt</button>
-                    <?php echo form_close();?>
-			</div>
-     		</div>
-         </div>
-     </div>
-     
 <?php $this->load->view('footer');?>
 
 <!-- Bootstrap core JavaScript

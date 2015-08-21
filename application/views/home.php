@@ -286,28 +286,85 @@
 		</div>
     </div>
       
-	<div class="row" style="background:#F2F0EB url('<?php echo $PATH_IMG?>overlay_events_panel.png') no-repeat center center;background-size:100% 100%;padding:2%;">
+	<div class="row" style="background:#F2F0EB url('<?php echo $PATH_IMG?>transparent.png') no-repeat center center;background-size:100% 100%;padding:2%;">
 		<div class="col-md-4">
-			<div>
-				<div style="background:#242021;color:white;text-align:center;padding:10px;font-size:20px;">Featured Event</div>
+			<!--featured event-->
+			<div class="row" style="margin:0;">
+				<div style="background:#242021;color:white;text-align:center;padding:10px;font-size:20px;font-weight:bold;">Featured Event</div>
 				<div style="width:20%;float:left;background:#36434C;color:white;text-align:center;padding-top:20px;">
-				<p style="font-size:20px;text-transform:uppercase;">Fri<p>
-				<p>May</p>
-				<p>25</p>
-				<p>8:00PM</p>
+				<p style="font-size:20px;text-transform:uppercase;font-weight:bold;">Fri<p>
+				<p style="font-size:18px;">May</p>
+				<p style="font-size:35px;font-weight:bold;">25</p>
+				<p style="font-size:20px;">8:00</p>
+				<p style="font-size:20px">PM</p>
 				<p>
+				<!--icon changes based on what type of event it is-->
 				<span class="home-event-icon icon-bars"></span>
 				</p>
 				</div>
 				<div style="width:80%">
+					<div>
+					
+					</div>
 				</div>
 			</div>
-			<div>
+			<div style="margin-top:20px;">
+			<a href="<?php echo base_url()."main/get_related_events/hotspots"?>">
+				<div class="home-featured-category" style="background:url('<?php echo $PATH_IMG?>hotspots.jpg') no-repeat center center;background-size:100% 100%;clear:both; height:432.387px;position:relative;">		
+					<p style="text-align:right;font-size:28px;margin:0;padding-top:10px;"><span style="color:white;background:rgba(0,0,0,0.5);margin:0;padding:10px;">Hotspots</span></p>
+					<span class="icon-hotspots" style="font-size:80px;background:white;border-radius:150%;opacity:0.75;color:rgba(0,0,0,0.75); position:absolute;bottom:20px;left:20px;"></span>
+				</div>
+			</a>	
 			</div>
 		</div>
-		<div style="col-md-4">
+		
+		<div class="col-md-4">
+			<a href="<?php echo base_url()."main/get_related_events/icebreakers"?>">
+				<div class="home-featured-category" style="background:url('<?php echo $PATH_IMG?>icebreakers.jpg') no-repeat center center;background-size:100% 100%;clear:both;height:290.067px;position:relative;">
+					<span class="icon-icebreakers" style="font-size:80px;background:white;border-radius:150%;opacity:0.75;color:rgba(0,0,0,0.75); position:absolute;top:20px;left:20px"></span>
+					<div style="position:absolute; bottom:7px; right:0px; text-align:right;font-size:28px;"><span style="color:white;background:rgba(0,0,0,0.5);margin:0;padding:10px;">Icebreakers</span></div>
+					
+				</div>
+			</a>	
+			
+			<div style="margin-top:20px;">
+			<a href="<?php echo base_url()."main/get_related_events/festivals"?>">
+				<div class="home-featured-category" style="background:url('<?php echo $PATH_IMG?>festival.jpg') no-repeat center center;background-size:100% 100%;clear:both; height:545.471px;position:relative;">
+					<span class="icon-concerts" style="font-size:80px;background:white;border-radius:150%;opacity:0.75;color:rgba(0,0,0,0.75); position:absolute;top:20px;right:20px"></span>
+					<div style="position:absolute; bottom:7px; left:0px;font-size:28px;color:white;background:rgba(0,0,0,0.5);padding:10px; padding-left:20px;width:150px;">Festivals & Concerts</div>
+					
+				</div>
+			</a>
+			</div>
+		
 		</div>
-		<div style="col-md-4">
+		<div class="col-md-4">
+			<a href="<?php echo base_url()."main/get_related_events/clubs"?>">
+				<div class="home-featured-category" style="background:url('<?php echo $PATH_IMG?>dj.jpg') no-repeat center center;background-size:100% 100%;clear:both;height:433.507px;position:relative;">
+					<span class="icon-clubs" style="font-size:80px;background:white;border-radius:150%;opacity:0.75;color:rgba(0,0,0,0.75); position:absolute;top:20px;right:20px"></span>
+					<div style="position:absolute; bottom:7px; left:0px; text-align:right;font-size:28px;"><span style="color:white;background:rgba(0,0,0,0.5);margin:0;padding:10px;">NightLife</span></div>
+				</div>
+			</a>
+			
+			<div style="margin-top:20px;">
+				<div style="background:#242021;color:white;text-align:center;padding:10px;font-size:20px;font-weight:bold;">Featured Event</div>
+				<div style="width:20%;float:left;background:#36434C;color:white;text-align:center;padding-top:20px;">
+				<p style="font-size:20px;text-transform:uppercase;font-weight:bold;">Fri<p>
+				<p style="font-size:18px;">May</p>
+				<p style="font-size:35px;font-weight:bold;">25</p>
+				<p style="font-size:20px;">8:00</p>
+				<p style="font-size:20px">PM</p>
+				<p>
+				<!--icon changes based on what type of event it is-->
+				<span class="home-event-icon icon-bars"></span>
+				</p>
+				</div>
+				<div style="width:80%">
+					<div>
+					
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>	
 	  
@@ -411,7 +468,25 @@
 	$('#regular').popover();
 	$('#business').popover();
 	</script>
-	
+	<script>
+	$('div.home-featured-category')
+    .on('mouseenter', function(){
+        var div = $(this);
+        div.stop(true, true).animate({ 
+            margin: -10,
+            width: "+=20",
+            height: "+=20"
+        }, 'fast');
+    })
+    .on('mouseleave', function(){
+        var div = $(this);
+        div.stop(true, true).animate({ 
+            margin: 0,
+            width: "-=20",
+            height: "-=20"
+        }, 'fast');
+    })
+	</script>
 
 
 </body>
