@@ -157,10 +157,12 @@ class account extends CI_Controller{
                  $this->load->view('myaccount_eventattending',$result);
             }
 	}
-	
-	public function myaccount_ticketmanagement(){
+        
+        public function myaccount_ticketmanagement(){
 	
 		$this->load->library('path');
+                $this->load->library('pagination');
+                $this->load->library('table');
             	$path = $this->path->getPath();
             	$this->load->library('session');
             if($this->session->userdata('activation')=="N"){
@@ -170,33 +172,126 @@ class account extends CI_Controller{
             	$this->load->model('model_users');
                 $this->load->model('model_events');
                 $this->load->model('model_tickets');
+//                check if Guest Table exist before load the page
+                if ($this->db->table_exists('Guest'))
+                {
+                    $this->db->query('DROP TABLE Guest');
+                }
+                $this->model_tickets->create_guestlist();
                 $email = $this->session->userdata('email');
                 $user_id = $this->model_users->get_userID($email);
-                $all_events = $this->model_users->get_my_events($user_id);
-                for($i = 0; $i < count($all_events); $i++) {
-                    $temp_event = $this->model_events->find_event($all_events[$i]['event_id']);
-                    $data['attending_events'][$i]['event_id'] = $temp_event[0]['event_id'];
-                    $ticket_data = $this->model_tickets->get_ticket_owner($data['attending_events'][$i]['event_id']);
-                    for($j = 0; $j < count($ticket_data); $j++) {
-                    	$data['attending_events'][$i]['tickets'][$j] = $ticket_data[$j];
-                    }
-                    $data['attending_events'][$i]['e_name'] = $temp_event[0]['e_name'];
-                    $data['attending_events'][$i]['e_date'] = $temp_event[0]['e_date'];
-                    $data['attending_events'][$i]['e_price'] = $temp_event[0]['e_pricetemp'];
-                    $data['attending_events'][$i]['e_is_address_hide'] = $temp_event[0]['e_is_address_hide'];
+                //get $event_id by $user_id
+                $event_id = $this->db->select('event_id')->where('user_id',$user_id)->get('Guest')->result_array();
+                //get event names by $event_id
+                for($i = 0; $i < count($event_id);$i++){
+                   $data['e_names'][$i] = $this->db->select('e_name')->where('event_id',$event_id[$i]['event_id'])->get('events')->result_array();
                 }
-            	  $nav_data = $this->session->all_userdata();
+                
+                //pagination
+                $config['base_url'] ='/wrevel/account/myaccount_ticketmanagement';
+                
+                //set items per page
+                $perpage = $this->input->post('viewitem');
+                $data['perpage'] = $perpage;
+                if(isset($perpage)&&!empty($perpage)){
+                    $config['per_page'] = $perpage;
+                }
+                else{
+                    $config['per_page'] = 5;
+                }
+                $config['num_links'] = 7;
+                //select event from the select list on the view page
+               
+                $current_E = $this->input->post('change_event');
+                $data['current_E'] = $current_E;
+                if(isset($current_E)&&!empty($current_E)){
+                    $id = $this->model_tickets->get_id($current_E);
+//                calculate ticket sold and left
+                    $totalticket = $this->model_tickets->get_ticket_qty($id);
+                    $ticketsold = $this->model_tickets->get_ticket_sold($id);
+                    $ticketleft = $totalticket[0]['quantity']-$ticketsold[0]['Qty'];
+                    $data['sold'] = $ticketsold;
+                    $data['left'] = $ticketleft;
+                    $config['total_rows'] = $this->model_tickets->get_row_number($user_id,$id); 
+                    $data['record'] = $this->model_tickets->get_record($user_id,$id)->get('Guest', $config['per_page'], $this->uri->segment(3));
+                }  
+                
+                else{
+                    $id = "";
+                    $data['sold'] = 'N/A';
+                    $data['left'] = 'N/A';
+                    $config['total_rows'] = $this->model_tickets->get_row_number($user_id,$id);  
+                    $data['record'] = $this->model_tickets->get_record($user_id,$id)->get('Guest', $config['per_page'], $this->uri->segment(3));
+                }
+                $this->pagination->initialize($config);                
+//                calculate total reven for current event
+                $alltickets = $this->model_tickets->get_record($user_id,$id)->get('Guest')->result_array();
+                $sum = 0;
+                for($i = 0; $i < count($alltickets); $i++)
+                {
+                    $sum += $alltickets[$i]['Qty'] * $alltickets[$i]['ticket_price'];
+                }
+                $data['revenue'] = $sum;
+                
+            	$nav_data = $this->session->all_userdata();
             	if(isset($data)) {
-                $result = array_merge($path, $data, $nav_data);
+                    $result = array_merge($path, $data, $nav_data);
                 }
-                else
-                	$result = array_merge($path, $nav_data);
-		
-		
-                $this->load->view('Create_Wrevel_View',$result);
-                 $this->load->view('myaccount_ticketmanagement',$result);
+                else{
+                    $result = array_merge($path, $nav_data);
+                }
+                    
+                $this->load->view('myaccount_ticketmanagement',$result);                    
             }
 	}
+	
+		
+//	public function myaccount_ticketmanagement(){
+//	
+//		$this->load->library('path');
+//            	$path = $this->path->getPath();
+//            	$this->load->library('session');
+//            if($this->session->userdata('activation')=="N"){
+//            	redirect('account/myaccount_accountinfo');
+//            }
+//            else{
+//            	$this->load->model('model_users');
+//                $this->load->model('model_events');
+//                $this->load->model('model_tickets');
+//                $email = $this->session->userdata('email');
+//                $user_id = $this->model_users->get_userID($email);
+//                //get all the events that are created by the user
+//                //all_events contains all the events information from events table
+//                $all_events = $this->model_users->get_my_events($user_id);
+//                //counts all the elements in this $all_events array
+//                for($i = 0; $i < count($all_events); $i++) {
+//                    $temp_event = $this->model_events->find_event($all_events[$i]['event_id']);
+//                    $data['attending_events'][$i]['event_id'] = $temp_event[0]['event_id'];
+//                    
+//                    //return everything from the ticket table based on the event id
+//                    $ticket_data = $this->model_tickets->get_ticket_owner($data['attending_events'][$i]['event_id']);
+//                    
+//                    for($j = 0; $j < count($ticket_data); $j++) {
+//                    	$data['attending_events'][$i]['tickets'][$j] = $ticket_data[$j];
+//                    }
+//                    $data['attending_events'][$i]['e_name'] = $temp_event[0]['e_name'];
+//                    $data['attending_events'][$i]['e_date'] = $temp_event[0]['e_date'];
+//                    $data['attending_events'][$i]['e_price'] = $temp_event[0]['e_pricetemp'];
+//                    $data['attending_events'][$i]['e_is_address_hide'] = $temp_event[0]['e_is_address_hide'];
+//                }
+//                
+//                
+//            	  $nav_data = $this->session->all_userdata();
+//            	if(isset($data)) {
+//                    $result = array_merge($path, $data, $nav_data);
+//                }
+//                else{
+//                    $result = array_merge($path, $nav_data);
+//                }
+//                    $this->load->view('Create_Wrevel_View',$result);
+////                    $this->load->view('myaccount_ticketmanagement',$result);
+//            }
+//	}
 	
 	public function myaccount_stats(){
                 $this->load->helper('date');
@@ -571,6 +666,15 @@ class account extends CI_Controller{
         	$path = $this->path->getPath();
         	$event_data = $this->model_events->find_event($event_id);
         	$data = $this->model_tickets->get_ticket_with_id($event_id, $ticket_id);
+                //get the last 7 digits of order#
+                for($m = 0; $m < count($data); $m++){
+                    $temp_id = $data[$m]['ticket_id'];
+                    $data[$m]['ticket_id'] = substr($temp_id, 25, 7);
+                }
+                if(!$event_data[0]['e_terms']){
+                    $event_data[0]['e_terms'] = 'N/A';
+                }
+                    
         	if($data) {
                     for($i = 0; $i < count($data); $i++) {
         		$remapped_data['ticket'][$i]= array('e_name' => $event_data[0]['e_name'],
@@ -587,7 +691,10 @@ class account extends CI_Controller{
                                                             'e_city' => $event_data[0]['e_city'],
                                                             'e_state' => $event_data[0]['e_state'],
                                                             'e_zipcode' => $event_data[0]['e_zipcode'],
-                                                            'barcode' => $data[$i]['barcode']
+                                                            'barcode' => $data[$i]['barcode'],
+                                                            'purchase_time' => $data[$i]['purchase_time'],
+                                                            'order#' => $data[$i]['ticket_id'],
+                                                            'e_term' => $event_data[0]['e_terms']
         				       );
                     }
       			$result = array_merge($remapped_data, $path);

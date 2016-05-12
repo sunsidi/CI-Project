@@ -44,7 +44,7 @@ ul.nav.nav-tabs.tabs-left>li{
 ==============================================-->
   <div class="container" style="padding-bottom:50px;">
 	<div class="row" style="margin-top:120px;">
-		<div class="col-md-3 col-md-offset-1"> <!-- required for floating -->
+            <div class="col-md-3 col-md-offset-1"> <!-- required for floating -->
             <?php
             $hidden = array(
                 'icebreakers'=> 0,
@@ -65,114 +65,92 @@ ul.nav.nav-tabs.tabs-left>li{
             echo form_hidden($hidden);?>
 
             <!-- Nav tabs -->
-			<div class="panel panel-default" style="border:none;font-weight:bold;">
-				<div class="panel-heading" style="background:#44454A;color:white;padding-left:0;padding-right:0;position:relative;">
-    					<h3 class="panel-title text-center" style="font-size:20px;font-weight:bold;padding:8px;padding-bottom:15px;">Create a Wrev</h3>
-						<img src="<?php echo $PATH_IMG?>color_bar.jpg" style="width:100%;position:absolute;"/>
-  				</div>
-  				<div class="panel-body" style="background:#F7F7F7;text-align:center;">
-					<ul class="nav nav-tabs tabs-left" style="text-align:center;border:none;">
-                                            
-                                                    <li id="categorylist" class="active"><a href="#category" data-toggle="tab" id = "category_form">Choose a Category</a></li>
-                                                    <li id="detailslist"><a href="#details" data-toggle="tab" id = "details_form">Type in the Wrevs details</a></li>
-                                                    <li id="customizelist"><a href="#customize" data-toggle="tab" id = "customize_form" >Customize your Wrev</a></li>
-                                                    <li id="setuplist"><a href="#setup" data-toggle="tab" id = "tickets_form" style="display: none">Set up Tickets</a></li>
-                                                    <li id="deliverylist"><a href="#delivery" data-toggle="tab" id = "delivery_form" style="display: none">Delivery Method Set up</a></li>
-                                                    
-					</ul>
-				</div>
-				<div class="panel-footer" style="background:#44454A;text-align:center;">				
-					<p><button type="submit" class="btn" style="border-radius:none;color:white;background:#1B76BD;width:70%;font-size:18px;">Submit Wrev</button></p>
-					<!--<p><button class="btn" style="border-radius:none;color:white;background:#6D6E72;width:70%;font-size:18px;">Preview Wrev</button></p>-->
-					<p><button class="btn" style="border-radius:none;color:white;background:#8D4D4D;width:70%;font-size:18px;" onclick="goBack()">Cancel</button></p>
-					<script>
-					function goBack() {
-					window.history.back();
-					}
-					</script>
-				</div>
-			</div>
+		<div class="panel panel-default" style="border:none;font-weight:bold;">
+                    <div class="panel-heading" style="background:#44454A;color:white;padding-left:0;padding-right:0;position:relative;">
+    			<h3 class="panel-title text-center" style="font-size:20px;font-weight:bold;padding:8px;padding-bottom:15px;">Create a Wrev</h3>
+                        <img src="<?php echo $PATH_IMG?>color_bar.jpg" style="width:100%;position:absolute;"/>
+                    </div>
+                    <div class="panel-body" style="background:#F7F7F7;text-align:center;">
+			<ul class="nav nav-tabs tabs-left" style="text-align:center;border:none;">
+                            <li id="categorylist" class="active"><a href="#category" data-toggle="tab" id = "category_form">Choose a Category</a></li>
+                            <li id="detailslist"><a href="#details" data-toggle="tab" id = "details_form">Type in the Wrevs details</a></li>
+                            <li id="customizelist"><a href="#customize" data-toggle="tab" id = "customize_form" >Customize your Wrev</a></li>
+                            <li id="setuplist"><a href="#setup" data-toggle="tab" id = "tickets_form" style="display: none">Set up Tickets</a></li>
+                            <li id="deliverylist"><a href="#delivery" data-toggle="tab" id = "delivery_form" style="display: none">Delivery Method Set up</a></li>
+                        </ul>
+		    </div>
+                    <div class="panel-footer" style="background:#44454A;text-align:center;">				
+			<p><button type="submit" class="btn" style="border-radius:none;color:white;background:#1B76BD;width:70%;font-size:18px;">Submit Wrev</button></p>
+			<!--<p><button class="btn" style="border-radius:none;color:white;background:#6D6E72;width:70%;font-size:18px;">Preview Wrev</button></p>-->
+			<p><button class="btn" style="border-radius:none;color:white;background:#8D4D4D;width:70%;font-size:18px;" onclick="goBack()">Cancel</button></p>
+			<script>
+                            function goBack() {
+                            window.history.back();
+                            }
+			</script>
+                    </div>
 		</div>
-		
-              
-		<div class="col-md-7" style="padding:0;">
-			<!-- Tab panes -->
-			<div class="tab-content" style="background:#F7F7F7;">
-			
-				<!--Summary-->
-				<div class="tab-pane active default-tabs" id="category" style="color:#404041;text-align:center;">
-
-						<div class="row" style="padding:10% 8%;">
-							<div class="col-md-4 col-sm-6" style="background:#F1F1F1;padding:10px;">
-								<strong>Choose 1 Main Category</strong>
-								<p><em>double-click to confirm</em></p>
-								<p>You can add up to 2 sub-categories total</p>
-								
-							</div>
-							<div class="col-md-8 col-sm-6">
-								 <div class="apare cwrev_select" id="exhgt" primarySelected="false" >
-        
-        <img src="<?php echo $PATH_IMG?>hotspots_new.png" class="cwrev_category small" id= '0' name = 'is_hotspot' value = '1' alt="hotspot" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;" /> 
-
-        
-        <img src="<?php echo $PATH_IMG?>icebreakers_new.png" class="cwrev_category small" id = '1'name = 'is_icebreakers' value = '1' alt="icebreakers" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;"> 
-
-        <img src="<?php echo $PATH_IMG?>culture_new.png" class="cwrev_category small" id= '2' name = 'is_culture' value = '1' alt="culture" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
-     
-        <img src="<?php echo $PATH_IMG?>meetups_new.png" class="cwrev_category small" id = '3' name = 'is_meetups' value = '1' alt="meetups" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
-
-        <img src="<?php echo $PATH_IMG?>exporingyourcity_new.png" class="cwrev_category small" id = '4' name = 'is_exploringyourcity' value = '1' alt="explore city" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
-
-        <img src="<?php echo $PATH_IMG?>loveandromance_new.png" class="cwrev_category small" id = '5' name = 'is_l&r' value = '1' alt="love and romance" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
-
-        <img src="<?php echo $PATH_IMG?>parties_new.png" class="cwrev_category small" id = '6' name = 'is_parties' value = '1' alt="parties" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
-  
-        <img src="<?php echo $PATH_IMG?>clubs_new.png" class="cwrev_category small" id = '7' name = 'is_clubs' value = '1' alt="clubs" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
-    
-        <img src="<?php echo $PATH_IMG?>concerts_new.png" class="cwrev_category small" id = '8' name = 'is_concerts' value = '1' alt="concerts" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
-    
-        <img src="<?php echo $PATH_IMG?>festivals_new.png" class="cwrev_category small" id = '9' name = 'is_festivals' value = '1' alt="festivals" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
-        
-        <img src="<?php echo $PATH_IMG?>lounges_new.png" class="cwrev_category small" id = '10' name = 'is_lounges' value = '1' alt="lounges" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
-      
-        <img src="<?php echo $PATH_IMG?>bars_new.png" class="cwrev_category" id = '11' name = 'is_bars' value = '1' alt="bars" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
-         <div style="visibility: hidden;">
-        <input type="checkbox" class = "checkbox" id="i0" name="hotspots" value="1024"  />
-        <input type="checkbox" class = "checkbox" id="i1" name="icebreakers" value="1"  />
-        <input type="checkbox" class = "checkbox" id="i2" name="culture" value="2048"  />
-        <input type="checkbox" class = "checkbox" id="i3" name="meetups" value="2"  />
-        <input type="checkbox" class = "checkbox" id="i4" name="explore" value="64"  />
-        <input type="checkbox" class = "checkbox" id="i5" name="romance" value="128"  />
-        <input type="checkbox" class = "checkbox" id="i6" name="parties" value="4"  />
-        <input type="checkbox" class = "checkbox" id="i7" name="clubs" value="8"  />
-        <input type="checkbox" class = "checkbox" id="i8" name="concerts" value="16"  />
-        <input type="checkbox" class = "checkbox" id="i9" name="festivals" value="32"  />
-        <input type="checkbox" class = "checkbox" id="i10" name="lounges" value="256"  />
-        <input type="checkbox" class = "checkbox" id="i11" name="bars" value="512" />
-         </div>
-<!--    <script>-->
-<!--        $(document).ready(function(){-->
-<!--            $(".checkbox").click(function(){-->
-<!--                if($('#exhgt').attr('primaryselected') === 'true'){-->
-<!--                     document.getElementById("category_form").innerHTML = "Choose a Category"&#10003;-->
-<!--                }-->
-<!--            });-->
-<!--        });-->
-<!---->
-<!--    </script>-->
-    </div>
-							</div>
-						</div>
-						<div style="width:100%;background:#F1F1F1;padding:10px;">
-							
-							<!--<button class="btn" style="background:#6D6E72;color:white;">Clear Page</button></a>-->
-							<a href="#details" data-toggle="tab"><button class="btn" id="nxtDetail" style="background:#1D74BB;color:white;">Next</button></a>
-						</div>
-					
-				</div>
+            </div>
+            <div class="col-md-7" style="padding:0;">
+		<!-- Tab panes -->
+		<div class="tab-content" style="background:#F7F7F7;">
+                    <!--Summary-->
+                    <div class="tab-pane active default-tabs" id="category" style="color:#404041;text-align:center;">
+                        <div class="row" style="padding:10% 8%;">
+                            <div class="col-md-4 col-sm-6" style="background:#F1F1F1;padding:10px;">
+				<strong>Choose 1 Main Category</strong>
+                                <p><em>double-click to confirm</em></p>
+				<p>You can add up to 2 sub-categories total</p>
+                            </div>
+                            <div class="col-md-8 col-sm-6">
+				<div class="apare cwrev_select" id="exhgt" primarySelected="false" >
+                                    <img src="<?php echo $PATH_IMG?>hotspots_new.png" class="cwrev_category small" id= '0' name = 'is_hotspot' value = '1' alt="hotspot" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;" /> 
+                                    <img src="<?php echo $PATH_IMG?>icebreakers_new.png" class="cwrev_category small" id = '1'name = 'is_icebreakers' value = '1' alt="icebreakers" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;"> 
+                                    <img src="<?php echo $PATH_IMG?>culture_new.png" class="cwrev_category small" id= '2' name = 'is_culture' value = '1' alt="culture" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
+                                    <img src="<?php echo $PATH_IMG?>meetups_new.png" class="cwrev_category small" id = '3' name = 'is_meetups' value = '1' alt="meetups" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
+                                    <img src="<?php echo $PATH_IMG?>exporingyourcity_new.png" class="cwrev_category small" id = '4' name = 'is_exploringyourcity' value = '1' alt="explore city" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
+                                    <img src="<?php echo $PATH_IMG?>loveandromance_new.png" class="cwrev_category small" id = '5' name = 'is_l&r' value = '1' alt="love and romance" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
+                                    <img src="<?php echo $PATH_IMG?>parties_new.png" class="cwrev_category small" id = '6' name = 'is_parties' value = '1' alt="parties" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
+                                    <img src="<?php echo $PATH_IMG?>clubs_new.png" class="cwrev_category small" id = '7' name = 'is_clubs' value = '1' alt="clubs" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
+                                    <img src="<?php echo $PATH_IMG?>concerts_new.png" class="cwrev_category small" id = '8' name = 'is_concerts' value = '1' alt="concerts" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
+                                    <img src="<?php echo $PATH_IMG?>festivals_new.png" class="cwrev_category small" id = '9' name = 'is_festivals' value = '1' alt="festivals" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
+                                    <img src="<?php echo $PATH_IMG?>lounges_new.png" class="cwrev_category small" id = '10' name = 'is_lounges' value = '1' alt="lounges" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
+                                    <img src="<?php echo $PATH_IMG?>bars_new.png" class="cwrev_category" id = '11' name = 'is_bars' value = '1' alt="bars" style="cursor: pointer; padding: 3px; border: none; background-image: none; background-position: initial initial; background-repeat: initial initial;">
+                                <div style="visibility: hidden;">
+                                    <input type="checkbox" class = "checkbox" id="i0" name="hotspots" value="1024"  />
+                                    <input type="checkbox" class = "checkbox" id="i1" name="icebreakers" value="1"  />
+                                    <input type="checkbox" class = "checkbox" id="i2" name="culture" value="2048"  />
+                                    <input type="checkbox" class = "checkbox" id="i3" name="meetups" value="2"  />
+                                    <input type="checkbox" class = "checkbox" id="i4" name="explore" value="64"  />
+                                    <input type="checkbox" class = "checkbox" id="i5" name="romance" value="128"  />
+                                    <input type="checkbox" class = "checkbox" id="i6" name="parties" value="4"  />
+                                    <input type="checkbox" class = "checkbox" id="i7" name="clubs" value="8"  />
+                                    <input type="checkbox" class = "checkbox" id="i8" name="concerts" value="16"  />
+                                    <input type="checkbox" class = "checkbox" id="i9" name="festivals" value="32"  />
+                                    <input type="checkbox" class = "checkbox" id="i10" name="lounges" value="256"  />
+                                    <input type="checkbox" class = "checkbox" id="i11" name="bars" value="512" />
+                                </div>
+                                <!--    <script>-->
+                                <!--        $(document).ready(function(){-->
+                                <!--            $(".checkbox").click(function(){-->
+                                <!--                if($('#exhgt').attr('primaryselected') === 'true'){-->
+                                <!--                     document.getElementById("category_form").innerHTML = "Choose a Category"&#10003;-->
+                                <!--                }-->
+                                <!--            });-->
+                                <!--        });-->
+                                <!---->
+                                <!--    </script>-->
+                                </div>
+                            </div>
+			</div>
+			<div style="width:100%;background:#F1F1F1;padding:10px;">
+                            <!--<button class="btn" style="background:#6D6E72;color:white;">Clear Page</button></a>-->
+                            <a href="#details" data-toggle="tab"><button class="btn" id="nxtDetail" style="background:#1D74BB;color:white;">Next</button></a>
+			</div>
+                    </div>
                                
-				<div class="tab-pane" id="details" style="text-align:center;font-size:18px;">
-					<div style="padding:4%;">
+                    <div class="tab-pane" id="details" style="text-align:center;font-size:18px;">
+                        <div style="padding:4%;">
 						<input id="e_name" name="e_name" type="text" class="form-control" placeholder="Name of Event" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;">
 						<textarea id="e_description" class="form-control" rows="3" name = "e_description" placeholder="Event Info" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px;"></textarea>
 						<textarea class="form-control" rows="1" placeholder="Event Terms (Custom terms ex: Age limit)" style="border-radius:0;background:#F2F2F2;border:none;box-shadow:none;margin-top:10px;"></textarea>
@@ -200,6 +178,7 @@ ul.nav.nav-tabs.tabs-left>li{
 							</div>
 							<a class="btn add_day_btn" type="button" onclick="add_day()" id="add_day" style="background:#1D74BB;color:white;display:none;">Add Day</a>
 <script>
+    
     $('#multiple-days').on('change', function () {
         if (this.value == '1') {
             $(".add_day_btn").show();
@@ -220,11 +199,11 @@ ul.nav.nav-tabs.tabs-left>li{
     });
 </script>						</div>
 						
-						<div id="event_day">
-						<div class="row" style="margin:0;margin-top:10px;">
+					<div id="event_day">
+							<div class="row" style="margin:0;margin-top:10px;">
 							<div style="width:30%;float:left;background:#F2F2F2;padding-top:5px;padding-bottom:5px;">
 							<label style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Date
-							<input type="text" style="font-size:14px;height:100%;background:transparent;border:1px solid #999999;" id="e_date" name="e_date[]">
+							<input placeholder="mm/dd/yyyy" type="text" style="font-size:14px;height:100%;background:transparent;border:1px solid #999999;" id="e_date" name="e_date[]">
 							</label>
 								
 							</div>
@@ -1156,7 +1135,7 @@ ul.nav.nav-tabs.tabs-left>li{
 			
 							+'<div style="width:30%;float:left;background:#F2F2F2;padding-top:5px;padding-bottom:5px;">'
 							+'<label style="font-weight:normal;font-size:14px;text-align:left;color:#999999;margin-top:5px;">Date '
-							+'<input name="e_date[]" type="text" style="font-size:14px;height:100%;background:transparent;border:1px solid #999999;">'
+							+'<input placeholder="mm/dd/yyyy" type="text" style="font-size:14px;height:100%;background:transparent;border:1px solid #999999;" name="e_date[]">'
 							+'</label>'
 							
 							+'</div>'
@@ -1274,19 +1253,14 @@ ul.nav.nav-tabs.tabs-left>li{
             
         }
     </script>
+<script>
+    $('#period').popover();
+    $('#multiple').popover();
+</script>
 	
-	 <script>
-	$('#period').popover();
-	$('#multiple').popover();
-	</script>
 	
-	
-    <script>
-        function change_op_type(op_number) {
-            $("#op_type_user").attr("value", op_number);
-        }
-    </script>
-//add multiple tickets
+   
+<!--add multiple tickets-->
 <script>
     var type_counters = 1;
     //$(document).ready(function() {
@@ -1515,182 +1489,7 @@ ul.nav.nav-tabs.tabs-left>li{
         }
     });
 </script>
-
-    <script>
-        function show_users(e) {
-            //var regex = new RegExp("^[a-zA-Z0-9_]*$");
-            if (e.keyCode) key = e.keyCode;
-            //else if(e.which) key = e.which;
-            if(/[a-zA-Z0-9 ]/.test(String.fromCharCode(key)) || key == 8) {
-                var search_value = $('#search_users').val();
-                //First set the search_value checker .
-                (function(search_value) {
-                    //Amount of time to wait before actually doing the search.
-                    setTimeout(function () {
-                        $('.users_group').each(function() { 
-                            //If value isn't finished typing then skip this function and go to the next.
-                            if(search_value != $('#search_users').val()) {
-                                return false;
-                            }
-                            //Check if an alphanumeric is typed in.
-                            else {
-                                if(($(this).html()).indexOf($('#search_users').val()) > -1 && $('#search_users').val().length >= 0) {
-                                    $(this).parent().show();
-                                }
-                                else
-                                    $(this).parent().hide();
-                            }
-                        })
-                    },1000);
-                }(search_value));
-            }
-        }
-    </script>
-    <script>
-        function show_events(e) {
-            //var regex = new RegExp("^[a-zA-Z0-9_]*$");
-            if (e.keyCode) key = e.keyCode;
-            //else if(e.which) key = e.which;
-            if(/[a-zA-Z0-9 ]/.test(String.fromCharCode(key)) || key == 8) {
-                var search_value = $('#search_events').val();
-                //First set the search_value checker .
-                (function(search_value) {
-                    //Amount of time to wait before actually doing the search.
-                    setTimeout(function () {
-                        $('.events_group').each(function() { 
-                            //If value isn't finished typing then skip this function and go to the next.
-                            if(search_value != $('#search_events').val()) {
-                                return false;
-                            }
-                            //Check if an alphanumeric is typed in.
-                            else {
-                                if(($(this).html()).indexOf($('#search_events').val()) > -1 && $('#search_events').val().length >= 0) {
-                                    $(this).parent().show();
-                                }
-                                else
-                                    $(this).parent().hide();
-                            }
-                        })
-                    },1000);
-                }(search_value));
-            }
-        }
-    </script>
-    <script>
-        function show_featured(e) {
-            //var regex = new RegExp("^[a-zA-Z0-9_]*$");
-            if (e.keyCode) key = e.keyCode;
-            //else if(e.which) key = e.which;
-            if(/[a-zA-Z0-9 ]/.test(String.fromCharCode(key)) || key == 8) {
-                var search_value = $('#search_featured').val();
-                //First set the search_value checker .
-                (function(search_value) {
-                    //Amount of time to wait before actually doing the search.
-                    setTimeout(function () {
-                        $('.featured_group').each(function() { 
-                            //If value isn't finished typing then skip this function and go to the next.
-                            if(search_value != $('#search_featured').val()) {
-                                return false;
-                            }
-                            //Check if an alphanumeric is typed in.
-                            else {
-                                if(($(this).html()).indexOf($('#search_featured').val()) > -1 && $('#search_featured').val().length >= 0) {
-                                    $(this).parent().show();
-                                }
-                                else
-                                    $(this).parent().hide();
-                            }
-                        })
-                    },1000);
-                }(search_value));
-            }
-        }
-    </script>
-    <script>
-        function show_all_users() {
-            $('.users_group').parent().show();
-            $('#search_users').val('');
-        }
-        function show_new_users() {
-            $('.users_group_date').each(function() {
-                if(parseInt($(this).next().html()) < 7) {
-                    $(this).parent().show();
-                }
-                else {
-                    $(this).parent().hide();
-                }
-            });
-        }
-        function show_current_users() {     
-            $('.users_group_date').each(function() {
-                if(parseInt($(this).next().html()) < 1) {
-                    $(this).parent().show();
-                }
-                else {
-                    $(this).parent().hide();
-                }
-            }); 
-        }
-    </script>
-    <script>
-        function show_all_events() {
-            $('.events_group').parent().show();
-            $('#search_events').val('');
-        }
-        function show_new_events() {
-            $('.events_group_created').each(function() {
-                if(parseInt($(this).next().html()) < 7) {
-                    $(this).parent().show();
-                }
-                else {
-                    $(this).parent().hide();
-                }
-            });
-        }
-        function show_current_events() {     
-            $('.events_group_created').each(function() {
-                if(parseInt($(this).next().html()) < 1) {
-                    $(this).parent().show();
-                }
-                else {
-                    $(this).parent().hide();
-                }
-            }); 
-        }
-    </script>
-    <script>
-        function change_category(i, value) {
-            $(i).parent().parent().parent().siblings('#category_change').attr("value", value);
-            $(i).parent().parent().parent().children('#category_button').html($(i).html());
-            console.log($(i).parent().parent().parent().siblings('#category_change').val());
-        }
-    </script>
-    <script>
-        function set_display_values(id,title,body,author) {
-            $('#blog_id_edit').attr('value', id);
-            $('#blog_title_edit').attr('placeholder', title);
-            $('#blog_body_edit').attr('placeholder', body);
-            $('#blog_author_edit').attr('placeholder', author);
-        }
-    </script>
-
-    <script>
-    	$(document).ready(function() {
-    		$('input[type=radio][name=multi_e_is_ticketed0]').change(function() {
-            if (this.value == '1') {
-                $("#multi_add_more_base").show();
-                $(this).parent().parent().siblings("#multi_add_more_base").children().click();
-                //$(this).siblings("#multi_add_more").trigger("click");
-            }
-            else if (this.value == '0') {
-                $("#multi_add_more_base").hide();
-                $(".multi_ticket_group").remove();
-            }
-        });
-	});
-    </script>
-
-    <script>
+<script>
         //second form
         document.getElementById("e_name").onkeyup=function(){TypeInWrevsDetails()};
         document.getElementById("e_description").onkeyup=function(){TypeInWrevsDetails()};
@@ -1838,12 +1637,19 @@ ul.nav.nav-tabs.tabs-left>li{
 
 </script>
 <!--the following functions are for the NEXT buttons and Previous buttons
-They are make for changing the color of currently activated tabs-->
+They are made for changing the color of currently activated tabs-->
 <script>
    //the following functions are for next buttons
         $("#nxtDetail").click(function(){
-            $("#categorylist").removeClass("active");
-            $("#detailslist").addClass("active");
+            var prim = $('#exhgt').attr('primaryselected');
+            if(prim === 'true'){
+                $("#categorylist").removeClass("active");
+                $("#detailslist").addClass("active");
+            }
+            else{
+                alert("Please make sure you selected a primary event category.");
+                return false; 
+            }
         });
         $("#nxtCustomize").click(function(){
             $("#detailslist").removeClass("active");

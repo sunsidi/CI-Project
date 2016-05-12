@@ -192,7 +192,7 @@ class Event extends CI_Controller {
         }
         public function Create_Wrevel_View()
             {
-            $path = $this->path->getpath();
+                $path = $this->path->getpath();
                 //$data['event'] = $this->model_events->find_event();
                 $data['PATH_IMG'] = $path['PATH_IMG'];
                 $data['PATH_BOOTSTRAP'] = $path['PATH_BOOTSTRAP'];
@@ -227,6 +227,7 @@ class Event extends CI_Controller {
                 redirect("welcome/home");
             }else{
             $event_id = $this->model_events->create_event($id);
+            //make a new directory for relevant event photos
             if($event_id) {
                 mkdir('./uploads/events/'.$event_id.'/photos/', 0777, true);
                 chmod('./uploads/events/'.$event_id.'/photos/', 0777);
@@ -236,6 +237,7 @@ class Event extends CI_Controller {
                 //echo $image_name;
                 $this->load->library('upload',$config);
                 if (!$this->upload->do_upload('userfile'))
+                //if do_upload returns false, set image to be default
                 {
                     $e_image = 'default_event_image.jpg';
                 }

@@ -15,6 +15,19 @@
 p, h3{
 margin:0;
 }
+body{
+  -webkit-print-color-adjust:exact;
+}
+.printtext{
+    color: rgba(0, 0, 0, 0);
+        text-shadow: 0 0 0 #2077BC;
+}
+ @media print and (-webkit-min-device-pixel-ratio:0) {
+        .printtext {
+          color: #2077BC;
+          -webkit-print-color-adjust: exact;
+        }
+      }
 
 //.gutter > [class*='col-'] {
 //    padding-right:30px;
@@ -25,22 +38,25 @@ margin:0;
     <?php if(isset($ticket)) {
             for($i = 0; $i < count($ticket); $i++) {?>
 	<div class="col-md-8 col-md-offset-2" style="padding-top: 40px; padding-bottom: 80px;padding-left:3%;padding-right:3%;">
+            <div>
+                <button onclick = "printFunction()">Print Ticket</button>
+            </div>
 		<div class="panel" style="border:none;text-align:center;">
-			<p style="background:#D0D2D3;padding:10px;">Note: This is your final ticket. Print this out and present at door.</p>
-			<h3 style="text-align:center; color: black;font-family:GillSans;background:#425666;color:white;padding:20px;"><?php echo $ticket[$i]['e_name']?></h3>
+			<!--<p style="background:#D0D2D3 !important;padding:10px;">Note:This is your final ticket. Print this out and present at door.</p>-->
+			<h3 style="text-align:center; color: black;font-family:GillSans;background:#425666 !important;color:white;padding:20px;"><?php echo $ticket[$i]['e_name']?></h3>
 			<div class="row" style="color:white;">
 				<div class="col-md-8 col-sm-6 col-xs-6" style="padding-right:0;">
-					<h3 style="background:#414042;padding:15px;font-family:GillSans;"><?php echo ucfirst($ticket[$i]['ticket_type'])?></h3>
+					<h3 style="background:#414042 !important;padding:15px;font-family:GillSans;"><?php echo ucfirst($ticket[$i]['ticket_type'])?></h3>
 				</div>
 				<div class="col-md-4 col-sm-6 col-xs-6" style="padding-left:0;">
-					<h3 style="background:#3F8664;padding:15px;font-family:GillSans;"><?php echo '$'.$ticket[$i]['ticket_price']?></h3>
+					<h3 style="background:#3F8664 !important;padding:15px;font-family:GillSans;"><?php echo '$'.$ticket[$i]['ticket_price']?></h3>
 				</div>
 			</div>
 			<img src="<?php echo $PATH_IMG?>color_bar2.jpg" style="width:100%;margin-top:-10px;"/>
-			<div class="row gutter" style="margin:0; margin-top:-12px;background:#E5E6E7;padding:5%;">
+			<div class="row gutter" style="margin:0; margin-top:-12px;background:#E5E6E7 !important;padding:5%;">
 				<div class="col-md-6 col-xs-6">
 					<div class="print-ticket-box">
-						<p style="color:#2077BC;">Event Location</p>
+						<p class = "printtext" >Event Location</p>
 						<p>Venue name</p>
 						<hr style="margin:10px auto; width:75%;border-color:black;"/>
 						<p><?php echo $ticket[$i]['e_address']?></p>
@@ -48,28 +64,28 @@ margin:0;
                         if(isset($ticket[$i]['e_state']) && !empty($ticket[$i]['e_state'])) {echo $ticket[$i]['e_state']; } ; ?></span>
 					</div>
 					<div class="print-ticket-box" style="margin-top:20px;">
-						<p style="color:#2077BC;">Event Terms</p>
-						<p>event terms here</p>
+						<p class = "printtext">Event Terms</p>
+						<p><?php echo $ticket[$i]['e_term'] ?></p>
 					</div>
 				</div>
 				<div class="col-md-6 col-xs-6">
 					<div class="print-ticket-box">
-						<p style="color:#2077BC;">Date & Time</p>
+						<p class = "printtext">Date & Time</p>
 						<p><?php echo $ticket[$i]['e_date'] ?></p>
 						<p><?php echo $ticket[$i]['e_start_time'] ?> </p>
 					</div>
 					<div class="print-ticket-box" style="margin-top:20px;">
-						<p style="color:#2077BC;">Ordered By</p>
-						<p>Person who bought ticket</p>
-						<p>Time person bought ticket </p>
+						<p class = "printtext">Ordered By</p>
+						<p><?php echo $ticket[$i]['fullname'] ?></p>
+						<p><?php echo $ticket[$i]['purchase_time'] ?></p>
 					</div>
-					<div class="print-ticket-box" style="margin-top:20px;background:#58595B;">
-						<p style="color:white;">Order #: #</p>	
+					<div class="print-ticket-box" style="margin-top:20px;background:#58595B !important;">
+						<p style="color:white;"><?php echo $ticket[$i]['order#'] ?></p>	
 					</div>
 				</div>
 			</div>
 			<div class="row" style="margin:0;">
-				<div style="background:#F0F1F1;padding:10px;">
+				<div style="background:#F0F1F1 !important;padding:10px;">
 				<img src="<?php echo base_url().'application/controllers/barcode.php?barcode='.$ticket[$i]['barcode'].'&width=205&height=110'?>"/>
 				</div>
 			</div>
@@ -179,7 +195,11 @@ background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#D4E0E4), to(#E3E9ED));"
 		   
 	</div>
     <?php }}?>
-
+    <script>
+    function printFunction() {
+    window.print();
+    }
+    </script>
 <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

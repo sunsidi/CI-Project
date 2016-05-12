@@ -95,7 +95,7 @@ jQuery(document).ready(function () {
                                                     <li><a href="#admin_level" data-toggle="tab">Admin Level</a></li>
 												<?php }
                                                 if($current_user['admin_level'] == 1) {?>
-                                                    <li><a href="#ticket" data-toggle="tab">Tickets</a></li>	
+                                                    <li><a href="#ticket" data-toggle="tab">Shipping/Will Call</a></li>	
                                                 <?php }
                                             }?>
 					</ul>
@@ -927,11 +927,15 @@ jQuery(document).ready(function () {
 								
 								<!--Ticket-->
 								<div class="tab-pane" id="ticket" style="background:rgba(255,255,255,0.5);padding:10%;text-align:center;font-size:18px;">
-								<h1 style="margin-top:20px;"><strong><?php echo count($all_events)?></strong> Listings</h1>
-					<button type="button" class="btn admin_tabs" onclick="show_all_events()">All</button>
-					<button type="button" class="btn admin_tabs" onclick="show_new_events()">New</button>
-					<button type="button" class="btn admin_tabs" onclick="show_current_events()">Current</button>
-                                        <form id="delete_users" action="<?php echo base_url()."admin/feature_events"?>" method="POST">
+							<div style="text-align:center;">
+							<ul class=" nav nav-tabs" role="tablist" style="text-align:center;">
+								<li role="presentation" class="active" style="float:none;display:inline-block;*display:inline; /* ie7 fix */ zoom:1;"><a href="#shipping" aria-controls="shipping" role="tab" data-toggle="tab">Shipping</a></li>
+								<li role="presentation" style="float:none;display:inline-block;*display:inline; /* ie7 fix */ zoom:1;"><a href="#willcall" aria-controls="willcall" role="tab" data-toggle="tab">Will Call</a></li>
+							
+							  </ul>
+							 </div> 
+					
+                     <form id="delete_users" action="<?php echo base_url()."admin/feature_events"?>" method="POST">
 					<div class="form-group" style="margin-top:10px;width:60%;margin-left:auto;margin-right:auto;">
               					<div class="left-inner-addon" style="text-align:left;">
                 					<span class="glyphicon glyphicon-search"></span>
@@ -939,33 +943,100 @@ jQuery(document).ready(function () {
           						<input id="search_featured" type="Search" class="form-control" style="border-radius:10px;font-size:20px;" placeholder="Search" onkeyup="show_featured(event)">						
           					</div>
        					</div>
-       					<div style="height:500px;overflow-y:auto;">
-       					<table style="width:100%;text-align:left;">
-       						<thead style="color:#5697CA;">
-       							<tr>
-                                                            <td style="width:25%;">Username</td>	
-                                                            <td style="width:25%;">Event</td>												
-                                                            <td style="width:25%;">Order ID</td>
-                                                            <td style="width:25%;">Date</td>
-															 <td style="width:25%;">Delivery Type</td>
-                                                            <td style="width:25%;">Download </td>
-                                                            
-							</tr>
-						</thead>
-						<tbody>
-							
-                                                            <tr>
-                                                                <td>Name of user</td>
-                                                                <td>Event Name</td>
-                                                                <td>Order #</td>
-                                                                <td>Date</td>
-                                                                <td>Will Call / Shipping</td>
-                                                                <td><a href="<?php echo base_url().'testing/ticketstub'?>">[Download as PDF]</a></td>
-                                                              
-                                                            </tr>
-                                               
-						</tbody>
-       					</table>
+						 <div id="myTabContent" class="tab-content">
+								<div role="tabpanel" class="tab-pane active" id="shipping">
+								<div style="height:500px;overflow-y:auto;">
+								<table style="width:100%;text-align:left;">
+									<thead style="color:#5697CA;">
+										<tr>
+																	<td style="width:25%;">Customer Name</td>	
+																	<td style="width:25%;">Event Name</td>												
+																	<td style="width:25%;">Event ID</td>
+																	<td style="width:25%;">Event Date</td>
+																	<td style="width:25%;">Shipping Address</td>
+																	<td style="width:25%;">Ship By (date)</td>
+																	<td style="width:25%;">Ship Price</td>
+																	<td style="width:25%;">Status</td>
+																	<td style="width:25%;">Action</td>
+																	
+										</tr>
+									</thead>
+									<tbody>
+									
+																	<tr>
+																		<td>Name of user</td>
+																		<td>Event Name</td>
+																		<td>Event id</td>
+																		<td>Date</td>
+																		<td>Shipping Address</td>
+																		<td>Ship By Date</td>
+																		<td>Ship Price</td>
+																		<td>Pending</td>
+																		<td>
+																			<!--When select, status change-->
+																			<select>
+																				<option></option>
+																				<option>Preparing Order</option>
+																				<option>Tickets Shipped</option>
+																			</select>
+																		</td>
+																		<td><a>[Print Ticket Stub]</a></td>
+																	  
+																	</tr>
+													   
+								</tbody>
+								</table>
+										</div>
+										</div>
+										
+								<div role="tabpanel" class="tab-pane" id="willcall">
+								<div style="height:500px;overflow-y:auto;">
+								<table style="width:100%;text-align:left;">
+									<thead style="color:#5697CA;">
+										<tr>
+																	<td style="width:25%;">Customer Name</td>	
+																	<td style="width:25%;">Event Name</td>												
+																	<td style="width:25%;">Event ID</td>
+																	<td style="width:25%;">Event Date</td>
+																	<td style="width:25%;">Will Call Address</td>
+																	<td style="width:25%;">Ship By (date)</td>
+																	<td style="width:25%;">Will Call Price</td>
+																	<!--Total # tickets for will call-->
+																	<td>Quantity</td>
+																	<td style="width:25%;">Status</td>
+																	<td style="width:25%;">Action</td>
+																	
+										</tr>
+									</thead>
+									<tbody>
+									
+																	<tr>
+																		<td>Name of user</td>
+																		<td>Event Name</td>
+																		<td>Event id</td>
+																		<td>Date</td>
+																		<td>Will Call Address</td>
+																		<td>Ship By Date</td>
+																		<td>Will Call Price</td>
+																		<td>#</td>
+																		<td>Pending</td>
+																		<td>
+																			<!--When select, status change-->
+																			<select>
+																				<option></option>
+																				<option>Preparing Order</option>
+																				<option>Tickets Shipped</option>
+																			</select>
+																		</td>
+																		<td><a>[Print Ticket Stub]</a></td>
+																	  
+																	</tr>
+													   
+								</tbody>
+								</table>
+										</div>
+										</div>
+										
 								</div>
 								</div>
                                 <?php }?>
@@ -1500,6 +1571,13 @@ jQuery(document).ready(function () {
         });
 	});
     </script>-->
+	<script>
+	$('#myTabs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+	</script>
+	
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

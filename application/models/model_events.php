@@ -152,7 +152,8 @@ class Model_events extends CI_Model
         return false;
     }
 
-
+    //this function will combine the infrom from two different events and events_time into one array
+    //and return the merged array
     public function find_event($e_id)
     {
         //$e_name = 'Boris pimp party';
@@ -394,7 +395,7 @@ class Model_events extends CI_Model
     public function create_event($userID)
     {
         $this->load->helper('date');
-
+        //strip tags for web security
         $data['e_name'] = strip_tags($this->input->post('e_name'));
         $data['e_description'] = strip_tags($this->input->post('e_description'));
         $data['e_state'] = strip_tags($this->input->post('e_state'));
@@ -431,9 +432,12 @@ class Model_events extends CI_Model
 //        $real_date = $split_date[2] . '-' . $split_date[0] . '-' . $split_date[1];
 //        $data['e_date'] = $real_date;
 //        //echo $data['e_date'];
+        
+        //check if period is set or not
         $events_time_data = array();
-        if ($this->input->post('period') > 0)
+        if ($this->input->post('period') > 0){
             $data['period'] = $this->input->post('period');
+        }
         else if ($this->input->post('period') == -1) {
             $data['period_text'] = 'Every Weekday';
             $events_time_data['e_date'] = '9999-12-31';
@@ -467,6 +471,7 @@ class Model_events extends CI_Model
 
         //insert events time
         $temp1_events_date = $this->input->post('e_date');
+        var_dump($this->input->post('e_date'));
         $temp1_e_start_time = $this->input->post('e_start_time');
         $temp1_e_end_time = $this->input->post('e_end_time');
         if ($events_time_data['e_date'] == '9999-12-31') {
@@ -512,7 +517,7 @@ class Model_events extends CI_Model
 
             }
         }
-
+        //insert ticket data into database
         if ($data['e_is_ticketed']) {
             $ticket_type = $this->input->post('type');
             $ticket_info = $this->input->post('info');

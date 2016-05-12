@@ -1,0 +1,326 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>My Account - Ticket Sales Management | Wrevel - Discover Your World, Host & Experience Events</title>
+<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap.min.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/main.css" rel="stylesheet">
+<link href="<?php echo $PATH_BOOTSTRAP?>css/bootstrap-tour.min.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<!--<link rel="stylesheet" type="text/css" href="//ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css">-->
+<!--<link rel="stylesheet" type="text/css" href="//ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables_themeroller.css">-->
+</head>
+<script>
+$(document).ready(function () {
+    //hide a div after 3 seconds
+    setTimeout(function(){ jQuery("#sentMessage").hide(); }, 5000);
+});
+
+</script>
+
+
+<body>
+<?php $this->load->view('header');?>
+
+<!--content
+==============================================-->
+<div id='sentMessage'>
+    <?php 
+    if ($this->session->flashdata('message')) {
+        echo '<p id="sentStyle" style="margin-left:auto;margin-right:auto; margin-top:80px;width: 500px; background-color:#4EA48B; color: white;text-align:center;font-size:20px;">' 
+        .$this->session->flashdata('message') . 
+        '</p>';
+    }
+    ?></div>  
+    <div class="container" style="padding-bottom:50px;">
+	<div class="container" style="padding-bottom:50px;">
+	<div class="row" style="margin-top:110px;">
+    
+	<div class="col-md-3 col-md-offset-1">
+            <div class="panel panel-default" style="border:none;">
+                <div class="panel-heading" style="background:#628DA3;color:white;">
+                    <h3 class="panel-title text-center" style="font-size:28px;">My Account</h3>
+                </div>
+                    <div class="panel-body" style="background:#DDE0E7;">
+   			<a href="<? echo base_url()?>account/myaccount_accountinfo"><button type="button" class="btn btn-lg btn-block account">Account Information</button></a>
+                        <a href="<? echo base_url()?>account/myaccount_eventattending"><button type="button" class="btn btn-lg btn-block account">Events I&rsquo;m Attending</button></a>
+                        <a href="<? echo base_url()?>account/myaccount_eventlisting"><button type="button" class="btn btn-lg btn-block account">My Event Listings</button></a>
+                        <a href="<? echo base_url()?>account/myaccount_ticketmanagement" style="color:#628DA3;"><button type="button" class="btn btn-lg btn-block account-active">Ticket Sales Management</button></a>
+                        <a href="<? echo base_url()?>account/myaccount_stats"><button type="button" class="btn btn-lg btn-block account">Statistics and Analysis</button></a>
+                    </div>
+            </div>           
+        </div>
+        <!--this is main div that contains all ticket information-->
+        <div class="col-md-7" id="myaccount-step3">
+            <div class="row">
+                <!--this is the summary div-->
+                <div class="panel" style="background: transparent; padding: 0px;">
+                    <div class="panel-heading" style="background: #414042;">
+			<div style="display: inline;padding: 0px 150px;">
+                            <span style="color: white; font-size: 20px; text-align: center;">Event Name :</span>
+				<span>
+                                    <form method="post" accept-charset="utf-8" action="<?php echo base_url("account/myaccount_ticketmanagement"); ?>"> 
+                                    <select name="change_event" onchange="this.form.submit()" type="text" class="form-control" style="margin-top:-3px; width:60%; float: right; background-color: #414042; border:none; box-shadow: none; color: white;">
+                                        <option value="" >ALL</option>
+                                        <?php
+                                            foreach ($e_names as $e_name){
+                                                echo '<option value="'.$e_name[0]['e_name'].'"';
+                                                if($e_name[0]['e_name'] == $current_E) {
+                                                echo 'selected="selected"';
+                                                }
+                                                        echo '>'.$e_name[0]['e_name'].'</option>';     
+                                                
+                                            }
+                                        ?>
+                                    </select>
+                                    </form>
+                                </span>
+			</div>
+                    </div>
+            <div class="panel-body" style="padding: 0px;">
+                <!--number of different ticket-->
+		<div class="col-md-8" style="background: #E3EBEE; padding: 10px 0px;">
+                    <!--ticket sold-->
+                    <div class="col-md-3">
+			<div style="padding-bottom: 0px;width: 100px;height: 50px;background-color: white;border-top-left-radius: 110px;border-top-right-radius: 110px;border-bottom: 0;">
+                            <?php 
+                                if($sold != 'N/A'){
+                                    echo '<p id="ticket_sold" style="text-align: center; ">'.$sold[0]['Qty']. '</p>'; 
+                                }
+                                else{
+                                    echo '<p id="ticket_sold" style="text-align: center; ">N/A</p>';
+                                }
+                            ?>
+                            <!--<p id="ticket_sold" style="text-align: center; ">7</p>-->
+			</div>
+							
+			<div style="width: 100px;height: 50px;background-color: #37678C;border-bottom-left-radius: 110px;border-bottom-right-radius: 110px;border-bottom: 0;">
+                            <p style="text-align: center; color: white;">Tickets<br/> Sold</p>
+			</div>
+                    </div>
+                    <!--ticket left-->
+                    <div class="col-md-3">
+			<div style="width: 100px;height: 50px;background-color: white;border-top-left-radius: 110px;border-top-right-radius: 110px;border-bottom: 0;">
+                            <?php 
+                                if($left != 'N/A'){
+                                    echo '<p id="ticket_left" style="text-align: center; ">'.$left. '</p>'; 
+                                }
+                                else{
+                                    echo '<p id="ticket_left" style="text-align: center; ">N/A</p>';
+                                }
+                            ?>
+                            <!--<p id="ticket_left" style="text-align: center; ">83</p>-->
+			</div>
+			
+                        <div style="width: 100px;height: 50px;background-color: #628DA3;border-bottom-left-radius: 110px;border-bottom-right-radius: 110px;border-bottom: 0;">
+                            <p style="text-align: center; color: white;">Tickets<br/> Left</p>
+			</div>
+                    </div>
+                    <!--ticket refund-->
+                    <div class="col-md-3">
+			<div style="width: 100px;height: 50px;background-color: white;border-top-left-radius: 110px;border-top-right-radius: 110px;border-bottom: 0;">
+                            <p id="ticket_return" style="text-align: center; ">0</p>
+			</div>
+							
+			<div style="width: 100px;height: 50px;background-color: #B54A43;border-bottom-left-radius: 110px;border-bottom-right-radius: 110px;border-bottom: 0;">
+                            <p style="text-align: center; color: white;">Tickets<br/> Refounded</p>
+			</div>
+                    </div>
+                </div>
+                <!--total revenue-->
+		<div class="col-md-4" style="background: #FFFFFF; padding: 0px;">
+                    <div style="padding: 10px">
+                        <?php echo '<p id="sum" style="font-size: 30px; text-align: center;">'.$revenue. '</p>'; ?>
+                        <!--<p id="sum" style="font-size: 30px; text-align: center;"></p>-->
+                    </div>
+                    <div style="background: #3F8764; padding: 5px;">
+                        <p style="font-size: 20px; text-align: center; color: white;">Total Sales Revenue</p>
+                    </div>
+		</div>
+            </div>
+		</div>
+                        <!--this is the detail div that has the ticket information-->
+        	<div class="panel panel-default" style="border:none; background:#DFE2E9;">
+                    <div class="panel-heading" style="background: #628DA3; border:none; height: 50px;">
+                    </div>
+                    <div class="panel-heading" style="background: #9BB3C6; border:none;height: 50px;">
+			
+                        <!--view-->
+			<div class="col-md-1" style="padding: 0px;">
+                            <span style="color: white;">View:</span>
+			</div>
+			<div class="col-md-1" style="padding: 0px;">
+                            <form method="post" accept-charset="utf-8" action="<?php echo base_url("account/myaccount_ticketmanagement"); ?>">   
+                            <select name="viewitem" onchange="this.form.submit()" type="text" class="form-control" style="width: 90%; margin-top:-3px; background-color: white; border:none; box-shadow: none; color: black;">
+				<?php
+                                    for($i = 5; $i < 21; $i+=5)
+                                    {
+                                        echo '<option value="'.$i.'"';
+                                        if($i == $perpage) {
+                                            echo 'selected="selected"';
+                                        }
+                                        echo '>'.$i.'</option>';           
+                                    }
+                                ?>
+                            </select>
+                            </form>
+			</div>
+                        <!--search for-->
+			<div class="col-md-4" style="padding: 0px;">
+                            <input id = "search" type="text" class="form-control" placeholder="Search for..." style="width: 90%; margin-top:-3px; ">
+			</div>
+                        <!--export-->
+			<div class="col-md-1" style="padding: 0px;">
+                            <span style="color: white;">Export as:</span>
+			</div>
+			<div class="col-md-2" style="padding: 0px;">
+                            <select type="text" class="form-control" style="width: 90%; margin-top:-3px; background-color: white; border:none; box-shadow: none; color: black;">
+				<option value="" selected="selected">None</option> 
+				<option value="xml">Excel</option>
+                                <option value="pdf">PDF</option>
+                            </select>
+			</div>
+                    </div>
+  		<div class="panel-body" style="height:400px; overflow-y:auto; padding: 0px;">
+                    <div class="col-md-12" style="padding: 0px;">
+			<div class="table-responsive">
+                            <!--create the guestlist table--> 
+                            <?php
+                                $tmpl = array (
+                                    'table_open'          => '<table id = "guestList" style="border-collapse: collapse; width: 100%;">',
+                                    'heading_row_start'   => '<tr style="background: #E3EBEE; font-size: 15px;color: #1C75BC;">',
+                                    'heading_row_end'     => '</tr>',
+                                    'heading_cell_start'  => '<th data-sort="" style="padding: 10px;">',
+                                    'heading_cell_end'    => '</th>',
+
+                                    'row_start'           => '<tr>',
+                                    'row_end'             => '</tr>',
+                                    'cell_start'          => '<td style="padding: 10px;">',
+                                    'cell_end'            => '</td>',
+
+                                    'row_alt_start'       => '<tr>',
+                                    'row_alt_end'         => '</tr>',
+                                    'cell_alt_start'      => '<td style="padding: 10px;">',
+                                    'cell_alt_end'        => '</td>',
+
+                                    'table_close'         => '</table>'
+                                );
+                                $this->table->set_template($tmpl);
+                                $this->table->set_heading('Order#', 'Qty' , 'Customer', 'Order Date', 'Ticket Type', 'Price', 'Delivery Method');
+                                echo $this->table->generate($record);
+                                echo '<div id="pagination">'.$this->pagination->create_links(). '</div>'; 
+                            ?>
+			</div>
+  		    </div>
+                </div>    
+			</div>
+            </div> 
+        </div>
+       
+	</div>
+</div>
+
+<!--sorting the table-->
+<!--<link rel="stylesheet" type="text/css" href="//ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css">
+<link rel="stylesheet" type="text/css" href="//ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables_themeroller.css">
+<script type="text/javascript" charset="utf8" src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+
+<script type="text/javascript" charset="utf8" src="//ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js">-->
+<script>
+//search through the table
+var $rows = $('#guestList tbody tr');
+$('#search').keyup(function() {
+    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+    $rows.show().filter(function() {
+        var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+        return !~text.indexOf(val);
+    }).hide();
+});
+//sort the table
+$('th').click(function(){
+聽 聽 var table =聽$(this).parents('table').eq(0);
+聽 聽聽var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()));
+聽 聽聽this.asc = !this.asc;
+聽 聽聽if (!this.asc){rows = rows.reverse();}
+聽 聽聽for (var i = 0; i < rows.length; i++)
+        {table.append(rows[i]);}
+});
+function comparer(index) {
+聽 聽 return function(a, b) {
+聽 聽聽聽 聽聽var valA = getCellValue(a, index), valB = getCellValue(b, index);
+聽 聽 聽 聽 return $.isNumeric(valA) && $.isNumeric(valB) ?聽valA - valB聽: valA.localeCompare(valB);
+聽 聽 };
+};
+function getCellValue(row, index){ 
+    return $(row).children('td').eq(index).html(); 
+    }
+//calculate the total revenue of ticket sell
+//function totalRevenue(){
+//    var theTbl = document.getElementById('guestList');    
+//    for(var i=0;i<theTbl.length;i++)
+//    {
+//        var Qty = theTbl.rows[i].cells[1].value,
+//            Price = theTbl.rows[i].cells[5].value;
+//        var sum = Qty * Price;
+//        document.getElementById('sum').value = sum;
+//    }
+//}
+//$('[data-sort]').click(function(){
+//	$this = $(this);
+//    colIndex = $this.index();
+//    $tbody = $this.closest('table').find('tbody');
+//   	$rows = $tbody.find('tr');
+// 
+//    $rows.sort(function(a, b){
+//        var keyA = a.children[colIndex].innerText;
+//        var keyB = b.children[colIndex].innerText;
+//        // Compare the 2 dates
+//        if(keyA < keyB) return -1;
+//        if(keyA > keyB) return 1;
+//        return 0;
+//    });
+//    console.log($rows);
+//    $tbody.html($rows)
+//});
+</script>   
+
+<!--end of content-->
+
+<?php $this->load->view('footer');?>
+  
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+	<script>
+		function removal(){
+			
+		 	var confirmation = confirm("Are you sure?");
+		 	if (confirmation == true){
+			 	return true;
+		 	}
+		 	else
+		 	return false;
+			
+		}
+	</script>
+    <script src="<? echo $PATH_BOOTSTRAP?>js/dropdown.js"></script>
+    <script src="<?php echo $PATH_JAVASCRIPT?>Notifications.js"></script>
+	
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41514976-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html> 

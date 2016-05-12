@@ -76,7 +76,7 @@ jQuery(document).ready(function () {
                                             <td>Attending</td>
                                             <!--<td><a href="#" onclick="removal()">[Remove]</a></td>-->
                                             <?php if($attending_events[$i]['ticket']) {?>
-                                            <td><a href="<?php echo base_url().'account/view_ticket/'.$attending_events[$i]['event_id'].'/'. $attending_events[$i]['ticket'][0]['ticket_id']?>">[View Order/Print Ticket]</a></td>
+                                            <td><a href="<?php echo base_url().'account/view_ticket/'.$attending_events[$i]['event_id'].'/'. $attending_events[$i]['ticket'][0]['ticket_id']?>" target="_blank">[View Order/Print Ticket]</a></td>
                                             <td><a href="#" data-toggle="modal" data-target="#cancel<?php echo $i; ?>">[Cancel Order]</a></td>
                                             <?php }?>
                                         </tr>

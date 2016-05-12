@@ -1776,7 +1776,7 @@ background:#EDF1F4;
 }
 
 .print-ticket-box{
-background:#F0F1F1;
+background:#F0F1F1 !important;
 font-family:GillSans;
 font-size:20px;
 padding:20px;

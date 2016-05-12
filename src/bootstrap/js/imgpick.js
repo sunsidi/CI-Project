@@ -4,7 +4,7 @@ var imgProp = {
   'backgroundColor': 'transparent',
   'borderSize': '10ps',
   'borderStyle': 'dashed',
-  'borderColor': 'white',
+  'borderColor': 'white'
 };
 //Used to select Primary Category.
 var imgPropPrim = {
@@ -12,7 +12,7 @@ var imgPropPrim = {
   'backgroundColor': 'transparent',
   'borderSize': '10ps',
   'borderStyle': 'solid',
-  'borderColor': 'orange',
+  'borderColor': 'orange'
 };
 
 // function to highlight IMGs on click - from: http://coursesweb.net/
@@ -28,7 +28,7 @@ function highlightImg() {
     allimgs[i].onclick=function() {
       // if borderStyle is already applied, anulates the 'padding', 'background' and 'border' properties
       //Primary Category is already chosen and clicked again.
-      if(this.style.borderStyle == imgPropPrim.borderStyle && primset === 'true') {
+      if(this.style.borderStyle === imgPropPrim.borderStyle && primset === 'true') {
         this.style.padding = 'auto';
         this.style.background = 'none'; 
         this.style.border = 'none';
@@ -37,7 +37,7 @@ function highlightImg() {
         this.setAttribute("primary", false);
       }
       //Primary Category is not chosen but category is clicked again.
-      else if(this.style.borderStyle == imgProp.borderStyle && primset === 'false') {
+      else if(this.style.borderStyle === imgProp.borderStyle && primset === 'false') {
         this.style.padding = imgPropPrim.padding;
         this.style.backgroundColor = imgPropPrim.backgroundColor;
         this.style.borderSize = imgPropPrim.borderSize;
@@ -50,7 +50,7 @@ function highlightImg() {
         //$("#i"+i).prop('checked', true);
       }
       //Primary is another category and this is clicked again, Set to unchecked.
-      else if(this.style.borderStyle == imgProp.borderStyle && primset === 'true') {
+      else if(this.style.borderStyle === imgProp.borderStyle && primset === 'true') {
           this.style.padding = 'auto';
           this.style.background = 'none';
           this.style.border = 'none';
@@ -68,7 +68,7 @@ function highlightImg() {
         }else{
             document.getElementById("category_form").innerHTML = "Choose a Category";
         }
-    }
+    };
   }
 }
 

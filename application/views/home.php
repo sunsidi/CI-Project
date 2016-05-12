@@ -277,7 +277,7 @@
 			<img src="<?php echo $PATH_IMG?>samantha.png" alt="profile" style="width:90%;"/>
 		</div>
 		<div class="col-md-5 col-md-offset-1 col-sm-6">
-			<p style="font-size: 45px; color: white; padding-top: 100px;font-center;"><strong>Create an event</strong></p>
+			<p style="font-size: 45px; color: white; padding-top: 100px;font-center"><strong>Create an event</strong></p>
 			<p style="font-size: 25px; color: white; padding-bottom: 50px;">If you cannot find the event of your
 	    choice, <b>create it</b>! Have fun experimenting
 	    and make it public for others to attend.
